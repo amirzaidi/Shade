@@ -365,7 +365,9 @@ public class NotificationListener extends NotificationListenerService {
     private boolean shouldBeFilteredOut(StatusBarNotification sbn) {
         Notification notification = sbn.getNotification();
 
-        updateGroupKeyIfNecessary(sbn);
+        if (Utilities.ATLEAST_NOUGAT) {
+            updateGroupKeyIfNecessary(sbn);
+        }
 
         if (Utilities.ATLEAST_OREO) {
             getCurrentRanking().getRanking(sbn.getKey(), mTempRanking);
@@ -384,8 +386,6 @@ public class NotificationListener extends NotificationListenerService {
                     }
                 }
             }
-        } else if ((notification.flags & Notification.FLAG_ONGOING_EVENT) != 0) {
-            return true;
         }
 
         CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
