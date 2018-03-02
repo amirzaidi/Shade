@@ -654,7 +654,7 @@ public class Folder extends AbstractFloatingView implements DragSource,
             }
         }
 
-        if (mRearrangeOnClose) {
+        if (mRearrangeOnClose || mFolderIcon.onHotseat()) {
             rearrangeChildren();
             mRearrangeOnClose = false;
         }
@@ -847,8 +847,8 @@ public class Folder extends AbstractFloatingView implements DragSource,
                     mSuppressFolderDeletion = true;
                 }
                 mScrollPauseAlarm.cancelAlarm();
-                completeDragExit();
             }
+            completeDragExit();
         }
 
         mDeleteFolderOnDropCompleted = false;

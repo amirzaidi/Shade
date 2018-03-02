@@ -631,6 +631,10 @@ public class FolderIcon extends FrameLayout implements FolderListener {
         mInfo.removeListener(mFolder);
     }
 
+    public boolean onHotseat() {
+        return mInfo.container == LauncherSettings.Favorites.CONTAINER_HOTSEAT;
+    }
+
     public void clearLeaveBehindIfExists() {
         ((CellLayout.LayoutParams) getLayoutParams()).canReorder = true;
         if (mInfo.container == LauncherSettings.Favorites.CONTAINER_HOTSEAT) {
