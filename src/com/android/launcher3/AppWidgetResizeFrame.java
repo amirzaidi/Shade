@@ -169,6 +169,13 @@ public class AppWidgetResizeFrame extends AbstractFloatingView implements View.O
         mWidgetPadding = AppWidgetHostView.getDefaultPaddingForWidget(getContext(),
                 widgetView.getAppWidgetInfo().provider, null);
 
+        if (info.minSpanX > 1) {
+            mResizeMode |= AppWidgetProviderInfo.RESIZE_HORIZONTAL;
+        }
+        if (info.minSpanY > 1) {
+            mResizeMode |= AppWidgetProviderInfo.RESIZE_VERTICAL;
+        }
+
         if (mResizeMode == AppWidgetProviderInfo.RESIZE_HORIZONTAL) {
             mDragHandles[INDEX_TOP].setVisibility(GONE);
             mDragHandles[INDEX_BOTTOM].setVisibility(GONE);
