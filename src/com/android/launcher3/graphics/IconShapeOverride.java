@@ -29,7 +29,6 @@ import android.os.SystemClock;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -60,11 +59,6 @@ public class IconShapeOverride {
 
     public static boolean isSupported(Context context) {
         if (!Utilities.ATLEAST_OREO) {
-            return false;
-        }
-        // Only supported when developer settings is enabled
-        if (Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 1) {
             return false;
         }
 
