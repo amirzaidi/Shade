@@ -15,6 +15,8 @@
  */
 package com.android.launcher3.uioverrides;
 
+import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 
@@ -27,5 +29,10 @@ public class OverviewState extends LauncherState {
 
     public OverviewState(int id) {
         super(id, ContainerType.WORKSPACE, OVERVIEW_TRANSITION_MS, FLAG_DISABLE_RESTORE);
+    }
+
+    public static float getDefaultSwipeHeight(Launcher launcher) {
+        DeviceProfile dp = launcher.getDeviceProfile();
+        return dp.allAppsCellHeightPx - dp.allAppsIconTextSizePx;
     }
 }
