@@ -20,6 +20,7 @@ import static com.android.launcher3.Utilities.EXTRA_WALLPAPER_OFFSET;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
@@ -190,7 +191,13 @@ public class OptionsPopupView extends ArrowPopup
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         String pickerPackage = launcher.getString(R.string.wallpaper_picker_package);
-        if (!TextUtils.isEmpty(pickerPackage)) {
+        boolean pickerPackageInstalled = false;
+        try {
+            pickerPackageInstalled = launcher.getPackageManager()
+                    .getApplicationInfo(pickerPackage, 0).enabled;
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        if (!TextUtils.isEmpty(pickerPackage) && pickerPackageInstalled) {
             intent.setPackage(pickerPackage);
         } else {
             // If there is no target package, use the default intent chooser animation
