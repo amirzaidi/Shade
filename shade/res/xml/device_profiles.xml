@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<profiles xmlns:launcher="http://schemas.android.com/apk/res-auto" >
+
+    <profile
+        launcher:name="Largest (4x4)"
+        launcher:minWidthDps="296"
+        launcher:minHeightDps="496"
+        launcher:numRows="4"
+        launcher:numColumns="4"
+        launcher:numFolderRows="3"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="4"
+        launcher:iconSize="56"
+        launcher:landscapeIconSize="54"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_4x4"
+        />
+
+    <profile
+        launcher:name="Larger (4x4)"
+        launcher:minWidthDps="296"
+        launcher:minHeightDps="545"
+        launcher:numRows="4"
+        launcher:numColumns="4"
+        launcher:numFolderRows="3"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="4"
+        launcher:iconSize="56"
+        launcher:landscapeIconSize="54"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_4x4"
+        />
+
+    <profile
+        launcher:name="Large (5x5)"
+        launcher:minWidthDps="296"
+        launcher:minHeightDps="568"
+        launcher:numRows="5"
+        launcher:numColumns="5"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="5"
+        launcher:iconSize="54"
+        launcher:landscapeIconSize="48"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_5x5"
+        />
+
+    <profile
+        launcher:name="Large (4x5)"
+        launcher:minWidthDps="322"
+        launcher:minHeightDps="557"
+        launcher:numRows="4"
+        launcher:numColumns="5"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="5"
+        launcher:iconSize="56"
+        launcher:landscapeIconSize="54"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_4x5"
+        />
+
+    <profile
+        launcher:name="Medium (5x5)"
+        launcher:minWidthDps="387"
+        launcher:minHeightDps="659"
+        launcher:numRows="5"
+        launcher:numColumns="5"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="5"
+        launcher:iconSize="56"
+        launcher:landscapeIconSize="54"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_5x5"
+        />
+
+    <profile
+        launcher:name="Small (5x5)"
+        launcher:minWidthDps="387"
+        launcher:minHeightDps="750"
+        launcher:numRows="5"
+        launcher:numColumns="5"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="5"
+        launcher:iconSize="54"
+        launcher:landscapeIconSize="52"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_5x5"
+        />
+
+    <profile
+        launcher:name="Smaller (6x6)"
+        launcher:minWidthDps="525"
+        launcher:minHeightDps="750"
+        launcher:numRows="6"
+        launcher:numColumns="6"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="6"
+        launcher:iconSize="52"
+        launcher:landscapeIconSize="50"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_6x6"
+        />
+
+    <profile
+        launcher:name="Tablet (6x5)"
+        launcher:minWidthDps="820"
+        launcher:minHeightDps="1200"
+        launcher:numRows="5"
+        launcher:numColumns="6"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:numHotseatIcons="6"
+        launcher:iconSize="64"
+        launcher:landscapeIconSize="64"
+        launcher:iconTextSize="13.0"
+        launcher:defaultLayoutId="@xml/default_workspace_5x6"
+        />
+
+</profiles>
