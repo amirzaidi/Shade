@@ -23,4 +23,7 @@ public final class FeatureFlags extends BaseFlags {
 
     private FeatureFlags() {}
 
+    // When enabled, all legacy icons are wrapped in an adaptive icon.
+    public static final boolean FORCE_ADAPTIVE_ICONS = true;
+
 }
