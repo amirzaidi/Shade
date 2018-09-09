@@ -16,6 +16,8 @@
 
 package com.android.launcher3.config;
 
+import com.android.launcher3.BuildConfig;
+
 /**
  * Defines a set of flags used to control various launcher behaviors.
  *
@@ -29,7 +31,7 @@ abstract class BaseFlags {
     BaseFlags() {}
 
     public static final boolean IS_DOGFOOD_BUILD = false;
-    public static final String AUTHORITY = "com.android.launcher3.settings".intern();
+    public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".settings";
 
     // When enabled allows to use any point on the fast scrollbar to start dragging.
     public static final boolean LAUNCHER3_DIRECT_SCROLL = true;
