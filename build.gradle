@@ -34,6 +34,15 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
         }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard.flags'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     compileOptions {
@@ -63,13 +72,6 @@ android {
         }
     }
 
-    // Disable release builds for now
-    android.variantFilter { variant ->
-        if (variant.buildType.name.endsWith('release')) {
-            variant.setIgnore(true);
-        }
-    }
-
     sourceSets {
         main {
             res.srcDirs = ['res']
@@ -82,6 +84,10 @@ android {
         }
 
         debug {
+            manifest.srcFile "AndroidManifest.xml"
+        }
+
+        release {
             manifest.srcFile "AndroidManifest.xml"
         }
 
@@ -117,6 +123,7 @@ repositories {
     maven { url "../../../prebuilts/fullsdk-darwin/extras/android/m2repository" }
     maven { url "../../../prebuilts/fullsdk-linux/extras/android/m2repository" }
     mavenCentral()
+    jcenter()
     google()
 }
 
