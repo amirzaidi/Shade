@@ -20,6 +20,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.Pair;
 
+import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.dynamicui.ColorExtractionAlgorithm;
 import com.android.launcher3.uioverrides.dynamicui.WallpaperColorsCompat;
 import com.android.launcher3.uioverrides.dynamicui.WallpaperManagerCompat;
@@ -94,7 +95,8 @@ public class WallpaperColorInfo implements WallpaperManagerCompat.OnColorsChange
             mSecondaryColor = FALLBACK_COLOR;
         }
         mSupportsDarkText = wallpaperColors != null && (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0;
+                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0
+                && Utilities.ATLEAST_NOUGAT;
         mIsDark = wallpaperColors != null && (wallpaperColors.getColorHints()
                 & WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME) > 0;
     }
