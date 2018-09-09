@@ -172,3 +172,5 @@ protobuf {
         }
     }
 }
+
+apply from: 'shade/shade.gradle'
