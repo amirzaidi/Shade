@@ -93,12 +93,10 @@ public class WallpaperColorInfo implements WallpaperManagerCompat.OnColorsChange
             mMainColor = FALLBACK_COLOR;
             mSecondaryColor = FALLBACK_COLOR;
         }
-        mSupportsDarkText = wallpaperColors != null
-                ? (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0 : false;
-        mIsDark = wallpaperColors != null
-                ? (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME) > 0 : false;
+        mSupportsDarkText = wallpaperColors != null && (wallpaperColors.getColorHints()
+                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0;
+        mIsDark = wallpaperColors != null && (wallpaperColors.getColorHints()
+                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME) > 0;
     }
 
     public void addOnChangeListener(OnChangeListener listener) {
