@@ -1610,9 +1610,6 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
             ued.logActionCommand(Action.Command.BACK, mStateManager.getState().containerType,
                     lastState.containerType);
             mStateManager.goToState(lastState);
-        } else {
-            // Back button is a no-op here, but give at least some feedback for the button press
-            mWorkspace.showOutlinesTemporarily();
         }
     }
 
