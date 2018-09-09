@@ -5,3 +5,11 @@
 -keep class amirz.shade.customization.PreferencesShortcut {
   public <init>(...);
 }
+
+-keep class amirz.shade.icons.ThirdPartyDrawableFactory {
+  public <init>(...);
+}
+
+-keep class amirz.shade.icons.ThirdPartyIconProvider {
+  public <init>(...);
+}
