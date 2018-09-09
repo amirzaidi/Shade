@@ -71,6 +71,10 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
             super(R.drawable.ic_info_no_shadow, R.string.app_info_drop_target_label);
         }
 
+        public AppInfo(int iconResId, int labelResId) {
+            super(iconResId, labelResId);
+        }
+
         @Override
         public View.OnClickListener getOnClickListener(
                 BaseDraggingActivity activity, ItemInfo itemInfo) {

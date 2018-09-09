@@ -23,6 +23,7 @@ import android.util.Log;
 
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.badge.BadgeInfo;
 import com.android.launcher3.model.WidgetItem;
@@ -49,14 +50,10 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
     private static final boolean LOGD = false;
     private static final String TAG = "PopupDataProvider";
 
-    /** Note that these are in order of priority. */
-    private static final SystemShortcut[] SYSTEM_SHORTCUTS = new SystemShortcut[] {
-            new SystemShortcut.AppInfo(),
-            new SystemShortcut.Widgets(),
-            new SystemShortcut.Install()
-    };
-
     private final Launcher mLauncher;
+
+    /** Note that these are in order of priority. */
+    private final SystemShortcut[] mSystemShortcuts;
 
     /** Maps launcher activity components to their list of shortcut ids. */
     private MultiHashMap<ComponentKey, String> mDeepShortcutMap = new MultiHashMap<>();
@@ -67,6 +64,12 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
 
     public PopupDataProvider(Launcher launcher) {
         mLauncher = launcher;
+        mSystemShortcuts = new SystemShortcut[] {
+                Utilities.getOverrideObject(SystemShortcut.AppInfo.class, launcher,
+                        R.string.app_info_shortcut_class),
+                new SystemShortcut.Widgets(),
+                new SystemShortcut.Install()
+        };
     }
 
     @Override
@@ -193,7 +196,7 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
 
     public @NonNull List<SystemShortcut> getEnabledSystemShortcutsForItem(ItemInfo info) {
         List<SystemShortcut> systemShortcuts = new ArrayList<>();
-        for (SystemShortcut systemShortcut : SYSTEM_SHORTCUTS) {
+        for (SystemShortcut systemShortcut : mSystemShortcuts) {
             if (systemShortcut.getOnClickListener(mLauncher, info) != null) {
                 systemShortcuts.add(systemShortcut);
             }
