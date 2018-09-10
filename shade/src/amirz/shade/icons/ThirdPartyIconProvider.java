@@ -2,12 +2,11 @@ package amirz.shade.icons;
 
 import android.content.Context;
 
-import com.android.launcher3.IconProvider;
-
-public class ThirdPartyIconProvider extends IconProvider {
+public class ThirdPartyIconProvider extends RoundIconProvider {
     private final Context mContext;
 
     public ThirdPartyIconProvider(Context context) {
+        super(context);
         mContext = context;
     }
 }
