@@ -1,3 +1,7 @@
 -keep,allowshrinking,allowoptimization class amirz.shade.** {
   *;
 }
+
+-keep class amirz.shade.customization.PreferencesShortcut {
+  public <init>(...);
+}

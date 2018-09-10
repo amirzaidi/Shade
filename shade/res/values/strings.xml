@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name_shade">Shade Launcher</string>
     <string name="app_name_shade_short">Shade</string>
+
+    <string name="app_preferences">Preferences</string>
 </resources>

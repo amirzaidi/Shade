@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="derived_app_name" translatable="false">@string/app_name_shade</string>
+
+    <string name="app_info_shortcut_class" translatable="false">amirz.shade.customization.PreferencesShortcut</string>
 </resources>
