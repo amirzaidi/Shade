@@ -46,6 +46,7 @@ public class LauncherAppState {
     private static LauncherAppState INSTANCE;
 
     private final Context mContext;
+    private final AppFilter mAppFilter;
     private final LauncherModel mModel;
     private final IconCache mIconCache;
     private final WidgetPreviewLoader mWidgetCache;
@@ -92,7 +93,8 @@ public class LauncherAppState {
         mInvariantDeviceProfile = new InvariantDeviceProfile(mContext);
         mIconCache = new IconCache(mContext, mInvariantDeviceProfile);
         mWidgetCache = new WidgetPreviewLoader(mContext, mIconCache);
-        mModel = new LauncherModel(this, mIconCache, AppFilter.newInstance(mContext));
+        mAppFilter = AppFilter.newInstance(mContext);
+        mModel = new LauncherModel(this, mIconCache, mAppFilter);
 
         LauncherAppsCompat.getInstance(mContext).addOnAppsChangedCallback(mModel);
 
@@ -153,6 +155,10 @@ public class LauncherAppState {
 
     public IconCache getIconCache() {
         return mIconCache;
+    }
+
+    public AppFilter getAppFilter() {
+        return mAppFilter;
     }
 
     public LauncherModel getModel() {
