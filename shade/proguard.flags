@@ -2,6 +2,10 @@
   *;
 }
 
+-keep class amirz.shade.ShadeAppFilter {
+  public <init>(...);
+}
+
 -keep class amirz.shade.customization.PreferencesShortcut {
   public <init>(...);
 }

@@ -4,4 +4,9 @@
     <string name="app_name_shade_short">Shade</string>
 
     <string name="app_preferences">Preferences</string>
+    <string name="app_edit_subtitle">Tap to open app info.</string>
+
+    <string name="pref_icon_pack">Icon pack</string>
+    <string name="pref_category">Category</string>
+    <string name="pref_reset">Reset</string>
 </resources>

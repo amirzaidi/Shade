@@ -2,9 +2,31 @@
 <resources>
     <string name="derived_app_name" translatable="false">@string/app_name_shade</string>
 
+    <string name="app_filter_class" translatable="false">amirz.shade.ShadeAppFilter</string>
+
     <string name="icon_provider_class" translatable="false">amirz.shade.icons.ThirdPartyIconProvider</string>
 
     <string name="drawable_factory_class" translatable="false">amirz.shade.icons.ThirdPartyDrawableFactory</string>
 
     <string name="app_info_shortcut_class" translatable="false">amirz.shade.customization.PreferencesShortcut</string>
+
+    <string-array name="category_entries">
+        <!-- All -->
+        <item>Favorites</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>Utility</item>
+        <item>Travel</item>
+        <item>Hidden</item>
+    </string-array>
+
+    <string-array translatable="false" name="category_entry_values">
+        <!-- "all" -->
+        <item>"favorites"</item>
+        <item>"media"</item>
+        <item>"social"</item>
+        <item>"utility"</item>
+        <item>"travel"</item>
+        <item>"hidden"</item>
+    </string-array>
 </resources>

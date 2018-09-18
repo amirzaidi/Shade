@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<amirz.shade.customization.PreferencesBottomSheet
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="28dp"
+    android:background="@drawable/top_round_rect_primary"
+    android:elevation="@dimen/deep_shortcuts_elevation"
+    android:layout_gravity="bottom"
+    android:theme="?attr/widgetsTheme">
+
+    <TextView
+        style="@style/TextTitle"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="14sp"
+        android:text="@string/app_edit_subtitle" />
+
+    <fragment
+        android:id="@+id/sheet_prefs"
+        android:name="amirz.shade.customization.PreferencesBottomSheet$PrefsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="40dp" />
+
+</amirz.shade.customization.PreferencesBottomSheet>

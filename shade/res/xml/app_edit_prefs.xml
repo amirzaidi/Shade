@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <amirz.shade.customization.IconPackPreference
+        android:key="pref_app_icon"
+        android:title="@string/pref_icon_pack"
+        android:summary="%s"
+        android:defaultValue=""
+        android:persistent="false" />
+
+    <amirz.shade.customization.CategoryPreference
+        android:key="pref_app_category"
+        android:title="@string/pref_category"
+        android:summary="%s"
+        android:entries="@array/category_entries"
+        android:entryValues="@array/category_entry_values"
+        android:defaultValue="favorites"
+        android:persistent="false" />
+
+    <Preference
+        android:key="pref_app_reset"
+        android:title="@string/pref_reset"
+        android:persistent="false" />
+</PreferenceScreen>

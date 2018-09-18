@@ -15,9 +15,13 @@ import org.xmlpull.v1.XmlPullParser;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Extracts roundIcon attribute from AndroidManifest.xml, then uses it as the drawer icon.
+ */
 public class RoundIconProvider extends IconProvider {
     private final Context mContext;
 
+    @SuppressWarnings("WeakerAccess")
     public RoundIconProvider(Context context) {
         mContext = context;
     }
@@ -26,6 +30,8 @@ public class RoundIconProvider extends IconProvider {
     public Drawable getIcon(LauncherActivityInfo launcherActivityInfo, int iconDpi, boolean flattenDrawable) {
         ComponentName component = launcherActivityInfo.getComponentName();
         Drawable roundIcon = getRoundIcon(component, iconDpi);
+
+        // Fall back on the default icon if round icon extraction fails.
         return roundIcon == null
                 ? super.getIcon(launcherActivityInfo, iconDpi, flattenDrawable)
                 : roundIcon;
@@ -38,7 +44,6 @@ public class RoundIconProvider extends IconProvider {
 
         try {
             Resources res = mContext.getPackageManager().getResourcesForApplication(pkg);
-
             AssetManager assets = res.getAssets();
 
             XmlResourceParser parseXml = assets.openXmlResourceParser("AndroidManifest.xml");
@@ -64,6 +69,8 @@ public class RoundIconProvider extends IconProvider {
             parseXml.close();
 
             if (appIcon != null) {
+                // Sometimes this is a reference, then we need to use getIdentifier
+                // to get the actual resource id.
                 int resId = res.getIdentifier(appIcon, null, pkg);
                 return res.getDrawableForDensity(resId == 0
                         ? Integer.parseInt(appIcon.substring(1))
