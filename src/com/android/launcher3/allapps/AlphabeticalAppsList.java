@@ -18,8 +18,10 @@ package com.android.launcher3.allapps;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+import com.android.launcher3.AppFilter;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.compat.AlphabeticIndexCompat;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
@@ -415,14 +417,20 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
     }
 
     private List<AppInfo> getFiltersAppInfos() {
-        if (mSearchResults == null) {
-            return mApps;
-        }
         ArrayList<AppInfo> result = new ArrayList<>();
-        for (ComponentKey key : mSearchResults) {
-            AppInfo match = mAllAppsStore.getApp(key);
-            if (match != null) {
-                result.add(match);
+        if (mSearchResults == null) {
+            AppFilter filter = LauncherAppState.getInstance(mLauncher).getAppFilter();
+            for (AppInfo info : mApps) {
+                if (filter.shouldShowApp(info.componentName, info.user)) {
+                    result.add(info);
+                }
+            }
+        } else {
+            for (ComponentKey key : mSearchResults) {
+                AppInfo match = mAllAppsStore.getApp(key);
+                if (match != null) {
+                    result.add(match);
+                }
             }
         }
         return result;
