@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LauncherTheme.Shade" parent="@style/LauncherTheme">
+    </style>
+
+    <style name="LauncherTheme.DarkText.Shade" parent="@style/LauncherTheme.DarkText">
+    </style>
+
+    <style name="LauncherTheme.Dark.Shade" parent="@style/LauncherTheme.Dark">
+    </style>
+
+    <style name="LauncherTheme.Dark.DarkText.Shade" parent="@style/LauncherTheme.Dark.DarkText">
+    </style>
+</resources>
