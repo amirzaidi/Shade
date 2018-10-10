@@ -99,7 +99,7 @@ public class WorkspaceStateTransitionAnimation {
             return;
         }
 
-        Interpolator translationInterpolator = !playAtomicComponent ? LINEAR : ZOOM_OUT;
+        Interpolator translationInterpolator = LINEAR;
         propertySetter.setFloat(mWorkspace, View.TRANSLATION_X,
                 scaleAndTranslation[1], translationInterpolator);
         propertySetter.setFloat(mWorkspace, View.TRANSLATION_Y,
