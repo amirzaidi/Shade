@@ -27,6 +27,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.view.inputmethod.InputMethodManager;
 
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
@@ -135,6 +136,9 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         mAppsView = appsView;
         mSearchBarController.initialize(
                 new NormalizedAppSearchAlgorithm(mApps.getApps()), this, mLauncher, this);
+
+        // This will make the parent consume the initial swipe event focus.
+        appsView.setFocusableInTouchMode(true);
     }
 
     @Override
