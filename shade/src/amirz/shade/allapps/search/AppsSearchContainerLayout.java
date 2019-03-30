@@ -207,7 +207,7 @@ public class AppsSearchContainerLayout extends ExtendedEditText
             mLauncher.getAllAppsController().setScrollRangeDelta(0);
         } else {
             mLauncher.getAllAppsController().setScrollRangeDelta(
-                    insets.bottom + mlp.topMargin + mFixedTranslationY);
+                    insets.bottom + mlp.topMargin);
         }
     }
 }
