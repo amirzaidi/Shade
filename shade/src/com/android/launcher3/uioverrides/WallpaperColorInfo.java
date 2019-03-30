@@ -72,7 +72,7 @@ public abstract class WallpaperColorInfo {
         mListeners.remove(listener);
     }
 
-    protected void notifyChange() {
+    public void notifyChange() {
         WallpaperColorInfo.OnChangeListener[] copy =
                 mTempListeners != null && mTempListeners.length == mListeners.size() ?
                         mTempListeners : new WallpaperColorInfo.OnChangeListener[mListeners.size()];
