@@ -139,6 +139,5 @@ public class ExtendedEditText extends EditText {
                 nextFocus.requestFocus();
             }
         }
-        hideKeyboard();
     }
 }
