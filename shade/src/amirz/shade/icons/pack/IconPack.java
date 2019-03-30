@@ -40,6 +40,14 @@ class IconPack {
         return mPackageLabel;
     }
 
+    /**
+     * Loads all icon pack XML data into memory, and caches it with a WeakReference.
+     * @param pm Package manager used to load the data.
+     * @return Icons in the icon pack.
+     * @throws PackageManager.NameNotFoundException
+     * @throws XmlPullParserException
+     * @throws IOException
+     */
     Data getData(PackageManager pm)
             throws PackageManager.NameNotFoundException, XmlPullParserException, IOException {
         Data data = mData.get();
