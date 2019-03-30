@@ -21,5 +21,6 @@ android {
 }
 
 dependencies {
+    shadeImplementation fileTree(dir: 'quickstep/libs', include: '*.jar')
     shadeImplementation fileTree(dir: 'shade/libs', include: '*.jar')
 }
