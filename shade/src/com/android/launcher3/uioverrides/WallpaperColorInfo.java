@@ -17,49 +17,36 @@
 package com.android.launcher3.uioverrides;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Pair;
 
 import com.android.launcher3.Utilities;
-import com.android.launcher3.uioverrides.dynamicui.ColorExtractionAlgorithm;
-import com.android.launcher3.uioverrides.dynamicui.WallpaperColorsCompat;
-import com.android.launcher3.uioverrides.dynamicui.WallpaperManagerCompat;
 
 import java.util.ArrayList;
 
-import static android.app.WallpaperManager.FLAG_SYSTEM;
-
-public class WallpaperColorInfo implements WallpaperManagerCompat.OnColorsChangedListenerCompat {
-
-    private static final int FALLBACK_COLOR = Color.WHITE;
+public abstract class WallpaperColorInfo {
     private static final Object sInstanceLock = new Object();
     private static WallpaperColorInfo sInstance;
 
     public static WallpaperColorInfo getInstance(Context context) {
         synchronized (sInstanceLock) {
             if (sInstance == null) {
-                sInstance = new WallpaperColorInfo(context.getApplicationContext());
+                Context ctx = context.getApplicationContext();
+                if (Utilities.ATLEAST_P) {
+                    sInstance = new WallpaperColorInfoVP(ctx);
+                } else {
+                    sInstance = new WallpaperColorInfoVL(ctx);
+                }
             }
             return sInstance;
         }
     }
 
     private final ArrayList<OnChangeListener> mListeners = new ArrayList<>();
-    private final WallpaperManagerCompat mWallpaperManager;
-    private final ColorExtractionAlgorithm mExtractionType;
-    private int mMainColor;
-    private int mSecondaryColor;
-    private boolean mIsDark;
-    private boolean mSupportsDarkText;
+    int mMainColor;
+    int mSecondaryColor;
+    boolean mIsDark;
+    boolean mSupportsDarkText;
 
-    private OnChangeListener[] mTempListeners;
-
-    private WallpaperColorInfo(Context context) {
-        mWallpaperManager = WallpaperManagerCompat.getInstance(context);
-        mWallpaperManager.addOnColorsChangedListener(this);
-        mExtractionType = ColorExtractionAlgorithm.newInstance(context);
-        update(mWallpaperManager.getWallpaperColors(FLAG_SYSTEM));
-    }
+    private WallpaperColorInfo.OnChangeListener[] mTempListeners;
 
     public int getMainColor() {
         return mMainColor;
@@ -77,30 +64,6 @@ public class WallpaperColorInfo implements WallpaperManagerCompat.OnColorsChange
         return mSupportsDarkText;
     }
 
-    @Override
-    public void onColorsChanged(WallpaperColorsCompat colors, int which) {
-        if ((which & FLAG_SYSTEM) != 0) {
-            update(colors);
-            notifyChange();
-        }
-    }
-
-    private void update(WallpaperColorsCompat wallpaperColors) {
-        Pair<Integer, Integer> colors = mExtractionType.extractInto(wallpaperColors);
-        if (colors != null) {
-            mMainColor = colors.first;
-            mSecondaryColor = colors.second;
-        } else {
-            mMainColor = FALLBACK_COLOR;
-            mSecondaryColor = FALLBACK_COLOR;
-        }
-        mSupportsDarkText = wallpaperColors != null && (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0
-                && Utilities.ATLEAST_NOUGAT;
-        mIsDark = wallpaperColors != null && (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME) > 0;
-    }
-
     public void addOnChangeListener(OnChangeListener listener) {
         mListeners.add(listener);
     }
@@ -109,14 +72,14 @@ public class WallpaperColorInfo implements WallpaperManagerCompat.OnColorsChange
         mListeners.remove(listener);
     }
 
-    private void notifyChange() {
-        OnChangeListener[] copy =
+    protected void notifyChange() {
+        WallpaperColorInfo.OnChangeListener[] copy =
                 mTempListeners != null && mTempListeners.length == mListeners.size() ?
-                        mTempListeners : new OnChangeListener[mListeners.size()];
+                        mTempListeners : new WallpaperColorInfo.OnChangeListener[mListeners.size()];
 
         // Create a new array to avoid concurrent modification when the activity destroys itself.
         mTempListeners = mListeners.toArray(copy);
-        for (OnChangeListener listener : mTempListeners) {
+        for (WallpaperColorInfo.OnChangeListener listener : mTempListeners) {
             listener.onExtractedColorsChanged(this);
         }
     }
