@@ -29,4 +29,22 @@
         <item>"travel"</item>
         <item>"hidden"</item>
     </string-array>
+
+    <string-array name="theme_entries">
+        <item>@string/theme_default</item>
+        <item>@string/theme_transparent</item>
+        <item>@string/theme_nature</item>
+        <item>@string/theme_sunset</item>
+        <item>@string/theme_campfire</item>
+        <item>@string/theme_twilight</item>
+    </string-array>
+
+    <string-array translatable="false" name="theme_entry_values">
+        <item>""</item>
+        <item>"transparent"</item>
+        <item>"nature"</item>
+        <item>"sunset"</item>
+        <item>"campfire"</item>
+        <item>"twilight"</item>
+    </string-array>
 </resources>

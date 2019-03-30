@@ -9,4 +9,13 @@
     <string name="pref_icon_pack">Icon pack</string>
     <string name="pref_category">Category</string>
     <string name="pref_reset">Reset</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Theme</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_transparent">Transparent</string>
+    <string name="theme_nature">Nature</string>
+    <string name="theme_sunset">Sunset</string>
+    <string name="theme_campfire">Campfire</string>
+    <string name="theme_twilight">Twilight</string>
 </resources>
