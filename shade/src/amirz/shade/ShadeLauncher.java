@@ -241,12 +241,14 @@ public class ShadeLauncher extends Launcher {
 
     @Override
     protected int getThemeRes(WallpaperColorInfo wallpaperColorInfo) {
-        if (wallpaperColorInfo.isDark()) {
-            return wallpaperColorInfo.supportsDarkText() ?
-                    R.style.LauncherTheme_Dark_DarkText_Shade : R.style.LauncherTheme_Dark_Shade;
-        } else {
-            return wallpaperColorInfo.supportsDarkText() ?
-                    R.style.LauncherTheme_DarkText_Shade : R.style.LauncherTheme_Shade;
+        switch (Utilities.getPrefs(this).getString(ShadeSettings.PREF_THEME, "")) {
+            case "transparent": return R.style.Shade_Transparent;
+            case "nature": return R.style.Shade_Nature;
+            case "sunset": return R.style.Shade_Sunset;
+            case "campfire": return R.style.Shade_Campfire;
+            case "twilight": return R.style.Shade_Twilight;
         }
+
+        return super.getThemeRes(wallpaperColorInfo);
     }
 }

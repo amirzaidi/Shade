@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="LauncherTheme.Shade" parent="@style/LauncherTheme">
+    <style name="AppTheme" parent="@style/LauncherTheme">
     </style>
 
-    <style name="LauncherTheme.DarkText.Shade" parent="@style/LauncherTheme.DarkText">
+    <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
     </style>
 
-    <style name="LauncherTheme.Dark.Shade" parent="@style/LauncherTheme.Dark">
+    <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
         <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
 
-    <style name="LauncherTheme.Dark.DarkText.Shade" parent="@style/LauncherTheme.Dark.DarkText">
+    <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
+    </style>
+
+    <!-- These need to be compatible with API 21, so only extend default and dark. -->
+    <style name="Shade.Transparent" parent="@style/AppTheme.Dark">
+        <item name="android:colorAccent">@color/ic_launcher_shade_background</item>
+        <item name="workspaceStatusBarScrim">@null</item>
+
+        <item name="allAppsScrimColor">#33000000</item>
+        <item name="android:alertDialogTheme">@android:style/Theme.Material.Dialog.Alert</item>
+    </style>
+
+    <style name="Shade.Light" parent="AppTheme">
+        <item name="allAppsScrimColorFoot">?android:colorPrimary</item>
+        <item name="popupColorTertiary">?android:attr/colorAccent</item>
+        <item name="android:alertDialogTheme">@android:style/Theme.Material.Light.Dialog.Alert</item>
+    </style>
+
+    <style name="Shade.Dark" parent="AppTheme.Dark">
+        <item name="android:colorPrimaryDark">?android:attr/colorAccent</item>
+        <item name="allAppsScrimColorFoot">?android:colorPrimary</item>
+
+        <item name="popupColorPrimary">?android:attr/colorAccent</item>
+        <item name="popupColorSecondary">?android:attr/colorPrimary</item>
+        <item name="popupColorTertiary">?android:attr/colorPrimary</item>
+
+        <item name="android:alertDialogTheme">@android:style/Theme.Material.Dialog.Alert</item>
+    </style>
+
+    <!-- NATURE -->
+    <style name="Shade.Nature" parent="@style/Shade.Dark">
+        <item name="allAppsScrimColor">#5d4037</item>
+        <item name="android:colorPrimary">#33691e</item>
+        <item name="android:colorAccent">#558b2f</item>
+        <item name="widgetsTheme">@style/Shade.Nature</item>
+    </style>
+
+    <!-- SUNSET -->
+    <style name="Shade.Sunset" parent="@style/Shade.Light">
+        <item name="allAppsScrimColor">#ff80ab</item>
+        <item name="android:colorPrimary">#82b1ff</item>
+        <item name="android:colorAccent">#ffd180</item>
+    </style>
+
+    <!-- CAMPFIRE -->
+    <style name="Shade.Campfire" parent="@style/Shade.Dark">
+        <item name="allAppsScrimColor">#FFA000</item>
+        <item name="android:colorPrimary">#BF360C</item>
+        <item name="android:colorAccent">#D84315</item>
+        <item name="widgetsTheme">@style/Shade.Campfire</item>
+    </style>
+
+    <!-- TWILIGHT -->
+    <style name="Shade.Twilight" parent="@style/Shade.Dark">
+        <item name="allAppsScrimColor">#26a69a</item>
+        <item name="android:colorPrimary">#7e57c2</item>
+        <item name="android:colorAccent">#5e35b1</item>
+        <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
 </resources>
