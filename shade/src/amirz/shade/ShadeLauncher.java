@@ -240,6 +240,12 @@ public class ShadeLauncher extends Launcher {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        ShadeFont.override(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     protected int getThemeRes(WallpaperColorInfo wallpaperColorInfo) {
         switch (Utilities.getPrefs(this).getString(ShadeSettings.PREF_THEME, "")) {
             case "transparent": return R.style.Shade_Transparent;
