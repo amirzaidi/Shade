@@ -55,7 +55,6 @@ public class ShelfScrimView extends ScrimView {
     // For shelf mode
     private final int mEndAlpha;
     private final float mRadius;
-    private final int mMaxScrimAlpha;
     private final Paint mPaint;
 
     // Mid point where the alpha changes
@@ -70,15 +69,9 @@ public class ShelfScrimView extends ScrimView {
     private float mShelfTopAtThreshold;
 
     private int mShelfColor;
-    private int mRemainingScreenColor;
-
-    private final Path mTempPath = new Path();
-    private final Path mRemainingScreenPath = new Path();
-    private boolean mRemainingScreenPathValid = false;
 
     public ShelfScrimView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mMaxScrimAlpha = Math.round(OVERVIEW.getWorkspaceScrimAlpha(mLauncher) * 255);
 
         mEndAlpha = Color.alpha(mEndScrim);
         mRadius = mLauncher.getResources().getDimension(R.dimen.shelf_surface_radius);
@@ -90,18 +83,11 @@ public class ShelfScrimView extends ScrimView {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        mRemainingScreenPathValid = false;
-    }
-
-    @Override
     public void reInitUi() {
         DeviceProfile dp = mLauncher.getDeviceProfile();
         mDrawingFlatColor = dp.isVerticalBarLayout();
 
         if (!mDrawingFlatColor) {
-            mRemainingScreenPathValid = false;
             mShiftRange = mLauncher.getAllAppsController().getShiftRange();
 
             mMidProgress = OVERVIEW.getVerticalProgress(mLauncher);
@@ -133,11 +119,8 @@ public class ShelfScrimView extends ScrimView {
         }
 
         if (mProgress >= 1) {
-            mRemainingScreenColor = 0;
             mShelfColor = 0;
         } else if (mProgress >= mMidProgress) {
-            mRemainingScreenColor = 0;
-
             int alpha = Math.round(Utilities.mapToRange(
                     mProgress, mMidProgress, 1, mMidAlpha, 0, ACCEL));
             mShelfColor = setAlphaComponent(mEndScrim, alpha);
@@ -149,11 +132,6 @@ public class ShelfScrimView extends ScrimView {
                     Utilities.mapToRange(mProgress, (float) 0, mMidProgress, (float) mEndAlpha,
                             (float) mMidAlpha, Interpolators.clampToProgress(ACCEL, 0.5f, 1f)));
             mShelfColor = setAlphaComponent(mEndScrim, alpha);
-
-            int remainingScrimAlpha = Math.round(
-                    Utilities.mapToRange(mProgress, (float) 0, mMidProgress, mMaxScrimAlpha,
-                            (float) 0, LINEAR));
-            mRemainingScreenColor = setAlphaComponent(mScrimColor, remainingScrimAlpha);
         }
     }
 
@@ -180,25 +158,6 @@ public class ShelfScrimView extends ScrimView {
 
         int height = getHeight();
         int width = getWidth();
-        // Draw the scrim over the remaining screen if needed.
-        if (mRemainingScreenColor != 0) {
-            if (!mRemainingScreenPathValid) {
-                mTempPath.reset();
-                // Using a arbitrary '+10' in the bottom to avoid any left-overs at the
-                // corners due to rounding issues.
-                mTempPath.addRoundRect(0, height - mRadius, width, height + mRadius + 10,
-                        mRadius, mRadius, Direction.CW);
-                mRemainingScreenPath.reset();
-                mRemainingScreenPath.addRect(0, 0, width, height, Direction.CW);
-                mRemainingScreenPath.op(mTempPath, Op.DIFFERENCE);
-            }
-
-            float offset = height - mRadius - mShelfTop;
-            canvas.translate(0, -offset);
-            mPaint.setColor(mRemainingScreenColor);
-            canvas.drawPath(mRemainingScreenPath, mPaint);
-            canvas.translate(0, offset);
-        }
 
         mPaint.setColor(mShelfColor);
         canvas.drawRoundRect(0, mShelfTop, width, height + mRadius, mRadius, mRadius, mPaint);
