@@ -216,7 +216,6 @@ public class ShadeLauncher extends Launcher {
             // Reset the search if it has text in it.
             if (search.getText().length() > 0) {
                 search.searchString("");
-                search.focusSearch(View.FOCUS_UP).requestFocus();
                 return true;
             }
             return false;

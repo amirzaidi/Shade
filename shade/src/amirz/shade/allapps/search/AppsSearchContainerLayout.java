@@ -163,9 +163,8 @@ public class AppsSearchContainerLayout extends ExtendedEditText
     public void searchString(String search) {
         // Acts as if the user manually searched for this string.
         setText(search);
-
-        // This call is necessary to reload the UI when we go from non-search to search.
-        mSearchBarController.refreshSearchResult();
+        mSearchBarController.refreshSearchResult(); // Reload UI when entering/leaving search.
+        mAppsView.requestFocus();
     }
 
     @Override
