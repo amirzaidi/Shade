@@ -1,5 +1,6 @@
 package amirz.shade.allapps.search;
 
+import android.content.Context;
 import android.os.Handler;
 
 import com.android.launcher3.AppInfo;
@@ -13,13 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import amirz.shade.customization.CustomizationDatabase;
+
 public class NormalizedAppSearchAlgorithm implements SearchAlgorithm {
     private final static Pattern complementaryGlyphs = Pattern.compile("\\p{M}");
 
+    private final Context mContext;
     private final List<AppInfo> mApps;
     protected final Handler mResultHandler;
 
-    public NormalizedAppSearchAlgorithm(List<AppInfo> apps) {
+    public NormalizedAppSearchAlgorithm(Context context, List<AppInfo> apps) {
+        mContext = context;
         mApps = apps;
         mResultHandler = new Handler();
     }
@@ -52,7 +57,9 @@ public class NormalizedAppSearchAlgorithm implements SearchAlgorithm {
         NormalizedAppSearchAlgorithm.StringMatcher matcher =
                 NormalizedAppSearchAlgorithm.StringMatcher.getInstance();
         for (AppInfo info : mApps) {
-            if (matches(info, queryTextLower, matcher)) {
+            if (matches(info, queryTextLower, matcher)
+                    || CustomizationDatabase.getCategoryString(mContext,
+                    new ComponentKey(info.componentName, info.user)).equals(query)) {
                 result.add(info.toComponentKey());
             }
         }

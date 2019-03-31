@@ -135,7 +135,7 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         mApps = appsView.getApps();
         mAppsView = appsView;
         mSearchBarController.initialize(
-                new NormalizedAppSearchAlgorithm(mApps.getApps()), this, mLauncher, this);
+                new NormalizedAppSearchAlgorithm(mLauncher, mApps.getApps()), this, mLauncher, this);
 
         // This will make the parent consume the initial swipe event focus.
         appsView.setFocusableInTouchMode(true);

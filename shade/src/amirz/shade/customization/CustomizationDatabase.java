@@ -2,13 +2,20 @@ package amirz.shade.customization;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 
 import com.android.launcher3.BuildConfig;
+import com.android.launcher3.R;
 import com.android.launcher3.util.ComponentKey;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomizationDatabase {
     private static final String APP_ICON_PACK = BuildConfig.APPLICATION_ID + ".APP_ICON_PACK";
     private static final String APP_CATEGORY = BuildConfig.APPLICATION_ID + ".CATEGORY";
+
+    private static final Map<String, String> CATEGORY_MAP = new HashMap<>();
 
     // Icon pack
     public static String getIconPack(Context context, ComponentKey key) {
@@ -39,6 +46,19 @@ public class CustomizationDatabase {
         }
 
         return category;
+    }
+
+    public static String getCategoryString(Context context, ComponentKey key) {
+        if (CATEGORY_MAP.isEmpty()) {
+            Resources res = context.getResources();
+            String[] names = res.getStringArray(R.array.category_entries);
+            String[] values = res.getStringArray(R.array.category_entry_values);
+            for (int i = 0; i < names.length; i++) {
+                CATEGORY_MAP.put(values[i], names[i]);
+            }
+        }
+
+        return CATEGORY_MAP.get(getCategory(context, key));
     }
 
     public static void setCategory(Context context, ComponentKey key, String value) {
