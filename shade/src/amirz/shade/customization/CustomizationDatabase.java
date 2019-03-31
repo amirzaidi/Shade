@@ -16,6 +16,7 @@ public class CustomizationDatabase {
     private static final String APP_CATEGORY = BuildConfig.APPLICATION_ID + ".CATEGORY";
 
     private static final Map<String, String> CATEGORY_MAP = new HashMap<>();
+    private static final Map<ComponentKey, String> CATEGORY_CACHE = new HashMap<>();
 
     // Icon pack
     public static String getIconPack(Context context, ComponentKey key) {
@@ -37,6 +38,10 @@ public class CustomizationDatabase {
 
     // Category
     public static String getCategory(Context context, ComponentKey key) {
+        if (CATEGORY_CACHE.containsKey(key)) {
+            return CATEGORY_CACHE.get(key);
+        }
+
         String category = getCategoryPrefs(context).getString(key.toString(), "");
 
         // Use automatic categorization for unknown categories
@@ -45,6 +50,7 @@ public class CustomizationDatabase {
             setCategory(context, key, category);
         }
 
+        CATEGORY_CACHE.put(key, category);
         return category;
     }
 
@@ -63,10 +69,12 @@ public class CustomizationDatabase {
 
     public static void setCategory(Context context, ComponentKey key, String value) {
         getCategoryPrefs(context).edit().putString(key.toString(), value).apply();
+        CATEGORY_CACHE.put(key, value);
     }
 
     public static void clearCategory(Context context, ComponentKey key) {
         getCategoryPrefs(context).edit().remove(key.toString()).apply();
+        CATEGORY_CACHE.remove(key);
     }
 
     private static SharedPreferences getCategoryPrefs(Context context) {
