@@ -23,6 +23,7 @@ import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
 import amirz.shade.ShadeAppFilter;
+import amirz.shade.allapps.search.AppsSearchContainerLayout;
 import amirz.shade.icons.pack.IconReloader;
 
 public class PreferencesBottomSheet extends WidgetsBottomSheet {
@@ -125,6 +126,11 @@ public class PreferencesBottomSheet extends WidgetsBottomSheet {
                     return true;
                 case PREF_CATEGORY:
                     CustomizationDatabase.setCategory(mContext, mKey, (String) newValue);
+                    AppsSearchContainerLayout search = (AppsSearchContainerLayout)
+                            Launcher.getLauncher(mContext).getAppsView().getSearchUiManager();
+
+                    // Reset search text when the category has changed, to trigger search handlers.
+                    search.setText(search.getText());
                     return true;
             }
             return false;

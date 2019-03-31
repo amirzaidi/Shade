@@ -1,5 +1,6 @@
 package amirz.shade.customization;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.popup.SystemShortcut;
 
+import amirz.shade.ShadeSearch;
+
 public class PreferencesShortcut extends SystemShortcut.AppInfo {
     public PreferencesShortcut(Context context) {
         super(R.drawable.ic_setting, R.string.app_preferences);
@@ -19,6 +22,10 @@ public class PreferencesShortcut extends SystemShortcut.AppInfo {
     @Override
     public View.OnClickListener getOnClickListener(BaseDraggingActivity launcher,
                                                    ItemInfo itemInfo) {
+        if (itemInfo.getTargetComponent().equals(new ComponentName(launcher, ShadeSearch.class))) {
+            return null;
+        }
+
         final View.OnClickListener appInfoListener = super.getOnClickListener(launcher, itemInfo);
         return new View.OnClickListener() {
             private PreferencesBottomSheet cbs;

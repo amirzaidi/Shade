@@ -68,6 +68,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="amirz.shade.ShadeSearch" />
+
         <meta-data android:name="android.max_aspect" android:value="3.0" />
     </application>
 </manifest>

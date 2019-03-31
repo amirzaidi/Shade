@@ -1,0 +1,18 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:top="3dp"
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+    <item
+        android:id="@+id/ic_category_plate_icon"
+        android:top="11dp"
+        android:bottom="11dp"
+        android:left="11dp"
+        android:right="11dp"
+        android:drawable="@drawable/ic_category_favorites" />
+</layer-list>

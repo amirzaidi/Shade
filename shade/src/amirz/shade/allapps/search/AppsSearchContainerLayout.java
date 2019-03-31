@@ -45,6 +45,9 @@ import com.android.launcher3.util.ComponentKey;
 
 import java.util.ArrayList;
 
+import amirz.shade.ShadeSearch;
+import amirz.shade.allapps.HeaderView;
+
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
@@ -68,6 +71,8 @@ public class AppsSearchContainerLayout extends ExtendedEditText
     private final float mFixedTranslationY;
     private final float mMarginTopAdjusting;
 
+    private final ShadeSearch.Receiver mSearchReceiver;
+
     public AppsSearchContainerLayout(Context context) {
         this(context, null);
     }
@@ -87,18 +92,22 @@ public class AppsSearchContainerLayout extends ExtendedEditText
 
         mFixedTranslationY = getTranslationY();
         mMarginTopAdjusting = mFixedTranslationY - getPaddingTop();
+
+        mSearchReceiver = new ShadeSearch.Receiver(this);
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         mLauncher.getAppsView().getAppsStore().addUpdateListener(this);
+        mSearchReceiver.register(mLauncher);
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         mLauncher.getAppsView().getAppsStore().removeUpdateListener(this);
+        mSearchReceiver.unregister(mLauncher);
     }
 
     @Override
@@ -176,6 +185,9 @@ public class AppsSearchContainerLayout extends ExtendedEditText
             mApps.setOrderedFilter(apps);
             notifyResultChanged();
             mAppsView.setLastSearchQuery(query);
+
+            HeaderView header = (HeaderView) mAppsView.getFloatingHeaderView();
+            header.showCategories(!apps.isEmpty());
         }
     }
 
@@ -190,6 +202,9 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         mSearchQueryBuilder.clearSpans();
         Selection.setSelection(mSearchQueryBuilder, 0);
         mAppsView.onClearSearchResult();
+
+        HeaderView header = (HeaderView) mAppsView.getFloatingHeaderView();
+        header.showCategories(true);
     }
 
     private void notifyResultChanged() {

@@ -5,4 +5,6 @@
 
     <!-- Title side padding -->
     <dimen name="dynamic_grid_cell_padding_x">7dp</dimen>
+
+    <dimen name="all_apps_prediction_row_divider_height">17dp</dimen>
 </resources>

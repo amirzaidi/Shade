@@ -11,7 +11,6 @@
     <string name="app_info_shortcut_class" translatable="false">amirz.shade.customization.PreferencesShortcut</string>
 
     <string-array name="category_entries">
-        <!-- All -->
         <item>Favorites</item>
         <item>Media</item>
         <item>Social</item>
@@ -21,7 +20,6 @@
     </string-array>
 
     <string-array translatable="false" name="category_entry_values">
-        <!-- "all" -->
         <item>"favorites"</item>
         <item>"media"</item>
         <item>"social"</item>
@@ -29,6 +27,15 @@
         <item>"travel"</item>
         <item>"hidden"</item>
     </string-array>
+
+    <array translatable="false" name="category_entry_icons">
+        <item>@drawable/ic_category_favorites</item>
+        <item>@drawable/ic_category_media</item>
+        <item>@drawable/ic_category_social</item>
+        <item>@drawable/ic_category_utility</item>
+        <item>@drawable/ic_category_travel</item>
+        <item>@drawable/ic_category_hidden</item>
+    </array>
 
     <string-array name="theme_entries">
         <item>@string/theme_default</item>
