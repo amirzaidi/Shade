@@ -32,6 +32,7 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.PackageManagerHelper;
+import com.android.launcher3.util.UiThreadHelper;
 
 import java.util.ArrayList;
 
@@ -106,6 +107,8 @@ public class AllAppsSearchBarController
         if (actionId != EditorInfo.IME_ACTION_SEARCH) {
             return false;
         }
+
+        UiThreadHelper.hideKeyboardAsync(mLauncher, v.getWindowToken());
 
         // Skip if the query is empty
         String query = v.getText().toString();
