@@ -46,7 +46,7 @@ public class CustomizationDatabase {
 
         // Use automatic categorization for unknown categories
         if (category.isEmpty()) {
-            category = AutoCategorize.getCategory(context, key.componentName);
+            category = AutoCategorize.getCategory(context, key);
             setCategory(context, key, category);
         }
 
