@@ -10,7 +10,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 
 import amirz.shade.customization.GlobalIconPackPreference;
-import amirz.shade.icons.pack.IconReloader;
+import amirz.shade.customization.AppReloader;
 
 public class ShadeSettings extends SettingsActivity {
     public static final String PREF_THEME = "pref_theme";
@@ -33,7 +33,7 @@ public class ShadeSettings extends SettingsActivity {
 
             mIconPackPref = (GlobalIconPackPreference) findPreference(PREF_ICON_PACK);
             mIconPackPref.setOnPreferenceChangeListener((p, v) -> {
-                IconReloader.get(mContext).reload();
+                AppReloader.get(mContext).reload();
                 return true;
             });
 

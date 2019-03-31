@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
-import amirz.shade.icons.pack.IconReloader;
+import amirz.shade.customization.AppReloader;
 
 /**
  * Listens for date change events and uses the IconReloader to reload all loaded calendar icons
@@ -56,6 +56,6 @@ public class DateChangeReceiver extends BroadcastReceiver {
             mLastDay = day;
         }
 
-        IconReloader.get(context).reload(mCalendars.toArray(new ComponentKey[0]));
+        AppReloader.get(context).reload(mCalendars.toArray(new ComponentKey[0]));
     }
 }

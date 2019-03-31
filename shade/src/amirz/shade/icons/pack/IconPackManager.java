@@ -1,7 +1,6 @@
 package amirz.shade.icons.pack;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -10,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.UserHandle;
 import android.util.Log;
 
 import com.android.launcher3.LauncherModel;
@@ -24,6 +22,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import amirz.shade.customization.AppReloader;
 import amirz.shade.customization.CustomizationDatabase;
 
 public class IconPackManager extends BroadcastReceiver {
@@ -90,7 +89,7 @@ public class IconPackManager extends BroadcastReceiver {
 
         // Ensure all icons are up-to-date after this icon pack change.
         // Calendar and clock information will automatically be reloaded by this call.
-        IconReloader.get(context).reload(changed.toArray(new ComponentKey[0]));
+        AppReloader.get(context).reload(changed.toArray(new ComponentKey[0]));
     }
 
     private void reloadProviders() {

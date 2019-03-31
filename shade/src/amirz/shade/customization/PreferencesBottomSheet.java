@@ -5,26 +5,19 @@ import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.UserHandle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.R;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
-import amirz.shade.ShadeAppFilter;
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
-import amirz.shade.icons.pack.IconReloader;
 
 public class PreferencesBottomSheet extends WidgetsBottomSheet {
     private final FragmentManager mFragmentManager;
@@ -111,7 +104,7 @@ public class PreferencesBottomSheet extends WidgetsBottomSheet {
             mPrefReset.setOnPreferenceClickListener(preference -> {
                 CustomizationDatabase.clearIconPack(mContext, mKey);
                 CustomizationDatabase.clearCategory(mContext, mKey);
-                reloadIcon();
+                reloadApp();
                 onResetClick.onClick(PrefsFragment.this.getView());
                 return true;
             });
@@ -122,10 +115,11 @@ public class PreferencesBottomSheet extends WidgetsBottomSheet {
             switch (preference.getKey()) {
                 case PREF_ICON:
                     CustomizationDatabase.setIconPack(mContext, mKey, (String) newValue);
-                    reloadIcon();
+                    reloadApp();
                     return true;
                 case PREF_CATEGORY:
                     CustomizationDatabase.setCategory(mContext, mKey, (String) newValue);
+                    reloadApp();
                     AppsSearchContainerLayout search = (AppsSearchContainerLayout)
                             Launcher.getLauncher(mContext).getAppsView().getSearchUiManager();
 
@@ -136,8 +130,9 @@ public class PreferencesBottomSheet extends WidgetsBottomSheet {
             return false;
         }
 
-        private void reloadIcon() {
-            IconReloader.get(mContext).reload(mKey);
+        private void reloadApp() {
+            // Call this on any change.
+            AppReloader.get(mContext).reload(mKey);
         }
     }
 }

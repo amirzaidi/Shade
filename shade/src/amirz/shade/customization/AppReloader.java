@@ -1,4 +1,4 @@
-package amirz.shade.icons.pack;
+package amirz.shade.customization;
 
 import android.content.Context;
 import android.content.pm.LauncherActivityInfo;
@@ -16,12 +16,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class IconReloader {
-    private static IconReloader sInstance;
+public class AppReloader {
+    private static AppReloader sInstance;
 
-    public static synchronized IconReloader get(Context context) {
+    public static synchronized AppReloader get(Context context) {
         if (sInstance == null) {
-            sInstance = new IconReloader(context);
+            sInstance = new AppReloader(context);
         }
         return sInstance;
     }
@@ -31,7 +31,7 @@ public class IconReloader {
     private final DeepShortcutManager mShortcuts;
     private final LauncherAppsCompat mApps;
 
-    private IconReloader(Context context) {
+    private AppReloader(Context context) {
         mModel = LauncherAppState.getInstance(context).getModel();
         mUsers = UserManagerCompat.getInstance(context);
         mShortcuts = DeepShortcutManager.getInstance(context);
@@ -56,7 +56,7 @@ public class IconReloader {
         }
     }
 
-    public void reload(UserHandle user, String pkg) {
+    private void reload(UserHandle user, String pkg) {
         mModel.onPackageChanged(pkg, user);
         List<ShortcutInfoCompat> shortcuts = mShortcuts.queryForPinnedShortcuts(pkg, user);
         if (!shortcuts.isEmpty()) {
