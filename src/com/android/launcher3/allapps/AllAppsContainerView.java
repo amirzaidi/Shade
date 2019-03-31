@@ -323,7 +323,7 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
     }
 
     private void rebindAdapters(boolean showTabs, boolean force) {
-        if (showTabs == mUsingTabs && !force) {
+        if ((showTabs == mUsingTabs || mSearchModeWhileUsingTabs) && !force) {
             return;
         }
         replaceRVContainer(showTabs);
@@ -426,15 +426,15 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
             mAH[i].adapter.setLastSearchQuery(query);
         }
         if (mUsingTabs) {
-            mSearchModeWhileUsingTabs = true;
             rebindAdapters(false); // hide tabs
+            mSearchModeWhileUsingTabs = true;
         }
     }
 
     public void onClearSearchResult() {
         if (mSearchModeWhileUsingTabs) {
-            rebindAdapters(true); // show tabs
             mSearchModeWhileUsingTabs = false;
+            rebindAdapters(true); // show tabs
         }
     }
 
