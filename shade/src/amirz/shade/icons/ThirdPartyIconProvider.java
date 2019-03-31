@@ -17,13 +17,11 @@ import amirz.shade.icons.pack.IconResolver;
 public class ThirdPartyIconProvider extends RoundIconProvider {
     private final Context mContext;
     private final IconPackManager mManager;
-    private final DateChangeReceiver mCalendars;
 
     public ThirdPartyIconProvider(Context context) {
         super(context);
         mContext = context;
         mManager = IconPackManager.get(context);
-        mCalendars = new DateChangeReceiver(context);
     }
 
     @Override
@@ -32,8 +30,6 @@ public class ThirdPartyIconProvider extends RoundIconProvider {
                 launcherActivityInfo.getComponentName(), launcherActivityInfo.getUser());
 
         IconResolver resolver = mManager.resolve(key);
-        mCalendars.setCalendar(key, resolver != null && resolver.isCalendar());
-
         Drawable icon = resolver == null
                 ? null
                 : resolver.getIcon(iconDpi);
@@ -54,7 +50,6 @@ public class ThirdPartyIconProvider extends RoundIconProvider {
         // Google Calendar override
         if (icon == null && launcherActivityInfo.getComponentName().getPackageName()
                 .equals(DynamicCalendar.CALENDAR)) {
-            mCalendars.setCalendar(key, true);
             icon = DynamicCalendar.load(mContext, launcherActivityInfo.getComponentName(), iconDpi);
         }
 
