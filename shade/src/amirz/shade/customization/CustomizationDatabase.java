@@ -54,6 +54,10 @@ public class CustomizationDatabase {
         return category;
     }
 
+    public static boolean isHidden(Context context, ComponentKey key) {
+        return getCategory(context, key).equals("hidden");
+    }
+
     public static String getCategoryString(Context context, ComponentKey key) {
         if (CATEGORY_MAP.isEmpty()) {
             Resources res = context.getResources();

@@ -6,6 +6,9 @@ import android.os.UserHandle;
 
 import com.android.launcher3.AppFilter;
 import com.android.launcher3.BuildConfig;
+import com.android.launcher3.util.ComponentKey;
+
+import amirz.shade.customization.CustomizationDatabase;
 
 public class ShadeAppFilter extends AppFilter {
     private final Context mContext;
@@ -16,16 +19,11 @@ public class ShadeAppFilter extends AppFilter {
 
     @Override
     public boolean shouldShowApp(ComponentName componentName, UserHandle user) {
-        // Check for override here
+        if (CustomizationDatabase.isHidden(mContext,
+                new ComponentKey(componentName, user))) {
+            return false;
+        }
 
         return !BuildConfig.APPLICATION_ID.equals(componentName.getPackageName());
-
-        //return super.shouldShowApp(componentName, user);
-    }
-
-    public void setShouldShowApp(ComponentName componentName, UserHandle user, boolean value) {
-        // Set override here
-
-        ShadeUtilities.reloadPackage(mContext, componentName.getPackageName(), user);
     }
 }
