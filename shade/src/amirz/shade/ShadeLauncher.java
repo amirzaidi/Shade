@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.Launcher;
@@ -17,6 +18,8 @@ import com.google.android.libraries.gsa.launcherclient.LauncherClientCallbacks;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import amirz.shade.allapps.search.AppsSearchContainerLayout;
 
 public class ShadeLauncher extends Launcher {
     private final SearchLauncherCallbacks mCallbacks;
@@ -208,6 +211,14 @@ public class ShadeLauncher extends Launcher {
 
         @Override
         public boolean handleBackPressed() {
+            AppsSearchContainerLayout search =
+                    (AppsSearchContainerLayout) mLauncher.getAppsView().getSearchUiManager();
+            // Reset the search if it has text in it.
+            if (search.getText().length() > 0) {
+                search.searchString("");
+                search.focusSearch(View.FOCUS_UP).requestFocus();
+                return true;
+            }
             return false;
         }
 

@@ -35,11 +35,7 @@ public class ShadeSearch extends Activity {
         public void onReceive(Context context, Intent intent) {
             String search = intent.getStringExtra("search");
             if (search != null) {
-                // Acts as if the user manually searched for this string.
-                mSearch.setText(search);
-
-                // This call is necessary to reload the UI when we go from non-search to search.
-                mSearch.onAppsUpdated();
+                mSearch.searchString(search);
             }
         }
 
