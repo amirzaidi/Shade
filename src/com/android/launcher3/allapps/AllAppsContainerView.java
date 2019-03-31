@@ -333,6 +333,7 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
         mAllAppsStore.unregisterIconContainer(mAH[AdapterHolder.WORK].recyclerView);
 
         if (mUsingTabs) {
+            mViewPager.getPageIndicator().setScroll(0, 0);
             mAH[AdapterHolder.MAIN].setup(mViewPager.getChildAt(0), mPersonalMatcher);
             mAH[AdapterHolder.WORK].setup(mViewPager.getChildAt(1), mWorkMatcher);
             onTabChanged(mViewPager.getNextPage());
