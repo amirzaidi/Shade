@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.android.launcher3.AppInfo;
+import com.android.launcher3.allapps.AppInfoComparator;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.SearchAlgorithm;
 import com.android.launcher3.util.ComponentKey;
@@ -11,7 +12,8 @@ import com.android.launcher3.util.ComponentKey;
 import java.text.Collator;
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 import amirz.shade.customization.CustomizationDatabase;
@@ -20,12 +22,14 @@ public class NormalizedAppSearchAlgorithm implements SearchAlgorithm {
     private final static Pattern complementaryGlyphs = Pattern.compile("\\p{M}");
 
     private final Context mContext;
-    private final List<AppInfo> mApps;
+    private final Collection<AppInfo> mApps;
+    private final AppInfoComparator mComparator;
     protected final Handler mResultHandler;
 
-    public NormalizedAppSearchAlgorithm(Context context, List<AppInfo> apps) {
+    public NormalizedAppSearchAlgorithm(Context context, Collection<AppInfo> apps) {
         mContext = context;
         mApps = apps;
+        mComparator = new AppInfoComparator(context);
         mResultHandler = new Handler();
     }
 
@@ -53,17 +57,22 @@ public class NormalizedAppSearchAlgorithm implements SearchAlgorithm {
         // Do an intersection of the words in the query and each title, and filter out all the
         // apps that don't match all of the words in the query.
         final String queryTextLower = query.toLowerCase();
-        final ArrayList<ComponentKey> result = new ArrayList<>();
         NormalizedAppSearchAlgorithm.StringMatcher matcher =
                 NormalizedAppSearchAlgorithm.StringMatcher.getInstance();
+        ArrayList<AppInfo> ai = new ArrayList<>();
         for (AppInfo info : mApps) {
+            ComponentKey key = new ComponentKey(info.componentName, info.user);
             if (matches(info, queryTextLower, matcher)
-                    || CustomizationDatabase.getCategoryString(mContext,
-                    new ComponentKey(info.componentName, info.user)).equals(query)) {
-                result.add(info.toComponentKey());
+                    || CustomizationDatabase.getCategoryString(mContext, key).equals(query)) {
+                ai.add(info);
             }
         }
-        return result;
+        Collections.sort(ai, mComparator);
+        ArrayList<ComponentKey> keys = new ArrayList<>();
+        for (AppInfo info : ai) {
+            keys.add(new ComponentKey(info.componentName, info.user));
+        }
+        return keys;
     }
 
 
