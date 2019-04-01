@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="shadespace_text_notif">
+        <item quantity="other">%d Unread Notifications</item>
+        <item quantity="one">%d Unread Notification</item>
+    </plurals>
+</resources>

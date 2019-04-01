@@ -14,17 +14,57 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<amirz.shade.qsb.QsbContainerView
+<amirz.shade.shadespace.ShadespaceView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        xmlns:launcher="http://schemas.android.com/apk/res-auto"
         android:id="@id/search_container_workspace"
-        android:padding="0dp" >
-
-    <fragment
-        android:name="amirz.shade.qsb.QsbContainerView$QsbFragment"
         android:layout_width="match_parent"
-        android:tag="qsb_view"
-        android:layout_height="match_parent"/>
-</amirz.shade.qsb.QsbContainerView>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical">
+
+    <amirz.shade.shadespace.DoubleShadowTextView
+        android:id="@+id/shadespace_text"
+        style="@style/TextTitle"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:maxLines="1"
+
+        android:textColor="?workspaceTextColor"
+        android:textSize="24sp"
+
+        launcher:ambientShadowBlur="3dp"
+        launcher:ambientShadowColor="?workspaceAmbientShadowColor"
+        launcher:keyShadowBlur="2dp"
+        launcher:keyShadowColor="?workspaceKeyShadowColor"
+        launcher:keyShadowOffset="0.5dp" />
+
+    <amirz.shade.shadespace.DoubleShadowTextView
+        android:id="@+id/shadespace_subtext"
+        style="@style/TextTitle"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:maxLines="1"
+
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textColor="?workspaceTextColor"
+        android:textSize="16sp"
+
+        launcher:ambientShadowBlur="3dp"
+        launcher:ambientShadowColor="?workspaceAmbientShadowColor"
+        launcher:keyShadowBlur="2dp"
+        launcher:keyShadowColor="?workspaceKeyShadowColor"
+        launcher:keyShadowOffset="0.5dp" />
+</amirz.shade.shadespace.ShadespaceView>

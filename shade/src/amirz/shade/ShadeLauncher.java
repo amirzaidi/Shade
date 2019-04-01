@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
+import amirz.shade.shadespace.ShadespaceView;
 
 public class ShadeLauncher extends Launcher {
     private final SearchLauncherCallbacks mCallbacks;
@@ -95,6 +96,8 @@ public class ShadeLauncher extends Launcher {
         private boolean mDeferCallbacks;
         private final Bundle mPrivateOptions = new Bundle();
 
+        private ShadespaceView mShadespace;
+
         private SearchLauncherCallbacks(Launcher launcher) {
             mLauncher = launcher;
         }
@@ -117,6 +120,8 @@ public class ShadeLauncher extends Launcher {
             WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
             instance.addOnChangeListener(this);
             onExtractedColorsChanged(instance);
+
+            mShadespace = mLauncher.findViewById(R.id.search_container_workspace);
         }
 
         @Override
@@ -149,7 +154,7 @@ public class ShadeLauncher extends Launcher {
             } else {
                 mLauncherClient.onResume();
             }
-
+            mShadespace.onResume();
         }
 
         @Override
@@ -157,6 +162,7 @@ public class ShadeLauncher extends Launcher {
             if (!mDeferCallbacks) {
                 mLauncherClient.onPause();
             }
+            mShadespace.onPause();
         }
 
         @Override

@@ -24,6 +24,9 @@
     <!-- Tablet support -->
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
+    <!-- Notifications -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <application>
 
         <activity

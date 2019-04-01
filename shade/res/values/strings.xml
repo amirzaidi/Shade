@@ -18,4 +18,7 @@
     <string name="theme_sunset">Sunset</string>
     <string name="theme_campfire">Campfire</string>
     <string name="theme_twilight">Twilight</string>
+
+    <string name="shadespace_subtext_notif">%1$s - %2$s</string>
+    <string name="shadespace_subtext_default">"Swipe down to expand notifications"</string>
 </resources>
