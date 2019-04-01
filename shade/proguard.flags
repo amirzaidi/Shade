@@ -1,3 +1,5 @@
+-ignorewarnings
+
 -keep,allowshrinking,allowoptimization class amirz.shade.** {
   *;
 }
