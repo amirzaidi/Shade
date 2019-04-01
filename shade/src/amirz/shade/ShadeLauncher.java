@@ -1,10 +1,11 @@
 package amirz.shade;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+import android.support.v4.graphics.ColorUtils;
 
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.Launcher;
@@ -12,6 +13,7 @@ import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
+import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 import com.google.android.libraries.gsa.launcherclient.LauncherClientCallbacks;
 
@@ -84,12 +86,14 @@ public class ShadeLauncher extends Launcher {
         }
     }
 
-    private static class SearchLauncherCallbacks implements LauncherCallbacks {
+    private static class SearchLauncherCallbacks
+            implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener {
         private final Launcher mLauncher;
 
         private OverlayCallbackImpl mOverlayCallbacks;
         private LauncherClient mLauncherClient;
         private boolean mDeferCallbacks;
+        private final Bundle mPrivateOptions = new Bundle();
 
         private SearchLauncherCallbacks(Launcher launcher) {
             mLauncher = launcher;
@@ -109,6 +113,10 @@ public class ShadeLauncher extends Launcher {
             mOverlayCallbacks = new OverlayCallbackImpl(mLauncher);
             mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
             mOverlayCallbacks.setClient(mLauncherClient);
+
+            WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
+            instance.addOnChangeListener(this);
+            onExtractedColorsChanged(instance);
         }
 
         @Override
@@ -192,6 +200,7 @@ public class ShadeLauncher extends Launcher {
 
         @Override
         public void onDestroy() {
+            WallpaperColorInfo.getInstance(mLauncher).removeOnChangeListener(this);
             mLauncherClient.onDestroy();
         }
 
@@ -240,6 +249,20 @@ public class ShadeLauncher extends Launcher {
             return false;
         }
 
+        @Override
+        public void onExtractedColorsChanged(WallpaperColorInfo wallpaperColorInfo) {
+            int alpha = mLauncher.getResources().getInteger(R.integer.extracted_color_gradient_alpha);
+
+            mPrivateOptions.putInt("background_color_hint",
+                    primaryColor(wallpaperColorInfo, mLauncher, alpha));
+            mPrivateOptions.putInt("background_secondary_color_hint",
+                    secondaryColor(wallpaperColorInfo, mLauncher, alpha));
+            mPrivateOptions.putBoolean("is_background_dark",
+                    Themes.getAttrBoolean(mLauncher, R.attr.isMainColorDark));
+
+            mLauncherClient.setPrivateOptions(mPrivateOptions);
+        }
+
         private LauncherClient.ClientOptions getClientOptions(SharedPreferences prefs) {
             return new LauncherClient.ClientOptions(
                     true,
@@ -247,6 +270,21 @@ public class ShadeLauncher extends Launcher {
                     true /* enablePrewarming */
             );
         }
+    }
+
+    private static int primaryColor(WallpaperColorInfo wallpaperColorInfo, Context context, int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(
+                wallpaperColorInfo.getMainColor(), alpha), context);
+    }
+
+    private static int secondaryColor(WallpaperColorInfo wallpaperColorInfo, Context context, int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(
+                wallpaperColorInfo.getSecondaryColor(), alpha), context);
+    }
+
+    private static int compositeAllApps(int color, Context context) {
+        return ColorUtils.compositeColors(
+                Themes.getAttrColor(context, R.attr.allAppsScrimColor), color);
     }
 
     @Override
