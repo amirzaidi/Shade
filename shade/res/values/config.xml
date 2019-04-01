@@ -44,6 +44,9 @@
         <item>@string/theme_sunset</item>
         <item>@string/theme_campfire</item>
         <item>@string/theme_twilight</item>
+        <item>@string/theme_glamour</item>
+        <item>@string/theme_blueberry</item>
+        <item>@string/theme_bloodmoon</item>
     </string-array>
 
     <string-array translatable="false" name="theme_entry_values">
@@ -53,5 +56,8 @@
         <item>"sunset"</item>
         <item>"campfire"</item>
         <item>"twilight"</item>
+        <item>"glamour"</item>
+        <item>"blueberry"</item>
+        <item>"bloodmoon"</item>
     </string-array>
 </resources>

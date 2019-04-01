@@ -18,6 +18,9 @@
     <string name="theme_sunset">Sunset</string>
     <string name="theme_campfire">Campfire</string>
     <string name="theme_twilight">Twilight</string>
+    <string name="theme_glamour">Glamour</string>
+    <string name="theme_blueberry">Blueberry</string>
+    <string name="theme_bloodmoon">Bloodmoon</string>
 
     <string name="shadespace_subtext_notif">%1$s - %2$s</string>
     <string name="shadespace_subtext_default">"Swipe down to expand notifications"</string>

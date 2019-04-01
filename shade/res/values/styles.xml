@@ -69,4 +69,27 @@
         <item name="android:colorAccent">#5e35b1</item>
         <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
+
+    <!-- GLAMOUR -->
+    <style name="Shade.Glamour" parent="@style/Shade.Light">
+        <item name="allAppsScrimColor">#D1C4E9</item>
+        <item name="android:colorPrimary">#E1BEE7</item>
+        <item name="android:colorAccent">#9C27B0</item>
+    </style>
+
+    <!-- BLUEBERRY -->
+    <style name="Shade.Blueberry" parent="@style/Shade.Dark">
+        <item name="allAppsScrimColor">#4527A0</item>
+        <item name="android:colorPrimary">#1A237E</item>
+        <item name="android:colorAccent">#536DFE</item>
+        <item name="widgetsTheme">@style/Shade.Blueberry</item>
+    </style>
+
+    <!-- BLOODMOON -->
+    <style name="Shade.Bloodmoon" parent="@style/Shade.Dark">
+        <item name="allAppsScrimColor">#424242</item>
+        <item name="android:colorPrimary">#212121</item>
+        <item name="android:colorAccent">#B71C1C</item>
+        <item name="widgetsTheme">@style/Shade.Bloodmoon</item>
+    </style>
 </resources>
