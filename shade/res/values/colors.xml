@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_launcher_shade_background">#9C27B0</color>
+    <color name="colorPrimary">#fff5f5f5</color>
+    <color name="colorPrimaryDark">#ffe0e0e0</color>
+    <color name="colorSecondary">#ffeeeeee</color>
+    <color name="textColorPrimary">#ffffffff</color>
+    <color name="textColorSecondary">#ffffffff</color>
+    <color name="textColorPrimaryInverse">#de000000</color>
+    <color name="textColorSecondaryInverse">#8a000000</color>
+    <color name="navbar_light">#28000000</color>
 </resources>

@@ -15,11 +15,11 @@ import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.util.ComponentKey;
-import com.android.launcher3.widget.WidgetsBottomSheet;
 
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
+import amirz.shade.widget.WidgetsSheet;
 
-public class PreferencesBottomSheet extends WidgetsBottomSheet {
+public class PreferencesBottomSheet extends WidgetsSheet {
     private final FragmentManager mFragmentManager;
     private View.OnClickListener mOnAppInfoClick;
 

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="allAppsScrimColorFoot" format="color" />
+    <attr name="bottomSheetNavBarColor" format="color" />
 </resources>
