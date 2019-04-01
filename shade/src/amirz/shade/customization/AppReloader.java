@@ -26,16 +26,31 @@ public class AppReloader {
         return sInstance;
     }
 
+    private final Context mContext;
     private final LauncherModel mModel;
     private final UserManagerCompat mUsers;
     private final DeepShortcutManager mShortcuts;
     private final LauncherAppsCompat mApps;
 
     private AppReloader(Context context) {
+        mContext = context;
         mModel = LauncherAppState.getInstance(context).getModel();
         mUsers = UserManagerCompat.getInstance(context);
         mShortcuts = DeepShortcutManager.getInstance(context);
         mApps = LauncherAppsCompat.getInstance(context);
+    }
+
+    public ComponentKey[] withIconPack(String iconPack) {
+        Set<ComponentKey> reloadKeys = new HashSet<>();
+        for (UserHandle user : mUsers.getUserProfiles()) {
+            for (LauncherActivityInfo info : mApps.getActivityList(null, user)) {
+                ComponentKey key = new ComponentKey(info.getComponentName(), info.getUser());
+                if (CustomizationDatabase.getIconPack(mContext, key).equals(iconPack)) {
+                    reloadKeys.add(key);
+                }
+            }
+        }
+        return reloadKeys.toArray(new ComponentKey[0]);
     }
 
     public void reload() {

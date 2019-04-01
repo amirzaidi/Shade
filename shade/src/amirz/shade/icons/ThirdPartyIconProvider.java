@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.LauncherActivityInfo;
 import android.graphics.drawable.Drawable;
 
+import com.android.launcher3.IconCache;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.util.ComponentKey;
 

@@ -5,13 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.LauncherActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
+import android.os.UserHandle;
 
 import com.android.launcher3.LauncherModel;
+import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.util.ComponentKey;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -24,6 +26,7 @@ import java.util.Set;
 
 import amirz.shade.customization.AppReloader;
 import amirz.shade.customization.CustomizationDatabase;
+import amirz.shade.customization.GlobalIconPackPreference;
 
 public class IconPackManager extends BroadcastReceiver {
     private static final String TAG = "IconPackManager";
@@ -56,40 +59,44 @@ public class IconPackManager extends BroadcastReceiver {
 
     private final Context mContext;
     private final Map<String, IconPack> mProviders = new HashMap<>();
-    private final Map<ComponentKey, String> mLoadedIcons = new HashMap<>();
 
     private IconPackManager(Context context) {
         mContext = context;
         reloadProviders();
 
         IntentFilter filter = new IntentFilter();
+        filter.addDataScheme("package");
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
         filter.addAction(Intent.ACTION_PACKAGE_CHANGED);
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
 
         // Called when any app has been installed, enabled, disabled, updated or deleted.
-        mContext.registerReceiver(this, filter, null,
+        context.getApplicationContext().registerReceiver(this, filter, null,
                 new Handler(LauncherModel.getWorkerLooper()));
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        reloadProviders();
+        if (intent.getData() != null) {
+            ComponentKey[] updateKeys = null;
 
-        // Reloading is only necessary when a package has been changed, not in the initial load.
-        Set<ComponentKey> changed = new HashSet<>();
-        for (Map.Entry<ComponentKey, String> entry : mLoadedIcons.entrySet()) {
-            Uri data = intent.getData();
-            Log.d(TAG, "Data: " + (data == null ? "" : data.toString()));
-            //if (intent.getDataString().equals(entry.getValue())) {
-            //    changed.add(entry.getKey());
-            //}
+            String pkg = intent.getData().getEncodedSchemeSpecificPart();
+            if (pkg != null) {
+                // Create a list of apps that are using the changed package icon pack,
+                // either through the global setting or with an override.
+                updateKeys = AppReloader.get(context).withIconPack(pkg);
+            }
+
+            // This can reset the global preference, so do this after creating the list.
+            reloadProviders();
+
+            // Ensure all icons are up-to-date after this icon pack change.
+            // Calendar and clock information will automatically be reloaded by this call.
+            if (updateKeys != null) {
+                AppReloader.get(context).reload(updateKeys);
+            }
         }
-
-        // Ensure all icons are up-to-date after this icon pack change.
-        // Calendar and clock information will automatically be reloaded by this call.
-        AppReloader.get(context).reload(changed.toArray(new ComponentKey[0]));
     }
 
     private void reloadProviders() {
@@ -100,7 +107,7 @@ public class IconPackManager extends BroadcastReceiver {
         }
 
         // Remove unavailable packs
-        for (String packageName : mProviders.keySet()) {
+        for (String packageName : mProviders.keySet().toArray(new String[0])) {
             boolean foundPackageName = false;
             for (ResolveInfo ri : info) {
                 if (ri.activityInfo.packageName.equals(packageName)) {
@@ -122,6 +129,14 @@ public class IconPackManager extends BroadcastReceiver {
                 mProviders.put(packageName, new IconPack(ai, label));
             }
         }
+
+        String global = GlobalIconPackPreference.get(mContext);
+        if (!global.isEmpty() && !mProviders.containsKey(global)) {
+            // The global icon pack has been removed, so reset it.
+            // This constraint ensures that the global icon pack is always available,
+            // even if the launcher did not receive the uninstall intent.
+            GlobalIconPackPreference.reset(mContext);
+        }
     }
 
     public Map<String, CharSequence> getProviderNames() {
@@ -142,6 +157,7 @@ public class IconPackManager extends BroadcastReceiver {
     public IconResolver resolve(ComponentKey key) {
         String packPackage = CustomizationDatabase.getIconPack(mContext, key);
         if (mProviders.containsKey(packPackage)) {
+            // The icon provider package is available.
             try {
                 IconPack pack = mProviders.get(packPackage);
                 IconPack.Data data = pack.getData(mContext.getPackageManager());
@@ -154,13 +170,10 @@ public class IconPackManager extends BroadcastReceiver {
                 }
             } catch (PackageManager.NameNotFoundException | XmlPullParserException | IOException ignored) {
             }
-            mLoadedIcons.put(key, packPackage);
         } else if (!packPackage.isEmpty()) {
             // The provider is not available, save for next time.
             CustomizationDatabase.clearIconPack(mContext, key);
-            mLoadedIcons.put(key, null);
         }
-
         return null;
     }
 }

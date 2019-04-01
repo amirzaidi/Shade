@@ -41,4 +41,8 @@ public class GlobalIconPackPreference extends IconPackPreference {
     public static String get(Context context) {
         return Utilities.getPrefs(context).getString(ShadeSettings.PREF_ICON_PACK, "");
     }
+
+    public static void reset(Context context) {
+        Utilities.getPrefs(context).edit().remove(ShadeSettings.PREF_ICON_PACK).apply();
+    }
 }
