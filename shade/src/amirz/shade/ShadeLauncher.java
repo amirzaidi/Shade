@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v4.graphics.ColorUtils;
 
 import com.android.launcher3.AppInfo;
+import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.R;
@@ -88,7 +89,8 @@ public class ShadeLauncher extends Launcher {
     }
 
     private static class SearchLauncherCallbacks
-            implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener {
+            implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener,
+            DeviceProfile.OnDeviceProfileChangeListener {
         private final Launcher mLauncher;
 
         private OverlayCallbackImpl mOverlayCallbacks;
@@ -117,6 +119,8 @@ public class ShadeLauncher extends Launcher {
             mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
             mOverlayCallbacks.setClient(mLauncherClient);
 
+            mLauncher.addOnDeviceProfileChangeListener(this);
+
             WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
             instance.addOnChangeListener(this);
             onExtractedColorsChanged(instance);
@@ -137,6 +141,11 @@ public class ShadeLauncher extends Launcher {
         @Override
         public void onHomeIntent(boolean internalStateHandled) {
             mLauncherClient.hideOverlay(mLauncher.isStarted() && !mLauncher.isForceInvisible());
+        }
+
+        @Override
+        public void onDeviceProfileChanged(DeviceProfile deviceProfile) {
+            mLauncherClient.reattachOverlay();
         }
 
         @Override
