@@ -21,8 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:orientation="vertical">
 
     <amirz.shade.shadespace.DoubleShadowTextView
@@ -39,6 +37,8 @@
 
         android:textColor="?workspaceTextColor"
         android:textSize="24sp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
 
         launcher:ambientShadowBlur="3dp"
         launcher:ambientShadowColor="?workspaceAmbientShadowColor"
@@ -59,6 +59,8 @@
 
         android:textColor="?workspaceTextColor"
         android:textSize="16sp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
 
         launcher:ambientShadowBlur="3dp"
         launcher:ambientShadowColor="?workspaceAmbientShadowColor"
