@@ -16,31 +16,24 @@
 package amirz.shade.allapps.search;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.text.Selection;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.TextKeyListener;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.view.inputmethod.InputMethodManager;
 
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
 import com.android.launcher3.allapps.SearchUiManager;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
-import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
-import com.android.launcher3.graphics.TintedDrawableSpan;
 import com.android.launcher3.util.ComponentKey;
 
 import java.util.ArrayList;
@@ -72,6 +65,7 @@ public class AppsSearchContainerLayout extends ExtendedEditText
     private final float mMarginTopAdjusting;
 
     private final ShadeSearch.Receiver mSearchReceiver;
+    private final CharSequence mHint;
 
     public AppsSearchContainerLayout(Context context) {
         this(context, null);
@@ -94,6 +88,17 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         mMarginTopAdjusting = mFixedTranslationY - getPaddingTop();
 
         mSearchReceiver = new ShadeSearch.Receiver(this);
+        mHint = getHint();
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        if (gainFocus) {
+            setHint("");
+        } else {
+            setHint(mHint);
+        }
     }
 
     @Override
