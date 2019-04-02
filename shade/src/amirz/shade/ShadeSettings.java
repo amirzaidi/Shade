@@ -33,6 +33,7 @@ public class ShadeSettings extends SettingsActivity {
 
             mIconPackPref = (GlobalIconPackPreference) findPreference(PREF_ICON_PACK);
             mIconPackPref.setOnPreferenceChangeListener((p, v) -> {
+                Utilities.getPrefs(mContext).edit().putString(PREF_ICON_PACK, v.toString()).apply();
                 AppReloader.get(mContext).reload();
                 return true;
             });
