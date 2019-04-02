@@ -22,6 +22,6 @@
     <string name="theme_blueberry">Blueberry</string>
     <string name="theme_bloodmoon">Bloodmoon</string>
 
-    <string name="shadespace_subtext_notif">%1$s - %2$s</string>
-    <string name="shadespace_subtext_default">"Swipe down to expand notifications"</string>
+    <string name="shadespace_subtext_double">%1$s - %2$s</string>
+    <string name="shadespace_subtext_default">Press home to search for apps</string>
 </resources>

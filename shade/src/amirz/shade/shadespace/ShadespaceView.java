@@ -6,9 +6,11 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.CalendarContract;
 import android.service.notification.StatusBarNotification;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -24,10 +26,7 @@ import com.android.launcher3.touch.SwipeDetector;
 import com.android.launcher3.util.PackageUserKey;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import static android.app.Notification.PRIORITY_DEFAULT;
 
 public class ShadespaceView extends LinearLayout
         implements SwipeDetector.Listener, NotificationListener.NotificationsChangedListener {
@@ -40,7 +39,10 @@ public class ShadespaceView extends LinearLayout
     private DoubleShadowTextView mTopView;
     private DoubleShadowTextView mBottomView;
 
-    private List<NotificationKeyData> mNotifications = new ArrayList<>();
+    private final List<NotificationKeyData> mNotifications = new ArrayList<>();
+    private final List<StatusBarNotification> mSbn = new ArrayList<>();
+    private final NotificationRanker mRanker;
+    private final MediaListener mMedia;
 
     @SuppressLint({"ClickableViewAccessibility"})
     public ShadespaceView(Context context, AttributeSet attrs) {
@@ -52,6 +54,9 @@ public class ShadespaceView extends LinearLayout
                 reload();
             }
         };
+
+        mRanker = new NotificationRanker(mSbn);
+        mMedia = new MediaListener(context, mSbn, this::reload);
 
         SwipeDetector swipe = new SwipeDetector(context, this, SwipeDetector.VERTICAL);
         swipe.setDetectableScrollConditions(SwipeDetector.DIRECTION_BOTH, false);
@@ -65,7 +70,6 @@ public class ShadespaceView extends LinearLayout
         mTopView = findViewById(R.id.shadespace_text);
         mBottomView = findViewById(R.id.shadespace_subtext);
 
-        reload();
         LauncherNotifications.getInstance().addListener(this);
     }
 
@@ -80,10 +84,10 @@ public class ShadespaceView extends LinearLayout
         try {
             Class<?> cls = Class.forName("android.app.StatusBarManager");
             Object srv = getContext().getSystemService("statusbar");
-            if (velocity > NOTIFICATION_OPEN_VELOCITY && !mNotificationsOpen) {
+            if (velocity >= NOTIFICATION_OPEN_VELOCITY && !mNotificationsOpen) {
                 cls.getMethod("expandNotificationsPanel").invoke(srv);
                 mNotificationsOpen = true;
-            } else if (velocity < NOTIFICATION_CLOSE_VELOCITY && mNotificationsOpen) {
+            } else if (velocity <= NOTIFICATION_CLOSE_VELOCITY && mNotificationsOpen) {
                 cls.getMethod("collapsePanels").invoke(srv);
                 mNotificationsOpen = false;
             }
@@ -96,16 +100,22 @@ public class ShadespaceView extends LinearLayout
     public void onDragEnd(float velocity, boolean fling) {
     }
 
+    private boolean mRunning;
+
     public void onResume() {
+        mRunning = true;
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_TIME_TICK);
         intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
         intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
         getContext().registerReceiver(mTimeChangeReceiver, intentFilter);
+        mMedia.onResume(); // Triggers reload
     }
 
     public void onPause() {
+        mRunning = false;
         getContext().unregisterReceiver(mTimeChangeReceiver);
+        mMedia.onPause();
     }
 
     @Override
@@ -115,7 +125,7 @@ public class ShadespaceView extends LinearLayout
         if (!shouldBeFilteredOut) {
             mNotifications.remove(notificationKey);
             mNotifications.add(notificationKey);
-            reload();
+            onNotificationsChanged();
         }
     }
 
@@ -123,7 +133,7 @@ public class ShadespaceView extends LinearLayout
     public void onNotificationRemoved(PackageUserKey removedPackageUserKey,
                                       NotificationKeyData notificationKey) {
         if (mNotifications.remove(notificationKey)) {
-            reload();
+            onNotificationsChanged();
         }
     }
 
@@ -133,36 +143,86 @@ public class ShadespaceView extends LinearLayout
         for (int i = activeNotifications.size() - 1; i >= 0; i--) {
             mNotifications.add(NotificationKeyData.fromNotification(activeNotifications.get(i)));
         }
+        onNotificationsChanged();
+    }
+
+    private void onNotificationsChanged() {
+        mSbn.clear();
+        if (!mNotifications.isEmpty()) {
+            NotificationListener notificationListener = NotificationListener.getInstanceIfConnected();
+            if (notificationListener != null) {
+                mSbn.addAll(notificationListener.getNotificationsForKeys(mNotifications));
+            }
+        }
+        mMedia.onActiveSessionsChanged(null);
         reload();
     }
 
     private void reload() {
-        String dateString = DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
-                DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE);
-        mTopView.setText(dateString);
-
-        List<StatusBarNotification> sbn = getNotifications();
-        if (sbn.isEmpty()) {
-            mBottomView.setText(R.string.shadespace_subtext_default);
-            setOnClickListener(this::openCalendar);
-        } else {
-            int notifCount = nonPersistentNotificationCount(sbn);
-            if (notifCount > 0) {
-                mTopView.setText(getContext().getResources().getQuantityString(
-                        R.plurals.shadespace_text_notif, notifCount, notifCount));
-            }
-
-            StatusBarNotification topNotif = mostImportantNotification(sbn);
-            NotificationInfo notification = new NotificationInfo(getContext(), topNotif);
-            mBottomView.setText(notification.text == null
-                    ? notification.title
-                    : getContext().getString(
-                            R.string.shadespace_subtext_notif,
-                            notification.title,
-                            notification.text.toString().split("\n")[0]));
-
-            setOnClickListener(notification);
+        // Do not update the content when we are paused.
+        // This prevents the text from updating immediately when interacting with it.
+        if (!mRunning) {
+            return;
         }
+
+        if (mMedia.isTracking()) {
+            mTopView.setText(mMedia.getTitle());
+            CharSequence app = getApp(mMedia.getPackage());
+            if (TextUtils.isEmpty(mMedia.getArtist())) {
+                mBottomView.setText(app);
+            } else if (TextUtils.isEmpty(mMedia.getAlbum())
+                    || mMedia.getTitle().equals(mMedia.getAlbum())) {
+                mBottomView.setText(mMedia.getArtist());
+            } else {
+                mBottomView.setText(formatSubtext(mMedia.getArtist(), mMedia.getAlbum()));
+            }
+            setOnClickListener(mMedia::togglePlaying);
+        } else {
+            // Default values
+            mTopView.setText(DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
+            setOnClickListener(this::openCalendar);
+
+            NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
+            if (ranked == null) {
+                // Bottom view always gets overwritten by one of the other cases.
+                mBottomView.setText(R.string.shadespace_subtext_default);
+            } else {
+                NotificationInfo notification = new NotificationInfo(getContext(), ranked.sbn);
+                String text = notification.text == null
+                        ? ""
+                        : notification.text.toString().trim().split("\n")[0];
+                if (ranked.important) {
+                    CharSequence app = getApp(notification.packageUserKey.mPackageName);
+                    if (TextUtils.isEmpty(text)) {
+                        mTopView.setText(notification.title);
+                        mBottomView.setText(app);
+                    } else {
+                        mTopView.setText(text);
+                        mBottomView.setText(formatSubtext(app, notification.title));
+                    }
+                    setOnClickListener(notification);
+                } else if (TextUtils.isEmpty(text)) {
+                    mBottomView.setText(notification.title);
+                } else {
+                    mBottomView.setText(formatSubtext(notification.title, text));
+                }
+            }
+        }
+    }
+
+    private String formatSubtext(CharSequence one, CharSequence two) {
+        return getContext().getString(R.string.shadespace_subtext_double, one, two);
+    }
+
+    CharSequence getApp(String name) {
+        PackageManager pm = getContext().getPackageManager();
+        try {
+            return pm.getApplicationLabel(
+                    pm.getApplicationInfo(name, PackageManager.GET_META_DATA));
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return name;
     }
 
     private void openCalendar(View v) {
@@ -172,38 +232,5 @@ public class ShadespaceView extends LinearLayout
                 .setData(timeUri.build())
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         Launcher.getLauncher(getContext()).startActivitySafely(v, addFlags, null);
-    }
-
-    private List<StatusBarNotification> getNotifications() {
-        if (!mNotifications.isEmpty()) {
-            NotificationListener notificationListener = NotificationListener.getInstanceIfConnected();
-            if (notificationListener != null) {
-                return notificationListener.getNotificationsForKeys(mNotifications);
-            }
-        }
-        return Collections.EMPTY_LIST;
-    }
-
-    private int nonPersistentNotificationCount(List<StatusBarNotification> sbn) {
-        int count = 0;
-        for (StatusBarNotification notif : sbn) {
-            if (!notif.isOngoing() && defaultPriorityOrHigher(notif)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    private StatusBarNotification mostImportantNotification(List<StatusBarNotification> sbn) {
-        for (StatusBarNotification notif : sbn) {
-            if (notif.isOngoing() && defaultPriorityOrHigher(notif)) {
-                return notif;
-            }
-        }
-        return sbn.get(sbn.size() - 1);
-    }
-
-    private boolean defaultPriorityOrHigher(StatusBarNotification notif) {
-        return notif.getNotification().priority >= PRIORITY_DEFAULT;
     }
 }
