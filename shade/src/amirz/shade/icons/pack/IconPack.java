@@ -14,18 +14,16 @@ import java.util.Map;
 
 /**
  * Class that handles the metadata and data of any icon pack.
- * It uses a WeakReference to the data for reduced memory consumption, by letting the garbage
- * collector handle it.
  */
 class IconPack {
     private final ApplicationInfo mAi;
     private final CharSequence mPackageLabel;
-    private WeakReference<Data> mData;
+    private Data mData;
 
     IconPack(ApplicationInfo ai, CharSequence label) {
         mAi = ai;
         mPackageLabel = label;
-        mData = new WeakReference<>(null);
+        mData = null;
     }
 
     ApplicationInfo getAi() {
@@ -41,7 +39,7 @@ class IconPack {
     }
 
     /**
-     * Loads all icon pack XML data into memory, and caches it with a WeakReference.
+     * Loads all icon pack XML data into memory, and caches it.
      * @param pm Package manager used to load the data.
      * @return Icons in the icon pack.
      * @throws PackageManager.NameNotFoundException
@@ -50,12 +48,10 @@ class IconPack {
      */
     Data getData(PackageManager pm)
             throws PackageManager.NameNotFoundException, XmlPullParserException, IOException {
-        Data data = mData.get();
-        if (data == null) {
-            data = IconPackParser.parsePackage(pm, getPackage());
-            mData = new WeakReference<>(data);
+        if (mData == null) {
+            mData = IconPackParser.parsePackage(pm, getPackage());
         }
-        return data;
+        return mData;
     }
 
     static class Data {
