@@ -11,11 +11,10 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 class IconPackParser {
-    static IconPack.Data parsePackage(PackageManager pm, String pkg)
+    static IconPack.Data parsePackage(PackageManager pm, Resources res, String pkg)
             throws IOException, XmlPullParserException, PackageManager.NameNotFoundException {
         IconPack.Data iconPack = new IconPack.Data();
 
-        Resources res = pm.getResourcesForApplication(pkg);
         int resId = res.getIdentifier("appfilter", "xml", pkg);
         if (resId != 0) {
             XmlResourceParser parseXml = pm.getXml(pkg, resId, null);
@@ -23,7 +22,7 @@ class IconPackParser {
                 if (parseXml.getEventType() == XmlPullParser.START_TAG) {
                     switch (parseXml.getName()) {
                         case "item":
-                            addItem(res, pkg, parseXml, iconPack);
+                            addItem(parseXml, iconPack);
                             break;
                         case "calendar":
                             addCalendar(parseXml, iconPack);
@@ -39,17 +38,14 @@ class IconPackParser {
         return iconPack;
     }
 
-    private static void addItem(Resources res, String pkg, XmlResourceParser parseXml,
+    private static void addItem(XmlResourceParser parseXml,
                                 IconPack.Data iconPack) {
         String component = parseXml.getAttributeValue(null, "component");
         String drawable = parseXml.getAttributeValue(null, "drawable");
         if (component != null && drawable != null) {
-            int drawableId = res.getIdentifier(drawable, "drawable", pkg);
-            if (drawableId != 0) {
-                ComponentName componentName = parseComponent(component);
-                if (componentName != null) {
-                    iconPack.drawables.put(componentName, drawableId);
-                }
+            ComponentName componentName = parseComponent(component);
+            if (componentName != null) {
+                iconPack.drawables.put(componentName, drawable);
             }
         }
     }

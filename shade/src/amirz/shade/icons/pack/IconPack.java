@@ -3,6 +3,7 @@ package amirz.shade.icons.pack;
 import android.content.ComponentName;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.util.SparseArray;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -19,11 +20,11 @@ class IconPack {
     private final ApplicationInfo mAi;
     private final CharSequence mPackageLabel;
     private Data mData;
+    private WeakReference<Resources> mRes = new WeakReference<>(null);
 
     IconPack(ApplicationInfo ai, CharSequence label) {
         mAi = ai;
         mPackageLabel = label;
-        mData = null;
     }
 
     ApplicationInfo getAi() {
@@ -38,24 +39,34 @@ class IconPack {
         return mPackageLabel;
     }
 
-    /**
-     * Loads all icon pack XML data into memory, and caches it.
-     * @param pm Package manager used to load the data.
-     * @return Icons in the icon pack.
-     * @throws PackageManager.NameNotFoundException
-     * @throws XmlPullParserException
-     * @throws IOException
-     */
     Data getData(PackageManager pm)
             throws PackageManager.NameNotFoundException, XmlPullParserException, IOException {
         if (mData == null) {
-            mData = IconPackParser.parsePackage(pm, getPackage());
+            mData = IconPackParser.parsePackage(pm, getResources(pm), getPackage());
         }
         return mData;
     }
 
+    int getDrawableId(PackageManager pm, ComponentName name)
+            throws PackageManager.NameNotFoundException, IOException, XmlPullParserException {
+        Data data = getData(pm);
+        Resources res = getResources(pm);
+        String pkg = getPackage();
+        return res.getIdentifier(data.drawables.get(name), "drawable", pkg);
+    }
+
+    private Resources getResources(PackageManager pm) throws PackageManager.NameNotFoundException {
+        // Cache Resources object using a WeakReference.
+        Resources res = mRes.get();
+        if (res == null) {
+            res = pm.getResourcesForApplication(getPackage());
+            mRes = new WeakReference<>(res);
+        }
+        return res;
+    }
+
     static class Data {
-        final Map<ComponentName, Integer> drawables = new HashMap<>();
+        final Map<ComponentName, String> drawables = new HashMap<>();
         final Map<ComponentName, String> calendarPrefix = new HashMap<>();
         final SparseArray<Clock> clockMetadata = new SparseArray<>();
     }

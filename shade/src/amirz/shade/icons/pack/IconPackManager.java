@@ -5,15 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.LauncherActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Handler;
-import android.os.UserHandle;
 
 import com.android.launcher3.LauncherModel;
-import com.android.launcher3.compat.LauncherAppsCompat;
-import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.util.ComponentKey;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -162,11 +158,13 @@ public class IconPackManager extends BroadcastReceiver {
                 IconPack pack = mProviders.get(packPackage);
                 IconPack.Data data = pack.getData(mContext.getPackageManager());
                 if (data.drawables.containsKey(key.componentName)) {
-                    int drawableId = data.drawables.get(key.componentName);
-                    return new IconResolver(mContext.getPackageManager(), pack.getAi(),
-                            drawableId,
-                            data.calendarPrefix.get(key.componentName),
-                            data.clockMetadata.get(drawableId));
+                    int drawableId = pack.getDrawableId(mContext.getPackageManager(), key.componentName);
+                    if (drawableId != 0) {
+                        return new IconResolver(mContext.getPackageManager(), pack.getAi(),
+                                drawableId,
+                                data.calendarPrefix.get(key.componentName),
+                                data.clockMetadata.get(drawableId));
+                    }
                 }
             } catch (PackageManager.NameNotFoundException | XmlPullParserException | IOException ignored) {
             }
