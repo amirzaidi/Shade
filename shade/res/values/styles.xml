@@ -91,8 +91,8 @@
 
     <!-- GLAMOUR -->
     <style name="Shade.Glamour" parent="@style/Shade.Light">
-        <item name="allAppsScrimColor">#D1C4E9</item>
-        <item name="android:colorPrimary">#E1BEE7</item>
+        <item name="allAppsScrimColor">#BBFFFFFF</item>
+        <item name="android:colorPrimary">#AAE1BEE7</item>
         <item name="android:colorAccent">#9C27B0</item>
     </style>
 
