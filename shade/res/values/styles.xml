@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="@style/LauncherTheme">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="searchBoxColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
     </style>
 
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="searchBoxColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="searchBoxColor">?attr/popupColorPrimary</item>
         <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="searchBoxColor">?attr/popupColorPrimary</item>
     </style>
 
     <!-- Theme for the widget container. Overridden on API 26. -->
     <style name="WidgetContainerTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondaryInverse</item>
         <item name="android:textColorPrimary">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorSecondary">?android:attr/textColorSecondaryInverse</item>
@@ -28,87 +41,122 @@
         <item name="android:textColorSecondaryInverse">@color/secondary_text_material_light</item>
     </style>
 
-    <style name="WidgetContainerTheme.Dark" parent="AppTheme.Dark">
-        <item name="android:colorPrimaryDark">#616161</item> <!-- Gray 700 -->
+    <style name="WidgetContainerTheme.Dark" parent="AppTheme.Dark" />
+
+    <!-- Initial settings -->
+    <style name="ShadeSettings" parent="android:Theme.DeviceDefault.Settings">
+        <item name="android:actionBarStyle">@null</item>
+    </style>
+
+    <!-- Fallback theme if there is no override. Used to define missing attributes. -->
+    <style name="ShadeSettings.Default">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+    </style>
+
+    <!-- Applied at the end of loading -->
+    <style name="ShadeSettings.Override" parent="android:Theme.DeviceDefault.Settings">
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
     </style>
 
     <!-- These need to be compatible with API 21, so only extend default and dark. -->
+    <style name="Shade.DialogAlert" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+    </style>
+
     <style name="Shade.Transparent" parent="@style/AppTheme.Dark">
-        <item name="android:colorAccent">@color/ic_launcher_shade_background</item>
+        <item name="shadeColorAccent">@color/colorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
         <item name="workspaceStatusBarScrim">@null</item>
 
         <item name="allAppsScrimColor">#33000000</item>
-        <item name="android:alertDialogTheme">@android:style/Theme.Material.Dialog.Alert</item>
+        <item name="searchBoxColor">?attr/shadeColorAccent</item>
+        <item name="widgetsTheme">@style/Shade.Transparent</item>
     </style>
 
+    <!--
+    Override
+    1. ScrimColor
+    2. ScrimColorFoot
+    3. ColorAccent
+    -->
     <style name="Shade.Light" parent="AppTheme">
-        <item name="allAppsScrimColorFoot">?android:colorPrimary</item>
-        <item name="popupColorTertiary">?android:attr/colorAccent</item>
-        <item name="android:alertDialogTheme">@android:style/Theme.Material.Light.Dialog.Alert</item>
+        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
+        <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
+        <item name="popupColorTertiary">?attr/shadeColorAccent</item>
     </style>
 
+    <!--
+    Override
+    1. ScrimColor
+    2. ColorPrimary
+    3. ColorAccent
+    4. WidgetsTheme
+    -->
     <style name="Shade.Dark" parent="AppTheme.Dark">
-        <item name="android:colorPrimaryDark">?android:attr/colorAccent</item>
-        <item name="allAppsScrimColorFoot">?android:colorPrimary</item>
+        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
+        <item name="android:colorPrimary">?attr/shadeColorSecondary</item>
 
-        <item name="popupColorPrimary">?android:attr/colorAccent</item>
-        <item name="popupColorSecondary">?android:attr/colorPrimary</item>
-        <item name="popupColorTertiary">?android:attr/colorPrimary</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
+        <item name="android:colorPrimaryDark">?attr/shadeColorAccent</item>
+        <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
 
-        <item name="android:alertDialogTheme">@android:style/Theme.Material.Dialog.Alert</item>
+        <item name="popupColorPrimary">?attr/shadeColorAccent</item>
+        <item name="popupColorSecondary">?attr/shadeColorSecondary</item>
+        <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
     </style>
 
     <!-- NATURE -->
     <style name="Shade.Nature" parent="@style/Shade.Dark">
-        <item name="allAppsScrimColor">#5d4037</item>
-        <item name="android:colorPrimary">#33691e</item>
-        <item name="android:colorAccent">#558b2f</item>
+        <item name="shadeColorPrimary">#5D4037</item>
+        <item name="shadeColorSecondary">#33691E</item>
+        <item name="shadeColorAccent">#2E7D32</item>
         <item name="widgetsTheme">@style/Shade.Nature</item>
     </style>
 
     <!-- SUNSET -->
     <style name="Shade.Sunset" parent="@style/Shade.Light">
-        <item name="allAppsScrimColor">#ff80ab</item>
-        <item name="android:colorPrimary">#82b1ff</item>
-        <item name="android:colorAccent">#ffd180</item>
+        <item name="shadeColorPrimary">#FF80AB</item>
+        <item name="shadeColorSecondary">#82B1FF</item>
+        <item name="shadeColorAccent">#FFAB00</item>
     </style>
 
     <!-- CAMPFIRE -->
     <style name="Shade.Campfire" parent="@style/Shade.Dark">
-        <item name="allAppsScrimColor">#FFA000</item>
-        <item name="android:colorPrimary">#BF360C</item>
-        <item name="android:colorAccent">#D84315</item>
+        <item name="shadeColorPrimary">#FFA000</item>
+        <item name="shadeColorSecondary">#BF360C</item>
+        <item name="shadeColorAccent">#D84315</item>
         <item name="widgetsTheme">@style/Shade.Campfire</item>
     </style>
 
     <!-- TWILIGHT -->
     <style name="Shade.Twilight" parent="@style/Shade.Dark">
-        <item name="allAppsScrimColor">#26a69a</item>
-        <item name="android:colorPrimary">#7e57c2</item>
-        <item name="android:colorAccent">#5e35b1</item>
+        <item name="shadeColorPrimary">#26a69a</item>
+        <item name="shadeColorSecondary">#7e57c2</item>
+        <item name="shadeColorAccent">#5e35b1</item>
         <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
 
     <!-- GLAMOUR -->
     <style name="Shade.Glamour" parent="@style/Shade.Light">
-        <item name="allAppsScrimColor">#BBFFFFFF</item>
-        <item name="android:colorPrimary">#AAE1BEE7</item>
-        <item name="android:colorAccent">#9C27B0</item>
+        <item name="shadeColorPrimary">#EEF3E5F5</item>
+        <item name="shadeColorSecondary">#DDE1BEE7</item>
+        <item name="shadeColorAccent">#C51162</item>
     </style>
 
     <!-- BLUEBERRY -->
     <style name="Shade.Blueberry" parent="@style/Shade.Dark">
-        <item name="allAppsScrimColor">#4527A0</item>
-        <item name="android:colorPrimary">#1A237E</item>
-        <item name="android:colorAccent">#536DFE</item>
+        <item name="shadeColorPrimary">#4527A0</item>
+        <item name="shadeColorSecondary">#1A237E</item>
+        <item name="shadeColorAccent">#536DFE</item>
         <item name="widgetsTheme">@style/Shade.Blueberry</item>
     </style>
 
     <!-- BLOODMOON -->
     <style name="Shade.Bloodmoon" parent="@style/Shade.Dark">
-        <item name="allAppsScrimColor">#424242</item>
-        <item name="android:colorPrimary">#212121</item>
-        <item name="android:colorAccent">#B71C1C</item>
+        <item name="shadeColorPrimary">#424242</item>
+        <item name="shadeColorSecondary">#212121</item>
+        <item name="shadeColorAccent">#B71C1C</item>
         <item name="widgetsTheme">@style/Shade.Bloodmoon</item>
     </style>
 </resources>

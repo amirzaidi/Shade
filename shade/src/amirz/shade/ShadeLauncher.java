@@ -340,17 +340,6 @@ public class ShadeLauncher extends Launcher {
 
     @Override
     protected int getThemeRes(WallpaperColorInfo wallpaperColorInfo) {
-        switch (Utilities.getPrefs(this).getString(ShadeSettings.PREF_THEME, "")) {
-            case "transparent": return R.style.Shade_Transparent;
-            case "nature": return R.style.Shade_Nature;
-            case "sunset": return R.style.Shade_Sunset;
-            case "campfire": return R.style.Shade_Campfire;
-            case "twilight": return R.style.Shade_Twilight;
-            case "glamour": return R.style.Shade_Glamour;
-            case "blueberry": return R.style.Shade_Blueberry;
-            case "bloodmoon": return R.style.Shade_Bloodmoon;
-        }
-
-        return super.getThemeRes(wallpaperColorInfo);
+        return ShadeSettings.getThemeRes(this, super.getThemeRes(wallpaperColorInfo));
     }
 }

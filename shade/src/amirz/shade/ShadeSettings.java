@@ -1,10 +1,14 @@
 package amirz.shade;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 
+import com.android.launcher3.R;
 import com.android.launcher3.SettingsActivity;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
@@ -15,6 +19,18 @@ import amirz.shade.customization.AppReloader;
 public class ShadeSettings extends SettingsActivity {
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
+    private static final int UPDATE_THEME_DELAY = 500;
+    private static final int CLOSE_STACK_DELAY = 500;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Load the Shade theme attributes
+        Resources.Theme theme = getTheme();
+        theme.applyStyle(getThemeRes(this, R.style.ShadeSettings_Default), false);
+        theme.applyStyle(R.style.ShadeSettings_Override, true);
+    }
 
     @Override
     protected PreferenceFragment getNewFragment() {
@@ -22,6 +38,7 @@ public class ShadeSettings extends SettingsActivity {
     }
 
     public static class ShadeFragment extends SettingsActivity.LauncherSettingsFragment {
+        private final Handler mHandler = new Handler();
         private Context mContext;
         private GlobalIconPackPreference mIconPackPref;
         private ListPreference mThemePref;
@@ -38,12 +55,37 @@ public class ShadeSettings extends SettingsActivity {
                 return true;
             });
 
+            Runnable updateTheme = () ->
+                    WallpaperColorInfo.getInstance(mContext).notifyChange();
+
             mThemePref = (ListPreference) findPreference(PREF_THEME);
             mThemePref.setOnPreferenceChangeListener((p, v) -> {
                 Utilities.getPrefs(mContext).edit().putString(PREF_THEME, v.toString()).apply();
-                WallpaperColorInfo.getInstance(mContext).notifyChange();
+
+                mHandler.removeCallbacks(updateTheme);
+                mHandler.postDelayed(updateTheme, UPDATE_THEME_DELAY);
+
+                ShadeSettings activity = (ShadeSettings) mContext;
+                Intent intent = activity.getIntent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                activity.startActivity(intent);
+                mHandler.postDelayed(activity::finish, CLOSE_STACK_DELAY);
                 return true;
             });
         }
+    }
+
+    static int getThemeRes(Context context, int defValue) {
+        switch (Utilities.getPrefs(context).getString(ShadeSettings.PREF_THEME, "")) {
+            case "transparent": return R.style.Shade_Transparent;
+            case "nature": return R.style.Shade_Nature;
+            case "sunset": return R.style.Shade_Sunset;
+            case "campfire": return R.style.Shade_Campfire;
+            case "twilight": return R.style.Shade_Twilight;
+            case "glamour": return R.style.Shade_Glamour;
+            case "blueberry": return R.style.Shade_Blueberry;
+            case "bloodmoon": return R.style.Shade_Bloodmoon;
+        }
+        return defValue;
     }
 }
