@@ -19,6 +19,8 @@
         or needs to be updated.
     </string>
 
+    <string name="about_app_version">Version</string>
+
     <!-- Theme selection -->
     <string name="theme_title">Theme</string>
     <string name="theme_default">Default</string>

@@ -7,12 +7,15 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 
+import com.android.launcher3.BuildConfig;
 import com.android.launcher3.R;
 import com.android.launcher3.SettingsActivity;
 import com.android.launcher3.Utilities;
@@ -26,6 +29,7 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_MINUS_ONE = "pref_enable_minus_one";
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
+    private static final String ABOUT_APP_VERSION = "about_app_version";
     private static final String BRIDGE_TAG = "tag_bridge";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
@@ -94,6 +98,11 @@ public class ShadeSettings extends SettingsActivity {
                 mHandler.postDelayed(activity::finish, CLOSE_STACK_DELAY);
                 return true;
             });
+
+            Preference version = findPreference(ABOUT_APP_VERSION);
+            version.setSummary(BuildConfig.VERSION_NAME);
+            Uri intentData = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+            version.setIntent(version.getIntent().setData(intentData));
         }
 
         @Override

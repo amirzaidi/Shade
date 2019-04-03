@@ -74,4 +74,11 @@
         android:defaultValue=""
         android:persistent="true" />
 
+    <Preference
+        android:key="about_app_version"
+        android:title="@string/about_app_version"
+        android:persistent="false">
+        <intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" />
+    </Preference>
+
 </PreferenceScreen>
