@@ -72,7 +72,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="amirz.shade.ShadeSearch" />
+        <activity
+            android:name="amirz.shade.ShadeSearch"
+            android:taskAffinity=".search"
+            android:excludeFromRecents="true"
+            android:noHistory="true" />
 
         <meta-data android:name="android.max_aspect" android:value="3.0" />
     </application>
