@@ -27,6 +27,12 @@ import amirz.shade.shadespace.ShadespaceView;
 
 public class ShadeLauncher extends Launcher {
     private final SearchLauncherCallbacks mCallbacks;
+    private enum State {
+        STOPPED,
+        RECREATE_DEFERRED,
+        STARTED
+    }
+    private State mState = State.STOPPED;
 
     public ShadeLauncher() {
         mCallbacks = new SearchLauncherCallbacks(this);
@@ -306,6 +312,30 @@ public class ShadeLauncher extends Launcher {
     public void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mState == State.RECREATE_DEFERRED) {
+            super.recreate();
+        }
+        mState = State.STARTED;
+    }
+
+    @Override
+    public void recreate() {
+        if (mState == State.STARTED) {
+            super.recreate();
+        } else {
+            mState = State.RECREATE_DEFERRED;
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mState = State.STOPPED;
     }
 
     @Override
