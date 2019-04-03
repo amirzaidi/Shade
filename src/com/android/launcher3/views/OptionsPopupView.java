@@ -18,6 +18,7 @@ package com.android.launcher3.views;
 import static com.android.launcher3.BaseDraggingActivity.INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION;
 import static com.android.launcher3.Utilities.EXTRA_WALLPAPER_OFFSET;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -169,9 +170,9 @@ public class OptionsPopupView extends ArrowPopup
 
     public static boolean startSettings(View view) {
         Launcher launcher = Launcher.getLauncher(view.getContext());
-        launcher.startActivity(new Intent(Intent.ACTION_APPLICATION_PREFERENCES)
-                .setPackage(launcher.getPackageName())
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        Intent settingsIntent = new Intent(Intent.ACTION_APPLICATION_PREFERENCES)
+                .setPackage(launcher.getPackageName());
+        launcher.startActivitySafely(view, settingsIntent, null);
         return true;
     }
 
@@ -200,8 +201,11 @@ public class OptionsPopupView extends ArrowPopup
         if (!TextUtils.isEmpty(pickerPackage) && pickerPackageInstalled) {
             intent.setPackage(pickerPackage);
         } else {
-            // If there is no target package, use the default intent chooser animation
-            intent.putExtra(INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION, true);
+            ComponentName resolved = intent.resolveActivity(launcher.getPackageManager());
+            if (resolved == null || resolved.getPackageName().equals("android")) {
+                // If there is no target package, use the default intent chooser animation
+                intent.putExtra(INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION, true);
+            }
         }
         return launcher.startActivitySafely(v, intent, null);
     }
