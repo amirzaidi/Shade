@@ -63,6 +63,7 @@
         <activity
             android:name="amirz.shade.ShadeSettings"
             android:label="@string/settings_button_text"
+            android:launchMode="singleTask"
             android:theme="@android:style/Theme.DeviceDefault.Settings"
             android:autoRemoveFromRecents="true">
             <intent-filter>
