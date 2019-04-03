@@ -12,8 +12,8 @@ import android.os.RemoteException;
 import com.android.launcher3.BuildConfig;
 
 public class LauncherClientBridge extends BridgeCallback.Stub implements ServiceConnection {
-    private final static boolean BRIDGE_USE = !BuildConfig.DEBUG;
-    private final static String BRIDGE_PACKAGE = "com.google.android.apps.nexuslauncher";
+    final static boolean BRIDGE_USE = !BuildConfig.DEBUG;
+    final static String BRIDGE_PACKAGE = "com.google.android.apps.nexuslauncher";
 
     public static ServiceConnection wrap(ServiceConnection clientService) {
         return BRIDGE_USE

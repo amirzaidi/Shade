@@ -10,6 +10,15 @@
     <string name="pref_category">Category</string>
     <string name="pref_reset">Reset</string>
 
+    <string name="pref_minus_one">Display Google Feed</string>
+    <string name="pref_minus_one_desc">To the left of the main Home screen</string>
+
+    <string name="bridge_missing_title">Rootless Pixel Bridge</string>
+    <string name="bridge_missing_message">
+        The bridge to connect to the Google Feed could not be found,
+        or needs to be updated.
+    </string>
+
     <!-- Theme selection -->
     <string name="theme_title">Theme</string>
     <string name="theme_default">Default</string>

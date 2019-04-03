@@ -96,7 +96,8 @@ public class ShadeLauncher extends Launcher {
 
     private static class SearchLauncherCallbacks
             implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener,
-            DeviceProfile.OnDeviceProfileChangeListener {
+            DeviceProfile.OnDeviceProfileChangeListener,
+            SharedPreferences.OnSharedPreferenceChangeListener {
         private final Launcher mLauncher;
 
         private OverlayCallbackImpl mOverlayCallbacks;
@@ -126,6 +127,7 @@ public class ShadeLauncher extends Launcher {
             mOverlayCallbacks.setClient(mLauncherClient);
 
             mLauncher.addOnDeviceProfileChangeListener(this);
+            prefs.registerOnSharedPreferenceChangeListener(this);
 
             WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
             instance.addOnChangeListener(this);
@@ -222,6 +224,7 @@ public class ShadeLauncher extends Launcher {
         @Override
         public void onDestroy() {
             WallpaperColorInfo.getInstance(mLauncher).removeOnChangeListener(this);
+            Utilities.getPrefs(mLauncher).unregisterOnSharedPreferenceChangeListener(this);
             mLauncherClient.onDestroy();
         }
 
@@ -286,10 +289,17 @@ public class ShadeLauncher extends Launcher {
 
         private LauncherClient.ClientOptions getClientOptions(SharedPreferences prefs) {
             return new LauncherClient.ClientOptions(
-                    true,
+                    prefs.getBoolean(ShadeSettings.PREF_MINUS_ONE, true),
                     true, /* enableHotword */
                     true /* enablePrewarming */
             );
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+            if (key.equals(ShadeSettings.PREF_MINUS_ONE)) {
+                mLauncherClient.setClientOptions(getClientOptions(prefs));
+            }
         }
     }
 

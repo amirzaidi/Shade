@@ -37,6 +37,12 @@
         android:persistent="true" />
 
     <SwitchPreference
+        android:key="pref_enable_minus_one"
+        android:title="@string/pref_minus_one"
+        android:summary="@string/pref_minus_one_desc"
+        android:defaultValue="true" />
+
+    <SwitchPreference
         android:key="pref_allowRotation"
         android:title="@string/allow_rotation_title"
         android:summary="@string/allow_rotation_desc"
