@@ -79,6 +79,7 @@ public class IconShapeOverride {
         if (!Utilities.ATLEAST_OREO) {
             return;
         }
+        cancelRestart(context);
         String path = getAppliedValue(context);
         if (TextUtils.isEmpty(path)) {
             return;
@@ -191,17 +192,25 @@ public class IconShapeOverride {
             }
 
             // Schedule an alarm before we kill ourself.
-            Intent homeIntent = new Intent(Intent.ACTION_MAIN)
-                    .addCategory(Intent.CATEGORY_HOME)
-                    .setPackage(mContext.getPackageName())
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            PendingIntent pi = PendingIntent.getActivity(mContext, RESTART_REQUEST_CODE,
-                    homeIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+            PendingIntent pi = getRestartIntent(mContext);
             mContext.getSystemService(AlarmManager.class).setExact(
                     AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 50, pi);
 
             // Kill process
             android.os.Process.killProcess(android.os.Process.myPid());
         }
+    }
+
+    private static PendingIntent getRestartIntent(Context context) {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN)
+                .addCategory(Intent.CATEGORY_HOME)
+                .setPackage(context.getPackageName())
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return PendingIntent.getActivity(context, RESTART_REQUEST_CODE,
+                homeIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+    }
+
+    private static void cancelRestart(Context context) {
+        context.getSystemService(AlarmManager.class).cancel(getRestartIntent(context));
     }
 }
