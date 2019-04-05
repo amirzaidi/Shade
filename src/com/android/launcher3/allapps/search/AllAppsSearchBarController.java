@@ -15,6 +15,7 @@
  */
 package com.android.launcher3.allapps.search;
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -28,6 +29,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.allapps.AlphabeticalAppsList;
 import com.android.launcher3.model.AppLaunchTracker;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.PackageManagerHelper;
@@ -111,8 +113,14 @@ public class AllAppsSearchBarController
         if (query.isEmpty()) {
             return false;
         }
+
+        AlphabeticalAppsList list = mLauncher.getAppsView().getApps();
+        Intent intent = list.hasNoFilteredResults()
+                ? PackageManagerHelper.getMarketSearchIntent(mLauncher, query)
+                : list.getFilteredApps().get(0).getIntent();
+
         return mLauncher.startActivitySafely(v,
-                PackageManagerHelper.getMarketSearchIntent(mLauncher, query), null,
+                intent, null,
                 AppLaunchTracker.CONTAINER_SEARCH);
     }
 
