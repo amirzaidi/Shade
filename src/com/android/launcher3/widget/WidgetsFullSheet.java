@@ -172,13 +172,11 @@ public class WidgetsFullSheet extends BaseWidgetSheet
             mOpenCloseAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mRecyclerView.setLayoutFrozen(false);
                     mAdapter.setApplyBitmapDeferred(false, mRecyclerView);
                     mOpenCloseAnimator.removeListener(this);
                 }
             });
             post(() -> {
-                mRecyclerView.setLayoutFrozen(true);
                 mOpenCloseAnimator.start();
                 mContent.animate().alpha(1).setDuration(FADE_IN_DURATION);
             });
