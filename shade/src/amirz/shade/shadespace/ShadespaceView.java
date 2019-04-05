@@ -43,6 +43,7 @@ public class ShadespaceView extends LinearLayout
     private final List<StatusBarNotification> mSbn = new ArrayList<>();
     private final NotificationRanker mRanker;
     private final MediaListener mMedia;
+    private final MultiClickListener mTaps;
 
     @SuppressLint({"ClickableViewAccessibility"})
     public ShadespaceView(Context context, AttributeSet attrs) {
@@ -57,6 +58,9 @@ public class ShadespaceView extends LinearLayout
 
         mRanker = new NotificationRanker(mSbn);
         mMedia = new MediaListener(context, mSbn, this::reload);
+
+        mTaps = new MultiClickListener(300);
+        mTaps.setListeners(mMedia::toggle, mMedia::next, mMedia::previous);
 
         SwipeDetector swipe = new SwipeDetector(context, this, SwipeDetector.VERTICAL);
         swipe.setDetectableScrollConditions(SwipeDetector.DIRECTION_BOTH, false);
@@ -176,7 +180,7 @@ public class ShadespaceView extends LinearLayout
             } else {
                 mBottomView.setText(formatSubtext(mMedia.getArtist(), mMedia.getAlbum()));
             }
-            setOnClickListener(mMedia::togglePlaying);
+            setOnClickListener(mTaps);
         } else {
             // Default values
             mTopView.setText(DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
@@ -215,7 +219,7 @@ public class ShadespaceView extends LinearLayout
         return getContext().getString(R.string.shadespace_subtext_double, one, two);
     }
 
-    CharSequence getApp(String name) {
+    private CharSequence getApp(String name) {
         PackageManager pm = getContext().getPackageManager();
         try {
             return pm.getApplicationLabel(

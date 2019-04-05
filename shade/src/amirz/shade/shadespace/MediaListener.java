@@ -11,6 +11,7 @@ import android.media.session.PlaybackState;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -26,10 +27,7 @@ import java.util.List;
  */
 public class MediaListener extends MediaController.Callback
         implements MediaSessionManager.OnActiveSessionsChangedListener {
-    private static final KeyEvent DOWN =
-            new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
-    private static final KeyEvent UP =
-            new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+    private static final String TAG = "MediaListener";
 
     private final ComponentName mComponent;
     private final MediaSessionManager mManager;
@@ -117,10 +115,33 @@ public class MediaListener extends MediaController.Callback
         mOnChange.run();
     }
 
-    void togglePlaying(View v) {
-        if (mTracking != null && Utilities.ATLEAST_NOUGAT) {
-            mTracking.dispatchMediaButtonEvent(DOWN);
-            mTracking.dispatchMediaButtonEvent(UP);
+    private void pressButton(int keyCode) {
+        if (mTracking != null) {
+            mTracking.dispatchMediaButtonEvent(new KeyEvent(KeyEvent.ACTION_DOWN, keyCode));
+            mTracking.dispatchMediaButtonEvent(new KeyEvent(KeyEvent.ACTION_UP, keyCode));
+        }
+    }
+
+    void toggle(boolean finalClick) {
+        if (Utilities.ATLEAST_NOUGAT && !finalClick) {
+            Log.d(TAG, "Toggle");
+            pressButton(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+        }
+    }
+
+    void next(boolean finalClick) {
+        if (finalClick) {
+            Log.d(TAG, "Next");
+            pressButton(KeyEvent.KEYCODE_MEDIA_NEXT);
+            pressButton(KeyEvent.KEYCODE_MEDIA_PLAY);
+        }
+    }
+
+    void previous(boolean finalClick) {
+        if (finalClick) {
+            Log.d(TAG, "Previous");
+            pressButton(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+            pressButton(KeyEvent.KEYCODE_MEDIA_PLAY);
         }
     }
 
