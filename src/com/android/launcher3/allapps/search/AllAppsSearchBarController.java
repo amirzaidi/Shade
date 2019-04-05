@@ -30,6 +30,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.allapps.AlphabeticalAppsList;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.UiThreadHelper;
@@ -115,8 +116,12 @@ public class AllAppsSearchBarController
         if (query.isEmpty()) {
             return false;
         }
+
+        AlphabeticalAppsList list = mLauncher.getAppsView().getApps();
         return mLauncher.startActivitySafely(v,
-                PackageManagerHelper.getMarketSearchIntent(mLauncher, query), null);
+                list.hasNoFilteredResults()
+                ? PackageManagerHelper.getMarketSearchIntent(mLauncher, query)
+                : list.getFilteredApps().get(0).getIntent(), null);
     }
 
     @Override

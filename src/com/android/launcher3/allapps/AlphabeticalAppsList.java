@@ -184,6 +184,13 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
     }
 
     /**
+     * Returns all the filtered apps.
+     */
+    public List<AppInfo> getFilteredApps() {
+        return mFilteredApps;
+    }
+
+    /**
      * Returns fast scroller sections of all the current filtered applications.
      */
     public List<FastScrollSectionInfo> getFastScrollerSections() {
