@@ -33,6 +33,7 @@ public class ShadeSettings extends SettingsActivity {
     private static final String BRIDGE_TAG = "tag_bridge";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
+    private boolean mReloaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +93,7 @@ public class ShadeSettings extends SettingsActivity {
                 mHandler.postDelayed(updateTheme, UPDATE_THEME_DELAY);
 
                 ShadeSettings activity = (ShadeSettings) mContext;
-                Intent intent = activity.getIntent();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                activity.startActivity(intent);
-                mHandler.postDelayed(activity::finish, CLOSE_STACK_DELAY);
+                activity.reload();
                 return true;
             });
 
@@ -111,6 +109,29 @@ public class ShadeSettings extends SettingsActivity {
             if (!PixelBridge.isInstalled(getActivity())) {
                 mMinusOnePref.setChecked(false);
             }
+        }
+
+        @Override
+        public void onDestroy() {
+            super.onDestroy();
+            getActivity().finishAndRemoveTask();
+        }
+    }
+
+    private void reload() {
+        mReloaded = true;
+        Intent intent = getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        new Handler().postDelayed(this::finish, CLOSE_STACK_DELAY);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mReloaded) {
+            // Close if we had already loaded another theme instance.
+            finishAndRemoveTask();
         }
     }
 
