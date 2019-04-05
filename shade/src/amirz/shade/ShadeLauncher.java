@@ -14,7 +14,6 @@ import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
-import com.android.launcher3.LauncherStateManager;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
@@ -29,6 +28,7 @@ import java.util.ArrayList;
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
 import amirz.shade.shadespace.ShadespaceView;
 
+import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
 public class ShadeLauncher extends Launcher {
@@ -262,12 +262,20 @@ public class ShadeLauncher extends Launcher {
 
         @Override
         public boolean handleBackPressed() {
-            AppsSearchContainerLayout search =
-                    (AppsSearchContainerLayout) mLauncher.getAppsView().getSearchUiManager();
-            // Reset the search if it has text in it.
-            if (search.getText().length() > 0) {
-                search.searchString("");
-                return true;
+            if (!mLauncher.getDragController().isDragging()) {
+                AbstractFloatingView topView = AbstractFloatingView.getTopOpenView(mLauncher);
+                if (topView != null && topView.onBackPressed()) {
+                    // Override base because we do not want to call onBackPressed twice.
+                    return true;
+                } else if (mLauncher.isInState(ALL_APPS)) {
+                    AppsSearchContainerLayout search =
+                            (AppsSearchContainerLayout) mLauncher.getAppsView().getSearchUiManager();
+                    // Reset the search if it has text in it.
+                    if (search.getText().length() > 0) {
+                        search.searchString("");
+                        return true;
+                    }
+                }
             }
             return false;
         }
