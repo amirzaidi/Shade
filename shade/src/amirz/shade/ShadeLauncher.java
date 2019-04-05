@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.graphics.ColorUtils;
 
+import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherCallbacks;
+import com.android.launcher3.LauncherState;
+import com.android.launcher3.LauncherStateManager;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
@@ -24,6 +28,8 @@ import java.util.ArrayList;
 
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
 import amirz.shade.shadespace.ShadespaceView;
+
+import static com.android.launcher3.LauncherState.NORMAL;
 
 public class ShadeLauncher extends Launcher {
     private final SearchLauncherCallbacks mCallbacks;
@@ -104,6 +110,8 @@ public class ShadeLauncher extends Launcher {
         private LauncherClient mLauncherClient;
         private boolean mDeferCallbacks;
         private final Bundle mPrivateOptions = new Bundle();
+        private final Handler mHandler = new Handler();
+        private boolean mNoFloatingView;
 
         private ShadespaceView mShadespace;
 
@@ -149,6 +157,15 @@ public class ShadeLauncher extends Launcher {
         @Override
         public void onHomeIntent(boolean internalStateHandled) {
             mLauncherClient.hideOverlay(mLauncher.isStarted() && !mLauncher.isForceInvisible());
+            if (mLauncher.hasWindowFocus()
+                    && mLauncher.isInState(NORMAL)
+                    && mNoFloatingView) {
+                ExtendedEditText searchUiManager =
+                        (ExtendedEditText) mLauncher.getAppsView().getSearchUiManager();
+                mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true,
+                        () -> mHandler.post(searchUiManager::showKeyboard)
+                );
+            }
         }
 
         @Override
@@ -180,6 +197,7 @@ public class ShadeLauncher extends Launcher {
                 mLauncherClient.onPause();
             }
             mShadespace.onPause();
+            mNoFloatingView = AbstractFloatingView.getTopOpenView(mLauncher) == null;
         }
 
         @Override
