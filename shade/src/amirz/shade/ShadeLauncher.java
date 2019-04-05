@@ -357,6 +357,7 @@ public class ShadeLauncher extends Launcher {
             super.recreate();
         }
         mState = State.STARTED;
+        overridePendingTransition(R.anim.enter_launcher, R.anim.exit_app);
     }
 
     @Override
