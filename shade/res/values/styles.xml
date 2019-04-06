@@ -84,6 +84,7 @@
         <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
         <item name="popupColorTertiary">?attr/shadeColorAccent</item>
+        <item name="android:textColorSecondary">#A0000000</item>
     </style>
 
     <!--
@@ -106,30 +107,38 @@
         <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
     </style>
 
-    <!-- NATURE -->
+    <!-- NATURE: Green -->
     <style name="Shade.Nature" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#5D4037</item>
-        <item name="shadeColorSecondary">#33691E</item>
-        <item name="shadeColorAccent">#2E7D32</item>
+        <item name="shadeColorPrimary">#004D40</item>
+        <item name="shadeColorSecondary">#1B5E20</item>
+        <item name="shadeColorAccent">#33691E</item>
         <item name="widgetsTheme">@style/Shade.Nature</item>
     </style>
 
-    <!-- SUNSET -->
-    <style name="Shade.Sunset" parent="@style/Shade.Light">
+    <!-- SUNRISE: Yellow -->
+    <style name="Shade.Sunrise" parent="@style/Shade.Light">
         <item name="shadeColorPrimary">#FF80AB</item>
         <item name="shadeColorSecondary">#82B1FF</item>
         <item name="shadeColorAccent">#FFAB00</item>
     </style>
 
-    <!-- CAMPFIRE -->
-    <style name="Shade.Campfire" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#FFA000</item>
-        <item name="shadeColorSecondary">#BF360C</item>
-        <item name="shadeColorAccent">#D84315</item>
-        <item name="widgetsTheme">@style/Shade.Campfire</item>
+    <!-- SUNSET: Red -->
+    <style name="Shade.Sunset" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#880E4F</item>
+        <item name="shadeColorSecondary">#B71C1C</item>
+        <item name="shadeColorAccent">#D50000</item>
+        <item name="widgetsTheme">@style/Shade.Sunset</item>
     </style>
 
-    <!-- TWILIGHT -->
+    <!-- CAMPFIRE: Orange -->
+    <style name="Shade.Campfire" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#B71C1C</item>
+        <item name="shadeColorSecondary">#EF6C00</item>
+        <item name="shadeColorAccent">#FF6D00</item>
+        <item name="widgetsTheme">@style/Shade.Sunset</item>
+    </style>
+
+    <!-- TWILIGHT: Purple -->
     <style name="Shade.Twilight" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">#26a69a</item>
         <item name="shadeColorSecondary">#7e57c2</item>
@@ -137,14 +146,14 @@
         <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
 
-    <!-- GLAMOUR -->
+    <!-- GLAMOUR: Pink -->
     <style name="Shade.Glamour" parent="@style/Shade.Light">
         <item name="shadeColorPrimary">#EEF3E5F5</item>
         <item name="shadeColorSecondary">#DDE1BEE7</item>
         <item name="shadeColorAccent">#C51162</item>
     </style>
 
-    <!-- BLUEBERRY -->
+    <!-- BLUEBERRY: Blue -->
     <style name="Shade.Blueberry" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">#4527A0</item>
         <item name="shadeColorSecondary">#1A237E</item>
@@ -152,11 +161,19 @@
         <item name="widgetsTheme">@style/Shade.Blueberry</item>
     </style>
 
-    <!-- BLOODMOON -->
-    <style name="Shade.Bloodmoon" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#424242</item>
-        <item name="shadeColorSecondary">#212121</item>
-        <item name="shadeColorAccent">#B71C1C</item>
-        <item name="widgetsTheme">@style/Shade.Bloodmoon</item>
+    <!-- VENGEANCE: Brown -->
+    <style name="Shade.Vengeance" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#0F0000</item>
+        <item name="shadeColorSecondary">#2F0000</item>
+        <item name="shadeColorAccent">#5F0000</item>
+        <item name="widgetsTheme">@style/Shade.Vengeance</item>
+    </style>
+
+    <!-- MIDNIGHT: Gray -->
+    <style name="Shade.Midnight" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#616161</item>
+        <item name="shadeColorSecondary">#000000</item>
+        <item name="shadeColorAccent">#212121</item>
+        <item name="widgetsTheme">@style/Shade.Midnight</item>
     </style>
 </resources>
