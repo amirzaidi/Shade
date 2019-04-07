@@ -19,3 +19,7 @@
 -keep class amirz.shade.icons.ThirdPartyIconProvider {
   public <init>(...);
 }
+
+-keep class amirz.shade.transitions.TransitionManager {
+  public <init>(...);
+}

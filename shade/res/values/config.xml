@@ -10,6 +10,8 @@
 
     <string name="app_info_shortcut_class" translatable="false">amirz.shade.customization.PreferencesShortcut</string>
 
+    <string name="app_transition_manager_class" translatable="false">amirz.shade.transitions.TransitionManager</string>
+
     <string-array name="category_entries">
         <item>Favorites</item>
         <item>Media</item>
