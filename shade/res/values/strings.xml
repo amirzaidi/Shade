@@ -25,14 +25,14 @@
     <string name="theme_title">Theme</string>
     <string name="theme_default">Default</string>
     <string name="theme_transparent">Transparent</string>
-    <string name="theme_nature">Nature</string>
-    <string name="theme_sunrise">Sunrise</string>
     <string name="theme_sunset">Sunset</string>
     <string name="theme_campfire">Campfire</string>
+    <string name="theme_sunrise">Sunrise</string>
+    <string name="theme_forest">Forest</string>
+    <string name="theme_ocean">Ocean</string>
     <string name="theme_twilight">Twilight</string>
     <string name="theme_glamour">Glamour</string>
-    <string name="theme_blueberry">Blueberry</string>
-    <string name="theme_vengeance">Vengeance</string>
+    <string name="theme_eclipse">Eclipse</string>
     <string name="theme_midnight">Midnight</string>
 
     <string name="shadespace_subtext_double">%1$s - %2$s</string>

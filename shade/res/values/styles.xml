@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="@style/LauncherTheme">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
-        <item name="searchBoxColor">?attr/popupColorPrimary</item>
+        <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
     </style>
@@ -11,7 +11,7 @@
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
-        <item name="searchBoxColor">?attr/popupColorPrimary</item>
+        <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
     </style>
@@ -19,14 +19,14 @@
     <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
-        <item name="searchBoxColor">?attr/popupColorPrimary</item>
+        <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
-        <item name="searchBoxColor">?attr/popupColorPrimary</item>
+        <item name="headerColor">?attr/popupColorPrimary</item>
     </style>
 
     <!-- Theme for the widget container. Overridden on API 26. -->
@@ -70,56 +70,39 @@
         <item name="workspaceStatusBarScrim">@null</item>
 
         <item name="allAppsScrimColor">#33000000</item>
-        <item name="searchBoxColor">?attr/shadeColorAccent</item>
+        <item name="headerColor">?attr/shadeColorAccent</item>
         <item name="widgetsTheme">@style/Shade.Transparent</item>
     </style>
 
     <!--
     Override
-    1. ScrimColor
-    2. ScrimColorFoot
-    3. ColorAccent
+    1. shadeColorPrimary
+    2. shadeColorSecondary
+    3. shadeColorAccent
     -->
     <style name="Shade.Light" parent="AppTheme">
         <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
-        <item name="popupColorTertiary">?attr/shadeColorAccent</item>
-        <item name="android:textColorSecondary">#A0000000</item>
     </style>
 
     <!--
     Override
-    1. ScrimColor
-    2. ColorPrimary
-    3. ColorAccent
+    1. shadeColorPrimary
+    2. shadeColorSecondary
+    3. shadeColorAccent
     4. WidgetsTheme
     -->
     <style name="Shade.Dark" parent="AppTheme.Dark">
-        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="android:colorPrimary">?attr/shadeColorSecondary</item>
-
         <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
         <item name="android:colorPrimaryDark">?attr/shadeColorAccent</item>
+
+        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
 
         <item name="popupColorPrimary">?attr/shadeColorAccent</item>
         <item name="popupColorSecondary">?attr/shadeColorSecondary</item>
         <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
-    </style>
-
-    <!-- NATURE: Green -->
-    <style name="Shade.Nature" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#004D40</item>
-        <item name="shadeColorSecondary">#1B5E20</item>
-        <item name="shadeColorAccent">#33691E</item>
-        <item name="widgetsTheme">@style/Shade.Nature</item>
-    </style>
-
-    <!-- SUNRISE: Yellow -->
-    <style name="Shade.Sunrise" parent="@style/Shade.Light">
-        <item name="shadeColorPrimary">#FF80AB</item>
-        <item name="shadeColorSecondary">#82B1FF</item>
-        <item name="shadeColorAccent">#FFAB00</item>
     </style>
 
     <!-- SUNSET: Red -->
@@ -138,6 +121,29 @@
         <item name="widgetsTheme">@style/Shade.Sunset</item>
     </style>
 
+    <!-- SUNRISE: Yellow -->
+    <style name="Shade.Sunrise" parent="@style/Shade.Light">
+        <item name="shadeColorPrimary">#82B1FF</item>
+        <item name="shadeColorSecondary">#FFB74D</item>
+        <item name="shadeColorAccent">#FFD600</item>
+    </style>
+
+    <!-- FOREST: Green -->
+    <style name="Shade.Forest" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#004D40</item>
+        <item name="shadeColorSecondary">#1B5E20</item>
+        <item name="shadeColorAccent">#33691E</item>
+        <item name="widgetsTheme">@style/Shade.Forest</item>
+    </style>
+
+    <!-- OCEAN: Blue -->
+    <style name="Shade.Ocean" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#81D4FA</item>
+        <item name="shadeColorSecondary">#1E88E5</item>
+        <item name="shadeColorAccent">#03A9F4</item>
+        <item name="widgetsTheme">@style/Shade.Ocean</item>
+    </style>
+
     <!-- TWILIGHT: Purple -->
     <style name="Shade.Twilight" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">#26a69a</item>
@@ -153,20 +159,12 @@
         <item name="shadeColorAccent">#C51162</item>
     </style>
 
-    <!-- BLUEBERRY: Blue -->
-    <style name="Shade.Blueberry" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#4527A0</item>
-        <item name="shadeColorSecondary">#1A237E</item>
-        <item name="shadeColorAccent">#536DFE</item>
-        <item name="widgetsTheme">@style/Shade.Blueberry</item>
-    </style>
-
-    <!-- VENGEANCE: Brown -->
-    <style name="Shade.Vengeance" parent="@style/Shade.Dark">
+    <!-- ECLIPSE: Brown -->
+    <style name="Shade.Eclipse" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">#0F0000</item>
         <item name="shadeColorSecondary">#2F0000</item>
         <item name="shadeColorAccent">#5F0000</item>
-        <item name="widgetsTheme">@style/Shade.Vengeance</item>
+        <item name="widgetsTheme">@style/Shade.Eclipse</item>
     </style>
 
     <!-- MIDNIGHT: Gray -->

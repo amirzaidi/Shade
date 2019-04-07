@@ -5,7 +5,7 @@
         android:left="3dp"
         android:right="3dp">
         <shape android:shape="oval">
-            <solid android:color="#FFFFFF" />
+            <solid android:color="?attr/headerColor" />
         </shape>
     </item>
     <item
@@ -14,5 +14,5 @@
         android:bottom="11dp"
         android:left="11dp"
         android:right="11dp"
-        android:drawable="@drawable/ic_category_favorites" />
+        android:drawable="@drawable/ic_category_placeholder" />
 </layer-list>

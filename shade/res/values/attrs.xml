@@ -2,7 +2,7 @@
 <resources>
     <attr name="allAppsScrimColorFoot" format="color" />
     <attr name="bottomSheetNavBarColor" format="color" />
-    <attr name="searchBoxColor" format="color" />
+    <attr name="headerColor" format="color" />
 
     <attr name="shadeColorPrimary" format="color" />
     <attr name="shadeColorSecondary" format="color" />

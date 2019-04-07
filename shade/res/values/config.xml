@@ -42,28 +42,30 @@
     <string-array name="theme_entries">
         <item>@string/theme_default</item>
         <item>@string/theme_transparent</item>
-        <item>@string/theme_nature</item>
-        <item>@string/theme_sunrise</item>
+
         <item>@string/theme_sunset</item>
         <item>@string/theme_campfire</item>
+        <item>@string/theme_sunrise</item>
+        <item>@string/theme_forest</item>
+        <item>@string/theme_ocean</item>
         <item>@string/theme_twilight</item>
         <item>@string/theme_glamour</item>
-        <item>@string/theme_blueberry</item>
-        <item>@string/theme_vengeance</item>
+        <item>@string/theme_eclipse</item>
         <item>@string/theme_midnight</item>
     </string-array>
 
     <string-array translatable="false" name="theme_entry_values">
         <item>""</item>
         <item>"transparent"</item>
-        <item>"nature"</item>
-        <item>"sunrise"</item>
+
         <item>"sunset"</item>
         <item>"campfire"</item>
+        <item>"sunrise"</item>
+        <item>"forest"</item>
+        <item>"ocean"</item>
         <item>"twilight"</item>
         <item>"glamour"</item>
-        <item>"blueberry"</item>
-        <item>"vengeance"</item>
+        <item>"eclipse"</item>
         <item>"midnight"</item>
     </string-array>
 </resources>
