@@ -1,11 +1,17 @@
 package amirz.shade.icons;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
+import android.os.Process;
 
+import com.android.launcher3.AppInfo;
 import com.android.launcher3.FastBitmapDrawable;
 import com.android.launcher3.ItemInfoWithIcon;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.graphics.BitmapInfo;
 import com.android.launcher3.graphics.DrawableFactory;
 import com.android.launcher3.util.ComponentKey;
 
@@ -64,5 +70,16 @@ public class ThirdPartyDrawableFactory extends DrawableFactory {
         }
 
         return super.newIcon(info);
+    }
+
+    @Override
+    public FastBitmapDrawable newIcon(BitmapInfo info, ActivityInfo target) {
+        AppInfo appInfo = new AppInfo();
+        appInfo.iconBitmap = info.icon;
+        appInfo.iconColor = info.color;
+        appInfo.intent = new Intent().setComponent(
+                new ComponentName(target.packageName, target.name));
+        appInfo.user = Process.myUserHandle();
+        return newIcon(appInfo);
     }
 }
