@@ -95,19 +95,23 @@ public class ShadespaceView extends LinearLayout
     private boolean mRunning;
 
     public void onResume() {
-        mRunning = true;
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_TIME_TICK);
-        intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
-        intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-        getContext().registerReceiver(mTimeChangeReceiver, intentFilter);
-        mMedia.onResume(); // Triggers reload
+        if (!mRunning) {
+            mRunning = true;
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(Intent.ACTION_TIME_TICK);
+            intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
+            intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+            getContext().registerReceiver(mTimeChangeReceiver, intentFilter);
+            mMedia.onResume(); // Triggers reload
+        }
     }
 
     public void onPause() {
-        mRunning = false;
-        getContext().unregisterReceiver(mTimeChangeReceiver);
-        mMedia.onPause();
+        if (mRunning) {
+            mRunning = false;
+            getContext().unregisterReceiver(mTimeChangeReceiver);
+            mMedia.onPause();
+        }
     }
 
     @Override
