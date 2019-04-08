@@ -2,24 +2,15 @@ package amirz.shade.shadespace;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.provider.CalendarContract;
 import android.service.notification.StatusBarNotification;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 
-import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherNotifications;
 import com.android.launcher3.R;
-import com.android.launcher3.notification.NotificationInfo;
 import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.touch.SwipeDetector;
@@ -29,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShadespaceView extends LinearLayout
-        implements SwipeDetector.Listener, NotificationListener.NotificationsChangedListener {
+        implements SwipeDetector.Listener, NotificationListener.NotificationsChangedListener, ShadespaceController.DoubleLineView {
     private final static float NOTIFICATION_OPEN_VELOCITY = 2.25f;
     private final static float NOTIFICATION_CLOSE_VELOCITY = -0.35f;
 
@@ -41,9 +32,8 @@ public class ShadespaceView extends LinearLayout
 
     private final List<NotificationKeyData> mNotifications = new ArrayList<>();
     private final List<StatusBarNotification> mSbn = new ArrayList<>();
-    private final NotificationRanker mRanker;
     private final MediaListener mMedia;
-    private final MultiClickListener mTaps;
+    private final ShadespaceController mController;
 
     @SuppressLint({"ClickableViewAccessibility"})
     public ShadespaceView(Context context, AttributeSet attrs) {
@@ -56,15 +46,13 @@ public class ShadespaceView extends LinearLayout
             }
         };
 
-        mRanker = new NotificationRanker(mSbn);
         mMedia = new MediaListener(context, mSbn, this::reload);
-
-        mTaps = new MultiClickListener(300);
-        mTaps.setListeners(mMedia::toggle, mMedia::next, mMedia::previous);
 
         SwipeDetector swipe = new SwipeDetector(context, this, SwipeDetector.VERTICAL);
         swipe.setDetectableScrollConditions(SwipeDetector.DIRECTION_BOTH, false);
         setOnTouchListener((v, event) -> swipe.onTouchEvent(event) && swipe.isDraggingState());
+
+        mController = new ShadespaceController(this, mMedia, new NotificationRanker(mSbn));
     }
 
     @Override
@@ -165,76 +153,27 @@ public class ShadespaceView extends LinearLayout
     private void reload() {
         // Do not update the content when we are paused.
         // This prevents the text from updating immediately when interacting with it.
-        if (!mRunning) {
-            return;
-        }
-
-        if (mMedia.isTracking()) {
-            mTopView.setText(mMedia.getTitle());
-            CharSequence app = getApp(mMedia.getPackage());
-            if (TextUtils.isEmpty(mMedia.getArtist())) {
-                mBottomView.setText(app);
-            } else if (TextUtils.isEmpty(mMedia.getAlbum())
-                    || mMedia.getTitle().equals(mMedia.getAlbum())) {
-                mBottomView.setText(mMedia.getArtist());
-            } else {
-                mBottomView.setText(formatSubtext(mMedia.getArtist(), mMedia.getAlbum()));
-            }
-            setOnClickListener(mTaps);
-        } else {
-            // Default values
-            mTopView.setText(DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
-                    DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
-            setOnClickListener(this::openCalendar);
-
-            NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
-            if (ranked == null) {
-                // Bottom view always gets overwritten by one of the other cases.
-                mBottomView.setText(R.string.shadespace_subtext_default);
-            } else {
-                NotificationInfo notification = new NotificationInfo(getContext(), ranked.sbn);
-                String text = notification.text == null
-                        ? ""
-                        : notification.text.toString().trim().split("\n")[0];
-                if (ranked.important) {
-                    CharSequence app = getApp(notification.packageUserKey.mPackageName);
-                    if (TextUtils.isEmpty(text)) {
-                        mTopView.setText(notification.title);
-                        mBottomView.setText(app);
-                    } else {
-                        mTopView.setText(text);
-                        mBottomView.setText(formatSubtext(app, notification.title));
-                    }
-                    setOnClickListener(notification);
-                } else if (TextUtils.isEmpty(text)) {
-                    mBottomView.setText(notification.title);
-                } else {
-                    mBottomView.setText(formatSubtext(notification.title, text));
-                }
-            }
+        if (mRunning) {
+            mController.reload();
         }
     }
 
-    private String formatSubtext(CharSequence one, CharSequence two) {
-        return getContext().getString(R.string.shadespace_subtext_double, one, two);
+    @Override
+    public void setTopText(CharSequence s) {
+        mTopView.setText(s);
     }
 
-    private CharSequence getApp(String name) {
-        PackageManager pm = getContext().getPackageManager();
-        try {
-            return pm.getApplicationLabel(
-                    pm.getApplicationInfo(name, PackageManager.GET_META_DATA));
-        } catch (PackageManager.NameNotFoundException ignored) {
-        }
-        return name;
+    public void resetBottomText() {
+        mBottomView.setText(R.string.shadespace_subtext_default);
     }
 
-    private void openCalendar(View v) {
-        Uri.Builder timeUri = CalendarContract.CONTENT_URI.buildUpon().appendPath("time");
-        ContentUris.appendId(timeUri, System.currentTimeMillis());
-        Intent addFlags = new Intent(Intent.ACTION_VIEW)
-                .setData(timeUri.build())
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        Launcher.getLauncher(getContext()).startActivitySafely(v, addFlags, null);
+    @Override
+    public void setBottomText(CharSequence s) {
+        mBottomView.setText(s);
+    }
+
+    @Override
+    public void setBottomTextSplit(CharSequence s1, CharSequence s2) {
+        mBottomView.setText(getContext().getString(R.string.shadespace_subtext_double, s1, s2));
     }
 }
