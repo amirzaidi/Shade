@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
 import amirz.shade.shadespace.ShadespaceView;
+import amirz.shade.transitions.TransitionManager;
 
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
@@ -357,7 +358,8 @@ public class ShadeLauncher extends Launcher {
             super.recreate();
         }
         mState = State.STARTED;
-        overridePendingTransition(R.anim.enter_launcher, R.anim.exit_app);
+        TransitionManager manager = (TransitionManager) getAppTransitionManager();
+        manager.overrideAppClose(this);
     }
 
     @Override

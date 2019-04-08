@@ -16,14 +16,17 @@
 package com.android.launcher3.uioverrides;
 
 import android.content.Context;
-import android.view.OrientationEventListener;
+import android.os.Handler;
+
+import com.android.systemui.shared.system.RotationWatcher;
 
 /**
  * Utility class for listening for rotation changes
  */
-public class DisplayRotationListener extends OrientationEventListener {
+public class DisplayRotationListener extends RotationWatcher {
 
     private final Runnable mCallback;
+    private Handler mHandler;
 
     public DisplayRotationListener(Context context, Runnable callback) {
         super(context);
@@ -31,7 +34,15 @@ public class DisplayRotationListener extends OrientationEventListener {
     }
 
     @Override
-    public void onOrientationChanged(int i) {
-        mCallback.run();
+    public void enable() {
+        if (mHandler == null) {
+            mHandler = new Handler();
+        }
+        super.enable();
+    }
+
+    @Override
+    protected void onRotationChanged(int i) {
+        mHandler.post(mCallback);
     }
 }

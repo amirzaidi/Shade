@@ -19,7 +19,9 @@ import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
+import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
+import com.android.quickstep.QuickstepProcessInitializer;
 
 import static com.android.launcher3.LauncherAnimUtils.ALL_APPS_TRANSITION_MS;
 import static com.android.launcher3.allapps.DiscoveryBounce.HOME_BOUNCE_SEEN;
@@ -47,7 +49,8 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public void onStateEnabled(Launcher launcher) {
-        if (!launcher.getSharedPrefs().getBoolean(HOME_BOUNCE_SEEN, false)) {
+        if (!QuickstepProcessInitializer.isEnabled()
+                && !launcher.getSharedPrefs().getBoolean(HOME_BOUNCE_SEEN, false)) {
             launcher.getSharedPrefs().edit().putBoolean(HOME_BOUNCE_SEEN, true).apply();
         }
 
@@ -57,7 +60,12 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public String getDescription(Launcher launcher) {
-        return launcher.getString(R.string.all_apps_button_label);
+        if (QuickstepProcessInitializer.isEnabled()) {
+            AllAppsContainerView appsView = launcher.getAppsView();
+            return appsView.getDescription();
+        } else {
+            return launcher.getString(R.string.all_apps_button_label);
+        }
     }
 
     @Override
@@ -67,13 +75,30 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public float[] getWorkspaceScaleAndTranslation(Launcher launcher) {
-        return new float[] { 1f, 0,
-                -launcher.getAllAppsController().getShiftRange() * PARALLAX_COEFFICIENT};
+        if (QuickstepProcessInitializer.isEnabled()) {
+            float[] scaleAndTranslation = LauncherState.OVERVIEW.getWorkspaceScaleAndTranslation(
+                    launcher);
+            scaleAndTranslation[0] = 1;
+            return scaleAndTranslation;
+        } else {
+            return new float[] { 1f, 0,
+                    -launcher.getAllAppsController().getShiftRange() * PARALLAX_COEFFICIENT};
+        }
     }
 
     @Override
     public PageAlphaProvider getWorkspacePageAlphaProvider(Launcher launcher) {
         return PAGE_ALPHA_PROVIDER;
+    }
+
+    @Override
+    public float[] getOverviewScaleAndTranslationYFactor(Launcher launcher) {
+        return new float[] {0.9f, -0.2f};
+    }
+
+    @Override
+    public LauncherState getHistoryForState(LauncherState previousState) {
+        return previousState == OVERVIEW ? OVERVIEW : NORMAL;
     }
 
     @Override

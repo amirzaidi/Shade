@@ -1,5 +1,6 @@
 package amirz.shade.transitions;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.graphics.Rect;
@@ -8,15 +9,20 @@ import android.view.View;
 
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherAppTransitionManager;
+import com.android.launcher3.LauncherAppTransitionManagerImpl;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.quickstep.QuickstepProcessInitializer;
 
-public class TransitionManager extends LauncherAppTransitionManager {
+public class TransitionManager extends LauncherAppTransitionManagerImpl {
     public TransitionManager(Context context) {
+        super(context);
     }
 
     public ActivityOptions getActivityLaunchOptions(Launcher launcher, View v) {
+        if (QuickstepProcessInitializer.isEnabled()) {
+            return super.getActivityLaunchOptions(launcher, v);
+        }
         if (Utilities.ATLEAST_MARSHMALLOW) {
             int left = 0, top = 0;
             int width = v.getWidth(), height = v.getHeight();
@@ -40,5 +46,11 @@ public class TransitionManager extends LauncherAppTransitionManager {
                     R.anim.no_anim);
         }
         return null;
+    }
+
+    public void overrideAppClose(Activity activity) {
+        if (!QuickstepProcessInitializer.isEnabled()) {
+            activity.overridePendingTransition(R.anim.enter_launcher, R.anim.exit_app);
+        }
     }
 }
