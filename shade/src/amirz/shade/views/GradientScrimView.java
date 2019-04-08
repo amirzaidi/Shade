@@ -52,11 +52,14 @@ public class GradientScrimView extends ShelfScrimView {
         float radius = Math.max(mHeight, mWidth) * gradientCenterY;
         float posScreenBottom = (radius - mHeight) / radius; // center lives below screen
 
+        int alpha = getResources().getInteger(R.integer.shade_gradient_alpha);
+        int colorHead = ColorUtils.setAlphaComponent(mThemeScrimColor, alpha);
+        int colorFoot = ColorUtils.setAlphaComponent(mThemeScrimColorFoot, alpha);
         mPaintWithScrim.setShader(new RadialGradient(
                 mWidth * 0.5f,
                 mHeight * gradientCenterY,
                 radius,
-                new int[] { mThemeScrimColorFoot, mThemeScrimColorFoot, mThemeScrimColor },
+                new int[] { colorFoot, colorFoot, colorHead },
                 new float[] {0f, posScreenBottom, 1f},
                 Shader.TileMode.CLAMP));
     }
