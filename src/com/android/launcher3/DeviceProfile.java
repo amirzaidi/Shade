@@ -205,8 +205,8 @@ public class DeviceProfile {
                 + res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_bottom_padding);
         hotseatBarSidePaddingEndPx =
                 res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_side_padding);
-        // Add a bit of space between nav bar and hotseat in multi-window vertical bar layout.
-        hotseatBarSidePaddingStartPx = isMultiWindowMode && isVerticalBarLayout()
+        // Add a bit of space between nav bar and hotseat in vertical bar layout.
+        hotseatBarSidePaddingStartPx = isVerticalBarLayout()
                 ? edgeMarginPx : 0;
         hotseatBarSizePx = isVerticalBarLayout()
                 ? Utilities.pxFromDp(inv.iconSize, dm) + hotseatBarSidePaddingStartPx
