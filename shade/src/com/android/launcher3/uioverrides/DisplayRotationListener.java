@@ -16,33 +16,72 @@
 package com.android.launcher3.uioverrides;
 
 import android.content.Context;
+import android.view.OrientationEventListener;
 import android.os.Handler;
 
+import com.android.quickstep.QuickstepProcessInitializer;
 import com.android.systemui.shared.system.RotationWatcher;
 
 /**
  * Utility class for listening for rotation changes
  */
-public class DisplayRotationListener extends RotationWatcher {
+public class DisplayRotationListener extends OrientationEventListener {
 
     private final Runnable mCallback;
-    private Handler mHandler;
+    private DisplayRotationListenerQuickstep mQuickstepListener;
 
     public DisplayRotationListener(Context context, Runnable callback) {
         super(context);
         mCallback = callback;
+        if (QuickstepProcessInitializer.isEnabled()) {
+            mQuickstepListener = new DisplayRotationListenerQuickstep(context);
+        }
+    }
+
+    @Override
+    public void onOrientationChanged(int i) {
+        mCallback.run();
     }
 
     @Override
     public void enable() {
-        if (mHandler == null) {
-            mHandler = new Handler();
+        if (mQuickstepListener == null) {
+            super.enable();
+        } else {
+            mQuickstepListener.enable();
         }
-        super.enable();
     }
 
     @Override
-    protected void onRotationChanged(int i) {
-        mHandler.post(mCallback);
+    public void disable() {
+        if (mQuickstepListener == null) {
+            super.disable();
+        } else {
+            mQuickstepListener.disable();
+        }
+    }
+
+    /**
+     * Unmodified Quickstep class, shimmed to work on Pie's API blacklist.
+     */
+    private class DisplayRotationListenerQuickstep extends RotationWatcher {
+        private Handler mHandler;
+
+        private DisplayRotationListenerQuickstep(Context context) {
+            super(context);
+        }
+
+        @Override
+        public void enable() {
+            if (mHandler == null) {
+                mHandler = new Handler();
+            }
+            super.enable();
+        }
+
+        @Override
+        protected void onRotationChanged(int i) {
+            mHandler.post(mCallback);
+        }
     }
 }
