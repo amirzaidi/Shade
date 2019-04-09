@@ -34,6 +34,6 @@
     <string name="theme_blossom">Blossom</string>
     <string name="theme_midnight">Midnight</string>
 
-    <string name="shadespace_subtext_double">%1$s - %2$s</string>
-    <string name="shadespace_subtext_default">Press home to search for apps</string>
+    <string name="shadespace_subtext_double">%1$s – %2$s</string>
+    <string name="shadespace_subtext_default">Press home to search apps</string>
 </resources>
