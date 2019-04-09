@@ -30,6 +30,7 @@ import android.view.WindowManager;
 
 import com.android.launcher3.CellLayout.ContainerType;
 import com.android.launcher3.badge.BadgeRenderer;
+import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.graphics.IconNormalizer;
 
 public class DeviceProfile {
@@ -558,7 +559,7 @@ public class DeviceProfile {
     }
 
     public boolean shouldFadeAdjacentWorkspaceScreens() {
-        return isVerticalBarLayout() || isLargeTablet;
+        return isVerticalBarLayout() || isLargeTablet || FeatureFlags.FADE_WORKSPACE;
     }
 
     public int getCellHeight(@ContainerType int containerType) {

@@ -60,4 +60,7 @@ abstract class BaseFlags {
 
     // When enabled, all legacy icons are wrapped in an adaptive icon wrapper.
     public static final boolean FORCE_ADAPTIVE_ICONS = false;
+
+    // When enabled, the workspace will fade in portrait mode while swiping.
+    public static final boolean FADE_WORKSPACE = false;
 }
