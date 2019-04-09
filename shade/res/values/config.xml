@@ -45,14 +45,13 @@
         <item>@string/theme_default</item>
         <item>@string/theme_transparent</item>
 
-        <item>@string/theme_sunset</item>
         <item>@string/theme_campfire</item>
+        <item>@string/theme_sunset</item>
         <item>@string/theme_sunrise</item>
         <item>@string/theme_forest</item>
         <item>@string/theme_ocean</item>
         <item>@string/theme_twilight</item>
-        <item>@string/theme_glamour</item>
-        <item>@string/theme_eclipse</item>
+        <item>@string/theme_blossom</item>
         <item>@string/theme_midnight</item>
     </string-array>
 
@@ -60,14 +59,13 @@
         <item>""</item>
         <item>"transparent"</item>
 
-        <item>"sunset"</item>
         <item>"campfire"</item>
+        <item>"sunset"</item>
         <item>"sunrise"</item>
         <item>"forest"</item>
         <item>"ocean"</item>
         <item>"twilight"</item>
-        <item>"glamour"</item>
-        <item>"eclipse"</item>
+        <item>"blossom"</item>
         <item>"midnight"</item>
     </string-array>
 </resources>

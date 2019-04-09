@@ -105,19 +105,19 @@
         <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
     </style>
 
-    <!-- SUNSET: Red -->
-    <style name="Shade.Sunset" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#880E4F</item>
+    <!-- CAMPFIRE: Red -->
+    <style name="Shade.Campfire" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#FFA000</item>
         <item name="shadeColorSecondary">#B71C1C</item>
-        <item name="shadeColorAccent">#D50000</item>
-        <item name="widgetsTheme">@style/Shade.Sunset</item>
+        <item name="shadeColorAccent">#D32F2F</item>
+        <item name="widgetsTheme">@style/Shade.Campfire</item>
     </style>
 
-    <!-- CAMPFIRE: Orange -->
-    <style name="Shade.Campfire" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#B71C1C</item>
-        <item name="shadeColorSecondary">#EF6C00</item>
-        <item name="shadeColorAccent">#FF6D00</item>
+    <!-- SUNSET: Orange -->
+    <style name="Shade.Sunset" parent="@style/Shade.Dark">
+        <item name="shadeColorPrimary">#600538</item>
+        <item name="shadeColorSecondary">#ff8606</item>
+        <item name="shadeColorAccent">#D84315</item>
         <item name="widgetsTheme">@style/Shade.Sunset</item>
     </style>
 
@@ -130,9 +130,9 @@
 
     <!-- FOREST: Green -->
     <style name="Shade.Forest" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#004D40</item>
+        <item name="shadeColorPrimary">#7C4325</item>
         <item name="shadeColorSecondary">#1B5E20</item>
-        <item name="shadeColorAccent">#33691E</item>
+        <item name="shadeColorAccent">#2E7D32</item>
         <item name="widgetsTheme">@style/Shade.Forest</item>
     </style>
 
@@ -152,19 +152,11 @@
         <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
 
-    <!-- GLAMOUR: Pink -->
-    <style name="Shade.Glamour" parent="@style/Shade.Light">
+    <!-- BLOSSOM: Pink -->
+    <style name="Shade.Blossom" parent="@style/Shade.Light">
         <item name="shadeColorPrimary">#EEF3E5F5</item>
         <item name="shadeColorSecondary">#DDE1BEE7</item>
         <item name="shadeColorAccent">#C51162</item>
-    </style>
-
-    <!-- ECLIPSE: Brown -->
-    <style name="Shade.Eclipse" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#0F0000</item>
-        <item name="shadeColorSecondary">#2F0000</item>
-        <item name="shadeColorAccent">#5F0000</item>
-        <item name="widgetsTheme">@style/Shade.Eclipse</item>
     </style>
 
     <!-- MIDNIGHT: Gray -->

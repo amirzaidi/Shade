@@ -155,8 +155,7 @@ public class ShadeSettings extends SettingsActivity {
             case "forest": return R.style.Shade_Forest;
             case "ocean": return R.style.Shade_Ocean;
             case "twilight": return R.style.Shade_Twilight;
-            case "glamour": return R.style.Shade_Glamour;
-            case "eclipse": return R.style.Shade_Eclipse;
+            case "blossom": return R.style.Shade_Blossom;
             case "midnight": return R.style.Shade_Midnight;
         }
         return defValue;
