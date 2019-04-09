@@ -117,6 +117,12 @@ android {
             manifest.srcFile "quickstep/AndroidManifest.xml"
         }
     }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs.add('-Xbootclasspath/p:compile/framework_lawnchair.jar')
+        }
+    }
 }
 
 repositories {
@@ -134,6 +140,7 @@ dependencies {
     implementation 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-7'
 
     quickstepImplementation fileTree(dir: "quickstep/libs", include: 'sysui_shared.jar')
+    releaseCompileOnly fileTree(dir: 'compile', include: 'framework_lawnchair.jar')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "org.mockito:mockito-core:1.9.5"
