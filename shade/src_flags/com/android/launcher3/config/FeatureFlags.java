@@ -26,4 +26,7 @@ public final class FeatureFlags extends BaseFlags {
     // When enabled, all legacy icons are wrapped in an adaptive icon.
     public static final boolean FORCE_ADAPTIVE_ICONS = true;
 
+    // When enabled, the workspace will fade in portrait mode while swiping.
+    public static final boolean FADE_WORKSPACE = true;
+
 }
