@@ -19,7 +19,6 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
-import com.google.android.libraries.gsa.launcherclient.LauncherClientCallbacks;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -50,64 +49,13 @@ public class ShadeLauncher extends Launcher {
         return mCallbacks;
     }
 
-    private static class OverlayCallbackImpl implements LauncherOverlay, LauncherClientCallbacks {
-        private final Launcher mLauncher;
-
-        private LauncherClient mClient;
-        private LauncherOverlayCallbacks mLauncherOverlayCallbacks;
-        private boolean mWasOverlayAttached = false;
-
-        private OverlayCallbackImpl(Launcher launcher) {
-            mLauncher = launcher;
-        }
-
-        private void setClient(LauncherClient client) {
-            mClient = client;
-        }
-
-        @Override
-        public void onServiceStateChanged(boolean overlayAttached, boolean hotwordActive) {
-            if (overlayAttached != mWasOverlayAttached) {
-                mWasOverlayAttached = overlayAttached;
-                mLauncher.setLauncherOverlay(overlayAttached ? this : null);
-            }
-        }
-
-        @Override
-        public void onOverlayScrollChanged(float progress) {
-            if (mLauncherOverlayCallbacks != null) {
-                mLauncherOverlayCallbacks.onScrollChanged(progress);
-            }
-        }
-
-        @Override
-        public void onScrollInteractionBegin() {
-            mClient.startMove();
-        }
-
-        @Override
-        public void onScrollInteractionEnd() {
-            mClient.endMove();
-        }
-
-        @Override
-        public void onScrollChange(float progress, boolean rtl) {
-            mClient.updateMove(progress);
-        }
-
-        @Override
-        public void setOverlayCallbacks(LauncherOverlayCallbacks callbacks) {
-            mLauncherOverlayCallbacks = callbacks;
-        }
-    }
-
     private static class SearchLauncherCallbacks
             implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener,
             DeviceProfile.OnDeviceProfileChangeListener,
             SharedPreferences.OnSharedPreferenceChangeListener {
         private final Launcher mLauncher;
 
-        private OverlayCallbackImpl mOverlayCallbacks;
+        private ShadeOverlay mOverlayCallbacks;
         private LauncherClient mLauncherClient;
         private boolean mDeferCallbacks;
         private final Bundle mPrivateOptions = new Bundle();
@@ -131,7 +79,7 @@ public class ShadeLauncher extends Launcher {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             SharedPreferences prefs = Utilities.getPrefs(mLauncher);
-            mOverlayCallbacks = new OverlayCallbackImpl(mLauncher);
+            mOverlayCallbacks = new ShadeOverlay(mLauncher);
             mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
             mOverlayCallbacks.setClient(mLauncherClient);
 
