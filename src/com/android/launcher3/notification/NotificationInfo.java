@@ -67,19 +67,25 @@ public class NotificationInfo implements View.OnClickListener {
         text = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
 
         if (Utilities.ATLEAST_OREO) mBadgeIcon = notification.getBadgeIconType();
-        // Load the icon. Since it is backed by ashmem, we won't copy the entire bitmap
-        // into our process as long as we don't touch it and it exists in systemui.
-        Icon icon = mBadgeIcon == Notification.BADGE_ICON_SMALL ? null : notification.getLargeIcon();
-        if (icon == null) {
-            // Use the small icon.
-            icon = notification.getSmallIcon();
-            mIconDrawable = icon == null ? null : icon.loadDrawable(context);
-            mIconColor = statusBarNotification.getNotification().color;
-            mIsIconLarge = false;
+        if (Utilities.ATLEAST_MARSHMALLOW) {
+            // Load the icon. Since it is backed by ashmem, we won't copy the entire bitmap
+            // into our process as long as we don't touch it and it exists in systemui.
+            Icon icon = mBadgeIcon == Notification.BADGE_ICON_SMALL
+                    ? null
+                    : notification.getLargeIcon();
+            if (icon == null) {
+                // Use the small icon.
+                icon = notification.getSmallIcon();
+                mIconDrawable = icon == null ? null : icon.loadDrawable(context);
+                mIconColor = statusBarNotification.getNotification().color;
+                mIsIconLarge = false;
+            } else {
+                // Use the large icon.
+                mIconDrawable = icon.loadDrawable(context);
+                mIsIconLarge = true;
+            }
         } else {
-            // Use the large icon.
-            mIconDrawable = icon.loadDrawable(context);
-            mIsIconLarge = true;
+            mIconDrawable = context.getResources().getDrawable(notification.icon);
         }
         if (mIconDrawable == null) {
             mIconDrawable = new BitmapDrawable(context.getResources(), LauncherAppState
@@ -98,10 +104,14 @@ public class NotificationInfo implements View.OnClickListener {
             return;
         }
         final Launcher launcher = Launcher.getLauncher(view.getContext());
-        Bundle activityOptions = ActivityOptions.makeClipRevealAnimation(
-                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
         try {
-            intent.send(null, 0, null, null, null, null, activityOptions);
+            if (Utilities.ATLEAST_MARSHMALLOW) {
+                Bundle activityOptions = ActivityOptions.makeClipRevealAnimation(
+                        view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
+                intent.send(null, 0, null, null, null, null, activityOptions);
+            } else {
+                intent.send();
+            }
             launcher.getUserEventDispatcher().logNotificationLaunch(view, intent);
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();

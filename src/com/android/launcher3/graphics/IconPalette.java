@@ -87,7 +87,7 @@ public class IconPalette {
      */
     private static int resolveColor(Context context, int color) {
         if (color == Notification.COLOR_DEFAULT) {
-            return context.getColor(R.color.notification_icon_default_color);
+            return context.getResources().getColor(R.color.notification_icon_default_color);
         }
         return color;
     }
