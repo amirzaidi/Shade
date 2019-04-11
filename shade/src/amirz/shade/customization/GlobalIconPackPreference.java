@@ -29,11 +29,6 @@ public class GlobalIconPackPreference extends IconPackPreference {
     }
 
     @Override
-    protected void load() {
-        super.load();
-    }
-
-    @Override
     protected Map<String, CharSequence> getPacks() {
         return IconPackManager.get(getContext()).getProviderNames();
     }
