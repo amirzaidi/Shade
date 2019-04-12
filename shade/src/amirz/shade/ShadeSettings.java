@@ -146,7 +146,7 @@ public class ShadeSettings extends SettingsActivity {
         }
     }
 
-    static int getThemeRes(Context context, int defValue) {
+    public static int getThemeRes(Context context, int defValue) {
         switch (Utilities.getPrefs(context).getString(ShadeSettings.PREF_THEME, "")) {
             case "transparent": return R.style.Shade_Transparent;
             case "sunset": return R.style.Shade_Sunset;

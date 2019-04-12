@@ -58,6 +58,11 @@
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
     </style>
 
+    <!-- Applied at the end of loading -->
+    <style name="ShadeDialog.Override" parent="android:Theme.DeviceDefault.Light.Dialog.Alert">
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+    </style>
+
     <!-- These need to be compatible with API 21, so only extend default and dark. -->
     <style name="Shade.DialogAlert" parent="@android:style/Theme.Material.Dialog.Alert">
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
