@@ -243,12 +243,10 @@ public class RecyclerViewFastScroller extends View {
             case MotionEvent.ACTION_MOVE:
                 mLastY = y;
 
-                // Check if we should start scrolling, but ignore this fastscroll gesture if we have
-                // exceeded some fixed movement
+                // Check if we should start scrolling
                 mIgnoreDragGesture |= Math.abs(y - mDownY) > mConfig.getScaledPagingTouchSlop();
                 if (!mIsDragging && !mIgnoreDragGesture && mRv.supportsFastScrolling() &&
-                        isNearThumb(mDownX, mLastY) &&
-                        Math.abs(y - mDownY) > mConfig.getScaledTouchSlop()) {
+                        isNearThumb(mDownX, mLastY)) {
                     calcTouchOffsetAndPrepToFastScroll(mDownY, mLastY);
                 }
                 if (mIsDragging) {
