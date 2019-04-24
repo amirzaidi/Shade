@@ -167,6 +167,11 @@ public class AllAppsFastScrollHelper implements AllAppsGridAdapter.BindViewCallb
         mRv.removeCallbacks(mSmoothSnapNextFrameRunnable);
         mRv.removeCallbacks(mFastScrollToTargetSectionRunnable);
 
+        // Force to final position
+        while (mFastScrollFrameIndex < mFastScrollFrames.length) {
+            mRv.scrollBy(0, mFastScrollFrames[mFastScrollFrameIndex++]);
+        }
+
         // Reset the tracking variables
         mHasFastScrollTouchSettled = false;
         mHasFastScrollTouchSettledAtLeastOnce = false;
