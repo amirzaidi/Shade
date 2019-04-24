@@ -127,7 +127,7 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         int iconVisibleSize = Math.round(ICON_VISIBLE_AREA_FACTOR * dp.iconSizePx);
         int iconPadding = cellWidth - iconVisibleSize;
 
-        int myWidth = rowWidth - iconPadding + getPaddingLeft() + getPaddingRight();
+        int myWidth = rowWidth - iconPadding;
         super.onMeasure(makeMeasureSpec(myWidth, EXACTLY), heightMeasureSpec);
     }
 
