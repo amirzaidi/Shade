@@ -24,11 +24,12 @@ import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.CornerPathEffect;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.PathShape;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -45,7 +46,6 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.RevealOutlineAnimation;
 import com.android.launcher3.anim.RoundedRectRevealOutlineProvider;
 import com.android.launcher3.dragndrop.DragLayer;
-import com.android.launcher3.graphics.TriangleShape;
 import com.android.launcher3.util.Themes;
 
 import java.util.ArrayList;
@@ -176,13 +176,11 @@ public abstract class ArrowPopup extends AbstractFloatingView {
             // so we centered it instead. In that case we don't want to showDefaultOptions the arrow.
             mArrow.setVisibility(INVISIBLE);
         } else {
-            ShapeDrawable arrowDrawable = new ShapeDrawable(TriangleShape.create(
-                    arrowLp.width, arrowLp.height, !mIsAboveIcon));
+            int radius = getResources().getDimensionPixelSize(R.dimen.popup_arrow_corner_radius);
+            ShapeDrawable arrowDrawable = new ShapeDrawable(createArrowPath(
+                    arrowLp.width, arrowLp.height, !mIsAboveIcon, radius));
             Paint arrowPaint = arrowDrawable.getPaint();
             arrowPaint.setColor(Themes.getAttrColor(mLauncher, R.attr.popupColorPrimary));
-            // The corner path effect won't be reflected in the shadow, but shouldn't be noticeable.
-            int radius = getResources().getDimensionPixelSize(R.dimen.popup_arrow_corner_radius);
-            arrowPaint.setPathEffect(new CornerPathEffect(radius));
             mArrow.setBackground(arrowDrawable);
             mArrow.setElevation(getElevation());
         }
@@ -191,6 +189,32 @@ public abstract class ArrowPopup extends AbstractFloatingView {
         mArrow.setPivotY(mIsAboveIcon ? 0 : arrowLp.height);
 
         animateOpen();
+    }
+
+    public static PathShape createArrowPath(float width, float height, boolean isPointingUp,
+                                                int radius) {
+        Path triangularPath = new Path();
+
+        float dX = width / 2;
+        float dY = height;
+        float d = (float) Math.hypot(dX, dY);
+        dX *= (d - radius) / d;
+        dY *= (d - radius) / d;
+
+        if (isPointingUp) {
+            triangularPath.moveTo(0, height);
+            triangularPath.lineTo(dX, height - dY);
+            triangularPath.quadTo(width / 2, 0, width - dX, height - dY);
+            triangularPath.lineTo(width, height);
+            triangularPath.close();
+        } else {
+            triangularPath.moveTo(0, 0);
+            triangularPath.lineTo(dX, dY);
+            triangularPath.quadTo(width / 2, height, width - dX, dY);
+            triangularPath.lineTo(width, 0);
+            triangularPath.close();
+        }
+        return new PathShape(triangularPath, width, height);
     }
 
     protected boolean isAlignedWithStart() {

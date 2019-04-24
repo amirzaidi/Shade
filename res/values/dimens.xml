@@ -180,7 +180,7 @@
     <dimen name="popup_vertical_padding">4dp</dimen>
     <dimen name="popup_arrow_width">10dp</dimen>
     <dimen name="popup_arrow_height">8dp</dimen>
-    <dimen name="popup_arrow_vertical_offset">-2dp</dimen>
+    <dimen name="popup_arrow_vertical_offset">0dp</dimen>
     <!-- popup_padding_start + deep_shortcut_icon_size / 2 -->
     <dimen name="popup_arrow_horizontal_center_start">28dp</dimen>
     <!-- popup_padding_end + deep_shortcut_drag_handle_size / 2 -->
