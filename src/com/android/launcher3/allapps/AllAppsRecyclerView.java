@@ -313,13 +313,6 @@ public class AllAppsRecyclerView extends BaseRecyclerView implements LogContaine
     }
 
     @Override
-    public boolean supportsFastScrolling() {
-        // Only allow fast scrolling when the user is not searching, since the results are not
-        // grouped in a meaningful order
-        return !mApps.hasFilter();
-    }
-
-    @Override
     public int getCurrentScrollY() {
         // Return early if there are no items or we haven't been measured
         List<AlphabeticalAppsList.AdapterItem> items = mApps.getAdapterItems();
