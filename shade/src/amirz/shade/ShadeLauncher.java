@@ -6,11 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.graphics.ColorUtils;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
+import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
@@ -28,6 +32,7 @@ import amirz.shade.allapps.search.AppsSearchContainerLayout;
 import amirz.shade.shadespace.ShadespaceView;
 import amirz.shade.transitions.TransitionManager;
 
+import static amirz.shade.ShadeSettings.PREF_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
@@ -293,10 +298,14 @@ public class ShadeLauncher extends Launcher {
                 Themes.getAttrColor(context, R.attr.allAppsScrimColor), color);
     }
 
+    private int mDefaultWindowAnimations;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
+
+        mDefaultWindowAnimations = getWindow().getAttributes().windowAnimations;
     }
 
     @Override
@@ -306,8 +315,16 @@ public class ShadeLauncher extends Launcher {
             super.recreate();
         }
         mState = State.STARTED;
-        TransitionManager manager = (TransitionManager) getAppTransitionManager();
-        manager.overrideAppClose(this);
+
+        WindowManager.LayoutParams attributes = getWindow().getAttributes();
+        attributes.windowAnimations =
+                Utilities.getPrefs(this).getBoolean(PREF_TRANSITION, false)
+                        ? R.style.ShadeAnimations
+                        : mDefaultWindowAnimations;
+        getWindow().setAttributes(attributes);
+
+        TransitionManager transitions = (TransitionManager) getAppTransitionManager();
+        transitions.overrideAppClose(this);
     }
 
     @Override

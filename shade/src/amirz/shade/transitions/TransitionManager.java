@@ -14,6 +14,8 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.quickstep.QuickstepProcessInitializer;
 
+import static amirz.shade.ShadeSettings.PREF_TRANSITION;
+
 public class TransitionManager extends LauncherAppTransitionManagerImpl {
     public TransitionManager(Context context) {
         super(context);
@@ -22,6 +24,10 @@ public class TransitionManager extends LauncherAppTransitionManagerImpl {
     public ActivityOptions getActivityLaunchOptions(Launcher launcher, View v) {
         if (QuickstepProcessInitializer.isEnabled()) {
             return super.getActivityLaunchOptions(launcher, v);
+        }
+        if (Utilities.getPrefs(launcher).getBoolean(PREF_TRANSITION, false)) {
+            return ActivityOptions.makeCustomAnimation(launcher,
+                    R.anim.enter_app, R.anim.exit_launcher);
         }
         if (Utilities.ATLEAST_MARSHMALLOW) {
             int left = 0, top = 0;
@@ -49,7 +55,8 @@ public class TransitionManager extends LauncherAppTransitionManagerImpl {
     }
 
     public void overrideAppClose(Activity activity) {
-        if (!QuickstepProcessInitializer.isEnabled()) {
+        if (!QuickstepProcessInitializer.isEnabled()
+                && Utilities.getPrefs(activity).getBoolean(PREF_TRANSITION, false)) {
             activity.overridePendingTransition(R.anim.enter_launcher, R.anim.exit_app);
         }
     }

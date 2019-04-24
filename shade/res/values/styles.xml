@@ -43,6 +43,17 @@
 
     <style name="WidgetContainerTheme.Dark" parent="AppTheme.Dark" />
 
+    <style name="ShadeAnimations">
+        <item name="android:taskToFrontEnterAnimation">@anim/enter_launcher</item>
+        <item name="android:taskToFrontExitAnimation">@anim/exit_app</item>
+        <item name="android:taskToBackEnterAnimation">@anim/enter_app</item>
+        <item name="android:taskToBackExitAnimation">@anim/exit_launcher</item>
+        <item name="android:wallpaperOpenEnterAnimation">@anim/enter_launcher</item>
+        <item name="android:wallpaperOpenExitAnimation">@anim/exit_app</item>
+        <item name="android:wallpaperCloseEnterAnimation">@anim/enter_app</item>
+        <item name="android:wallpaperCloseExitAnimation">@anim/exit_launcher</item>
+    </style>
+
     <!-- Initial settings -->
     <style name="ShadeSettings" parent="android:Theme.DeviceDefault.Settings">
         <item name="android:actionBarStyle">@null</item>

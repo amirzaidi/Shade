@@ -49,6 +49,13 @@
         android:defaultValue="@bool/allow_rotation"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="pref_transition"
+        android:title="@string/pref_transition"
+        android:summary="@string/pref_transition_desc"
+        android:defaultValue="false"
+        android:persistent="true" />
+
     <ListPreference
         android:key="pref_theme"
         android:title="@string/theme_title"

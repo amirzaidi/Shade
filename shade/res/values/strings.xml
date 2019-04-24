@@ -19,6 +19,9 @@
         or needs to be updated.
     </string>
 
+    <string name="pref_transition">Fading transitions</string>
+    <string name="pref_transition_desc">Override app opening and closing animation</string>
+
     <string name="about_app_version">Version</string>
 
     <!-- Theme selection -->

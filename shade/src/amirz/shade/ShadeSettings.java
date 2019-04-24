@@ -20,6 +20,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.SettingsActivity;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
+import com.android.quickstep.QuickstepProcessInitializer;
 
 import amirz.aidlbridge.PixelBridge;
 import amirz.shade.customization.GlobalIconPackPreference;
@@ -29,6 +30,7 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_MINUS_ONE = "pref_enable_minus_one";
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
+    public static final String PREF_TRANSITION = "pref_transition";
     private static final String ABOUT_APP_VERSION = "about_app_version";
     private static final String BRIDGE_TAG = "tag_bridge";
     private static final int UPDATE_THEME_DELAY = 500;
@@ -96,6 +98,10 @@ public class ShadeSettings extends SettingsActivity {
                 activity.reload();
                 return true;
             });
+
+            if (QuickstepProcessInitializer.isEnabled()) {
+                getPreferenceScreen().removePreference(findPreference(PREF_TRANSITION));
+            }
 
             Preference version = findPreference(ABOUT_APP_VERSION);
             version.setSummary(BuildConfig.VERSION_NAME);
