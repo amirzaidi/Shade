@@ -152,6 +152,8 @@ public class AppsSearchContainerLayout extends ExtendedEditText
                 new NormalizedAppSearchAlgorithm(mLauncher, mAppsView.getAppsStore().getApps()),
                 this, mLauncher, this);
 
+        appsView.setRecyclerViewVerticalFadingEdgeEnabled(true);
+
         // This will make the parent consume the initial swipe event focus.
         appsView.setFocusableInTouchMode(true);
     }
