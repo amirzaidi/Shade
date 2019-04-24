@@ -77,7 +77,7 @@ public class ConfigMonitor extends BroadcastReceiver implements DisplayListener 
 
     public void register() {
         mContext.registerReceiver(this, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
-        mContext.getSystemService(DisplayManager.class)
+        ((DisplayManager) mContext.getSystemService(Context.DISPLAY_SERVICE))
                 .registerDisplayListener(this, new Handler(UiThreadHelper.getBackgroundLooper()));
     }
 
@@ -112,11 +112,13 @@ public class ConfigMonitor extends BroadcastReceiver implements DisplayListener 
     private void killProcess() {
         Log.d(TAG, "restarting launcher");
         mContext.unregisterReceiver(this);
-        mContext.getSystemService(DisplayManager.class).unregisterDisplayListener(this);
+        ((DisplayManager) mContext.getSystemService(Context.DISPLAY_SERVICE))
+                .unregisterDisplayListener(this);
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     private Display getDefaultDisplay(Context context) {
-        return context.getSystemService(WindowManager.class).getDefaultDisplay();
+        return ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay();
     }
 }
