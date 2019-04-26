@@ -16,7 +16,6 @@
 
 package com.android.launcher3.notification;
 
-import android.app.ActivityOptions;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -106,8 +105,7 @@ public class NotificationInfo implements View.OnClickListener {
         final Launcher launcher = Launcher.getLauncher(view.getContext());
         try {
             if (Utilities.ATLEAST_MARSHMALLOW) {
-                Bundle activityOptions = ActivityOptions.makeClipRevealAnimation(
-                        view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
+                Bundle activityOptions = launcher.getActivityLaunchOptionsAsBundle(view);
                 intent.send(null, 0, null, null, null, null, activityOptions);
             } else {
                 intent.send();
