@@ -36,34 +36,11 @@
         android:defaultValue="true"
         android:persistent="true" />
 
-    <amirz.shade.customization.FeedPreference
-        android:key="pref_feed_provider"
-        android:title="@string/pref_feed_provider"
-        android:summary="%s"
-        android:defaultValue=""
-        android:persistent="true" />
-
     <SwitchPreference
         android:key="pref_allowRotation"
         android:title="@string/allow_rotation_title"
         android:summary="@string/allow_rotation_desc"
         android:defaultValue="@bool/allow_rotation"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_transition"
-        android:title="@string/pref_transition"
-        android:summary="@string/pref_transition_desc"
-        android:defaultValue="false"
-        android:persistent="true" />
-
-    <ListPreference
-        android:key="pref_theme"
-        android:title="@string/theme_title"
-        android:summary="%s"
-        android:entries="@array/theme_entries"
-        android:entryValues="@array/theme_entry_values"
-        android:defaultValue=""
         android:persistent="true" />
 
     <ListPreference
@@ -75,18 +52,45 @@
         android:defaultValue=""
         android:persistent="false" />
 
-    <amirz.shade.customization.GlobalIconPackPreference
-        android:key="pref_icon_pack"
-        android:title="@string/pref_icon_pack"
-        android:summary="%s"
-        android:defaultValue=""
-        android:persistent="true" />
+    <PreferenceCategory android:title="@string/category_shade">
 
-    <Preference
-        android:key="about_app_version"
-        android:title="@string/about_app_version"
-        android:persistent="false">
-        <intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" />
-    </Preference>
+        <amirz.shade.customization.FeedPreference
+            android:key="pref_feed_provider"
+            android:title="@string/pref_feed_provider"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:key="pref_transition"
+            android:title="@string/pref_transition"
+            android:summary="@string/pref_transition_desc"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <ListPreference
+            android:key="pref_theme"
+            android:title="@string/theme_title"
+            android:summary="%s"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_entry_values"
+            android:defaultValue=""
+            android:persistent="true" />
+
+        <amirz.shade.customization.GlobalIconPackPreference
+            android:key="pref_icon_pack"
+            android:title="@string/pref_icon_pack"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
+        <Preference
+            android:key="about_app_version"
+            android:title="@string/about_app_version"
+            android:persistent="false">
+            <intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" />
+        </Preference>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
