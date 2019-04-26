@@ -118,7 +118,9 @@ public class ShadeCallbacks
         } else {
             mLauncherClient.onResume();
         }
-        mShadespace.onResume();
+        if (mShadespace != null) {
+            mShadespace.onResume();
+        }
     }
 
     @Override
@@ -126,7 +128,9 @@ public class ShadeCallbacks
         if (!mDeferCallbacks) {
             mLauncherClient.onPause();
         }
-        mShadespace.onPause();
+        if (mShadespace != null) {
+            mShadespace.onPause();
+        }
         mNoFloatingView = AbstractFloatingView.getTopOpenView(mLauncher) == null;
     }
 
@@ -253,9 +257,12 @@ public class ShadeCallbacks
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(ShadeSettings.PREF_FEED_PROVIDER)) {
-            mLauncherClient.disconnect();
-            mLauncher.recreate();
+        switch (key) {
+            case ShadeSettings.PREF_FEED_PROVIDER:
+                mLauncherClient.disconnect();
+            case ShadeSettings.PREF_UNREAD:
+                mLauncher.recreate();
+                break;
         }
     }
 

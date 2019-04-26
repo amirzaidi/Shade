@@ -25,6 +25,7 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
     public static final String PREF_TRANSITION = "pref_transition";
+    public static final String PREF_UNREAD = "pref_unread";
     private static final String ABOUT_APP_VERSION = "about_app_version";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
