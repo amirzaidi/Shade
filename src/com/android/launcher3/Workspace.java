@@ -2216,11 +2216,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
        mTempXY[0] = x;
        mTempXY[1] = y;
        mLauncher.getDragLayer().getDescendantCoordRelativeToSelf(this, mTempXY, true);
-       View hotseat = mLauncher.getHotseat();
-       return mTempXY[0] >= hotseat.getLeft() &&
-               mTempXY[0] <= hotseat.getRight() &&
-               mTempXY[1] >= hotseat.getTop() &&
-               mTempXY[1] <= hotseat.getBottom();
+       return mLauncher.getHotseat().pointInBounds(mTempXY);
    }
 
    void mapPointFromSelfToHotseatLayout(Hotseat hotseat, float[] xy) {

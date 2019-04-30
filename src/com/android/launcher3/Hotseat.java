@@ -173,4 +173,11 @@ public class Hotseat extends FrameLayout implements LogContainerProvider, Insett
         setLayoutParams(lp);
         InsettableFrameLayout.dispatchInsets(this, insets);
     }
+
+    public boolean pointInBounds(int[] xy) {
+        return xy[0] >= getLeft() &&
+                xy[0] <= getRight() &&
+                xy[1] >= getTop() &&
+                xy[1] <= getBottom();
+    }
 }
