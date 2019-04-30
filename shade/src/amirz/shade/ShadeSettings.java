@@ -17,8 +17,8 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.quickstep.QuickstepProcessInitializer;
 
-import amirz.shade.customization.GlobalIconPackPreference;
 import amirz.shade.customization.AppReloader;
+import amirz.shade.customization.GlobalIconPackPreference;
 
 public class ShadeSettings extends SettingsActivity {
     public static final String PREF_FEED_PROVIDER = "pref_feed_provider";

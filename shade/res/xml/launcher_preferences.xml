@@ -54,6 +54,22 @@
 
     <PreferenceCategory android:title="@string/category_shade">
 
+        <ListPreference
+            android:key="pref_theme"
+            android:title="@string/theme_title"
+            android:summary="%s"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_entry_values"
+            android:defaultValue=""
+            android:persistent="true" />
+
+        <amirz.shade.customization.GlobalIconPackPreference
+            android:key="pref_icon_pack"
+            android:title="@string/pref_icon_pack"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
         <amirz.shade.customization.FeedPreference
             android:key="pref_feed_provider"
             android:title="@string/pref_feed_provider"
@@ -75,27 +91,35 @@
             android:defaultValue="false"
             android:persistent="true" />
 
-        <ListPreference
-            android:key="pref_theme"
-            android:title="@string/theme_title"
-            android:summary="%s"
-            android:entries="@array/theme_entries"
-            android:entryValues="@array/theme_entry_values"
-            android:defaultValue=""
-            android:persistent="true" />
+    </PreferenceCategory>
 
-        <amirz.shade.customization.GlobalIconPackPreference
-            android:key="pref_icon_pack"
-            android:title="@string/pref_icon_pack"
-            android:summary="%s"
-            android:defaultValue=""
-            android:persistent="true" />
+    <PreferenceCategory android:title="@string/category_about">
 
         <Preference
             android:key="about_app_version"
             android:title="@string/about_app_version"
             android:persistent="false">
             <intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" />
+        </Preference>
+
+        <Preference
+            android:key="about_contact"
+            android:title="@string/about_contact"
+            android:summary="@string/about_contact_desc"
+            android:persistent="false">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/about_contact_url" />
+        </Preference>
+
+        <Preference
+            android:key="about_donate"
+            android:title="@string/about_donate"
+            android:summary="@string/about_donate_desc"
+            android:persistent="false">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/about_donate_url" />
         </Preference>
 
     </PreferenceCategory>

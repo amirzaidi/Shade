@@ -6,22 +6,32 @@
     <string name="app_preferences">Preferences</string>
     <string name="app_edit_subtitle">Tap to open app info.</string>
 
-    <string name="category_shade">Shade features</string>
-
-    <string name="pref_feed_provider">Feed overlay provider</string>
-    <string name="pref_feed_provider_none">Disabled</string>
+    <string name="category_shade">Customization</string>
 
     <string name="pref_icon_pack">Icon pack</string>
     <string name="pref_category">Category</string>
     <string name="pref_reset">Reset</string>
 
+    <string name="pref_feed_provider">Feed provider</string>
+    <string name="pref_feed_provider_none">Disabled</string>
+
     <string name="pref_unread">Smart unread</string>
     <string name="pref_unread_desc">At the top of your Home screen</string>
 
-    <string name="pref_transition">Fading transitions</string>
-    <string name="pref_transition_desc">Override app opening and closing animation</string>
+    <string name="pref_transition">Fading transition</string>
+    <string name="pref_transition_desc">Override animation when opening apps</string>
+
+    <string name="category_about">About</string>
 
     <string name="about_app_version">Version</string>
+
+    <string name="about_contact">Contact</string>
+    <string name="about_contact_desc">Amir Zaidi</string>
+    <string name="about_contact_url">https://t.me/mirai</string>
+
+    <string name="about_donate">Donate</string>
+    <string name="about_donate_desc">Using Play balance</string>
+    <string name="about_donate_url">https://play.google.com/store/apps/details?id=amirz.donation</string>
 
     <!-- Theme selection -->
     <string name="theme_title">Theme</string>
