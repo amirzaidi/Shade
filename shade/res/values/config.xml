@@ -15,12 +15,12 @@
     <integer name="shade_gradient_alpha">243</integer>
 
     <string-array name="category_entries">
-        <item>Favorites</item>
-        <item>Media</item>
-        <item>Social</item>
-        <item>Utility</item>
-        <item>Travel</item>
-        <item>Hidden</item>
+        <item>@string/category_favorites</item>
+        <item>@string/category_media</item>
+        <item>@string/category_social</item>
+        <item>@string/category_utility</item>
+        <item>@string/category_travel</item>
+        <item>@string/category_hidden</item>
     </string-array>
 
     <string-array translatable="false" name="category_entry_values">
