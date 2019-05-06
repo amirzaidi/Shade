@@ -38,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/work_footer_divider"
-        android:layout_marginEnd="@dimen/dynamic_grid_cell_padding_x" />
+        android:layout_marginEnd="@dimen/dynamic_grid_cell_padding_x"
+        android:alpha="0.996" />
 
     <TextView
         android:id="@android:id/title"
