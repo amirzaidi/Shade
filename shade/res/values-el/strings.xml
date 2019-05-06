@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Επεξεργασία</string>
+    <string name="app_edit_subtitle">Πατήστε για να ανοίξετε τις πληροφορίες εφαρμογής.</string>
+
+    <string name="category_shade">Προσαρμογή</string>
+
+    <string name="pref_icon_pack">Πακέτα εικονιδίων</string>
+    <string name="pref_category">Κατηγορία</string>
+    <string name="pref_reset">Επαναφορά</string>
+
+    <string name="pref_feed_provider">Πάροχος τροφοδοσίας</string>
+    <string name="pref_feed_provider_none">Απενεργοποιημένο</string>
+
+    <string name="pref_unread">Έξυπνη περιοχή ειδοποιήσεων</string>
+    <string name="pref_unread_desc">Στο επάνω μέρος της Αρχικής σας οθόνης</string>
+
+    <string name="pref_transition">Εφέ μετάβασης με ξεθώριασμα</string>
+    <string name="pref_transition_desc">Αντικατάσταση εφέ κίνησης κατά το άνοιγμα εφαρμογών</string>
+
+    <string name="category_plugins">Επεκτάσεις</string>
+
+    <string name="plugin_shortcuts">Στατικές συντομεύσεις εφαρμογών</string>
+    <string name="plugin_shortcuts_desc">Ενεργοποίηση στατικών συντομεύσεων εφαρμογών</string>
+
+    <string name="category_about">Σχετικά</string>
+
+    <string name="about_app_version">Έκδοση</string>
+
+    <string name="about_contact">Επικοινωνία</string>
+
+    <string name="about_donate">Δωρεά</string>
+    <string name="about_donate_desc">Χρησιμοποιώντας το χρηματικό υπόλοιπο Google Play</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Θέμα</string>
+    <string name="theme_default">Προεπιλογή</string>
+    <string name="theme_transparent">Διαφανές</string>
+    <string name="theme_campfire">Φωτιά Κατασκήνωσης</string>
+    <string name="theme_sunset">Ηλιοβασίλεμα</string>
+    <string name="theme_sunrise">Ανατολή Ηλίου</string>
+    <string name="theme_forest">Δάσος</string>
+    <string name="theme_ocean">Ωκεανός</string>
+    <string name="theme_twilight">Λυκόφως</string>
+    <string name="theme_blossom">Άνθιση</string>
+    <string name="theme_midnight">Μεσάνυχτα</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Αγαπημένα</string>
+    <string name="category_media">Πολυμέσα</string>
+    <string name="category_social">Κοινωνικά δίκτυα</string>
+    <string name="category_utility">Χρήσιμα</string>
+    <string name="category_travel">Μετακίνηση</string>
+    <string name="category_hidden">Κρυφά</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Μορφή πλέγματος</string>
+    <string name="grid_default">Προεπιλογή</string>
+    <string name="grid_sparse">Αραιό</string>
+    <string name="grid_balanced">Ισορροπημένο</string>
+    <string name="grid_dense">Πυκνό</string>
+
+    <string name="shadespace_subtext_default">Πατήστε το κουμπί αρχικής οθόνης για αναζήτηση</string>
+    <string name="shadespace_subtext_charging">Η μπαταρία είναι φορτισμένη κατά %1$d%%</string>
+</resources>

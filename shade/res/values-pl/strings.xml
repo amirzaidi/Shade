@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Preferencje</string>
+    <string name="app_edit_subtitle">Naciśnij żeby otworzyć info o aplikacji.</string>
+
+    <string name="category_shade">Konfiguracja</string>
+
+    <string name="pref_icon_pack">Pakiet ikon</string>
+    <string name="pref_category">Kategoria</string>
+    <string name="pref_reset">Resetowanie</string>
+
+    <string name="pref_feed_provider">Dostawca aktualności</string>
+    <string name="pref_feed_provider_none">Wyłączono</string>
+
+    <string name="pref_unread">Intelligentne nieprzeczytane</string>
+    <string name="pref_unread_desc">Na górze pulpitu</string>
+
+    <string name="pref_transition">Animacja otwierania aplikacji</string>
+    <string name="pref_transition_desc">Zamienić animację otwierania aplikacji</string>
+
+    <string name="category_plugins">Pluginy</string>
+
+    <string name="plugin_shortcuts">Statyczne etykiety</string>
+    <string name="plugin_shortcuts_desc">Port statycznych etykiet po nacisnięciu na ikonę aplikacji</string>
+
+    <string name="category_about">O aplikacji</string>
+
+    <string name="about_app_version">Wersja</string>
+
+    <string name="about_contact">Kontakt</string>
+
+    <string name="about_donate">Wsparcie</string>
+    <string name="about_donate_desc">Używając konto Play</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Motyw</string>
+    <string name="theme_default">Domyślny</string>
+    <string name="theme_transparent">Przezroczysty</string>
+    <string name="theme_campfire">Ognisko</string>
+    <string name="theme_sunset">Zachód</string>
+    <string name="theme_sunrise">Wschód</string>
+    <string name="theme_forest">Las</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="theme_twilight">Zmierzch</string>
+    <string name="theme_blossom">Kwiat</string>
+    <string name="theme_midnight">Północ</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Wyróżnione</string>
+    <string name="category_media">Media</string>
+    <string name="category_social">Social</string>
+    <string name="category_utility">Narzędzia</string>
+    <string name="category_travel">Podróż</string>
+    <string name="category_hidden">Ukryte</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Siatka</string>
+    <string name="grid_default">Domyślna</string>
+    <string name="grid_sparse">Rzadka</string>
+    <string name="grid_balanced">Normalna</string>
+    <string name="grid_dense">Gęsta</string>
+
+    <string name="shadespace_subtext_default">Naciśnij Home żeby otworzyć wyszukiwarkę</string>
+    <string name="shadespace_subtext_charging">Bateria naładowana na %1$d%%</string>
+</resources>

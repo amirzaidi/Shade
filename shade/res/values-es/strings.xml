@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Preferencias</string>
+    <string name="app_edit_subtitle">Presiona para abrir app info.</string>
+
+    <string name="category_shade">Personalización</string>
+
+    <string name="pref_icon_pack">Paquete de iconos</string>
+    <string name="pref_category">Categoría</string>
+    <string name="pref_reset">Restablecer</string>
+
+    <string name="pref_feed_provider">Proveedor de Feed</string>
+    <string name="pref_feed_provider_none">Desactivado</string>
+
+    <string name="pref_unread">Lector inteligente</string>
+    <string name="pref_unread_desc">En la parte superior de tu pantalla de inicio</string>
+
+    <string name="pref_transition">Transición de desvanecido</string>
+    <string name="pref_transition_desc">Anular animación cuando se abren las aplicaciones</string>
+
+    <string name="category_plugins">Complementos</string>
+
+    <string name="plugin_shortcuts">Atajos estáticos</string>
+    <string name="plugin_shortcuts_desc">Backport static application shortcuts</string>
+
+    <string name="category_about">Acerca de</string>
+
+    <string name="about_app_version">Versión</string>
+
+    <string name="about_contact">Contacto</string>
+
+    <string name="about_donate">Donar</string>
+    <string name="about_donate_desc">Utilizando saldo de Google Play</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Tema</string>
+    <string name="theme_default">Predeterminado</string>
+    <string name="theme_transparent">Transparente</string>
+    <string name="theme_campfire">Fogata</string>
+    <string name="theme_sunset">Atardecer</string>
+    <string name="theme_sunrise">Amanecer</string>
+    <string name="theme_forest">Bosque</string>
+    <string name="theme_ocean">Océano</string>
+    <string name="theme_twilight">Crepúsculo</string>
+    <string name="theme_blossom">Flor</string>
+    <string name="theme_midnight">Medianoche</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Favoritos</string>
+    <string name="category_media">Media</string>
+    <string name="category_social">Social</string>
+    <string name="category_utility">Utilidades</string>
+    <string name="category_travel">Viajes</string>
+    <string name="category_hidden">Ocultas</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">División de rejilla</string>
+    <string name="grid_default">Predeterminada</string>
+    <string name="grid_sparse">Escaso</string>
+    <string name="grid_balanced">Balanceado</string>
+    <string name="grid_dense">Denso</string>
+
+    <string name="shadespace_subtext_default">Presiona inicio para buscar aplicaciones</string>
+    <string name="shadespace_subtext_charging">Batería cargada al %1$d%%</string>
+</resources>

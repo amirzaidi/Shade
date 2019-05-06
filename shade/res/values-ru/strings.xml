@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Настройки</string>
+    <string name="app_edit_subtitle">Открыть информацию о приложении.</string>
+
+    <string name="category_shade">Персонализация</string>
+
+    <string name="pref_icon_pack">Набор иконок</string>
+    <string name="pref_category">Категория</string>
+    <string name="pref_reset">Сброс</string>
+
+    <string name="pref_feed_provider">Поставщик данных ленты</string>
+    <string name="pref_feed_provider_none">Отключено</string>
+
+    <string name="pref_unread">Умные непрочитанные</string>
+    <string name="pref_unread_desc">В верху рабочего стола</string>
+
+    <string name="pref_transition">Анимация открытия и закрытия</string>
+    <string name="pref_transition_desc">Игнорировать стандартную анимацию открытия и закрытия приложений</string>
+
+    <string name="category_plugins">Плагины</string>
+
+    <string name="plugin_shortcuts">Статические ярлыки</string>
+    <string name="plugin_shortcuts_desc">Порт статических действий по удержанию на иконке приложения</string>
+
+    <string name="category_about">О программе</string>
+
+    <string name="about_app_version">Версия</string>
+
+    <string name="about_contact">Контакт</string>
+
+    <string name="about_donate">Пожертвование</string>
+    <string name="about_donate_desc">Используя баланс Google Play</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Тема</string>
+    <string name="theme_default">Стандартная</string>
+    <string name="theme_transparent">Прозрачная</string>
+    <string name="theme_campfire">Костёр</string>
+    <string name="theme_sunset">Закат</string>
+    <string name="theme_sunrise">Рассвет</string>
+    <string name="theme_forest">Лес</string>
+    <string name="theme_ocean">Океан</string>
+    <string name="theme_twilight">Сумерки</string>
+    <string name="theme_blossom">Цветение</string>
+    <string name="theme_midnight">Полуночь</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Избранные</string>
+    <string name="category_media">Медиа</string>
+    <string name="category_social">Социо</string>
+    <string name="category_utility">Утилиты</string>
+    <string name="category_travel">Путешествия</string>
+    <string name="category_hidden">Скрытые</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Сетка</string>
+    <string name="grid_default">Стандартная</string>
+    <string name="grid_sparse">Редкая</string>
+    <string name="grid_balanced">Сбалансированная</string>
+    <string name="grid_dense">Плотная</string>
+
+    <string name="shadespace_subtext_default">Нажми домой для поиска приложений</string>
+    <string name="shadespace_subtext_charging">Батарея заряжена до %1$d%%</string>
+</resources>

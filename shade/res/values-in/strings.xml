@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Preferensi</string>
+    <string name="app_edit_subtitle">Ketuk untuk membuka info apl.</string>
+
+    <string name="category_shade">Kustomisasi</string>
+
+    <string name="pref_icon_pack">Ikon</string>
+    <string name="pref_category">Kategori</string>
+    <string name="pref_reset">Reset</string>
+
+    <string name="pref_feed_provider">Penyedia umpan</string>
+    <string name="pref_feed_provider_none">Dinonaktifkan</string>
+
+    <string name="pref_unread">Fitur Smart unread</string>
+    <string name="pref_unread_desc">Diatas layar Beranda</string>
+
+    <string name="pref_transition">Transisi memudar</string>
+    <string name="pref_transition_desc">Mengesampingkan animasi disaat membuka apl</string>
+
+    <string name="category_plugins">Plugin</string>
+
+    <string name="plugin_shortcuts">Pintas statis</string>
+    <string name="plugin_shortcuts_desc">Pintas aplikasi statis</string>
+
+    <string name="category_about">Tentang</string>
+
+    <string name="about_app_version">Versi</string>
+
+    <string name="about_contact">Kontak</string>
+
+    <string name="about_donate">Donasi</string>
+    <string name="about_donate_desc">Menggunakan saldo Google Play</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Tema</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_transparent">Transparan</string>
+    <string name="theme_campfire">Api unggun</string>
+    <string name="theme_sunset">Matahari terbenam</string>
+    <string name="theme_sunrise">Matahari terbit</string>
+    <string name="theme_forest">Hutan</string>
+    <string name="theme_ocean">Samudra</string>
+    <string name="theme_twilight">Senja</string>
+    <string name="theme_blossom">Bermekaran</string>
+    <string name="theme_midnight">Tengah malam</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Favorit</string>
+    <string name="category_media">Media</string>
+    <string name="category_social">Sosial</string>
+    <string name="category_utility">Utilitas</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_hidden">Sembunyi</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Pembagian grid</string>
+    <string name="grid_default">Default</string>
+    <string name="grid_sparse">Menyebar</string>
+    <string name="grid_balanced">Seimbang</string>
+    <string name="grid_dense">Padat</string>
+
+    <string name="shadespace_subtext_default">Tekan home untuk Pencarian</string>
+    <string name="shadespace_subtext_charging">Baterai telah terisi %1$d%%</string>
+</resources>

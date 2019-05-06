@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Tercihler</string>
+    <string name="app_edit_subtitle">Uygulama bilgisini açmak için dokunun.</string>
+
+    <string name="category_shade">Kişiselleştirmeler</string>
+
+    <string name="pref_icon_pack">Simge Paketi</string>
+    <string name="pref_category">Katagoriler</string>
+    <string name="pref_reset">Sıfırla</string>
+
+    <string name="pref_feed_provider">Besleme sağlayıcısı</string>
+    <string name="pref_feed_provider_none">Devre dışı</string>
+
+    <string name="pref_unread">Akıllı okuma</string>
+    <string name="pref_unread_desc">Ana ekranının en üstünde</string>
+
+    <string name="pref_transition">Solarak geçiş</string>
+    <string name="pref_transition_desc">Uygulama açılışındaki animasyonu değiştirir</string>
+
+    <string name="category_plugins">Eklentiler</string>
+
+    <string name="plugin_shortcuts">Statik kısayollar</string>
+    <string name="plugin_shortcuts_desc">Statik uygulama kısayolları</string>
+
+    <string name="category_about">Hakkında</string>
+
+    <string name="about_app_version">Sürüm</string>
+
+    <string name="about_contact">İletişim</string>
+
+    <string name="about_donate">Bağış</string>
+    <string name="about_donate_desc">Play Store ödemesi ile</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Tema</string>
+    <string name="theme_default">Varsayılan</string>
+    <string name="theme_transparent">Şeffaf</string>
+    <string name="theme_campfire">Kamp ateşi</string>
+    <string name="theme_sunset">Gün batımı</string>
+    <string name="theme_sunrise">Gün doğumu</string>
+    <string name="theme_forest">Orman</string>
+    <string name="theme_ocean">Okyanus</string>
+    <string name="theme_twilight">Alacakaranlık</string>
+    <string name="theme_blossom">Çiçek</string>
+    <string name="theme_midnight">Gece ortası</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Favoriler</string>
+    <string name="category_media">Medya</string>
+    <string name="category_social">Sosyal</string>
+    <string name="category_utility">Araçlar</string>
+    <string name="category_travel">Yolculuk</string>
+    <string name="category_hidden">Gizli</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Izgara bölümü</string>
+    <string name="grid_default">Varsayılan</string>
+    <string name="grid_sparse">Seyrek</string>
+    <string name="grid_balanced">Dengeli</string>
+    <string name="grid_dense">Yoğun</string>
+
+    <string name="shadespace_subtext_default">Ana ekran tuşuna dokunarak arayın</string>
+    <string name="shadespace_subtext_charging">Pil %1$d%% Şarj Oldu</string>
+</resources>

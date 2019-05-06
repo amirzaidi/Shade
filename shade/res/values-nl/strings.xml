@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">Opties</string>
+    <string name="app_edit_subtitle">Klik hier voor details.</string>
+
+    <string name="category_shade">Aanpassingen</string>
+
+    <string name="pref_icon_pack">Pictogrampakket</string>
+    <string name="pref_category">Categorie</string>
+    <string name="pref_reset">Standaardwaarden</string>
+
+    <string name="pref_feed_provider">Linkerpagina</string>
+    <string name="pref_feed_provider_none">Uitgeschakeld</string>
+
+    <string name="pref_unread">Slimme meldingen</string>
+    <string name="pref_unread_desc">Bovenaan het startscherm</string>
+
+    <string name="pref_transition">Vloeiende overgang</string>
+    <string name="pref_transition_desc">Vervang de animatie wanneer apps openen</string>
+
+    <string name="category_plugins">Toevoegingen</string>
+
+    <string name="plugin_shortcuts">Snelkoppelingen</string>
+    <string name="plugin_shortcuts_desc">Houd apps lang ingedrukt voor snelkoppelingen</string>
+
+    <string name="category_about">Over</string>
+
+    <string name="about_app_version">Versie</string>
+
+    <string name="about_contact">Contact</string>
+
+    <string name="about_donate">Doneer</string>
+    <string name="about_donate_desc">Met Play tegoed</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">Thema</string>
+    <string name="theme_default">Standaard</string>
+    <string name="theme_transparent">Transparant</string>
+    <string name="theme_campfire">Kampvuur</string>
+    <string name="theme_sunset">Zonsondergang</string>
+    <string name="theme_sunrise">Zonsopkomst</string>
+    <string name="theme_forest">Woud</string>
+    <string name="theme_ocean">Oceaan</string>
+    <string name="theme_twilight">Schemering</string>
+    <string name="theme_blossom">Bloesem</string>
+    <string name="theme_midnight">Middernacht</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">Favorieten</string>
+    <string name="category_media">Media</string>
+    <string name="category_social">Sociaal</string>
+    <string name="category_utility">Algemeen</string>
+    <string name="category_travel">Reizen</string>
+    <string name="category_hidden">Verborgen</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">Grid indeling</string>
+    <string name="grid_default">Standaard</string>
+    <string name="grid_sparse">Verspreid</string>
+    <string name="grid_balanced">Gemiddeld</string>
+    <string name="grid_dense">Compact</string>
+
+    <string name="shadespace_subtext_default">Druk op home om apps te zoeken</string>
+    <string name="shadespace_subtext_charging">Batterij is %1$d%% opgeladen</string>
+</resources>

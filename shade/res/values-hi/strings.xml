@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_preferences">पसंद</string>
+    <string name="app_edit_subtitle">एप्लिकेशन जानकारी खोलने के लिए टैप करें</string>
+
+    <string name="category_shade">अनुकूलन</string>
+
+    <string name="pref_icon_pack">आइकन पैक</string>
+    <string name="pref_category">वर्ग</string>
+    <string name="pref_reset">रीसेट</string>
+
+    <string name="pref_feed_provider">फ़ीड प्रदाता</string>
+    <string name="pref_feed_provider_none">निर्योग्य</string>
+
+    <string name="pref_unread">स्मार्ट अपठित</string>
+    <string name="pref_unread_desc">आपकी होम स्क्रीन के शीर्ष पर</string>
+
+    <string name="pref_transition">लुप्त होती संक्रमण</string>
+    <string name="pref_transition_desc">ऐप्स खोलते समय एनीमेशन को ओवरराइड करें</string>
+
+    <string name="category_plugins">प्लगइन्स</string>
+
+    <string name="plugin_shortcuts">स्थैतिक शॉर्टकट</string>
+    <string name="plugin_shortcuts_desc">बैकपोर्ट स्थैतिक अनुप्रयोग शॉर्टकट</string>
+
+    <string name="category_about">के बारे में</string>
+
+    <string name="about_app_version">संस्करण</string>
+
+    <string name="about_contact">संपर्क</string>
+
+    <string name="about_donate">दान करना</string>
+    <string name="about_donate_desc">प्ले बैलेंस का उपयोग करना</string>
+
+    <!-- Theme selection -->
+    <string name="theme_title">विषय</string>
+    <string name="theme_default">सामान्य</string>
+    <string name="theme_transparent">पारदर्शक</string>
+    <string name="theme_campfire">कैम्प फ़ायर</string>
+    <string name="theme_sunset">सूर्यास्त</string>
+    <string name="theme_sunrise">सूर्योदय</string>
+    <string name="theme_forest">जंगल</string>
+    <string name="theme_ocean">सागर</string>
+    <string name="theme_twilight">सांझ</string>
+    <string name="theme_blossom">खिलना</string>
+    <string name="theme_midnight">मध्यरात्री</string>
+
+    <!-- Categories -->
+    <string name="category_favorites">पसंदीदा</string>
+    <string name="category_media">मीडिया</string>
+    <string name="category_social">सामाजिक</string>
+    <string name="category_utility">उपयोगिता</string>
+    <string name="category_travel">यात्रा</string>
+    <string name="category_hidden">छुपा</string>
+
+    <!-- Grid sizes -->
+    <string name="pref_grid_size">ग्रिड विभाजन</string>
+    <string name="grid_default">सामान्य</string>
+    <string name="grid_sparse">विरल</string>
+    <string name="grid_balanced">संतुलित</string>
+    <string name="grid_dense">सघन</string>
+
+    <string name="shadespace_subtext_default">ऐप्स खोजने के लिए घर दबाएं</string>
+    <string name="shadespace_subtext_charging">बैटरी को चार्ज किया गया है %1$d%%</string>
+</resources>
