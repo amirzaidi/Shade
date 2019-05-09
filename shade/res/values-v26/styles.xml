@@ -4,9 +4,4 @@
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondaryInverse</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
     </style>
-
-    <style name="ShadeSettings.Override" parent="android:Theme.DeviceDefault.Settings">
-        <item name="android:colorAccent">?attr/shadeColorAccent</item>
-        <item name="android:alertDialogTheme">@style/ShadeDialog.Override</item>
-    </style>
 </resources>

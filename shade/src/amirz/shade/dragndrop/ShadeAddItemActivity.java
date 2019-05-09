@@ -14,7 +14,7 @@ public class ShadeAddItemActivity extends AddItemActivity {
         // Load the Shade theme attributes
         Resources.Theme theme = getTheme();
         theme.applyStyle(getThemeRes(this, R.style.ShadeSettings_Default), false);
-        theme.applyStyle(R.style.ShadeDialog_Override, true);
+        theme.applyStyle(R.style.Shade_DialogAlert_Light, true);
 
         super.onCreate(savedInstanceState);
     }

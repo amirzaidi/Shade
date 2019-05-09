@@ -3,6 +3,7 @@
     <style name="AppTheme" parent="@style/LauncherTheme">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert.Light</item>
         <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
@@ -11,6 +12,7 @@
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert.Light</item>
         <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="allAppsNavBarScrimColor">@color/navbar_light</item>
         <item name="bottomSheetNavBarColor">@color/navbar_light</item>
@@ -19,6 +21,7 @@
     <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
         <item name="headerColor">?attr/popupColorPrimary</item>
         <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
@@ -26,6 +29,7 @@
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
         <item name="shadeColorAccent">@color/colorPixel</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
         <item name="headerColor">?attr/popupColorPrimary</item>
     </style>
 
@@ -54,7 +58,7 @@
         <item name="android:wallpaperCloseExitAnimation">@anim/exit_launcher</item>
     </style>
 
-    <!-- Initial settings -->
+    <!-- Initial settings. -->
     <style name="ShadeSettings" parent="android:Theme.DeviceDefault.Settings">
         <item name="android:actionBarStyle">@null</item>
     </style>
@@ -64,24 +68,22 @@
         <item name="shadeColorAccent">@color/colorPixel</item>
     </style>
 
-    <!-- Applied at the end of loading -->
+    <!-- Applied at the end of loading shade overrides. -->
     <style name="ShadeSettings.Override" parent="android:Theme.DeviceDefault.Settings">
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="android:alertDialogTheme">@style/Shade.DialogAlert.Light</item>
     </style>
 
-    <!-- Applied at the end of loading -->
-    <style name="ShadeDialog.Override" parent="android:Theme.DeviceDefault.Light.Dialog.Alert">
+    <style name="Shade.DialogAlert" parent="android:Theme.Material.Dialog.Alert">
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
     </style>
 
-    <!-- These need to be compatible with API 21, so only extend default and dark. -->
-    <style name="Shade.DialogAlert" parent="@android:style/Theme.Material.Dialog.Alert">
+    <style name="Shade.DialogAlert.Light" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
     </style>
 
     <style name="Shade.Transparent" parent="@style/AppTheme.Dark">
         <item name="shadeColorAccent">@color/colorAccent</item>
-        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
         <item name="workspaceStatusBarScrim">@null</item>
 
@@ -110,7 +112,6 @@
     -->
     <style name="Shade.Dark" parent="AppTheme.Dark">
         <item name="android:colorPrimary">?attr/shadeColorSecondary</item>
-        <item name="android:alertDialogTheme">@style/Shade.DialogAlert</item>
         <item name="android:colorPrimaryDark">?attr/shadeColorAccent</item>
 
         <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
