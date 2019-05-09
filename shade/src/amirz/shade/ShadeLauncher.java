@@ -37,6 +37,7 @@ public class ShadeLauncher extends Launcher {
                 Utilities.getPrefs(this).getBoolean(PREF_UNREAD, true);
         super.onCreate(savedInstanceState);
 
+        getWorkspace().stripEmptyScreens();
         mDefaultWindowAnimations = getWindow().getAttributes().windowAnimations;
     }
 
