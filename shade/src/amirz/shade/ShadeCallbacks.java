@@ -89,6 +89,7 @@ public class ShadeCallbacks
         mLauncherClient.hideOverlay(mLauncher.isStarted() && !mLauncher.isForceInvisible());
         if (mLauncher.hasWindowFocus()
                 && mLauncher.isInState(NORMAL)
+                && mLauncher.getWorkspace().getNextPage() == 0
                 && mNoFloatingView) {
             ExtendedEditText searchUiManager =
                     (ExtendedEditText) mLauncher.getAppsView().getSearchUiManager();
