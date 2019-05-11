@@ -269,7 +269,7 @@ public class ShadeLauncher extends Launcher {
 
         private LauncherClient.ClientOptions getClientOptions(SharedPreferences prefs) {
             return new LauncherClient.ClientOptions(
-                    prefs.getBoolean(ShadeSettings.PREF_MINUS_ONE, true),
+                    true,
                     true, /* enableHotword */
                     true /* enablePrewarming */
             );
@@ -277,8 +277,9 @@ public class ShadeLauncher extends Launcher {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-            if (key.equals(ShadeSettings.PREF_MINUS_ONE)) {
-                mLauncherClient.setClientOptions(getClientOptions(prefs));
+            if (key.equals(ShadeSettings.PREF_FEED_PROVIDER)) {
+                mLauncherClient.disconnect();
+                mLauncher.recreate();
             }
         }
     }

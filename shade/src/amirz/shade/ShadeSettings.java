@@ -1,9 +1,5 @@
 package amirz.shade;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,7 +9,6 @@ import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.R;
@@ -22,17 +17,15 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.quickstep.QuickstepProcessInitializer;
 
-import amirz.aidlbridge.PixelBridge;
 import amirz.shade.customization.GlobalIconPackPreference;
 import amirz.shade.customization.AppReloader;
 
 public class ShadeSettings extends SettingsActivity {
-    public static final String PREF_MINUS_ONE = "pref_enable_minus_one";
+    public static final String PREF_FEED_PROVIDER = "pref_feed_provider";
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
     public static final String PREF_TRANSITION = "pref_transition";
     private static final String ABOUT_APP_VERSION = "about_app_version";
-    private static final String BRIDGE_TAG = "tag_bridge";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
     private boolean mReloaded = false;
@@ -55,7 +48,6 @@ public class ShadeSettings extends SettingsActivity {
     public static class ShadeFragment extends SettingsActivity.LauncherSettingsFragment {
         private final Handler mHandler = new Handler();
         private Context mContext;
-        private SwitchPreference mMinusOnePref;
         private GlobalIconPackPreference mIconPackPref;
         private ListPreference mThemePref;
 
@@ -63,19 +55,6 @@ public class ShadeSettings extends SettingsActivity {
         public void onCreate(Bundle bundle) {
             super.onCreate(bundle);
             mContext = getActivity();
-
-            mMinusOnePref = (SwitchPreference) findPreference(PREF_MINUS_ONE);
-            mMinusOnePref.setOnPreferenceChangeListener((p, v) -> {
-                if (PixelBridge.isInstalled(getActivity())) {
-                    return true;
-                }
-                FragmentManager fm = getFragmentManager();
-                if (fm.findFragmentByTag(BRIDGE_TAG) == null) {
-                    InstallFragment fragment = new InstallFragment();
-                    fragment.show(fm, BRIDGE_TAG);
-                }
-                return false;
-            });
 
             mIconPackPref = (GlobalIconPackPreference) findPreference(PREF_ICON_PACK);
             mIconPackPref.setOnPreferenceChangeListener((p, v) -> {
@@ -110,14 +89,6 @@ public class ShadeSettings extends SettingsActivity {
         }
 
         @Override
-        public void onResume() {
-            super.onResume();
-            if (!PixelBridge.isInstalled(getActivity())) {
-                mMinusOnePref.setChecked(false);
-            }
-        }
-
-        @Override
         public void onDestroy() {
             super.onDestroy();
             getActivity().finishAndRemoveTask();
@@ -138,17 +109,6 @@ public class ShadeSettings extends SettingsActivity {
         if (mReloaded) {
             // Close if we had already loaded another theme instance.
             finishAndRemoveTask();
-        }
-    }
-
-    public static class InstallFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(final Bundle bundle) {
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.bridge_missing_title)
-                    .setMessage(R.string.bridge_missing_message)
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .create();
         }
     }
 

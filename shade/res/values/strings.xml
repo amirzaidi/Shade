@@ -6,18 +6,12 @@
     <string name="app_preferences">Preferences</string>
     <string name="app_edit_subtitle">Tap to open app info.</string>
 
+    <string name="pref_feed_provider">Feed overlay provider</string>
+    <string name="pref_feed_provider_none">Disabled</string>
+
     <string name="pref_icon_pack">Icon pack</string>
     <string name="pref_category">Category</string>
     <string name="pref_reset">Reset</string>
-
-    <string name="pref_minus_one">Display Google Feed</string>
-    <string name="pref_minus_one_desc">To the left of the main Home screen</string>
-
-    <string name="bridge_missing_title">Rootless Pixel Bridge</string>
-    <string name="bridge_missing_message">
-        The bridge to connect to the Google Feed could not be found,
-        or needs to be updated.
-    </string>
 
     <string name="pref_transition">Fading transitions</string>
     <string name="pref_transition_desc">Override app opening and closing animation</string>

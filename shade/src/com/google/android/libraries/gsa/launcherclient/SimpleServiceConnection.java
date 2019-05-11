@@ -2,11 +2,14 @@ package com.google.android.libraries.gsa.launcherclient;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 
 import amirz.aidlbridge.LauncherClientBridge;
+import amirz.shade.feed.FeedProviders;
 
 class SimpleServiceConnection implements ServiceConnection {
     private final Context context;
@@ -17,7 +20,7 @@ class SimpleServiceConnection implements ServiceConnection {
     SimpleServiceConnection(Context context, int flags) {
         this.context = context;
         this.flags = flags;
-        this.bridge = LauncherClientBridge.wrap(this);
+        this.bridge = new LauncherClientBridge(this);
     }
 
     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -41,7 +44,9 @@ class SimpleServiceConnection implements ServiceConnection {
     public final boolean connectSafely() {
         if (!boundSuccessfully) {
             try {
-                boundSuccessfully = context.bindService(LauncherClientBridge.getServiceIntent(context), bridge, flags);
+                Intent service = FeedProviders.getServiceIntent(context);
+                boundSuccessfully = !TextUtils.isEmpty(service.getPackage())
+                        && context.bindService(service, bridge, flags);
             } catch (SecurityException ex) {
                 Log.e("LauncherClient", "Unable to connect to overlay service", ex);
             }
