@@ -970,6 +970,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (workspaceInModalState()) return false;
         if (ev.getActionMasked() == MotionEvent.ACTION_DOWN) {
             mXDown = ev.getX();
             mYDown = ev.getY();
