@@ -20,7 +20,7 @@ class SimpleServiceConnection implements ServiceConnection {
     SimpleServiceConnection(Context context, int flags) {
         this.context = context;
         this.flags = flags;
-        this.bridge = new LauncherClientBridge(this);
+        this.bridge = new LauncherClientBridge(this, flags);
     }
 
     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
