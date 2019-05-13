@@ -125,4 +125,8 @@ public class ShortcutInfoCompat {
     public String toString() {
         return mShortcutInfo.toString();
     }
+
+    public boolean canBePinned() {
+        return true;
+    }
 }

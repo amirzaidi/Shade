@@ -19,6 +19,7 @@ package com.android.launcher3.shortcuts;
 import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.LauncherApps;
 import android.content.pm.LauncherApps.ShortcutQuery;
 import android.content.pm.ShortcutInfo;
@@ -30,6 +31,7 @@ import android.util.Log;
 
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.LauncherSettings;
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 
 import java.util.ArrayList;
@@ -51,17 +53,27 @@ public class DeepShortcutManager {
     public static DeepShortcutManager getInstance(Context context) {
         synchronized (sInstanceLock) {
             if (sInstance == null) {
-                sInstance = new DeepShortcutManager(context.getApplicationContext());
+                sInstance = Utilities.getOverrideObject(DeepShortcutManager.class,
+                        context.getApplicationContext(),
+                        R.string.deep_shortcut_class);
+                sInstance.setContext(context);
             }
             return sInstance;
         }
     }
 
-    private final LauncherApps mLauncherApps;
+    private LauncherApps mLauncherApps;
     private boolean mWasLastCallSuccess;
 
-    private DeepShortcutManager(Context context) {
+    protected DeepShortcutManager() {
+    }
+
+    private void setContext(Context context) {
         mLauncherApps = (LauncherApps) context.getSystemService(Context.LAUNCHER_APPS_SERVICE);
+    }
+
+    public List<String> overwriteIds(List<String> ids, ComponentName activity, UserHandle user) {
+        return ids;
     }
 
     public static boolean supportsShortcuts(ItemInfo info) {
@@ -145,11 +157,11 @@ public class DeepShortcutManager {
     }
 
     @TargetApi(25)
-    public void startShortcut(String packageName, String id, Rect sourceBounds,
+    public void startShortcut(String packageName, String id, Intent intent,
           Bundle startActivityOptions, UserHandle user) {
         if (Utilities.ATLEAST_NOUGAT_MR1) {
             try {
-                mLauncherApps.startShortcut(packageName, id, sourceBounds,
+                mLauncherApps.startShortcut(packageName, id, intent.getSourceBounds(),
                         startActivityOptions, user);
                 mWasLastCallSuccess = true;
             } catch (SecurityException|IllegalStateException e) {
@@ -208,7 +220,7 @@ public class DeepShortcutManager {
      * TODO: Use the cache to optimize this so we don't make an RPC every time.
      */
     @TargetApi(25)
-    private List<ShortcutInfoCompat> query(int flags, String packageName,
+    protected List<ShortcutInfoCompat> query(int flags, String packageName,
             ComponentName activity, List<String> shortcutIds, UserHandle user) {
         if (Utilities.ATLEAST_NOUGAT_MR1) {
             ShortcutQuery q = new ShortcutQuery();

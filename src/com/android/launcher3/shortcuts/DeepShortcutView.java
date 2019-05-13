@@ -19,6 +19,7 @@ package com.android.launcher3.shortcuts;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -45,6 +46,7 @@ public class DeepShortcutView extends FrameLayout {
     private BubbleTextView mBubbleText;
     private View mIconView;
     private View mDivider;
+    private Drawable[] mCompound;
 
     private ShortcutInfo mInfo;
     private ShortcutInfoCompat mDetail;
@@ -69,6 +71,7 @@ public class DeepShortcutView extends FrameLayout {
         mBubbleText = findViewById(R.id.bubble_text);
         mIconView = findViewById(R.id.icon);
         mDivider = findViewById(R.id.divider);
+        mCompound = mBubbleText.getCompoundDrawablesRelative();
     }
 
     public void setDividerVisibility(int visibility) {
@@ -122,8 +125,16 @@ public class DeepShortcutView extends FrameLayout {
 
         // TODO: Add the click handler to this view directly and not the child view.
         mBubbleText.setOnClickListener(ItemClickHandler.INSTANCE);
-        mBubbleText.setOnLongClickListener(container);
+        mBubbleText.setOnLongClickListener(detail.canBePinned() ? container : null);
         mBubbleText.setOnTouchListener(container);
+
+        if (detail.canBePinned()) {
+            mBubbleText.setCompoundDrawablesWithIntrinsicBounds(
+                    mCompound[0], mCompound[1], mCompound[2], mCompound[3]);
+        } else {
+            mBubbleText.setCompoundDrawablesWithIntrinsicBounds(
+                    null, null, null, null);
+        }
     }
 
     /**

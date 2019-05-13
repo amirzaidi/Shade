@@ -170,6 +170,7 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
         }
 
         List<String> ids = mDeepShortcutMap.get(new ComponentKey(component, info.user));
+        ids = DeepShortcutManager.getInstance(mLauncher).overwriteIds(ids, component, info.user);
         return ids == null ? Collections.EMPTY_LIST : ids;
     }
 
