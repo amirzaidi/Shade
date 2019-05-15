@@ -113,6 +113,9 @@
     <!-- Name of a deep shortcut loader class. Can be empty. -->
     <string name="deep_shortcut_class" translatable="false"></string>
 
+    <!-- Name of a device profile override class. Can be empty. -->
+    <string name="profile_override_class" translatable="false"></string>
+
     <!-- View ID to use for QSB widget -->
     <item type="id" name="qsb_widget" />
 

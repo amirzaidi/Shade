@@ -246,9 +246,17 @@ public class InvariantDeviceProfile {
      * Currently we support: all apps row / column count.
      */
     private void applyPartnerDeviceProfileOverrides(Context context, DisplayMetrics dm) {
-        Partner p = Partner.get(context.getPackageManager());
-        if (p != null) {
-            p.applyInvariantDeviceProfileOverrides(this, dm);
+        ProfileOverride override = Utilities.getOverrideObject(
+                ProfileOverride.class, context, R.string.profile_override_class);
+        override.apply(context, this, dm);
+    }
+
+    public static class ProfileOverride {
+        protected void apply(Context context, InvariantDeviceProfile inv, DisplayMetrics dm) {
+            Partner p = Partner.get(context.getPackageManager());
+            if (p != null) {
+                p.applyInvariantDeviceProfileOverrides(inv, dm);
+            }
         }
     }
 
