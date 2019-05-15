@@ -25,7 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UnreadSession extends IUnreadPlugin.Stub implements NotificationListener.NotificationsChangedListener {
+public class UnreadSession extends IUnreadPlugin.Stub
+        implements NotificationListener.NotificationsChangedListener {
     private static final int MULTI_CLICK_DELAY = 300;
 
     private final Context mContext;
@@ -38,6 +39,7 @@ public class UnreadSession extends IUnreadPlugin.Stub implements NotificationLis
     private final MediaListener mMedia;
     private final MultiClickListener mTaps;
     private final DateBroadcastReceiver mDateReceiver;
+    private final BatteryBroadcastReceiver mBatteryReceiver;
 
     private OnClickListener mOnClick;
 
@@ -52,6 +54,12 @@ public class UnreadSession extends IUnreadPlugin.Stub implements NotificationLis
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
         mTaps.setListeners(mMedia::toggle, mMedia::next, mMedia::previous);
         mDateReceiver = new DateBroadcastReceiver(context) {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                reload();
+            }
+        };
+        mBatteryReceiver = new BatteryBroadcastReceiver(context) {
             @Override
             public void onReceive(Context context, Intent intent) {
                 reload();
@@ -83,7 +91,12 @@ public class UnreadSession extends IUnreadPlugin.Stub implements NotificationLis
 
             NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
             if (ranked == null) {
-                textList.add(mContext.getString(R.string.shadespace_subtext_default));
+                if (mBatteryReceiver.isCharging()) {
+                    textList.add(mContext.getString(R.string.shadespace_subtext_charging,
+                            mBatteryReceiver.getLevel()));
+                } else {
+                    textList.add(mContext.getString(R.string.shadespace_subtext_default));
+                }
             } else {
                 NotificationInfo notif = new NotificationInfo(mContext, ranked.sbn);
                 String app = getApp(notif.packageUserKey.mPackageName).toString();
@@ -153,6 +166,7 @@ public class UnreadSession extends IUnreadPlugin.Stub implements NotificationLis
     public void addOnChangeListener(IUnreadPluginCallback cb) {
         if (mCallbacks.isEmpty()) {
             mDateReceiver.onResume();
+            mBatteryReceiver.onResume();
             mMedia.onResume();
         }
         mCallbacks.add(cb);
@@ -163,6 +177,7 @@ public class UnreadSession extends IUnreadPlugin.Stub implements NotificationLis
         mCallbacks.remove(cb);
         if (mCallbacks.isEmpty()) {
             mDateReceiver.onPause();
+            mBatteryReceiver.onPause();
             mMedia.onPause();
         }
     }

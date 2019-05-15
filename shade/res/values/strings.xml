@@ -73,4 +73,5 @@
 
     <string name="shadespace_subtext_double" translatable="false">%1$s – %2$s</string>
     <string name="shadespace_subtext_default">Press home to search apps</string>
+    <string name="shadespace_subtext_charging">Battery has charged to %1$d%%</string>
 </resources>
