@@ -48,8 +48,8 @@ public class CategoriesView extends LinearLayout
         }
 
         @Override
-        public Integer get(CategoriesView predictionRowView) {
-            return predictionRowView.currentAlpha;
+        public Integer get(CategoriesView object) {
+            return object.currentAlpha;
         }
     };
 
@@ -77,7 +77,8 @@ public class CategoriesView extends LinearLayout
     public CategoriesView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mFocusHelper = new FocusIndicatorHelper.SimpleFocusIndicatorHelper(this);
-        mNumColumns = LauncherAppState.getInstance(context).getInvariantDeviceProfile().numColumns;
+        mNumColumns = Math.min(5,
+                LauncherAppState.getInstance(context).getInvariantDeviceProfile().numColumns);
         mLauncher = Launcher.getLauncher(context);
         mLauncher.addOnDeviceProfileChangeListener(this);
 
@@ -160,27 +161,21 @@ public class CategoriesView extends LinearLayout
     }
 
     private void recreateBubbleTextViews() {
-        if (getChildCount() != mNumColumns) {
-            while (getChildCount() > mNumColumns) {
-                removeViewAt(0);
-            }
-            while (getChildCount() < mNumColumns) {
-                BubbleTextView btv = (BubbleTextView) mLauncher.getLayoutInflater()
-                        .inflate(R.layout.all_apps_icon, this, false);
-                btv.setOnClickListener(ItemClickHandler.INSTANCE);
-                //btv.setOnLongClickListener(ItemLongClickListener.INSTANCE_ALL_APPS);
-                //btv.setLongPressTimeout(ViewConfiguration.getLongPressTimeout());
-                btv.setOnFocusChangeListener(mFocusHelper);
-                LayoutParams layoutParams = (LayoutParams) btv.getLayoutParams();
-                layoutParams.height = mLauncher.getDeviceProfile().allAppsCellHeightPx;
-                layoutParams.width = 0;
-                layoutParams.weight = 1f;
-                addView(btv);
-            }
+        List<AppInfo> shortcuts = CategoryShortcuts.getAll(mLauncher);
+        int size = shortcuts.size() - 1;
+
+        while (getChildCount() < Math.min(size, mNumColumns)) {
+            BubbleTextView btv = (BubbleTextView) mLauncher.getLayoutInflater()
+                    .inflate(R.layout.all_apps_icon, this, false);
+            btv.setOnClickListener(ItemClickHandler.INSTANCE);
+            btv.setOnFocusChangeListener(mFocusHelper);
+            LayoutParams layoutParams = (LayoutParams) btv.getLayoutParams();
+            layoutParams.height = mLauncher.getDeviceProfile().allAppsCellHeightPx;
+            layoutParams.width = 0;
+            layoutParams.weight = 1f;
+            addView(btv);
         }
 
-        List<AppInfo> shortcuts = CategoryShortcuts.getAll(mLauncher);
-        int size = shortcuts.size();
         int textColor = ColorUtils.setAlphaComponent(mTextColor, initialAlpha);
         for (int i = 0; i < getChildCount(); i++) {
             BubbleTextView btv = (BubbleTextView) getChildAt(i);
