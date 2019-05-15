@@ -70,6 +70,15 @@
             android:defaultValue=""
             android:persistent="true" />
 
+        <ListPreference
+            android:key="pref_grid_size"
+            android:title="@string/pref_grid_size"
+            android:summary="%s"
+            android:entries="@array/grid_entries"
+            android:entryValues="@array/grid_entry_values"
+            android:defaultValue=""
+            android:persistent="true" />
+
         <SwitchPreference
             android:key="pref_transition"
             android:title="@string/pref_transition"

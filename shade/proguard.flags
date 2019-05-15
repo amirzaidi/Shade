@@ -8,6 +8,10 @@
   public <init>(...);
 }
 
+-keep class amirz.shade.customization.GridOverride {
+  public <init>(...);
+}
+
 -keep class amirz.shade.customization.PreferencesShortcut {
   public <init>(...);
 }

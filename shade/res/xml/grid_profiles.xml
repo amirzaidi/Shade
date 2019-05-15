@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<profiles xmlns:launcher="http://schemas.android.com/apk/res-auto" >
+
+    <profile
+        launcher:name="large"
+        launcher:numRows="4"
+        launcher:numColumns="4"
+        launcher:numFolderRows="3"
+        launcher:numFolderColumns="4"
+        launcher:iconSize="58"
+        launcher:landscapeIconSize="56"
+        launcher:iconTextSize="13.5" />
+
+    <profile
+        launcher:name="medium"
+        launcher:numRows="5"
+        launcher:numColumns="5"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:iconSize="56"
+        launcher:landscapeIconSize="54"
+        launcher:iconTextSize="13.0" />
+
+    <profile
+        launcher:name="small"
+        launcher:numRows="6"
+        launcher:numColumns="6"
+        launcher:numFolderRows="4"
+        launcher:numFolderColumns="4"
+        launcher:iconSize="50"
+        launcher:landscapeIconSize="48"
+        launcher:iconTextSize="13.0" />
+
+</profiles>

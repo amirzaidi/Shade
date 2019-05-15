@@ -12,6 +12,7 @@ import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
@@ -35,7 +36,7 @@ public class ShadeCallbacks
         implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener,
         DeviceProfile.OnDeviceProfileChangeListener,
         SharedPreferences.OnSharedPreferenceChangeListener {
-    private final Launcher mLauncher;
+    private final ShadeLauncher mLauncher;
 
     private ShadeOverlay mOverlayCallbacks;
     private LauncherClient mLauncherClient;
@@ -46,7 +47,7 @@ public class ShadeCallbacks
 
     private ShadespaceView mShadespace;
 
-    ShadeCallbacks(Launcher launcher) {
+    ShadeCallbacks(ShadeLauncher launcher) {
         mLauncher = launcher;
     }
 
@@ -262,6 +263,8 @@ public class ShadeCallbacks
         if (key.equals(ShadeSettings.PREF_FEED_PROVIDER)) {
             mLauncherClient.disconnect();
             mLauncher.recreate();
+        } else if (key.equals(ShadeSettings.PREF_GRID_SIZE)) {
+            mLauncher.kill();
         } else if (key.startsWith(PluginManager.PREF_PLUGIN_PREFIX)) {
             mLauncher.recreate();
         }

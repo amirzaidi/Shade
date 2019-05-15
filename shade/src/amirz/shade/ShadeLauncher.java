@@ -19,6 +19,7 @@ public class ShadeLauncher extends PluginLauncher {
     private enum State {
         STOPPED,
         RECREATE_DEFERRED,
+        KILL_DEFERRED,
         STARTED
     }
 
@@ -40,12 +41,15 @@ public class ShadeLauncher extends PluginLauncher {
 
         getWorkspace().stripEmptyScreens();
         mDefaultWindowAnimations = getWindow().getAttributes().windowAnimations;
+        ShadeRestarter.cancelRestart(this);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if (mState == State.RECREATE_DEFERRED) {
+        if (mState == State.KILL_DEFERRED) {
+            ShadeRestarter.initiateRestart(this);
+        } else if (mState == State.RECREATE_DEFERRED) {
             super.recreate();
         }
         mState = State.STARTED;
@@ -65,8 +69,16 @@ public class ShadeLauncher extends PluginLauncher {
     public void recreate() {
         if (mState == State.STARTED) {
             super.recreate();
-        } else {
+        } else if (mState != State.KILL_DEFERRED) {
             mState = State.RECREATE_DEFERRED;
+        }
+    }
+
+    public void kill() {
+        if (mState == State.STARTED) {
+            ShadeRestarter.initiateRestart(this);
+        } else {
+            mState = State.KILL_DEFERRED;
         }
     }
 

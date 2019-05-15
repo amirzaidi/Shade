@@ -14,6 +14,8 @@
 
     <string name="deep_shortcut_class" translatable="false">amirz.shade.shortcuts.ShortcutManager</string>
 
+    <string name="profile_override_class" translatable="false">amirz.shade.customization.GridOverride</string>
+
     <integer name="shade_gradient_alpha">243</integer>
 
     <string-array name="category_entries">
@@ -69,5 +71,19 @@
         <item>"twilight"</item>
         <item>"blossom"</item>
         <item>"midnight"</item>
+    </string-array>
+
+    <string-array name="grid_entries">
+        <item>@string/grid_default</item>
+        <item>@string/grid_sparse</item>
+        <item>@string/grid_balanced</item>
+        <item>@string/grid_dense</item>
+    </string-array>
+
+    <string-array name="grid_entry_values">
+        <item>""</item>
+        <item>"large"</item>
+        <item>"medium"</item>
+        <item>"small"</item>
     </string-array>
 </resources>
