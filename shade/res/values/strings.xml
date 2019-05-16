@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_shade" translatable="false">Shade Launcher</string>
-    <string name="app_name_shade_short" translatable="false">Shade</string>
-
     <string name="app_preferences">Preferences</string>
     <string name="app_edit_subtitle">Tap to open app info.</string>
 
@@ -23,25 +20,17 @@
 
     <string name="category_plugins">Plugins</string>
 
-    <string name="plugin_title_long" translatable="false">%1$s - %2$s</string>
-
     <string name="plugin_shortcuts">Static shortcuts</string>
     <string name="plugin_shortcuts_desc">Backport static application shortcuts</string>
-
-    <string name="plugin_media">@string/pref_unread</string>
-    <string name="plugin_media_desc">@string/pref_unread_desc</string>
 
     <string name="category_about">About</string>
 
     <string name="about_app_version">Version</string>
 
     <string name="about_contact">Contact</string>
-    <string name="about_contact_desc" translatable="false">Amir Zaidi</string>
-    <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
 
     <string name="about_donate">Donate</string>
     <string name="about_donate_desc">Using Play balance</string>
-    <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
 
     <!-- Theme selection -->
     <string name="theme_title">Theme</string>
@@ -71,7 +60,6 @@
     <string name="grid_balanced">Balanced</string>
     <string name="grid_dense">Dense</string>
 
-    <string name="shadespace_subtext_double" translatable="false">%1$s – %2$s</string>
     <string name="shadespace_subtext_default">Press home to search apps</string>
     <string name="shadespace_subtext_charging">Battery has charged to %1$d%%</string>
 </resources>
