@@ -74,13 +74,14 @@ public class UnreadSession extends IUnreadPlugin.Stub
         List<String> textList = new ArrayList<>();
         if (mMedia.isTracking()) {
             textList.add(mMedia.getTitle().toString());
-            if (TextUtils.isEmpty(mMedia.getArtist())) {
+            CharSequence artist = mMedia.getArtist();
+            if (TextUtils.isEmpty(artist)) {
                 textList.add(getApp(mMedia.getPackage()).toString());
             } else {
-                textList.add(mMedia.getArtist().toString());
-                if (!TextUtils.isEmpty(mMedia.getAlbum())
-                        && !mMedia.getTitle().equals(mMedia.getAlbum())) {
-                    textList.add(mMedia.getAlbum().toString());
+                textList.add(artist.toString());
+                CharSequence album = mMedia.getAlbum();
+                if (!TextUtils.isEmpty(album) && !textList.contains(album.toString())) {
+                    textList.add(album.toString());
                 }
             }
             mOnClick = launchOptions -> mTaps.onClick();
@@ -105,14 +106,19 @@ public class UnreadSession extends IUnreadPlugin.Stub
                         : notif.title.toString();
                 String body = notif.text == null
                         ? ""
-                        : notif.text.toString().trim().split("\n")[0];
+                        : notif.text.toString().trim().split("\n")[0]; // First line
 
                 if (ranked.important) {
-                    textList.clear();
+                    // Body on top if it is not empty.
                     if (!TextUtils.isEmpty(body)) {
+                        textList.clear();
                         textList.add(body);
                     }
-                    textList.add(title);
+
+                    String[] splitTitle = splitTitle(title);
+                    for (int i = splitTitle.length - 1; i >= 0; i--) {
+                        textList.add(splitTitle[i]);
+                    }
 
                     PendingIntent pi = notif.intent;
                     mOnClick = launchOptions -> {
@@ -133,7 +139,7 @@ public class UnreadSession extends IUnreadPlugin.Stub
                     }
                 }
 
-                if (shouldShowAppName(title, app)) {
+                if (!textList.contains(app)) {
                     textList.add(app);
                 }
             }
@@ -148,8 +154,14 @@ public class UnreadSession extends IUnreadPlugin.Stub
         }
     }
 
-    private boolean shouldShowAppName(String title, String app) {
-        return !title.contains(": ") && !title.contains(" - ") && !title.equals(app);
+    private String[] splitTitle(String title) {
+        final String[] delimiters = { ": ", " - ", " • " };
+        for (String del : delimiters) {
+            if (title.contains(del)) {
+                return title.split(del, 2);
+            }
+        }
+        return new String[] { title };
     }
 
     private CharSequence getApp(String name) {
