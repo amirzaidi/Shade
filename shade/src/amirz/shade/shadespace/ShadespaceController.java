@@ -1,7 +1,11 @@
 package amirz.shade.shadespace;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import com.android.launcher3.R;
+import com.android.launcher3.plugin.PluginManager;
+import com.android.launcher3.plugin.button.ButtonPluginClient;
 import com.android.launcher3.plugin.unread.UnreadPluginClient;
 
 import java.util.List;
@@ -20,7 +24,13 @@ class ShadespaceController {
         if (!pluginText.isEmpty()) {
             mView.setTopText(pluginText.get(0));
             if (pluginText.size() == 1) {
-                mView.setBottomText("");
+                Context context = mView.getContext();
+                if (PluginManager.getInstance(context)
+                        .hasPluginTypeEnabled(ButtonPluginClient.class)) {
+                    mView.setBottomText("");
+                } else {
+                    mView.setBottomText(context.getString(R.string.shadespace_subtext_default));
+                }
             } else if (pluginText.size() == 2) {
                 mView.setBottomText(pluginText.get(1));
             } else {

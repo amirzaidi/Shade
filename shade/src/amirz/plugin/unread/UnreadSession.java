@@ -91,14 +91,7 @@ public class UnreadSession extends IUnreadPlugin.Stub
             mOnClick = mDateReceiver::openCalendar;
 
             NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
-            if (ranked == null) {
-                if (mBatteryReceiver.isCharging()) {
-                    textList.add(mContext.getString(R.string.shadespace_subtext_charging,
-                            mBatteryReceiver.getLevel()));
-                } else {
-                    textList.add(mContext.getString(R.string.shadespace_subtext_default));
-                }
-            } else {
+            if (ranked != null) {
                 NotificationInfo notif = new NotificationInfo(mContext, ranked.sbn);
                 String app = getApp(notif.packageUserKey.mPackageName).toString();
                 String title = notif.title == null
@@ -142,6 +135,9 @@ public class UnreadSession extends IUnreadPlugin.Stub
                 if (!textList.contains(app)) {
                     textList.add(app);
                 }
+            } else if (mBatteryReceiver.isCharging()) {
+                textList.add(mContext.getString(R.string.shadespace_subtext_charging,
+                        mBatteryReceiver.getLevel()));
             }
         }
         return textList;
