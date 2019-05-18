@@ -33,6 +33,7 @@ public class ShadeSettings extends SettingsActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ShadeFont.override(this);
         super.onCreate(savedInstanceState);
 
         // Load the Shade theme attributes
