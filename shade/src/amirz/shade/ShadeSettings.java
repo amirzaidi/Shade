@@ -34,6 +34,7 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_GRID_SIZE = "pref_grid_size";
     public static final String PREF_TRANSITION = "pref_transition";
     private static final String ABOUT_APP_VERSION = "about_app_version";
+    private static final String CATEGORY_CUSTOMIZATION = "category_customization";
     private static final String CATEGORY_PLUGINS = "category_plugins";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
@@ -92,7 +93,8 @@ public class ShadeSettings extends SettingsActivity {
             });
 
             if (QuickstepProcessInitializer.isEnabled()) {
-                getPreferenceScreen().removePreference(findPreference(PREF_TRANSITION));
+                PreferenceCategory pc = (PreferenceCategory) findPreference(CATEGORY_CUSTOMIZATION);
+                pc.removePreference(findPreference(PREF_TRANSITION));
             }
 
             mManager = PluginManager.getInstance(mContext);

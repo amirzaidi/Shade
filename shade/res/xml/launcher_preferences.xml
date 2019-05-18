@@ -52,7 +52,7 @@
         android:defaultValue=""
         android:persistent="false" />
 
-    <PreferenceCategory android:title="@string/category_shade">
+    <PreferenceCategory android:key="category_customization" android:title="@string/category_shade">
 
         <ListPreference
             android:key="pref_theme"
