@@ -18,6 +18,7 @@ import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.plugin.PluginManager;
+import com.android.launcher3.plugin.button.ButtonPluginClient;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
@@ -35,7 +36,7 @@ import static com.android.launcher3.LauncherState.NORMAL;
 public class ShadeCallbacks
         implements LauncherCallbacks, WallpaperColorInfo.OnChangeListener,
         DeviceProfile.OnDeviceProfileChangeListener,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        SharedPreferences.OnSharedPreferenceChangeListener, ButtonPluginClient.Callback {
     private final ShadeLauncher mLauncher;
 
     private ShadeOverlay mOverlayCallbacks;
@@ -93,12 +94,21 @@ public class ShadeCallbacks
                 && mLauncher.isInState(NORMAL)
                 && mLauncher.getWorkspace().getNextPage() == 0
                 && mNoFloatingView) {
-            ExtendedEditText searchUiManager =
-                    (ExtendedEditText) mLauncher.getAppsView().getSearchUiManager();
-            mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true,
-                    () -> mHandler.post(searchUiManager::showKeyboard)
-            );
+            ButtonPluginClient buttonPluginClient =
+                    PluginManager.getInstance(mLauncher).getClient(ButtonPluginClient.class);
+            if (!buttonPluginClient.onHomeIntent(this)) {
+                ExtendedEditText searchUiManager =
+                        (ExtendedEditText) mLauncher.getAppsView().getSearchUiManager();
+                mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true,
+                        () -> mHandler.post(searchUiManager::showKeyboard)
+                );
+            }
         }
+    }
+
+    @Override
+    public boolean startActivity(Intent intent) {
+        return mLauncher.startActivitySafely(mLauncher.getWorkspace(), intent, null);
     }
 
     @Override
