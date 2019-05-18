@@ -1,9 +1,8 @@
-package amirz.shade.shadespace;
+package amirz.plugin.unread;
 
 import android.os.Handler;
-import android.view.View;
 
-class MultiClickListener implements View.OnClickListener, Runnable {
+class MultiClickListener implements Runnable {
     private final Handler mHandler = new Handler();
     private final int mDelay;
     private OnClickListener[] mListeners = new OnClickListener[0];
@@ -23,8 +22,7 @@ class MultiClickListener implements View.OnClickListener, Runnable {
         }
     }
 
-    @Override
-    public void onClick(View v) {
+    public void onClick() {
         if (mListeners.length > 0) {
             // Intermediate click callback.
             mListeners[mUnprocessedTaps++].onClick(false);

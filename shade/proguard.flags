@@ -20,6 +20,10 @@
   public <init>(...);
 }
 
+-keep class amirz.shade.shortcuts.ShortcutManager {
+  public <init>(...);
+}
+
 -keep class amirz.shade.transitions.TransitionManager {
   public <init>(...);
 }

@@ -133,6 +133,37 @@
             android:excludeFromRecents="true"
             android:noHistory="true" />
 
+        <service
+            android:name="amirz.plugin.shortcuts.ShortcutService"
+            android:label="@string/plugin_shortcuts"
+            android:description="@string/plugin_shortcuts_desc"
+            android:enabled="@bool/backport_shortcut_service">
+            <intent-filter>
+                <action android:name="com.android.launcher3.PLUGIN" />
+            </intent-filter>
+            <meta-data
+                android:name="interface.descriptor"
+                android:value="com.android.launcher3.plugin.shortcuts.IShortcutPlugin" />
+            <meta-data
+                android:name="interface.version"
+                android:value="1" />
+        </service>
+
+        <service
+            android:name="amirz.plugin.unread.UnreadService"
+            android:label="@string/plugin_media"
+            android:description="@string/plugin_media_desc">
+            <intent-filter>
+                <action android:name="com.android.launcher3.PLUGIN" />
+            </intent-filter>
+            <meta-data
+                android:name="interface.descriptor"
+                android:value="com.android.launcher3.plugin.unread.IUnreadPlugin" />
+            <meta-data
+                android:name="interface.version"
+                android:value="1" />
+        </service>
+
         <meta-data android:name="android.max_aspect" android:value="3.0" />
     </application>
 </manifest>

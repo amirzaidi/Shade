@@ -12,6 +12,8 @@
 
     <string name="app_transition_manager_class" translatable="false">amirz.shade.transitions.TransitionManager</string>
 
+    <string name="deep_shortcut_class" translatable="false">amirz.shade.shortcuts.ShortcutManager</string>
+
     <integer name="shade_gradient_alpha">243</integer>
 
     <string-array name="category_entries">

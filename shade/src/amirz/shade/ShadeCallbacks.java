@@ -16,6 +16,7 @@ import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.plugin.PluginManager;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
@@ -258,12 +259,11 @@ public class ShadeCallbacks
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        switch (key) {
-            case ShadeSettings.PREF_FEED_PROVIDER:
-                mLauncherClient.disconnect();
-            case ShadeSettings.PREF_UNREAD:
-                mLauncher.recreate();
-                break;
+        if (key.equals(ShadeSettings.PREF_FEED_PROVIDER)) {
+            mLauncherClient.disconnect();
+            mLauncher.recreate();
+        } else if (key.startsWith(PluginManager.PREF_PLUGIN_PREFIX)) {
+            mLauncher.recreate();
         }
     }
 

@@ -70,25 +70,22 @@
             android:defaultValue=""
             android:persistent="true" />
 
-        <amirz.shade.customization.FeedPreference
-            android:key="pref_feed_provider"
-            android:title="@string/pref_feed_provider"
-            android:summary="%s"
-            android:defaultValue=""
-            android:persistent="true" />
-
-        <SwitchPreference
-            android:key="pref_unread"
-            android:title="@string/pref_unread"
-            android:summary="@string/pref_unread_desc"
-            android:defaultValue="true"
-            android:persistent="true" />
-
         <SwitchPreference
             android:key="pref_transition"
             android:title="@string/pref_transition"
             android:summary="@string/pref_transition_desc"
             android:defaultValue="false"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="category_plugins" android:title="@string/category_plugins">
+
+        <amirz.shade.customization.FeedPreference
+            android:key="pref_feed_provider"
+            android:title="@string/pref_feed_provider"
+            android:summary="%s"
+            android:defaultValue=""
             android:persistent="true" />
 
     </PreferenceCategory>

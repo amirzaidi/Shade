@@ -3,18 +3,19 @@ package amirz.shade;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
+import com.android.launcher3.plugin.PluginLauncher;
+import com.android.launcher3.plugin.PluginManager;
+import com.android.launcher3.plugin.unread.UnreadPluginClient;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 
 import amirz.shade.transitions.TransitionManager;
 
 import static amirz.shade.ShadeSettings.PREF_TRANSITION;
-import static amirz.shade.ShadeSettings.PREF_UNREAD;
 
-public class ShadeLauncher extends Launcher {
+public class ShadeLauncher extends PluginLauncher {
     private enum State {
         STOPPED,
         RECREATE_DEFERRED,
@@ -33,8 +34,8 @@ public class ShadeLauncher extends Launcher {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
-        FeatureFlags.QSB_ON_FIRST_SCREEN =
-                Utilities.getPrefs(this).getBoolean(PREF_UNREAD, true);
+        FeatureFlags.QSB_ON_FIRST_SCREEN = PluginManager.getInstance(this)
+                .hasPluginTypeEnabled(UnreadPluginClient.class);
         super.onCreate(savedInstanceState);
 
         getWorkspace().stripEmptyScreens();

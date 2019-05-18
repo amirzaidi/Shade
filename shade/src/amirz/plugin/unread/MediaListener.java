@@ -1,4 +1,4 @@
-package amirz.shade.shadespace;
+package amirz.plugin.unread;
 
 import android.app.Notification;
 import android.content.ComponentName;
@@ -13,7 +13,6 @@ import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 
 import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationListener;

@@ -1,4 +1,4 @@
-package amirz.shade.shadespace;
+package amirz.plugin.unread;
 
 import android.service.notification.StatusBarNotification;
 

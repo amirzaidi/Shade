@@ -8,14 +8,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.SwitchPreference;
 
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.R;
 import com.android.launcher3.SettingsActivity;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.plugin.PluginManager;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.quickstep.QuickstepProcessInitializer;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import amirz.shade.customization.AppReloader;
 import amirz.shade.customization.GlobalIconPackPreference;
@@ -25,8 +32,8 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
     public static final String PREF_TRANSITION = "pref_transition";
-    public static final String PREF_UNREAD = "pref_unread";
     private static final String ABOUT_APP_VERSION = "about_app_version";
+    private static final String CATEGORY_PLUGINS = "category_plugins";
     private static final int UPDATE_THEME_DELAY = 500;
     private static final int CLOSE_STACK_DELAY = 500;
     private boolean mReloaded = false;
@@ -52,6 +59,9 @@ public class ShadeSettings extends SettingsActivity {
         private Context mContext;
         private GlobalIconPackPreference mIconPackPref;
         private ListPreference mThemePref;
+        private ListPreference mFeedPref;
+        private PluginManager mManager;
+        private PreferenceCategory mCategory;
 
         @Override
         public void onCreate(Bundle bundle) {
@@ -84,10 +94,55 @@ public class ShadeSettings extends SettingsActivity {
                 getPreferenceScreen().removePreference(findPreference(PREF_TRANSITION));
             }
 
+            mManager = PluginManager.getInstance(mContext);
+            mCategory = (PreferenceCategory) findPreference(CATEGORY_PLUGINS);
+            mFeedPref = (ListPreference) mCategory.findPreference(PREF_FEED_PROVIDER);
+
             Preference version = findPreference(ABOUT_APP_VERSION);
             version.setSummary(BuildConfig.VERSION_NAME);
             Uri intentData = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
             version.setIntent(version.getIntent().setData(intentData));
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+
+            mCategory.removeAll();
+            mCategory.addPreference(mFeedPref);
+
+            List<PluginManager.Plugin> pluginList = mManager.getPlugins();
+            Collections.sort(pluginList, (o1, o2) -> name(o1).compareTo(name(o2)));
+
+            List<Runnable> prefReload = new ArrayList<>();
+            for (PluginManager.Plugin plugin : pluginList) {
+                SwitchPreference pref = new SwitchPreference(mContext);
+                pref.setTitle(name(plugin));
+                pref.setSummary(plugin.getLongLabel());
+                pref.setChecked(plugin.isEnabled());
+                pref.setOnPreferenceChangeListener((b, v) -> {
+                    plugin.setEnabled((boolean) v);
+                    mManager.reloadConnections();
+
+                    // Visually update all other plugin toggles.
+                    for (Runnable runnable : prefReload) {
+                        runnable.run();
+                    }
+                    return true;
+                });
+
+                // Save so it can be referenced by other toggles.
+                prefReload.add(() -> pref.setChecked(plugin.isEnabled()));
+                mCategory.addPreference(pref);
+            }
+        }
+
+        private String name(PluginManager.Plugin plugin) {
+            String appLabel = plugin.getAppLabel().toString();
+            String shortLabel = plugin.getShortLabel().toString();
+            return plugin.isInPackage()
+                    ? shortLabel
+                    : mContext.getString(R.string.plugin_title_long, appLabel, shortLabel);
         }
 
         @Override
