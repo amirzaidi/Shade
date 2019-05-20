@@ -60,7 +60,9 @@ public class UiFactory {
     public static TouchController[] createTouchControllers(Launcher launcher) {
         if (!QuickstepProcessInitializer.isEnabled()) {
             return new TouchController[] {
-                    launcher.getDragController(), new AllAppsSwipeController(launcher)};
+                    launcher.getDragController(),
+                    new AllAppsSwipeController(launcher),
+                    new NotificationTouchController(launcher)};
         }
 
         boolean swipeUpEnabled = OverviewInteractionState.getInstance(launcher)
@@ -69,19 +71,22 @@ public class UiFactory {
             return new TouchController[] {
                     launcher.getDragController(),
                     new OverviewToAllAppsTouchController(launcher),
-                    new LauncherTaskViewController(launcher)};
+                    new LauncherTaskViewController(launcher),
+                    new NotificationTouchController(launcher)};
         }
         if (launcher.getDeviceProfile().isVerticalBarLayout()) {
             return new TouchController[] {
                     launcher.getDragController(),
                     new OverviewToAllAppsTouchController(launcher),
                     new LandscapeEdgeSwipeController(launcher),
-                    new LauncherTaskViewController(launcher)};
+                    new LauncherTaskViewController(launcher),
+                    new NotificationTouchController(launcher)};
         } else {
             return new TouchController[] {
                     launcher.getDragController(),
                     new PortraitStatesTouchController(launcher),
-                    new LauncherTaskViewController(launcher)};
+                    new LauncherTaskViewController(launcher),
+                    new NotificationTouchController(launcher)};
         }
     }
 
