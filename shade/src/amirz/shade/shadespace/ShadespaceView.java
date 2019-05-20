@@ -9,28 +9,18 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.plugin.PluginManager;
 import com.android.launcher3.plugin.unread.UnreadPluginClient;
-import com.android.launcher3.touch.SwipeDetector;
 
-public class ShadespaceView extends LinearLayout
-        implements SwipeDetector.Listener, UnreadPluginClient.UnreadListener {
-    private final static float NOTIFICATION_OPEN_VELOCITY = 2.25f;
-    private final static float NOTIFICATION_CLOSE_VELOCITY = -0.35f;
-
+public class ShadespaceView extends LinearLayout implements UnreadPluginClient.UnreadListener {
     private final UnreadPluginClient mPluginClient;
     private final ShadespaceController mController;
 
     private DoubleShadowTextView mTopView;
     private DoubleShadowTextView mBottomView;
-    private boolean mNotificationsOpen;
     private boolean mRunning;
 
     @SuppressLint({"ClickableViewAccessibility"})
     public ShadespaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        SwipeDetector swipe = new SwipeDetector(context, this, SwipeDetector.VERTICAL);
-        swipe.setDetectableScrollConditions(SwipeDetector.DIRECTION_BOTH, false);
-        setOnTouchListener((v, event) -> swipe.onTouchEvent(event) && swipe.isDraggingState());
 
         mPluginClient = PluginManager.getInstance(context).getClient(UnreadPluginClient.class);
         mController = new ShadespaceController(this, mPluginClient);
@@ -45,33 +35,6 @@ public class ShadespaceView extends LinearLayout
 
         setOnClickListener(v -> mController.clickView(
                 Launcher.getLauncher(getContext()).getActivityLaunchOptionsAsBundle(this)));
-    }
-
-    @Override
-    public void onDragStart(boolean start) {
-        mNotificationsOpen = false;
-    }
-
-    @SuppressLint({"PrivateApi", "WrongConstant"})
-    @Override
-    public boolean onDrag(float displacement, float velocity) {
-        try {
-            Class<?> cls = Class.forName("android.app.StatusBarManager");
-            Object srv = getContext().getSystemService("statusbar");
-            if (velocity >= NOTIFICATION_OPEN_VELOCITY && !mNotificationsOpen) {
-                cls.getMethod("expandNotificationsPanel").invoke(srv);
-                mNotificationsOpen = true;
-            } else if (velocity <= NOTIFICATION_CLOSE_VELOCITY && mNotificationsOpen) {
-                cls.getMethod("collapsePanels").invoke(srv);
-                mNotificationsOpen = false;
-            }
-        } catch (Exception ignored) {
-        }
-        return false;
-    }
-
-    @Override
-    public void onDragEnd(float velocity, boolean fling) {
     }
 
     public void onResume() {
