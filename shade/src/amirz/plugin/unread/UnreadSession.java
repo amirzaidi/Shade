@@ -115,14 +115,16 @@ public class UnreadSession extends IUnreadPlugin.Stub
 
                     PendingIntent pi = notif.intent;
                     mOnClick = launchOptions -> {
-                        try {
-                            if (Utilities.ATLEAST_MARSHMALLOW) {
-                                pi.send(null, 0, null, null, null, null, launchOptions);
-                            } else {
-                                pi.send();
+                        if (pi != null) {
+                            try {
+                                if (Utilities.ATLEAST_MARSHMALLOW) {
+                                    pi.send(null, 0, null, null, null, null, launchOptions);
+                                } else {
+                                    pi.send();
+                                }
+                            } catch (PendingIntent.CanceledException e) {
+                                e.printStackTrace();
                             }
-                        } catch (PendingIntent.CanceledException e) {
-                            e.printStackTrace();
                         }
                     };
                 } else {
