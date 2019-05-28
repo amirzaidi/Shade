@@ -3,23 +3,31 @@ package com.android.launcher3.popup;
 import static com.android.launcher3.userevent.nano.LauncherLogProto.Action;
 import static com.android.launcher3.userevent.nano.LauncherLogProto.ControlType;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.LauncherActivityInfo;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.view.View;
 
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.R;
 import com.android.launcher3.ShortcutInfo;
+import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.model.WidgetItem;
 import com.android.launcher3.util.InstantAppResolver;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.PackageUserKey;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -38,6 +46,51 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
     }
 
     public abstract View.OnClickListener getOnClickListener(T activity, ItemInfo itemInfo);
+
+    public static class Uninstall extends SystemShortcut<Launcher> {
+        public Uninstall() {
+            super(R.drawable.ic_uninstall_no_shadow, R.string.uninstall_drop_target_label);
+        }
+
+        @Override
+        public View.OnClickListener getOnClickListener(final Launcher launcher,
+                                                       final ItemInfo itemInfo) {
+
+            ComponentName cn = getUninstallTarget(launcher, itemInfo);
+            return cn == null
+                    ? null
+                    : (view) -> {
+                AbstractFloatingView.closeAllOpenViews(launcher);
+                try {
+                    Intent i = Intent.parseUri(launcher.getString(R.string.delete_package_intent), 0)
+                        .setData(Uri.fromParts("package", cn.getPackageName(), cn.getClassName()))
+                        .putExtra(Intent.EXTRA_USER, itemInfo.user);
+                    launcher.startActivitySafely(view, i, itemInfo);
+                } catch (URISyntaxException ignored) {
+                }
+            };
+        }
+
+        private ComponentName getUninstallTarget(final Launcher launcher,
+                                                 final ItemInfo item) {
+            Intent intent = null;
+            UserHandle user = null;
+            if (item != null &&
+                    item.itemType == LauncherSettings.BaseLauncherColumns.ITEM_TYPE_APPLICATION) {
+                intent = item.getIntent();
+                user = item.user;
+            }
+            if (intent != null) {
+                LauncherActivityInfo info = LauncherAppsCompat.getInstance(launcher)
+                        .resolveActivity(intent, user);
+                if (info != null
+                        && (info.getApplicationInfo().flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                    return info.getComponentName();
+                }
+            }
+            return null;
+        }
+    }
 
     public static class Widgets extends SystemShortcut<Launcher> {
 

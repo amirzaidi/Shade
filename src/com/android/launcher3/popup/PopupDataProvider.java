@@ -65,6 +65,7 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
     public PopupDataProvider(Launcher launcher) {
         mLauncher = launcher;
         mSystemShortcuts = new SystemShortcut[] {
+                new SystemShortcut.Uninstall(),
                 Utilities.getOverrideObject(SystemShortcut.AppInfo.class, launcher,
                         R.string.app_info_shortcut_class),
                 new SystemShortcut.Widgets(),
