@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">Rounded square</string>
+    <string name="icon_shape_cylinder">Cylinder</string>
+
     <string name="app_preferences">Preferences</string>
     <string name="app_edit_subtitle">Tap to open app info.</string>
 
