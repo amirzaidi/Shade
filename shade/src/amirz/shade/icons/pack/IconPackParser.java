@@ -12,7 +12,7 @@ import java.io.IOException;
 
 class IconPackParser {
     static IconPack.Data parsePackage(PackageManager pm, Resources res, String pkg)
-            throws IOException, XmlPullParserException, PackageManager.NameNotFoundException {
+            throws IOException, XmlPullParserException {
         IconPack.Data iconPack = new IconPack.Data();
 
         int resId = res.getIdentifier("appfilter", "xml", pkg);
