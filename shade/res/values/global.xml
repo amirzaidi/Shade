@@ -3,6 +3,10 @@
     <string name="app_name_shade" translatable="false">Shade Launcher</string>
     <string name="app_name_shade_short" translatable="false">Shade</string>
 
+    <string name="pref_debug_package" translatable="false">Package</string>
+    <string name="pref_debug_activity" translatable="false">Activity</string>
+    <string name="pref_debug_copy" translatable="false">Component key was copied to clipboard</string>
+
     <string name="plugin_title_long" translatable="false">%1$s - %2$s</string>
 
     <string name="plugin_media" translatable="false">@string/pref_unread</string>

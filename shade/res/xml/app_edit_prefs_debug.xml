@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="pref_debug_package"
+        android:title="@string/pref_debug_package"
+        android:persistent="false" />
+
+    <Preference
+        android:key="pref_debug_activity"
+        android:title="@string/pref_debug_activity"
+        android:persistent="false" />
+</PreferenceScreen>
