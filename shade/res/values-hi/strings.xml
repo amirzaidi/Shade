@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">गोल कोने वाला वर्ग</string>
+    <string name="icon_shape_cylinder">सिलेंडर</string>
+
     <string name="app_preferences">पसंद</string>
     <string name="app_edit_subtitle">एप्लिकेशन जानकारी खोलने के लिए टैप करें</string>
 

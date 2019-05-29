@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">Vierkant met ronde hoeken</string>
+    <string name="icon_shape_cylinder">Cilinder</string>
+
     <string name="app_preferences">Opties</string>
     <string name="app_edit_subtitle">Klik hier voor details.</string>
 

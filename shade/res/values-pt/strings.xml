@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">Quadrado arredondado</string>
+    <string name="icon_shape_cylinder">Cilindro</string>
+
     <string name="app_preferences">Preferências</string>
     <string name="app_edit_subtitle">Tocar para abrir as informações da aplicação.</string>
 

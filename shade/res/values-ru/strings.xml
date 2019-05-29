@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">Квадрат с закругленными углами</string>
+    <string name="icon_shape_cylinder">Цилиндр</string>
+
     <string name="app_preferences">Настройки</string>
     <string name="app_edit_subtitle">Открыть информацию о приложении.</string>
 

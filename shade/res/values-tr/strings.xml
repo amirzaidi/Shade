@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="icon_shape_rounded_square">Yuvarlanmış kare</string>
+    <string name="icon_shape_cylinder">Silindir</string>
+
     <string name="app_preferences">Tercihler</string>
     <string name="app_edit_subtitle">Uygulama bilgisini açmak için dokunun.</string>
 
