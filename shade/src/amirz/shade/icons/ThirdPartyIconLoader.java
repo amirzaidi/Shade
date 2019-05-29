@@ -14,10 +14,10 @@ import com.android.systemui.shared.recents.model.Task;
 import com.android.systemui.shared.recents.model.TaskKeyLruCache;
 
 @TargetApi(28)
-public class RecentsIconLoader extends NormalizedIconLoader {
+public class ThirdPartyIconLoader extends NormalizedIconLoader {
 
-    public RecentsIconLoader(Context context, TaskKeyLruCache<Drawable> iconCache,
-                             LruCache<ComponentName, ActivityInfo> activityInfoCache) {
+    public ThirdPartyIconLoader(Context context, TaskKeyLruCache<Drawable> iconCache,
+                                LruCache<ComponentName, ActivityInfo> activityInfoCache) {
         super(context, iconCache, activityInfoCache);
     }
 
@@ -28,7 +28,7 @@ public class RecentsIconLoader extends NormalizedIconLoader {
 
         Drawable icon = ThirdPartyIconProvider.getByKey(mContext, key, 0);
         return icon == null
-                ? super.getIcon(t)
+                ? AdaptiveIconWrapper.getInstance(mContext).wrap(key, super.getIcon(t))
                 : createBadgedDrawable(icon, t.key.userId, t.taskDescription);
     }
 }

@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
-import amirz.shade.icons.RecentsIconLoader;
+import amirz.shade.icons.ThirdPartyIconLoader;
 
 import static com.android.quickstep.TaskUtils.checkCurrentOrManagedUserId;
 
@@ -112,7 +112,7 @@ public class RecentsModel extends TaskStackChangeListener {
             protected IconLoader createNewIconLoader(Context context,
                     TaskKeyLruCache<Drawable> iconCache,
                     LruCache<ComponentName, ActivityInfo> activityInfoCache) {
-                return new RecentsIconLoader(context, iconCache, activityInfoCache);
+                return new ThirdPartyIconLoader(context, iconCache, activityInfoCache);
             }
         };
         mRecentsTaskLoader.startLoader(mContext);
