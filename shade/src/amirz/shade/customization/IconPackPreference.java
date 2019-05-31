@@ -5,7 +5,12 @@ import android.util.AttributeSet;
 
 import com.android.launcher3.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import amirz.shade.icons.pack.IconPackManager;
 
@@ -45,12 +50,19 @@ public class IconPackPreference extends AutoUpdateListPreference {
         values[i++] = "";
 
         // List of available icon packs
-        for (Map.Entry<String, CharSequence> entry : packList.entrySet()) {
+        List<Map.Entry<String, CharSequence>> packs = new ArrayList<>(packList.entrySet());
+        Collections.sort(packs,
+                (o1, o2) -> normalizeTitle(o1.getValue()).compareTo(normalizeTitle(o2.getValue())));
+        for (Map.Entry<String, CharSequence> entry : packs) {
             keys[i] = entry.getValue();
             values[i++] = entry.getKey();
         }
 
         setEntries(keys);
         setEntryValues(values);
+    }
+
+    private String normalizeTitle(CharSequence title) {
+        return title.toString().toLowerCase();
     }
 }
