@@ -56,6 +56,6 @@ public class DateChangeReceiver extends BroadcastReceiver {
             mLastDay = day;
         }
 
-        AppReloader.get(context).reload(mCalendars.toArray(new ComponentKey[0]));
+        AppReloader.get(context).reload(mCalendars);
     }
 }

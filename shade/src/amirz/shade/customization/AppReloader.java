@@ -12,6 +12,7 @@ import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.shortcuts.ShortcutInfoCompat;
 import com.android.launcher3.util.ComponentKey;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class AppReloader {
         mApps = LauncherAppsCompat.getInstance(context);
     }
 
-    public ComponentKey[] withIconPack(String iconPack) {
+    public Set<ComponentKey> withIconPack(String iconPack) {
         Set<ComponentKey> reloadKeys = new HashSet<>();
         for (UserHandle user : mUsers.getUserProfiles()) {
             for (LauncherActivityInfo info : mApps.getActivityList(null, user)) {
@@ -50,7 +51,7 @@ public class AppReloader {
                 }
             }
         }
-        return reloadKeys.toArray(new ComponentKey[0]);
+        return reloadKeys;
     }
 
     public void reload() {
@@ -65,9 +66,13 @@ public class AppReloader {
         }
     }
 
-    public void reload(ComponentKey... keys) {
+    public void reload(ComponentKey key) {
+        reload(key.user, key.componentName.getPackageName());
+    }
+
+    public void reload(Collection<ComponentKey> keys) {
         for (ComponentKey key : keys) {
-            reload(key.user, key.componentName.getPackageName());
+            reload(key);
         }
     }
 

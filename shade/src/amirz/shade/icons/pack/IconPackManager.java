@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Handler;
+import android.util.Log;
 
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.util.ComponentKey;
@@ -55,6 +56,7 @@ public class IconPackManager extends BroadcastReceiver {
 
     private final Context mContext;
     private final Map<String, IconPack> mProviders = new HashMap<>();
+    private final Handler mHandler = new Handler(LauncherModel.getWorkerLooper());
 
     private IconPackManager(Context context) {
         mContext = context;
@@ -68,29 +70,30 @@ public class IconPackManager extends BroadcastReceiver {
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
 
         // Called when any app has been installed, enabled, disabled, updated or deleted.
-        context.getApplicationContext().registerReceiver(this, filter, null,
-                new Handler(LauncherModel.getWorkerLooper()));
+        context.getApplicationContext().registerReceiver(this, filter, null, mHandler);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getData() != null) {
-            ComponentKey[] updateKeys = null;
-
             String pkg = intent.getData().getEncodedSchemeSpecificPart();
             if (pkg != null) {
+                Log.d(TAG, "Received intent action " + intent.getAction() + " for " + pkg);
+                AppReloader appReloader = AppReloader.get(mContext);
+
                 // Create a list of apps that are using the changed package icon pack,
                 // either through the global setting or with an override.
-                updateKeys = AppReloader.get(context).withIconPack(pkg);
-            }
+                Set<ComponentKey> updateKeys = appReloader.withIconPack(pkg);
 
-            // This can reset the global preference, so do this after creating the list.
-            reloadProviders();
+                // Remove the changed package from the providers to reload the application info.
+                mProviders.remove(pkg);
 
-            // Ensure all icons are up-to-date after this icon pack change.
-            // Calendar and clock information will automatically be reloaded by this call.
-            if (updateKeys != null) {
-                AppReloader.get(context).reload(updateKeys);
+                // This can reset the global preference, so do this after creating the list.
+                reloadProviders();
+
+                // Ensure all icons are up-to-date after this icon pack change.
+                // Calendar and clock information will automatically be reloaded by this call.
+                appReloader.reload(updateKeys);
             }
         }
     }
@@ -131,6 +134,7 @@ public class IconPackManager extends BroadcastReceiver {
             // The global icon pack has been removed, so reset it.
             // This constraint ensures that the global icon pack is always available,
             // even if the launcher did not receive the uninstall intent.
+            Log.e(TAG, "Resetting global icon pack because provider " + global + " was removed");
             GlobalIconPackPreference.reset(mContext);
         }
     }
