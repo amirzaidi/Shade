@@ -10,8 +10,12 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Class that handles the metadata and data of any icon pack.
@@ -69,6 +73,14 @@ class IconPack {
         final Map<ComponentName, String> drawables = new HashMap<>();
         final Map<ComponentName, String> calendarPrefix = new HashMap<>();
         final SparseArray<Clock> clockMetadata = new SparseArray<>();
+        final List<Integer> iconBacks = new ArrayList<>();
+        final List<Integer> iconMasks = new ArrayList<>();
+        final List<Integer> iconUpons = new ArrayList<>();
+        float scale = 1f;
+
+        boolean hasMasking() {
+            return !iconBacks.isEmpty() || !iconMasks.isEmpty() || !iconUpons.isEmpty();
+        }
     }
 
     static class Clock {

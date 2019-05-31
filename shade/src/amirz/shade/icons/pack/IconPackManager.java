@@ -164,11 +164,14 @@ public class IconPackManager extends BroadcastReceiver {
                 if (data.drawables.containsKey(key.componentName)) {
                     int drawableId = pack.getDrawableId(mContext.getPackageManager(), key.componentName);
                     if (drawableId != 0) {
-                        return new IconResolver(mContext.getPackageManager(), pack.getAi(),
+                        return new IconResolverExternal(mContext.getPackageManager(), pack.getAi(),
                                 drawableId,
                                 data.calendarPrefix.get(key.componentName),
                                 data.clockMetadata.get(drawableId));
                     }
+                }
+                if (data.hasMasking()) {
+                    return new IconResolverMasked(mContext, data, pack.getAi(), key.hashCode());
                 }
             } catch (PackageManager.NameNotFoundException | XmlPullParserException | IOException ignored) {
             }

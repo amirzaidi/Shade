@@ -9,6 +9,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.List;
 
 class IconPackParser {
     static IconPack.Data parsePackage(PackageManager pm, Resources res, String pkg)
@@ -26,6 +27,18 @@ class IconPackParser {
                             break;
                         case "calendar":
                             addCalendar(parseXml, iconPack);
+                            break;
+                        case "iconback":
+                            addImgsTo(res, pkg, parseXml, iconPack.iconBacks);
+                            break;
+                        case "iconmask":
+                            addImgsTo(res, pkg, parseXml, iconPack.iconMasks);
+                            break;
+                        case "iconupon":
+                            addImgsTo(res, pkg, parseXml, iconPack.iconUpons);
+                            break;
+                        case "scale":
+                            setScale(parseXml, iconPack);
                             break;
                         case "dynamic-clock":
                             addClock(res, pkg, parseXml, iconPack);
@@ -50,8 +63,7 @@ class IconPackParser {
         }
     }
 
-    private static void addCalendar(XmlResourceParser parseXml,
-                                    IconPack.Data iconPack) {
+    private static void addCalendar(XmlResourceParser parseXml, IconPack.Data iconPack) {
         String component = parseXml.getAttributeValue(null, "component");
         String prefix = parseXml.getAttributeValue(null, "prefix");
         if (component != null && prefix != null) {
@@ -68,6 +80,23 @@ class IconPackParser {
             return ComponentName.unflattenFromString(component);
         }
         return null;
+    }
+
+    private static void addImgsTo(Resources res, String pkg, XmlResourceParser parseXml,
+                                  List<Integer> list) {
+        for (int i = 0; i < parseXml.getAttributeCount(); i++) {
+            if (parseXml.getAttributeName(i).startsWith("img")) {
+                int id = res.getIdentifier(parseXml.getAttributeValue(i), "drawable", pkg);
+                if (id != 0) {
+                    list.add(id);
+                }
+            }
+        }
+    }
+
+    private static void setScale(XmlResourceParser parseXml, IconPack.Data iconPack) {
+        // ToDo: Parse reference to dimens
+        iconPack.scale = parseXml.getAttributeFloatValue(null, "factor", 1f);
     }
 
     private static void addClock(Resources res, String pkg, XmlResourceParser parseXml,

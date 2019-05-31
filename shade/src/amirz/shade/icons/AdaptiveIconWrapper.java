@@ -12,9 +12,6 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.FixedScaleDrawable;
 import com.android.launcher3.graphics.IconNormalizer;
 import com.android.launcher3.graphics.LauncherIcons;
-import com.android.launcher3.util.ComponentKey;
-
-import amirz.shade.customization.CustomizationDatabase;
 
 public class AdaptiveIconWrapper {
     private static AdaptiveIconWrapper sInstance;
@@ -38,9 +35,8 @@ public class AdaptiveIconWrapper {
     }
 
     @TargetApi(26)
-    public Drawable wrap(ComponentKey key, Drawable icon) {
-        boolean wrap = CustomizationDatabase.getIconPack(mContext, key).isEmpty();
-        if (Utilities.ATLEAST_OREO && !(icon instanceof AdaptiveIconDrawable) && wrap) {
+    public Drawable wrap(Drawable icon) {
+        if (Utilities.ATLEAST_OREO && !(icon instanceof AdaptiveIconDrawable)) {
             boolean[] outShape = new boolean[1];
             mWrapper.setBounds(0, 0, 1, 1);
 

@@ -13,6 +13,8 @@ import com.android.quickstep.NormalizedIconLoader;
 import com.android.systemui.shared.recents.model.Task;
 import com.android.systemui.shared.recents.model.TaskKeyLruCache;
 
+import amirz.shade.icons.pack.IconResolver;
+
 @TargetApi(28)
 public class ThirdPartyIconLoader extends NormalizedIconLoader {
 
@@ -26,9 +28,10 @@ public class ThirdPartyIconLoader extends NormalizedIconLoader {
         ComponentKey key = new ComponentKey(t.key.sourceComponent,
                 UserHandle.getUserHandleForUid(t.key.userId));
 
-        Drawable icon = ThirdPartyIconProvider.getByKey(mContext, key, 0);
+        IconResolver.DefaultDrawableProvider fallback = () -> super.getIcon(t);
+        Drawable icon = ThirdPartyIconUtils.getByKey(mContext, key, 0, fallback);
         return icon == null
-                ? AdaptiveIconWrapper.getInstance(mContext).wrap(key, super.getIcon(t))
+                ? AdaptiveIconWrapper.getInstance(mContext).wrap(fallback.get())
                 : createBadgedDrawable(icon, t.key.userId, t.taskDescription);
     }
 }

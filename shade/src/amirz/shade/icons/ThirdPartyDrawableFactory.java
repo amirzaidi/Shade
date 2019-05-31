@@ -55,7 +55,7 @@ public class ThirdPartyDrawableFactory extends DrawableFactory {
             if (Utilities.ATLEAST_OREO) {
                 if (resolver != null) {
                     if (resolver.isClock()) {
-                        Drawable drawable = resolver.getIconScaleInvariant();
+                        Drawable drawable = resolver.getIcon(0, () -> null);
                         if (drawable != null) {
                             FastBitmapDrawable fb = mCustomClockDrawer.drawIcon(
                                     info, drawable, resolver.clockData());
