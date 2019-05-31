@@ -83,11 +83,11 @@
     </style>
 
     <style name="Shade.Transparent" parent="@style/AppTheme.Dark">
-        <item name="shadeColorAccent">@color/colorAccent</item>
+        <item name="shadeColorAccent">#3949AB</item>
         <item name="android:colorAccent">?attr/shadeColorAccent</item>
         <item name="workspaceStatusBarScrim">@null</item>
 
-        <item name="allAppsScrimColor">#33000000</item>
+        <item name="allAppsScrimColor">#331A237E</item>
         <item name="headerColor">?attr/shadeColorAccent</item>
         <item name="widgetsTheme">@style/Shade.Transparent</item>
     </style>
