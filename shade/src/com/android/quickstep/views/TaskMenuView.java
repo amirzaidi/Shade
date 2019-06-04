@@ -137,10 +137,13 @@ public class TaskMenuView extends AbstractFloatingView {
     }
 
     private void addMenuOptions(TaskView taskView) {
-        Drawable icon = taskView.getTask().icon.getConstantState().newDrawable();
-        int iconSize = getResources().getDimensionPixelSize(R.dimen.task_thumbnail_icon_size);
-        icon.setBounds(0, 0, iconSize, iconSize);
-        mTaskIconAndName.setCompoundDrawables(null, icon, null, null);
+        Drawable.ConstantState state = taskView.getTask().icon.getConstantState();
+        if (state != null) {
+            Drawable icon = state.newDrawable();
+            int iconSize = getResources().getDimensionPixelSize(R.dimen.task_thumbnail_icon_size);
+            icon.setBounds(0, 0, iconSize, iconSize);
+            mTaskIconAndName.setCompoundDrawables(null, icon, null, null);
+        }
         mTaskIconAndName.setText(TaskUtils.getTitle(getContext(), taskView.getTask()));
         mTaskIconAndName.setOnClickListener(v -> close(true));
 
