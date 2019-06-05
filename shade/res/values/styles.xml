@@ -133,8 +133,8 @@
     <!-- SUNSET: Orange -->
     <style name="Shade.Sunset" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">#600538</item>
-        <item name="shadeColorSecondary">#ff8606</item>
-        <item name="shadeColorAccent">#D84315</item>
+        <item name="shadeColorSecondary">#FF7A06</item>
+        <item name="shadeColorAccent">#E05616</item>
         <item name="widgetsTheme">@style/Shade.Sunset</item>
     </style>
 
