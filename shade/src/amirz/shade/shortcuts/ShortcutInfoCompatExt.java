@@ -88,7 +88,7 @@ public class ShortcutInfoCompatExt extends ShortcutInfoCompat {
 
     @Override
     public boolean isDeclaredInManifest() {
-        return true;
+        return !isDynamic();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class ShortcutInfoCompatExt extends ShortcutInfoCompat {
 
     @Override
     public boolean isDynamic() {
-        return false;
+        return mShortcut.getBundle().getBoolean("dynamic");
     }
 
     @Override
