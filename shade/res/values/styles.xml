@@ -178,9 +178,9 @@
 
     <!-- MIDNIGHT: Gray -->
     <style name="Shade.Midnight" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#616161</item>
-        <item name="shadeColorSecondary">#000000</item>
-        <item name="shadeColorAccent">#212121</item>
+        <item name="shadeColorPrimary">#6A6161</item>
+        <item name="shadeColorSecondary">#030303</item>
+        <item name="shadeColorAccent">#1A1A1A</item>
         <item name="widgetsTheme">@style/Shade.Midnight</item>
     </style>
 </resources>
