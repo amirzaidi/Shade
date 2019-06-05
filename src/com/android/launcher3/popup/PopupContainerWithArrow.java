@@ -19,6 +19,7 @@ package com.android.launcher3.popup;
 import static com.android.launcher3.notification.NotificationMainView.NOTIFICATION_ITEM_INFO;
 import static com.android.launcher3.popup.PopupPopulator.MAX_SHORTCUTS;
 import static com.android.launcher3.popup.PopupPopulator.MAX_SHORTCUTS_IF_NOTIFICATIONS;
+import static com.android.launcher3.popup.PopupPopulator.NUM_ADD_PORTRAIT;
 import static com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 import static com.android.launcher3.userevent.nano.LauncherLogProto.ItemType;
 import static com.android.launcher3.userevent.nano.LauncherLogProto.Target;
@@ -309,6 +310,9 @@ public class PopupContainerWithArrow extends ArrowPopup implements DragSource,
     private void updateHiddenShortcuts() {
         int allowedCount = mNotificationItemView != null
                 ? MAX_SHORTCUTS_IF_NOTIFICATIONS : MAX_SHORTCUTS;
+        if (!Launcher.getLauncher(getContext()).getDeviceProfile().isVerticalBarLayout()) {
+            allowedCount += NUM_ADD_PORTRAIT;
+        }
         int originalHeight = getResources().getDimensionPixelSize(R.dimen.bg_popup_item_height);
         int itemHeight = mNotificationItemView != null ?
                 getResources().getDimensionPixelSize(R.dimen.bg_popup_item_condensed_height)

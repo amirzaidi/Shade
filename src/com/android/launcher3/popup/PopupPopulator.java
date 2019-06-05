@@ -50,6 +50,8 @@ public class PopupPopulator {
     @VisibleForTesting static final int NUM_DYNAMIC = 2;
     public static final int MAX_SHORTCUTS_IF_NOTIFICATIONS = 2;
 
+    static final int NUM_ADD_PORTRAIT = 1;
+
     /**
      * Sorts shortcuts in rank order, with manifest shortcuts coming before dynamic shortcuts.
      */
@@ -75,7 +77,7 @@ public class PopupPopulator {
      * @param shortcutIdToRemoveFirst An id that should be filtered out first, if any.
      * @return a subset of shortcuts, in sorted order, with size <= MAX_SHORTCUTS.
      */
-    public static List<ShortcutInfoCompat> sortAndFilterShortcuts(
+    public static List<ShortcutInfoCompat> sortAndFilterShortcuts(boolean portrait,
             List<ShortcutInfoCompat> shortcuts, @Nullable String shortcutIdToRemoveFirst) {
         // Remove up to one specific shortcut before sorting and doing somewhat fancy filtering.
         if (shortcutIdToRemoveFirst != null) {
@@ -88,20 +90,21 @@ public class PopupPopulator {
             }
         }
 
+        int maxShortcuts = portrait ? MAX_SHORTCUTS + NUM_ADD_PORTRAIT : MAX_SHORTCUTS;
         Collections.sort(shortcuts, SHORTCUT_RANK_COMPARATOR);
-        if (shortcuts.size() <= MAX_SHORTCUTS) {
+        if (shortcuts.size() <= maxShortcuts) {
             return shortcuts;
         }
 
         // The list of shortcuts is now sorted with static shortcuts followed by dynamic
         // shortcuts. We want to preserve this order, but only keep MAX_SHORTCUTS.
-        List<ShortcutInfoCompat> filteredShortcuts = new ArrayList<>(MAX_SHORTCUTS);
+        List<ShortcutInfoCompat> filteredShortcuts = new ArrayList<>(maxShortcuts);
         int numDynamic = 0;
         int size = shortcuts.size();
         for (int i = 0; i < size; i++) {
             ShortcutInfoCompat shortcut = shortcuts.get(i);
             int filteredSize = filteredShortcuts.size();
-            if (filteredSize < MAX_SHORTCUTS) {
+            if (filteredSize < maxShortcuts) {
                 // Always add the first MAX_SHORTCUTS to the filtered list.
                 filteredShortcuts.add(shortcut);
                 if (shortcut.isDynamic()) {
@@ -143,7 +146,9 @@ public class PopupPopulator {
                     .queryForShortcutsContainer(activity, shortcutIds, user);
             String shortcutIdToDeDupe = notificationKeys.isEmpty() ? null
                     : notificationKeys.get(0).shortcutId;
-            shortcuts = PopupPopulator.sortAndFilterShortcuts(shortcuts, shortcutIdToDeDupe);
+            shortcuts = PopupPopulator.sortAndFilterShortcuts(
+                    !launcher.getDeviceProfile().isVerticalBarLayout(),
+                    shortcuts, shortcutIdToDeDupe);
             for (int i = 0; i < shortcuts.size() && i < shortcutViews.size(); i++) {
                 final ShortcutInfoCompat shortcut = shortcuts.get(i);
                 final ShortcutInfo si = new ShortcutInfo(shortcut, launcher);
