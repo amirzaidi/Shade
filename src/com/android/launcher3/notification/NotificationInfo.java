@@ -19,6 +19,8 @@ package com.android.launcher3.notification;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
@@ -84,7 +86,13 @@ public class NotificationInfo implements View.OnClickListener {
                 mIsIconLarge = true;
             }
         } else {
-            mIconDrawable = context.getResources().getDrawable(notification.icon);
+            try {
+                String pkg = statusBarNotification.getPackageName();
+                Resources res = context.getPackageManager().getResourcesForApplication(pkg);
+                mIconDrawable = res.getDrawable(notification.icon);
+            } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
         }
         if (mIconDrawable == null) {
             mIconDrawable = new BitmapDrawable(context.getResources(), LauncherAppState
