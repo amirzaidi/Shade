@@ -188,13 +188,19 @@ public final class PluginManager {
         List<Plugin> plugins = new ArrayList<>();
 
         for (ServiceInfo si : siList) {
-            try {
-                plugins.add(new Plugin(si));
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
+            if (si.permission == null || hasPermission(si.permission)) {
+                try {
+                    plugins.add(new Plugin(si));
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return plugins;
+    }
+
+    private boolean hasPermission(String perm) {
+        return mContext.checkCallingOrSelfPermission(perm) == PackageManager.PERMISSION_GRANTED;
     }
 
     /**
