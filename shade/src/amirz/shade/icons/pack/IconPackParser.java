@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.util.List;
 
 class IconPackParser {
+    private static final String TAG = "IconPackParser";
+
     static IconPack.Data parsePackage(PackageManager pm, Resources res, String pkg)
             throws IOException, XmlPullParserException {
         IconPack.Data iconPack = new IconPack.Data();
@@ -95,8 +98,15 @@ class IconPackParser {
     }
 
     private static void setScale(XmlResourceParser parseXml, IconPack.Data iconPack) {
-        // ToDo: Parse reference to dimens
-        iconPack.scale = parseXml.getAttributeFloatValue(null, "factor", 1f);
+        String factor = parseXml.getAttributeValue(null, "factor");
+        if (factor != null) {
+            try {
+                // ToDo: Parse reference to dimens
+                iconPack.scale = Float.parseFloat(factor);
+            } catch (NumberFormatException e) {
+                Log.d(TAG, "Invalid scale: " + factor, e);
+            }
+        }
     }
 
     private static void addClock(Resources res, String pkg, XmlResourceParser parseXml,
