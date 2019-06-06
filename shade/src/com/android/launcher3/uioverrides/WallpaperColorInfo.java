@@ -31,8 +31,13 @@ public abstract class WallpaperColorInfo {
             if (sInstance == null) {
                 Context ctx = context.getApplicationContext();
                 if (Utilities.ATLEAST_P) {
-                    sInstance = new WallpaperColorInfoVP(ctx);
-                } else {
+                    try {
+                        sInstance = new WallpaperColorInfoVP(ctx);
+                    } catch (NoSuchMethodError e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (sInstance == null) {
                     sInstance = new WallpaperColorInfoVL(ctx);
                 }
             }
