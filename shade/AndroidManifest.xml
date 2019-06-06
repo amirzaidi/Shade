@@ -31,6 +31,15 @@
     <!-- Notifications -->
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
+    <!-- Plugins -->
+    <permission
+        android:name="${applicationId}.permission.PLUGIN"
+        android:protectionLevel="signature"
+        android:label="@string/perm_plugin"
+        android:description="@string/perm_plugin_desc" />
+
+    <uses-permission android:name="${applicationId}.permission.PLUGIN" />
+
     <application>
 
         <!-- Quickstep -->
@@ -135,6 +144,7 @@
 
         <service
             android:name="amirz.plugin.shortcuts.ShortcutService"
+            android:permission="${applicationId}.permission.PLUGIN"
             android:label="@string/plugin_shortcuts"
             android:description="@string/plugin_shortcuts_desc"
             android:enabled="@bool/backport_shortcut_service">
@@ -151,6 +161,7 @@
 
         <service
             android:name="amirz.plugin.unread.UnreadService"
+            android:permission="${applicationId}.permission.PLUGIN"
             android:label="@string/plugin_media"
             android:description="@string/plugin_media_desc">
             <intent-filter>
