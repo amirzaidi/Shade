@@ -40,6 +40,7 @@ import java.util.ArrayList;
 
 import amirz.shade.ShadeSearch;
 import amirz.shade.allapps.HeaderView;
+import amirz.shade.hotseat.ShadeHotseat;
 
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
@@ -236,8 +237,12 @@ public class AppsSearchContainerLayout extends ExtendedEditText
         if (dp.isVerticalBarLayout()) {
             mLauncher.getAllAppsController().setScrollRangeDelta(0);
         } else {
-            mLauncher.getAllAppsController().setScrollRangeDelta(
-                    insets.bottom + mlp.topMargin);
+            float delta = insets.bottom + mlp.topMargin;
+            if (ShadeHotseat.hasWidget(mLauncher)) {
+                delta += mFixedTranslationY + dp.hotseatBarSizePx - mlp.height * 0.5f
+                        + (dp.hotseatBarTopPaddingPx - dp.hotseatBarBottomPaddingPx) * 0.5f;
+            }
+            mLauncher.getAllAppsController().setScrollRangeDelta(delta);
         }
     }
 }

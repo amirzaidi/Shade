@@ -70,6 +70,13 @@
             android:defaultValue=""
             android:persistent="true" />
 
+        <amirz.shade.customization.HotseatPreference
+            android:key="pref_dock_search"
+            android:title="@string/pref_dock_search"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
         <ListPreference
             android:key="pref_grid_size"
             android:title="@string/pref_grid_size"

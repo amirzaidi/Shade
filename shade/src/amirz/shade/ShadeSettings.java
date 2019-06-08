@@ -31,6 +31,7 @@ public class ShadeSettings extends SettingsActivity {
     public static final String PREF_FEED_PROVIDER = "pref_feed_provider";
     public static final String PREF_THEME = "pref_theme";
     public static final String PREF_ICON_PACK = "pref_icon_pack";
+    public static final String PREF_DOCK_SEARCH = "pref_dock_search";
     public static final String PREF_GRID_SIZE = "pref_grid_size";
     public static final String PREF_TRANSITION = "pref_transition";
     private static final String ABOUT_APP_VERSION = "about_app_version";

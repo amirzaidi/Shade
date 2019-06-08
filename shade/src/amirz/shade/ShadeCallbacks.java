@@ -277,6 +277,8 @@ public class ShadeCallbacks
             mLauncher.kill();
         } else if (key.startsWith(PluginManager.PREF_PLUGIN_PREFIX)) {
             mLauncher.recreate();
+        } else if (key.equals(ShadeSettings.PREF_DOCK_SEARCH)) {
+            mLauncher.recreate();
         }
     }
 
