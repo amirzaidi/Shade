@@ -113,7 +113,7 @@ public class NormalizedAppSearchAlgorithm implements SearchAlgorithm {
                 return true;
             }
         }
-        return false;
+        return title.contains(query);
     }
 
     private static String normalize(String in) {
