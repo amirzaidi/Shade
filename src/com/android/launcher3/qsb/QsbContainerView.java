@@ -96,7 +96,7 @@ public class QsbContainerView extends FrameLayout {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             mQsbWidgetHost = createHost();
-            mOrientation = getContext().getResources().getConfiguration().orientation;
+            mOrientation = getActivity().getResources().getConfiguration().orientation;
         }
 
         protected QsbWidgetHost createHost() {
