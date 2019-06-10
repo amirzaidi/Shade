@@ -31,6 +31,9 @@
     <!-- Notifications -->
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
+    <!-- Events -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
     <!-- Plugins -->
     <permission
         android:name="${applicationId}.permission.PLUGIN"

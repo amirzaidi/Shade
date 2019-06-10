@@ -18,6 +18,7 @@ import com.android.launcher3.plugin.unread.IUnreadPlugin;
 import com.android.launcher3.plugin.unread.IUnreadPluginCallback;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,6 +62,8 @@ public class UnreadSession extends IUnreadPlugin.Stub {
     @Override
     public List<String> getText() {
         List<String> textList = new ArrayList<>();
+
+        // 1. Media
         if (mMedia.isTracking()) {
             textList.add(mMedia.getTitle().toString());
             CharSequence artist = mMedia.getArtist();
@@ -74,63 +77,92 @@ public class UnreadSession extends IUnreadPlugin.Stub {
                 }
             }
             mOnClick = launchOptions -> mTaps.onClick();
-        } else {
-            textList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
-                    DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
-            mOnClick = mDateReceiver::openCalendar;
+            return textList;
+        }
 
-            NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
-            if (ranked != null) {
-                NotificationInfo notif = new NotificationInfo(mContext, ranked.sbn);
-                String app = getApp(notif.packageUserKey.mPackageName).toString();
-                String title = notif.title == null
-                        ? ""
-                        : notif.title.toString();
-                String body = notif.text == null
-                        ? ""
-                        : notif.text.toString().trim().split("\n")[0]; // First line
+        NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
 
-                if (ranked.important) {
-                    // Body on top if it is not empty.
-                    if (!TextUtils.isEmpty(body)) {
-                        textList.clear();
-                        textList.add(body);
-                    }
+        String app = null;
+        String[] splitTitle = null;
+        String body = null;
 
-                    String[] splitTitle = splitTitle(title);
-                    for (int i = splitTitle.length - 1; i >= 0; i--) {
-                        textList.add(splitTitle[i]);
-                    }
+        // 2. High priority notification
+        if (ranked != null) {
+            NotificationInfo notif = new NotificationInfo(mContext, ranked.sbn);
+            app = getApp(notif.packageUserKey.mPackageName).toString();
+            String title = notif.title == null
+                    ? ""
+                    : notif.title.toString();
+            splitTitle = splitTitle(title);
+            body = notif.text == null
+                    ? ""
+                    : notif.text.toString().trim().split("\n")[0]; // First line
 
-                    PendingIntent pi = notif.intent;
-                    mOnClick = launchOptions -> {
-                        if (pi != null) {
-                            try {
-                                if (Utilities.ATLEAST_MARSHMALLOW) {
-                                    pi.send(null, 0, null, null, null, null, launchOptions);
-                                } else {
-                                    pi.send();
-                                }
-                            } catch (PendingIntent.CanceledException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    };
-                } else {
-                    textList.add(title);
-                    if (!TextUtils.isEmpty(body)) {
-                        textList.add(body);
-                    }
+            if (ranked.important) {
+                // Body on top if it is not empty.
+                if (!TextUtils.isEmpty(body)) {
+                    textList.add(body);
+                }
+                for (int i = splitTitle.length - 1; i >= 0; i--) {
+                    textList.add(splitTitle[i]);
                 }
 
+                PendingIntent pi = notif.intent;
+                mOnClick = launchOptions -> {
+                    if (pi != null) {
+                        try {
+                            if (Utilities.ATLEAST_MARSHMALLOW) {
+                                pi.send(null, 0, null, null, null, null, launchOptions);
+                            } else {
+                                pi.send();
+                            }
+                        } catch (PendingIntent.CanceledException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
                 if (!textList.contains(app)) {
                     textList.add(app);
                 }
-            } else if (mBatteryReceiver.isCharging()) {
-                textList.add(mContext.getString(R.string.shadespace_subtext_charging,
-                        mBatteryReceiver.getLevel()));
+                return textList;
             }
         }
+
+        // 3. Calendar event
+        mOnClick = mDateReceiver::openCalendar;
+        CalendarParser.Event event = CalendarParser.getEvent(mContext);
+        if (event != null) {
+            textList.add(event.name);
+            int flags = DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_WEEKDAY;
+            textList.add(DateUtils.formatDateTime(mContext, event.start.getTimeInMillis(), flags));
+            if (event.start.get(Calendar.DAY_OF_WEEK) == event.end.get(Calendar.DAY_OF_WEEK)) {
+                flags &= ~DateUtils.FORMAT_SHOW_WEEKDAY;
+            }
+            textList.add(DateUtils.formatDateTime(mContext, event.end.getTimeInMillis(), flags));
+            return textList;
+        }
+
+        // 4. Date (Reuse open calendar onClick)
+        textList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
+                DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
+
+        // 4a. With normal notification
+        if (ranked != null) {
+            for (int i = splitTitle.length - 1; i >= 0; i--) {
+                textList.add(splitTitle[i]);
+            }
+            if (!TextUtils.isEmpty(body)) {
+                textList.add(body);
+            }
+            if (!textList.contains(app)) {
+                textList.add(app);
+            }
+        // 4b. With battery charging text
+        } else if (mBatteryReceiver.isCharging()) {
+            textList.add(mContext.getString(R.string.shadespace_subtext_charging,
+                    mBatteryReceiver.getLevel()));
+        }
+
         return textList;
     }
 
