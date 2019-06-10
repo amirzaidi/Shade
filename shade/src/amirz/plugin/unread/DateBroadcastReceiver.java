@@ -1,6 +1,5 @@
 package amirz.plugin.unread;
 
-import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -9,25 +8,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 
-public abstract class DateBroadcastReceiver extends BroadcastReceiver {
-    private final Context mContext;
-    private final IntentFilter mFilter;
-
-    DateBroadcastReceiver(Context context) {
-        super();
-        mContext = context;
-        mFilter = new IntentFilter();
-        mFilter.addAction(Intent.ACTION_TIME_TICK);
-        mFilter.addAction(Intent.ACTION_TIME_CHANGED);
-        mFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+class DateBroadcastReceiver extends AutoRegisterReceiver {
+    DateBroadcastReceiver(Context context, Runnable onReceive) {
+        super(context, onReceive);
     }
 
-    void onResume() {
-        mContext.registerReceiver(this, mFilter);
-    }
-
-    void onPause() {
-        mContext.unregisterReceiver(this);
+    @Override
+    IntentFilter getFilter() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_TIME_TICK);
+        filter.addAction(Intent.ACTION_TIME_CHANGED);
+        filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+        return filter;
     }
 
     void openCalendar(Bundle activityOptions) {

@@ -2,7 +2,6 @@ package amirz.plugin.unread;
 
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -14,31 +13,30 @@ import com.android.launcher3.LauncherNotifications;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationInfo;
-import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.plugin.unread.IUnreadPlugin;
 import com.android.launcher3.plugin.unread.IUnreadPluginCallback;
-import com.android.launcher3.util.PackageUserKey;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UnreadSession extends IUnreadPlugin.Stub
-        implements NotificationListener.NotificationsChangedListener {
+public class UnreadSession extends IUnreadPlugin.Stub {
     private static final int MULTI_CLICK_DELAY = 300;
 
     private final Context mContext;
     private final Set<IUnreadPluginCallback> mCallbacks = new HashSet<>();
 
-    private final List<NotificationKeyData> mNotifications = new ArrayList<>();
     private final List<StatusBarNotification> mSbn = new ArrayList<>();
     private final NotificationRanker mRanker = new NotificationRanker(mSbn);
+    private final NotificationList mNotifications = new NotificationList(this::onNotificationsChanged);
 
     private final MediaListener mMedia;
     private final MultiClickListener mTaps;
+
     private final DateBroadcastReceiver mDateReceiver;
+    private final CalendarReceiver mCalendarReceiver;
     private final BatteryBroadcastReceiver mBatteryReceiver;
 
     private OnClickListener mOnClick;
@@ -53,20 +51,11 @@ public class UnreadSession extends IUnreadPlugin.Stub
         mMedia = new MediaListener(context, mSbn, this::reload);
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
         mTaps.setListeners(mMedia::toggle, mMedia::next, mMedia::previous);
-        mDateReceiver = new DateBroadcastReceiver(context) {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                reload();
-            }
-        };
-        mBatteryReceiver = new BatteryBroadcastReceiver(context) {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                reload();
-            }
-        };
+        mDateReceiver = new DateBroadcastReceiver(context, this::reload);
+        mCalendarReceiver = new CalendarReceiver(context, this::reload);
+        mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
 
-        LauncherNotifications.getInstance().addListener(this);
+        LauncherNotifications.getInstance().addListener(mNotifications);
     }
 
     @Override
@@ -176,6 +165,7 @@ public class UnreadSession extends IUnreadPlugin.Stub
     public void addOnChangeListener(IUnreadPluginCallback cb) {
         if (mCallbacks.isEmpty()) {
             mDateReceiver.onResume();
+            mCalendarReceiver.onResume();
             mBatteryReceiver.onResume();
             mMedia.onResume();
         }
@@ -187,45 +177,19 @@ public class UnreadSession extends IUnreadPlugin.Stub
         mCallbacks.remove(cb);
         if (mCallbacks.isEmpty()) {
             mDateReceiver.onPause();
+            mCalendarReceiver.onPause();
             mBatteryReceiver.onPause();
             mMedia.onPause();
         }
     }
 
-    @Override
-    public void onNotificationPosted(PackageUserKey postedPackageUserKey,
-                                     NotificationKeyData notificationKey,
-                                     boolean shouldBeFilteredOut) {
-        if (!shouldBeFilteredOut) {
-            mNotifications.remove(notificationKey);
-            mNotifications.add(notificationKey);
-            onNotificationsChanged();
-        }
-    }
-
-    @Override
-    public void onNotificationRemoved(PackageUserKey removedPackageUserKey,
-                                      NotificationKeyData notificationKey) {
-        if (mNotifications.remove(notificationKey)) {
-            onNotificationsChanged();
-        }
-    }
-
-    @Override
-    public void onNotificationFullRefresh(List<StatusBarNotification> activeNotifications) {
-        mNotifications.clear();
-        for (int i = activeNotifications.size() - 1; i >= 0; i--) {
-            mNotifications.add(NotificationKeyData.fromNotification(activeNotifications.get(i)));
-        }
-        onNotificationsChanged();
-    }
 
     private void onNotificationsChanged() {
         mSbn.clear();
-        if (!mNotifications.isEmpty()) {
-            NotificationListener notificationListener = NotificationListener.getInstanceIfConnected();
-            if (notificationListener != null) {
-                mSbn.addAll(notificationListener.getNotificationsForKeys(mNotifications));
+        if (mNotifications.hasNotifications()) {
+            NotificationListener listener = NotificationListener.getInstanceIfConnected();
+            if (listener != null) {
+                mSbn.addAll(listener.getNotificationsForKeys(mNotifications.getKeys()));
             }
         }
         mMedia.onActiveSessionsChanged(null);
