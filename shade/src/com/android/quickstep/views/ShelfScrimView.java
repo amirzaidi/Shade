@@ -138,7 +138,9 @@ public class ShelfScrimView extends ScrimView {
     @Override
     protected void onDraw(Canvas canvas) {
         drawBackground(canvas);
-        drawDragHandle(canvas);
+        if (mLauncher.getDeviceProfile().isVerticalBarLayout()) {
+            drawDragHandle(canvas);
+        }
     }
 
     private void drawBackground(Canvas canvas) {
