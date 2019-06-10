@@ -4,13 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Process;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
 import android.util.AttributeSet;
 import android.util.Property;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
@@ -20,17 +18,11 @@ import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.R;
-import com.android.launcher3.ShortcutInfo;
-import com.android.launcher3.graphics.LauncherIcons;
 import com.android.launcher3.keyboard.FocusIndicatorHelper;
-import com.android.launcher3.shortcuts.DeepShortcutManager;
-import com.android.launcher3.shortcuts.ShortcutInfoCompat;
 import com.android.launcher3.touch.ItemClickHandler;
-import com.android.launcher3.touch.ItemLongClickListener;
 import com.android.launcher3.util.Themes;
 import com.android.quickstep.AnimatedFloat;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesView extends LinearLayout
