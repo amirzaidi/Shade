@@ -62,7 +62,6 @@
         <item>@drawable/ic_category_social</item>
         <item>@drawable/ic_category_utility</item>
         <item>@drawable/ic_category_travel</item>
-        <item>@drawable/ic_category_hidden</item>
     </array>
 
     <string-array name="theme_entries">

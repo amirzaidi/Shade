@@ -35,7 +35,7 @@ class CategoryShortcuts {
         Resources res = launcher.getResources();
         String[] titles = res.getStringArray(R.array.category_entries);
         TypedArray icons = res.obtainTypedArray(R.array.category_entry_icons);
-        for (int i = 0; i < titles.length; i++) {
+        for (int i = 0; i < icons.length(); i++) {
             Drawable d = res.getDrawable(icons.getResourceId(i, 0), launcher.getTheme());
             Bitmap bm;
             if (Utilities.ATLEAST_OREO) {

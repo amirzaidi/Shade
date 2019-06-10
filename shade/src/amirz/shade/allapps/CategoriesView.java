@@ -162,7 +162,7 @@ public class CategoriesView extends LinearLayout
 
     private void recreateBubbleTextViews() {
         List<AppInfo> shortcuts = CategoryShortcuts.getAll(mLauncher);
-        int size = shortcuts.size() - 1;
+        int size = shortcuts.size();
 
         while (getChildCount() < Math.min(size, mNumColumns)) {
             BubbleTextView btv = (BubbleTextView) mLauncher.getLayoutInflater()
