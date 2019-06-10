@@ -11,4 +11,6 @@
     <item name="disabled_alpha_material_light" format="float" type="dimen">0.26</item>
 
     <dimen name="hotseat_qsb_size">56dp</dimen>
+
+    <dimen name="vertical_drag_handle_size">12dp</dimen>
 </resources>
