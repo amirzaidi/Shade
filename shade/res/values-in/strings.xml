@@ -12,6 +12,8 @@
     <string name="pref_category">Kategori</string>
     <string name="pref_reset">Reset</string>
 
+    <string name="pref_dock_search">Widget pencari</string>
+
     <string name="pref_feed_provider">Penyedia umpan</string>
     <string name="pref_feed_provider_none">Dinonaktifkan</string>
 

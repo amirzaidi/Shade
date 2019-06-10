@@ -12,6 +12,8 @@
     <string name="pref_category">Katagoriler</string>
     <string name="pref_reset">Sıfırla</string>
 
+    <string name="pref_dock_search">Arama butonu</string>
+
     <string name="pref_feed_provider">Besleme sağlayıcısı</string>
     <string name="pref_feed_provider_none">Devre dışı</string>
 

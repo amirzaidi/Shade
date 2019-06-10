@@ -12,6 +12,8 @@
     <string name="pref_category">Категория</string>
     <string name="pref_reset">Сброс</string>
 
+    <string name="pref_dock_search">Виджет поиска</string>
+
     <string name="pref_feed_provider">Поставщик данных ленты</string>
     <string name="pref_feed_provider_none">Отключено</string>
 

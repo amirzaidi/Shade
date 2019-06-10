@@ -12,6 +12,8 @@
     <string name="pref_category">Κατηγορία</string>
     <string name="pref_reset">Επαναφορά</string>
 
+    <string name="pref_dock_search">Γραφικό στοιχείο αναζήτησης</string>
+
     <string name="pref_feed_provider">Πάροχος τροφοδοσίας</string>
     <string name="pref_feed_provider_none">Απενεργοποιημένο</string>
 

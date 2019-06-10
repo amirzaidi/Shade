@@ -12,6 +12,8 @@
     <string name="pref_category">वर्ग</string>
     <string name="pref_reset">रीसेट</string>
 
+    <string name="pref_dock_search">सर्च विजेट</string>
+
     <string name="pref_feed_provider">फ़ीड प्रदाता</string>
     <string name="pref_feed_provider_none">निर्योग्य</string>
 

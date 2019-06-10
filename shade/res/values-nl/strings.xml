@@ -12,6 +12,8 @@
     <string name="pref_category">Categorie</string>
     <string name="pref_reset">Standaardwaarden</string>
 
+    <string name="pref_dock_search">Zoekbalk widget</string>
+
     <string name="pref_feed_provider">Linkerpagina</string>
     <string name="pref_feed_provider_none">Uitgeschakeld</string>
 
