@@ -17,7 +17,7 @@
     <string name="pref_feed_provider">Fornecedor do feed</string>
     <string name="pref_feed_provider_none">Desactivado</string>
 
-    <string name="pref_unread">Resumo Inteligente</string>
+    <string name="pref_unread">Resumo inteligente</string>
     <string name="pref_unread_desc">No topo do ecrã inicial</string>
 
     <string name="pref_transition">Transição de desvanecimento</string>
