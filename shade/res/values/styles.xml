@@ -146,11 +146,10 @@
     </style>
 
     <!-- FOREST: Green -->
-    <style name="Shade.Forest" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#7C4325</item>
-        <item name="shadeColorSecondary">#1B5E20</item>
-        <item name="shadeColorAccent">#2E7D32</item>
-        <item name="widgetsTheme">@style/Shade.Forest</item>
+    <style name="Shade.Forest" parent="@style/Shade.Light">
+        <item name="shadeColorPrimary">#80CBC4</item>
+        <item name="shadeColorSecondary">#E0B2A1</item>
+        <item name="shadeColorAccent">#388E3C</item>
     </style>
 
     <!-- OCEAN: Blue -->
