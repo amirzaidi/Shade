@@ -106,7 +106,7 @@ public class MediaListener extends MediaController.Callback
             // Either we are not tracking a controller and this one is valid,
             // or this one is playing while the one we track is not.
             if ((mTracking == null && isPausedOrPlaying(mc))
-                    || (isPlaying(mc) && !isPlaying(mTracking))) {
+                    || (mTracking != null && isPlaying(mc) && !isPlaying(mTracking))) {
                 mTracking = mc;
             }
         }
