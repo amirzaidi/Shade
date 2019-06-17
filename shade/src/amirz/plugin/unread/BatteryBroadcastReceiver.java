@@ -23,6 +23,9 @@ class BatteryBroadcastReceiver extends AutoRegisterReceiver {
     boolean isCharging() {
         IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = mContext.registerReceiver(null, filter);
+        if (batteryStatus == null) {
+            return false;
+        }
         int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
         return status == BatteryManager.BATTERY_STATUS_CHARGING ||
                 status == BatteryManager.BATTERY_STATUS_FULL;
