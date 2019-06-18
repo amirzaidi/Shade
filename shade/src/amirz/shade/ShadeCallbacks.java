@@ -11,8 +11,6 @@ import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
-import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
@@ -28,8 +26,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import amirz.shade.allapps.search.AppsSearchContainerLayout;
+import amirz.shade.feed.FeedProviders;
 import amirz.shade.shadespace.ShadespaceView;
 
+import static amirz.shade.ShadeSettings.*;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
@@ -68,6 +68,7 @@ public class ShadeCallbacks
         mOverlayCallbacks.setClient(mLauncherClient);
 
         mLauncher.addOnDeviceProfileChangeListener(this);
+        applyDefaultSharedPreferences(prefs);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
         WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
@@ -268,16 +269,30 @@ public class ShadeCallbacks
         );
     }
 
+    /**
+     * Writes the default values of settings that can trigger a reload to disk.
+     * This prevents a bug where opening the settings menu for the first time immediately causes
+     * a reload of the entire launcher, because the preferences triggering it are updated.
+     * @param prefs SharedPreferences object to read from and write to.
+     */
+    private static void applyDefaultSharedPreferences(SharedPreferences prefs) {
+        final String defaultFeed = FeedProviders.DEFAULT;
+        prefs.edit().putString(PREF_FEED_PROVIDER, prefs.getString(PREF_FEED_PROVIDER, defaultFeed))
+                .putString(PREF_GRID_SIZE, prefs.getString(PREF_GRID_SIZE, ""))
+                .putString(PREF_DOCK_SEARCH, prefs.getString(PREF_DOCK_SEARCH, ""))
+                .apply();
+    }
+
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(ShadeSettings.PREF_FEED_PROVIDER)) {
+        if (key.equals(PREF_FEED_PROVIDER)) {
             mLauncherClient.disconnect();
             mLauncher.recreate();
-        } else if (key.equals(ShadeSettings.PREF_GRID_SIZE)) {
+        } else if (key.equals(PREF_GRID_SIZE)) {
             mLauncher.kill();
         } else if (key.startsWith(PluginManager.PREF_PLUGIN_PREFIX)) {
             mLauncher.recreate();
-        } else if (key.equals(ShadeSettings.PREF_DOCK_SEARCH)) {
+        } else if (key.equals(PREF_DOCK_SEARCH)) {
             mLauncher.recreate();
         }
     }
