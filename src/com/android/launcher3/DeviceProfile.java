@@ -224,7 +224,7 @@ public class DeviceProfile {
             // in portrait mode closer together by adding more height to the hotseat.
             // Note: This calculation was created after noticing a pattern in the design spec.
             int extraSpace = getCellSize().y - iconSizePx - iconDrawablePaddingPx * 2
-                    - verticalDragHandleSizePx;
+                    - res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_tall_remove_space);
             hotseatBarSizePx += extraSpace;
             hotseatBarBottomPaddingPx += extraSpace;
 
