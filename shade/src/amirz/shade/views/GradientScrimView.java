@@ -49,7 +49,7 @@ public class GradientScrimView extends ShelfScrimView {
 
     private void createRadialShader() {
         final float gradientCenterY = 1.05f;
-        float radius = Math.max(mHeight, mWidth) * gradientCenterY;
+        float radius = Math.max(mHeight * gradientCenterY, mWidth / gradientCenterY);
         float posScreenBottom = (radius - mHeight) / radius; // center lives below screen
 
         int alpha = getResources().getInteger(R.integer.shade_gradient_alpha);
