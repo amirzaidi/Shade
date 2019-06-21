@@ -65,7 +65,7 @@ public class DeepShortcutManager {
     private LauncherApps mLauncherApps;
     private boolean mWasLastCallSuccess;
 
-    protected DeepShortcutManager() {
+    public DeepShortcutManager() {
     }
 
     private void setContext(Context context) {
