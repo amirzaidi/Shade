@@ -55,6 +55,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.util.zip.Deflater;
 
+import amirz.shade.allapps.search.AppsSearchContainerLayout;
+
 public class UiFactory {
 
     public static TouchController[] createTouchControllers(Launcher launcher) {
