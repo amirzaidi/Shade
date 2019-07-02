@@ -60,6 +60,7 @@ public class NotificationListener extends NotificationListenerService {
     private static final int MSG_NOTIFICATION_POSTED = 1;
     private static final int MSG_NOTIFICATION_REMOVED = 2;
     private static final int MSG_NOTIFICATION_FULL_REFRESH = 3;
+    private static final int MSG_NOTIFICATION_UNFILTERED_REFRESH = 4;
 
     private static NotificationListener sNotificationListenerInstance = null;
     private static NotificationsChangedListener sNotificationsChangedListener;
@@ -106,6 +107,22 @@ public class NotificationListener extends NotificationListenerService {
 
                     mUiHandler.obtainMessage(message.what, activeNotifications).sendToTarget();
                     break;
+                case MSG_NOTIFICATION_UNFILTERED_REFRESH:
+                    List<StatusBarNotification> unfilteredNotifications;
+                    if (sIsConnected) {
+                        try {
+                            unfilteredNotifications = Arrays.asList(getActiveNotifications());
+                        } catch (SecurityException ex) {
+                            Log.e(TAG, "SecurityException: failed to fetch notifications");
+                            unfilteredNotifications = new ArrayList<StatusBarNotification>();
+
+                        }
+                    } else {
+                        unfilteredNotifications = new ArrayList<StatusBarNotification>();
+                    }
+
+                    mUiHandler.obtainMessage(message.what, unfilteredNotifications).sendToTarget();
+                    break;
             }
             return true;
         }
@@ -132,6 +149,15 @@ public class NotificationListener extends NotificationListenerService {
                 case MSG_NOTIFICATION_FULL_REFRESH:
                     if (sNotificationsChangedListener != null) {
                         sNotificationsChangedListener.onNotificationFullRefresh(
+                                (List<StatusBarNotification>) message.obj);
+                    }
+                    break;
+                case MSG_NOTIFICATION_UNFILTERED_REFRESH:
+                    if (sNotificationsChangedListener != null
+                            && sNotificationsChangedListener instanceof NotificationsChangedListenerExt) {
+                        NotificationsChangedListenerExt notificationsChangedListenerExt =
+                                (NotificationsChangedListenerExt) sNotificationsChangedListener;
+                        notificationsChangedListenerExt.onNotificationUnfilteredRefresh(
                                 (List<StatusBarNotification>) message.obj);
                     }
                     break;
@@ -210,6 +236,7 @@ public class NotificationListener extends NotificationListenerService {
 
     private void onNotificationFullRefresh() {
         mWorkerHandler.obtainMessage(MSG_NOTIFICATION_FULL_REFRESH).sendToTarget();
+        mWorkerHandler.obtainMessage(MSG_NOTIFICATION_UNFILTERED_REFRESH).sendToTarget();
     }
 
     @Override
@@ -395,6 +422,10 @@ public class NotificationListener extends NotificationListenerService {
         void onNotificationRemoved(PackageUserKey removedPackageUserKey,
                 NotificationKeyData notificationKey);
         void onNotificationFullRefresh(List<StatusBarNotification> activeNotifications);
+    }
+
+    public interface NotificationsChangedListenerExt extends NotificationsChangedListener {
+        void onNotificationUnfilteredRefresh(List<StatusBarNotification> activeNotifications);
     }
 
     public interface StatusBarNotificationsChangedListener {

@@ -1,6 +1,8 @@
 package amirz.plugin.unread;
 
+import android.app.Notification;
 import android.service.notification.StatusBarNotification;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -19,9 +21,17 @@ class NotificationRanker {
         int bestPriority = PRIORITY_MIN;
         StatusBarNotification bestNotif = null;
         for (StatusBarNotification n : mSbn) {
-            if (!n.isOngoing()) {
+            Notification data = n.getNotification();
+
+            CharSequence title = data.extras.getCharSequence(Notification.EXTRA_TITLE);
+            CharSequence text = data.extras.getCharSequence(Notification.EXTRA_TEXT);
+            boolean missingTitleAndText = TextUtils.isEmpty(title) && TextUtils.isEmpty(text);
+
+            // Do not try adding an empty notification, or an ongoing notification.
+            if (!missingTitleAndText && !n.isOngoing()) {
                 int priority = n.getNotification().priority;
-                if (priority >= bestPriority) {
+                boolean isGroupHeader = (data.flags & Notification.FLAG_GROUP_SUMMARY) != 0;
+                if (priority > bestPriority && !isGroupHeader) {
                     bestPriority = priority;
                     bestNotif = n;
                 }
