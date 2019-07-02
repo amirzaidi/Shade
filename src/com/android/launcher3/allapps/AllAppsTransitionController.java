@@ -96,7 +96,7 @@ public class AllAppsTransitionController implements StateHandler, OnDeviceProfil
         // Initialize values that should not change until #onDragEnd
         mAppsView.setVisibility(View.VISIBLE);
 
-        UiThreadHelper.hideKeyboardAsync(mLauncher, mAppsView.getWindowToken());
+        UiThreadHelper.hideKeyboard(mLauncher, mAppsView.getWindowToken());
     }
 
     @Override
