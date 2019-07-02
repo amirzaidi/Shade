@@ -370,6 +370,11 @@ public abstract class AbstractStateChangeTouchController
             fling = false;
         }
 
+        // Animation was aborted, do not continue.
+        if (mCurrentAnimation == null) {
+            return;
+        }
+
         final LauncherState targetState;
         final float progress = mCurrentAnimation.getProgressFraction();
         final float interpolatedProgress = mCurrentAnimation.getInterpolator()
