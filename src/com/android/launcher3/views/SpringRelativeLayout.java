@@ -25,9 +25,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.EdgeEffectFactory;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.EdgeEffect;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import static android.support.animation.SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY;
@@ -54,7 +56,7 @@ public class SpringRelativeLayout extends RelativeLayout {
                 }
             };
 
-    protected final SparseBooleanArray mSpringViews = new SparseBooleanArray();
+    protected final SparseArray<Float> mSpringViews = new SparseArray<>();
     private final SpringAnimation mSpring;
 
     private float mDampedScrollShift = 0;
@@ -77,10 +79,15 @@ public class SpringRelativeLayout extends RelativeLayout {
     }
 
     public void addSpringView(int id) {
-        mSpringViews.put(id, true);
+        mSpringViews.put(id, Float.NaN);
     }
 
     public void removeSpringView(int id) {
+        float val = mSpringViews.get(id, Float.NaN);
+        View v = findViewById(id);
+        if (!Float.isNaN(val) && v != null) {
+            v.setTranslationY(val);
+        }
         mSpringViews.delete(id);
         invalidate();
     }
@@ -94,11 +101,19 @@ public class SpringRelativeLayout extends RelativeLayout {
 
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-        if (mDampedScrollShift != 0 && mSpringViews.get(child.getId())) {
+        if (mDampedScrollShift != 0 && mSpringViews.get(child.getId()) != null) {
             int saveCount = canvas.save();
 
             canvas.clipRect(0, getCanvasClipTopForOverscroll(), getWidth(), getHeight());
-            canvas.translate(0, mDampedScrollShift);
+
+            if (child instanceof EditText) {
+                if (Float.isNaN(mSpringViews.get(child.getId()))) {
+                    mSpringViews.put(child.getId(), child.getTranslationY());
+                }
+                child.setTranslationY(mSpringViews.get(child.getId()) + mDampedScrollShift);
+            } else {
+                canvas.translate(0, mDampedScrollShift);
+            }
             boolean result = super.drawChild(canvas, child, drawingTime);
 
             canvas.restoreToCount(saveCount);
