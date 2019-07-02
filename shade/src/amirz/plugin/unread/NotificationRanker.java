@@ -27,11 +27,11 @@ class NotificationRanker {
             CharSequence text = data.extras.getCharSequence(Notification.EXTRA_TEXT);
             boolean missingTitleAndText = TextUtils.isEmpty(title) && TextUtils.isEmpty(text);
 
-            // Do not try adding an empty notification, or an ongoing notification.
+            // Do not try using an empty notification, or an ongoing notification.
             if (!missingTitleAndText && !n.isOngoing()) {
                 int priority = n.getNotification().priority;
                 boolean isGroupHeader = (data.flags & Notification.FLAG_GROUP_SUMMARY) != 0;
-                if (priority > bestPriority && !isGroupHeader) {
+                if (priority >= bestPriority && !isGroupHeader) {
                     bestPriority = priority;
                     bestNotif = n;
                 }

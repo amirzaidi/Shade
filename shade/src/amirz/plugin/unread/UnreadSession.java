@@ -56,7 +56,7 @@ public class UnreadSession extends IUnreadPlugin.Stub {
         mCalendarReceiver = new CalendarReceiver(context, this::reload);
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
 
-        LauncherNotifications.getInstance().addListener(mNotifications);
+        LauncherNotifications.getInstance().addUnfilteredListener(mNotifications);
     }
 
     @Override
