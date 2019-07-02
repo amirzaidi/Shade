@@ -379,12 +379,6 @@ public class NotificationListener extends NotificationListenerService {
                 if ((notification.flags & Notification.FLAG_ONGOING_EVENT) != 0) {
                     return true;
                 }
-                if (mTempRanking.getChannel().getId().equals(NotificationChannel.DEFAULT_CHANNEL_ID)) {
-                    // Special filtering for the default, legacy "Miscellaneous" channel.
-                    if ((notification.flags & Notification.FLAG_ONGOING_EVENT) != 0) {
-                        return true;
-                    }
-                }
             }
         }
 
