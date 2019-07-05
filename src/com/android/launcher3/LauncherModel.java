@@ -85,6 +85,12 @@ public class LauncherModel extends BroadcastReceiver
 
     static final String TAG = "Launcher.Model";
 
+    enum BindType {
+        NONE,
+        SYNC,
+        ASYNC
+    }
+
     private final MainThreadExecutor mUiExecutor = new MainThreadExecutor();
     @Thunk final LauncherAppState mApp;
     @Thunk final Object mLock = new Object();
@@ -437,9 +443,9 @@ public class LauncherModel extends BroadcastReceiver
 
     /**
      * Starts the loader. Tries to bind {@params synchronousBindPage} synchronously if possible.
-     * @return true if the page could be bound synchronously.
+     * @return type of bind used for the page.
      */
-    public boolean startLoader(int synchronousBindPage) {
+    public BindType startLoader(int synchronousBindPage) {
         // Enable queue before starting loader. It will get disabled in Launcher#finishBindingItems
         InstallShortcutReceiver.enableInstallQueue(InstallShortcutReceiver.FLAG_LOADER_RUNNING);
         synchronized (mLock) {
@@ -462,13 +468,14 @@ public class LauncherModel extends BroadcastReceiver
                     loaderResults.bindAllApps();
                     loaderResults.bindDeepShortcuts();
                     loaderResults.bindWidgets();
-                    return true;
+                    return BindType.SYNC;
                 } else {
                     startLoaderForResults(loaderResults);
+                    return BindType.ASYNC;
                 }
             }
         }
-        return false;
+        return BindType.NONE;
     }
 
     /**

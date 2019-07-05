@@ -315,17 +315,19 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
             currentScreen = savedInstanceState.getInt(RUNTIME_STATE_CURRENT_SCREEN, currentScreen);
         }
 
-        if (!mModel.startLoader(currentScreen)) {
+        setWorkspaceLoading(true);
+        LauncherModel.BindType bind = mModel.startLoader(currentScreen);
+        if (bind == LauncherModel.BindType.ASYNC) {
             if (!internalStateHandled) {
                 // If we are not binding synchronously, show a fade in animation when
                 // the first page bind completes.
                 mDragLayer.getAlphaProperty(ALPHA_INDEX_LAUNCHER_LOAD).setValue(0);
             }
-        } else {
+        } else if (bind == LauncherModel.BindType.SYNC) {
             // Pages bound synchronously.
             mWorkspace.setCurrentPage(currentScreen);
-
-            setWorkspaceLoading(true);
+        } else /* if (bind == LauncherModel.BindType.NONE) */ {
+            setWorkspaceLoading(false);
         }
 
         // For handling default keys
@@ -382,9 +384,12 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     @Override
     public void rebindModel() {
         int currentPage = mWorkspace.getNextPage();
-        if (mModel.startLoader(currentPage)) {
+        setWorkspaceLoading(true);
+        LauncherModel.BindType bind = mModel.startLoader(currentPage);
+        if (bind == LauncherModel.BindType.SYNC) {
             mWorkspace.setCurrentPage(currentPage);
-            setWorkspaceLoading(true);
+        } else if (bind == LauncherModel.BindType.NONE) {
+            setWorkspaceLoading(false);
         }
     }
 
