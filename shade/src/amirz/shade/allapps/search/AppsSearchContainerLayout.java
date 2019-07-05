@@ -68,6 +68,8 @@ public class AppsSearchContainerLayout extends ExtendedEditText
     private final ShadeSearch.Receiver mSearchReceiver;
     private final CharSequence mHint;
 
+    private boolean mSearchRequested;
+
     public AppsSearchContainerLayout(Context context) {
         this(context, null);
     }
@@ -90,6 +92,17 @@ public class AppsSearchContainerLayout extends ExtendedEditText
 
         mSearchReceiver = new ShadeSearch.Receiver(this);
         mHint = getHint();
+    }
+
+    public void requestSearch() {
+        mSearchRequested = true;
+    }
+
+    public void showKeyboardOnSearchRequest() {
+        if (mSearchRequested) {
+            mSearchRequested = false;
+            showKeyboard();
+        }
     }
 
     @Override
