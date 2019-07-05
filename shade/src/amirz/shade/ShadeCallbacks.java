@@ -10,6 +10,7 @@ import android.support.v4.graphics.ColorUtils;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
@@ -42,6 +43,7 @@ public class ShadeCallbacks
     private LauncherClient mLauncherClient;
     private boolean mDeferCallbacks;
     private final Bundle mPrivateOptions = new Bundle();
+    private final Handler mHandler = new Handler();
     private boolean mNoFloatingView;
 
     private ShadespaceView mShadespace;
@@ -96,10 +98,11 @@ public class ShadeCallbacks
             ButtonPluginClient buttonPluginClient =
                     PluginManager.getInstance(mLauncher).getClient(ButtonPluginClient.class);
             if (!buttonPluginClient.onHomeIntent(this)) {
-                AppsSearchContainerLayout search =
-                        (AppsSearchContainerLayout) mLauncher.getAppsView().getSearchView();
-                search.requestSearch();
-                mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true);
+                ExtendedEditText searchUiManager =
+                        (ExtendedEditText) mLauncher.getAppsView().getSearchUiManager();
+                mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true,
+                        () -> mHandler.post(searchUiManager::showKeyboard)
+                );
             }
         }
     }
