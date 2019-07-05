@@ -17,6 +17,7 @@
 package com.android.launcher3;
 
 import static android.view.View.VISIBLE;
+import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_OVERVIEW_FADE;
 import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_OVERVIEW_SCALE;
@@ -413,7 +414,9 @@ public class LauncherStateManager {
 
         UiFactory.onLauncherStateOrResumeChanged(mLauncher);
 
-        mLauncher.getDragLayer().requestFocus();
+        if (state != ALL_APPS) {
+            mLauncher.getDragLayer().requestFocus();
+        }
     }
 
     public void onWindowFocusChanged() {
