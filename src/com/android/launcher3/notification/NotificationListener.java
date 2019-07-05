@@ -407,6 +407,8 @@ public class NotificationListener extends NotificationListenerService {
                     return true;
                 }
             }
+        } else if ((notification.flags & Notification.FLAG_ONGOING_EVENT) != 0) {
+            return true;
         }
 
         CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
