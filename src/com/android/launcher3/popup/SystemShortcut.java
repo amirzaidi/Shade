@@ -65,7 +65,7 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
                     Intent i = Intent.parseUri(launcher.getString(R.string.delete_package_intent), 0)
                         .setData(Uri.fromParts("package", cn.getPackageName(), cn.getClassName()))
                         .putExtra(Intent.EXTRA_USER, itemInfo.user);
-                    launcher.startActivitySafely(view, i, itemInfo);
+                    launcher.startActivity(i);
                 } catch (URISyntaxException ignored) {
                 }
             };
