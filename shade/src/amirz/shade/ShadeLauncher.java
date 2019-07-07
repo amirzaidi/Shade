@@ -56,7 +56,7 @@ public class ShadeLauncher extends PluginLauncher {
 
         WindowManager.LayoutParams attributes = getWindow().getAttributes();
         attributes.windowAnimations =
-                Utilities.getPrefs(this).getBoolean(PREF_TRANSITION, false)
+                Utilities.getPrefs(this).getBoolean(PREF_TRANSITION, true)
                         ? R.style.ShadeAnimations
                         : mDefaultWindowAnimations;
         getWindow().setAttributes(attributes);

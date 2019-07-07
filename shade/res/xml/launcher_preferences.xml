@@ -90,7 +90,7 @@
             android:key="pref_transition"
             android:title="@string/pref_transition"
             android:summary="@string/pref_transition_desc"
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:persistent="true" />
 
     </PreferenceCategory>

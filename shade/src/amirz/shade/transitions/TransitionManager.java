@@ -25,7 +25,7 @@ public class TransitionManager extends LauncherAppTransitionManagerImpl {
         if (QuickstepProcessInitializer.isEnabled()) {
             return super.getActivityLaunchOptions(launcher, v);
         }
-        if (Utilities.getPrefs(launcher).getBoolean(PREF_TRANSITION, false)) {
+        if (Utilities.getPrefs(launcher).getBoolean(PREF_TRANSITION, true)) {
             return ActivityOptions.makeCustomAnimation(launcher,
                     R.anim.enter_app, R.anim.exit_launcher);
         }
@@ -56,7 +56,7 @@ public class TransitionManager extends LauncherAppTransitionManagerImpl {
 
     public void overrideAppClose(Activity activity) {
         if (!QuickstepProcessInitializer.isEnabled()
-                && Utilities.getPrefs(activity).getBoolean(PREF_TRANSITION, false)) {
+                && Utilities.getPrefs(activity).getBoolean(PREF_TRANSITION, true)) {
             activity.overridePendingTransition(R.anim.enter_launcher, R.anim.exit_app);
         }
     }
