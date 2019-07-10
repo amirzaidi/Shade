@@ -174,32 +174,30 @@ public class ShadeSettings extends SettingsActivity {
     }
 
     public static int getThemeRes(Context context, int defValue) {
-        switch (Utilities.getPrefs(context).getString(ShadeSettings.PREF_THEME, "")) {
-            case "transparent": return R.style.Shade_Transparent;
-            case "campfire": return R.style.Shade_Campfire;
-            case "sunset": return R.style.Shade_Sunset;
-            case "sunrise": return R.style.Shade_Sunrise;
-            case "forest": return R.style.Shade_Forest;
-            case "ocean": return R.style.Shade_Ocean;
-            case "twilight": return R.style.Shade_Twilight;
-            case "blossom": return R.style.Shade_Blossom;
-            case "midnight": return R.style.Shade_Midnight;
-        }
-        return defValue;
+        return getThemeRes(context, defValue, false);
     }
 
-    public static int getThemeResAdaptive(Context context, int defValue, boolean darkText) {
-        int themeRes = getThemeRes(context, defValue);
-        if (darkText) {
-            switch (themeRes) {
-                case R.style.Shade_Sunrise:
-                    return R.style.Shade_Sunrise_DarkText;
-                case R.style.Shade_Forest:
-                    return R.style.Shade_Forest_DarkText;
-                case R.style.Shade_Blossom:
-                    return R.style.Shade_Blossom_DarkText;
-            }
+    public static int getThemeRes(Context context, int defValue, boolean darkText) {
+        switch (Utilities.getPrefs(context).getString(ShadeSettings.PREF_THEME, "")) {
+            case "transparent":
+                return darkText ? R.style.Shade_Transparent_DarkText : R.style.Shade_Transparent;
+            case "campfire":
+                return darkText ? R.style.Shade_Campfire_DarkText : R.style.Shade_Campfire;
+            case "sunset":
+                return darkText ? R.style.Shade_Sunset_DarkText : R.style.Shade_Sunset;
+            case "sunrise":
+                return darkText ? R.style.Shade_Sunrise_DarkText : R.style.Shade_Sunrise;
+            case "forest":
+                return darkText ? R.style.Shade_Forest_DarkText : R.style.Shade_Forest;
+            case "ocean":
+                return darkText ? R.style.Shade_Ocean_DarkText : R.style.Shade_Ocean;
+            case "twilight":
+                return darkText ? R.style.Shade_Twilight_DarkText : R.style.Shade_Twilight;
+            case "blossom":
+                return darkText ? R.style.Shade_Blossom_DarkText : R.style.Shade_Blossom;
+            case "midnight":
+                return darkText ? R.style.Shade_Midnight_DarkText : R.style.Shade_Midnight;
         }
-        return themeRes;
+        return defValue;
     }
 }

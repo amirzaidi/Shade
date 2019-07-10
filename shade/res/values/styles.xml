@@ -92,6 +92,16 @@
         <item name="widgetsTheme">@style/Shade.Transparent</item>
     </style>
 
+    <style name="Shade.Transparent.DarkText" parent="@style/AppTheme.Dark.DarkText">
+        <item name="shadeColorAccent">#3949AB</item>
+        <item name="android:colorAccent">?attr/shadeColorAccent</item>
+        <item name="workspaceStatusBarScrim">@null</item>
+
+        <item name="allAppsScrimColor">#331A237E</item>
+        <item name="headerColor">?attr/shadeColorAccent</item>
+        <item name="widgetsTheme">@style/Shade.Transparent.DarkText</item>
+    </style>
+
     <!--
     Override
     1. shadeColorPrimary
@@ -127,6 +137,18 @@
         <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
     </style>
 
+    <style name="Shade.Dark.DarkText" parent="AppTheme.Dark.DarkText">
+        <item name="android:colorPrimary">?attr/shadeColorSecondary</item>
+        <item name="android:colorPrimaryDark">?attr/shadeColorAccent</item>
+
+        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
+        <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
+
+        <item name="popupColorPrimary">?attr/shadeColorAccent</item>
+        <item name="popupColorSecondary">?attr/shadeColorSecondary</item>
+        <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
+    </style>
+
     <!-- CAMPFIRE: Red -->
     <style name="Shade.Campfire" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">@color/themeRedPrimary</item>
@@ -135,12 +157,26 @@
         <item name="widgetsTheme">@style/Shade.Campfire</item>
     </style>
 
+    <style name="Shade.Campfire.DarkText" parent="@style/Shade.Dark.DarkText">
+        <item name="shadeColorPrimary">@color/themeRedPrimary</item>
+        <item name="shadeColorSecondary">@color/themeRedSecondary</item>
+        <item name="shadeColorAccent">@color/themeRedAccent</item>
+        <item name="widgetsTheme">@style/Shade.Campfire.DarkText</item>
+    </style>
+
     <!-- SUNSET: Orange -->
     <style name="Shade.Sunset" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">@color/themeOrangePrimary</item>
         <item name="shadeColorSecondary">@color/themeOrangeSecondary</item>
         <item name="shadeColorAccent">@color/themeOrangeAccent</item>
         <item name="widgetsTheme">@style/Shade.Sunset</item>
+    </style>
+
+    <style name="Shade.Sunset.DarkText" parent="@style/Shade.Dark.DarkText">
+        <item name="shadeColorPrimary">@color/themeOrangePrimary</item>
+        <item name="shadeColorSecondary">@color/themeOrangeSecondary</item>
+        <item name="shadeColorAccent">@color/themeOrangeAccent</item>
+        <item name="widgetsTheme">@style/Shade.Sunset.DarkText</item>
     </style>
 
     <!-- SUNRISE: Yellow -->
@@ -177,12 +213,26 @@
         <item name="widgetsTheme">@style/Shade.Ocean</item>
     </style>
 
+    <style name="Shade.Ocean.DarkText" parent="@style/Shade.Dark.DarkText">
+        <item name="shadeColorPrimary">@color/themeBluePrimary</item>
+        <item name="shadeColorSecondary">@color/themeBlueSecondary</item>
+        <item name="shadeColorAccent">@color/themeBlueAccent</item>
+        <item name="widgetsTheme">@style/Shade.Ocean.DarkText</item>
+    </style>
+
     <!-- TWILIGHT: Purple -->
     <style name="Shade.Twilight" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">@color/themePurplePrimary</item>
         <item name="shadeColorSecondary">@color/themePurpleSecondary</item>
         <item name="shadeColorAccent">@color/themePurpleAccent</item>
         <item name="widgetsTheme">@style/Shade.Twilight</item>
+    </style>
+
+    <style name="Shade.Twilight.DarkText" parent="@style/Shade.Dark.DarkText">
+        <item name="shadeColorPrimary">@color/themePurplePrimary</item>
+        <item name="shadeColorSecondary">@color/themePurpleSecondary</item>
+        <item name="shadeColorAccent">@color/themePurpleAccent</item>
+        <item name="widgetsTheme">@style/Shade.Twilight.DarkText</item>
     </style>
 
     <!-- BLOSSOM: Pink -->
@@ -204,5 +254,12 @@
         <item name="shadeColorSecondary">@color/themeGraySecondary</item>
         <item name="shadeColorAccent">@color/themeGrayAccent</item>
         <item name="widgetsTheme">@style/Shade.Midnight</item>
+    </style>
+
+    <style name="Shade.Midnight.DarkText" parent="@style/Shade.Dark.DarkText">
+        <item name="shadeColorPrimary">@color/themeGrayPrimary</item>
+        <item name="shadeColorSecondary">@color/themeGraySecondary</item>
+        <item name="shadeColorAccent">@color/themeGrayAccent</item>
+        <item name="widgetsTheme">@style/Shade.Midnight.DarkText</item>
     </style>
 </resources>

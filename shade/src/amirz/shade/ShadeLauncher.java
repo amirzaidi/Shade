@@ -90,7 +90,7 @@ public class ShadeLauncher extends PluginLauncher {
 
     @Override
     protected int getThemeRes(WallpaperColorInfo wallpaperColorInfo) {
-        return ShadeSettings.getThemeResAdaptive(this, super.getThemeRes(wallpaperColorInfo),
-                !wallpaperColorInfo.isDark() && wallpaperColorInfo.supportsDarkText());
+        return ShadeSettings.getThemeRes(this, super.getThemeRes(wallpaperColorInfo),
+                wallpaperColorInfo.supportsDarkText());
     }
 }
