@@ -176,8 +176,8 @@ public class ShadeSettings extends SettingsActivity {
     public static int getThemeRes(Context context, int defValue) {
         switch (Utilities.getPrefs(context).getString(ShadeSettings.PREF_THEME, "")) {
             case "transparent": return R.style.Shade_Transparent;
-            case "sunset": return R.style.Shade_Sunset;
             case "campfire": return R.style.Shade_Campfire;
+            case "sunset": return R.style.Shade_Sunset;
             case "sunrise": return R.style.Shade_Sunrise;
             case "forest": return R.style.Shade_Forest;
             case "ocean": return R.style.Shade_Ocean;
@@ -186,5 +186,20 @@ public class ShadeSettings extends SettingsActivity {
             case "midnight": return R.style.Shade_Midnight;
         }
         return defValue;
+    }
+
+    public static int getThemeResAdaptive(Context context, int defValue, boolean darkText) {
+        int themeRes = getThemeRes(context, defValue);
+        if (darkText) {
+            switch (themeRes) {
+                case R.style.Shade_Sunrise:
+                    return R.style.Shade_Sunrise_DarkText;
+                case R.style.Shade_Forest:
+                    return R.style.Shade_Forest_DarkText;
+                case R.style.Shade_Blossom:
+                    return R.style.Shade_Blossom_DarkText;
+            }
+        }
+        return themeRes;
     }
 }

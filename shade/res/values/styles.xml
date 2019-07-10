@@ -103,6 +103,11 @@
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
     </style>
 
+    <style name="Shade.Light.DarkText" parent="AppTheme.DarkText">
+        <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
+        <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
+    </style>
+
     <!--
     Override
     1. shadeColorPrimary
@@ -145,8 +150,20 @@
         <item name="shadeColorAccent">@color/themeYellowAccent</item>
     </style>
 
+    <style name="Shade.Sunrise.DarkText" parent="@style/Shade.Light.DarkText">
+        <item name="shadeColorPrimary">@color/themeYellowPrimary</item>
+        <item name="shadeColorSecondary">@color/themeYellowSecondary</item>
+        <item name="shadeColorAccent">@color/themeYellowAccent</item>
+    </style>
+
     <!-- FOREST: Green -->
     <style name="Shade.Forest" parent="@style/Shade.Light">
+        <item name="shadeColorPrimary">@color/themeGreenPrimary</item>
+        <item name="shadeColorSecondary">@color/themeGreenSecondary</item>
+        <item name="shadeColorAccent">@color/themeGreenAccent</item>
+    </style>
+
+    <style name="Shade.Forest.DarkText" parent="@style/Shade.Light.DarkText">
         <item name="shadeColorPrimary">@color/themeGreenPrimary</item>
         <item name="shadeColorSecondary">@color/themeGreenSecondary</item>
         <item name="shadeColorAccent">@color/themeGreenAccent</item>
@@ -170,6 +187,12 @@
 
     <!-- BLOSSOM: Pink -->
     <style name="Shade.Blossom" parent="@style/Shade.Light">
+        <item name="shadeColorPrimary">@color/themePinkPrimary</item>
+        <item name="shadeColorSecondary">@color/themePinkSecondary</item>
+        <item name="shadeColorAccent">@color/themePinkAccent</item>
+    </style>
+
+    <style name="Shade.Blossom.DarkText" parent="@style/Shade.Light.DarkText">
         <item name="shadeColorPrimary">@color/themePinkPrimary</item>
         <item name="shadeColorSecondary">@color/themePinkSecondary</item>
         <item name="shadeColorAccent">@color/themePinkAccent</item>
