@@ -124,62 +124,62 @@
 
     <!-- CAMPFIRE: Red -->
     <style name="Shade.Campfire" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#FFA000</item>
-        <item name="shadeColorSecondary">#B71C1C</item>
-        <item name="shadeColorAccent">#D32F2F</item>
+        <item name="shadeColorPrimary">@color/themeRedPrimary</item>
+        <item name="shadeColorSecondary">@color/themeRedSecondary</item>
+        <item name="shadeColorAccent">@color/themeRedAccent</item>
         <item name="widgetsTheme">@style/Shade.Campfire</item>
     </style>
 
     <!-- SUNSET: Orange -->
     <style name="Shade.Sunset" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#600538</item>
-        <item name="shadeColorSecondary">#FF8000</item>
-        <item name="shadeColorAccent">#FF8B27</item>
+        <item name="shadeColorPrimary">@color/themeOrangePrimary</item>
+        <item name="shadeColorSecondary">@color/themeOrangeSecondary</item>
+        <item name="shadeColorAccent">@color/themeOrangeAccent</item>
         <item name="widgetsTheme">@style/Shade.Sunset</item>
     </style>
 
     <!-- SUNRISE: Yellow -->
     <style name="Shade.Sunrise" parent="@style/Shade.Light">
-        <item name="shadeColorPrimary">#82B1FF</item>
-        <item name="shadeColorSecondary">#FFB74D</item>
-        <item name="shadeColorAccent">#FFD600</item>
+        <item name="shadeColorPrimary">@color/themeYellowPrimary</item>
+        <item name="shadeColorSecondary">@color/themeYellowSecondary</item>
+        <item name="shadeColorAccent">@color/themeYellowAccent</item>
     </style>
 
     <!-- FOREST: Green -->
     <style name="Shade.Forest" parent="@style/Shade.Light">
-        <item name="shadeColorPrimary">#80CBC4</item>
-        <item name="shadeColorSecondary">#E0B2A1</item>
-        <item name="shadeColorAccent">#388E3C</item>
+        <item name="shadeColorPrimary">@color/themeGreenPrimary</item>
+        <item name="shadeColorSecondary">@color/themeGreenSecondary</item>
+        <item name="shadeColorAccent">@color/themeGreenAccent</item>
     </style>
 
     <!-- OCEAN: Blue -->
     <style name="Shade.Ocean" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#81D4FA</item>
-        <item name="shadeColorSecondary">#1E88E5</item>
-        <item name="shadeColorAccent">#03A9F4</item>
+        <item name="shadeColorPrimary">@color/themeBluePrimary</item>
+        <item name="shadeColorSecondary">@color/themeBlueSecondary</item>
+        <item name="shadeColorAccent">@color/themeBlueAccent</item>
         <item name="widgetsTheme">@style/Shade.Ocean</item>
     </style>
 
     <!-- TWILIGHT: Purple -->
     <style name="Shade.Twilight" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#26a69a</item>
-        <item name="shadeColorSecondary">#7e57c2</item>
-        <item name="shadeColorAccent">#5e35b1</item>
+        <item name="shadeColorPrimary">@color/themePurplePrimary</item>
+        <item name="shadeColorSecondary">@color/themePurpleSecondary</item>
+        <item name="shadeColorAccent">@color/themePurpleAccent</item>
         <item name="widgetsTheme">@style/Shade.Twilight</item>
     </style>
 
     <!-- BLOSSOM: Pink -->
     <style name="Shade.Blossom" parent="@style/Shade.Light">
-        <item name="shadeColorPrimary">#F3E5F5</item>
-        <item name="shadeColorSecondary">#E1BEE7</item>
-        <item name="shadeColorAccent">#C51162</item>
+        <item name="shadeColorPrimary">@color/themePinkPrimary</item>
+        <item name="shadeColorSecondary">@color/themePinkSecondary</item>
+        <item name="shadeColorAccent">@color/themePinkAccent</item>
     </style>
 
     <!-- MIDNIGHT: Gray -->
     <style name="Shade.Midnight" parent="@style/Shade.Dark">
-        <item name="shadeColorPrimary">#6A6161</item>
-        <item name="shadeColorSecondary">#030303</item>
-        <item name="shadeColorAccent">#1A1A1A</item>
+        <item name="shadeColorPrimary">@color/themeGrayPrimary</item>
+        <item name="shadeColorSecondary">@color/themeGraySecondary</item>
+        <item name="shadeColorAccent">@color/themeGrayAccent</item>
         <item name="widgetsTheme">@style/Shade.Midnight</item>
     </style>
 </resources>
