@@ -64,8 +64,7 @@ public class WallpaperColorInfoVL extends WallpaperColorInfo
         }
 
         mSupportsDarkText = wallpaperColors != null && (wallpaperColors.getColorHints()
-                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0
-                && Utilities.ATLEAST_NOUGAT;
+                & WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT) > 0;
 
         mIsDark = wallpaperColors != null && (wallpaperColors.getColorHints()
                 & WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME) > 0;
