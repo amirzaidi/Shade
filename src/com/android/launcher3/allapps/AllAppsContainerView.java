@@ -18,6 +18,7 @@ package com.android.launcher3.allapps;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -110,8 +111,13 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
         mAH[AdapterHolder.MAIN] = new AdapterHolder(false /* isWork */);
         mAH[AdapterHolder.WORK] = new AdapterHolder(true /* isWork */);
 
+        boolean navBarScrimEnabled = Utilities.ATLEAST_OREO
+                || !Themes.getAttrBoolean(context, R.attr.isWorkspaceDarkText);
+
         mNavBarScrimPaint = new Paint();
-        mNavBarScrimPaint.setColor(Themes.getAttrColor(context, R.attr.allAppsNavBarScrimColor));
+        mNavBarScrimPaint.setColor(navBarScrimEnabled
+                ? Themes.getAttrColor(context, R.attr.allAppsNavBarScrimColor)
+                : Color.TRANSPARENT);
 
         mAllAppsStore.addUpdateListener(this::onAppsUpdated);
 

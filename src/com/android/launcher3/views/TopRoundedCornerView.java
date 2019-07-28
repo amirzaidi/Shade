@@ -17,6 +17,7 @@ package com.android.launcher3.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -24,6 +25,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.util.Themes;
 
 /**
@@ -44,8 +46,13 @@ public class TopRoundedCornerView extends SpringRelativeLayout {
         int radius = getResources().getDimensionPixelSize(R.dimen.bg_round_rect_radius);
         mRadii = new float[] {radius, radius, radius, radius, 0, 0, 0, 0};
 
+        boolean navBarScrimEnabled = Utilities.ATLEAST_OREO
+                || !Themes.getAttrBoolean(context, R.attr.isWorkspaceDarkText);
+
         mNavBarScrimPaint = new Paint();
-        mNavBarScrimPaint.setColor(Themes.getAttrColor(context, R.attr.allAppsNavBarScrimColor));
+        mNavBarScrimPaint.setColor(navBarScrimEnabled
+                ? Themes.getAttrColor(context, R.attr.allAppsNavBarScrimColor)
+                : Color.TRANSPARENT);
     }
 
     public TopRoundedCornerView(Context context, AttributeSet attrs) {

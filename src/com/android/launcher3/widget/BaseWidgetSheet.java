@@ -127,7 +127,11 @@ abstract class BaseWidgetSheet extends AbstractSlideInView
         boolean isSheetDark = Themes.getAttrBoolean(mLauncher, R.attr.isMainColorDark);
         mLauncher.getSystemUiController().updateUiState(
                 SystemUiController.UI_STATE_WIDGET_BOTTOM_SHEET,
-                isSheetDark ? SystemUiController.FLAG_DARK_NAV : SystemUiController.FLAG_LIGHT_NAV);
+                Utilities.ATLEAST_OREO
+                    ? (isSheetDark
+                        ? SystemUiController.FLAG_DARK_NAV
+                        : SystemUiController.FLAG_LIGHT_NAV)
+                    : 0);
     }
 
     @Override

@@ -24,6 +24,9 @@ import com.android.launcher3.Utilities;
 
 import java.util.Arrays;
 
+import static android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+import static android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+
 /**
  * Utility class to manage various window flags to control system UI.
  */
@@ -79,6 +82,29 @@ public class SystemUiController {
         }
         if (newFlags != oldFlags) {
             mWindow.getDecorView().setSystemUiVisibility(newFlags);
+        }
+
+        if (!Utilities.ATLEAST_OREO) {
+            // Status bar and navigation bar backports.
+            newFlags = 0;
+            for (int stateFlag : mStates) {
+                if ((stateFlag & FLAG_LIGHT_NAV) != 0) {
+                    newFlags |= FLAG_TRANSLUCENT_NAVIGATION;
+                } else if ((stateFlag & FLAG_DARK_NAV) != 0) {
+                    newFlags &= ~(FLAG_TRANSLUCENT_NAVIGATION);
+                }
+
+                if (!Utilities.ATLEAST_MARSHMALLOW) {
+                    if ((stateFlag & FLAG_LIGHT_STATUS) != 0) {
+                        newFlags |= FLAG_TRANSLUCENT_STATUS;
+                    } else if ((stateFlag & FLAG_DARK_STATUS) != 0) {
+                        newFlags &= ~(FLAG_TRANSLUCENT_STATUS);
+                    }
+                }
+            }
+            mWindow.setFlags(newFlags, Utilities.ATLEAST_MARSHMALLOW
+                    ? FLAG_TRANSLUCENT_NAVIGATION
+                    : FLAG_TRANSLUCENT_NAVIGATION | FLAG_TRANSLUCENT_STATUS);
         }
     }
 

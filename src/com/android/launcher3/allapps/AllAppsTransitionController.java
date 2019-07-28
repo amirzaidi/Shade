@@ -11,6 +11,10 @@ import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_VERTICAL_PROGRE
 import static com.android.launcher3.anim.Interpolators.FAST_OUT_SLOW_IN;
 import static com.android.launcher3.anim.Interpolators.LINEAR;
 import static com.android.launcher3.anim.PropertySetter.NO_ANIM_PROPERTY_SETTER;
+import static com.android.launcher3.util.SystemUiController.FLAG_DARK_NAV;
+import static com.android.launcher3.util.SystemUiController.FLAG_DARK_STATUS;
+import static com.android.launcher3.util.SystemUiController.FLAG_LIGHT_NAV;
+import static com.android.launcher3.util.SystemUiController.FLAG_LIGHT_STATUS;
 import static com.android.launcher3.util.SystemUiController.UI_STATE_ALL_APPS;
 
 import android.animation.Animator;
@@ -27,6 +31,7 @@ import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherStateManager.AnimationConfig;
 import com.android.launcher3.LauncherStateManager.StateHandler;
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.AnimationSuccessListener;
 import com.android.launcher3.anim.AnimatorSetBuilder;
 import com.android.launcher3.anim.PropertySetter;
@@ -138,7 +143,12 @@ public class AllAppsTransitionController implements StateHandler, OnDeviceProfil
         boolean forceChange = shiftCurrent - mScrimView.getDragHandleSize()
                 <= mLauncher.getDeviceProfile().getInsets().top / 2;
         if (forceChange) {
-            mLauncher.getSystemUiController().updateUiState(UI_STATE_ALL_APPS, !mIsDarkTheme);
+            if (Utilities.ATLEAST_OREO) {
+                mLauncher.getSystemUiController().updateUiState(UI_STATE_ALL_APPS, !mIsDarkTheme);
+            } else {
+                int flags = mIsDarkTheme ? FLAG_DARK_STATUS : FLAG_LIGHT_STATUS;
+                mLauncher.getSystemUiController().updateUiState(UI_STATE_ALL_APPS, flags);
+            }
         } else {
             mLauncher.getSystemUiController().updateUiState(UI_STATE_ALL_APPS, 0);
         }
