@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.util.Themes;
 
 public class WidgetsSheet extends com.android.launcher3.widget.WidgetsBottomSheet {
     public WidgetsSheet(Context context, AttributeSet attrs) {
@@ -37,7 +38,8 @@ public class WidgetsSheet extends com.android.launcher3.widget.WidgetsBottomShee
     @Override
     public void setInsets(Rect insets) {
         Rect insetCopy = new Rect(insets);
-        if (!Utilities.ATLEAST_OREO && !mLauncher.getDeviceProfile().isVerticalBarLayout()) {
+        if (!Utilities.ATLEAST_OREO && !mLauncher.getDeviceProfile().isVerticalBarLayout()
+                && !Themes.getAttrBoolean(getContext(), R.attr.isWorkspaceDarkText)) {
             View navBarBg = findViewById(R.id.nav_bar_bg);
             ViewGroup.LayoutParams navBarBgLp = navBarBg.getLayoutParams();
             navBarBgLp.height = insetCopy.bottom;
