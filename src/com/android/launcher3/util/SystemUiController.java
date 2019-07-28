@@ -19,7 +19,6 @@ package com.android.launcher3.util;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.android.launcher3.Utilities;
 
@@ -80,12 +79,6 @@ public class SystemUiController {
         }
         if (newFlags != oldFlags) {
             mWindow.getDecorView().setSystemUiVisibility(newFlags);
-            if (!Utilities.ATLEAST_MARSHMALLOW) {
-                int backportFlags = (newFlags & View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR) == 0
-                        ? 0
-                        : WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-                mWindow.setFlags(backportFlags, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
         }
     }
 
