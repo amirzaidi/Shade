@@ -39,6 +39,7 @@ public class UnreadSession extends IUnreadPlugin.Stub {
     private final DateBroadcastReceiver mDateReceiver;
     private final CalendarReceiver mCalendarReceiver;
     private final BatteryBroadcastReceiver mBatteryReceiver;
+    private final IconBadgingObserver mBadgingObserver;
 
     private OnClickListener mOnClick;
 
@@ -55,6 +56,8 @@ public class UnreadSession extends IUnreadPlugin.Stub {
         mDateReceiver = new DateBroadcastReceiver(context, this::reload);
         mCalendarReceiver = new CalendarReceiver(context, this::reload);
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
+        mBadgingObserver = new IconBadgingObserver(context, this::reload);
+        mBadgingObserver.register();
 
         LauncherNotifications.getInstance().addUnfilteredListener(mNotifications);
     }
@@ -62,6 +65,14 @@ public class UnreadSession extends IUnreadPlugin.Stub {
     @Override
     public List<String> getText() {
         List<String> textList = new ArrayList<>();
+
+        // 0. Permission
+        if (!mBadgingObserver.isBadgingEnabled()) {
+            textList.add(mContext.getString(R.string.title_missing_notification_access));
+            textList.add(mContext.getString(R.string.title_change_settings));
+            mOnClick = mBadgingObserver::onClick;
+            return textList;
+        }
 
         // 1. Media
         if (mMedia.isTracking()) {
