@@ -157,8 +157,13 @@ public class UnreadSession extends IUnreadPlugin.Stub {
         textList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
                 DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
 
-        // 4a. With normal notification
-        if (ranked != null) {
+        // 4a. With battery charging text
+        if (mBatteryReceiver.isCharging()) {
+            textList.add(mContext.getString(R.string.shadespace_subtext_charging,
+                    mBatteryReceiver.getLevel()));
+        }
+        // 4b. With normal notification
+        else if (ranked != null) {
             for (int i = splitTitle.length - 1; i >= 0; i--) {
                 textList.add(splitTitle[i]);
             }
@@ -168,10 +173,6 @@ public class UnreadSession extends IUnreadPlugin.Stub {
             if (!textList.contains(app)) {
                 textList.add(app);
             }
-        // 4b. With battery charging text
-        } else if (mBatteryReceiver.isCharging()) {
-            textList.add(mContext.getString(R.string.shadespace_subtext_charging,
-                    mBatteryReceiver.getLevel()));
         }
 
         return textList;
