@@ -6,6 +6,7 @@ import android.os.SystemClock;
 
 import com.android.launcher3.FastBitmapDrawable;
 import com.android.launcher3.ItemInfoWithIcon;
+import com.android.launcher3.Utilities;
 
 import java.util.TimeZone;
 
@@ -42,15 +43,18 @@ class AutoUpdateClock extends FastBitmapDrawable implements Runnable {
 
     @Override
     public void drawInternal(Canvas canvas, Rect rect) {
-        if (mLayers == null) {
+        if (mLayers == null || !Utilities.ATLEAST_OREO) {
             super.drawInternal(canvas, rect);
-            return;
+        } else {
+            canvas.drawBitmap(mLayers.bitmap, null, rect, mPaint);
+            mLayers.updateAngles();
+            canvas.scale(mLayers.scale, mLayers.scale,
+                    rect.exactCenterX() + mLayers.offset,
+                    rect.exactCenterY() + mLayers.offset);
+            canvas.clipPath(mLayers.mDrawable.getIconMask());
+            mLayers.mDrawable.getForeground().draw(canvas);
+            rescheduleUpdate();
         }
-        mLayers.updateAngles();
-        Rect bounds = getBounds();
-        canvas.scale(mLayers.scale, mLayers.scale, bounds.exactCenterX(), bounds.exactCenterY());
-        mLayers.mDrawable.draw(canvas);
-        rescheduleUpdate();
     }
 
     @Override
