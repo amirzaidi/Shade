@@ -93,16 +93,14 @@
     </string-array>
 
     <string-array name="grid_entries">
-        <item>@string/grid_default</item>
         <item>@string/grid_sparse</item>
         <item>@string/grid_balanced</item>
         <item>@string/grid_dense</item>
     </string-array>
 
     <string-array name="grid_entry_values">
-        <item>""</item>
         <item>"large"</item>
-        <item>"medium"</item>
+        <item>""</item>
         <item>"small"</item>
     </string-array>
 </resources>

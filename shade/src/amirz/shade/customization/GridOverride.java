@@ -32,15 +32,11 @@ public class GridOverride extends InvariantDeviceProfile.ProfileOverride {
                 if ((type == XmlPullParser.START_TAG) && "profile".equals(parser.getName())) {
                     TypedArray a = context.obtainStyledAttributes(
                             Xml.asAttributeSet(parser), R.styleable.InvariantDeviceProfile);
-                    int numRows = a.getInt(R.styleable.InvariantDeviceProfile_numRows, 0);
-                    int numColumns = a.getInt(R.styleable.InvariantDeviceProfile_numColumns, 0);
                     float iconSize = a.getFloat(R.styleable.InvariantDeviceProfile_iconSize, 0);
                     sGridProfiles.add(new GridProfile(
                             a.getString(R.styleable.InvariantDeviceProfile_name),
-                            numRows,
-                            numColumns,
-                            a.getInt(R.styleable.InvariantDeviceProfile_numFolderRows, numRows),
-                            a.getInt(R.styleable.InvariantDeviceProfile_numFolderColumns, numColumns),
+                            a.getInt(R.styleable.InvariantDeviceProfile_numRows, 0),
+                            a.getInt(R.styleable.InvariantDeviceProfile_numColumns, 0),
                             iconSize,
                             a.getFloat(R.styleable.InvariantDeviceProfile_landscapeIconSize, iconSize),
                             a.getFloat(R.styleable.InvariantDeviceProfile_iconTextSize, 0)));
@@ -64,14 +60,14 @@ public class GridOverride extends InvariantDeviceProfile.ProfileOverride {
         String name = Utilities.getPrefs(context).getString(ShadeSettings.PREF_GRID_SIZE, "");
         for (GridProfile profile : sGridProfiles) {
             if (name.equals(profile.name)) {
-                inv.numRows = profile.numRows;
-                inv.numColumns = profile.numColumns;
-                inv.numHotseatIcons = profile.numColumns;
-                inv.numFolderRows = profile.numFolderRows;
-                inv.numFolderColumns = profile.numFolderColumns;
-                inv.iconSize = profile.iconSize;
-                inv.landscapeIconSize = profile.landscapeIconSize;
-                inv.iconTextSize = profile.iconTextSize;
+                inv.numRows += profile.rowOffset;
+                inv.numColumns += profile.columnOffset;
+                inv.numHotseatIcons += profile.columnOffset;
+                inv.numFolderRows += profile.rowOffset;
+                inv.numFolderColumns += profile.columnOffset;
+                inv.iconSize *= profile.iconSizeScale;
+                inv.landscapeIconSize *= profile.landscapeIconSizeScale;
+                inv.iconTextSize *= profile.iconTextSizeScale;
                 break;
             }
         }
@@ -79,25 +75,21 @@ public class GridOverride extends InvariantDeviceProfile.ProfileOverride {
 
     private static class GridProfile {
         private final String name;
-        private final int numRows;
-        private final int numColumns;
-        private final int numFolderRows;
-        private final int numFolderColumns;
-        private final float iconSize;
-        private final float landscapeIconSize;
-        private final float iconTextSize;
+        private final int rowOffset;
+        private final int columnOffset;
+        private final float iconSizeScale;
+        private final float landscapeIconSizeScale;
+        private final float iconTextSizeScale;
 
-        private GridProfile(String name, int numRows, int numColumns,
-                            int numFolderRows, int numFolderColumns,
-                            float iconSize, float landscapeIconSize, float iconTextSize) {
+        private GridProfile(String name, int rowOffset, int columnOffset,
+                            float iconSizeScale, float landscapeIconSizeScale,
+                            float iconTextSizeScale) {
             this.name = name;
-            this.numRows = numRows;
-            this.numColumns = numColumns;
-            this.numFolderRows = numFolderRows;
-            this.numFolderColumns = numFolderColumns;
-            this.iconSize = iconSize;
-            this.landscapeIconSize = landscapeIconSize;
-            this.iconTextSize = iconTextSize;
+            this.rowOffset = rowOffset;
+            this.columnOffset = columnOffset;
+            this.iconSizeScale = iconSizeScale;
+            this.landscapeIconSizeScale = landscapeIconSizeScale;
+            this.iconTextSizeScale = iconTextSizeScale;
         }
     }
 }
