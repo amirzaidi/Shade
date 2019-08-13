@@ -120,6 +120,7 @@ public class DragView extends View {
     private Path mScaledMaskPath;
     private Drawable mBadge;
     private ColorMatrixColorFilter mBaseFilter;
+    private boolean mShowSpringIcon;
 
     /**
      * Construct the drag view.
@@ -465,7 +466,7 @@ public class DragView extends View {
             }
         }
 
-        if (mScaledMaskPath != null) {
+        if (mScaledMaskPath != null && mShowSpringIcon) {
             int cnt = canvas.save();
             canvas.clipPath(mScaledMaskPath);
             mBgSpringDrawable.draw(canvas);
@@ -587,6 +588,9 @@ public class DragView extends View {
     public void move(int touchX, int touchY) {
         if (touchX > 0 && touchY > 0 && mLastTouchX > 0 && mLastTouchY > 0
                 && mScaledMaskPath != null) {
+            if (mLastTouchX != touchX || mLastTouchY != touchY) {
+                mShowSpringIcon = true;
+            }
             mTranslateX.animateToPos(mLastTouchX - touchX);
             mTranslateY.animateToPos(mLastTouchY - touchY);
         }
