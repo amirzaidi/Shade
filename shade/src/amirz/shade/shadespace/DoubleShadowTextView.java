@@ -2,6 +2,7 @@ package amirz.shade.shadespace;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.android.launcher3.views.DoubleShadowBubbleTextView;
 public class DoubleShadowTextView extends TextView {
     private static final float MIN_SHRINK = 0.85f;
     private final DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
+    private final TextPaint mPaintCopy = new TextPaint();
     private float mTextSize = Float.NaN;
 
     public DoubleShadowTextView(Context context) {
@@ -60,14 +62,18 @@ public class DoubleShadowTextView extends TextView {
     }
 
     private void resizeText() {
+        float textSize = getTextSize();
         if (Float.isNaN(mTextSize)) {
-            mTextSize = getTextSize();
-        } else {
-            setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+            mTextSize = textSize;
+            mPaintCopy.set(getPaint());
         }
 
         int w = getWidth() - getTotalPaddingLeft() - getTotalPaddingRight();
-        float ratio = Math.min(1f, w / getPaint().measureText(getText().toString()));
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize * Math.max(MIN_SHRINK, ratio));
+        float ratio = Math.min(1f, w / mPaintCopy.measureText(getText().toString()));
+        float newTextSize = mTextSize * Math.max(MIN_SHRINK, ratio);
+
+        if (newTextSize != textSize) {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, newTextSize);
+        }
     }
 }
