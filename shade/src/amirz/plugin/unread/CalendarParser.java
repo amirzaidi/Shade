@@ -35,9 +35,9 @@ class CalendarParser {
         }
 
         Calendar latestStartTime = Calendar.getInstance();
-        latestStartTime.add(Calendar.HOUR, 12);
+        latestStartTime.add(Calendar.HOUR, 3);
         Calendar latestEndTime = Calendar.getInstance();
-        latestEndTime.add(Calendar.HOUR, 24);
+        latestEndTime.add(Calendar.HOUR, 6);
         Calendar currentTime = Calendar.getInstance();
 
         ContentResolver cr = context.getContentResolver();
