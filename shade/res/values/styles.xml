@@ -132,9 +132,9 @@
         <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
 
-        <item name="popupColorPrimary">?attr/shadeColorAccent</item>
-        <item name="popupColorSecondary">?attr/shadeColorSecondary</item>
-        <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
+        <item name="popupColorPrimary">?android:attr/colorPrimaryDark</item>
+        <item name="popupColorSecondary">?android:attr/colorPrimary</item>
+        <item name="popupColorTertiary">?android:attr/colorPrimary</item>
     </style>
 
     <style name="Shade.Dark.DarkText" parent="AppTheme.Dark.DarkText">
@@ -144,9 +144,9 @@
         <item name="allAppsScrimColor">?attr/shadeColorPrimary</item>
         <item name="allAppsScrimColorFoot">?attr/shadeColorSecondary</item>
 
-        <item name="popupColorPrimary">?attr/shadeColorAccent</item>
-        <item name="popupColorSecondary">?attr/shadeColorSecondary</item>
-        <item name="popupColorTertiary">?attr/shadeColorSecondary</item>
+        <item name="popupColorPrimary">?android:attr/colorPrimaryDark</item>
+        <item name="popupColorSecondary">?android:attr/colorPrimary</item>
+        <item name="popupColorTertiary">?android:attr/colorPrimary</item>
     </style>
 
     <!-- CAMPFIRE: Red -->
@@ -252,14 +252,22 @@
     <style name="Shade.Midnight" parent="@style/Shade.Dark">
         <item name="shadeColorPrimary">@color/themeGrayPrimary</item>
         <item name="shadeColorSecondary">@color/themeGraySecondary</item>
-        <item name="shadeColorAccent">@color/themeGrayAccent</item>
+        <item name="shadeColorAccent">@color/themeGraySecondary</item>
         <item name="widgetsTheme">@style/Shade.Midnight</item>
+
+        <item name="android:colorPrimaryDark">@android:color/black</item>
+        <item name="android:colorAccent">@color/themeGrayAccent</item>
+        <item name="allAppsScrimColorFoot">#00000000</item>
     </style>
 
     <style name="Shade.Midnight.DarkText" parent="@style/Shade.Dark.DarkText">
         <item name="shadeColorPrimary">@color/themeGrayPrimary</item>
         <item name="shadeColorSecondary">@color/themeGraySecondary</item>
-        <item name="shadeColorAccent">@color/themeGrayAccent</item>
+        <item name="shadeColorAccent">@color/themeGraySecondary</item>
         <item name="widgetsTheme">@style/Shade.Midnight.DarkText</item>
+
+        <item name="android:colorPrimaryDark">@android:color/black</item>
+        <item name="android:colorAccent">@color/themeGrayAccent</item>
+        <item name="allAppsScrimColorFoot">#00000000</item>
     </style>
 </resources>

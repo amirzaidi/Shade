@@ -31,7 +31,7 @@
     <color name="themePinkPrimary">#F3E5F5</color>
     <color name="themePinkSecondary">#E1BEE7</color>
     <color name="themePinkAccent">#C51162</color>
-    <color name="themeGrayPrimary">#6A6161</color>
-    <color name="themeGraySecondary">#030303</color>
-    <color name="themeGrayAccent">#1A1A1A</color>
+    <color name="themeGrayPrimary">#E3000000</color>
+    <color name="themeGraySecondary">#0F0F0F</color>
+    <color name="themeGrayAccent">#B71C1C</color>
 </resources>
