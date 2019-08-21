@@ -16,4 +16,6 @@
 
     <!-- Default search bar -->
     <dimen name="bg_round_rect_radius">24dp</dimen>
+
+    <dimen name="work_footer_side_padding">0dp</dimen>
 </resources>
