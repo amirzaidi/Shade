@@ -22,9 +22,9 @@
     <color name="themeGreenPrimary">#80CBC4</color>
     <color name="themeGreenSecondary">#E0B2A1</color>
     <color name="themeGreenAccent">#388E3C</color>
-    <color name="themeBluePrimary">#81D4FA</color>
-    <color name="themeBlueSecondary">#1E88E5</color>
-    <color name="themeBlueAccent">#03A9F4</color>
+    <color name="themeBluePrimary">#00bfd9</color>
+    <color name="themeBlueSecondary">#2f5fbf</color>
+    <color name="themeBlueAccent">#356bd9</color>
     <color name="themePurplePrimary">#26a69a</color>
     <color name="themePurpleSecondary">#7e57c2</color>
     <color name="themePurpleAccent">#5e35b1</color>
