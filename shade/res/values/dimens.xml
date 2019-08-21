@@ -13,4 +13,6 @@
     <dimen name="hotseat_qsb_size">56dp</dimen>
 
     <dimen name="vertical_drag_handle_size">12dp</dimen>
+
+    <dimen name="work_footer_side_padding">0dp</dimen>
 </resources>

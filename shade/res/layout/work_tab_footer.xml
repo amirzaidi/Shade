@@ -18,6 +18,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
+    android:paddingStart="@dimen/work_footer_side_padding"
+    android:paddingEnd="@dimen/work_footer_side_padding"
     android:paddingBottom="@dimen/all_apps_work_profile_tab_footer_bottom_padding"
     android:paddingTop="@dimen/all_apps_work_profile_tab_footer_top_padding">
 
