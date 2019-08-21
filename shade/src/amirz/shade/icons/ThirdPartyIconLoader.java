@@ -30,8 +30,10 @@ public class ThirdPartyIconLoader extends NormalizedIconLoader {
 
         IconResolver.DefaultDrawableProvider fallback = () -> super.getIcon(t);
         Drawable icon = ThirdPartyIconUtils.getByKey(mContext, key, 0, fallback);
-        return icon == null
-                ? AdaptiveIconWrapper.getInstance(mContext).wrap(fallback.get())
-                : createBadgedDrawable(icon, t.key.userId, t.taskDescription);
+        if (icon == null) {
+            icon = AdaptiveIconWrapper.getInstance(mContext).wrap(fallback.get(),
+                    t.taskDescription.getPrimaryColor());
+        }
+        return createBadgedDrawable(icon, t.key.userId, t.taskDescription);
     }
 }

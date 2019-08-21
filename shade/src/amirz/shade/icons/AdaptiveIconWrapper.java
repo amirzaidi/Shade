@@ -36,6 +36,11 @@ public class AdaptiveIconWrapper {
 
     @TargetApi(26)
     public Drawable wrap(Drawable icon) {
+        return wrap(icon, Color.WHITE);
+    }
+
+    @TargetApi(26)
+    public Drawable wrap(Drawable icon, int backgroundColor) {
         if (Utilities.ATLEAST_OREO && !(icon instanceof AdaptiveIconDrawable)) {
             boolean[] outShape = new boolean[1];
             mWrapper.setBounds(0, 0, 1, 1);
@@ -49,7 +54,7 @@ public class AdaptiveIconWrapper {
                 FixedScaleDrawable fsd = ((FixedScaleDrawable) mWrapper.getForeground());
                 fsd.setDrawable(icon);
                 fsd.setScale(scale);
-                ((ColorDrawable) mWrapper.getBackground()).setColor(Color.WHITE);
+                ((ColorDrawable) mWrapper.getBackground()).setColor(backgroundColor);
                 return mWrapper;
             }
         }
