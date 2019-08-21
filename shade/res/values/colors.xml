@@ -10,6 +10,8 @@
     <color name="textColorPrimaryInverse">#de000000</color>
     <color name="textColorSecondaryInverse">#8a000000</color>
     <color name="navbar_light">#28000000</color>
+    <color name="themeTransparentPrimary">#331A237E</color>
+    <color name="themeTransparentAccent">#3949AB</color>
     <color name="themeRedPrimary">#FFA000</color>
     <color name="themeRedSecondary">#B71C1C</color>
     <color name="themeRedAccent">#D32F2F</color>
