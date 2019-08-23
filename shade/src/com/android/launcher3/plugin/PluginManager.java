@@ -191,7 +191,7 @@ public final class PluginManager {
             if (si.permission == null || hasPermission(si.permission)) {
                 try {
                     plugins.add(new Plugin(si));
-                } catch (PackageManager.NameNotFoundException e) {
+                } catch (Resources.NotFoundException | PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
                 }
             }
@@ -254,8 +254,10 @@ public final class PluginManager {
          * Fill plugin information using given service info.
          * @param si The service info.
          * @throws PackageManager.NameNotFoundException If the service was uninstalled.
+         * @throws Resources.NotFoundException If the manifest information was malformed.
          */
-        private Plugin(ServiceInfo si) throws PackageManager.NameNotFoundException {
+        private Plugin(ServiceInfo si) throws PackageManager.NameNotFoundException,
+                Resources.NotFoundException {
             String descriptor = si.metaData.getString(INTERFACE_DESCRIPTOR);
             int version = si.metaData.getInt(INTERFACE_VERSION);
             mInterface = new PluginInterface(descriptor, version);
