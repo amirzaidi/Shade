@@ -124,6 +124,9 @@ public final class Utilities {
     public static final boolean ATLEAST_OREO =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
 
+    public static final boolean ATLEAST_NOUGAT_MR1 =
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1;
+
     public static final int SINGLE_FRAME_MS = 16;
 
     /**
