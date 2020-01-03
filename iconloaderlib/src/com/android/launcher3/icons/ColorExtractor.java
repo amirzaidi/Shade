@@ -62,7 +62,7 @@ public class ColorExtractor {
         float highScore = -1;
         int bestHue = -1;
 
-        int[] pixels = mTmpPixels;
+        int[] pixels = mTmpPixels.length <= samples ? mTmpPixels : new int[samples];
         Arrays.fill(pixels, 0);
         int pixelCount = 0;
 
