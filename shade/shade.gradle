@@ -30,7 +30,7 @@ android {
     sourceSets {
         shade {
             res.srcDirs = ['shade/res']
-            java.srcDirs = ['shade/src_flags', 'src_shortcuts_overrides', 'shade/src_backport']
+            java.srcDirs = ['shade/src', 'shade/src_flags', 'src_shortcuts_overrides', 'shade/src_backport']
             manifest.srcFile "shade/AndroidManifest.xml"
         }
 
