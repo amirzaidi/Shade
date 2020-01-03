@@ -51,3 +51,4 @@
 -dontwarn android.view.**
 -dontwarn android.os.**
 -dontwarn android.graphics.**
+-dontwarn android.content.pm.**
