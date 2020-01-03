@@ -33,6 +33,14 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
         }
+
+        release {
+            minifyEnabled false
+        }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     compileOptions {
@@ -74,12 +82,7 @@ android {
         }
     }
 
-    // Disable release builds for now
     android.variantFilter { variant ->
-        if (variant.buildType.name.endsWith('release')) {
-            variant.setIgnore(true)
-        }
-
         // Icon recents is Go only
         if (name.contains("WithQuickstepIconRecents") && !name.contains("l3go")) {
             variant.setIgnore(true)
@@ -98,6 +101,10 @@ android {
         }
 
         debug {
+            manifest.srcFile "AndroidManifest.xml"
+        }
+
+        release {
             manifest.srcFile "AndroidManifest.xml"
         }
 
@@ -144,6 +151,7 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+        jcenter()
     }
 
     gradle.projectsEvaluated {
