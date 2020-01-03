@@ -1,4 +1,17 @@
 android {
+    defaultConfig {
+        applicationVariants.all { variant ->
+            if (variant.flavorName == "shade") {
+                variant.outputs.each {
+                    it.versionNameOverride new Date().format("yyyy-MM-dd HH:mm")
+                    if (variant.buildType.name == "release") {
+                        it.versionCodeOverride ((System.currentTimeMillis() / 60000) as int)
+                    }
+                }
+            }
+        }
+    }
+
     productFlavors {
         shade {
             dimension "app"
