@@ -1,0 +1,17 @@
+android {
+    productFlavors {
+        shade {
+            dimension "app"
+            applicationId 'amirz.shade'
+            testApplicationId 'amirz.shade.tests'
+            versionName 'Q'
+        }
+    }
+
+    sourceSets {
+        shade {
+            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
+            manifest.srcFile "AndroidManifest.xml"
+        }
+    }
+}
