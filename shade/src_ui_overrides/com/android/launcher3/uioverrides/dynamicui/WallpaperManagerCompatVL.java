@@ -230,7 +230,7 @@ public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
                     Rect region = new Rect(0, 0, decoder.getWidth(), decoder.getHeight());
                     bitmap = decoder.decodeRegion(region, options);
                     decoder.recycle();
-                } catch (IOException | NullPointerException e) {
+                } catch (IOException | NullPointerException | SecurityException e) {
                     Log.e(TAG, "Fetching partial bitmap failed, trying old method", e);
                 }
                 if (bitmap == null) {
