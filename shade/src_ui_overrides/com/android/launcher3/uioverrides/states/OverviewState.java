@@ -17,6 +17,7 @@ package com.android.launcher3.uioverrides.states;
 
 import static com.android.launcher3.LauncherAnimUtils.OVERVIEW_TRANSITION_MS;
 
+import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 
@@ -39,5 +40,10 @@ public class OverviewState extends LauncherState {
 
     public static OverviewState newSwitchState(int id) {
         return new OverviewState(id);
+    }
+
+    @Override
+    public float getOverviewScrimAlpha(Launcher launcher) {
+        return 1;
     }
 }
