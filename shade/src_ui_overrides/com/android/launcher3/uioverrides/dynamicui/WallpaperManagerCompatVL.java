@@ -18,6 +18,8 @@ package com.android.launcher3.uioverrides.dynamicui;
 import static android.app.WallpaperManager.FLAG_SYSTEM;
 
 import static com.android.launcher3.Utilities.getDevicePrefs;
+import static com.android.launcher3.uioverrides.dynamicui.WallpaperColorsCompat.HINT_SUPPORTS_DARK_TEXT;
+import static com.android.launcher3.uioverrides.dynamicui.WallpaperColorsCompat.HINT_SUPPORTS_DARK_THEME;
 
 import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
@@ -36,6 +38,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -50,6 +53,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
+import androidx.core.graphics.ColorUtils;
 
 public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
 
@@ -152,12 +156,13 @@ public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
             return Pair.create(wallpaperId, null);
         }
 
-        int primary = parts.length > 2 ? Integer.parseInt(parts[2]) : 0;
-        int secondary = parts.length > 3 ? Integer.parseInt(parts[3]) : 0;
-        int tertiary = parts.length > 4 ? Integer.parseInt(parts[4]) : 0;
+        int hints = Integer.parseInt(parts[2]);
+        int primary = parts.length > 3 ? Integer.parseInt(parts[3]) : 0;
+        int secondary = parts.length > 4 ? Integer.parseInt(parts[4]) : 0;
+        int tertiary = parts.length > 5 ? Integer.parseInt(parts[5]) : 0;
 
         return Pair.create(wallpaperId, new WallpaperColorsCompat(primary, secondary, tertiary,
-                0 /* hints */));
+                hints));
     }
 
     /**
@@ -257,6 +262,8 @@ public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
             String value = VERSION_PREFIX + wallpaperId;
 
             if (bitmap != null) {
+                int hints = calculateDarkHints(bitmap);
+                value += "," + hints;
                 int color = mColorExtractor.findDominantColorByHue(bitmap,
                         MAX_WALLPAPER_EXTRACTION_AREA);
                 value += "," + color;
@@ -267,5 +274,62 @@ public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
                     .setPackage(getPackageName())
                     .putExtra(KEY_COLORS, value));
         }
+    }
+
+
+    // Decides when dark theme is optimal for this wallpaper
+    private static final float DARK_THEME_MEAN_LUMINANCE = 0.25f;
+    // Minimum mean luminosity that an image needs to have to support dark text
+    private static final float BRIGHT_IMAGE_MEAN_LUMINANCE = 0.75f;
+    // We also check if the image has dark pixels in it,
+    // to avoid bright images with some dark spots.
+    private static final float DARK_PIXEL_CONTRAST = 6f;
+    private static final float MAX_DARK_AREA = 0.025f;
+
+    /**
+     * Checks if image is bright and clean enough to support light text.
+     *
+     * @param source What to read.
+     * @return Whether image supports dark text or not.
+     */
+    private static int calculateDarkHints(Bitmap source) {
+        if (source == null) {
+            return 0;
+        }
+
+        int[] pixels = new int[source.getWidth() * source.getHeight()];
+        double totalLuminance = 0;
+        final int maxDarkPixels = (int) (pixels.length * MAX_DARK_AREA);
+        int darkPixels = 0;
+        source.getPixels(pixels, 0 /* offset */, source.getWidth(), 0 /* x */, 0 /* y */,
+                source.getWidth(), source.getHeight());
+
+        // This bitmap was already resized to fit the maximum allowed area.
+        // Let's just loop through the pixels, no sweat!
+        float[] tmpHsl = new float[3];
+        for (int i = 0; i < pixels.length; i++) {
+            ColorUtils.colorToHSL(pixels[i], tmpHsl);
+            final float luminance = tmpHsl[2];
+            final int alpha = Color.alpha(pixels[i]);
+            // Make sure we don't have a dark pixel mass that will
+            // make text illegible.
+            final boolean satisfiesTextContrast = ContrastColorUtil
+                    .calculateContrast(pixels[i], Color.BLACK) > DARK_PIXEL_CONTRAST;
+            if (!satisfiesTextContrast && alpha != 0) {
+                darkPixels++;
+            }
+            totalLuminance += luminance;
+        }
+
+        int hints = 0;
+        double meanLuminance = totalLuminance / pixels.length;
+        if (meanLuminance > BRIGHT_IMAGE_MEAN_LUMINANCE && darkPixels < maxDarkPixels) {
+            hints |= HINT_SUPPORTS_DARK_TEXT;
+        }
+        if (meanLuminance < DARK_THEME_MEAN_LUMINANCE) {
+            hints |= HINT_SUPPORTS_DARK_THEME;
+        }
+
+        return hints;
     }
 }
