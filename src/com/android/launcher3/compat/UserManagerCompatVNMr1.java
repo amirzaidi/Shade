@@ -25,6 +25,8 @@ import android.os.UserManager;
 import android.util.ArrayMap;
 import android.util.LongSparseArray;
 
+import com.android.launcher3.Utilities;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -90,7 +92,7 @@ public class UserManagerCompatVNMr1 extends UserManagerCompat {
 
     @Override
     public boolean isDemoUser() {
-        return mUserManager.isDemoUser();
+        return Utilities.ATLEAST_NOUGAT_MR1 && mUserManager.isDemoUser();
     }
 
     @Override
