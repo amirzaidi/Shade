@@ -26,6 +26,9 @@
     Refer comments around specific entries on how to extend individual components.
     -->
 
+    <!-- Swipe down for notifications -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
         android:fullBackupOnly="true"

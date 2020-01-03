@@ -39,7 +39,10 @@ public class UiFactory {
 
     public static TouchController[] createTouchControllers(Launcher launcher) {
         return new TouchController[] {
-                launcher.getDragController(), new AllAppsSwipeController(launcher)};
+                launcher.getDragController(),
+                new AllAppsSwipeController(launcher),
+                new NotificationController(launcher)
+        };
     }
 
     public static Runnable enableLiveUIChanges(Launcher l) {
