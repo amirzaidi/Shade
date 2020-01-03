@@ -3,7 +3,7 @@ final String FRAMEWORK_PREBUILTS_DIR = "prebuilts"
 android {
     defaultConfig {
         applicationVariants.all { variant ->
-            if (variant.flavorName == "shade") {
+            if (variant.flavorName.startsWith("shade")) {
                 variant.outputs.each {
                     it.versionNameOverride new Date().format("yyyy-MM-dd HH:mm")
                     if (variant.buildType.name == "release") {
