@@ -29,6 +29,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.android.launcher3.Utilities;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -183,6 +185,9 @@ public class DeepShortcutManager {
      */
     private List<ShortcutInfo> query(int flags, String packageName,
             ComponentName activity, List<String> shortcutIds, UserHandle user) {
+        if (!Utilities.ATLEAST_NOUGAT_MR1) {
+            return Collections.EMPTY_LIST;
+        }
         ShortcutQuery q = new ShortcutQuery();
         q.setQueryFlags(flags);
         if (packageName != null) {
@@ -205,6 +210,9 @@ public class DeepShortcutManager {
     }
 
     public boolean hasHostPermission() {
+        if (!Utilities.ATLEAST_NOUGAT_MR1) {
+            return false;
+        }
         try {
             return mLauncherApps.hasShortcutHostPermission();
         } catch (SecurityException|IllegalStateException e) {
