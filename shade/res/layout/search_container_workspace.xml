@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.searchlauncher.SmartspaceQsbWidget xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:launcher="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_container_workspace"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <fragment
+        android:name="com.android.searchlauncher.SmartspaceQsbWidget$SmartSpaceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="smart_space_view" />
+</com.android.searchlauncher.SmartspaceQsbWidget>
