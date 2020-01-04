@@ -9,4 +9,8 @@
     <dimen name="dynamic_grid_hotseat_bottom_padding">62dp</dimen>
     <dimen name="dynamic_grid_hotseat_extra_vertical_size">24dp</dimen>
     <dimen name="all_apps_search_bar_bottom_padding">36dp</dimen>
+
+    <!-- Dock search bar -->
+    <dimen name="qsb_wrapper_height">56dp</dimen>
+    <dimen name="qsb_widget_padding">8dp</dimen>
 </resources>
