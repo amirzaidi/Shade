@@ -17,8 +17,8 @@
 ** limitations under the License.
 */
 -->
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.launcher3">
     <uses-sdk android:targetSdkVersion="29" android:minSdkVersion="24"/>
     <!--
@@ -41,6 +41,10 @@
         android:restoreAnyVersion="true"
         android:supportsRtl="true" >
 
+        <activity
+            android:name="com.android.launcher3.Launcher"
+            tools:node="remove" />
+        
         <!--
         Main launcher activity. When extending only change the name, and keep all the
         attributes and intent filters the same
