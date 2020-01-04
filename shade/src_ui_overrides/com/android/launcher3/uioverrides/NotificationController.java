@@ -1,6 +1,7 @@
 package com.android.launcher3.uioverrides;
 
 import android.annotation.SuppressLint;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 
 import com.android.launcher3.AbstractFloatingView;
@@ -14,8 +15,8 @@ import static com.android.launcher3.LauncherState.NORMAL;
 
 public class NotificationController implements TouchController, SwipeDetector.Listener {
     // Swipe speed needed to open or close notifications.
-    private final static float NOTIFICATION_OPEN_VELOCITY = 2.25f;
-    private final static float NOTIFICATION_CLOSE_VELOCITY = -0.35f;
+    private final static float NOTIFICATION_OPEN_VELOCITY = 2250f;
+    private final static float NOTIFICATION_CLOSE_VELOCITY = -350f;
 
     private final Launcher mLauncher;
     private final SwipeDetector mGesture;
@@ -24,6 +25,10 @@ public class NotificationController implements TouchController, SwipeDetector.Li
     private Method mCollapse;
     private Object mSbm;
     private boolean mOpened;
+
+    // Tracking velocity
+    private float mDisplacement;
+    private long mNanos;
 
     @SuppressLint({"PrivateApi", "WrongConstant"})
     NotificationController(Launcher launcher) {
@@ -59,11 +64,20 @@ public class NotificationController implements TouchController, SwipeDetector.Li
 
     @Override
     public void onDragStart(boolean start) {
+        mDisplacement = 0;
+        mNanos = SystemClock.elapsedRealtimeNanos();
     }
 
     @Override
-    public boolean onDrag(float velocity) {
+    public boolean onDrag(float displacement) {
         if (mSbm != null) {
+            long nanos = SystemClock.elapsedRealtimeNanos();
+            float timeDiff = (float)(nanos - mNanos) / 1000000000f;
+            mNanos = nanos;
+
+            float velocity = (displacement - mDisplacement) / timeDiff;
+            mDisplacement = displacement;
+
             try {
                 if (velocity >= NOTIFICATION_OPEN_VELOCITY) {
                     mGesture.setDetectableScrollConditions(
