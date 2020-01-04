@@ -13,4 +13,7 @@
     <!-- Dock search bar -->
     <dimen name="qsb_wrapper_height">56dp</dimen>
     <dimen name="qsb_widget_padding">8dp</dimen>
+
+    <!-- Default search bar -->
+    <dimen name="bg_round_rect_radius">24dp</dimen>
 </resources>
