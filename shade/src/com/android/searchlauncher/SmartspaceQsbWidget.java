@@ -3,6 +3,7 @@ package com.android.searchlauncher;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.util.AttributeSet;
@@ -11,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.android.launcher3.R;
 import com.android.launcher3.qsb.QsbContainerView;
+
+import static android.appwidget.AppWidgetManager.ACTION_APPWIDGET_BIND;
+import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
+import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_PROVIDER;
 
 public class SmartspaceQsbWidget extends QsbContainerView {
     private static final String WIDGET_CLASS_NAME = "com.google.android.apps.gsa.staticplugins.smartspace.widget.SmartspaceWidgetProvider";
@@ -30,14 +35,20 @@ public class SmartspaceQsbWidget extends QsbContainerView {
 
     public static class SmartSpaceFragment extends QsbContainerView.QsbFragment {
         private static final int SMART_SPACE_WIDGET_HOST_ID = 1027;
+        private static final int REQUEST_BIND_QSB = 1;
+
+        private QsbWidgetHost mQsbWidgetHost;
 
         public SmartSpaceFragment() {
-            this.mKeyWidgetId = "smart_space_widget_id";
+            mKeyWidgetId = "smart_space_widget_id";
         }
 
         @Override
         protected QsbContainerView.QsbWidgetHost createHost() {
-            return new QsbContainerView.QsbWidgetHost(getContext(), SMART_SPACE_WIDGET_HOST_ID, SmartSpaceHostView::new);
+            mQsbWidgetHost = new QsbContainerView.QsbWidgetHost(getContext(),
+                    SMART_SPACE_WIDGET_HOST_ID,
+                    SmartSpaceHostView::new);
+            return mQsbWidgetHost;
         }
 
         @Override
@@ -55,7 +66,18 @@ public class SmartspaceQsbWidget extends QsbContainerView {
 
         @Override
         protected View getDefaultView(ViewGroup container, boolean showSetupIcon) {
-            return SmartspaceQsbWidget.getDateView(container);
+            View v = SmartspaceQsbWidget.getDateView(container);
+
+            // Return a default widget with setup icon.
+            if (showSetupIcon) {
+                v.setOnClickListener((v2) -> startActivityForResult(
+                        new Intent(ACTION_APPWIDGET_BIND)
+                                .putExtra(EXTRA_APPWIDGET_ID, mQsbWidgetHost.allocateAppWidgetId())
+                                .putExtra(EXTRA_APPWIDGET_PROVIDER, getSearchWidgetProvider().provider),
+                        REQUEST_BIND_QSB));
+            }
+
+            return v;
         }
 
         @Override
