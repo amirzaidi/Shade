@@ -24,7 +24,7 @@ import com.android.launcher3.uioverrides.TogglableFlag;
  * Defines a set of flags used to control various launcher behaviors
  */
 public final class FeatureFlags extends BaseFlags {
-    public static final TogglableFlag DRAG_HANDLE = new TogglableFlag("Drag handle", false,
+    public static final TogglableFlag DRAG_HANDLE = new TogglableFlag("DRAG_HANDLE_ACCESSIBILITY", false,
             "Show a drag handle when accessibility services are enabled.");
 
     private FeatureFlags() {
