@@ -48,10 +48,15 @@
     <style name="Shade.SettingsTheme" parent="android:Theme.DeviceDefault.Settings">
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
+        <item name="android:textViewStyle">@style/Shade.SettingsTheme.TextView</item>
     </style>
 
     <style name="Shade.SettingsTheme.DialogAlert" parent="android:Theme.DeviceDefault.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="Shade.SettingsTheme.TextView" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <!-- Theme for the Add To Home screen popup in Chrome. -->
