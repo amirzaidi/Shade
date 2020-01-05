@@ -29,7 +29,7 @@
         android:layout_gravity="center"
         android:tag="qsb_view" />
 
-    <com.android.launcher3.ExtendedEditText
+    <amirz.shade.search.EditText
         android:id="@+id/fallback_search_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/all_apps_search_bar_field_height"
