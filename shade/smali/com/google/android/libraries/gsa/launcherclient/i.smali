@@ -13,10 +13,12 @@
 
 .field private c:Z
 
+.field private final mBridge:Landroid/content/ServiceConnection;
+
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;I)V
-    .locals 0
+    .locals 1
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -27,13 +29,19 @@
     .line 3
     iput p2, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->b:I
 
+    new-instance v0, Lamirz/aidlbridge/LauncherClientBridge;
+
+    invoke-direct {v0, p0, p2}, Lamirz/aidlbridge/LauncherClientBridge;-><init>(Landroid/content/ServiceConnection;I)V
+
+    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->mBridge:Landroid/content/ServiceConnection;
+
     return-void
 .end method
 
 
 # virtual methods
 .method public final a()V
-    .locals 1
+    .locals 2
 
     .line 7
     iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->c:Z
@@ -43,7 +51,9 @@
     .line 8
     iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->a:Landroid/content/Context;
 
-    invoke-virtual {v0, p0}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->mBridge:Landroid/content/ServiceConnection;
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
 
     const/4 v0, 0x0
 
@@ -64,7 +74,7 @@
 .end method
 
 .method public final c()Z
-    .locals 3
+    .locals 4
 
     .line 12
     iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->c:Z
@@ -84,7 +94,9 @@
 
     iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->b:I
 
-    invoke-virtual {v0, v1, p0, v2}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    iget-object v3, p0, Lcom/google/android/libraries/gsa/launcherclient/i;->mBridge:Landroid/content/ServiceConnection;
+
+    invoke-virtual {v0, v1, v3, v2}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
 
     move-result v0
 
