@@ -37,6 +37,7 @@ import android.view.animation.Interpolator;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ScrimView;
 
@@ -191,7 +192,9 @@ public class ShadeScrimView extends ScrimView {
     @Override
     protected void onDraw(Canvas canvas) {
         drawBackground(canvas);
-        drawDragHandle(canvas);
+        if (mLauncher.getDeviceProfile().isVerticalBarLayout() || FeatureFlags.DRAG_HANDLE.get()) {
+            drawDragHandle(canvas);
+        }
     }
 
     private void drawBackground(Canvas canvas) {

@@ -18,10 +18,15 @@ package com.android.launcher3.config;
 
 import android.content.Context;
 
+import com.android.launcher3.uioverrides.TogglableFlag;
+
 /**
  * Defines a set of flags used to control various launcher behaviors
  */
 public final class FeatureFlags extends BaseFlags {
+    public static final TogglableFlag DRAG_HANDLE = new TogglableFlag("Drag handle", false,
+            "Show a drag handle when accessibility services are enabled.");
+
     private FeatureFlags() {
         // Prevent instantiation
     }
