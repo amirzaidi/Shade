@@ -53,4 +53,10 @@
     <style name="Shade.SettingsTheme.DialogAlert" parent="android:Theme.DeviceDefault.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
+
+    <!-- Theme for the Add To Home screen popup in Chrome. -->
+    <style name="AppItemActivityTheme" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="widgetsTheme">@style/WidgetContainerTheme</item>
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
 </resources>
