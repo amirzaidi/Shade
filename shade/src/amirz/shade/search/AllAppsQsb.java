@@ -156,6 +156,8 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mSearchBarController.initialize(
                 new DefaultAppSearchAlgorithm(mApps.getApps()), mFallbackSearchView, mLauncher, this);
+
+        appsView.setRecyclerViewVerticalFadingEdgeEnabled(true);
     }
 
     @Override
