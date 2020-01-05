@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 
 import amirz.shade.search.AllAppsQsb;
 
+import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
 public class ShadeLauncherCallbacks implements LauncherCallbacks,
@@ -155,12 +156,23 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             AllAppsQsb search =
                     (AllAppsQsb) mLauncher.getAppsView().getSearchView();
             search.requestSearch();
-            mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true);
+            mLauncher.getStateManager().goToState(ALL_APPS, true);
         }
     }
 
     @Override
     public boolean handleBackPressed() {
+        if (!mLauncher.getDragController().isDragging()) {
+            AbstractFloatingView topView = AbstractFloatingView.getTopOpenView(mLauncher);
+            if (topView != null && topView.onBackPressed()) {
+                // Override base because we do not want to call onBackPressed twice.
+                return true;
+            } else if (mLauncher.isInState(ALL_APPS)) {
+                AllAppsQsb search =
+                        (AllAppsQsb) mLauncher.getAppsView().getSearchUiManager();
+                return search.tryClearSearch();
+            }
+        }
         return false;
     }
 

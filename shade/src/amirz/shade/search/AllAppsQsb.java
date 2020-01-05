@@ -257,4 +257,14 @@ public class AllAppsQsb extends QsbContainerView
             mFallbackSearchView.showKeyboard();
         }
     }
+
+    public boolean tryClearSearch() {
+        if (mFallbackSearchView.length() > 0) {
+            mFallbackSearchView.setText("");
+            mSearchBarController.refreshSearchResult();
+            mAppsView.requestFocus();
+            return true;
+        }
+        return false;
+    }
 }
