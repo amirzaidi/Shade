@@ -19,4 +19,8 @@ public class ShadeLauncher extends Launcher {
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
     }
+
+    public ShadeLauncherCallbacks getCallbacks() {
+        return mCallbacks;
+    }
 }
