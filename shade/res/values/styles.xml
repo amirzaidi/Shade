@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Theme -->
+    <style name="AppTheme" parent="@style/LauncherTheme">
+        <!-- Default Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="AppTheme.DarkMainColor" parent="@style/LauncherTheme.DarkMainColor">
+        <!-- Dark Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
+        <!-- Light Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <!-- Dark Theme -->
+    <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
+        <!-- Default Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
+        <!-- Dark Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
+        <!-- Light Wallpaper -->
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+    
+    <!-- Theme for the widget container. Overridden on API 26. -->
+    <style name="WidgetContainerTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:colorEdgeEffect">?android:attr/textColorSecondaryInverse</item>
+        <item name="android:textColorPrimary">?android:attr/textColorPrimaryInverse</item>
+        <item name="android:textColorSecondary">?android:attr/textColorSecondaryInverse</item>
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="WidgetContainerTheme.Dark">
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+</resources>
