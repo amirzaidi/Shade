@@ -73,5 +73,23 @@
                 android:value="${packageName}.grid_control" />
         </activity>
 
+        <activity
+            android:name="com.android.launcher3.settings.SettingsActivity"
+            tools:node="remove" />
+
+        <!--
+        The settings activity. To extend point settings_fragment_name to appropriate fragment class
+        -->
+        <activity
+            android:name="amirz.shade.ShadeSettings"
+            android:label="@string/settings_button_text"
+            android:theme="@android:style/Theme.DeviceDefault.Settings"
+            android:autoRemoveFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>
