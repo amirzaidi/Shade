@@ -30,6 +30,7 @@ android {
 
     sourceSets {
         shade {
+            aidl.srcDirs = ['shade/aidl']
             assets.srcDirs = ['shade/assets']
             res.srcDirs = ['shade/res']
             java.srcDirs = ['shade/src', 'shade/src_flags', 'src_shortcuts_overrides', 'shade/src_backport']
