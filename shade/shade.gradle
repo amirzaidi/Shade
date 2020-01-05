@@ -44,4 +44,10 @@ android {
         // Required for AOSP to compile. This is already included in the sysui_shared.jar
         customUIImplementation fileTree(dir: "${FRAMEWORK_PREBUILTS_DIR}/libs", include: 'plugin_core.jar')
     }
+    
+    dexOptions {
+        javaMaxHeapSize "3g"
+    }
 }
+
+apply from: 'shade/smali.gradle'
