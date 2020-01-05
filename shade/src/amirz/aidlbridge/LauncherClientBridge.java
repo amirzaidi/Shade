@@ -5,6 +5,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+@SuppressWarnings("unused")
 public class LauncherClientBridge extends IBridgeCallback.Stub implements ServiceConnection {
     private static final String INTERFACE_DESCRIPTOR = "amirz.aidlbridge.IBridge";
 

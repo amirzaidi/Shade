@@ -8,6 +8,7 @@ import android.os.Process;
 import com.android.launcher3.BuildConfig;
 import com.google.android.libraries.gsa.launcherclient.BuildInfo;
 
+@SuppressWarnings("unused")
 public class LauncherClientIntent {
     private final static String PASSTHROUGH = "com.google.android.googlequicksearchbox";
     private final static String BRIDGE = "amirz.aidlbridge";
