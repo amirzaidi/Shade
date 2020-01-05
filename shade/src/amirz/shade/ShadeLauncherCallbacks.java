@@ -5,13 +5,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.LauncherCallbacks;
+import com.android.launcher3.LauncherState;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.allapps.search.AppsSearchContainerLayout;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+
+import amirz.shade.search.AllAppsQsb;
+
+import static com.android.launcher3.LauncherState.NORMAL;
 
 public class ShadeLauncherCallbacks implements LauncherCallbacks,
         SharedPreferences.OnSharedPreferenceChangeListener,
@@ -23,6 +30,8 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
     private boolean mDeferCallbacks;
+
+    private boolean mNoFloatingView;
 
     ShadeLauncherCallbacks(ShadeLauncher launcher) {
         mLauncher = launcher;
@@ -96,6 +105,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         if (!mDeferCallbacks) {
             mLauncherClient.onPause();
         }
+        mNoFloatingView = AbstractFloatingView.getTopOpenView(mLauncher) == null;
     }
 
     @Override
@@ -137,6 +147,16 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     @Override
     public void onHomeIntent(boolean internalStateHandled) {
         mLauncherClient.hideOverlay(mLauncher.isStarted() && !mLauncher.isForceInvisible());
+
+        if (mLauncher.hasWindowFocus()
+                && mLauncher.isInState(NORMAL)
+                && mLauncher.getWorkspace().getNextPage() == 0
+                && mNoFloatingView) {
+            AllAppsQsb search =
+                    (AllAppsQsb) mLauncher.getAppsView().getSearchView();
+            search.requestSearch();
+            mLauncher.getStateManager().goToState(LauncherState.ALL_APPS, true);
+        }
     }
 
     @Override

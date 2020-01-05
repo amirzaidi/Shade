@@ -53,6 +53,8 @@ public class AllAppsQsb extends QsbContainerView
     private View mSearchWrapperView;
     private ExtendedEditText mFallbackSearchView;
 
+    private boolean mSearchRequested;
+
     public static class HotseatQsbFragment extends QsbFragment {
         @Override
         public boolean isQsbEnabled() {
@@ -241,5 +243,16 @@ public class AllAppsQsb extends QsbContainerView
         boolean showAllApps = (visibleElements & ALL_APPS_CONTENT) != 0;
         setter.setViewAlpha(mSearchWrapperView, showAllApps ? 0f : 1f, Interpolators.LINEAR);
         setter.setViewAlpha(mFallbackSearchView, showAllApps ? 1f : 0f, Interpolators.LINEAR);
+    }
+
+    public void requestSearch() {
+        mSearchRequested = true;
+    }
+
+    public void showKeyboardOnSearchRequest() {
+        if (mSearchRequested) {
+            mSearchRequested = false;
+            mFallbackSearchView.showKeyboard();
+        }
     }
 }
