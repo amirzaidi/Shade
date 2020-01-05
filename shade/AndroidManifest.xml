@@ -96,5 +96,24 @@
             </intent-filter>
         </activity>
 
+
+        <activity
+            android:name="com.android.launcher3.dragndrop.AddItemActivity"
+            tools:node="remove" />
+
+        <!--
+        The activity that shows the Add To Home screen popup in Chrome.
+        -->
+        <activity android:name="amirz.shade.dragndrop.ShadeAddItemActivity"
+            android:theme="@style/AppItemActivityTheme"
+            android:excludeFromRecents="true"
+            android:autoRemoveFromRecents="true"
+            android:label="@string/action_add_to_workspace" >
+            <intent-filter>
+                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
+                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>
