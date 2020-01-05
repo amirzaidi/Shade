@@ -51,6 +51,7 @@
         -->
         <activity
             android:name="amirz.shade.ShadeLauncher"
+            android:label="@string/shade_app_name_short"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
             android:stateNotNeeded="true"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="shade_app_name" translatable="false">Shade Launcher</string>
+    <string name="shade_app_name_short" translatable="false">Shade</string>
     <string name="smartspace_preferences" translatable="false">Preferences</string>
 </resources>
