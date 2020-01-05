@@ -10,4 +10,8 @@ public class ShadeSettings extends SettingsActivity {
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
     }
+
+    public static class ShadeSettingsFragment extends LauncherSettingsFragment {
+
+    }
 }

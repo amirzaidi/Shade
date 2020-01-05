@@ -4,4 +4,7 @@
 
     <!-- Various classes overriden by projects/build flavors. -->
     <string name="app_filter_class" translatable="false">amirz.shade.ShadeAppFilter</string>
+
+    <!-- String representing the fragment class for settings activity.-->
+    <string name="settings_fragment_name" translatable="false">amirz.shade.ShadeSettings$ShadeSettingsFragment</string>
 </resources>
