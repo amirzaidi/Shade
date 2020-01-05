@@ -31,7 +31,7 @@
         <!-- Light Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
-    
+
     <!-- Theme for the widget container. Overridden on API 26. -->
     <style name="WidgetContainerTheme" parent="@android:style/Theme.DeviceDefault.Settings">
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondaryInverse</item>
@@ -41,6 +41,16 @@
     </style>
 
     <style name="WidgetContainerTheme.Dark">
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <!-- Theme for the settings activity. -->
+    <style name="Shade.SettingsTheme" parent="android:Theme.DeviceDefault.Settings">
+        <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
+    </style>
+
+    <style name="Shade.SettingsTheme.DialogAlert" parent="android:Theme.DeviceDefault.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
 </resources>
