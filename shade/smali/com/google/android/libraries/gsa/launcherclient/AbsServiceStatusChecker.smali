@@ -73,7 +73,9 @@
 .method protected final a(Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;Landroid/content/Intent;)V
     .locals 3
 
-    const-string v0, "com.google.android.googlequicksearchbox"
+    invoke-static {}, Lamirz/aidlbridge/LauncherClientIntent;->getPackage()Ljava/lang/String;
+
+    move-result-object v0
 
     .line 4
     invoke-virtual {p2, v0}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
