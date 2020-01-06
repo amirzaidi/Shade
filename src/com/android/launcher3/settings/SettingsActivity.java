@@ -194,8 +194,7 @@ public class SettingsActivity extends Activity
         protected boolean initPreference(Preference preference) {
             switch (preference.getKey()) {
                 case NOTIFICATION_DOTS_PREFERENCE_KEY:
-                    if (!Utilities.ATLEAST_OREO ||
-                            !getResources().getBoolean(R.bool.notification_dots_enabled)) {
+                    if (!getResources().getBoolean(R.bool.notification_dots_enabled)) {
                         return false;
                     }
 

@@ -31,6 +31,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.util.SecureSettingsObserver;
 
@@ -105,7 +106,28 @@ public class NotificationDotsPreference extends Preference
         }
         setWidgetFrameVisible(!serviceEnabled);
         setFragment(serviceEnabled ? null : NotificationAccessConfirmation.class.getName());
+        setOnPreferenceClickListener(
+                !Utilities.ATLEAST_OREO && serviceEnabled
+                        ? NotificationDotsPreference::openSetting
+                        : null);
         setSummary(summary);
+    }
+
+    private static void openSetting(Context context) {
+        ComponentName cn = new ComponentName(context, NotificationListener.class);
+        Bundle showFragmentArgs = new Bundle();
+        showFragmentArgs.putString(EXTRA_FRAGMENT_ARG_KEY, cn.flattenToString());
+
+        Intent intent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .putExtra(EXTRA_FRAGMENT_ARG_KEY, cn.flattenToString())
+                .putExtra(EXTRA_SHOW_FRAGMENT_ARGS, showFragmentArgs);
+        context.startActivity(intent);
+    }
+
+    private static boolean openSetting(Preference preference) {
+        openSetting(preference.getContext());
+        return true;
     }
 
     public static class NotificationAccessConfirmation
@@ -117,7 +139,9 @@ public class NotificationDotsPreference extends Preference
             String msg = context.getString(R.string.msg_missing_notification_access,
                     context.getString(R.string.derived_app_name));
             return new AlertDialog.Builder(context)
-                    .setTitle(R.string.title_missing_notification_access)
+                    .setTitle(Utilities.ATLEAST_OREO
+                            ? R.string.title_missing_notification_access
+                            : R.string.notification_dots_title)
                     .setMessage(msg)
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(R.string.title_change_settings, this)
@@ -126,15 +150,7 @@ public class NotificationDotsPreference extends Preference
 
         @Override
         public void onClick(DialogInterface dialogInterface, int i) {
-            ComponentName cn = new ComponentName(getActivity(), NotificationListener.class);
-            Bundle showFragmentArgs = new Bundle();
-            showFragmentArgs.putString(EXTRA_FRAGMENT_ARG_KEY, cn.flattenToString());
-
-            Intent intent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .putExtra(EXTRA_FRAGMENT_ARG_KEY, cn.flattenToString())
-                    .putExtra(EXTRA_SHOW_FRAGMENT_ARGS, showFragmentArgs);
-            getActivity().startActivity(intent);
+            openSetting(getActivity());
         }
     }
 }
