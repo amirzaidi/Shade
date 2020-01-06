@@ -30,6 +30,7 @@ import android.view.View;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.dot.DotInfo;
 import com.android.launcher3.graphics.IconPalette;
 import com.android.launcher3.util.PackageUserKey;
@@ -65,10 +66,15 @@ public class NotificationInfo implements View.OnClickListener {
         title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
         text = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
 
-        int iconType = notification.getBadgeIconType();
         // Load the icon. Since it is backed by ashmem, we won't copy the entire bitmap
         // into our process as long as we don't touch it and it exists in systemui.
-        Icon icon = iconType == Notification.BADGE_ICON_SMALL ? null : notification.getLargeIcon();
+        Icon icon;
+        if (Utilities.ATLEAST_OREO) {
+            int iconType = notification.getBadgeIconType();
+            icon = iconType == Notification.BADGE_ICON_SMALL ? null : notification.getLargeIcon();
+        } else {
+            icon = notification.getLargeIcon();
+        }
         if (icon == null) {
             // Use the small icon.
             icon = notification.getSmallIcon();

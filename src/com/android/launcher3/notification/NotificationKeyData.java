@@ -53,7 +53,8 @@ public class NotificationKeyData {
 
     public static NotificationKeyData fromNotification(StatusBarNotification sbn) {
         Notification notif = sbn.getNotification();
-        return new NotificationKeyData(sbn.getKey(), notif.getShortcutId(), notif.number,
+        return new NotificationKeyData(sbn.getKey(),
+                Utilities.ATLEAST_OREO ? notif.getShortcutId() : null, notif.number,
                 extractPersonKeyOnly(notif.extras.getParcelableArrayList(
                         EXTRA_PEOPLE_LIST)));
     }
