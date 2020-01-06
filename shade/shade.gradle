@@ -20,7 +20,6 @@ android {
             applicationId 'amirz.shade'
             testApplicationId 'amirz.shade.tests'
             versionName 'Q'
-            proguardFile 'shade/proguard.flags'
         }
 
         customUI {

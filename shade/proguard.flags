@@ -1,7 +1,0 @@
--keep class amirz.shade.ShadeAppFilter {
-  public <init>(...);
-}
-
--keep class amirz.shade.ShadeSettings$ShadeSettingsFragment {
-  public <init>(...);
-}
