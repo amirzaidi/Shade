@@ -35,6 +35,8 @@ import java.util.List;
  * @see NotificationInfo for the full data used when populating the dummy views.
  */
 public class NotificationKeyData {
+    private static final String EXTRA_PEOPLE_LIST = "android.people.list";
+
     public final String notificationKey;
     public final String shortcutId;
     @NonNull
@@ -53,7 +55,7 @@ public class NotificationKeyData {
         Notification notif = sbn.getNotification();
         return new NotificationKeyData(sbn.getKey(), notif.getShortcutId(), notif.number,
                 extractPersonKeyOnly(notif.extras.getParcelableArrayList(
-                        Notification.EXTRA_PEOPLE_LIST)));
+                        EXTRA_PEOPLE_LIST)));
     }
 
     public static List<String> extractKeysOnly(
