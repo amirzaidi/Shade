@@ -31,6 +31,7 @@ import com.android.launcher3.LauncherState.ScaleAndTranslation;
 import com.android.launcher3.LauncherStateManager.StateHandler;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.RotationMode;
+import com.android.launcher3.uioverrides.touchcontrollers.StatusBarTouchController;
 import com.android.launcher3.util.TouchController;
 
 import java.io.PrintWriter;
@@ -41,7 +42,7 @@ public class UiFactory {
         return new TouchController[] {
                 launcher.getDragController(),
                 new AllAppsSwipeController(launcher),
-                new NotificationController(launcher)
+                new StatusBarTouchController(launcher)
         };
     }
 

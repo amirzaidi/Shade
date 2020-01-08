@@ -1,4 +1,4 @@
-package com.android.launcher3.uioverrides;
+package com.android.launcher3.uioverrides.touchcontrollers;
 
 import android.annotation.SuppressLint;
 import android.os.SystemClock;
@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 import static com.android.launcher3.LauncherState.NORMAL;
 
-public class NotificationController implements TouchController, SwipeDetector.Listener {
+public class StatusBarTouchController implements TouchController, SwipeDetector.Listener {
     // Swipe speed needed to open or close notifications.
     private final static float NOTIFICATION_OPEN_VELOCITY = 2250f;
     private final static float NOTIFICATION_CLOSE_VELOCITY = -350f;
@@ -31,7 +31,7 @@ public class NotificationController implements TouchController, SwipeDetector.Li
     private long mNanos;
 
     @SuppressLint({"PrivateApi", "WrongConstant"})
-    NotificationController(Launcher launcher) {
+    StatusBarTouchController(Launcher launcher) {
         mLauncher = launcher;
         mGesture = new SwipeDetector(launcher, this, SwipeDetector.VERTICAL);
         mGesture.setDetectableScrollConditions(SwipeDetector.DIRECTION_NEGATIVE, false);
