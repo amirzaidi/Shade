@@ -38,6 +38,7 @@ android {
 
         customUI {
             java.srcDirs = ['shade/src_ui_overrides']
+            res.srcDirs = ['shade/res_ui_overrides']
         }
     }
 
