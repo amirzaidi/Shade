@@ -19,6 +19,8 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 class UsageTracker {
+    private static final int MAX_ENTRIES = 20;
+
     private final PackageManager mPm;
     private final UsageStatsManager mManager;
 
@@ -62,6 +64,10 @@ class UsageTracker {
         packages.add(BuildConfig.APPLICATION_ID);
         List<UsageStats> sortedList = new ArrayList<>();
         for (UsageStats stat : sorted.values()) {
+            // Prevent slowing down the phone too much.
+            if (sortedList.size() == MAX_ENTRIES) {
+                break;
+            }
             String pkg = stat.getPackageName();
             if (!packages.contains(pkg)) {
                 packages.add(pkg);
