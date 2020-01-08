@@ -31,7 +31,7 @@ android {
         shade {
             aidl.srcDirs = ['shade/aidl']
             assets.srcDirs = ['shade/assets']
-            res.srcDirs = ['shade/res']
+            res.srcDirs = ['shade/res', 'shade/res_translations']
             java.srcDirs = ['shade/src', 'shade/src_flags', 'src_shortcuts_overrides', 'shade/src_backport']
             manifest.srcFile "shade/AndroidManifest.xml"
         }
