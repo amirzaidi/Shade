@@ -30,6 +30,7 @@ public class StatusBarTouchController implements TouchController, SwipeDetector.
     private float mDisplacement;
     private long mNanos;
 
+    @SuppressWarnings("JavaReflectionMemberAccess")
     @SuppressLint({"PrivateApi", "WrongConstant"})
     StatusBarTouchController(Launcher launcher) {
         mLauncher = launcher;
