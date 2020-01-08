@@ -32,6 +32,10 @@
     <!-- Swipe down for notifications -->
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
+    <!-- App prediction -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
         android:fullBackupOnly="true"
