@@ -4,8 +4,8 @@ import com.android.launcher3.popup.SystemShortcut;
 import com.android.launcher3.popup.SystemShortcutFactory;
 
 @SuppressWarnings("unused")
-public class ShortcutFactory extends SystemShortcutFactory {
-    public ShortcutFactory() {
+public class ShadeShortcutFactory extends SystemShortcutFactory {
+    public ShadeShortcutFactory() {
         super(new SystemShortcut.AppInfo(),
                 new SystemShortcut.Widgets(),
                 new SystemShortcut.Install());
