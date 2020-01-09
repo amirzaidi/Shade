@@ -4,6 +4,7 @@
 
     <!-- Various classes overriden by projects/build flavors. -->
     <string name="app_filter_class" translatable="false">amirz.shade.ShadeAppFilter</string>
+    <string name="system_shortcut_factory_class" translatable="false">amirz.shade.customization.ShortcutFactory</string>
     <string name="app_launch_tracker_class" translatable="false">amirz.shade.appprediction.ShadeTracker</string>
 
     <!-- String representing the fragment class for settings activity.-->
