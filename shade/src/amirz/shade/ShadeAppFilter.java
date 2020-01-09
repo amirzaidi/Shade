@@ -9,6 +9,7 @@ import com.android.launcher3.BuildConfig;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("unused")
 public class ShadeAppFilter extends AppFilter {
     private final Set<ComponentName> mFilter = new HashSet<>();
 
