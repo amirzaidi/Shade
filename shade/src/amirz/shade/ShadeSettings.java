@@ -8,6 +8,10 @@ import androidx.preference.PreferenceScreen;
 import com.android.launcher3.settings.SettingsActivity;
 
 public class ShadeSettings extends SettingsActivity {
+    public interface OnResumePreferenceCallback {
+        void onResume();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
@@ -23,6 +27,19 @@ public class ShadeSettings extends SettingsActivity {
             for (int i = 0; i < screen.getPreferenceCount(); i++) {
                 Preference preference = screen.getPreference(i);
                 preference.setIconSpaceReserved(false);
+            }
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+
+            PreferenceScreen screen = getPreferenceScreen();
+            for (int i = 0; i < screen.getPreferenceCount(); i++) {
+                Preference preference = screen.getPreference(i);
+                if (preference instanceof OnResumePreferenceCallback) {
+                    ((OnResumePreferenceCallback) preference).onResume();
+                }
             }
         }
     }

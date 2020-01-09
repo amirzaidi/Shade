@@ -30,6 +30,13 @@
         </intent>
     </com.android.launcher3.settings.NotificationDotsPreference>
 
+    <amirz.shade.settings.PredictionPreference
+        android:key="pref_predictions"
+        android:title="@string/title_app_suggestions"
+        android:summary="@string/notification_dots_desc_on"
+        android:defaultValue="true"
+        android:persistent="true" />
+
     <SwitchPreference
         android:key="pref_add_icon_to_home"
         android:title="@string/auto_add_shortcuts_label"
