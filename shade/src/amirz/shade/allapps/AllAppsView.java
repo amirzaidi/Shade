@@ -17,7 +17,7 @@ import amirz.shade.hidden.HiddenAppsActivity;
 
 public class AllAppsView extends AllAppsContainerView {
     private static final float OPEN_HIDDEN_APPS_THRES = 0.75f;
-    private static final int OPEN_HIDDEN_APPS_MS = 1000;
+    private static final int OPEN_HIDDEN_APPS_MS = 500;
 
     private final AllAppsSpring mController;
 
