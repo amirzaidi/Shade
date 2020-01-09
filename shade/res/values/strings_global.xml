@@ -2,7 +2,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="shade_app_name" translatable="false">Shade Launcher</string>
     <string name="shade_app_name_short" translatable="false">Shade</string>
-    <string name="smartspace_preferences" translatable="false">Preferences</string>
     <string name="needs_usage_access" translatable="false">Usage access needed</string>
     <string name="msg_missing_usage_access" translatable="false">To show App Suggestions, turn on usage access for <xliff:g id="name" example="My App">%1$s</xliff:g></string>
     <string name="predictions_on" translatable="false">@string/notification_dots_desc_on</string>
