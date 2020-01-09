@@ -49,4 +49,10 @@ public class AllAppsView extends AllAppsContainerView {
             }
         };
     }
+
+    @Override
+    public void setupHeader() {
+        super.setupHeader();
+        getFloatingHeaderView().reset(false);
+    }
 }
