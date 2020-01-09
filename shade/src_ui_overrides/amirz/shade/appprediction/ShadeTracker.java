@@ -51,6 +51,7 @@ import java.util.concurrent.Executor;
 /**
  * Subclass of app tracker which publishes the data to the prediction engine and gets back results.
  */
+@SuppressWarnings("unused")
 @TargetApi(Build.VERSION_CODES.Q)
 public class ShadeTracker extends AppLaunchTracker {
     private static final String TAG = "ShadeTracker";
