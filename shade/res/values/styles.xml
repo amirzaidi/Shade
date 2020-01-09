@@ -4,32 +4,38 @@
     <style name="AppTheme" parent="@style/LauncherTheme">
         <!-- Default Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.DarkMainColor" parent="@style/LauncherTheme.DarkMainColor">
         <!-- Dark Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
         <!-- Light Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <!-- Dark Theme -->
     <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
         <!-- Default Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
         <!-- Dark Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
         <!-- Light Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <!-- Theme for the widget container. Overridden on API 26. -->
@@ -49,7 +55,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="android:textViewStyle">@style/Shade.SettingsTheme.TextView</item>
-        <item name="android:textAppearanceListItem">@android:style/TextAppearance.Material.Subhead</item>
+        <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="Shade.SettingsTheme.DialogAlert" parent="android:Theme.DeviceDefault.Dialog.Alert">
@@ -58,6 +64,10 @@
 
     <style name="Shade.SettingsTheme.TextView" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Shade.PreferenceTheme" parent="PreferenceThemeOverlay">
+        <item name="android:textAppearanceListItem">@android:style/TextAppearance.Material.Subhead</item>
     </style>
 
     <!-- Theme for the Add To Home screen popup in Chrome. -->
