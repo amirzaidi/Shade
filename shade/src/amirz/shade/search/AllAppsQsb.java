@@ -18,6 +18,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
+import com.android.launcher3.allapps.FloatingHeaderView;
 import com.android.launcher3.allapps.SearchUiManager;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
@@ -213,6 +214,7 @@ public class AllAppsQsb extends QsbContainerView
 
     private void notifyResultChanged() {
         mAppsView.onSearchResultsChanged();
+        mAppsView.getFloatingHeaderView().setCollapsed(mApps.hasNoFilteredResults());
     }
 
     @Override
