@@ -19,35 +19,35 @@
 
     <Preference
         android:key="pref_app_info_icon_pack"
-        android:title="Icon pack"
-        android:summary="None"
+        android:title="@string/app_info_icon_pack"
+        android:summary="@string/placeholder_string"
         android:icon="@drawable/ic_app_info_icon_pack"
         android:persistent="false" />
 
     <Preference
         android:key="pref_app_info_source"
-        android:title="Source"
-        android:summary="Play Store"
+        android:title="@string/app_info_source"
+        android:summary="@string/placeholder_string"
         android:icon="@drawable/ic_app_info_source"
         android:persistent="false" />
 
     <Preference
         android:key="pref_app_info_last_update"
-        android:title="Last update"
-        android:summary="March 19, 2019"
+        android:title="@string/app_info_last_update"
+        android:summary="@string/placeholder_string"
         android:icon="@drawable/ic_app_info_last_update"
         android:persistent="false" />
 
     <Preference
         android:key="pref_app_info_version"
-        android:title="Version"
-        android:summary="1.5"
+        android:title="@string/app_info_version"
+        android:summary="@string/placeholder_string"
         android:icon="@drawable/ic_app_info_version"
         android:persistent="false" />
 
     <Preference
         android:key="pref_app_info_more"
-        android:title="More"
+        android:title="@string/app_info_more"
         android:icon="@drawable/ic_info_no_shadow"
         android:persistent="false" />
 

@@ -9,4 +9,10 @@
     <string name="hidden_apps" translatable="false">Hidden Apps</string>
     <string name="app_info_subtext" translatable="false">Swipe down to close app info.</string>
     <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
+    <string name="placeholder_string" translatable="false">Loading...</string> <!-- Used for preference height loading. -->
+    <string name="app_info_icon_pack" translatable="false">Icon pack</string>
+    <string name="app_info_source" translatable="false">Source</string>
+    <string name="app_info_last_update" translatable="false">Last update</string>
+    <string name="app_info_version" translatable="false">Version</string>
+    <string name="app_info_more" translatable="false">More</string>
 </resources>
