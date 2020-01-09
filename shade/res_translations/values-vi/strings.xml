@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"Các ứng dụng đề xuất"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"Tất cả ứng dụng"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Các ứng dụng gợi ý của bạn"</string>
+	<string name="smartspace_preferences">"Tùy chọn"</string>
 </resources>

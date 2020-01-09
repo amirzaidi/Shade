@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"अ‍ॅप सूचना"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"सर्व अ‍ॅप्स"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"तुमची पूर्वानुमानीत अ‍ॅप्स"</string>
+	<string name="smartspace_preferences">"प्राधान्ये"</string>
 </resources>

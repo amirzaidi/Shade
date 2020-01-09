@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"應用程式建議"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"所有應用程式"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"系統預測你會使用的應用程式"</string>
+	<string name="smartspace_preferences">"偏好設定"</string>
 </resources>

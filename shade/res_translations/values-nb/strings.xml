@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"Appanbefalinger"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"Alle apper"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Forslag til apper"</string>
+	<string name="smartspace_preferences">"Innstillinger"</string>
 </resources>

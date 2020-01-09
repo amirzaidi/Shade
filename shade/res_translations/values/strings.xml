@@ -64,4 +64,5 @@
     <string name="all_apps_prediction_tip">Your predicted apps</string>
 
 
+	<string name="smartspace_preferences">"Preferences"</string>
 </resources>

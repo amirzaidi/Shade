@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"Iradokitako aplikazioak"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"Aplikazio guztiak"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Lagungarri izan dakizkizukeen aplikazioak"</string>
+	<string name="smartspace_preferences">"Hobespenak"</string>
 </resources>

@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"অ্যাপের সাজেশন"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"সব অ্যাপ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"আপনার প্রয়োজন হতে পারে এমন অ্যাপ"</string>
+	<string name="smartspace_preferences">"পছন্দগুলি"</string>
 </resources>

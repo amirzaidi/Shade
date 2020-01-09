@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"הצעות לאפליקציות"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"כל האפליקציות"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"האפליקציות החזויות שלך"</string>
+	<string name="smartspace_preferences">"העדפות"</string>
 </resources>

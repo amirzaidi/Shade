@@ -34,4 +34,5 @@
     <string name="title_app_suggestions" msgid="4185902664111965088">"برنامه‌های پیشنهادی"</string>
     <string name="all_apps_label" msgid="8542784161730910663">"همه برنامه‌ها"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"برنامه‌های پیش‌بینی‌شده"</string>
+	<string name="smartspace_preferences">"تنظیمات برگزیده"</string>
 </resources>
