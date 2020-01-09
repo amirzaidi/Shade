@@ -12,7 +12,7 @@ import com.android.launcher3.popup.SystemShortcutFactory;
 
 @SuppressWarnings("unused")
 public class ShadeShortcutFactory extends SystemShortcutFactory {
-    public ShadeShortcutFactory() {
+    public ShadeShortcutFactory(Context context) {
         super(new BottomSheetShortcut(),
                 new SystemShortcut.Widgets(),
                 new SystemShortcut.Install());
