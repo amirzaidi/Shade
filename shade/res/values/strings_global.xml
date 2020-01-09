@@ -7,4 +7,6 @@
     <string name="predictions_on" translatable="false">@string/notification_dots_desc_on</string>
     <string name="predictions_off" translatable="false">@string/notification_dots_desc_off</string>
     <string name="hidden_apps" translatable="false">Hidden Apps</string>
+    <string name="app_info_subtext" translatable="false">Swipe down to close app info.</string>
+    <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
 </resources>

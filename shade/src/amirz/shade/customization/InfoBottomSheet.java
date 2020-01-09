@@ -45,13 +45,12 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         TextView title = findViewById(R.id.title);
         title.setText(itemInfo.title);
 
+        // Use a proxy so we can update the reference at runtime.
         View.OnClickListener l = v -> mOnAppInfoClick.onClick(v);
-        title.setOnClickListener(l);
-        findViewById(R.id.subtitle).setOnClickListener(l);
 
         PrefsFragment fragment =
                 (PrefsFragment) mFragmentManager.findFragmentById(R.id.sheet_prefs);
-        fragment.loadForApp(itemInfo, v -> handleClose(true));
+        fragment.loadForApp(itemInfo, l);
     }
 
     @Override
@@ -70,11 +69,18 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
     }
 
     public static class PrefsFragment extends PreferenceFragment
-            implements Preference.OnPreferenceChangeListener {
+            implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+        private static final String KEY_ICON_PACK = "pref_app_info_icon_pack";
+        private static final String KEY_SOURCE = "pref_app_info_source";
+        private static final String KEY_LAST_UPDATE = "pref_app_info_last_update";
+        private static final String KEY_VERSION = "pref_app_info_version";
+        private static final String KEY_MORE = "pref_app_info_more";
+
         private Context mContext;
 
         private ComponentName mComponent;
         private ComponentKey mKey;
+        private View.OnClickListener mOnMoreClick;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -87,14 +93,35 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
             addPreferencesFromResource(R.xml.app_info_preferences);
         }
 
-        public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onResetClick) {
+        public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onMoreClick) {
             mComponent = itemInfo.getTargetComponent();
             mKey = new ComponentKey(mComponent, itemInfo.user);
+            mOnMoreClick = onMoreClick;
+
+            MetadataExtractor extractor = new MetadataExtractor(mContext, mComponent);
+
+            findPreference(KEY_ICON_PACK).setOnPreferenceChangeListener(this);
+            findPreference(KEY_SOURCE).setSummary(extractor.getSource());
+            findPreference(KEY_LAST_UPDATE).setSummary(extractor.getLastUpdate());
+            findPreference(KEY_VERSION).setSummary(mContext.getString(
+                    R.string.app_info_version_value,
+                    extractor.getVersionName(),
+                    extractor.getVersionCode()));
+            findPreference(KEY_MORE).setOnPreferenceClickListener(this);
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            switch (preference.getKey()) {
+            if (KEY_ICON_PACK.equals(preference.getKey())) {
+                // Reload in launcher.
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            if (KEY_MORE.equals(preference.getKey())) {
+                mOnMoreClick.onClick(getView());
             }
             return false;
         }
