@@ -1,16 +1,33 @@
 package amirz.shade.allapps;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.EdgeEffect;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.allapps.AllAppsContainerView;
 
+import amirz.shade.hidden.HiddenAppsActivity;
+
 public class AllAppsView extends AllAppsContainerView {
+    private static final float OPEN_HIDDEN_APPS_THRES = 0.75f;
+    private static final int OPEN_HIDDEN_APPS_MS = 1000;
+
     private final AllAppsSpring mController;
+
+    private final Handler mHandler = new Handler();
+    private boolean mQueuedOpenHiddenApps;
+    private final Runnable mOpenHiddenApps = () -> {
+        Context context = getContext();
+        Intent intent = new Intent(context, HiddenAppsActivity.class);
+        context.startActivity(intent);
+    };
 
     public AllAppsView(Context context) {
         this(context, null);
@@ -27,12 +44,30 @@ public class AllAppsView extends AllAppsContainerView {
 
     @Override
     public void setDampedScrollShift(float shift) {
+        checkShouldOpenHiddenApps(shift);
         float maxShift = getSearchView().getHeight() / 2f;
         if (shift < 0f) {
             maxShift *= -1f;
         }
         float fact = shift / maxShift;
         super.setDampedScrollShift(fact / (fact + 1f) * maxShift);
+    }
+
+    private void checkShouldOpenHiddenApps(float shift) {
+        shift *= -1f;
+        float threshold = getSearchView().getHeight() * OPEN_HIDDEN_APPS_THRES;
+        Log.d("AllAppsView", shift + " " + threshold);
+        if (mQueuedOpenHiddenApps) {
+            if (shift < threshold) {
+                mHandler.removeCallbacks(mOpenHiddenApps);
+                mQueuedOpenHiddenApps = false;
+            }
+        } else {
+            if (shift >= threshold) {
+                mHandler.postDelayed(mOpenHiddenApps, OPEN_HIDDEN_APPS_MS);
+                mQueuedOpenHiddenApps = true;
+            }
+        }
     }
 
     @Override

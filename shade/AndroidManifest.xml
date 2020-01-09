@@ -28,7 +28,7 @@
 
     <!-- Tablet support -->
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
-    
+
     <!-- Swipe down for notifications -->
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
@@ -51,7 +51,7 @@
         <activity
             android:name="com.android.launcher3.Launcher"
             tools:node="remove" />
-        
+
         <!--
         Main launcher activity. When extending only change the name, and keep all the
         attributes and intent filters the same
@@ -118,6 +118,15 @@
                 <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
             </intent-filter>
         </activity>
+
+        <!--
+        The activity that handles hiding apps.
+        -->
+        <activity android:name="amirz.shade.hidden.HiddenAppsActivity"
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:label="@string/hidden_apps"
+            android:excludeFromRecents="true"
+            android:autoRemoveFromRecents="true" />
 
     </application>
 </manifest>
