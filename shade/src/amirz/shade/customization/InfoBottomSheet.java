@@ -7,7 +7,6 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceScreen;
 
 import android.util.AttributeSet;
 import android.view.View;
@@ -86,12 +85,6 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.app_info_preferences);
-
-            PreferenceScreen screen = getPreferenceScreen();
-            for (int i = 0; i < screen.getPreferenceCount(); i++) {
-                Preference preference = screen.getPreference(i);
-                preference.setIconSpaceReserved(false);
-            }
         }
 
         public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onResetClick) {
