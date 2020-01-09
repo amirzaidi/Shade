@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
-import com.android.launcher3.BuildConfig;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -41,6 +39,10 @@ class UsageTracker {
         return components;
     }
 
+    PackageManager getPm() {
+        return mPm;
+    }
+
     private List<String> getSortedPackages() {
         List<String> packages = new ArrayList<>();
         for (UsageStats stat : getSortedStats()) {
@@ -61,7 +63,6 @@ class UsageTracker {
         }
 
         Set<String> packages = new HashSet<>();
-        packages.add(BuildConfig.APPLICATION_ID);
         List<UsageStats> sortedList = new ArrayList<>();
         for (UsageStats stat : sorted.values()) {
             // Prevent slowing down the phone too much.

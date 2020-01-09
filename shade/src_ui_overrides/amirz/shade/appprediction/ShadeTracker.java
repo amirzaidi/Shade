@@ -63,7 +63,7 @@ public class ShadeTracker extends AppLaunchTracker {
 
     protected final Context mContext;
     private final Handler mMessageHandler;
-    private UsageTracker mUsageTracker;
+    private FilteredPredictor mUsageTracker;
 
     private final Executor mExecutor = new MainThreadExecutor();
 
@@ -103,7 +103,8 @@ public class ShadeTracker extends AppLaunchTracker {
             case MSG_INIT: {
                 Log.d(TAG, "Init");
                 destroy();
-                mUsageTracker = new UsageTracker(mContext);
+                int count = InvariantDeviceProfile.INSTANCE.get(mContext).numColumns;
+                mUsageTracker = new FilteredPredictor(mContext, count);
                 return true;
             }
             case MSG_DESTROY: {
@@ -127,7 +128,7 @@ public class ShadeTracker extends AppLaunchTracker {
                 // Do prediction
                 List<AppTarget> targetList = new ArrayList<>();
                 UserHandle user = Process.myUserHandle();
-                for (ComponentName cn: mUsageTracker.getSortedComponents()) {
+                for (ComponentName cn: mUsageTracker.getFilteredComponents()) {
                     AppTarget target = new AppTarget
                             .Builder(new AppTargetId("app:" + cn), cn.getPackageName(), user)
                             .setClassName(cn.getClassName())
