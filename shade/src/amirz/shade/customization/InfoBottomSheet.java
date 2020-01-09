@@ -5,8 +5,10 @@ import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -68,7 +70,8 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
     public void onWidgetsBound() {
     }
 
-    public static class PrefsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
+    public static class PrefsFragment extends PreferenceFragment
+            implements Preference.OnPreferenceChangeListener {
         private Context mContext;
 
         private ComponentName mComponent;
@@ -78,6 +81,17 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             mContext = getActivity();
+        }
+
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            addPreferencesFromResource(R.xml.app_info_preferences);
+
+            PreferenceScreen screen = getPreferenceScreen();
+            for (int i = 0; i < screen.getPreferenceCount(); i++) {
+                Preference preference = screen.getPreference(i);
+                preference.setIconSpaceReserved(false);
+            }
         }
 
         public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onResetClick) {
