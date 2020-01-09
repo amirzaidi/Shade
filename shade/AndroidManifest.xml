@@ -126,7 +126,8 @@
             android:theme="@android:style/Theme.DeviceDefault"
             android:label="@string/hidden_apps"
             android:excludeFromRecents="true"
-            android:autoRemoveFromRecents="true" />
+            android:autoRemoveFromRecents="true"
+            android:noHistory="true" />
 
     </application>
 </manifest>
