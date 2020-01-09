@@ -49,6 +49,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="android:textViewStyle">@style/Shade.SettingsTheme.TextView</item>
+        <item name="android:textAppearanceListItem">@android:style/TextAppearance.Material.Subhead</item>
     </style>
 
     <style name="Shade.SettingsTheme.DialogAlert" parent="android:Theme.DeviceDefault.Dialog.Alert">
