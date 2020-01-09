@@ -1572,17 +1572,21 @@ public abstract class PagedView<T extends View & PageIndicator> extends ViewGrou
             info.addAction(pagesFlipped ?
                 AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD
                 : AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);
-            info.addAction(mIsRtl ?
-                AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT
-                : AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT);
+            if (Utilities.ATLEAST_Q) {
+                info.addAction(mIsRtl ?
+                        AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT
+                        : AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT);
+            }
         }
         if (getCurrentPage() > 0) {
             info.addAction(pagesFlipped ?
                 AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD
                 : AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);
-            info.addAction(mIsRtl ?
-                AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT
-                : AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT);
+            if (Utilities.ATLEAST_Q) {
+                info.addAction(mIsRtl ?
+                        AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT
+                        : AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT);
+            }
         }
 
         // Accessibility-wise, PagedView doesn't support long click, so disabling it.
