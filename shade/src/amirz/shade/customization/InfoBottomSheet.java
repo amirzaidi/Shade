@@ -100,7 +100,9 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
 
             MetadataExtractor extractor = new MetadataExtractor(mContext, mComponent);
 
-            findPreference(KEY_ICON_PACK).setOnPreferenceChangeListener(this);
+            Preference iconPack = findPreference(KEY_ICON_PACK);
+            iconPack.setOnPreferenceChangeListener(this);
+            iconPack.setSummary(R.string.app_info_icon_pack_none);
             findPreference(KEY_SOURCE).setSummary(extractor.getSource());
             findPreference(KEY_LAST_UPDATE).setSummary(extractor.getLastUpdate());
             findPreference(KEY_VERSION).setSummary(mContext.getString(
