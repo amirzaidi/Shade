@@ -1400,7 +1400,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
             final View v = getWindow().peekDecorView();
             if (v != null && v.getWindowToken() != null) {
-                UiThreadHelper.hideKeyboardAsync(this, v.getWindowToken());
+                UiThreadHelper.hideKeyboardSync(this, v.getWindowToken());
             }
 
             if (mLauncherCallbacks != null) {
