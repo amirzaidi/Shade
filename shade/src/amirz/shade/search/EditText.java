@@ -4,8 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.android.launcher3.ExtendedEditText;
+import com.android.launcher3.util.UiThreadHelper;
 
 public class EditText extends ExtendedEditText {
     public EditText(Context context) {
@@ -33,5 +35,10 @@ public class EditText extends ExtendedEditText {
                 nextFocus.requestFocus();
             }
         }
+    }
+
+    @Override
+    public void hideKeyboard() {
+        UiThreadHelper.hideKeyboardSync(getContext(), getWindowToken());
     }
 }
