@@ -15,8 +15,8 @@ import com.android.launcher3.allapps.AllAppsContainerView;
 import amirz.shade.hidden.HiddenAppsActivity;
 
 public class AllAppsView extends AllAppsContainerView {
-    private static final float OPEN_HIDDEN_APPS_THRES = 0.75f;
-    private static final int OPEN_HIDDEN_APPS_MS = 500;
+    private static final float OPEN_HIDDEN_APPS_THRES = 0.67f;
+    private static final int OPEN_HIDDEN_APPS_MS = 400;
 
     private final AllAppsSpring mController;
 
