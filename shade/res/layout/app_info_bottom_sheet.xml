@@ -11,7 +11,7 @@
     android:theme="?attr/widgetsTheme">
 
     <TextView
-        style="@style/TextTitle"
+        style="@style/TextHeadline"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,6 @@
         android:textSize="24sp"/>
 
     <TextView
-        android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -29,7 +28,7 @@
         android:fontFamily="sans-serif"
         android:textColor="?android:attr/textColorTertiary"
         android:textSize="14sp"
-        android:text="@string/app_info_subtext" />
+        android:text="@string/app_info_subtext"/>
 
     <fragment
         android:id="@+id/sheet_prefs"
