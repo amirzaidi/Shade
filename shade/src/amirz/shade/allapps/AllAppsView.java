@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.EdgeEffect;
 
 import androidx.annotation.NonNull;
@@ -55,7 +54,6 @@ public class AllAppsView extends AllAppsContainerView {
     private void checkShouldOpenHiddenApps(float shift) {
         shift *= -1f;
         float threshold = getSearchView().getHeight() * OPEN_HIDDEN_APPS_THRES;
-        Log.d("AllAppsView", shift + " " + threshold);
         if (mQueuedOpenHiddenApps) {
             if (shift < threshold) {
                 mHandler.removeCallbacks(mOpenHiddenApps);
