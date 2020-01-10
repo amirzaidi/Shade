@@ -18,17 +18,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        android:key="pref_app_info_icon_pack"
-        android:title="@string/app_info_icon_pack"
+        android:key="pref_app_info_version"
+        android:title="@string/app_info_version"
         android:summary="@string/placeholder_string"
-        android:icon="@drawable/ic_app_info_icon_pack"
-        android:persistent="false" />
-
-    <Preference
-        android:key="pref_app_info_source"
-        android:title="@string/app_info_source"
-        android:summary="@string/placeholder_string"
-        android:icon="@drawable/ic_app_info_source"
+        android:icon="@drawable/ic_app_info_version"
         android:persistent="false" />
 
     <Preference
@@ -39,10 +32,17 @@
         android:persistent="false" />
 
     <Preference
-        android:key="pref_app_info_version"
-        android:title="@string/app_info_version"
+        android:key="pref_app_info_source"
+        android:title="@string/app_info_source"
         android:summary="@string/placeholder_string"
-        android:icon="@drawable/ic_app_info_version"
+        android:icon="@drawable/ic_app_info_source"
+        android:persistent="false" />
+
+    <Preference
+        android:key="pref_app_info_icon_pack"
+        android:title="@string/app_info_icon_pack"
+        android:summary="@string/placeholder_string"
+        android:icon="@drawable/ic_app_info_icon_pack"
         android:persistent="false" />
 
     <Preference
