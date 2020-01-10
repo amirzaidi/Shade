@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.android.launcher3.ExtendedEditText;
 
@@ -34,11 +33,5 @@ public class EditText extends ExtendedEditText {
                 nextFocus.requestFocus();
             }
         }
-    }
-
-    @Override
-    public void hideKeyboard() {
-        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
-                .hideSoftInputFromWindow(getWindowToken(), 0);
     }
 }
