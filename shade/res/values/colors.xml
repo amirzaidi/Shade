@@ -4,4 +4,17 @@
     <color name="colorPrimaryDark">#ffe0e0e0</color>
     <color name="colorAccent">#9C27B0</color>
     <color name="colorPixel">#4285F4</color>
+
+    <item name="color_disabled_alpha_material_light" format="float" type="dimen">0.26</item>
+    <item name="color_disabled_alpha_material_dark" format="float" type="dimen">0.30</item>
+
+    <!-- 87% black -->
+    <color name="color_primary_text_default_material_light">#de000000</color>
+    <!-- 54% black -->
+    <color name="color_secondary_text_default_material_light">#8a000000</color>
+
+    <!-- 100% white -->
+    <color name="color_primary_text_default_material_dark">#ffffffff</color>
+    <!-- 70% white -->
+    <color name="color_secondary_text_default_material_dark">#b3ffffff</color>
 </resources>
