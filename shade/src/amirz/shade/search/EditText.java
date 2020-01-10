@@ -9,11 +9,13 @@ import com.android.launcher3.ExtendedEditText;
 
 public class EditText extends ExtendedEditText {
     public EditText(Context context) {
-        this(context, null);
+        // ctor chaining breaks the touch handling
+        super(context);
     }
 
     public EditText(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        // ctor chaining breaks the touch handling
+        super(context, attrs);
     }
 
     public EditText(Context context, AttributeSet attrs, int defStyleAttr) {
