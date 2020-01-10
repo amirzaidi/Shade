@@ -12,6 +12,7 @@
     <string name="placeholder_string" translatable="false">Loading...</string> <!-- Used for preference height loading. -->
     <string name="app_info_icon_pack" translatable="false">Icon pack</string>
     <string name="app_info_source" translatable="false">Source</string>
+    <string name="app_info_source_unknown" translatable="false">Unknown</string>
     <string name="app_info_last_update" translatable="false">Last update</string>
     <string name="app_info_version" translatable="false">Version</string>
     <string name="app_info_more" translatable="false">More</string>

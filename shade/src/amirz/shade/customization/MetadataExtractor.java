@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 
 import java.io.File;
@@ -44,6 +46,9 @@ class MetadataExtractor {
     }
 
     CharSequence getSource() {
+        if (TextUtils.isEmpty(mSourcePkg)) {
+            return mContext.getString(R.string.app_info_source_unknown);
+        }
         try {
             ApplicationInfo pi = mPm.getApplicationInfo(mSourcePkg, 0);
             return pi.loadLabel(mPm);
