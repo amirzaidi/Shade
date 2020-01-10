@@ -55,10 +55,9 @@ public class UiThreadHelper {
     }
 
     public static void hideKeyboardSync(Context context, IBinder token) {
-        Message message = new Message();
-        message.what = MSG_HIDE_KEYBOARD;
-        message.obj = token;
-        getHandler(context).handleMessage(message);
+        InputMethodManager imm = (InputMethodManager)
+                context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(token, 0);
     }
 
     public static void hideKeyboardAsync(Context context, IBinder token) {
