@@ -7,9 +7,12 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.launcher3.ItemInfo;
@@ -91,6 +94,14 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.app_info_preferences);
+        }
+
+        @Override
+        public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
+                                                 Bundle savedInstanceState) {
+            RecyclerView view = super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+            view.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            return view;
         }
 
         public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onMoreClick) {
