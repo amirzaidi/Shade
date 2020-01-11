@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Vse aplikacije"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Predvidene aplikacije"</string>
 	<string name="smartspace_preferences">"Nastavitve"</string>
+	<string name="icon_shape_square">""Kvadrat""</string>
+	<string name="icon_shape_squircle">""Zaobljen kvadrat""</string>
+	<string name="icon_shape_circle">""Krog""</string>
+	<string name="icon_shape_teardrop">""Solza""</string>
 </resources>

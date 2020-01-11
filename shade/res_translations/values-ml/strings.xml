@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"എല്ലാ ആപ്പുകളും"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"നിങ്ങളുടെ പ്രവചിക്കപ്പെട്ട ആപ്പുകൾ"</string>
 	<string name="smartspace_preferences">"മുൻഗണനകൾ"</string>
+	<string name="icon_shape_square">""ചതുരം""</string>
+	<string name="icon_shape_squircle">""ചതുരവൃത്തം""</string>
+	<string name="icon_shape_circle">""വൃത്തം""</string>
+	<string name="icon_shape_teardrop">""കണ്ണുനീര്‍ തുള്ളി""</string>
 </resources>

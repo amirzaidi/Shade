@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Усі додатки"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Передбачені додатки"</string>
 	<string name="smartspace_preferences">"Параметри"</string>
+	<string name="icon_shape_square">""Квадрат""</string>
+	<string name="icon_shape_squircle">""Квадрат із заокругленими кутами""</string>
+	<string name="icon_shape_circle">""Круг""</string>
+	<string name="icon_shape_teardrop">""Сльоза""</string>
 </resources>

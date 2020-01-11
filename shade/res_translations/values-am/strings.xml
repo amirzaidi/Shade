@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"ሁሉም መተግበሪያዎች"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"የእርስዎ የሚገመቱ መተግበሪያዎች"</string>
 	<string name="smartspace_preferences">"ምርጫዎች"</string>
+	<string name="icon_shape_square">""ካሬ""</string>
+	<string name="icon_shape_squircle">""Squircle""</string>
+	<string name="icon_shape_circle">""ክብ""</string>
+	<string name="icon_shape_teardrop">""የእንባ ጠብታ""</string>
 </resources>

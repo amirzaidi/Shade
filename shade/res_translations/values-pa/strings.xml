@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"ਸਾਰੀਆਂ ਐਪਾਂ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ਤੁਹਾਡੀਆਂ ਪੂਰਵ ਅਨੁਮਾਨਿਤ ਐਪਾਂ"</string>
 	<string name="smartspace_preferences">"ਤਰਜੀਹਾਂ"</string>
+	<string name="icon_shape_square">""ਵਰਗ""</string>
+	<string name="icon_shape_squircle">""ਵਰਗਾਕਾਰ-ਚੱਕਰ""</string>
+	<string name="icon_shape_circle">""ਚੱਕਰ""</string>
+	<string name="icon_shape_teardrop">""ਹੰਝੂ ਦੀ ਬੂੰਦ""</string>
 </resources>

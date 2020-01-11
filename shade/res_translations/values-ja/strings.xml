@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"すべてのアプリ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"予測されたアプリ"</string>
 	<string name="smartspace_preferences">"設定"</string>
+	<string name="icon_shape_square">""スクエア""</string>
+	<string name="icon_shape_squircle">""スクワークル""</string>
+	<string name="icon_shape_circle">""サークル""</string>
+	<string name="icon_shape_teardrop">""ティアドロップ""</string>
 </resources>

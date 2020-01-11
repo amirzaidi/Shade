@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Öll forrit"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Spáð forrit"</string>
 	<string name="smartspace_preferences">"Kjörstillingar"</string>
+	<string name="icon_shape_square">""Ferningur""</string>
+	<string name="icon_shape_squircle">""Ferhringur""</string>
+	<string name="icon_shape_circle">""Hringur""</string>
+	<string name="icon_shape_teardrop">""Dropi""</string>
 </resources>

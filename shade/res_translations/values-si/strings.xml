@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"සියලු යෙදුම්"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ඔබේ පුරෝකථන කළ යෙදුම්"</string>
 	<string name="smartspace_preferences">"මනාප"</string>
+	<string name="icon_shape_square">""සමචතුරස්‍රය""</string>
+	<string name="icon_shape_squircle">""හතරැස් කවය""</string>
+	<string name="icon_shape_circle">""කවය""</string>
+	<string name="icon_shape_teardrop">""කඳුළු බිංදුව""</string>
 </resources>

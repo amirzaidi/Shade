@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Zonke izinhlelo zokusebenza"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Izinhlelo zakho zokusebenza eziqagelwe"</string>
 	<string name="smartspace_preferences">"Okuncamelayo"</string>
+	<string name="icon_shape_square">""Isikwele""</string>
+	<string name="icon_shape_squircle">""I-Squircle""</string>
+	<string name="icon_shape_circle">""Indingiliza""</string>
+	<string name="icon_shape_teardrop">""I-Teardrop""</string>
 </resources>

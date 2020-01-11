@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Kõik rakendused"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Teie ennustatud rakendused"</string>
 	<string name="smartspace_preferences">"Eelistused"</string>
+	<string name="icon_shape_square">""Ruut""</string>
+	<string name="icon_shape_squircle">""Ümarate nurkadega ruut""</string>
+	<string name="icon_shape_circle">""Ring""</string>
+	<string name="icon_shape_teardrop">""Tilk""</string>
 </resources>

@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"所有应用"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"您的预测应用"</string>
 	<string name="smartspace_preferences">"偏好设置"</string>
+	<string name="icon_shape_square">""方形""</string>
+	<string name="icon_shape_squircle">""方圆形""</string>
+	<string name="icon_shape_circle">""圆形""</string>
+	<string name="icon_shape_teardrop">""泪珠形""</string>
 </resources>

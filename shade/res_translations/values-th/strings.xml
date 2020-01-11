@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"แอปทั้งหมด"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"แอปที่คาดการณ์ไว้"</string>
 	<string name="smartspace_preferences">"ค่ากำหนด"</string>
+	<string name="icon_shape_square">""สี่เหลี่ยมจัตุรัส""</string>
+	<string name="icon_shape_squircle">""สี่เหลี่ยมขอบมน""</string>
+	<string name="icon_shape_circle">""วงกลม""</string>
+	<string name="icon_shape_teardrop">""หยดน้ำตา""</string>
 </resources>

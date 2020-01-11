@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Alle apps"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Je voorspelde apps"</string>
 	<string name="smartspace_preferences">"Voorkeuren"</string>
+	<string name="icon_shape_square">""Vierkant""</string>
+	<string name="icon_shape_squircle">""Squircle""</string>
+	<string name="icon_shape_circle">""Cirkel""</string>
+	<string name="icon_shape_teardrop">""Traan""</string>
 </resources>

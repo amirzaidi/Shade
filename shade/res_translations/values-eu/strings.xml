@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Aplikazio guztiak"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Lagungarri izan dakizkizukeen aplikazioak"</string>
 	<string name="smartspace_preferences">"Hobespenak"</string>
+	<string name="icon_shape_square">""Karratua""</string>
+	<string name="icon_shape_squircle">""Ertz biribilduko karratua""</string>
+	<string name="icon_shape_circle">""Zirkulua""</string>
+	<string name="icon_shape_teardrop">""Malkoa""</string>
 </resources>

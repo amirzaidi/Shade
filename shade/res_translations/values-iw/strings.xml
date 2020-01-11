@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"כל האפליקציות"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"האפליקציות החזויות שלך"</string>
 	<string name="smartspace_preferences">"העדפות"</string>
+	<string name="icon_shape_square">""ריבוע""</string>
+	<string name="icon_shape_squircle">""ריבוע בעל פינות מעוגלות""</string>
+	<string name="icon_shape_circle">""מעגל""</string>
+	<string name="icon_shape_teardrop">""טיפה""</string>
 </resources>

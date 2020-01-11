@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"అన్ని యాప్‌లు"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"మీ సూచించబడిన యాప్‌లు"</string>
 	<string name="smartspace_preferences">"ప్రాధాన్యతలు"</string>
+	<string name="icon_shape_square">""చతురస్రం""</string>
+	<string name="icon_shape_squircle">""చతురస్రాకార వృత్తం""</string>
+	<string name="icon_shape_circle">""వృత్తం""</string>
+	<string name="icon_shape_teardrop">""కన్నీటి చుక్క""</string>
 </resources>

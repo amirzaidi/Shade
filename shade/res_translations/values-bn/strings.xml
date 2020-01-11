@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"সব অ্যাপ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"আপনার প্রয়োজন হতে পারে এমন অ্যাপ"</string>
 	<string name="smartspace_preferences">"পছন্দগুলি"</string>
+	<string name="icon_shape_square">""চৌকো""</string>
+	<string name="icon_shape_squircle">""চৌকো-গোলাকার""</string>
+	<string name="icon_shape_circle">""গোলাকার""</string>
+	<string name="icon_shape_teardrop">""চোখের জল""</string>
 </resources>

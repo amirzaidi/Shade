@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"ସମସ୍ତ ଆପ୍ସ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ଆପଣ ପୂର୍ବାନୁମାନ କରିଥିବା ଆପ୍ସ"</string>
 	<string name="smartspace_preferences">"ପ୍ରାଥମିକତା"</string>
+	<string name="icon_shape_square">""ବର୍ଗାକାର""</string>
+	<string name="icon_shape_squircle">""ବର୍ଗାକାରର ବୃତ୍ତ""</string>
+	<string name="icon_shape_circle">""ବୃତ୍ତ""</string>
+	<string name="icon_shape_teardrop">""ଟିଅରଡ୍ରପ୍‌""</string>
 </resources>

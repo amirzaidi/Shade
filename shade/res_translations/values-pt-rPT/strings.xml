@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Todas as aplicações"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"As suas aplicações previstas"</string>
 	<string name="smartspace_preferences">"Preferências"</string>
+	<string name="icon_shape_square">""Quadrado""</string>
+	<string name="icon_shape_squircle">""Quadrado e círculo""</string>
+	<string name="icon_shape_circle">""Círculo""</string>
+	<string name="icon_shape_teardrop">""Lágrima""</string>
 </resources>

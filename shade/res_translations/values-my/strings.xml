@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"အက်ပ်အားလုံး"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"သင်၏ ခန့်မှန်းအက်ပ်များ"</string>
 	<string name="smartspace_preferences">"ဦးစားပေးမှုများ"</string>
+	<string name="icon_shape_square">""လေးထောင့်""</string>
+	<string name="icon_shape_squircle">""စတုရန်းမကျ စက်ဝိုင်းမကျပုံ""</string>
+	<string name="icon_shape_circle">""စက်ဝိုင်း""</string>
+	<string name="icon_shape_teardrop">""မျက်ရည်စက်ပုံ""</string>
 </resources>

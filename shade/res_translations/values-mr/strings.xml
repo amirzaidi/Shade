@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"सर्व अ‍ॅप्स"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"तुमची पूर्वानुमानीत अ‍ॅप्स"</string>
 	<string name="smartspace_preferences">"प्राधान्ये"</string>
+	<string name="icon_shape_square">""चौरस""</string>
+	<string name="icon_shape_squircle">""गोलाकार चौरस""</string>
+	<string name="icon_shape_circle">""वर्तुळ""</string>
+	<string name="icon_shape_teardrop">""अश्रू""</string>
 </resources>

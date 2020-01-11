@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Lahat ng app"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Iyong mga nahulaang app"</string>
 	<string name="smartspace_preferences">"Mga Kagustuhan"</string>
+	<string name="icon_shape_square">""Parisukat""</string>
+	<string name="icon_shape_squircle">""Squircle""</string>
+	<string name="icon_shape_circle">""Bilog""</string>
+	<string name="icon_shape_teardrop">""Teardrop""</string>
 </resources>

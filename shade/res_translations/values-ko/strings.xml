@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"모든 앱"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"추천 앱"</string>
 	<string name="smartspace_preferences">"환경설정"</string>
+	<string name="icon_shape_square">""정사각형""</string>
+	<string name="icon_shape_squircle">""모서리가 둥근 정사각형""</string>
+	<string name="icon_shape_circle">""원""</string>
+	<string name="icon_shape_teardrop">""눈물방울""</string>
 </resources>

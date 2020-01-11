@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Barcha ilovalar"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Taklif qilingan ilovalaringiz"</string>
 	<string name="smartspace_preferences">"Sozlamalar"</string>
+	<string name="icon_shape_square">""Kvadrat""</string>
+	<string name="icon_shape_squircle">""Qirralari aylana kvadrat""</string>
+	<string name="icon_shape_circle">""Aylana""</string>
+	<string name="icon_shape_teardrop">""Tomchi""</string>
 </resources>

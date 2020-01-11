@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"جميع التطبيقات"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"تطبيقاتك المتوقّعة"</string>
 	<string name="smartspace_preferences">"التفضيلات"</string>
+	<string name="icon_shape_square">""مربّع""</string>
+	<string name="icon_shape_squircle">""رمز دائري مربّع""</string>
+	<string name="icon_shape_circle">""دائرة""</string>
+	<string name="icon_shape_teardrop">""رمز على شكل دمعة""</string>
 </resources>

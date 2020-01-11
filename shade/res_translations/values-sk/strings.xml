@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Všetky aplikácie"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Vaše predpovedané aplikácie"</string>
 	<string name="smartspace_preferences">"Predvoľby"</string>
+	<string name="icon_shape_square">""Štvorec""</string>
+	<string name="icon_shape_squircle">""Okrúhly štvorec""</string>
+	<string name="icon_shape_circle">""Kruh""</string>
+	<string name="icon_shape_teardrop">""Slza""</string>
 </resources>

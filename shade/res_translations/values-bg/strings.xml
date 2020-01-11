@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Всички приложения"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Предвидени приложения"</string>
 	<string name="smartspace_preferences">"Предпочитания"</string>
+	<string name="icon_shape_square">""Квадрат""</string>
+	<string name="icon_shape_squircle">""Комбинация от кръг и квадрат""</string>
+	<string name="icon_shape_circle">""Кръг""</string>
+	<string name="icon_shape_teardrop">""Сълза""</string>
 </resources>

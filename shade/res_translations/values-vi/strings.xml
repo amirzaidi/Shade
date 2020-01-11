@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Tất cả ứng dụng"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Các ứng dụng gợi ý của bạn"</string>
 	<string name="smartspace_preferences">"Tùy chọn"</string>
+	<string name="icon_shape_square">""Hình vuông""</string>
+	<string name="icon_shape_squircle">""Hình vuông cạnh bo tròn""</string>
+	<string name="icon_shape_circle">""Hình tròn""</string>
+	<string name="icon_shape_teardrop">""Hình giọt nước""</string>
 </resources>

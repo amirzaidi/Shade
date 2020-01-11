@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"सबै अनुप्रयोगहरू"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"तपाईंका पूर्वानुमानित अनुप्रयोगहरू"</string>
 	<string name="smartspace_preferences">"प्राथमिकताहरू"</string>
+	<string name="icon_shape_square">""वर्ग""</string>
+	<string name="icon_shape_squircle">""वर्गाकार वृत्त""</string>
+	<string name="icon_shape_circle">""वृत्त""</string>
+	<string name="icon_shape_teardrop">""आँसुको थोपा""</string>
 </resources>

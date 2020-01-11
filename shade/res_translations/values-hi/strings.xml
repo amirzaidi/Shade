@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"सभी ऐप्लिकेशन"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"आपके काम के ऐप्लिकेशन"</string>
 	<string name="smartspace_preferences">"प्राथमिकताएं"</string>
+	<string name="icon_shape_square">""वर्ग""</string>
+	<string name="icon_shape_squircle">""गोल कोनों वाला वर्ग""</string>
+	<string name="icon_shape_circle">""मंडली""</string>
+	<string name="icon_shape_teardrop">""आंसू की बूंद""</string>
 </resources>

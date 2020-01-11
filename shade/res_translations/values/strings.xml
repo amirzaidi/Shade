@@ -65,4 +65,8 @@
 
 
 	<string name="smartspace_preferences">"Preferences"</string>
+	<string name="icon_shape_square">"Square"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"Circle"</string>
+	<string name="icon_shape_teardrop">"Teardrop"</string>
 </resources>

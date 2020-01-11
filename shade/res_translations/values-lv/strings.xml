@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Visas lietotnes"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Jūsu prognozētās lietotnes"</string>
 	<string name="smartspace_preferences">"Preferences"</string>
+	<string name="icon_shape_square">""Kvadrāts""</string>
+	<string name="icon_shape_squircle">""Kvadrāts ar noapaļotiem stūriem""</string>
+	<string name="icon_shape_circle">""Aplis""</string>
+	<string name="icon_shape_teardrop">""Lāse""</string>
 </resources>

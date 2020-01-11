@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"ಎಲ್ಲಾ ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ನಿಮ್ಮ ಸಂಭವನೀಯ ಆ್ಯಪ್‌ಗಳು"</string>
 	<string name="smartspace_preferences">"ಪ್ರಾಶಸ್ತ್ಯಗಳು"</string>
+	<string name="icon_shape_square">""ಚೌಕ""</string>
+	<string name="icon_shape_squircle">""ಚೌಕವೃತ್ತ""</string>
+	<string name="icon_shape_circle">""ವೃತ್ತ""</string>
+	<string name="icon_shape_teardrop">""ಕಂಬನಿ""</string>
 </resources>

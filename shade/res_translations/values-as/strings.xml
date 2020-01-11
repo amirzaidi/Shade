@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"সকলো এপ্"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"আপোনাৰ অনুমানিক এপ্"</string>
 	<string name="smartspace_preferences">"অগ্ৰাধিকাৰসমূহ"</string>
+	<string name="icon_shape_square">""বৰ্গাকাৰ""</string>
+	<string name="icon_shape_squircle">""বৰ্গবৃত্তাকাৰ""</string>
+	<string name="icon_shape_circle">""পৰিচিত মানুহৰ গোট""</string>
+	<string name="icon_shape_teardrop">""চকুপানীৰ টোপাল""</string>
 </resources>

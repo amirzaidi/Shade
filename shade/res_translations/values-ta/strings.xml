@@ -35,4 +35,8 @@
     <string name="all_apps_label" msgid="8542784161730910663">"அனைத்து ஆப்ஸும்"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"நீங்கள் கணித்த ஆப்ஸ்"</string>
 	<string name="smartspace_preferences">"விருப்பத்தேர்வுகள்"</string>
+	<string name="icon_shape_square">""சதுரம்""</string>
+	<string name="icon_shape_squircle">""சதுரவட்டம்""</string>
+	<string name="icon_shape_circle">""வட்டம்""</string>
+	<string name="icon_shape_teardrop">""கண்ணீர்துளி""</string>
 </resources>
