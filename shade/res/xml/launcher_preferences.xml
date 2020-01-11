@@ -17,45 +17,62 @@
 <androidx.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.android.launcher3.settings.NotificationDotsPreference
-        android:key="pref_icon_badging"
-        android:title="@string/notification_dots_title"
-        android:persistent="false"
-        android:widgetLayout="@layout/notification_pref_warning" >
-        <intent android:action="android.settings.NOTIFICATION_SETTINGS">
-            <!-- This extra highlights the "Allow notification dots" field in Notification settings -->
-            <extra
-                android:name=":settings:fragment_args_key"
-                android:value="notification_badging" />
-        </intent>
-    </com.android.launcher3.settings.NotificationDotsPreference>
+    <PreferenceCategory android:key="category_general"
+        android:title="@string/category_general">
 
-    <amirz.shade.settings.PredictionPreference
-        android:key="pref_predictions"
-        android:title="@string/title_app_suggestions"
-        android:summary="@string/notification_dots_desc_on"
-        android:defaultValue="true"
-        android:persistent="true" />
+        <com.android.launcher3.settings.NotificationDotsPreference
+            android:key="pref_icon_badging"
+            android:title="@string/notification_dots_title"
+            android:persistent="false"
+            android:widgetLayout="@layout/notification_pref_warning" >
+            <intent android:action="android.settings.NOTIFICATION_SETTINGS">
+                <!-- This extra highlights the "Allow notification dots" field in Notification settings -->
+                <extra
+                    android:name=":settings:fragment_args_key"
+                    android:value="notification_badging" />
+            </intent>
+        </com.android.launcher3.settings.NotificationDotsPreference>
 
-    <SwitchPreference
-        android:key="pref_add_icon_to_home"
-        android:title="@string/auto_add_shortcuts_label"
-        android:summary="@string/auto_add_shortcuts_description"
-        android:defaultValue="true"
-        android:persistent="true" />
+        <amirz.shade.settings.PredictionPreference
+            android:key="pref_predictions"
+            android:title="@string/title_app_suggestions"
+            android:summary="@string/notification_dots_desc_on"
+            android:defaultValue="true"
+            android:persistent="true" />
 
-    <SwitchPreference
-        android:key="pref_allowRotation"
-        android:title="@string/allow_rotation_title"
-        android:summary="@string/allow_rotation_desc"
-        android:defaultValue="@bool/allow_rotation"
-        android:persistent="true" />
+        <SwitchPreference
+            android:key="pref_add_icon_to_home"
+            android:title="@string/auto_add_shortcuts_label"
+            android:summary="@string/auto_add_shortcuts_description"
+            android:defaultValue="true"
+            android:persistent="true" />
 
-    <SwitchPreference
-        android:key="pref_grid_options"
-        android:title="Enable grid options"
-        android:defaultValue="false"
-        android:persistent="true" />
+        <SwitchPreference
+            android:key="pref_allowRotation"
+            android:title="@string/allow_rotation_title"
+            android:summary="@string/allow_rotation_desc"
+            android:defaultValue="@bool/allow_rotation"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:key="pref_grid_options"
+            android:title="Enable grid options"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="category_customization"
+        android:title="@string/category_customization">
+
+        <amirz.shade.settings.ReloadingListPreference
+            android:key="pref_icon_pack"
+            android:title="@string/app_info_icon_pack"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
+    </PreferenceCategory>
 
     <androidx.preference.PreferenceScreen
         android:key="pref_developer_options"

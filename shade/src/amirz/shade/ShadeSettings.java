@@ -1,11 +1,21 @@
 package amirz.shade;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
 import com.android.launcher3.settings.SettingsActivity;
+
+import java.util.Map;
+
+import amirz.shade.customization.IconDatabase;
+import amirz.shade.icons.pack.IconPackManager;
+import amirz.shade.settings.IconPackPrefSetter;
+import amirz.shade.settings.ReloadingListPreference;
+import amirz.shade.util.AppReloader;
 
 public class ShadeSettings extends SettingsActivity {
     public interface OnResumePreferenceCallback {
@@ -16,18 +26,24 @@ public class ShadeSettings extends SettingsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public static class ShadeSettingsFragment extends LauncherSettingsFragment {
+        private static final String KEY_ICON_PACK = "pref_icon_pack";
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             super.onCreatePreferences(savedInstanceState, rootKey);
 
-            PreferenceScreen screen = getPreferenceScreen();
-            for (int i = 0; i < screen.getPreferenceCount(); i++) {
-                Preference preference = screen.getPreference(i);
-                preference.setIconSpaceReserved(false);
-            }
+            final Context context = getActivity();
+            ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
+            icons.setOnReloadListener(new IconPackPrefSetter(context));
+            icons.setOnPreferenceChangeListener((pref, val) -> {
+                IconDatabase.setGlobal(context, (String) val);
+                AppReloader.get(context).reload();
+                return true;
+            });
         }
 
         @Override
