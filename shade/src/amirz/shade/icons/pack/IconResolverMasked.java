@@ -1,5 +1,6 @@
 package amirz.shade.icons.pack;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -14,9 +15,12 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.android.launcher3.icons.BaseIconFactory;
 import com.android.launcher3.icons.LauncherIcons;
 
 import amirz.shade.icons.clock.CustomClock;
+
+import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_WRAP;
 
 public class IconResolverMasked implements IconResolver {
     private final Context mContext;
@@ -129,8 +133,10 @@ public class IconResolverMasked implements IconResolver {
         }
     }
 
+    @SuppressLint("WrongConstant")
     private void backBitmap(Bitmap bitmap, Drawable back, LauncherIcons li) {
         if (back != null) {
+            back.setChangingConfigurations(back.getChangingConfigurations() | CONFIG_HINT_NO_WRAP);
             Bitmap backBm = li.createScaledBitmapWithoutShadow(back, 0);
 
             mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
