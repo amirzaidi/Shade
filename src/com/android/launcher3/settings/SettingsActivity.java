@@ -41,6 +41,7 @@ import com.android.launcher3.uioverrides.plugins.PluginManagerWrapper;
 import com.android.launcher3.util.SecureSettingsObserver;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragment.OnPreferenceStartFragmentCallback;
 import androidx.preference.PreferenceFragment.OnPreferenceStartScreenCallback;
@@ -171,7 +172,15 @@ public class SettingsActivity extends Activity
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
                 Preference preference = screen.getPreference(i);
-                if (!initPreference(preference)) {
+                if (preference instanceof PreferenceCategory) {
+                    PreferenceCategory category = (PreferenceCategory) preference;
+                    for (int j = 0; j < category.getPreferenceCount(); j++) {
+                        Preference nestedPref = category.getPreference(j);
+                        if (!initPreference(nestedPref)) {
+                            category.removePreference(nestedPref);
+                        }
+                    }
+                } else if (!initPreference(preference)) {
                     screen.removePreference(preference);
                 }
             }
