@@ -2,6 +2,7 @@ package amirz.shade;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.UserHandle;
 
 import com.android.launcher3.AppFilter;
 import com.android.launcher3.BuildConfig;
@@ -17,7 +18,8 @@ public class ShadeAppFilter extends AppFilter {
         mFilter.add(new ComponentName(BuildConfig.APPLICATION_ID, ShadeLauncher.class.getName()));
     }
 
-    public boolean shouldShowApp(ComponentName app) {
+    @Override
+    public boolean shouldShowApp(ComponentName app, UserHandle user) {
         return !mFilter.contains(app);
     }
 }
