@@ -4,15 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
 import com.android.launcher3.settings.SettingsActivity;
 
-import java.util.Map;
-
 import amirz.shade.customization.IconDatabase;
-import amirz.shade.icons.pack.IconPackManager;
 import amirz.shade.settings.IconPackPrefSetter;
 import amirz.shade.settings.ReloadingListPreference;
 import amirz.shade.util.AppReloader;
