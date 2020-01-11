@@ -882,11 +882,19 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (mLauncher.isInState(ALL_APPS)) {
+            return true;
+        }
         if (ev.getActionMasked() == MotionEvent.ACTION_DOWN) {
             mXDown = ev.getX();
             mYDown = ev.getY();
         }
         return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        return mLauncher.isInState(ALL_APPS) || super.onTouchEvent(ev);
     }
 
     @Override
