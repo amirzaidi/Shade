@@ -5,7 +5,7 @@
     <!-- Various classes overriden by projects/build flavors. -->
     <string name="app_filter_class" translatable="false">amirz.shade.ShadeAppFilter</string>
     <string name="icon_provider_class" translatable="false">amirz.shade.icons.ThirdPartyIconProvider</string>
-    <string name="drawable_factory_class" translatable="false">amirz.shade.icons.ThirdPartyDrawableProvider</string>
+    <string name="drawable_factory_class" translatable="false">amirz.shade.icons.ThirdPartyDrawableFactory</string>
     <string name="system_shortcut_factory_class" translatable="false">amirz.shade.customization.ShadeShortcutFactory</string>
     <string name="app_launch_tracker_class" translatable="false">amirz.shade.appprediction.ShadeTracker</string>
 
