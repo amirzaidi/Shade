@@ -2,6 +2,7 @@ package com.android.launcher3;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.UserHandle;
 
 import com.android.launcher3.util.ResourceBasedOverride;
 
@@ -13,5 +14,9 @@ public class AppFilter implements ResourceBasedOverride {
 
     public boolean shouldShowApp(ComponentName app) {
         return true;
+    }
+
+    public boolean shouldShowApp(ComponentName app, UserHandle user) {
+        return shouldShowApp(app);
     }
 }
