@@ -41,6 +41,7 @@ public class ReloadingListPreference extends ListPreference
         mOnReloadListener = onReloadListener;
         loadEntries();
     }
+    
     @Override
     public void onResume() {
         loadEntries();
