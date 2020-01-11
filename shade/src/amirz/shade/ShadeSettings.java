@@ -36,6 +36,7 @@ public class ShadeSettings extends SettingsActivity {
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
             icons.setOnReloadListener(new IconPackPrefSetter(context));
             icons.setOnPreferenceChangeListener((pref, val) -> {
+                IconDatabase.clearAll(context);
                 IconDatabase.setGlobal(context, (String) val);
                 AppReloader.get(context).reload();
                 return true;

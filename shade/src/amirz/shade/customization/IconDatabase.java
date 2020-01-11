@@ -35,6 +35,10 @@ public class IconDatabase {
         getIconPackPrefs(context).edit().remove(key.toString()).apply();
     }
 
+    public static void clearAll(Context context) {
+        getIconPackPrefs(context).edit().clear().apply();
+    }
+
     private static SharedPreferences getIconPackPrefs(Context context) {
         return context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
