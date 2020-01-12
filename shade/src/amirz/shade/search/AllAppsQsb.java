@@ -2,6 +2,8 @@ package amirz.shade.search;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
 import android.text.method.TextKeyListener;
@@ -15,6 +17,7 @@ import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
@@ -102,6 +105,13 @@ public class AllAppsQsb extends QsbContainerView
         mSearchWrapperView = findViewById(R.id.search_wrapper_view);
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mFallbackSearchView.setVisibility(View.INVISIBLE);
+
+        if (Utilities.ATLEAST_P) {
+            // The corners should be 4x as curved as the dialog curve.
+            RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
+            GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
+            gd.setCornerRadius(gd.getCornerRadius() * 4f);
+        }
 
         mFallbackSearchView.setHint(
                 prefixTextWithIcon(getContext(),
