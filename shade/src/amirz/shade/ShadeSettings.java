@@ -1,11 +1,16 @@
 package amirz.shade;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
+import com.android.launcher3.BuildConfig;
+import com.android.launcher3.R;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
@@ -27,6 +32,7 @@ public class ShadeSettings extends SettingsActivity {
 
     public static class ShadeSettingsFragment extends LauncherSettingsFragment {
         private static final String KEY_ICON_PACK = "pref_icon_pack";
+        private static final String KEY_APP_VERSION = "pref_app_version";
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -41,6 +47,21 @@ public class ShadeSettings extends SettingsActivity {
                 AppReloader.get(context).reload();
                 return true;
             });
+
+            String versionName = BuildConfig.VERSION_NAME;
+            try {
+                PackageManager pm = context.getPackageManager();
+                PackageInfo pi = pm.getPackageInfo(BuildConfig.APPLICATION_ID, 0);
+                versionName = pi.versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            Preference version = findPreference(KEY_APP_VERSION);
+            version.setSummary(context.getString(R.string.about_app_version_value,
+                    versionName, BuildConfig.BUILD_TYPE));
+            Uri intentData = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+            version.setIntent(version.getIntent().setData(intentData));
         }
 
         @Override

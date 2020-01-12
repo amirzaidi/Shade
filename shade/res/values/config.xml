@@ -30,4 +30,7 @@
         <item>@string/icon_shape_circle</item>
         <item>@string/icon_shape_teardrop</item>
     </string-array>
+
+    <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
+    <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
 </resources>

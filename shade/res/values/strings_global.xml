@@ -20,4 +20,11 @@
     <string name="pref_value_default" translatable="false">Default</string>
     <string name="category_general" translatable="false">General</string>
     <string name="category_customization" translatable="false">Customization</string>
+    <string name="category_about" translatable="false">About</string>
+    <string name="about_app_version" translatable="false">Version</string>
+    <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
+    <string name="about_contact" translatable="false">Contact</string>
+    <string name="about_contact_desc" translatable="false">Amir Zaidi</string>
+    <string name="about_donate" translatable="false">Donate</string>
+    <string name="about_donate_desc" translatable="false">Using Play balance</string>
 </resources>
