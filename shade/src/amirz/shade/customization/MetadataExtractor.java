@@ -21,7 +21,7 @@ class MetadataExtractor {
 
     private String mSourcePkg = "";
     private long mLastUpdate = 0;
-    private String mVersionName = "Unknown";
+    private String mVersionName;
     private long mVersionCode = 0;
 
     MetadataExtractor(Context context, ComponentName cn) {
@@ -64,6 +64,9 @@ class MetadataExtractor {
     }
 
     String getVersionName() {
+        if (TextUtils.isEmpty(mVersionName)) {
+            return mContext.getString(R.string.app_info_source_unknown);
+        }
         return mVersionName;
     }
 
