@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#0D888888">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/search_ripple">
     <item android:drawable="@drawable/bg_all_apps_searchbox_basic" />
 </ripple>

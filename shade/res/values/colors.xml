@@ -17,4 +17,6 @@
     <color name="color_primary_text_default_material_dark">#ffffffff</color>
     <!-- 70% white -->
     <color name="color_secondary_text_default_material_dark">#b3ffffff</color>
+
+    <color name="search_ripple">#0D888888</color>
 </resources>
