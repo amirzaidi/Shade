@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.AttributeSet;
@@ -185,9 +186,11 @@ public class OptionsPopupView extends ArrowPopup
 
     public static boolean startSettings(View view) {
         Launcher launcher = Launcher.getLauncher(view.getContext());
+        Bundle opts = launcher.getAppTransitionManager()
+                .getActivityLaunchOptions(launcher, view).toBundle();
         launcher.startActivity(new Intent(Intent.ACTION_APPLICATION_PREFERENCES)
                 .setPackage(launcher.getPackageName())
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), opts);
         return true;
     }
 
