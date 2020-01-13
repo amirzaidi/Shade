@@ -110,11 +110,11 @@ public class SmartSpaceHostView extends QsbWidgetHostView implements View.OnLong
             return false;
         }
 
-        if (action != ACTION_MOVE) {
-            if (action != ACTION_CANCEL) {
+        if (action == ACTION_MOVE) {
+            if (Utilities.pointInView(this, ev.getX(), ev.getY(), mSlop)) {
                 return false;
             }
-        } else if (Utilities.pointInView(this, ev.getX(), ev.getY(), mSlop)) {
+        } else if (action != ACTION_CANCEL) {
             return false;
         }
 
