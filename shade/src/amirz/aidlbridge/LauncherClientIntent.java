@@ -36,16 +36,15 @@ public class LauncherClientIntent {
         List<ApplicationInfo> providerInfos = LauncherClientIntent.query(context);
         List<String> providers = new ArrayList<>();
         for (ApplicationInfo provider : providerInfos) {
-            if (provider.packageName.equals(PASSTHROUGH)) {
-                if (BuildConfig.DEBUG) {
-                    return PASSTHROUGH;
-                }
-            } else {
-                providers.add(provider.packageName);
-            }
+            providers.add(provider.packageName);
         }
 
-        // Check for Pixel Bridge first.
+        // If pass-through is allowed, use it.
+        if (providers.contains(PASSTHROUGH)) {
+            return PASSTHROUGH;
+        }
+
+        // Check for Pixel Bridge.
         if (providers.contains(PIXEL_BRIDGE)) {
             int flags = providerInfos.get(providers.indexOf(PIXEL_BRIDGE)).flags;
             if ((flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
