@@ -60,7 +60,6 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
 
         setSummary(accessGranted && isEnabled(context));
         setFragment(accessGranted ? null : UsageAccessConfirmation.class.getName());
-        setChecked(accessGranted && isEnabled(context));
     }
 
     @Override
@@ -69,6 +68,7 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
     }
 
     private void setSummary(boolean isEnabled) {
+        setChecked(isEnabled);
         setSummary(isEnabled
                     ? R.string.predictions_on
                     : R.string.predictions_off);
