@@ -21,6 +21,8 @@
     <string name="category_general" translatable="false">General</string>
     <string name="category_customization" translatable="false">Customization</string>
     <string name="category_about" translatable="false">About</string>
+    <string name="dock_search" translatable="false">Search widget</string>
+    <string name="dock_search_value" translatable="false">%1$s %2$s</string>
     <string name="about_app_version" translatable="false">Version</string>
     <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
     <string name="about_contact" translatable="false">Contact</string>

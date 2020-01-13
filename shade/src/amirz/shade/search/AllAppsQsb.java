@@ -1,9 +1,12 @@
 package amirz.shade.search;
 
+import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
+import android.os.Bundle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
 import android.text.method.TextKeyListener;
@@ -21,17 +24,20 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
-import com.android.launcher3.allapps.FloatingHeaderView;
 import com.android.launcher3.allapps.SearchUiManager;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.anim.PropertySetter;
 import com.android.launcher3.qsb.QsbContainerView;
+import com.android.launcher3.qsb.QsbWidgetHostView;
 import com.android.launcher3.util.ComponentKey;
 
 import java.util.ArrayList;
 
+import amirz.shade.customization.DockSearch;
+
+import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
@@ -59,10 +65,67 @@ public class AllAppsQsb extends QsbContainerView
 
     private boolean mSearchRequested;
 
-    public static class HotseatQsbFragment extends QsbFragment {
+    public static class HotseatQsbFragment extends QsbFragment
+            implements SharedPreferences.OnSharedPreferenceChangeListener {
+        private boolean mReinflateRequired;
+
+        @Override
+        public void onInit(Bundle savedInstanceState) {
+            super.onInit(savedInstanceState);
+            Utilities.getPrefs(getActivity()).registerOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            mReinflateRequired = false;
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (KEY_DOCK_SEARCH.equals(key)) {
+                mReinflateRequired = true;
+            }
+        }
+
+        @Override
+        public void onDestroy() {
+            Utilities.getPrefs(getActivity()).unregisterOnSharedPreferenceChangeListener(this);
+            super.onDestroy();
+        }
+
         @Override
         public boolean isQsbEnabled() {
             return true;
+        }
+
+        private boolean isReinflateRequired() {
+            return mReinflateRequired;
+        }
+
+        @Override
+        protected QsbWidgetHost createHost() {
+            return new QsbWidgetHost(getContext(), QSB_WIDGET_HOST_ID,
+                    (c) -> new HotseatQsbWidgetHostView(c, this));
+        }
+
+        @Override
+        protected AppWidgetProviderInfo getSearchWidgetProvider() {
+            AppWidgetProviderInfo info = DockSearch.getWidgetInfo(getContext());
+            return info == null ? super.getSearchWidgetProvider() : info;
+        }
+    }
+
+    public static class HotseatQsbWidgetHostView extends QsbWidgetHostView {
+        private final HotseatQsbFragment mFragment;
+
+        public HotseatQsbWidgetHostView(Context context, HotseatQsbFragment fragment) {
+            super(context);
+            mFragment = fragment;
+        }
+
+        public boolean isReinflateRequired(int orientation) {
+            return super.isReinflateRequired(orientation) || mFragment.isReinflateRequired();
         }
     }
 

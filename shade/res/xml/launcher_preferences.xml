@@ -72,6 +72,13 @@
             android:defaultValue=""
             android:persistent="true" />
 
+        <amirz.shade.settings.ReloadingListPreference
+            android:key="pref_dock_search"
+            android:title="@string/dock_search"
+            android:summary="%s"
+            android:defaultValue=""
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="category_general"

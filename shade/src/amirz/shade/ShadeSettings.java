@@ -14,9 +14,12 @@ import com.android.launcher3.R;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
+import amirz.shade.settings.DockSearchPrefSetter;
 import amirz.shade.settings.IconPackPrefSetter;
 import amirz.shade.settings.ReloadingListPreference;
 import amirz.shade.util.AppReloader;
+
+import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 
 public class ShadeSettings extends SettingsActivity {
     public interface OnResumePreferenceCallback {
@@ -30,6 +33,7 @@ public class ShadeSettings extends SettingsActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @SuppressWarnings("unused")
     public static class ShadeSettingsFragment extends LauncherSettingsFragment {
         private static final String KEY_ICON_PACK = "pref_icon_pack";
         private static final String KEY_APP_VERSION = "pref_app_version";
@@ -39,6 +43,8 @@ public class ShadeSettings extends SettingsActivity {
             super.onCreatePreferences(savedInstanceState, rootKey);
 
             final Context context = getActivity();
+
+            // Customization
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
             icons.setOnReloadListener(new IconPackPrefSetter(context));
             icons.setOnPreferenceChangeListener((pref, val) -> {
@@ -48,6 +54,11 @@ public class ShadeSettings extends SettingsActivity {
                 return true;
             });
 
+            ReloadingListPreference search =
+                    (ReloadingListPreference) findPreference(KEY_DOCK_SEARCH);
+            search.setOnReloadListener(new DockSearchPrefSetter(context));
+
+            // About
             String versionName = BuildConfig.VERSION_NAME;
             try {
                 PackageManager pm = context.getPackageManager();
