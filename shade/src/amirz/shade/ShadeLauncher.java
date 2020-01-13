@@ -24,6 +24,7 @@ public class ShadeLauncher extends Launcher {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ShadeRestarter.cancelRestart(this);
         ShadeFont.override(this);
         super.onCreate(savedInstanceState);
     }
