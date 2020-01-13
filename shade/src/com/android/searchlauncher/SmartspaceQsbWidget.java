@@ -47,7 +47,7 @@ public class SmartspaceQsbWidget extends QsbContainerView {
         protected QsbContainerView.QsbWidgetHost createHost() {
             mQsbWidgetHost = new QsbContainerView.QsbWidgetHost(getContext(),
                     SMART_SPACE_WIDGET_HOST_ID,
-                    SmartSpaceHostView::new);
+                    SmartspaceHostView::new);
             return mQsbWidgetHost;
         }
 

@@ -21,15 +21,17 @@ import java.util.Collections;
 
 import static android.view.MotionEvent.*;
 
-public class SmartSpaceHostView extends QsbWidgetHostView implements View.OnLongClickListener, BaseDragLayer.TouchCompleteListener {
-    private static final String SETTINGS_INTENT_ACTION = "com.google.android.apps.gsa.smartspace.SETTINGS";
+public class SmartspaceHostView extends QsbWidgetHostView implements View.OnLongClickListener,
+        BaseDragLayer.TouchCompleteListener {
+    private static final String SETTINGS_INTENT_ACTION
+            = "com.google.android.apps.gsa.smartspace.SETTINGS";
     private static final int SETTINGS_SMARTSPACE = -1;
 
     private final Launcher mLauncher;
     private final CheckLongPressHelper mLongPressHelper = new CheckLongPressHelper(this, this);
     private final float mSlop = ((float) ViewConfiguration.get(getContext()).getScaledTouchSlop());
 
-    public SmartSpaceHostView(Context context) {
+    public SmartspaceHostView(Context context) {
         super(context);
         mLauncher = Launcher.getLauncher(context);
     }
