@@ -22,11 +22,13 @@
         <item name="android:colorPrimaryDark">#E8EAED</item>
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondary</item>
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
     </style>
     <style name="WidgetContainerTheme.Dark" parent="AppTheme.Dark">
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondary</item>
         <item name="android:colorPrimaryDark">#616161</item> <!-- Gray 700 -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
     </style>
 
 </resources>

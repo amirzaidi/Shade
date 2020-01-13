@@ -4,18 +4,21 @@
     <style name="AppTheme" parent="@style/LauncherTheme">
         <!-- Default Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.DarkMainColor" parent="@style/LauncherTheme.DarkMainColor">
         <!-- Dark Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
         <!-- Light Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
@@ -23,18 +26,21 @@
     <style name="AppTheme.Dark" parent="@style/LauncherTheme.Dark">
         <!-- Default Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
         <!-- Dark Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
         <!-- Light Wallpaper -->
         <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
 
@@ -57,7 +63,7 @@
     <!-- Theme for the settings activity. -->
     <style name="Shade.SettingsTheme" parent="android:Theme.DeviceDefault.Settings">
         <item name="android:colorAccent">@color/colorPixel</item>
-        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
+        <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Auto</item>
         <item name="android:textViewStyle">@style/Shade.SettingsTheme.TextView</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
     </style>
@@ -66,17 +72,34 @@
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
 
+    <style name="Shade.SettingsTheme.DialogAlert.Light" parent="android:Theme.DeviceDefault.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <!-- Overridden in values-night. -->
+    <style name="Shade.SettingsTheme.DialogAlert.Auto" parent="Shade.SettingsTheme.DialogAlert.Light" />
+
     <style name="Shade.SettingsTheme.TextView" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <!-- Theme for the individual preferences in settings fragments. -->
     <style name="Shade.PreferenceTheme" parent="PreferenceThemeOverlay">
         <item name="android:textAppearanceListItem">@android:style/TextAppearance.Material.Subhead</item>
     </style>
 
     <!-- Theme for the Add To Home screen popup in Chrome. -->
-    <style name="AppItemActivityTheme" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+    <style name="AppItemActivityTheme" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="widgetsTheme">@style/WidgetContainerTheme</item>
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <!-- Various popups -->
+    <style name="Shade.DialogAlert" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="Shade.DialogAlert.Light" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
 </resources>
