@@ -13,6 +13,7 @@ import android.text.method.TextKeyListener;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
 import com.android.launcher3.DeviceProfile;
@@ -182,6 +183,8 @@ public class AllAppsQsb extends QsbContainerView
                         mFallbackSearchView.getHint()));
     }
 
+    private final int[] currentPadding = new int[2];
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -206,8 +209,29 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView.measure(makeMeasureSpec(myWidth, EXACTLY),
                 makeMeasureSpec(myRequestedHeight - widgetPad, EXACTLY));
 
+        currentPadding[0] = 0;
+        currentPadding[1] = 0;
+        calcPaddingRecursive(mSearchWrapperView, 2);
+
+        mSearchWrapperView.setPadding(
+                mSearchWrapperView.getPaddingLeft() + widgetPad - currentPadding[0],
+                mSearchWrapperView.getPaddingTop(),
+                mSearchWrapperView.getPaddingRight() + widgetPad - currentPadding[1],
+                mSearchWrapperView.getPaddingBottom());
+
         mSearchWrapperView.measure(makeMeasureSpec(myWidth + 2 * widgetPad, EXACTLY),
                 makeMeasureSpec(myRequestedHeight, EXACTLY));
+    }
+
+    private void calcPaddingRecursive(View view, int lvl) {
+        currentPadding[0] += view.getPaddingLeft();
+        currentPadding[1] += view.getPaddingRight();
+        if (view instanceof ViewGroup && lvl > 0) {
+            ViewGroup group = (ViewGroup) view;
+            if (group.getChildCount() == 1) {
+                calcPaddingRecursive(group.getChildAt(0), lvl - 1);
+            }
+        }
     }
 
     @Override
