@@ -17,8 +17,11 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class LauncherClientIntent {
     private final static String PASSTHROUGH = "com.google.android.googlequicksearchbox";
-    private final static String BRIDGE = "amirz.aidlbridge";
-    private final static String DEFAULT = BuildConfig.DEBUG ? PASSTHROUGH : BRIDGE;
+    private final static String AIDL_BRIDGE = "amirz.shade.aidlbridge";
+    private final static String PIXEL_BRIDGE = "com.google.android.apps.nexuslauncher";
+
+    private final static String DEFAULT = BuildConfig.DEBUG ? PASSTHROUGH : AIDL_BRIDGE;
+
     private static String sPkg;
 
     public static String getPackage() {
@@ -27,6 +30,36 @@ public class LauncherClientIntent {
 
     public static void setPackage(String pkg) {
         sPkg = pkg;
+    }
+
+    public static String getRecommendedPackage(Context context) {
+        List<ApplicationInfo> providerInfos = LauncherClientIntent.query(context);
+        List<String> providers = new ArrayList<>();
+        for (ApplicationInfo provider : providerInfos) {
+            if (provider.packageName.equals(PASSTHROUGH)) {
+                if (BuildConfig.DEBUG) {
+                    return PASSTHROUGH;
+                }
+            } else {
+                providers.add(provider.packageName);
+            }
+        }
+
+        // Check for Pixel Bridge first.
+        if (providers.contains(PIXEL_BRIDGE)) {
+            int flags = providerInfos.get(providers.indexOf(PIXEL_BRIDGE)).flags;
+            if ((flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+                return PIXEL_BRIDGE;
+            }
+        }
+
+        // Check for AIDL Bridge alternatively.
+        if (providers.contains(AIDL_BRIDGE)) {
+            return AIDL_BRIDGE;
+        }
+
+        // Return the first option available.
+        return providers.isEmpty() ? null : providers.get(0);
     }
 
     public static List<ApplicationInfo> query(Context context) {
