@@ -79,6 +79,15 @@
             android:defaultValue=""
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="pref_override_font"
+            android:title="@string/override_font"
+            android:summary="@string/override_font_desc"
+            android:defaultValue="true"
+            android:persistent="true">
+
+        </SwitchPreference>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="category_general"

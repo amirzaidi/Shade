@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 
 import amirz.shade.search.AllAppsQsb;
 
+import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
@@ -60,6 +61,8 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (KEY_ENABLE_MINUS_ONE.equals(key)) {
             mLauncherClient.setClientOptions(getClientOptions(prefs));
+        } else if (KEY_OVERRIDE_FONT.equals(key)) {
+            mLauncher.kill();
         }
     }
 
