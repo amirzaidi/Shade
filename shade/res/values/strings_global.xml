@@ -18,11 +18,14 @@
     <string name="app_info_version" translatable="false">Version</string>
     <string name="app_info_more" translatable="false">More</string>
     <string name="pref_value_default" translatable="false">Default</string>
+    <string name="pref_value_disabled" translatable="false">Disabled</string>
     <string name="category_general" translatable="false">General</string>
     <string name="category_customization" translatable="false">Customization</string>
     <string name="category_about" translatable="false">About</string>
     <string name="dock_search" translatable="false">Search widget</string>
     <string name="dock_search_value" translatable="false">%1$s %2$s</string>
+    <string name="feed_provider" translatable="false">Feed provider</string>
+    <string name="feed_provider_value" translatable="false">%1$s %2$s</string>
     <string name="override_font" translatable="false">Google Sans</string>
     <string name="override_font_desc" translatable="false">Override device font</string>
     <string name="about_app_version" translatable="false">Version</string>

@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.LauncherCallbacks;
-import com.android.launcher3.LauncherState;
 import com.android.launcher3.Utilities;
-import com.android.launcher3.allapps.search.AppsSearchContainerLayout;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 
 import java.io.FileDescriptor;
@@ -27,6 +26,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         SharedPreferences.OnSharedPreferenceChangeListener,
         DeviceProfile.OnDeviceProfileChangeListener {
     public static final String KEY_ENABLE_MINUS_ONE = "pref_enable_minus_one";
+    public static final String KEY_FEED_PROVIDER = "pref_feed_provider";
 
     private final ShadeLauncher mLauncher;
 
@@ -44,11 +44,19 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onCreate(Bundle savedInstanceState) {
         SharedPreferences prefs = Utilities.getPrefs(mLauncher);
         mOverlayCallbacks = new ShadeLauncherOverlay(mLauncher);
-        LauncherClientIntent.setPackage(LauncherClientIntent.getRecommendedPackage(mLauncher));
+        LauncherClientIntent.setPackage(getRecommendedFeedPackage());
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
         mOverlayCallbacks.setClient(mLauncherClient);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
+    }
+
+    private String getRecommendedFeedPackage() {
+        String recommended = LauncherClientIntent.getRecommendedPackage(mLauncher);
+        String override = Utilities.getPrefs(mLauncher).getString(KEY_FEED_PROVIDER, recommended);
+        return TextUtils.isEmpty(override)
+                ? recommended
+                : override;
     }
 
     public void deferCallbacksUntilNextResumeOrStop() {
@@ -65,6 +73,11 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             mLauncherClient.setClientOptions(getClientOptions(prefs));
         } else if (KEY_OVERRIDE_FONT.equals(key)) {
             mLauncher.kill();
+        } else if (KEY_FEED_PROVIDER.equals(key)) {
+            // If the launcher should reconnect to a different package, restart it.
+            if (!LauncherClientIntent.getPackage().equals(getRecommendedFeedPackage())) {
+                mLauncher.kill();
+            }
         }
     }
 

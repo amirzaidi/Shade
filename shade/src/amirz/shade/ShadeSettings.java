@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
@@ -12,14 +13,18 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
 import amirz.shade.settings.DockSearchPrefSetter;
+import amirz.shade.settings.FeedProviderPrefSetter;
 import amirz.shade.settings.IconPackPrefSetter;
 import amirz.shade.settings.ReloadingListPreference;
 import amirz.shade.util.AppReloader;
 
+import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
+import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 
 public class ShadeSettings extends SettingsActivity {
@@ -67,6 +72,16 @@ public class ShadeSettings extends SettingsActivity {
             ReloadingListPreference search =
                     (ReloadingListPreference) findPreference(KEY_DOCK_SEARCH);
             search.setOnReloadListener(new DockSearchPrefSetter(context));
+
+            ReloadingListPreference feed =
+                    (ReloadingListPreference) findPreference(KEY_FEED_PROVIDER);
+            feed.setOnReloadListener(new FeedProviderPrefSetter(context));
+            feed.setOnPreferenceChangeListener((pref, val) -> {
+                Utilities.getPrefs(context).edit()
+                        .putBoolean(KEY_ENABLE_MINUS_ONE, !TextUtils.isEmpty((String) val))
+                        .apply();
+                return true;
+            });
 
             // About
             String versionName = BuildConfig.VERSION_NAME;
