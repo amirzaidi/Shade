@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
@@ -135,7 +136,10 @@ public class SmartSpaceHostView extends QsbWidgetHostView implements View.OnLong
     }
 
     private boolean openSettings(View v) {
-        v.getContext().startActivity(createSettingsIntent());
+        Launcher launcher = Launcher.getLauncher(v.getContext());
+        Bundle opts = launcher.getAppTransitionManager()
+                .getActivityLaunchOptions(launcher, v).toBundle();
+        launcher.startActivity(createSettingsIntent(), opts);
         return true;
     }
 
