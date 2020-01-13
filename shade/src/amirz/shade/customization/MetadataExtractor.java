@@ -64,10 +64,9 @@ class MetadataExtractor {
     }
 
     String getVersionName() {
-        if (TextUtils.isEmpty(mVersionName)) {
-            return mContext.getString(R.string.app_info_source_unknown);
-        }
-        return mVersionName;
+        return TextUtils.isEmpty(mVersionName)
+                ? mContext.getString(R.string.app_info_source_unknown)
+                : mVersionName;
     }
 
     long getVersionCode() {
