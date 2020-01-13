@@ -16,6 +16,7 @@ import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
+import amirz.aidlbridge.LauncherClientIntent;
 import amirz.shade.search.AllAppsQsb;
 
 import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
@@ -43,6 +44,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onCreate(Bundle savedInstanceState) {
         SharedPreferences prefs = Utilities.getPrefs(mLauncher);
         mOverlayCallbacks = new ShadeLauncherOverlay(mLauncher);
+        LauncherClientIntent.setPackage(LauncherClientIntent.getRecommendedPackage(mLauncher));
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
         mOverlayCallbacks.setClient(mLauncherClient);
         prefs.registerOnSharedPreferenceChangeListener(this);
