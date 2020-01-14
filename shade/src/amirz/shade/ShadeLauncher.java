@@ -6,14 +6,14 @@ import com.android.launcher3.Launcher;
 
 public class ShadeLauncher extends Launcher {
     private enum State {
-        STOPPED,
+        PAUSED,
         RECREATE_DEFERRED,
         KILL_DEFERRED,
-        STARTED
+        RESUMED
     }
 
     private final ShadeLauncherCallbacks mCallbacks;
-    private State mState = State.STOPPED;
+    private State mState = State.PAUSED;
 
     public ShadeLauncher() {
         super();
@@ -30,19 +30,19 @@ public class ShadeLauncher extends Launcher {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         if (mState == State.KILL_DEFERRED) {
             ShadeRestarter.initiateRestart(this);
         } else if (mState == State.RECREATE_DEFERRED) {
             super.recreate();
         }
-        mState = State.STARTED;
+        mState = State.RESUMED;
     }
 
     @Override
     public void recreate() {
-        if (mState == State.STARTED) {
+        if (mState == State.RESUMED) {
             super.recreate();
         } else if (mState != State.KILL_DEFERRED) {
             mState = State.RECREATE_DEFERRED;
@@ -50,7 +50,7 @@ public class ShadeLauncher extends Launcher {
     }
 
     public void kill() {
-        if (mState == State.STARTED) {
+        if (mState == State.RESUMED) {
             ShadeRestarter.initiateRestart(this);
         } else {
             mState = State.KILL_DEFERRED;
@@ -58,9 +58,9 @@ public class ShadeLauncher extends Launcher {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        mState = State.STOPPED;
+    public void onPause() {
+        super.onPause();
+        mState = State.PAUSED;
     }
 
     public ShadeLauncherCallbacks getCallbacks() {
