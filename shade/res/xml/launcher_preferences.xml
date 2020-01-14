@@ -97,7 +97,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="category_general"
+    <PreferenceCategory android:key="category_about"
         android:title="@string/category_about">
 
         <Preference
