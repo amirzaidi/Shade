@@ -4,6 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.launcher3.Utilities;
 
@@ -38,6 +42,29 @@ public class ShadeFont {
             staticField.set(null, newMap);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void overrideView(Context context, View v) {
+        if (!isOverrideEnabled(context)) {
+            return;
+        }
+
+        AssetManager assets = context.getAssets();
+        Typeface regular = Typeface.createFromAsset(assets, "google_sans_regular.ttf");
+        overrideView(regular, v);
+    }
+
+    private static void overrideView(Typeface tf, View v) {
+        if (v instanceof TextView) {
+            TextView tv = (TextView) v;
+            tv.setTypeface(tf);
+        }
+        if (v instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) v;
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                overrideView(tf, vg.getChildAt(i));
+            }
         }
     }
 
