@@ -17,7 +17,7 @@ public class ShadeFont {
     @SuppressWarnings("JavaReflectionMemberAccess")
     @SuppressLint("InflateParams")
     public static void override(Context context) {
-        if (!Utilities.getPrefs(context).getBoolean(KEY_OVERRIDE_FONT, true)) {
+        if (!isOverrideEnabled(context)) {
             // Disabled in Home settings.
             return;
         }
@@ -39,5 +39,9 @@ public class ShadeFont {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean isOverrideEnabled(Context context) {
+        return Utilities.getPrefs(context).getBoolean(KEY_OVERRIDE_FONT, true);
     }
 }

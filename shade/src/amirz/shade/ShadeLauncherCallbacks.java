@@ -33,6 +33,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
     private boolean mDeferCallbacks;
+    private boolean mFontOverrideEnabled;
 
     private boolean mNoFloatingView;
 
@@ -47,6 +48,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         LauncherClientIntent.setPackage(getRecommendedFeedPackage());
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
         mOverlayCallbacks.setClient(mLauncherClient);
+        mFontOverrideEnabled = ShadeFont.isOverrideEnabled(mLauncher);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
     }
@@ -72,7 +74,10 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         if (KEY_ENABLE_MINUS_ONE.equals(key)) {
             mLauncherClient.setClientOptions(getClientOptions(prefs));
         } else if (KEY_OVERRIDE_FONT.equals(key)) {
-            mLauncher.kill();
+            // If the font toggle changed, restart the launcher.
+            if (ShadeFont.isOverrideEnabled(mLauncher) != mFontOverrideEnabled) {
+                mLauncher.kill();
+            }
         } else if (KEY_FEED_PROVIDER.equals(key)) {
             // If the launcher should reconnect to a different package, restart it.
             if (!LauncherClientIntent.getPackage().equals(getRecommendedFeedPackage())) {
