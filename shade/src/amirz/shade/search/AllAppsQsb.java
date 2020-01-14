@@ -170,7 +170,7 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mFallbackSearchView.setVisibility(View.INVISIBLE);
 
-        if (Utilities.ATLEAST_P) {
+        if (Utilities.ATLEAST_Q) {
             // The corners should be 3x as curved as the dialog curve.
             RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
             GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
