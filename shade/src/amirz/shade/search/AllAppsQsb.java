@@ -359,8 +359,7 @@ public class AllAppsQsb extends QsbContainerView
 
     public boolean tryClearSearch() {
         if (mFallbackSearchView.length() > 0) {
-            mFallbackSearchView.setText("");
-            mSearchBarController.refreshSearchResult();
+            mAppsView.reset(true);
             mAppsView.requestFocus();
             return true;
         }
