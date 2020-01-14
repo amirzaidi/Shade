@@ -77,6 +77,10 @@ public class PersonalWorkSlidingTabStrip extends LinearLayout implements PageInd
         mIsRtl = Utilities.isRtl(getResources());
     }
 
+    public void resetIndicatorPosition() {
+        updateIndicatorPosition(0f);
+    }
+
     private void updateIndicatorPosition(float scrollOffset) {
         mScrollOffset = scrollOffset;
         updateIndicatorPosition();
