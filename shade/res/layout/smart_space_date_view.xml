@@ -19,11 +19,11 @@
         android:maxLines="1"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:shadowColor="#dd000000"
+        android:shadowColor="?attr/smartspaceTextShadowColor"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="9"
-        android:textColor="#ffffff"
+        android:textColor="?attr/workspaceTextColor"
         android:textSize="24sp" />
 
 </FrameLayout>

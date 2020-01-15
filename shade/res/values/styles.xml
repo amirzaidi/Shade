@@ -6,6 +6,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
     </style>
 
     <style name="AppTheme.DarkMainColor" parent="@style/LauncherTheme.DarkMainColor">
@@ -13,6 +14,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
     </style>
 
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
@@ -20,6 +22,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@android:color/transparent</item>
     </style>
 
     <!-- Dark Theme -->
@@ -28,6 +31,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
     </style>
 
     <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
@@ -35,6 +39,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
@@ -42,6 +47,7 @@
         <item name="android:colorAccent">@color/colorPixel</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
+        <item name="smartspaceTextShadowColor">@android:color/transparent</item>
     </style>
 
     <!-- Theme for the widget container. Overridden on API 26. -->
@@ -101,5 +107,15 @@
 
     <style name="Shade.DialogAlert.Light" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="SmartspaceTextTitle">
+        <item name="android:textColor">?attr/workspaceTextColor</item>
+        <item name="android:letterSpacing">@dimen/smartspaceLetterSpacing</item>
+        <item name="ambientShadowBlur">@dimen/smartspaceAmbientShadowBlur</item>
+        <item name="ambientShadowColor">?attr/workspaceAmbientShadowColor</item>
+        <item name="keyShadowBlur">@dimen/smartspaceKeyShadowBlur</item>
+        <item name="keyShadowColor">?attr/workspaceKeyShadowColor</item>
+        <item name="keyShadowOffset">@dimen/smartspaceKeyShadowOffset</item>
     </style>
 </resources>

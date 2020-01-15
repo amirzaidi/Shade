@@ -5,11 +5,16 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.util.Themes;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -45,27 +50,10 @@ public class ShadeFont {
         }
     }
 
-    public static void overrideView(Context context, View v) {
-        if (!isOverrideEnabled(context)) {
-            return;
-        }
-
-        AssetManager assets = context.getAssets();
-        Typeface regular = Typeface.createFromAsset(assets, "google_sans_regular.ttf");
-        overrideView(regular, v);
-    }
-
-    private static void overrideView(Typeface tf, View v) {
-        if (v instanceof TextView) {
-            TextView tv = (TextView) v;
-            tv.setTypeface(tf);
-        }
-        if (v instanceof ViewGroup) {
-            ViewGroup vg = (ViewGroup) v;
-            for (int i = 0; i < vg.getChildCount(); i++) {
-                overrideView(tf, vg.getChildAt(i));
-            }
-        }
+    public static Typeface getTypeface(Context context) {
+        return isOverrideEnabled(context)
+                ? Typeface.createFromAsset(context.getAssets(), "google_sans_regular.ttf")
+                : null;
     }
 
     public static boolean isOverrideEnabled(Context context) {

@@ -19,4 +19,6 @@
     <color name="color_secondary_text_default_material_dark">#b3ffffff</color>
 
     <color name="search_ripple">#0D888888</color>
+
+    <color name="smartspace_text_shadow_color">#dd000000</color>
 </resources>

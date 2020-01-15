@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.android.launcher3.R;
 import com.android.launcher3.qsb.QsbContainerView;
 
+import amirz.shade.views.ThemedSmartspaceHostView;
+
 import static android.appwidget.AppWidgetManager.ACTION_APPWIDGET_BIND;
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_PROVIDER;
@@ -47,7 +49,7 @@ public class SmartspaceQsbWidget extends QsbContainerView {
         protected QsbContainerView.QsbWidgetHost createHost() {
             mQsbWidgetHost = new QsbContainerView.QsbWidgetHost(getContext(),
                     SMART_SPACE_WIDGET_HOST_ID,
-                    SmartspaceHostView::new);
+                    ThemedSmartspaceHostView::new);
             return mQsbWidgetHost;
         }
 

@@ -18,4 +18,11 @@
     <dimen name="bg_round_rect_radius">24dp</dimen>
 
     <dimen name="work_footer_side_padding">0dp</dimen>
+
+    <!-- Smartspace improvements -->
+    <dimen name="smartspaceLetterSpacing">0.02</dimen>
+    <dimen name="smartspaceAmbientShadowBlur">1.5dp</dimen>
+    <dimen name="smartspaceKeyShadowBlur">2dp</dimen>
+    <dimen name="smartspaceKeyShadowOffset">0.5dp</dimen>
+    <dimen name="smartspaceDivider">1dp</dimen>
 </resources>

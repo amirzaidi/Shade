@@ -10,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.widget.RemoteViews;
 
 import com.android.launcher3.CheckLongPressHelper;
 import com.android.launcher3.Launcher;
@@ -19,11 +18,13 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.qsb.QsbWidgetHostView;
 import com.android.launcher3.views.BaseDragLayer;
 import com.android.launcher3.views.OptionsPopupView;
+
 import java.util.Collections;
 
-import amirz.shade.ShadeFont;
-
-import static android.view.MotionEvent.*;
+import static android.view.MotionEvent.ACTION_CANCEL;
+import static android.view.MotionEvent.ACTION_DOWN;
+import static android.view.MotionEvent.ACTION_MOVE;
+import static android.view.MotionEvent.ACTION_UP;
 
 public class SmartspaceHostView extends QsbWidgetHostView implements View.OnLongClickListener,
         BaseDragLayer.TouchCompleteListener {
@@ -38,12 +39,6 @@ public class SmartspaceHostView extends QsbWidgetHostView implements View.OnLong
     public SmartspaceHostView(Context context) {
         super(context);
         mLauncher = Launcher.getLauncher(context);
-    }
-
-    @Override
-    public void updateAppWidget(RemoteViews remoteViews) {
-        super.updateAppWidget(remoteViews);
-        ShadeFont.overrideView(getContext(), this);
     }
 
     @Override
