@@ -65,6 +65,7 @@ public class AllAppsQsb extends QsbContainerView
     private ExtendedEditText mFallbackSearchView;
 
     private boolean mSearchRequested;
+    private final int[] currentPadding = new int[2];
 
     public static class HotseatQsbFragment extends QsbFragment
             implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -182,8 +183,6 @@ public class AllAppsQsb extends QsbContainerView
                         R.drawable.ic_allapps_search,
                         mFallbackSearchView.getHint()));
     }
-
-    private final int[] currentPadding = new int[2];
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
