@@ -16,9 +16,11 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
 import amirz.aidlbridge.LauncherClientIntent;
+import amirz.shade.animations.TransitionManager;
 import amirz.shade.search.AllAppsQsb;
 
 import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
+import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 
@@ -83,6 +85,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             if (!LauncherClientIntent.getPackage().equals(getRecommendedFeedPackage())) {
                 mLauncher.kill();
             }
+        } else if (KEY_FADING_TRANSITION.equals(key)) {
+            TransitionManager transitions = (TransitionManager) mLauncher.getAppTransitionManager();
+            transitions.applyWindowPreference(mLauncher);
         }
     }
 
@@ -113,6 +118,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         if (!mDeferCallbacks) {
             mLauncherClient.onStart();
         }
+
+        TransitionManager transitions = (TransitionManager) mLauncher.getAppTransitionManager();
+        transitions.applyWindowPreference(mLauncher);
     }
 
     @Override

@@ -87,6 +87,13 @@
             android:persistent="true" />
 
         <SwitchPreference
+            android:key="pref_transition"
+            android:title="@string/fading_transition"
+            android:summary="@string/fading_transition_desc"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <SwitchPreference
             android:key="pref_override_font"
             android:title="@string/override_font"
             android:summary="@string/override_font_desc"

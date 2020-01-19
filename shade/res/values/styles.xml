@@ -109,6 +109,18 @@
         <item name="android:colorAccent">@color/colorPixel</item>
     </style>
 
+    <!-- Fading transition -->
+    <style name="ShadeAnimations" parent="android:Animation.Activity">
+        <item name="android:taskToFrontEnterAnimation">@anim/enter_launcher</item>
+        <item name="android:taskToFrontExitAnimation">@anim/exit_app</item>
+        <item name="android:taskToBackEnterAnimation">@anim/enter_app</item>
+        <item name="android:taskToBackExitAnimation">@anim/exit_launcher</item>
+        <item name="android:wallpaperOpenEnterAnimation">@anim/enter_launcher</item>
+        <item name="android:wallpaperOpenExitAnimation">@anim/exit_app</item>
+        <item name="android:wallpaperCloseEnterAnimation">@anim/enter_app</item>
+        <item name="android:wallpaperCloseExitAnimation">@anim/exit_launcher</item>
+    </style>
+
     <style name="SmartspaceTextTitle">
         <item name="android:textColor">?attr/workspaceTextColor</item>
         <item name="android:letterSpacing">@dimen/smartspaceLetterSpacing</item>
