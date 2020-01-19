@@ -44,6 +44,6 @@ public class OverviewState extends LauncherState {
 
     @Override
     public float getOverviewScrimAlpha(Launcher launcher) {
-        return 1;
+        return 0.5f;
     }
 }
