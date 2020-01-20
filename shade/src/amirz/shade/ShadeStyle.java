@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
-import com.android.launcher3.settings.SettingsActivity;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,16 +23,9 @@ public class ShadeStyle {
     }
 
     public static void override(Activity activity) {
-        int override = R.style.ShadeOverride;
-        if (activity instanceof SettingsActivity) {
-            override = R.style.ShadeOverride_Shade;
-        } else {
-            String theme = Utilities.getPrefs(activity).getString(KEY_THEME, "");
-            if (sThemes.containsKey(theme)) {
-                //noinspection ConstantConditions
-                override = sThemes.get(theme);
-            }
-        }
+        String theme = Utilities.getPrefs(activity).getString(KEY_THEME, "");
+        //noinspection ConstantConditions
+        int override = sThemes.getOrDefault(theme, R.style.ShadeOverride);
         activity.getTheme().applyStyle(override, true);
     }
 }

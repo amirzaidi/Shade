@@ -21,7 +21,7 @@
 
     <style name="AppItemActivityTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog.Alert">
         <item name="widgetsTheme">@style/WidgetContainerTheme</item>
-        <item name="android:colorAccent">@color/colorPixel</item>
+        <item name="android:colorAccent">?shadeColorAccent</item>
     </style>
 
 </resources>

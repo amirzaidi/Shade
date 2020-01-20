@@ -1,6 +1,8 @@
 package amirz.shade;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -25,6 +27,7 @@ import amirz.shade.util.AppReloader;
 
 import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
+import static amirz.shade.ShadeStyle.KEY_THEME;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 
 public class  ShadeSettings extends SettingsActivity {
@@ -67,6 +70,13 @@ public class  ShadeSettings extends SettingsActivity {
                 IconDatabase.clearAll(context);
                 IconDatabase.setGlobal(context, (String) val);
                 AppReloader.get(context).reload();
+                return true;
+            });
+
+            findPreference(KEY_THEME).setOnPreferenceChangeListener((pref, val) -> {
+                startActivity(getActivity().getIntent()
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP),
+                        ActivityOptions.makeCustomAnimation(context, 0, 0).toBundle());
                 return true;
             });
 
