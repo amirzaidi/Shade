@@ -3,6 +3,7 @@ package amirz.shade;
 import android.os.Bundle;
 
 import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
 
 public class ShadeLauncher extends Launcher {
     private enum State {
@@ -26,6 +27,7 @@ public class ShadeLauncher extends Launcher {
     public void onCreate(Bundle savedInstanceState) {
         ShadeRestarter.cancelRestart(this);
         ShadeFont.override(this);
+        ShadeStyle.override(this);
         super.onCreate(savedInstanceState);
     }
 

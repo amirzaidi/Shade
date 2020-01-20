@@ -32,6 +32,20 @@
         <item>@string/icon_shape_teardrop</item>
     </string-array>
 
+    <string-array name="theme_entries">
+        <item>@string/pref_value_default</item>
+        <item>@string/theme_sunset</item>
+        <item>@string/theme_ocean</item>
+        <item>@string/theme_twilight</item>
+    </string-array>
+
+    <string-array translatable="false" name="theme_entry_values">
+        <item>""</item>
+        <item>"sunset"</item>
+        <item>"ocean"</item>
+        <item>"twilight"</item>
+    </string-array>
+
     <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
     <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
 </resources>

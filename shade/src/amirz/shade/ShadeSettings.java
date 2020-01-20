@@ -27,7 +27,7 @@ import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 
-public class ShadeSettings extends SettingsActivity {
+public class  ShadeSettings extends SettingsActivity {
     public interface OnResumePreferenceCallback {
         void onResume();
     }
@@ -35,6 +35,7 @@ public class ShadeSettings extends SettingsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ShadeFont.override(this);
+        ShadeStyle.override(this);
         super.onCreate(savedInstanceState);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }

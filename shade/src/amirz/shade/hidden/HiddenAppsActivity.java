@@ -5,9 +5,12 @@ import android.os.Bundle;
 
 import com.android.launcher3.R;
 
+import amirz.shade.ShadeStyle;
+
 public class HiddenAppsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ShadeStyle.override(this);
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.enter_app, R.anim.exit_launcher);
         setContentView(R.layout.activity_hidden_apps);

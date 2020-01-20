@@ -65,6 +65,15 @@
     <PreferenceCategory android:key="category_customization"
         android:title="@string/category_customization">
 
+        <ListPreference
+            android:key="pref_theme"
+            android:title="@string/theme_title"
+            android:summary="%s"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_entry_values"
+            android:defaultValue=""
+            android:persistent="true" />
+
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_icon_pack"
             android:title="@string/app_info_icon_pack"
