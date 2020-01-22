@@ -140,14 +140,4 @@
         <item name="android:wallpaperCloseEnterAnimation">@anim/enter_app</item>
         <item name="android:wallpaperCloseExitAnimation">@anim/exit_launcher</item>
     </style>
-
-    <style name="SmartspaceTextTitle">
-        <item name="android:textColor">?attr/workspaceTextColor</item>
-        <item name="android:letterSpacing">@dimen/smartspaceLetterSpacing</item>
-        <item name="ambientShadowBlur">@dimen/smartspaceAmbientShadowBlur</item>
-        <item name="ambientShadowColor">?attr/workspaceAmbientShadowColor</item>
-        <item name="keyShadowBlur">@dimen/smartspaceKeyShadowBlur</item>
-        <item name="keyShadowColor">?attr/workspaceKeyShadowColor</item>
-        <item name="keyShadowOffset">@dimen/smartspaceKeyShadowOffset</item>
-    </style>
 </resources>

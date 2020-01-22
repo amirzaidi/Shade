@@ -17,13 +17,14 @@
         android:format24Hour="EEEE, MMM d"
         android:includeFontPadding="false"
         android:maxLines="1"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingLeft="@dimen/text_horizontal_padding"
+        android:paddingRight="@dimen/text_horizontal_padding"
         android:shadowColor="?attr/smartspaceTextShadowColor"
         android:shadowDx="0"
         android:shadowDy="0"
-        android:shadowRadius="9"
+        android:shadowRadius="10"
         android:textColor="?attr/workspaceTextColor"
+        android:letterSpacing="@dimen/smartspaceLetterSpacing"
         android:textSize="24sp" />
 
 </FrameLayout>
