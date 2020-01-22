@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="shadeColorAllAppsOverlay" format="color" />
+    <attr name="shadeColorSearchBar" format="color" />
+    <attr name="shadeColorDarkSearchBar" format="color" />
     <attr name="shadeColorAccent" format="color" />
     <attr name="smartspaceTextShadowColor" format="color" />
 </resources>

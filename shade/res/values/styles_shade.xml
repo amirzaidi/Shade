@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base style that emulates pixel styling. -->
     <style name="ShadeOverride">
         <item name="shadeColorAllAppsOverlay">@android:color/transparent</item>
+        <item name="shadeColorDarkSearchBar">#3C4043</item> <!-- Gray 800 -->
         <item name="shadeColorAccent">@color/colorPixel</item>
     </style>
 
-    <style name="ShadeOverride.Shade">
-        <item name="shadeColorAllAppsOverlay">@android:color/transparent</item>
+    <!-- Shade overrides for a special touch. -->
+    <style name="ShadeOverride.Shade" parent="ShadeOverride">
+        <item name="shadeColorDarkSearchBar">#212121</item> <!-- Gray 900 -->
         <item name="shadeColorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ShadeOverride.Campfire">
+    <!-- Individual accents overriding the Shade base. -->
+    <style name="ShadeOverride.Campfire" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#10FBC02D</item>
         <item name="shadeColorAccent">#D32F2F</item>
     </style>
 
-    <style name="ShadeOverride.Sunset">
+    <style name="ShadeOverride.Sunset" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#10600538</item>
         <item name="shadeColorAccent">#FF8B27</item>
     </style>
 
-    <style name="ShadeOverride.Forest">
+    <style name="ShadeOverride.Forest" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#10689F38</item>
         <item name="shadeColorAccent">#388E3C</item>
     </style>
 
-    <style name="ShadeOverride.Ocean">
+    <style name="ShadeOverride.Ocean" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#102f5fBf</item>
         <item name="shadeColorAccent">#03A9F4</item>
     </style>
 
-    <style name="ShadeOverride.Twilight">
+    <style name="ShadeOverride.Twilight" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#107E57C2</item>
         <item name="shadeColorAccent">#5E35B1</item>
     </style>

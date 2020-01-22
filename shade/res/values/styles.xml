@@ -7,6 +7,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
+        <item name="shadeColorSearchBar">?popupColorPrimary</item>
     </style>
 
     <style name="AppTheme.DarkMainColor" parent="@style/LauncherTheme.DarkMainColor">
@@ -15,6 +16,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
+        <item name="shadeColorSearchBar">?popupColorPrimary</item>
     </style>
 
     <style name="AppTheme.DarkText" parent="@style/LauncherTheme.DarkText">
@@ -23,6 +25,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@android:color/transparent</item>
+        <item name="shadeColorSearchBar">?popupColorPrimary</item>
     </style>
 
     <!-- Dark Theme -->
@@ -32,6 +35,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
+        <item name="shadeColorSearchBar">?shadeColorDarkSearchBar</item>
     </style>
 
     <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
@@ -40,6 +44,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
+        <item name="shadeColorSearchBar">?shadeColorDarkSearchBar</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
@@ -48,6 +53,7 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@android:color/transparent</item>
+        <item name="shadeColorSearchBar">?shadeColorDarkSearchBar</item>
     </style>
 
     <!-- Theme for the widget container. Overridden on API 26. -->

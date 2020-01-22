@@ -14,6 +14,6 @@
      limitations under the License.
 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="?attr/popupColorPrimary" />
+    <solid android:color="?attr/shadeColorSearchBar" />
     <corners android:radius="@dimen/bg_round_rect_radius" />
 </shape>
