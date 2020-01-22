@@ -20,7 +20,7 @@ import amirz.shade.animations.TransitionManager;
 import amirz.shade.search.AllAppsQsb;
 
 import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
-import static amirz.shade.ShadeStyle.KEY_THEME;
+import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;

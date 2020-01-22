@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.android.launcher3.R;
 
-import amirz.shade.ShadeStyle;
+import amirz.shade.customization.ShadeStyle;
 
 public class HiddenAppsActivity extends Activity {
     @Override

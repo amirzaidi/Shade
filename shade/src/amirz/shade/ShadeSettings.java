@@ -19,6 +19,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
+import amirz.shade.customization.ShadeStyle;
 import amirz.shade.settings.DockSearchPrefSetter;
 import amirz.shade.settings.FeedProviderPrefSetter;
 import amirz.shade.settings.IconPackPrefSetter;
@@ -27,7 +28,7 @@ import amirz.shade.util.AppReloader;
 
 import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
-import static amirz.shade.ShadeStyle.KEY_THEME;
+import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 
 public class  ShadeSettings extends SettingsActivity {

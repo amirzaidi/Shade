@@ -50,26 +50,6 @@
         <item name="smartspaceTextShadowColor">@android:color/transparent</item>
     </style>
 
-    <style name="ShadeOverride">
-        <item name="shadeColorAccent">@color/colorPixel</item>
-    </style>
-
-    <style name="ShadeOverride.Shade">
-        <item name="shadeColorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="ShadeOverride.Sunset">
-        <item name="shadeColorAccent">#FF8B27</item>
-    </style>
-
-    <style name="ShadeOverride.Ocean">
-        <item name="shadeColorAccent">#356BD9</item>
-    </style>
-
-    <style name="ShadeOverride.Twilight">
-        <item name="shadeColorAccent">#5E35B1</item>
-    </style>
-
     <!-- Theme for the widget container. Overridden on API 26. -->
     <style name="WidgetContainerTheme" parent="@android:style/Theme.DeviceDefault.Settings">
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondaryInverse</item>

@@ -23,7 +23,9 @@
     <string name="category_customization" translatable="false">Customization</string>
     <string name="category_about" translatable="false">About</string>
     <string name="theme_title" translatable="false">Theme</string>
+    <string name="theme_campfire" translatable="false">Campfire</string>
     <string name="theme_sunset" translatable="false">Sunset</string>
+    <string name="theme_forest" translatable="false">Forest</string>
     <string name="theme_ocean" translatable="false">Ocean</string>
     <string name="theme_twilight" translatable="false">Twilight</string>
     <string name="dock_search" translatable="false">Search widget</string>

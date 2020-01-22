@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShadeOverride">
+        <item name="shadeColorAccent">@color/colorPixel</item>
+    </style>
+
+    <style name="ShadeOverride.Shade">
+        <item name="shadeColorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ShadeOverride.Campfire">
+        <item name="shadeColorAccent">#D32F2F</item>
+    </style>
+
+    <style name="ShadeOverride.Sunset">
+        <item name="shadeColorAccent">#FF8B27</item>
+    </style>
+
+    <style name="ShadeOverride.Forest">
+        <item name="shadeColorAccent">#388E3C</item>
+    </style>
+
+    <style name="ShadeOverride.Ocean">
+        <item name="shadeColorAccent">#03A9F4</item>
+    </style>
+
+    <style name="ShadeOverride.Twilight">
+        <item name="shadeColorAccent">#5E35B1</item>
+    </style>
+</resources>

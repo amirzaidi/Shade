@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.android.launcher3.dragndrop.AddItemActivity;
 
 import amirz.shade.ShadeFont;
-import amirz.shade.ShadeStyle;
+import amirz.shade.customization.ShadeStyle;
 
 public class ShadeAddItemActivity extends AddItemActivity {
     @Override

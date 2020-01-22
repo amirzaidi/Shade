@@ -1,4 +1,4 @@
-package amirz.shade;
+package amirz.shade.customization;
 
 import android.app.Activity;
 
@@ -16,7 +16,9 @@ public class ShadeStyle {
 
     static {
         Map<String, Integer> themes = new HashMap<>();
+        themes.put("campfire", R.style.ShadeOverride_Campfire);
         themes.put("sunset", R.style.ShadeOverride_Sunset);
+        themes.put("forest", R.style.ShadeOverride_Forest);
         themes.put("ocean", R.style.ShadeOverride_Ocean);
         themes.put("twilight", R.style.ShadeOverride_Twilight);
         sThemes = Collections.unmodifiableMap(themes);

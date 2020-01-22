@@ -3,7 +3,8 @@ package amirz.shade;
 import android.os.Bundle;
 
 import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
+
+import amirz.shade.customization.ShadeStyle;
 
 public class ShadeLauncher extends Launcher {
     private enum State {
