@@ -35,7 +35,7 @@
     <string-array name="theme_entries">
         <item>@string/pref_value_default</item>
         <item>@string/theme_campfire</item> <!-- Red -->
-        <item>@string/theme_sunset</item> <!-- Orange/Yellow -->
+        <item>@string/theme_sunset</item> <!-- Yellow -->
         <item>@string/theme_forest</item> <!-- Green -->
         <item>@string/theme_ocean</item> <!-- Blue -->
         <item>@string/theme_twilight</item> <!-- Purple -->
@@ -52,4 +52,6 @@
 
     <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
     <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
+
+    <integer name="shade_all_apps_alpha">0x10</integer>
 </resources>

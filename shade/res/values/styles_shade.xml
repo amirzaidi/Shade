@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="ShadeOverride">
+        <item name="shadeColorAllAppsOverlay">@android:color/transparent</item>
         <item name="shadeColorAccent">@color/colorPixel</item>
     </style>
 
     <style name="ShadeOverride.Shade">
+        <item name="shadeColorAllAppsOverlay">@android:color/transparent</item>
         <item name="shadeColorAccent">@color/colorAccent</item>
     </style>
 
     <style name="ShadeOverride.Campfire">
+        <item name="shadeColorAllAppsOverlay">#10FBC02D</item>
         <item name="shadeColorAccent">#D32F2F</item>
     </style>
 
     <style name="ShadeOverride.Sunset">
+        <item name="shadeColorAllAppsOverlay">#10600538</item>
         <item name="shadeColorAccent">#FF8B27</item>
     </style>
 
     <style name="ShadeOverride.Forest">
+        <item name="shadeColorAllAppsOverlay">#10689F38</item>
         <item name="shadeColorAccent">#388E3C</item>
     </style>
 
     <style name="ShadeOverride.Ocean">
+        <item name="shadeColorAllAppsOverlay">#102f5fBf</item>
         <item name="shadeColorAccent">#03A9F4</item>
     </style>
 
     <style name="ShadeOverride.Twilight">
+        <item name="shadeColorAllAppsOverlay">#107E57C2</item>
         <item name="shadeColorAccent">#5E35B1</item>
     </style>
 </resources>

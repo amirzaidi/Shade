@@ -41,6 +41,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Property;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +50,7 @@ import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeL
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.ColorUtils;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
@@ -132,7 +134,10 @@ public class ScrimView extends View implements Insettable, OnChangeListener,
         super(context, attrs);
         mLauncher = Launcher.getLauncher(context);
         mWallpaperColorInfo = WallpaperColorInfo.getInstance(context);
-        mEndScrim = Themes.getAttrColor(context, R.attr.allAppsScrimColor);
+
+        int overrideEndScrim = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
+        mEndScrim = ColorUtils.compositeColors(overrideEndScrim,
+                Themes.getAttrColor(context, R.attr.allAppsScrimColor));
 
         mMaxScrimAlpha = 0.7f;
 
