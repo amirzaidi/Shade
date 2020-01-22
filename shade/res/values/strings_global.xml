@@ -29,6 +29,7 @@
     <string name="device_theme_dark" translatable="false">Dark</string>
     <string name="theme_title" translatable="false">Accent</string>
     <string name="theme_pixel" translatable="false">Pixel</string>
+    <string name="theme_shade" translatable="false">@string/shade_app_name_short</string>
     <string name="theme_campfire" translatable="false">Campfire</string>
     <string name="theme_sunset" translatable="false">Sunset</string>
     <string name="theme_forest" translatable="false">Forest</string>

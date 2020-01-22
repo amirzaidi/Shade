@@ -16,6 +16,7 @@ public class ShadeStyle {
 
     static {
         Map<String, Integer> themes = new HashMap<>();
+        themes.put("shade", R.style.ShadeOverride_Shade);
         themes.put("campfire", R.style.ShadeOverride_Campfire);
         themes.put("sunset", R.style.ShadeOverride_Sunset);
         themes.put("forest", R.style.ShadeOverride_Forest);

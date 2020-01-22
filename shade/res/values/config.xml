@@ -34,11 +34,22 @@
 
     <string-array name="theme_entries">
         <item>@string/theme_pixel</item>
+        <item>@string/theme_shade</item>
         <item>@string/theme_campfire</item> <!-- Red -->
         <item>@string/theme_sunset</item> <!-- Yellow -->
         <item>@string/theme_forest</item> <!-- Green -->
         <item>@string/theme_ocean</item> <!-- Blue -->
         <item>@string/theme_twilight</item> <!-- Purple -->
+    </string-array>
+
+    <string-array translatable="false" name="theme_entry_values">
+        <item>""</item>
+        <item>"shade"</item>
+        <item>"campfire"</item>
+        <item>"sunset"</item>
+        <item>"forest"</item>
+        <item>"ocean"</item>
+        <item>"twilight"</item>
     </string-array>
 
     <string-array name="device_theme_entries">
@@ -51,15 +62,6 @@
         <item>""</item>
         <item>"light"</item>
         <item>"dark"</item>
-    </string-array>
-
-    <string-array translatable="false" name="theme_entry_values">
-        <item>""</item>
-        <item>"campfire"</item>
-        <item>"sunset"</item>
-        <item>"forest"</item>
-        <item>"ocean"</item>
-        <item>"twilight"</item>
     </string-array>
 
     <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
