@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
 import com.android.launcher3.BuildConfig;
@@ -119,8 +120,14 @@ public class  ShadeSettings extends SettingsActivity {
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = 0; i < screen.getPreferenceCount(); i++) {
                 Preference preference = screen.getPreference(i);
-                if (preference instanceof OnResumePreferenceCallback) {
-                    ((OnResumePreferenceCallback) preference).onResume();
+                if (preference instanceof PreferenceCategory) {
+                    PreferenceCategory cat = (PreferenceCategory) preference;
+                    for (int j = 0; j < cat.getPreferenceCount(); j++) {
+                        Preference preference2 = cat.getPreference(j);
+                        if (preference2 instanceof OnResumePreferenceCallback) {
+                            ((OnResumePreferenceCallback) preference2).onResume();
+                        }
+                    }
                 }
             }
         }

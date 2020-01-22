@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 
-import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
 import com.android.launcher3.BuildConfig;
@@ -23,7 +22,7 @@ import com.android.launcher3.Utilities;
 import amirz.shade.ShadeSettings;
 
 public class PredictionPreference extends SwitchPreference implements ShadeSettings.OnResumePreferenceCallback {
-    public static final String KEY = "pref_predictions";
+    private static final String KEY = "pref_predictions";
 
     public PredictionPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -46,20 +45,8 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
     }
 
     private void load() {
-        setOnPreferenceChangeListener((preference, newValue) -> {
-            boolean accessGranted = isAccessGranted();
-            setSummary(accessGranted && (boolean) newValue);
-            return accessGranted;
-        });
+        setOnPreferenceChangeListener((preference, newValue) -> isAccessGranted());
         reload();
-    }
-
-    private void reload() {
-        final Context context = getContext();
-        boolean accessGranted = isAccessGranted();
-
-        setSummary(accessGranted && isEnabled(context));
-        setFragment(accessGranted ? null : UsageAccessConfirmation.class.getName());
     }
 
     @Override
@@ -67,11 +54,14 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
         reload();
     }
 
-    private void setSummary(boolean isEnabled) {
-        setChecked(isEnabled);
-        setSummary(isEnabled
-                    ? R.string.predictions_on
-                    : R.string.predictions_off);
+    private void reload() {
+        final Context context = getContext();
+        boolean accessGranted = isAccessGranted();
+        if (!accessGranted) {
+            setEnabled(context, false);
+        }
+        setChecked(isEnabled(context));
+        setFragment(accessGranted ? null : UsageAccessConfirmation.class.getName());
     }
 
     private boolean isAccessGranted() {
@@ -89,8 +79,7 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
     }
 
     private static void openSetting(Context context) {
-        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         context.startActivity(intent);
     }
 
@@ -118,7 +107,7 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
         }
     }
 
-    public static void setEnabled(Context context, boolean enabled) {
+    private static void setEnabled(Context context, boolean enabled) {
         Utilities.getPrefs(context).edit().putBoolean(KEY, enabled).apply();
     }
 
