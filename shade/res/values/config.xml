@@ -34,7 +34,6 @@
 
     <string-array name="theme_entries">
         <item>@string/theme_pixel</item>
-        <item>@string/theme_shade</item>
         <item>@string/theme_campfire</item> <!-- Red -->
         <item>@string/theme_sunset</item> <!-- Yellow -->
         <item>@string/theme_forest</item> <!-- Green -->
@@ -44,7 +43,6 @@
 
     <string-array translatable="false" name="theme_entry_values">
         <item>""</item>
-        <item>"shade"</item>
         <item>"campfire"</item>
         <item>"sunset"</item>
         <item>"forest"</item>
