@@ -18,11 +18,17 @@
     <string name="app_info_version" translatable="false">Version</string>
     <string name="app_info_more" translatable="false">More</string>
     <string name="pref_value_default" translatable="false">Default</string>
+    <string name="pref_value_automatic" translatable="false">Automatic</string>
     <string name="pref_value_disabled" translatable="false">Disabled</string>
     <string name="category_general" translatable="false">General</string>
+    <string name="category_theme" translatable="false">Theme</string>
     <string name="category_customization" translatable="false">Customization</string>
     <string name="category_about" translatable="false">About</string>
-    <string name="theme_title" translatable="false">Theme</string>
+    <string name="device_theme_title" translatable="false">Base</string>
+    <string name="device_theme_light" translatable="false">Light</string>
+    <string name="device_theme_dark" translatable="false">Dark</string>
+    <string name="theme_title" translatable="false">Accent</string>
+    <string name="theme_pixel" translatable="false">Pixel</string>
     <string name="theme_campfire" translatable="false">Campfire</string>
     <string name="theme_sunset" translatable="false">Sunset</string>
     <string name="theme_forest" translatable="false">Forest</string>

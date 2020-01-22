@@ -33,12 +33,24 @@
     </string-array>
 
     <string-array name="theme_entries">
-        <item>@string/pref_value_default</item>
+        <item>@string/theme_pixel</item>
         <item>@string/theme_campfire</item> <!-- Red -->
         <item>@string/theme_sunset</item> <!-- Yellow -->
         <item>@string/theme_forest</item> <!-- Green -->
         <item>@string/theme_ocean</item> <!-- Blue -->
         <item>@string/theme_twilight</item> <!-- Purple -->
+    </string-array>
+
+    <string-array name="device_theme_entries">
+        <item>@string/pref_value_automatic</item>
+        <item>@string/device_theme_light</item>
+        <item>@string/device_theme_dark</item>
+    </string-array>
+
+    <string-array name="device_theme_entry_values">
+        <item>""</item>
+        <item>"light"</item>
+        <item>"dark"</item>
     </string-array>
 
     <string-array translatable="false" name="theme_entry_values">

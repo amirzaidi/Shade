@@ -62,8 +62,17 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="category_customization"
-        android:title="@string/category_customization">
+    <PreferenceCategory android:key="category_theme"
+        android:title="@string/category_theme">
+
+        <ListPreference
+            android:key="pref_device_theme"
+            android:title="@string/device_theme_title"
+            android:summary="%s"
+            android:entries="@array/device_theme_entries"
+            android:entryValues="@array/device_theme_entry_values"
+            android:defaultValue=""
+            android:persistent="true" />
 
         <ListPreference
             android:key="pref_theme"
@@ -73,6 +82,11 @@
             android:entryValues="@array/theme_entry_values"
             android:defaultValue=""
             android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="category_customization"
+        android:title="@string/category_customization">
 
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_icon_pack"
