@@ -15,6 +15,7 @@
  */
 package amirz.shade.views;
 
+import static androidx.core.graphics.ColorUtils.compositeColors;
 import static com.android.launcher3.LauncherState.ALL_APPS_HEADER_EXTRA;
 import static com.android.launcher3.LauncherState.BACKGROUND_APP;
 import static com.android.launcher3.LauncherState.OVERVIEW;
@@ -31,13 +32,15 @@ import android.graphics.Path.Direction;
 import android.graphics.Path.Op;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.animation.Interpolator;
+
+import androidx.core.graphics.ColorUtils;
 
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
+import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ScrimView;
 
@@ -90,19 +93,41 @@ public class ShadeScrimView extends ScrimView {
     private final Path mRemainingScreenPath = new Path();
     private boolean mRemainingScreenPathValid = false;
 
+    private final int mOverrideEndScrim;
+
     //private Mode mSysUINavigationMode;
 
     public ShadeScrimView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mMaxScrimAlpha = Math.round(OVERVIEW.getOverviewScrimAlpha(mLauncher) * 255);
 
-        mEndAlpha = Color.alpha(mEndScrim);
         mRadius = BOTTOM_CORNER_RADIUS_RATIO * Themes.getDialogCornerRadius(context);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         mShelfOffset = context.getResources().getDimension(R.dimen.shelf_surface_offset);
         // Just assume the easiest UI for now, until we have the proper layout information.
         mDrawingFlatColor = true;
+
+        int overlayEndScrim = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
+        if (ColorUtils.setAlphaComponent(overlayEndScrim, 0) != overlayEndScrim) {
+            // Alpha is not zero, so update it to the right value.
+            overlayEndScrim = ColorUtils.setAlphaComponent(overlayEndScrim,
+                    context.getResources().getInteger(R.integer.shade_all_apps_alpha));
+        }
+        mOverrideEndScrim = ColorUtils.compositeColors(
+                overlayEndScrim,
+                mEndScrim);
+        mEndAlpha = Color.alpha(mOverrideEndScrim);
+    }
+
+    @Override
+    public void onExtractedColorsChanged(WallpaperColorInfo wallpaperColorInfo) {
+        mScrimColor = wallpaperColorInfo.getMainColor();
+        mEndFlatColor = compositeColors(mOverrideEndScrim, setColorAlphaBound(
+                mScrimColor, Math.round(mMaxScrimAlpha * 255)));
+        mEndFlatColorAlpha = Color.alpha(mEndFlatColor);
+        updateColors();
+        invalidate();
     }
 
     @Override
@@ -163,20 +188,20 @@ public class ShadeScrimView extends ScrimView {
             mShelfColor = 0;
             if (mLauncher.getStateManager().getState() == BACKGROUND_APP) {
                 // Show the shelf background when peeking during swipe up.
-                mShelfColor = setColorAlphaBound(mEndScrim, mMidAlpha);
+                mShelfColor = setColorAlphaBound(mOverrideEndScrim, mMidAlpha);
             }
         } else if (mProgress >= mMidProgress) {
             mRemainingScreenColor = 0;
 
             int alpha = Math.round(Utilities.mapToRange(
                     mProgress, mMidProgress, 1, mMidAlpha, 0, mBeforeMidProgressColorInterpolator));
-            mShelfColor = setColorAlphaBound(mEndScrim, alpha);
+            mShelfColor = setColorAlphaBound(mOverrideEndScrim, alpha);
         } else {
             // Note that these ranges and interpolators are inverted because progress goes 1 to 0.
             int alpha = Math.round(
                     Utilities.mapToRange(mProgress, (float) 0, mMidProgress, (float) mEndAlpha,
                             (float) mMidAlpha, mAfterMidProgressColorInterpolator));
-            mShelfColor = setColorAlphaBound(mEndScrim, alpha);
+            mShelfColor = setColorAlphaBound(mOverrideEndScrim, alpha);
 
             int remainingScrimAlpha = Math.round(
                     Utilities.mapToRange(mProgress, (float) 0, mMidProgress, mMaxScrimAlpha,

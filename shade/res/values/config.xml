@@ -67,5 +67,5 @@
     <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
     <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
 
-    <integer name="shade_all_apps_alpha">0x10</integer>
+    <integer name="shade_all_apps_alpha">17</integer>
 </resources>
