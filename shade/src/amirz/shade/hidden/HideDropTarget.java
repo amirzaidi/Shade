@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.android.launcher3.AppInfo;
 import com.android.launcher3.ButtonDropTarget;
 import com.android.launcher3.DropTarget;
 import com.android.launcher3.ItemInfo;
@@ -77,7 +78,7 @@ public class HideDropTarget extends ButtonDropTarget {
      * Set the drop target's text to either "Hide" or "Show" depending on the drag item.
      */
     private void setTextBasedOnDragSource(ItemInfo item) {
-        if (!TextUtils.isEmpty(mText)) {
+        if (!TextUtils.isEmpty(mText) && canHide(item)) {
             boolean isHidden = HiddenAppsDatabase.isHidden(mLauncher, item);
 
             setDrawable(isHidden
@@ -94,7 +95,7 @@ public class HideDropTarget extends ButtonDropTarget {
     }
 
     private boolean canHide(ItemInfo item) {
-        return item.id == ItemInfo.NO_ID;
+        return item instanceof AppInfo && item.id == ItemInfo.NO_ID;
     }
 
     @Override
