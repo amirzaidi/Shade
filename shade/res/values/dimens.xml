@@ -23,4 +23,7 @@
     <dimen name="smartspaceLetterSpacing">0.02</dimen>
     <dimen name="smartspaceDivider">1dp</dimen>
     <dimen name="text_horizontal_padding">4dp</dimen>
+
+    <!-- Hidden apps -->
+    <dimen name="hidden_apps_action_bar_height">64dp</dimen>
 </resources>
