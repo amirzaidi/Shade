@@ -186,7 +186,9 @@ public class AllAppsList {
                 final AppInfo applicationInfo = data.get(i);
                 if (user.equals(applicationInfo.user)
                         && packageName.equals(applicationInfo.componentName.getPackageName())) {
-                    if (!findActivity(matches, applicationInfo.componentName)) {
+                    if (!findActivity(matches, applicationInfo.componentName)
+                            || !mAppFilter.shouldShowApp(
+                                    applicationInfo.componentName, applicationInfo.user)) {
                         Log.w(TAG, "Changing shortcut target due to app component name change.");
                         removed.add(applicationInfo);
                         data.remove(i);
