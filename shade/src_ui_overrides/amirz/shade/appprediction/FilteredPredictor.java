@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.Process;
 
 import com.android.launcher3.BuildConfig;
 
@@ -15,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import amirz.shade.hidden.HiddenAppsDatabase;
 import amirz.shade.settings.PredictionPreference;
 
 import static android.content.pm.PackageManager.GET_RESOLVED_FILTER;
@@ -65,6 +67,11 @@ class FilteredPredictor extends UsageTracker {
     private boolean shouldFilterComponent(ComponentName cn) {
         // Remove launcher starting shortcut itself.
         if (BuildConfig.APPLICATION_ID.equals(cn.getPackageName())) {
+            return true;
+        }
+
+        // Remove hidden apps.
+        if (HiddenAppsDatabase.isHidden(mContext, cn, Process.myUserHandle())) {
             return true;
         }
 
