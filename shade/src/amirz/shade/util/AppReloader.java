@@ -5,6 +5,7 @@ import android.content.pm.LauncherActivityInfo;
 import android.content.pm.ShortcutInfo;
 import android.os.UserHandle;
 
+import com.android.launcher3.ItemInfo;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.compat.LauncherAppsCompat;
@@ -66,6 +67,10 @@ public class AppReloader {
                 reload(user, pkg);
             }
         }
+    }
+
+    public void reload(ItemInfo item) {
+        reload(item.user, item.getTargetComponent().getPackageName());
     }
 
     public void reload(ComponentKey key) {

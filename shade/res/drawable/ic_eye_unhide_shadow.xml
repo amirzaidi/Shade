@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.launcher3.graphics.ShadowDrawable
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/ic_eye_unhide"
+    android:elevation="@dimen/drop_target_shadow_elevation" />
