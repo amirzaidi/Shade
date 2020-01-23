@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 
 import amirz.aidlbridge.LauncherClientIntent;
 import amirz.shade.animations.TransitionManager;
+import amirz.shade.hidden.HiddenAppDrawerState;
 import amirz.shade.search.AllAppsQsb;
 
 import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
@@ -115,6 +116,8 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else {
             mLauncherClient.onResume();
         }
+
+        HiddenAppDrawerState.getInstance(mLauncher).setRevealed(false);
     }
 
     @Override

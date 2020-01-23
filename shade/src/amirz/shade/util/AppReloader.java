@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 import amirz.shade.customization.IconDatabase;
+import amirz.shade.hidden.HiddenAppsDatabase;
 
 public class AppReloader {
     private static AppReloader sInstance;
@@ -45,11 +46,20 @@ public class AppReloader {
     }
 
     public Set<ComponentKey> withIconPack(String iconPack) {
+        return matchFilter(key -> IconDatabase.getByComponent(mContext, key).equals(iconPack));
+    }
+
+    public Set<ComponentKey> hiddenApps() {
+        return matchFilter(
+                key -> HiddenAppsDatabase.isHidden(mContext, key.componentName, key.user));
+    }
+
+    private Set<ComponentKey> matchFilter(ReloadFilter filter) {
         Set<ComponentKey> reloadKeys = new HashSet<>();
         for (UserHandle user : mUsers.getUserProfiles()) {
             for (LauncherActivityInfo info : mApps.getActivityList(null, user)) {
                 ComponentKey key = new ComponentKey(info.getComponentName(), info.getUser());
-                if (IconDatabase.getByComponent(mContext, key).equals(iconPack)) {
+                if (filter.shouldReload(key)) {
                     reloadKeys.add(key);
                 }
             }
@@ -89,5 +99,9 @@ public class AppReloader {
         if (!shortcuts.isEmpty()) {
             mModel.updatePinnedShortcuts(pkg, shortcuts, user);
         }
+    }
+
+    private interface ReloadFilter {
+        boolean shouldReload(ComponentKey key);
     }
 }

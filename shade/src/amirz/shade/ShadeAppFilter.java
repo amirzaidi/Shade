@@ -10,6 +10,7 @@ import com.android.launcher3.BuildConfig;
 import java.util.HashSet;
 import java.util.Set;
 
+import amirz.shade.hidden.HiddenAppDrawerState;
 import amirz.shade.hidden.HiddenAppsDatabase;
 
 @SuppressWarnings("unused")
@@ -24,6 +25,8 @@ public class ShadeAppFilter extends AppFilter {
 
     @Override
     public boolean shouldShowApp(ComponentName app, UserHandle user) {
-        return !mFilter.contains(app) && !HiddenAppsDatabase.isHidden(mContext, app, user);
+        boolean revealed = HiddenAppDrawerState.getInstance(mContext).isRevealed();
+        return !mFilter.contains(app)
+                && (revealed || !HiddenAppsDatabase.isHidden(mContext, app, user));
     }
 }
