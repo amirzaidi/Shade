@@ -49,4 +49,6 @@
     <string name="about_contact_desc" translatable="false">Amir Zaidi</string>
     <string name="about_donate" translatable="false">Donate</string>
     <string name="about_donate_desc" translatable="false">Using Play balance</string>
+    <string name="hidden_apps_biometric_title" translatable="false">Authentication</string>
+    <string name="hidden_apps_biometric_subtitle" translatable="false">Unlock your hidden apps</string>
 </resources>
