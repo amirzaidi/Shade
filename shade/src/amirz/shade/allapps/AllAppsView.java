@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.allapps.AllAppsContainerView;
 
-import amirz.shade.hidden.HiddenAppDrawerState;
+import amirz.shade.hidden.HiddenAppsDrawerState;
 
 public class AllAppsView extends AllAppsContainerView {
     private static final float OPEN_HIDDEN_APPS_THRES = 0.5f;
@@ -21,7 +21,7 @@ public class AllAppsView extends AllAppsContainerView {
     private final Handler mHandler = new Handler();
     private boolean mQueuedOpenHiddenApps;
     private final Runnable mOpenHiddenApps =
-            () -> HiddenAppDrawerState.getInstance(getContext()).toggleRevealed();
+            () -> HiddenAppsDrawerState.getInstance(getContext()).toggleRevealed();
 
     public AllAppsView(Context context) {
         this(context, null);

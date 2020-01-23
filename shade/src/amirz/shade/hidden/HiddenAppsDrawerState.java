@@ -4,12 +4,12 @@ import android.content.Context;
 
 import amirz.shade.util.AppReloader;
 
-public class HiddenAppDrawerState {
-    private static HiddenAppDrawerState sInstance;
+public class HiddenAppsDrawerState {
+    private static HiddenAppsDrawerState sInstance;
 
-    public static synchronized HiddenAppDrawerState getInstance(Context context) {
+    public static synchronized HiddenAppsDrawerState getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new HiddenAppDrawerState(context);
+            sInstance = new HiddenAppsDrawerState(context);
         }
         return sInstance;
     }
@@ -17,7 +17,7 @@ public class HiddenAppDrawerState {
     private final Context mContext;
     private boolean mRevealed;
 
-    private HiddenAppDrawerState(Context context) {
+    private HiddenAppsDrawerState(Context context) {
         mContext = context;
     }
 
