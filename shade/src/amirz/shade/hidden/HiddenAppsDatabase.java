@@ -7,6 +7,7 @@ import android.os.UserHandle;
 
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.model.AppLaunchTracker;
 import com.android.launcher3.util.ComponentKey;
 
 import java.util.Collections;
@@ -37,6 +38,9 @@ public class HiddenAppsDatabase {
             set.remove(key);
         }
         prefs.edit().putStringSet(KEY_HIDDEN, set).apply();
+
+        // Reload app predictions when hidden state changes.
+        AppLaunchTracker.INSTANCE.get(context).onReturnedToHome();
     }
 
     public static void setHidden(Context context, ItemInfo item, boolean hidden) {
