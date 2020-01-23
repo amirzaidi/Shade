@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.allapps.AllAppsContainerView;
 
-import amirz.shade.hidden.HiddenAppsActivity;
-
 public class AllAppsView extends AllAppsContainerView {
     private static final float OPEN_HIDDEN_APPS_THRES = 0.5f;
     private static final int OPEN_HIDDEN_APPS_MS = 400;
@@ -22,9 +20,7 @@ public class AllAppsView extends AllAppsContainerView {
     private final Handler mHandler = new Handler();
     private boolean mQueuedOpenHiddenApps;
     private final Runnable mOpenHiddenApps = () -> {
-        Context context = getContext();
-        Intent intent = new Intent(context, HiddenAppsActivity.class);
-        context.startActivity(intent);
+        // ToDo
     };
 
     public AllAppsView(Context context) {

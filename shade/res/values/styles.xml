@@ -126,26 +126,4 @@
         <item name="android:wallpaperCloseEnterAnimation">@anim/enter_app</item>
         <item name="android:wallpaperCloseExitAnimation">@anim/exit_launcher</item>
     </style>
-
-    <!-- Hidden apps -->
-    <style name="ShadeHiddenAppsTheme" parent="Theme.AppCompat">
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="actionBarSize">@dimen/hidden_apps_action_bar_height</item>
-        <item name="actionBarTheme">@style/ActionBarTheme</item>
-        <item name="actionBarStyle">@style/ActionBarStyle</item>
-    </style>
-
-    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="colorControlNormal">?shadeColorAccent</item>
-    </style>
-
-    <style name="ActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@android:color/black</item>
-        <item name="titleTextStyle">@style/ActionBarText</item>
-        <item name="elevation">0dp</item>
-    </style>
-
-    <style name="ActionBarText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">?shadeColorAccent</item>
-    </style>
 </resources>

@@ -119,16 +119,5 @@
             </intent-filter>
         </activity>
 
-        <!--
-        The activity that handles hiding apps.
-        -->
-        <activity android:name="amirz.shade.hidden.HiddenAppsActivity"
-            android:theme="@style/ShadeHiddenAppsTheme"
-            android:label="@string/hidden_apps"
-            android:exported="true"
-            android:excludeFromRecents="true"
-            android:autoRemoveFromRecents="true"
-            android:noHistory="true" />
-
     </application>
 </manifest>
