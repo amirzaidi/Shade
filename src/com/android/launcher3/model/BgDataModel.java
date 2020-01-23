@@ -274,13 +274,15 @@ public class BgDataModel {
                     workspaceItems.remove(item);
                     break;
                 case LauncherSettings.Favorites.ITEM_TYPE_DEEP_SHORTCUT: {
-                    // Decrement pinned shortcut count
-                    ShortcutKey pinnedShortcut = ShortcutKey.fromItemInfo(item);
-                    MutableInt count = pinnedShortcutCounts.get(pinnedShortcut);
-                    if ((count == null || --count.value == 0)
-                            && !InstallShortcutReceiver.getPendingShortcuts(context)
+                    if (item.getIntent().getPackage() != null) {
+                        // Decrement pinned shortcut count
+                        ShortcutKey pinnedShortcut = ShortcutKey.fromItemInfo(item);
+                        MutableInt count = pinnedShortcutCounts.get(pinnedShortcut);
+                        if ((count == null || --count.value == 0)
+                                && !InstallShortcutReceiver.getPendingShortcuts(context)
                                 .contains(pinnedShortcut)) {
-                        DeepShortcutManager.getInstance(context).unpinShortcut(pinnedShortcut);
+                            DeepShortcutManager.getInstance(context).unpinShortcut(pinnedShortcut);
+                        }
                     }
                     // Fall through.
                 }
