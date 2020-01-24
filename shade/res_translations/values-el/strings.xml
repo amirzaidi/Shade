@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Προτιμήσεις"</string>
 	<string name="smartspace_preferences_in_settings">"Με μια ματιά"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Στην κορυφή της Αρχικής οθόνης"</string>
+	<string name="icon_shape_override_label">"Αλλαγή σχήματος εικονιδίου"</string>
+	<string name="icon_shape_override_progress">"Εφαρμογή αλλαγών σχήματος εικονιδίων"</string>
 </resources>

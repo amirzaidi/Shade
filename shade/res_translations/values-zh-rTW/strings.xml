@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"偏好設定"</string>
 	<string name="smartspace_preferences_in_settings">"快速查看"</string>
 	<string name="smartspace_preferences_in_settings_desc">"主螢幕頂端"</string>
+	<string name="icon_shape_override_label">"變更圖示形狀"</string>
+	<string name="icon_shape_override_progress">"正在套用圖示形狀變更"</string>
 </resources>

@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"മുൻഗണനകൾ"</string>
 	<string name="smartspace_preferences_in_settings">"ഒറ്റനോട്ടത്തിൽ"</string>
 	<string name="smartspace_preferences_in_settings_desc">"നിങ്ങളുടെ ഹോം സ്‌ക്രീനിന്റെ മുകളിൽ"</string>
+	<string name="icon_shape_override_label">"ഐക്കണിന്റെ ആകാരം മാറ്റുക"</string>
+	<string name="icon_shape_override_progress">"ഐക്കൺ ആകാര മാറ്റങ്ങൾ പ്രയോഗിക്കുന്നു"</string>
 </resources>

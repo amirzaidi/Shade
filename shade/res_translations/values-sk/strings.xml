@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Predvoľby"</string>
 	<string name="smartspace_preferences_in_settings">"Prehľad"</string>
 	<string name="smartspace_preferences_in_settings_desc">"V hornej časti plochy"</string>
+	<string name="icon_shape_override_label">"Zmeniť tvar ikony"</string>
+	<string name="icon_shape_override_progress">"Tvar ikony sa mení"</string>
 </resources>

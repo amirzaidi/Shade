@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"ค่ากำหนด"</string>
 	<string name="smartspace_preferences_in_settings">"ข้อมูลโดยย่อ"</string>
 	<string name="smartspace_preferences_in_settings_desc">"ที่ด้านบนของหน้าจอหลัก"</string>
+	<string name="icon_shape_override_label">"เปลี่ยนรูปร่างไอคอน"</string>
+	<string name="icon_shape_override_progress">"กำลังนำการเปลี่ยนรูปร่างไอคอนไปใช้"</string>
 </resources>

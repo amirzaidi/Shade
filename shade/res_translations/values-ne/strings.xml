@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"प्राथमिकताहरू"</string>
 	<string name="smartspace_preferences_in_settings">"एक झलकमा सम्पूर्ण सुविधाबारे जानकारी"</string>
 	<string name="smartspace_preferences_in_settings_desc">"तपाईंको गृह स्क्रिनको शीर्षमा अवस्थित छ"</string>
+	<string name="icon_shape_override_label">"आइकनको आकार परिवर्तन गर्नुहोस्"</string>
+	<string name="icon_shape_override_progress">"आइकनको आकारमा गरिएका परिवर्तनहरू लागू गरिँदैछन्"</string>
 </resources>

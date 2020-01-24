@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Pilihan"</string>
 	<string name="smartspace_preferences_in_settings">"Sekilas Pandang"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Di bahagian atas Skrin Utama anda"</string>
+	<string name="icon_shape_override_label">"Tukar bentuk ikon"</string>
+	<string name="icon_shape_override_progress">"Menggunakan perubahan bentuk ikon"</string>
 </resources>

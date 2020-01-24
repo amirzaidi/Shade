@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Preferencat"</string>
 	<string name="smartspace_preferences_in_settings">"Shkurtimisht"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Në krye të Ekranit bazë"</string>
+	<string name="icon_shape_override_label">"Ndrysho formën e ikonës"</string>
+	<string name="icon_shape_override_progress">"Po zbatohen ndryshimet e formës së ikonës"</string>
 </resources>

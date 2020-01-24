@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"ການຕັ້ງຄ່າ"</string>
 	<string name="smartspace_preferences_in_settings">"ການຕັ້ງຄ່າເບື້ອງຕົ້ນ"</string>
 	<string name="smartspace_preferences_in_settings_desc">"ຢູ່ເທິງສຸດຂອງໜ້າຈໍຫຼັກຂອງທ່ານ"</string>
+	<string name="icon_shape_override_label">"ປ່ຽນຮູບຮ່າງໄອຄອນ"</string>
+	<string name="icon_shape_override_progress">"ນຳໃຊ້ການປ່ຽນແປງຮູບຮ່າງໄອຄອນ"</string>
 </resources>

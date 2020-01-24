@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Жеке жөндөөлөр"</string>
 	<string name="smartspace_preferences_in_settings">"Дароо көрүү"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Башкы экрандын өйдө жагында"</string>
+	<string name="icon_shape_override_label">"Сүрөтчөнүн формасын өзгөртүү"</string>
+	<string name="icon_shape_override_progress">"Өзгөртүлгөн сүрөтчөнүн формасы колдонулууда"</string>
 </resources>

@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Seçimlər"</string>
 	<string name="smartspace_preferences_in_settings">"Ötəri Nəzər"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Əsas ekranın üzərində"</string>
+	<string name="icon_shape_override_label">"İkona formasını dəyişin"</string>
+	<string name="icon_shape_override_progress">"İkona formasına etdiyiniz dəyişikliklər tətbiq edilir"</string>
 </resources>

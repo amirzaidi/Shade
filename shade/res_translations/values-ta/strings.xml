@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"விருப்பத்தேர்வுகள்"</string>
 	<string name="smartspace_preferences_in_settings">"முகப்புத் தகவல்"</string>
 	<string name="smartspace_preferences_in_settings_desc">"முகப்புத் திரையின் மேற்புறம்"</string>
+	<string name="icon_shape_override_label">"ஐகான் வடிவத்தை மாற்று"</string>
+	<string name="icon_shape_override_progress">"ஐகான் வடிவத்தை மாற்றுகிறது"</string>
 </resources>

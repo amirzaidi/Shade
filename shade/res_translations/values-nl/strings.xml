@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Voorkeuren"</string>
 	<string name="smartspace_preferences_in_settings">"Snel overzicht"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Bovenaan het startscherm"</string>
+	<string name="icon_shape_override_label">"Vorm van pictogram wijzigen"</string>
+	<string name="icon_shape_override_progress">"Wijzigingen in vorm van pictogram toepassen"</string>
 </resources>

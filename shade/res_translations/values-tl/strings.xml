@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Mga Kagustuhan"</string>
 	<string name="smartspace_preferences_in_settings">"Sa Isang Sulyap"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Sa itaas ng iyong Home screen"</string>
+	<string name="icon_shape_override_label">"Baguhin ang hugis ng icon"</string>
+	<string name="icon_shape_override_progress">"Inilalapat ang mga pagbabago sa hugis ng icon"</string>
 </resources>

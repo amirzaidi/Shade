@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Okuncamelayo"</string>
 	<string name="smartspace_preferences_in_settings">"Ngokubuka nje"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Ngaphezulu kwesikrini sakho sasekhaya"</string>
+	<string name="icon_shape_override_label">"Shintsha isimo sesithonjana"</string>
+	<string name="icon_shape_override_progress">"Ifaka izinguquko zesimo sesithonjana"</string>
 </resources>

@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Eelistused"</string>
 	<string name="smartspace_preferences_in_settings">"Ülevaade"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Avaekraani ülaosas"</string>
+	<string name="icon_shape_override_label">"Ikooni kuju muutmine"</string>
+	<string name="icon_shape_override_progress">"Ikooni kuju muudatuste rakendamine"</string>
 </resources>

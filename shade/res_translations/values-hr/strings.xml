@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Postavke"</string>
 	<string name="smartspace_preferences_in_settings">"Kratki pregled"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Pri vrhu početnog zaslona"</string>
+	<string name="icon_shape_override_label">"Promijeni oblik ikona"</string>
+	<string name="icon_shape_override_progress">"Primjena promjena oblika ikona"</string>
 </resources>

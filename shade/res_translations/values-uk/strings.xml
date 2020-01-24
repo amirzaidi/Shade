@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Параметри"</string>
 	<string name="smartspace_preferences_in_settings">"Зворотний відлік"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Угорі головного екрана"</string>
+	<string name="icon_shape_override_label">"Змінити форму значка"</string>
+	<string name="icon_shape_override_progress">"Змінюється форма значка"</string>
 </resources>

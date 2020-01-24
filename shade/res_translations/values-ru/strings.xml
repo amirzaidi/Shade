@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Настройки"</string>
 	<string name="smartspace_preferences_in_settings">"Самое главное"</string>
 	<string name="smartspace_preferences_in_settings_desc">"В верхней части главного экрана"</string>
+	<string name="icon_shape_override_label">"Изменить форму значков"</string>
+	<string name="icon_shape_override_progress">"Применение изменений…"</string>
 </resources>

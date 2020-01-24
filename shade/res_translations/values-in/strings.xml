@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Preferensi"</string>
 	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Di bagian atas Layar utama"</string>
+	<string name="icon_shape_override_label">"Ubah bentuk ikon"</string>
+	<string name="icon_shape_override_progress">"Menerapkan perubahan bentuk ikon"</string>
 </resources>

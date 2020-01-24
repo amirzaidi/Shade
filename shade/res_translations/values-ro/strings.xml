@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Preferințe"</string>
 	<string name="smartspace_preferences_in_settings">"Pe scurt"</string>
 	<string name="smartspace_preferences_in_settings_desc">"În partea de sus a ecranului de pornire"</string>
+	<string name="icon_shape_override_label">"Schimbați forma pictogramei"</string>
+	<string name="icon_shape_override_progress">"Se aplică modificările aduse formei pictogramei"</string>
 </resources>

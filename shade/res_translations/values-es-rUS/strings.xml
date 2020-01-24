@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Preferencias"</string>
 	<string name="smartspace_preferences_in_settings">"De un vistazo"</string>
 	<string name="smartspace_preferences_in_settings_desc">"En la parte superior de tu pantalla principal"</string>
+	<string name="icon_shape_override_label">"Cambiar forma de los íconos"</string>
+	<string name="icon_shape_override_progress">"Aplicando cambio en la forma de los íconos"</string>
 </resources>

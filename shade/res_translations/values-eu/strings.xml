@@ -37,4 +37,6 @@
 	<string name="smartspace_preferences">"Hobespenak"</string>
 	<string name="smartspace_preferences_in_settings">"Laburpena"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Hasierako pantailaren goialdean"</string>
+	<string name="icon_shape_override_label">"Aldatu ikonoaren forma"</string>
+	<string name="icon_shape_override_progress">"Ikonoaren forman egindako aldaketak aplikatzen"</string>
 </resources>
