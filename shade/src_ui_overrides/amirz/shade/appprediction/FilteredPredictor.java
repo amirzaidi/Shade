@@ -51,7 +51,7 @@ class FilteredPredictor extends UsageTracker {
                 components.remove(i);
             }
         }
-        // Remove the first few entries, as these easy to reach from recents.
+        // Remove the first few entries, as these are easy to reach from recents.
         // Only a maximum of mCount is left.
         if (components.size() > mCount) {
             int removeEntries = Math.min(components.size() - mCount, MAX_REMOVE_TOP);
