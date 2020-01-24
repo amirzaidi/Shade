@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"En haut de votre écran d\'accueil"</string>
 	<string name="icon_shape_override_label">"Modifier la forme des icônes"</string>
 	<string name="icon_shape_override_progress">"Application des modifications de forme des icônes…"</string>
+	<string name="icon_shape_square">"Carré"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"Cercle"</string>
+	<string name="icon_shape_teardrop">"Goutte"</string>
 </resources>

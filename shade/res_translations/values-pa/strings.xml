@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"ਤੁਹਾਡੀ ਹੋਮ ਸਕ੍ਰੀਨ ਦੇ ਸਿਖਰ \'ਤੇ"</string>
 	<string name="icon_shape_override_label">"ਆਈਕਨ ਦੀ ਆਕ੍ਰਿਤੀ ਬਦਲੋ"</string>
 	<string name="icon_shape_override_progress">"ਆਈਕਨ ਦੀ ਆਕ੍ਰਿਤੀ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਨੂੰ ਲਾਗੂ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
+	<string name="icon_shape_square">"ਵਰਗ"</string>
+	<string name="icon_shape_squircle">"ਵਰਗਾਕਾਰ-ਚੱਕਰ"</string>
+	<string name="icon_shape_circle">"ਚੱਕਰ"</string>
+	<string name="icon_shape_teardrop">"ਹੰਝੂ ਦੀ ਬੂੰਦ"</string>
 </resources>

@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Уверсе галоўнага экрана"</string>
 	<string name="icon_shape_override_label">"Змяніць форму значка"</string>
 	<string name="icon_shape_override_progress">"Змены формы значка прымяняюцца"</string>
+	<string name="icon_shape_square">"Квадрат"</string>
+	<string name="icon_shape_squircle">"Прамавугольнік са скругленымі вугламі"</string>
+	<string name="icon_shape_circle">"Круг"</string>
+	<string name="icon_shape_teardrop">"Сляза"</string>
 </resources>

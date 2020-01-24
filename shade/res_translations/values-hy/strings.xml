@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Ձեր հիմնական էկրանի վերևում"</string>
 	<string name="icon_shape_override_label">"Փոխել պատկերակների տեսքը"</string>
 	<string name="icon_shape_override_progress">"Պատկերակների տեսքի փոփոխությունները կիրառվում են"</string>
+	<string name="icon_shape_square">"Քառակուսի"</string>
+	<string name="icon_shape_squircle">"Քառանկյուն"</string>
+	<string name="icon_shape_circle">"Օղակ"</string>
+	<string name="icon_shape_teardrop">"Արցունքաձև"</string>
 </resources>

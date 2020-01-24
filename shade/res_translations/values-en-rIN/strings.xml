@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"At the top of your Home screen"</string>
 	<string name="icon_shape_override_label">"Change icon shape"</string>
 	<string name="icon_shape_override_progress">"Applying icon shape changes"</string>
+	<string name="icon_shape_square">"Square"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"Circle"</string>
+	<string name="icon_shape_teardrop">"Teardrop"</string>
 </resources>

@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Bosh ekranning yuqori qismida"</string>
 	<string name="icon_shape_override_label">"Ikonka shaklini o‘zgartirish"</string>
 	<string name="icon_shape_override_progress">"Ikonka shakli o‘zgartirilmoqda"</string>
+	<string name="icon_shape_square">"Kvadrat"</string>
+	<string name="icon_shape_squircle">"Qirralari aylana kvadrat"</string>
+	<string name="icon_shape_circle">"Aylana"</string>
+	<string name="icon_shape_teardrop">"Tomchi"</string>
 </resources>

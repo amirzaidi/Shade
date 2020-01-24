@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Efst á heimaskjánum"</string>
 	<string name="icon_shape_override_label">"Breyta formi tákns"</string>
 	<string name="icon_shape_override_progress">"Breytir formi tákns"</string>
+	<string name="icon_shape_square">"Ferningur"</string>
+	<string name="icon_shape_squircle">"Ferhringur"</string>
+	<string name="icon_shape_circle">"Hringur"</string>
+	<string name="icon_shape_teardrop">"Dropi"</string>
 </resources>

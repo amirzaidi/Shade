@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Avaekraani ülaosas"</string>
 	<string name="icon_shape_override_label">"Ikooni kuju muutmine"</string>
 	<string name="icon_shape_override_progress">"Ikooni kuju muudatuste rakendamine"</string>
+	<string name="icon_shape_square">"Ruut"</string>
+	<string name="icon_shape_squircle">"Ümarate nurkadega ruut"</string>
+	<string name="icon_shape_circle">"Ring"</string>
+	<string name="icon_shape_teardrop">"Tilk"</string>
 </resources>

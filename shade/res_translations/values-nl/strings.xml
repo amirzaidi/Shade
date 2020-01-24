@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Bovenaan het startscherm"</string>
 	<string name="icon_shape_override_label">"Vorm van pictogram wijzigen"</string>
 	<string name="icon_shape_override_progress">"Wijzigingen in vorm van pictogram toepassen"</string>
+	<string name="icon_shape_square">"Vierkant"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"Cirkel"</string>
+	<string name="icon_shape_teardrop">"Traan"</string>
 </resources>

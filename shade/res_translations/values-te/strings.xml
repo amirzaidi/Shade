@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"మీ హోమ్ స్క్రీన్ ఎగువన"</string>
 	<string name="icon_shape_override_label">"చిహ్న ఆకారాన్ని మార్చు"</string>
 	<string name="icon_shape_override_progress">"చిహ్న ఆకార మార్పులను వర్తింపజేస్తోంది"</string>
+	<string name="icon_shape_square">"చతురస్రం"</string>
+	<string name="icon_shape_squircle">"చతురస్రాకార వృత్తం"</string>
+	<string name="icon_shape_circle">"వృత్తం"</string>
+	<string name="icon_shape_teardrop">"కన్నీటి చుక్క"</string>
 </resources>

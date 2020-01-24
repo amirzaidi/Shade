@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"在主屏幕顶部"</string>
 	<string name="icon_shape_override_label">"更改图标形状"</string>
 	<string name="icon_shape_override_progress">"正在应用图标形状更改"</string>
+	<string name="icon_shape_square">"方形"</string>
+	<string name="icon_shape_squircle">"方圆形"</string>
+	<string name="icon_shape_circle">"圆形"</string>
+	<string name="icon_shape_teardrop">"泪珠形"</string>
 </resources>

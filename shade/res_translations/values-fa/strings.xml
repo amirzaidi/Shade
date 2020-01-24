@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"در بالای صفحه ‌اصلی‌"</string>
 	<string name="icon_shape_override_label">"تغییر شکل نماد"</string>
 	<string name="icon_shape_override_progress">"درحال اعمال کردن تغییرات شکل نماد"</string>
+	<string name="icon_shape_square">"مربع"</string>
+	<string name="icon_shape_squircle">"مربع با گوشه‌های گرد"</string>
+	<string name="icon_shape_circle">"دایره"</string>
+	<string name="icon_shape_teardrop">"قطره اشک"</string>
 </resources>

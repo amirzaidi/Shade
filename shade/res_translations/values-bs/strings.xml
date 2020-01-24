@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Na vrhu početnog ekrana"</string>
 	<string name="icon_shape_override_label">"Promjena oblika ikona"</string>
 	<string name="icon_shape_override_progress">"Primjenjivanje promjena oblika ikona"</string>
+	<string name="icon_shape_square">"Kvadrat"</string>
+	<string name="icon_shape_squircle">"Zaobljeni kvadrat"</string>
+	<string name="icon_shape_circle">"Krug"</string>
+	<string name="icon_shape_teardrop">"Suza"</string>
 </resources>

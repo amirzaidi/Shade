@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"तपाईंको गृह स्क्रिनको शीर्षमा अवस्थित छ"</string>
 	<string name="icon_shape_override_label">"आइकनको आकार परिवर्तन गर्नुहोस्"</string>
 	<string name="icon_shape_override_progress">"आइकनको आकारमा गरिएका परिवर्तनहरू लागू गरिँदैछन्"</string>
+	<string name="icon_shape_square">"वर्ग"</string>
+	<string name="icon_shape_squircle">"वर्गाकार वृत्त"</string>
+	<string name="icon_shape_circle">"वृत्त"</string>
+	<string name="icon_shape_teardrop">"आँसुको थोपा"</string>
 </resources>

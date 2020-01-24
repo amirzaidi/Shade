@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Øverst på startskjermen"</string>
 	<string name="icon_shape_override_label">"Endre formen på ikonet"</string>
 	<string name="icon_shape_override_progress">"Aktiverer endringer av formen på ikonet"</string>
+	<string name="icon_shape_square">"Kvadrat"</string>
+	<string name="icon_shape_squircle">"Superellipse"</string>
+	<string name="icon_shape_circle">"Sirkel"</string>
+	<string name="icon_shape_teardrop">"Dråpe"</string>
 </resources>

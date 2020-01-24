@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"В верхней части главного экрана"</string>
 	<string name="icon_shape_override_label">"Изменить форму значков"</string>
 	<string name="icon_shape_override_progress">"Применение изменений…"</string>
+	<string name="icon_shape_square">"Квадрат"</string>
+	<string name="icon_shape_squircle">"Квадрат с закругленными краями"</string>
+	<string name="icon_shape_circle">"Круг"</string>
+	<string name="icon_shape_teardrop">"Капля"</string>
 </resources>

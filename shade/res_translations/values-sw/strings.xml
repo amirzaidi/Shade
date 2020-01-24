@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Juu ya Skrini ya kwanza"</string>
 	<string name="icon_shape_override_label">"Badilisha umbo la aikoni"</string>
 	<string name="icon_shape_override_progress">"Inabadilisha umbo la aikoni"</string>
+	<string name="icon_shape_square">"Mraba"</string>
+	<string name="icon_shape_squircle">"Mstatili wenye pembe duara"</string>
+	<string name="icon_shape_circle">"Mduara"</string>
+	<string name="icon_shape_teardrop">"Umbo la chozi"</string>
 </resources>

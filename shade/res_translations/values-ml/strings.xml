@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"നിങ്ങളുടെ ഹോം സ്‌ക്രീനിന്റെ മുകളിൽ"</string>
 	<string name="icon_shape_override_label">"ഐക്കണിന്റെ ആകാരം മാറ്റുക"</string>
 	<string name="icon_shape_override_progress">"ഐക്കൺ ആകാര മാറ്റങ്ങൾ പ്രയോഗിക്കുന്നു"</string>
+	<string name="icon_shape_square">"ചതുരം"</string>
+	<string name="icon_shape_squircle">"ചതുരവൃത്തം"</string>
+	<string name="icon_shape_circle">"വൃത്തം"</string>
+	<string name="icon_shape_teardrop">"കണ്ണുനീര്‍ തുള്ളി"</string>
 </resources>

@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Boaan jou Tuisskerm"</string>
 	<string name="icon_shape_override_label">"Verander ikoon se vorm"</string>
 	<string name="icon_shape_override_progress">"Pas ikoonvormveranderings toe"</string>
+	<string name="icon_shape_square">"Vierkant"</string>
+	<string name="icon_shape_squircle">"Sirkelvierkant"</string>
+	<string name="icon_shape_circle">"Sirkel"</string>
+	<string name="icon_shape_teardrop">"Traandruppel"</string>
 </resources>

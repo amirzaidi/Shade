@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Sākuma ekrāna augšdaļā"</string>
 	<string name="icon_shape_override_label">"Mainīt ikonu formu"</string>
 	<string name="icon_shape_override_progress">"Tiek piemērotas ikonu formas izmaiņas"</string>
+	<string name="icon_shape_square">"Kvadrāts"</string>
+	<string name="icon_shape_squircle">"Kvadrāts ar noapaļotiem stūriem"</string>
+	<string name="icon_shape_circle">"Aplis"</string>
+	<string name="icon_shape_teardrop">"Lāse"</string>
 </resources>

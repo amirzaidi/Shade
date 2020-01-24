@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"בחלק העליון של מסך דף הבית"</string>
 	<string name="icon_shape_override_label">"שינוי הצורה של הסמלים"</string>
 	<string name="icon_shape_override_progress">"משנה את הצורה של הסמלים"</string>
+	<string name="icon_shape_square">"ריבוע"</string>
+	<string name="icon_shape_squircle">"ריבוע בעל פינות מעוגלות"</string>
+	<string name="icon_shape_circle">"מעגל"</string>
+	<string name="icon_shape_teardrop">"טיפה"</string>
 </resources>

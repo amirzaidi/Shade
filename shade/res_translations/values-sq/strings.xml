@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Në krye të Ekranit bazë"</string>
 	<string name="icon_shape_override_label">"Ndrysho formën e ikonës"</string>
 	<string name="icon_shape_override_progress">"Po zbatohen ndryshimet e formës së ikonës"</string>
+	<string name="icon_shape_square">"Katror"</string>
+	<string name="icon_shape_squircle">"Katror me kënde të rrumbullakëta"</string>
+	<string name="icon_shape_circle">"Rreth"</string>
+	<string name="icon_shape_teardrop">"Pikë loti"</string>
 </resources>

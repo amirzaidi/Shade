@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Högst upp på startskärmen"</string>
 	<string name="icon_shape_override_label">"Ändra form på ikoner"</string>
 	<string name="icon_shape_override_progress">"Ikonernas form ändras"</string>
+	<string name="icon_shape_square">"Kvadrat"</string>
+	<string name="icon_shape_squircle">"Kvirkel"</string>
+	<string name="icon_shape_circle">"Cirkel"</string>
+	<string name="icon_shape_teardrop">"Droppe"</string>
 </resources>

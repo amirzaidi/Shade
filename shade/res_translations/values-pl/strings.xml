@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"U góry ekranu głównego"</string>
 	<string name="icon_shape_override_label">"Zmień kształt ikon"</string>
 	<string name="icon_shape_override_progress">"Zmieniam kształt ikon"</string>
+	<string name="icon_shape_square">"Kwadrat"</string>
+	<string name="icon_shape_squircle">"Zaokrąglony kwadrat"</string>
+	<string name="icon_shape_circle">"Okrąg"</string>
+	<string name="icon_shape_teardrop">"Łza"</string>
 </resources>

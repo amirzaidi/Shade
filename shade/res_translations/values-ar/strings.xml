@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"بأعلى شاشتك الرئيسية"</string>
 	<string name="icon_shape_override_label">"تغيير شكل الرمز"</string>
 	<string name="icon_shape_override_progress">"جارٍ تطبيق تغييرات شكل الرمز"</string>
+	<string name="icon_shape_square">"مربّع"</string>
+	<string name="icon_shape_squircle">"رمز دائري مربّع"</string>
+	<string name="icon_shape_circle">"دائرة"</string>
+	<string name="icon_shape_teardrop">"رمز على شكل دمعة"</string>
 </resources>

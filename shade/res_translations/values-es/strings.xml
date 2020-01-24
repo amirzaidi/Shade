@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"En la parte superior de la pantalla de inicio"</string>
 	<string name="icon_shape_override_label">"Cambiar forma de los iconos"</string>
 	<string name="icon_shape_override_progress">"Aplicando cambios en la forma de los iconos"</string>
+	<string name="icon_shape_square">"Cuadrado"</string>
+	<string name="icon_shape_squircle">"Cuadrado con esquinas redondeadas"</string>
+	<string name="icon_shape_circle">"Círculo"</string>
+	<string name="icon_shape_teardrop">"Lágrima"</string>
 </resources>

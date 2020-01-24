@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Oben auf deinem Startbildschirm"</string>
 	<string name="icon_shape_override_label">"Form des Symbols ändern"</string>
 	<string name="icon_shape_override_progress">"Änderungen an der Form des Symbols werden übernommen"</string>
+	<string name="icon_shape_square">"Quadrat"</string>
+	<string name="icon_shape_squircle">"Superkreis"</string>
+	<string name="icon_shape_circle">"Kreis"</string>
+	<string name="icon_shape_teardrop">"Träne"</string>
 </resources>

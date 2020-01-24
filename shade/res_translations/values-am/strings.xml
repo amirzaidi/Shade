@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"በመነሻ ማያ ገጽዎ አናት ላይ"</string>
 	<string name="icon_shape_override_label">"የአዶ ቅርፅ ለውጥ"</string>
 	<string name="icon_shape_override_progress">"የአዶ ቅርች ለውጦች"</string>
+	<string name="icon_shape_square">"ካሬ"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"ክብ"</string>
+	<string name="icon_shape_teardrop">"የእንባ ጠብታ"</string>
 </resources>

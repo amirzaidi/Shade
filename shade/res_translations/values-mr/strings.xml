@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"तुमच्या होम स्क्रीनच्या शीर्षस्थानी"</string>
 	<string name="icon_shape_override_label">"चिन्हाचा आकार बदला"</string>
 	<string name="icon_shape_override_progress">"चिन्हाचा आकार बदल लागू करत आहे"</string>
+	<string name="icon_shape_square">"चौरस"</string>
+	<string name="icon_shape_squircle">"गोलाकार चौरस"</string>
+	<string name="icon_shape_circle">"वर्तुळ"</string>
+	<string name="icon_shape_teardrop">"अश्रू"</string>
 </resources>

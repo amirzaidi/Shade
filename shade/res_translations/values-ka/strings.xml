@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"მთავარი ეკრანის სათავეში"</string>
 	<string name="icon_shape_override_label">"ხატულას ფორმის შეცვლა"</string>
 	<string name="icon_shape_override_progress">"მიმდინარეობს ხატულას ფორმის ცვლილებების მიყენება"</string>
+	<string name="icon_shape_square">"კვადრატი"</string>
+	<string name="icon_shape_squircle">"წრეკუთხედი"</string>
+	<string name="icon_shape_circle">"წრე"</string>
+	<string name="icon_shape_teardrop">"წვეთი"</string>
 </resources>

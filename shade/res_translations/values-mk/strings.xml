@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Најгоре на почетниот екран"</string>
 	<string name="icon_shape_override_label">"Променете ја формата на иконата"</string>
 	<string name="icon_shape_override_progress">"Се применуваат промените на формата на иконата"</string>
+	<string name="icon_shape_square">"Квадрат"</string>
+	<string name="icon_shape_squircle">"Заоблен квадрат"</string>
+	<string name="icon_shape_circle">"Круг"</string>
+	<string name="icon_shape_teardrop">"Солза"</string>
 </resources>

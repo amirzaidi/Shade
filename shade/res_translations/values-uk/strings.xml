@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Угорі головного екрана"</string>
 	<string name="icon_shape_override_label">"Змінити форму значка"</string>
 	<string name="icon_shape_override_progress">"Змінюється форма значка"</string>
+	<string name="icon_shape_square">"Квадрат"</string>
+	<string name="icon_shape_squircle">"Квадрат із заокругленими кутами"</string>
+	<string name="icon_shape_circle">"Круг"</string>
+	<string name="icon_shape_teardrop">"Сльоза"</string>
 </resources>

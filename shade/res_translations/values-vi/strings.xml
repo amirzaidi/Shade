@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Ở đầu Màn hình chính của bạn"</string>
 	<string name="icon_shape_override_label">"Thay đổi hình dạng biểu tượng"</string>
 	<string name="icon_shape_override_progress">"Đang áp dụng các thay đổi hình dạng biểu tượng"</string>
+	<string name="icon_shape_square">"Hình vuông"</string>
+	<string name="icon_shape_squircle">"Hình vuông cạnh bo tròn"</string>
+	<string name="icon_shape_circle">"Hình tròn"</string>
+	<string name="icon_shape_teardrop">"Hình giọt nước"</string>
 </resources>

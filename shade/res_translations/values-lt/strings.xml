@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Pagrindinio ekrano viršuje"</string>
 	<string name="icon_shape_override_label">"Pakeisti piktogramos formą"</string>
 	<string name="icon_shape_override_progress">"Taikomi piktogramos formos pakeitimai"</string>
+	<string name="icon_shape_square">"Kvadratas"</string>
+	<string name="icon_shape_squircle">"Kvadratais suapvalintais kampais"</string>
+	<string name="icon_shape_circle">"Apskritimas"</string>
+	<string name="icon_shape_teardrop">"Ašara"</string>
 </resources>

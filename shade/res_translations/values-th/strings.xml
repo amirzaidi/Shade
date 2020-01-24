@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"ที่ด้านบนของหน้าจอหลัก"</string>
 	<string name="icon_shape_override_label">"เปลี่ยนรูปร่างไอคอน"</string>
 	<string name="icon_shape_override_progress">"กำลังนำการเปลี่ยนรูปร่างไอคอนไปใช้"</string>
+	<string name="icon_shape_square">"สี่เหลี่ยมจัตุรัส"</string>
+	<string name="icon_shape_squircle">"สี่เหลี่ยมขอบมน"</string>
+	<string name="icon_shape_circle">"วงกลม"</string>
+	<string name="icon_shape_teardrop">"หยดน้ำตา"</string>
 </resources>

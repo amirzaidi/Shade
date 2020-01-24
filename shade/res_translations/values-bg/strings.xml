@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"В горната част на началния ви екран"</string>
 	<string name="icon_shape_override_label">"Промяна на формата на иконите"</string>
 	<string name="icon_shape_override_progress">"Промените във формата на иконите се прилагат"</string>
+	<string name="icon_shape_square">"Квадрат"</string>
+	<string name="icon_shape_squircle">"Комбинация от кръг и квадрат"</string>
+	<string name="icon_shape_circle">"Кръг"</string>
+	<string name="icon_shape_teardrop">"Сълза"</string>
 </resources>

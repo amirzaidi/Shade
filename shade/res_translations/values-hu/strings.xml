@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"A kezdőképernyő tetején"</string>
 	<string name="icon_shape_override_label">"Ikon formájának módosítása"</string>
 	<string name="icon_shape_override_progress">"Ikonforma módosításainak alkalmazása…"</string>
+	<string name="icon_shape_square">"Négyzet"</string>
+	<string name="icon_shape_squircle">"Squircle"</string>
+	<string name="icon_shape_circle">"Kör"</string>
+	<string name="icon_shape_teardrop">"Könnycsepp"</string>
 </resources>

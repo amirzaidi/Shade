@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Aloitusnäytön yläreunassa"</string>
 	<string name="icon_shape_override_label">"Muuta kuvakkeen muotoa"</string>
 	<string name="icon_shape_override_progress">"Sovelletaan kuvakkeiden muotojen muutoksia"</string>
+	<string name="icon_shape_square">"Neliö"</string>
+	<string name="icon_shape_squircle">"Ympyräneliö"</string>
+	<string name="icon_shape_circle">"Ympyrä"</string>
+	<string name="icon_shape_teardrop">"Pisara"</string>
 </resources>

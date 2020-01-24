@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Башкы экрандын өйдө жагында"</string>
 	<string name="icon_shape_override_label">"Сүрөтчөнүн формасын өзгөртүү"</string>
 	<string name="icon_shape_override_progress">"Өзгөртүлгөн сүрөтчөнүн формасы колдонулууда"</string>
+	<string name="icon_shape_square">"Чарчы"</string>
+	<string name="icon_shape_squircle">"Бурчтары жумуру төрт бурчтук"</string>
+	<string name="icon_shape_circle">"Тегерек"</string>
+	<string name="icon_shape_teardrop">"Тамчы"</string>
 </resources>

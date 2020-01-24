@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"Əsas ekranın üzərində"</string>
 	<string name="icon_shape_override_label">"İkona formasını dəyişin"</string>
 	<string name="icon_shape_override_progress">"İkona formasına etdiyiniz dəyişikliklər tətbiq edilir"</string>
+	<string name="icon_shape_square">"Kvadrat"</string>
+	<string name="icon_shape_squircle">"Kənarları dairəvi kvadrat"</string>
+	<string name="icon_shape_circle">"Çevrə"</string>
+	<string name="icon_shape_teardrop">"Gözyaşı damlası"</string>
 </resources>

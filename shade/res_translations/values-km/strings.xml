@@ -39,4 +39,8 @@
 	<string name="smartspace_preferences_in_settings_desc">"នៅផ្នែក​ខាងលើ​នៃ​អេក្រង់ដើមរបស់អ្នក"</string>
 	<string name="icon_shape_override_label">"ប្តូររូបរាងរូបតំណាង"</string>
 	<string name="icon_shape_override_progress">"កំពុងអនុវត្ត​ការប្តូររូបរាងរូបតំណាង"</string>
+	<string name="icon_shape_square">"ការ៉េ"</string>
+	<string name="icon_shape_squircle">"ការ៉េជ្រុងកោង"</string>
+	<string name="icon_shape_circle">"រង្វង់"</string>
+	<string name="icon_shape_teardrop">"តំណក់​ទឹកភ្នែក"</string>
 </resources>
