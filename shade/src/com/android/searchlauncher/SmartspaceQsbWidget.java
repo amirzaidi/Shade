@@ -2,14 +2,19 @@ package com.android.searchlauncher;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Process;
+import android.provider.CalendarContract;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.qsb.QsbContainerView;
 
@@ -81,9 +86,22 @@ public class SmartspaceQsbWidget extends QsbContainerView {
 
                 // Try binding immediately when creating the view.
                 startActivityForResult(intent, REQUEST_BIND_QSB);
+            } else {
+                v.setOnClickListener(this::openCalendar);
             }
 
             return v;
+        }
+
+        private void openCalendar(View v) {
+            Uri.Builder timeUri = CalendarContract.CONTENT_URI.buildUpon().appendPath("time");
+            ContentUris.appendId(timeUri, System.currentTimeMillis());
+            Intent intent = new Intent(Intent.ACTION_VIEW)
+                    .setData(timeUri.build())
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                            | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+            Launcher.getLauncher(getContext())
+                    .startActivitySafely(v, intent, null, null);
         }
 
         @Override
