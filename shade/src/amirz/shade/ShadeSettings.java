@@ -100,7 +100,8 @@ public class  ShadeSettings extends SettingsActivity {
             findPreference(KEY_THEME).setOnPreferenceChangeListener((pref, val) -> {
                 startActivity(getActivity().getIntent()
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP),
-                        ActivityOptions.makeCustomAnimation(context, 0, 0).toBundle());
+                        ActivityOptions.makeCustomAnimation(
+                                context, R.anim.fade_in, R.anim.fade_out).toBundle());
                 return true;
             });
 
