@@ -69,6 +69,4 @@
 	<string name="icon_shape_squircle">"Squircle"</string>
 	<string name="icon_shape_circle">"Circle"</string>
 	<string name="icon_shape_teardrop">"Teardrop"</string>
-	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
-	<string name="smartspace_preferences_in_settings_desc">"At the top of your Home screen"</string>
 </resources>

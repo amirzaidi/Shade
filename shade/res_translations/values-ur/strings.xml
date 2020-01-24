@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""اسکورکل""</string>
 	<string name="icon_shape_circle">""حلقہ""</string>
 	<string name="icon_shape_teardrop">""آنسو کا قطرہ""</string>
-	<string name="smartspace_preferences_in_settings">"ایک نظر میں"</string>
-	<string name="smartspace_preferences_in_settings_desc">"آپ کی ہوم اسکرین کے سب سے اوپری حصے میں"</string>
 </resources>

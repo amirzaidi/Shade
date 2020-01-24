@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Pătrat cu colțuri rotunjite""</string>
 	<string name="icon_shape_circle">""Cerc""</string>
 	<string name="icon_shape_teardrop">""Lacrimă""</string>
-	<string name="smartspace_preferences_in_settings">"Pe scurt"</string>
-	<string name="smartspace_preferences_in_settings_desc">"În partea de sus a ecranului de pornire"</string>
 </resources>

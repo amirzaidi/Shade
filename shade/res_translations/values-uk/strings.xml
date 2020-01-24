@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Квадрат із заокругленими кутами""</string>
 	<string name="icon_shape_circle">""Круг""</string>
 	<string name="icon_shape_teardrop">""Сльоза""</string>
-	<string name="smartspace_preferences_in_settings">"Зворотний відлік"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Угорі головного екрана"</string>
 </resources>

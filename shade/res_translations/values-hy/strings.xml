@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Քառանկյուն""</string>
 	<string name="icon_shape_circle">""Օղակ""</string>
 	<string name="icon_shape_teardrop">""Արցունքաձև""</string>
-	<string name="smartspace_preferences_in_settings">"Հետհաշվարկ"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Ձեր հիմնական էկրանի վերևում"</string>
 </resources>

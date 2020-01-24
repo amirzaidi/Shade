@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""ચોરસ જેવું ગોળ""</string>
 	<string name="icon_shape_circle">""વર્તુળ""</string>
 	<string name="icon_shape_teardrop">""ટિઅરડ્રોપ""</string>
-	<string name="smartspace_preferences_in_settings">"એક નજરમાં"</string>
-	<string name="smartspace_preferences_in_settings_desc">"તમારી હોમ સ્ક્રીનની શીર્ષ પર"</string>
 </resources>

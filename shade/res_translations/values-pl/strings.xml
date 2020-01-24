@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Zaokrąglony kwadrat""</string>
 	<string name="icon_shape_circle">""Okrąg""</string>
 	<string name="icon_shape_teardrop">""Łza""</string>
-	<string name="smartspace_preferences_in_settings">"W skrócie"</string>
-	<string name="smartspace_preferences_in_settings_desc">"U góry ekranu głównego"</string>
 </resources>

@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Cuadrado con esquinas redondeadas""</string>
 	<string name="icon_shape_circle">""Círculo""</string>
 	<string name="icon_shape_teardrop">""Lágrima""</string>
-	<string name="smartspace_preferences_in_settings">"De un vistazo"</string>
-	<string name="smartspace_preferences_in_settings_desc">"En la parte superior de la pantalla de inicio"</string>
 </resources>

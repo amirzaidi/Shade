@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Квадрат с закругленными краями""</string>
 	<string name="icon_shape_circle">""Круг""</string>
 	<string name="icon_shape_teardrop">""Капля""</string>
-	<string name="smartspace_preferences_in_settings">"Самое главное"</string>
-	<string name="smartspace_preferences_in_settings_desc">"В верхней части главного экрана"</string>
 </resources>

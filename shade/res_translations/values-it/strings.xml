@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Supercerchio""</string>
 	<string name="icon_shape_circle">""Cerchio""</string>
 	<string name="icon_shape_teardrop">""Goccia""</string>
-	<string name="smartspace_preferences_in_settings">"Riepilogo"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Nella parte superiore della tua schermata Home"</string>
 </resources>

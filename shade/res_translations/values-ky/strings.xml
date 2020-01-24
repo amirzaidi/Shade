@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Бурчтары жумуру төрт бурчтук""</string>
 	<string name="icon_shape_circle">""Тегерек""</string>
 	<string name="icon_shape_teardrop">""Тамчы""</string>
-	<string name="smartspace_preferences_in_settings">"Дароо көрүү"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Башкы экрандын өйдө жагында"</string>
 </resources>

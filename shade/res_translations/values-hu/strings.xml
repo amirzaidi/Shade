@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Squircle""</string>
 	<string name="icon_shape_circle">""Kör""</string>
 	<string name="icon_shape_teardrop">""Könnycsepp""</string>
-	<string name="smartspace_preferences_in_settings">"Áttekintés"</string>
-	<string name="smartspace_preferences_in_settings_desc">"A kezdőképernyő tetején"</string>
 </resources>

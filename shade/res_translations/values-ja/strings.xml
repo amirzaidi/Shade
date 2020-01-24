@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""スクワークル""</string>
 	<string name="icon_shape_circle">""サークル""</string>
 	<string name="icon_shape_teardrop">""ティアドロップ""</string>
-	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
-	<string name="smartspace_preferences_in_settings_desc">"ホーム画面の上部"</string>
 </resources>

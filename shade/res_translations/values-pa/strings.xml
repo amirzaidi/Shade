@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""ਵਰਗਾਕਾਰ-ਚੱਕਰ""</string>
 	<string name="icon_shape_circle">""ਚੱਕਰ""</string>
 	<string name="icon_shape_teardrop">""ਹੰਝੂ ਦੀ ਬੂੰਦ""</string>
-	<string name="smartspace_preferences_in_settings">"ਇੱਕ ਨਜ਼ਰ ਵਿੱਚ"</string>
-	<string name="smartspace_preferences_in_settings_desc">"ਤੁਹਾਡੀ ਹੋਮ ਸਕ੍ਰੀਨ ਦੇ ਸਿਖਰ \'ਤੇ"</string>
 </resources>

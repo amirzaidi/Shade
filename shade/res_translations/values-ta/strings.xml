@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""சதுரவட்டம்""</string>
 	<string name="icon_shape_circle">""வட்டம்""</string>
 	<string name="icon_shape_teardrop">""கண்ணீர்துளி""</string>
-	<string name="smartspace_preferences_in_settings">"முகப்புத் தகவல்"</string>
-	<string name="smartspace_preferences_in_settings_desc">"முகப்புத் திரையின் மேற்புறம்"</string>
 </resources>

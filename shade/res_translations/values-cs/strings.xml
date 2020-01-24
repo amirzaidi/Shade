@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Kruh/čtverec""</string>
 	<string name="icon_shape_circle">""Kruh""</string>
 	<string name="icon_shape_teardrop">""Slza""</string>
-	<string name="smartspace_preferences_in_settings">"Přehled událostí"</string>
-	<string name="smartspace_preferences_in_settings_desc">"V horní části plochy"</string>
 </resources>

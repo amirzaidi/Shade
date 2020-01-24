@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Sirkelvierkant""</string>
 	<string name="icon_shape_circle">""Sirkel""</string>
 	<string name="icon_shape_teardrop">""Traandruppel""</string>
-	<string name="smartspace_preferences_in_settings">"Met een blik"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Boaan jou Tuisskerm"</string>
 </resources>

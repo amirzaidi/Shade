@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""ചതുരവൃത്തം""</string>
 	<string name="icon_shape_circle">""വൃത്തം""</string>
 	<string name="icon_shape_teardrop">""കണ്ണുനീര്‍ തുള്ളി""</string>
-	<string name="smartspace_preferences_in_settings">"ഒറ്റനോട്ടത്തിൽ"</string>
-	<string name="smartspace_preferences_in_settings_desc">"നിങ്ങളുടെ ഹോം സ്‌ക്രീനിന്റെ മുകളിൽ"</string>
 </resources>

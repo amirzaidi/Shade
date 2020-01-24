@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""წრეკუთხედი""</string>
 	<string name="icon_shape_circle">""წრე""</string>
 	<string name="icon_shape_teardrop">""წვეთი""</string>
-	<string name="smartspace_preferences_in_settings">"მოკლე მიმოხილვა"</string>
-	<string name="smartspace_preferences_in_settings_desc">"მთავარი ეკრანის სათავეში"</string>
 </resources>

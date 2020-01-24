@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Прамавугольнік са скругленымі вугламі""</string>
 	<string name="icon_shape_circle">""Круг""</string>
 	<string name="icon_shape_teardrop">""Сляза""</string>
-	<string name="smartspace_preferences_in_settings">"Кароткі агляд"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Уверсе галоўнага экрана"</string>
 </resources>

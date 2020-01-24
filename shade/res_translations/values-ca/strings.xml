@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Quadrat arrodonit""</string>
 	<string name="icon_shape_circle">""Cercle""</string>
 	<string name="icon_shape_teardrop">""Llàgrima""</string>
-	<string name="smartspace_preferences_in_settings">"D\'una ullada"</string>
-	<string name="smartspace_preferences_in_settings_desc">"A la part superior de la pantalla d\'inici"</string>
 </resources>

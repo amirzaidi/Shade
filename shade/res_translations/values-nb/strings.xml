@@ -39,6 +39,4 @@
 	<string name="icon_shape_squircle">""Superellipse""</string>
 	<string name="icon_shape_circle">""Sirkel""</string>
 	<string name="icon_shape_teardrop">""Dråpe""</string>
-	<string name="smartspace_preferences_in_settings">"Kort fortalt"</string>
-	<string name="smartspace_preferences_in_settings_desc">"Øverst på startskjermen"</string>
 </resources>
