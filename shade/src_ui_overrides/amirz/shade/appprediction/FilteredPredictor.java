@@ -21,7 +21,7 @@ import amirz.shade.settings.PredictionPreference;
 import static android.content.pm.PackageManager.GET_RESOLVED_FILTER;
 
 class FilteredPredictor extends UsageTracker {
-    private static final int MAX_REMOVE_TOP = 3;
+    private static final int MAX_REMOVE_TOP = 2;
     private static final Set<String> FILTER_META;
 
     static {
