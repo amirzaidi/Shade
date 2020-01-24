@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""آنسو کا قطرہ""</string>
 	<string name="smartspace_preferences_in_settings">"ایک نظر میں"</string>
 	<string name="smartspace_preferences_in_settings_desc">"آپ کی ہوم اسکرین کے سب سے اوپری حصے میں"</string>
-	<string name="icon_shape_override_label">"آئیکن کی شکل تبدیل کریں"</string>
-	<string name="icon_shape_override_progress">"آئيکن کی شکل کی تبدیلیاں لاگو ہو رہی ہیں"</string>
 </resources>

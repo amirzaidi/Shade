@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Дусал""</string>
 	<string name="smartspace_preferences_in_settings">"Гялс харах"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Таны Үндсэн нүүрний дээд хэсэгт"</string>
-	<string name="icon_shape_override_label">"Дүрс тэмдгийн хэлбэрийг өөрчлөх"</string>
-	<string name="icon_shape_override_progress">"Дүрс тэмдгийн хэлбэрийг өөрчилж байна"</string>
 </resources>

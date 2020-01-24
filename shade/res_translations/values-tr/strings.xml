@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Gözyaşı damlası""</string>
 	<string name="smartspace_preferences_in_settings">"Bir Bakışta"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Ana ekranınızın üst bölümünde"</string>
-	<string name="icon_shape_override_label">"Simge şeklini değiştir"</string>
-	<string name="icon_shape_override_progress">"Simge şekli değişiklikleri uygulanıyor"</string>
 </resources>

@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Suza""</string>
 	<string name="smartspace_preferences_in_settings">"Brzi pregled aktivnosti"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Na vrhu početnog ekrana"</string>
-	<string name="icon_shape_override_label">"Promjena oblika ikona"</string>
-	<string name="icon_shape_override_progress">"Primjenjivanje promjena oblika ikona"</string>
 </resources>

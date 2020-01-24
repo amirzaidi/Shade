@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""अश्रू""</string>
 	<string name="smartspace_preferences_in_settings">"एका दृष्‍टीक्षेपात"</string>
 	<string name="smartspace_preferences_in_settings_desc">"तुमच्या होम स्क्रीनच्या शीर्षस्थानी"</string>
-	<string name="icon_shape_override_label">"चिन्हाचा आकार बदला"</string>
-	<string name="icon_shape_override_progress">"चिन्हाचा आकार बदल लागू करत आहे"</string>
 </resources>

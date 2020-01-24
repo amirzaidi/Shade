@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""ಕಂಬನಿ""</string>
 	<string name="smartspace_preferences_in_settings">"ಇಣುಕು ನೋಟದಲ್ಲಿ"</string>
 	<string name="smartspace_preferences_in_settings_desc">"ನಿಮ್ಮ ಮುಖ ಪುಟದ ಪರದೆಯ ಮೇಲ್ಬಾಗದಲ್ಲಿ"</string>
-	<string name="icon_shape_override_label">"ಐಕಾನ್ ಆಕಾರವನ್ನು ಬದಲಿಸಿ"</string>
-	<string name="icon_shape_override_progress">"ಐಕಾನ್ ಆಕಾರ ಬದಲಾವಣೆಯನ್ನು ಅನ್ವಯಿಸಲಾಗುತ್ತಿದೆ"</string>
 </resources>

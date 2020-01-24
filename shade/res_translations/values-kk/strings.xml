@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Тамшы""</string>
 	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Негізі экранның жоғарғы жағында"</string>
-	<string name="icon_shape_override_label">"Белгіше пішінін өзгерту"</string>
-	<string name="icon_shape_override_progress">"Белгіше пішіні өзгерістері күшіне енуде"</string>
 </resources>

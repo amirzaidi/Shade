@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""आंसू की बूंद""</string>
 	<string name="smartspace_preferences_in_settings">"एक नज़र में"</string>
 	<string name="smartspace_preferences_in_settings_desc">"आपकी होम स्क्रीन में सबसे ऊपर"</string>
-	<string name="icon_shape_override_label">"आइकन का आकार बदलें"</string>
-	<string name="icon_shape_override_progress">"आइकन के आकार में बदलाव लागू किए जा रहे हैं"</string>
 </resources>

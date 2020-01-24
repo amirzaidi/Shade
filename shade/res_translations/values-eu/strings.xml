@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Malkoa""</string>
 	<string name="smartspace_preferences_in_settings">"Laburpena"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Hasierako pantailaren goialdean"</string>
-	<string name="icon_shape_override_label">"Aldatu ikonoaren forma"</string>
-	<string name="icon_shape_override_progress">"Ikonoaren forman egindako aldaketak aplikatzen"</string>
 </resources>

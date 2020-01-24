@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Llàgrima""</string>
 	<string name="smartspace_preferences_in_settings">"D\'una ullada"</string>
 	<string name="smartspace_preferences_in_settings_desc">"A la part superior de la pantalla d\'inici"</string>
-	<string name="icon_shape_override_label">"Canvia la forma de les icones"</string>
-	<string name="icon_shape_override_progress">""S'estan aplicant els canvis de forma de les icones""</string>
 </resources>

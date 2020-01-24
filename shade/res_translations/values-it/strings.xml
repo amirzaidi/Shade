@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Goccia""</string>
 	<string name="smartspace_preferences_in_settings">"Riepilogo"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Nella parte superiore della tua schermata Home"</string>
-	<string name="icon_shape_override_label">"Cambia la forma delle icone"</string>
-	<string name="icon_shape_override_progress">"Applicazione delle modifiche alla forma delle icone"</string>
 </resources>

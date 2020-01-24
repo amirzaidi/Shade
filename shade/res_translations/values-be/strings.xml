@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Сляза""</string>
 	<string name="smartspace_preferences_in_settings">"Кароткі агляд"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Уверсе галоўнага экрана"</string>
-	<string name="icon_shape_override_label">"Змяніць форму значка"</string>
-	<string name="icon_shape_override_progress">"Змены формы значка прымяняюцца"</string>
 </resources>

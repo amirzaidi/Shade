@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""泪珠形""</string>
 	<string name="smartspace_preferences_in_settings">"一目了然"</string>
 	<string name="smartspace_preferences_in_settings_desc">"在主屏幕顶部"</string>
-	<string name="icon_shape_override_label">"更改图标形状"</string>
-	<string name="icon_shape_override_progress">"正在应用图标形状更改"</string>
 </resources>

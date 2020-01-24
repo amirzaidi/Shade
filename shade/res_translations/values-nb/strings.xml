@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Dråpe""</string>
 	<string name="smartspace_preferences_in_settings">"Kort fortalt"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Øverst på startskjermen"</string>
-	<string name="icon_shape_override_label">"Endre formen på ikonet"</string>
-	<string name="icon_shape_override_progress">"Aktiverer endringer av formen på ikonet"</string>
 </resources>

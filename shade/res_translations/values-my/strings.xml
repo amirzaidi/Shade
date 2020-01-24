@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""မျက်ရည်စက်ပုံ""</string>
 	<string name="smartspace_preferences_in_settings">"တစ်ချက်ကြည့်ရုံမျှဖြင့်"</string>
 	<string name="smartspace_preferences_in_settings_desc">"သင့်ပင်မစာမျက်နှာ၏ ထိပ်ဘက်တွင်"</string>
-	<string name="icon_shape_override_label">"သင်္ကေတပုံစံကို ပြောင်းရန်"</string>
-	<string name="icon_shape_override_progress">"သင်္ကေတပုံစံကို ပြောင်းလဲနေသည်"</string>
 </resources>

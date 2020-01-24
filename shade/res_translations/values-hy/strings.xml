@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Արցունքաձև""</string>
 	<string name="smartspace_preferences_in_settings">"Հետհաշվարկ"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Ձեր հիմնական էկրանի վերևում"</string>
-	<string name="icon_shape_override_label">"Փոխել պատկերակների տեսքը"</string>
-	<string name="icon_shape_override_progress">"Պատկերակների տեսքի փոփոխությունները կիրառվում են"</string>
 </resources>

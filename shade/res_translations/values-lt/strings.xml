@@ -41,6 +41,4 @@
 	<string name="icon_shape_teardrop">""Ašara""</string>
 	<string name="smartspace_preferences_in_settings">"Apžvalga"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Pagrindinio ekrano viršuje"</string>
-	<string name="icon_shape_override_label">"Pakeisti piktogramos formą"</string>
-	<string name="icon_shape_override_progress">"Taikomi piktogramos formos pakeitimai"</string>
 </resources>
