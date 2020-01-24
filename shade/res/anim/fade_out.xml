@@ -4,5 +4,5 @@
     <alpha
         android:fromAlpha="1"
         android:toAlpha="1"
-        android:duration="@android:integer/config_mediumAnimTime" />
+        android:duration="@integer/config_settingsFadeAnimationDuration" />
 </set>

@@ -68,4 +68,6 @@
 
     <integer name="shade_all_apps_light_alpha">14</integer>
     <integer name="shade_all_apps_dark_alpha">9</integer>
+
+    <integer name="config_settingsFadeAnimationDuration">300</integer>
 </resources>
