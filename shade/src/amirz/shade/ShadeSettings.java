@@ -31,6 +31,7 @@ import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
+import static com.android.launcher3.util.Themes.KEY_DEVICE_THEME;
 
 public class  ShadeSettings extends SettingsActivity {
     public interface OnResumePreferenceCallback {
@@ -74,6 +75,11 @@ public class  ShadeSettings extends SettingsActivity {
                 AppReloader.get(context).reload();
                 return true;
             });
+
+            if (Utilities.ATLEAST_Q) {
+                PreferenceCategory category = (PreferenceCategory) findPreference("category_theme");
+                category.removePreference(category.findPreference(KEY_DEVICE_THEME));
+            }
 
             findPreference(KEY_THEME).setOnPreferenceChangeListener((pref, val) -> {
                 startActivity(getActivity().getIntent()
