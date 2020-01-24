@@ -17,6 +17,7 @@
 package com.android.launcher3.dragndrop;
 
 import static com.android.launcher3.Utilities.getBadge;
+import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_DRAG;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -220,6 +221,11 @@ public class DragView extends View implements LauncherStateManager.StateListener
                         false /* flattenDrawable */, outObj);
 
                 if (dr instanceof AdaptiveIconDrawable) {
+                    AdaptiveIconDrawable adaptiveIcon = (AdaptiveIconDrawable) dr;
+                    if ((adaptiveIcon.getChangingConfigurations() & CONFIG_HINT_NO_DRAG) != 0) {
+                        return;
+                    }
+
                     int blurMargin = (int) mLauncher.getResources()
                             .getDimension(R.dimen.blur_size_medium_outline) / 2;
 
@@ -245,7 +251,6 @@ public class DragView extends View implements LauncherStateManager.StateListener
                         Utilities.scaleRectAboutCenter(bounds,
                                 li.getNormalizer().getScale(nDr, null, null, null));
                     }
-                    AdaptiveIconDrawable adaptiveIcon = (AdaptiveIconDrawable) dr;
 
                     // Shrink very tiny bit so that the clip path is smaller than the original bitmap
                     // that has anti aliased edges and shadows.
