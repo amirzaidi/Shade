@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Lágrima""</string>
 	<string name="smartspace_preferences_in_settings">"Resumo"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Na parte superior da tela inicial"</string>
+	<string name="icon_shape_override_label">"Alterar forma de ícones"</string>
+	<string name="icon_shape_override_progress">"Aplicando alterações na forma dos ícones"</string>
 </resources>

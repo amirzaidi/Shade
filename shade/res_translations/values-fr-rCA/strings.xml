@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Goutte""</string>
 	<string name="smartspace_preferences_in_settings">"Aperçu"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Dans le haut de votre écran d\'accueil"</string>
+	<string name="icon_shape_override_label">""Modifier la forme de l'icône""</string>
+	<string name="icon_shape_override_progress">""Application des changements à la forme de l'icône en cours…""</string>
 </resources>

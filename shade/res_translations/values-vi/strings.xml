@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Hình giọt nước""</string>
 	<string name="smartspace_preferences_in_settings">"Xem nhanh"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Ở đầu Màn hình chính của bạn"</string>
+	<string name="icon_shape_override_label">"Thay đổi hình dạng biểu tượng"</string>
+	<string name="icon_shape_override_progress">"Đang áp dụng các thay đổi hình dạng biểu tượng"</string>
 </resources>

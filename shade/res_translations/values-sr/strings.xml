@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Суза""</string>
 	<string name="smartspace_preferences_in_settings">"Кратак преглед"</string>
 	<string name="smartspace_preferences_in_settings_desc">"У врху почетног екрана"</string>
+	<string name="icon_shape_override_label">"Промените облик икона"</string>
+	<string name="icon_shape_override_progress">"Примењују се промене облика икона"</string>
 </resources>

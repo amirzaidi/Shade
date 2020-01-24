@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Könnycsepp""</string>
 	<string name="smartspace_preferences_in_settings">"Áttekintés"</string>
 	<string name="smartspace_preferences_in_settings_desc">"A kezdőképernyő tetején"</string>
+	<string name="icon_shape_override_label">"Ikon formájának módosítása"</string>
+	<string name="icon_shape_override_progress">"Ikonforma módosításainak alkalmazása…"</string>
 </resources>

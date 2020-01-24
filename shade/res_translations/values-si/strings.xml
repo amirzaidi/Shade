@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""කඳුළු බිංදුව""</string>
 	<string name="smartspace_preferences_in_settings">"එක් බැල්මකින්"</string>
 	<string name="smartspace_preferences_in_settings_desc">"ඔබගේ මුල් පිටු තිරයෙහි ඉහළින්ම"</string>
+	<string name="icon_shape_override_label">"නිරූපක හැඩය වෙනස් කරන්න"</string>
+	<string name="icon_shape_override_progress">"නිරූපක හැඩය වෙනස් කිරීම් යොදමින්"</string>
 </resources>

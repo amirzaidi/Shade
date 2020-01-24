@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""눈물방울""</string>
 	<string name="smartspace_preferences_in_settings">"한눈에 보기"</string>
 	<string name="smartspace_preferences_in_settings_desc">"홈 화면 상단"</string>
+	<string name="icon_shape_override_label">"아이콘 모양 변경"</string>
+	<string name="icon_shape_override_progress">"아이콘 모양 변경사항을 적용하는 중입니다."</string>
 </resources>

@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""চোখের জল""</string>
 	<string name="smartspace_preferences_in_settings">"এক ঝলকে"</string>
 	<string name="smartspace_preferences_in_settings_desc">"আপনার হোম স্ক্রিনের উপরের দিকে"</string>
+	<string name="icon_shape_override_label">"আইকনের আকৃতি পরিবর্তন করুন"</string>
+	<string name="icon_shape_override_progress">"আইকনের আকৃতি পরিবর্তন করা হচ্ছে"</string>
 </resources>

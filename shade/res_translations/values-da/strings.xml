@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Dråbeform""</string>
 	<string name="smartspace_preferences_in_settings">"Overblik"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Øverst på din startskærm"</string>
+	<string name="icon_shape_override_label">"Skift ikonform"</string>
+	<string name="icon_shape_override_progress">"Anvender ændringer af ikonform"</string>
 </resources>

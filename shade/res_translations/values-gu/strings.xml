@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""ટિઅરડ્રોપ""</string>
 	<string name="smartspace_preferences_in_settings">"એક નજરમાં"</string>
 	<string name="smartspace_preferences_in_settings_desc">"તમારી હોમ સ્ક્રીનની શીર્ષ પર"</string>
+	<string name="icon_shape_override_label">"આઇકનનો આકાર બદલો"</string>
+	<string name="icon_shape_override_progress">"આઇકનના આકારમાં કરેલ ફેરફારો લાગુ કરી રહ્યા છીએ"</string>
 </resources>

@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Lāse""</string>
 	<string name="smartspace_preferences_in_settings">"Īsumā"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Sākuma ekrāna augšdaļā"</string>
+	<string name="icon_shape_override_label">"Mainīt ikonu formu"</string>
+	<string name="icon_shape_override_progress">"Tiek piemērotas ikonu formas izmaiņas"</string>
 </resources>

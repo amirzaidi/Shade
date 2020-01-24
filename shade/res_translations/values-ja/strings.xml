@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""ティアドロップ""</string>
 	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
 	<string name="smartspace_preferences_in_settings_desc">"ホーム画面の上部"</string>
+	<string name="icon_shape_override_label">"アイコンの形の変更"</string>
+	<string name="icon_shape_override_progress">"アイコンの形の変更を適用しています"</string>
 </resources>

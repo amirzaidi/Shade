@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""淚珠形""</string>
 	<string name="smartspace_preferences_in_settings">"資訊一覽"</string>
 	<string name="smartspace_preferences_in_settings_desc">"主畫面頂部"</string>
+	<string name="icon_shape_override_label">"變更圖示形狀"</string>
+	<string name="icon_shape_override_progress">"正在套用圖示形狀變更"</string>
 </resources>

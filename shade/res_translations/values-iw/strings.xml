@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""טיפה""</string>
 	<string name="smartspace_preferences_in_settings">"בקצרה"</string>
 	<string name="smartspace_preferences_in_settings_desc">"בחלק העליון של מסך דף הבית"</string>
+	<string name="icon_shape_override_label">"שינוי הצורה של הסמלים"</string>
+	<string name="icon_shape_override_progress">"משנה את הצורה של הסמלים"</string>
 </resources>

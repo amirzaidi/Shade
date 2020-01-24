@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Tomchi""</string>
 	<string name="smartspace_preferences_in_settings">"Nigoh"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Bosh ekranning yuqori qismida"</string>
+	<string name="icon_shape_override_label">"Ikonka shaklini o‘zgartirish"</string>
+	<string name="icon_shape_override_progress">"Ikonka shakli o‘zgartirilmoqda"</string>
 </resources>

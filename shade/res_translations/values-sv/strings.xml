@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Droppe""</string>
 	<string name="smartspace_preferences_in_settings">"Snabböversikt"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Högst upp på startskärmen"</string>
+	<string name="icon_shape_override_label">"Ändra form på ikoner"</string>
+	<string name="icon_shape_override_progress">"Ikonernas form ändras"</string>
 </resources>

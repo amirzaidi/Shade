@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Träne""</string>
 	<string name="smartspace_preferences_in_settings">"Überblick"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Oben auf deinem Startbildschirm"</string>
+	<string name="icon_shape_override_label">"Form des Symbols ändern"</string>
+	<string name="icon_shape_override_progress">"Änderungen an der Form des Symbols werden übernommen"</string>
 </resources>

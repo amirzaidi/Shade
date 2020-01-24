@@ -41,4 +41,6 @@
 	<string name="icon_shape_teardrop">""Traandruppel""</string>
 	<string name="smartspace_preferences_in_settings">"Met een blik"</string>
 	<string name="smartspace_preferences_in_settings_desc">"Boaan jou Tuisskerm"</string>
+	<string name="icon_shape_override_label">"Verander ikoon se vorm"</string>
+	<string name="icon_shape_override_progress">"Pas ikoonvormveranderings toe"</string>
 </resources>
