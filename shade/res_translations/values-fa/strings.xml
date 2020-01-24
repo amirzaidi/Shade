@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""مربع با گوشه‌های گرد""</string>
 	<string name="icon_shape_circle">""دایره""</string>
 	<string name="icon_shape_teardrop">""قطره اشک""</string>
+	<string name="smartspace_preferences_in_settings">"در یک نگاه"</string>
+	<string name="smartspace_preferences_in_settings_desc">"در بالای صفحه ‌اصلی‌"</string>
 </resources>

@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Жұмыр төртбұрыш""</string>
 	<string name="icon_shape_circle">""Шеңбер""</string>
 	<string name="icon_shape_teardrop">""Тамшы""</string>
+	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Негізі экранның жоғарғы жағында"</string>
 </resources>

@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Ertz biribilduko karratua""</string>
 	<string name="icon_shape_circle">""Zirkulua""</string>
 	<string name="icon_shape_teardrop">""Malkoa""</string>
+	<string name="smartspace_preferences_in_settings">"Laburpena"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Hasierako pantailaren goialdean"</string>
 </resources>

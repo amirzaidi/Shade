@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""စတုရန်းမကျ စက်ဝိုင်းမကျပုံ""</string>
 	<string name="icon_shape_circle">""စက်ဝိုင်း""</string>
 	<string name="icon_shape_teardrop">""မျက်ရည်စက်ပုံ""</string>
+	<string name="smartspace_preferences_in_settings">"တစ်ချက်ကြည့်ရုံမျှဖြင့်"</string>
+	<string name="smartspace_preferences_in_settings_desc">"သင့်ပင်မစာမျက်နှာ၏ ထိပ်ဘက်တွင်"</string>
 </resources>

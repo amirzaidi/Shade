@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Katror me kënde të rrumbullakëta""</string>
 	<string name="icon_shape_circle">""Rreth""</string>
 	<string name="icon_shape_teardrop">""Pikë loti""</string>
+	<string name="smartspace_preferences_in_settings">"Shkurtimisht"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Në krye të Ekranit bazë"</string>
 </resources>

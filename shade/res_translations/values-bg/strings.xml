@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Комбинация от кръг и квадрат""</string>
 	<string name="icon_shape_circle">""Кръг""</string>
 	<string name="icon_shape_teardrop">""Сълза""</string>
+	<string name="smartspace_preferences_in_settings">"Бърз поглед"</string>
+	<string name="smartspace_preferences_in_settings_desc">"В горната част на началния ви екран"</string>
 </resources>

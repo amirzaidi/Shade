@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""ສີ່ຫຼ່ຽມຂອບມົນ""</string>
 	<string name="icon_shape_circle">""ວົງມົນ""</string>
 	<string name="icon_shape_teardrop">""ນ້ຳຢອດ""</string>
+	<string name="smartspace_preferences_in_settings">"ການຕັ້ງຄ່າເບື້ອງຕົ້ນ"</string>
+	<string name="smartspace_preferences_in_settings_desc">"ຢູ່ເທິງສຸດຂອງໜ້າຈໍຫຼັກຂອງທ່ານ"</string>
 </resources>

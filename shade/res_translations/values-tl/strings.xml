@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Squircle""</string>
 	<string name="icon_shape_circle">""Bilog""</string>
 	<string name="icon_shape_teardrop">""Teardrop""</string>
+	<string name="smartspace_preferences_in_settings">"Sa Isang Sulyap"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Sa itaas ng iyong Home screen"</string>
 </resources>

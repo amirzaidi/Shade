@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Ympyräneliö""</string>
 	<string name="icon_shape_circle">""Ympyrä""</string>
 	<string name="icon_shape_teardrop">""Pisara""</string>
+	<string name="smartspace_preferences_in_settings">"Pikanäkymä"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Aloitusnäytön yläreunassa"</string>
 </resources>

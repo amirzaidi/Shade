@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""رمز دائري مربّع""</string>
 	<string name="icon_shape_circle">""دائرة""</string>
 	<string name="icon_shape_teardrop">""رمز على شكل دمعة""</string>
+	<string name="smartspace_preferences_in_settings">"نظرة سريعة"</string>
+	<string name="smartspace_preferences_in_settings_desc">"بأعلى شاشتك الرئيسية"</string>
 </resources>

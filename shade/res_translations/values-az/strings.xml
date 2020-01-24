@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Kənarları dairəvi kvadrat""</string>
 	<string name="icon_shape_circle">""Çevrə""</string>
 	<string name="icon_shape_teardrop">""Gözyaşı damlası""</string>
+	<string name="smartspace_preferences_in_settings">"Ötəri Nəzər"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Əsas ekranın üzərində"</string>
 </resources>

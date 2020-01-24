@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""गोलाकार चौरस""</string>
 	<string name="icon_shape_circle">""वर्तुळ""</string>
 	<string name="icon_shape_teardrop">""अश्रू""</string>
+	<string name="smartspace_preferences_in_settings">"एका दृष्‍टीक्षेपात"</string>
+	<string name="smartspace_preferences_in_settings_desc">"तुमच्या होम स्क्रीनच्या शीर्षस्थानी"</string>
 </resources>

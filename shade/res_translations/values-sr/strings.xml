@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Заобљени квадрат""</string>
 	<string name="icon_shape_circle">""Круг""</string>
 	<string name="icon_shape_teardrop">""Суза""</string>
+	<string name="smartspace_preferences_in_settings">"Кратак преглед"</string>
+	<string name="smartspace_preferences_in_settings_desc">"У врху почетног екрана"</string>
 </resources>

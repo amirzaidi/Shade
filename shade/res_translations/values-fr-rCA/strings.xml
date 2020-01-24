@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Carré aux coins ronds""</string>
 	<string name="icon_shape_circle">""Cercle""</string>
 	<string name="icon_shape_teardrop">""Goutte""</string>
+	<string name="smartspace_preferences_in_settings">"Aperçu"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Dans le haut de votre écran d\'accueil"</string>
 </resources>

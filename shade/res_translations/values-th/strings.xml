@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""สี่เหลี่ยมขอบมน""</string>
 	<string name="icon_shape_circle">""วงกลม""</string>
 	<string name="icon_shape_teardrop">""หยดน้ำตา""</string>
+	<string name="smartspace_preferences_in_settings">"ข้อมูลโดยย่อ"</string>
+	<string name="smartspace_preferences_in_settings_desc">"ที่ด้านบนของหน้าจอหลัก"</string>
 </resources>

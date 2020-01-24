@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""方圓形""</string>
 	<string name="icon_shape_circle">""圓形""</string>
 	<string name="icon_shape_teardrop">""淚珠形""</string>
+	<string name="smartspace_preferences_in_settings">"快速查看"</string>
+	<string name="smartspace_preferences_in_settings_desc">"主螢幕頂端"</string>
 </resources>

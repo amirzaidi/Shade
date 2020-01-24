@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Persegi bundar""</string>
 	<string name="icon_shape_circle">""Lingkaran""</string>
 	<string name="icon_shape_teardrop">""Butiran Air""</string>
+	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Di bagian atas Layar utama"</string>
 </resources>

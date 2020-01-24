@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Kvirkel""</string>
 	<string name="icon_shape_circle">""Cirkel""</string>
 	<string name="icon_shape_teardrop">""Droppe""</string>
+	<string name="smartspace_preferences_in_settings">"Snabböversikt"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Högst upp på startskärmen"</string>
 </resources>

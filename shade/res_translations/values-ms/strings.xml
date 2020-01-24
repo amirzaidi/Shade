@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Segi empat berbucu bulat""</string>
 	<string name="icon_shape_circle">""Bulatan""</string>
 	<string name="icon_shape_teardrop">""Titisan air mata""</string>
+	<string name="smartspace_preferences_in_settings">"Sekilas Pandang"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Di bahagian atas Skrin Utama anda"</string>
 </resources>

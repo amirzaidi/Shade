@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""চৌকো-গোলাকার""</string>
 	<string name="icon_shape_circle">""গোলাকার""</string>
 	<string name="icon_shape_teardrop">""চোখের জল""</string>
+	<string name="smartspace_preferences_in_settings">"এক ঝলকে"</string>
+	<string name="smartspace_preferences_in_settings_desc">"আপনার হোম স্ক্রিনের উপরের দিকে"</string>
 </resources>

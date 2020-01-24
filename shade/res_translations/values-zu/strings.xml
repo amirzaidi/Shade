@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""I-Squircle""</string>
 	<string name="icon_shape_circle">""Indingiliza""</string>
 	<string name="icon_shape_teardrop">""I-Teardrop""</string>
+	<string name="smartspace_preferences_in_settings">"Ngokubuka nje"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Ngaphezulu kwesikrini sakho sasekhaya"</string>
 </resources>

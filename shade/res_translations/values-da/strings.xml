@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Kvadrat med runde hjørner""</string>
 	<string name="icon_shape_circle">""Cirkel""</string>
 	<string name="icon_shape_teardrop">""Dråbeform""</string>
+	<string name="smartspace_preferences_in_settings">"Overblik"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Øverst på din startskærm"</string>
 </resources>

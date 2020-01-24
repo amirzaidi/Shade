@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""方圆形""</string>
 	<string name="icon_shape_circle">""圆形""</string>
 	<string name="icon_shape_teardrop">""泪珠形""</string>
+	<string name="smartspace_preferences_in_settings">"一目了然"</string>
+	<string name="smartspace_preferences_in_settings_desc">"在主屏幕顶部"</string>
 </resources>

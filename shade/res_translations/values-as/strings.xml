@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""বৰ্গবৃত্তাকাৰ""</string>
 	<string name="icon_shape_circle">""পৰিচিত মানুহৰ গোট""</string>
 	<string name="icon_shape_teardrop">""চকুপানীৰ টোপাল""</string>
+	<string name="smartspace_preferences_in_settings">"এক দৃষ্টিত"</string>
+	<string name="smartspace_preferences_in_settings_desc">"আপোনাৰ হ\'ম স্ক্ৰীণৰ ওপৰত"</string>
 </resources>

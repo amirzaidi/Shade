@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Ferhringur""</string>
 	<string name="icon_shape_circle">""Hringur""</string>
 	<string name="icon_shape_teardrop">""Dropi""</string>
+	<string name="smartspace_preferences_in_settings">"Í fljótu bragði"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Efst á heimaskjánum"</string>
 </resources>

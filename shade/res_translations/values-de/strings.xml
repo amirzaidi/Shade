@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Superkreis""</string>
 	<string name="icon_shape_circle">""Kreis""</string>
 	<string name="icon_shape_teardrop">""Träne""</string>
+	<string name="smartspace_preferences_in_settings">"Überblick"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Oben auf deinem Startbildschirm"</string>
 </resources>

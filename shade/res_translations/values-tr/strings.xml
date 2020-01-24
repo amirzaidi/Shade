@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Kare-daire""</string>
 	<string name="icon_shape_circle">""Daire""</string>
 	<string name="icon_shape_teardrop">""Gözyaşı damlası""</string>
+	<string name="smartspace_preferences_in_settings">"Bir Bakışta"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Ana ekranınızın üst bölümünde"</string>
 </resources>

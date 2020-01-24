@@ -39,4 +39,6 @@
 	<string name="icon_shape_squircle">""Squircle""</string>
 	<string name="icon_shape_circle">""Cirkel""</string>
 	<string name="icon_shape_teardrop">""Traan""</string>
+	<string name="smartspace_preferences_in_settings">"Snel overzicht"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Bovenaan het startscherm"</string>
 </resources>
