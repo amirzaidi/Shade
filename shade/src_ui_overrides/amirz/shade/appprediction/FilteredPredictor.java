@@ -6,17 +6,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
-import android.os.Build;
 import android.os.Process;
 
-import com.android.launcher3.BuildConfig;
-
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import amirz.shade.hidden.HiddenAppsDatabase;
+import amirz.shade.icons.pack.IconPackManager;
 import amirz.shade.settings.PredictionPreference;
 
 import static android.content.pm.PackageManager.GET_RESOLVED_FILTER;
@@ -29,6 +28,7 @@ class FilteredPredictor extends UsageTracker {
         Set<String> filterMeta = new HashSet<>();
         filterMeta.add("android.settings.SETTINGS");
         filterMeta.add("android.intent.category.LAUNCHER_APP");
+        filterMeta.addAll(Arrays.asList(IconPackManager.ICON_INTENT_ACTIONS));
         FILTER_META = Collections.unmodifiableSet(filterMeta);
     }
 
