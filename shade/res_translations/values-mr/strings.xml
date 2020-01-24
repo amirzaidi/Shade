@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"सर्व अ‍ॅप्स"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"तुमची पूर्वानुमानीत अ‍ॅप्स"</string>
 	<string name="smartspace_preferences">"प्राधान्ये"</string>
+	<string name="smartspace_preferences_in_settings">"एका दृष्‍टीक्षेपात"</string>
+	<string name="smartspace_preferences_in_settings_desc">"तुमच्या होम स्क्रीनच्या शीर्षस्थानी"</string>
 </resources>

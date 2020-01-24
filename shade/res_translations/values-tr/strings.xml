@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Tüm uygulamalar"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Tahmin edilen uygulamalarınız"</string>
 	<string name="smartspace_preferences">"Tercihler"</string>
+	<string name="smartspace_preferences_in_settings">"Bir Bakışta"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Ana ekranınızın üst bölümünde"</string>
 </resources>

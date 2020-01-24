@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Tutte le app"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Le app previste"</string>
 	<string name="smartspace_preferences">"Preferenze"</string>
+	<string name="smartspace_preferences_in_settings">"Riepilogo"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Nella parte superiore della tua schermata Home"</string>
 </resources>

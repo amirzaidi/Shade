@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Toutes les applications"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Vos prédictions d\'applications"</string>
 	<string name="smartspace_preferences">"Préférences"</string>
+	<string name="smartspace_preferences_in_settings">"Aperçu"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Dans le haut de votre écran d\'accueil"</string>
 </resources>

@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"બધી ઍપ"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"તમારી પૂર્વાનુમાનિત ઍપ"</string>
 	<string name="smartspace_preferences">"પસંદગીઓ"</string>
+	<string name="smartspace_preferences_in_settings">"એક નજરમાં"</string>
+	<string name="smartspace_preferences_in_settings_desc">"તમારી હોમ સ્ક્રીનની શીર્ષ પર"</string>
 </resources>

@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"កម្មវិធី​ទាំងអស់"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"កម្មវិធី​ដែលបាន​ព្យាករ​របស់អ្នក"</string>
 	<string name="smartspace_preferences">"ចំណូលចិត្ត"</string>
+	<string name="smartspace_preferences_in_settings">"មើលមួយភ្លែត"</string>
+	<string name="smartspace_preferences_in_settings_desc">"នៅផ្នែក​ខាងលើ​នៃ​អេក្រង់ដើមរបស់អ្នក"</string>
 </resources>

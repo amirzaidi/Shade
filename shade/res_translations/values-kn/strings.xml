@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"ಎಲ್ಲಾ ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ನಿಮ್ಮ ಸಂಭವನೀಯ ಆ್ಯಪ್‌ಗಳು"</string>
 	<string name="smartspace_preferences">"ಪ್ರಾಶಸ್ತ್ಯಗಳು"</string>
+	<string name="smartspace_preferences_in_settings">"ಇಣುಕು ನೋಟದಲ್ಲಿ"</string>
+	<string name="smartspace_preferences_in_settings_desc">"ನಿಮ್ಮ ಮುಖ ಪುಟದ ಪರದೆಯ ಮೇಲ್ಬಾಗದಲ್ಲಿ"</string>
 </resources>

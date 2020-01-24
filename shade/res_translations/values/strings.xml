@@ -65,4 +65,6 @@
 
 
 	<string name="smartspace_preferences">"Preferences"</string>
+	<string name="smartspace_preferences_in_settings">"At A Glance"</string>
+	<string name="smartspace_preferences_in_settings_desc">"At the top of your Home screen"</string>
 </resources>

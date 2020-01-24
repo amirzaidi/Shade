@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Όλες οι εφαρμογές"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Προβλέψεις εφαρμογών"</string>
 	<string name="smartspace_preferences">"Προτιμήσεις"</string>
+	<string name="smartspace_preferences_in_settings">"Με μια ματιά"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Στην κορυφή της Αρχικής οθόνης"</string>
 </resources>

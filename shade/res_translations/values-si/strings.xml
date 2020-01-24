@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"සියලු යෙදුම්"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"ඔබේ පුරෝකථන කළ යෙදුම්"</string>
 	<string name="smartspace_preferences">"මනාප"</string>
+	<string name="smartspace_preferences_in_settings">"එක් බැල්මකින්"</string>
+	<string name="smartspace_preferences_in_settings_desc">"ඔබගේ මුල් පිටු තිරයෙහි ඉහළින්ම"</string>
 </resources>

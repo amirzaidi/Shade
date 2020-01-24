@@ -35,4 +35,6 @@
     <string name="all_apps_label" msgid="8542784161730910663">"Visos programos"</string>
     <string name="all_apps_prediction_tip" msgid="2672336544844936186">"Numatomos programos"</string>
 	<string name="smartspace_preferences">"Nuostatos"</string>
+	<string name="smartspace_preferences_in_settings">"Apžvalga"</string>
+	<string name="smartspace_preferences_in_settings_desc">"Pagrindinio ekrano viršuje"</string>
 </resources>
