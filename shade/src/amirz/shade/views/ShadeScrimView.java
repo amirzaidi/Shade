@@ -110,13 +110,15 @@ public class ShadeScrimView extends ScrimView {
 
         int overlayEndScrim = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
         if (ColorUtils.setAlphaComponent(overlayEndScrim, 0) != overlayEndScrim) {
+            boolean isDark = Themes.getAttrBoolean(context, R.attr.isMainColorDark);
+
             // Alpha is not zero, so update it to the right value.
             overlayEndScrim = ColorUtils.setAlphaComponent(overlayEndScrim,
-                    context.getResources().getInteger(R.integer.shade_all_apps_alpha));
+                    context.getResources().getInteger(isDark
+                            ? R.integer.shade_all_apps_dark_alpha
+                            : R.integer.shade_all_apps_light_alpha));
         }
-        mOverrideEndScrim = ColorUtils.compositeColors(
-                overlayEndScrim,
-                mEndScrim);
+        mOverrideEndScrim = ColorUtils.compositeColors(overlayEndScrim, mEndScrim);
         mEndAlpha = Color.alpha(mOverrideEndScrim);
     }
 
