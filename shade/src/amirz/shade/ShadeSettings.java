@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -20,6 +21,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
+import amirz.shade.customization.IconShapeOverride;
 import amirz.shade.customization.ShadeStyle;
 import amirz.shade.settings.DockSearchPrefSetter;
 import amirz.shade.settings.FeedProviderPrefSetter;
@@ -57,6 +59,9 @@ public class  ShadeSettings extends SettingsActivity {
 
     @SuppressWarnings("unused")
     public static class ShadeSettingsFragment extends LauncherSettingsFragment {
+        private static final String CATEGORY_THEME = "category_theme";
+        private static final String CATEGORY_CUSTOMIZATION = "category_customization";
+
         private static final String KEY_ICON_PACK = "pref_icon_pack";
         private static final String KEY_APP_VERSION = "pref_app_version";
 
@@ -76,8 +81,19 @@ public class  ShadeSettings extends SettingsActivity {
                 return true;
             });
 
+            Preference iconShapeOverride = findPreference(IconShapeOverride.KEY_ICON_SHAPE);
+            if (iconShapeOverride != null) {
+                if (IconShapeOverride.isSupported(getActivity())) {
+                    IconShapeOverride.handlePreferenceUi((ListPreference) iconShapeOverride);
+                } else {
+                    PreferenceCategory category =
+                            (PreferenceCategory) findPreference(CATEGORY_CUSTOMIZATION);
+                    category.removePreference(iconShapeOverride);
+                }
+            }
+
             if (Utilities.ATLEAST_Q) {
-                PreferenceCategory category = (PreferenceCategory) findPreference("category_theme");
+                PreferenceCategory category = (PreferenceCategory) findPreference(CATEGORY_THEME);
                 category.removePreference(category.findPreference(KEY_DEVICE_THEME));
             }
 
