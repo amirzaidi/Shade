@@ -26,6 +26,7 @@ import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 import static com.android.launcher3.util.Themes.KEY_DEVICE_THEME;
+import static com.android.searchlauncher.SmartspaceQsbWidget.KEY_SMARTSPACE;
 
 public class ShadeLauncherCallbacks implements LauncherCallbacks,
         SharedPreferences.OnSharedPreferenceChangeListener,
@@ -93,6 +94,8 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             transitions.applyWindowPreference(mLauncher);
         } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)) {
             mLauncher.recreate();
+        } else if (KEY_SMARTSPACE.equals(key)) {
+            mLauncher.kill();
         }
     }
 

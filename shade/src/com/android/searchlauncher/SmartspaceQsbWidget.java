@@ -20,6 +20,8 @@ import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_PROVIDER;
 
 public class SmartspaceQsbWidget extends QsbContainerView {
+    public static final String KEY_SMARTSPACE = "pref_smartspace";
+
     private static final String WIDGET_CLASS_NAME = "com.google.android.apps.gsa.staticplugins.smartspace.widget.SmartspaceWidgetProvider";
     public static final String WIDGET_PACKAGE_NAME = "com.google.android.googlequicksearchbox";
 

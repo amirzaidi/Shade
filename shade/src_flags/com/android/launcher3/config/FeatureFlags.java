@@ -27,6 +27,9 @@ public final class FeatureFlags extends BaseFlags {
     public static final TogglableFlag DRAG_HANDLE = new TogglableFlag("DRAG_HANDLE_ACCESSIBILITY", false,
             "Show a drag handle when accessibility services are enabled.");
 
+    // Enable moving the QSB on the 0th screen of the workspace
+    public static boolean QSB_ON_FIRST_SCREEN = true;
+
     private FeatureFlags() {
         // Prevent instantiation
     }
