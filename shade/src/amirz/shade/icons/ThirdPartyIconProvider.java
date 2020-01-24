@@ -15,7 +15,7 @@ import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_DRAG;
 
 @SuppressWarnings("unused")
 public class ThirdPartyIconProvider extends RoundIconProvider {
-    private static final int HIDDEN_ALPHA = 0x20;
+    private static final int HIDDEN_ALPHA = 0x30;
 
     private final Context mContext;
 
