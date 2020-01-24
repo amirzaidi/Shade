@@ -58,7 +58,7 @@ public class IconShapeOverride {
     private static final int RESTART_REQUEST_CODE = 42; // the answer to everything
 
     public static boolean isSupported(Context context) {
-        if (!Utilities.ATLEAST_OREO) {
+        if (!Utilities.ATLEAST_OREO || Utilities.ATLEAST_Q) {
             return false;
         }
 
