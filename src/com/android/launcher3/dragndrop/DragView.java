@@ -17,7 +17,6 @@
 package com.android.launcher3.dragndrop;
 
 import static com.android.launcher3.Utilities.getBadge;
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_DRAG;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -106,7 +105,6 @@ public class DragView extends View implements LauncherStateManager.StateListener
 
     // Below variable only needed IF FeatureFlags.LAUNCHER3_SPRING_ICONS is {@code true}
     private Drawable mBgSpringDrawable, mFgSpringDrawable;
-    private boolean mSpringDrawableAllowAlpha;
     private SpringFloatValue mTranslateX, mTranslateY;
     private Path mScaledMaskPath;
     private Drawable mBadge;
@@ -222,11 +220,6 @@ public class DragView extends View implements LauncherStateManager.StateListener
                         false /* flattenDrawable */, outObj);
 
                 if (dr instanceof AdaptiveIconDrawable) {
-                    AdaptiveIconDrawable adaptiveIcon = (AdaptiveIconDrawable) dr;
-                    if ((adaptiveIcon.getChangingConfigurations() & CONFIG_HINT_NO_DRAG) != 0) {
-                        return;
-                    }
-
                     int blurMargin = (int) mLauncher.getResources()
                             .getDimension(R.dimen.blur_size_medium_outline) / 2;
 
@@ -252,6 +245,7 @@ public class DragView extends View implements LauncherStateManager.StateListener
                         Utilities.scaleRectAboutCenter(bounds,
                                 li.getNormalizer().getScale(nDr, null, null, null));
                     }
+                    AdaptiveIconDrawable adaptiveIcon = (AdaptiveIconDrawable) dr;
 
                     // Shrink very tiny bit so that the clip path is smaller than the original bitmap
                     // that has anti aliased edges and shadows.
@@ -304,10 +298,8 @@ public class DragView extends View implements LauncherStateManager.StateListener
             mPaint.setColorFilter(null);
 
             if (mScaledMaskPath != null) {
-                if (mSpringDrawableAllowAlpha) {
-                    mBgSpringDrawable.setColorFilter(mBaseFilter);
-                    mFgSpringDrawable.setColorFilter(mBaseFilter);
-                }
+                mBgSpringDrawable.setColorFilter(mBaseFilter);
+                mFgSpringDrawable.setColorFilter(mBaseFilter);
                 mBadge.setColorFilter(mBaseFilter);
             }
         } else {
@@ -323,10 +315,8 @@ public class DragView extends View implements LauncherStateManager.StateListener
                     currentFilter = new ColorMatrixColorFilter(sTempMatrix1);
                 }
 
-                if (mSpringDrawableAllowAlpha) {
-                    mBgSpringDrawable.setColorFilter(currentFilter);
-                    mFgSpringDrawable.setColorFilter(currentFilter);
-                }
+                mBgSpringDrawable.setColorFilter(currentFilter);
+                mFgSpringDrawable.setColorFilter(currentFilter);
                 mBadge.setColorFilter(currentFilter);
             }
         }
@@ -393,11 +383,11 @@ public class DragView extends View implements LauncherStateManager.StateListener
             boolean crossFade = mCrossFadeProgress > 0 && mCrossFadeBitmap != null;
             if (crossFade) {
                 int alpha = crossFade ? (int) (255 * (1 - mCrossFadeProgress)) : 255;
-                //mPaint.setAlpha(alpha);
+                mPaint.setAlpha(alpha);
             }
             canvas.drawBitmap(mBitmap, 0.0f, 0.0f, mPaint);
             if (crossFade) {
-                //mPaint.setAlpha((int) (255 * mCrossFadeProgress));
+                mPaint.setAlpha((int) (255 * mCrossFadeProgress));
                 final int saveCount = canvas.save();
                 float sX = (mBitmap.getWidth() * 1.0f) / mCrossFadeBitmap.getWidth();
                 float sY = (mBitmap.getHeight() * 1.0f) / mCrossFadeBitmap.getHeight();
@@ -482,7 +472,7 @@ public class DragView extends View implements LauncherStateManager.StateListener
     @Override
     public void setAlpha(float alpha) {
         super.setAlpha(alpha);
-        //mPaint.setAlpha((int) (255 * alpha));
+        mPaint.setAlpha((int) (255 * alpha));
         invalidate();
     }
 
