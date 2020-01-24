@@ -43,14 +43,14 @@ public class Themes {
         WallpaperColorInfo wallpaperColorInfo = WallpaperColorInfo.getInstance(context);
         boolean darkTheme;
         String theme = Utilities.getPrefs(context).getString(KEY_DEVICE_THEME, "");
-        if (theme.equals(DEVICE_THEME_LIGHT)) {
-            darkTheme = false;
-        } else if (theme.equals(DEVICE_THEME_DARK)) {
-            darkTheme = true;
-        } else if (Utilities.ATLEAST_Q) {
+        if (Utilities.ATLEAST_Q) {
             Configuration configuration = context.getResources().getConfiguration();
             int nightMode = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
             darkTheme = nightMode == Configuration.UI_MODE_NIGHT_YES;
+        } else if (theme.equals(DEVICE_THEME_LIGHT)) {
+            darkTheme = false;
+        } else if (theme.equals(DEVICE_THEME_DARK)) {
+            darkTheme = true;
         } else {
             darkTheme = wallpaperColorInfo.isDark();
         }
