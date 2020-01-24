@@ -66,11 +66,6 @@ class FilteredPredictor extends UsageTracker {
      * @return true if this should be filtered from suggestions, false otherwise.
      */
     private boolean shouldFilterComponent(ComponentName cn) {
-        // Remove launcher starting shortcut itself.
-        if (BuildConfig.APPLICATION_ID.equals(cn.getPackageName())) {
-            return true;
-        }
-
         // Remove hidden apps.
         if (HiddenAppsDatabase.isHidden(mContext, cn, Process.myUserHandle())) {
             return true;
