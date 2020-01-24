@@ -72,13 +72,15 @@ public class SmartspaceQsbWidget extends QsbContainerView {
         protected View getDefaultView(ViewGroup container, boolean showSetupIcon) {
             View v = SmartspaceQsbWidget.getDateView(container);
 
-            // Return a default widget with setup icon.
             if (showSetupIcon) {
-                v.setOnClickListener((v2) -> startActivityForResult(
-                        new Intent(ACTION_APPWIDGET_BIND)
-                                .putExtra(EXTRA_APPWIDGET_ID, mQsbWidgetHost.allocateAppWidgetId())
-                                .putExtra(EXTRA_APPWIDGET_PROVIDER, getSearchWidgetProvider().provider),
-                        REQUEST_BIND_QSB));
+                Intent intent = new Intent(ACTION_APPWIDGET_BIND)
+                        .putExtra(EXTRA_APPWIDGET_ID, mQsbWidgetHost.allocateAppWidgetId())
+                        .putExtra(EXTRA_APPWIDGET_PROVIDER, getSearchWidgetProvider().provider);
+
+                v.setOnClickListener((v2) -> startActivityForResult(intent, REQUEST_BIND_QSB));
+
+                // Try binding immediately when creating the view.
+                startActivityForResult(intent, REQUEST_BIND_QSB);
             }
 
             return v;
