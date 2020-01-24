@@ -28,6 +28,7 @@ class FilteredPredictor extends UsageTracker {
     static {
         Set<String> filterMeta = new HashSet<>();
         filterMeta.add("android.settings.SETTINGS");
+        filterMeta.add("android.intent.category.LAUNCHER_APP");
         FILTER_META = Collections.unmodifiableSet(filterMeta);
     }
 
