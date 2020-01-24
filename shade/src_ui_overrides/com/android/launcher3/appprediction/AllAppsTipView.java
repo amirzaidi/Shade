@@ -17,7 +17,6 @@
 package com.android.launcher3.appprediction;
 
 import static com.android.launcher3.LauncherState.ALL_APPS;
-import static com.android.quickstep.logging.UserEventDispatcherExtension.ALL_APPS_PREDICTION_TIPS;
 
 import android.content.Context;
 import android.graphics.CornerPathEffect;
@@ -25,7 +24,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,8 +42,7 @@ import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.dragndrop.DragLayer;
 import com.android.launcher3.graphics.TriangleShape;
-
-import androidx.core.content.ContextCompat;
+import com.android.launcher3.util.Themes;
 
 /**
  * All apps tip view aligned just above prediction apps, shown to users that enter all apps for the
@@ -128,9 +125,7 @@ public class AllAppsTipView extends AbstractFloatingView {
         ShapeDrawable arrowDrawable = new ShapeDrawable(TriangleShape.create(
                 arrowLp.width, arrowLp.height, false));
         Paint arrowPaint = arrowDrawable.getPaint();
-        TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-        arrowPaint.setColor(ContextCompat.getColor(getContext(), typedValue.resourceId));
+        arrowPaint.setColor(Themes.getColorAccent(getContext()));
         // The corner path effect won't be reflected in the shadow, but shouldn't be noticeable.
         arrowPaint.setPathEffect(new CornerPathEffect(
                 context.getResources().getDimension(R.dimen.arrow_toast_corner_radius)));
