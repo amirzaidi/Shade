@@ -46,14 +46,12 @@
         <item>@string/grid_division_normal</item>
         <item>@string/grid_division_reasonable</item>
         <item>@string/grid_division_big</item>
-        <item>@string/grid_division_crazy_big</item>
     </string-array>
 
     <string-array translatable="false" name="grid_division_values">
         <item>"normal"</item>
         <item>"reasonable"</item>
         <item>"big"</item>
-        <item>"crazy_big"</item>
     </string-array>
 
     <string-array translatable="false" name="theme_entry_values">

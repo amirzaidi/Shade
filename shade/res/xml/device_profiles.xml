@@ -124,39 +124,4 @@
 
     </grid-option>
 
-    <grid-option
-        launcher:defaultLayoutId="@xml/default_workspace_2x2"
-        launcher:name="crazy_big"
-        launcher:numColumns="2"
-        launcher:numFolderColumns="2"
-        launcher:numFolderRows="2"
-        launcher:numHotseatIcons="2"
-        launcher:numRows="2">
-
-        <display-option
-            launcher:iconImageSize="132"
-            launcher:iconTextSize="20"
-            launcher:landscapeIconSize="100"
-            launcher:minHeightDps="659"
-            launcher:minWidthDps="387"
-            launcher:name="Pixel" />
-
-        <display-option
-            launcher:iconImageSize="120"
-            launcher:iconTextSize="18"
-            launcher:landscapeIconSize="120"
-            launcher:minHeightDps="496"
-            launcher:minWidthDps="296"
-            launcher:name="Pixel (Display : Small)" />
-
-        <display-option
-            launcher:iconImageSize="156"
-            launcher:iconTextSize="22"
-            launcher:landscapeIconSize="120"
-            launcher:minHeightDps="754"
-            launcher:minWidthDps="449"
-            launcher:name="Pixel (Display : Largest)" />
-
-    </grid-option>
-
 </profiles>
