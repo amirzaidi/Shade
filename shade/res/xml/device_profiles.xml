@@ -17,7 +17,7 @@
 <profiles xmlns:launcher="http://schemas.android.com/apk/res-auto">
 
     <grid-option
-        launcher:defaultLayoutId="@xml/default_workspace_5x5"
+        launcher:defaultLayoutId="@xml/default_hotseat_5"
         launcher:name="normal"
         launcher:numColumns="5"
         launcher:numFolderColumns="4"
@@ -54,7 +54,7 @@
     </grid-option>
 
     <grid-option
-        launcher:defaultLayoutId="@xml/default_workspace_4x4"
+        launcher:defaultLayoutId="@xml/default_hotseat_4"
         launcher:name="reasonable"
         launcher:numColumns="4"
         launcher:numFolderColumns="4"
@@ -90,7 +90,7 @@
     </grid-option>
 
     <grid-option
-        launcher:defaultLayoutId="@xml/default_workspace_3x3"
+        launcher:defaultLayoutId="@xml/default_hotseat_3"
         launcher:name="big"
         launcher:numColumns="3"
         launcher:numFolderColumns="2"
