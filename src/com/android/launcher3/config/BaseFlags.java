@@ -87,6 +87,9 @@ public abstract class BaseFlags {
     // trying to make them fit the orientation the device is in.
     public static final boolean OVERVIEW_USE_SCREENSHOT_ORIENTATION = true;
 
+    // When enabled load partner overrides from package.
+    public static final boolean PARTNER_CUSTOMIZATION = true;
+
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
      */

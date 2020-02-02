@@ -24,6 +24,8 @@ import android.util.Pair;
 
 import java.io.File;
 
+import static com.android.launcher3.config.FeatureFlags.PARTNER_CUSTOMIZATION;
+
 /**
  * Utilities to discover and interact with partner customizations. There can
  * only be one set of customizations on a device, and it must be bundled with
@@ -51,7 +53,7 @@ public class Partner {
     public static final String RES_GRID_NUM_COLUMNS = "grid_num_columns";
     public static final String RES_GRID_ICON_SIZE_DP = "grid_icon_size_dp";
 
-    private static boolean sSearched = false;
+    private static boolean sSearched = !PARTNER_CUSTOMIZATION;
     private static Partner sPartner;
 
     /**
