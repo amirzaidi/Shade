@@ -43,6 +43,11 @@
     <string name="dock_search_value" translatable="false">%1$s %2$s</string>
     <string name="feed_provider" translatable="false">Feed provider</string>
     <string name="feed_provider_value" translatable="false">%1$s %2$s</string>
+    <string name="grid_division" translatable="false">Grid spacing</string>
+    <string name="grid_division_normal" translatable="false">Normal (5 by 5)</string>
+    <string name="grid_division_reasonable" translatable="false">Reasonable (4 by 4)</string>
+    <string name="grid_division_big" translatable="false">Big (3 by 3)</string>
+    <string name="grid_division_crazy_big" translatable="false">Massive (2 by 2)</string>
     <string name="fading_transition" translatable="false">Fading transition</string>
     <string name="fading_transition_desc" translatable="false">When opening apps</string>
     <string name="override_font" translatable="false">Google Sans</string>

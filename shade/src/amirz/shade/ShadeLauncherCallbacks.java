@@ -33,6 +33,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         DeviceProfile.OnDeviceProfileChangeListener {
     public static final String KEY_ENABLE_MINUS_ONE = "pref_enable_minus_one";
     public static final String KEY_FEED_PROVIDER = "pref_feed_provider";
+    private static final String KEY_IDP_GRID_NAME = "idp_grid_name";
 
     private final ShadeLauncher mLauncher;
 
@@ -94,7 +95,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             transitions.applyWindowPreference(mLauncher);
         } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)) {
             mLauncher.recreate();
-        } else if (KEY_SMARTSPACE.equals(key)) {
+        } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)) {
             mLauncher.kill();
         }
     }
