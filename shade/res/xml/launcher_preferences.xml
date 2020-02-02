@@ -132,7 +132,7 @@
             android:summary="%s"
             android:entries="@array/grid_division_names"
             android:entryValues="@array/grid_division_values"
-            android:defaultValue=""
+            android:defaultValue="normal"
             android:persistent="true" />
 
         <SwitchPreference
