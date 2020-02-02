@@ -16,8 +16,6 @@
 
 package com.android.launcher3.config;
 
-import android.content.Context;
-
 import com.android.launcher3.uioverrides.TogglableFlag;
 
 /**
