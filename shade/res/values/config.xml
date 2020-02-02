@@ -70,4 +70,6 @@
     <integer name="shade_all_apps_dark_alpha">9</integer>
 
     <integer name="config_settingsFadeAnimationDuration">250</integer>
+    <integer name="config_appOpenLauncherExitAnimationDuration">195</integer>
+    <integer name="config_appExitLauncherOpenAnimationDuration">365</integer>
 </resources>
