@@ -40,6 +40,7 @@ import android.util.Xml;
 
 import com.android.launcher3.LauncherProvider.SqlArguments;
 import com.android.launcher3.LauncherSettings.Favorites;
+import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.icons.GraphicsUtils;
 import com.android.launcher3.icons.LauncherIcons;
 import com.android.launcher3.util.IntArray;
@@ -51,6 +52,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.function.Supplier;
+
+import static com.android.launcher3.config.FeatureFlags.PARTNER_CUSTOMIZATION;
 
 /**
  * Layout parsing code for auto installs layout
@@ -72,6 +75,9 @@ public class AutoInstallsLayout {
 
     static AutoInstallsLayout get(Context context, AppWidgetHost appWidgetHost,
             LayoutParserCallback callback) {
+        if (!PARTNER_CUSTOMIZATION) {
+            return null;
+        }
         Pair<String, Resources> customizationApkInfo = Utilities.findSystemApk(
                 ACTION_LAUNCHER_CUSTOMIZATION, context.getPackageManager());
         if (customizationApkInfo == null) {
