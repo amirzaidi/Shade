@@ -30,6 +30,9 @@ public final class FeatureFlags extends BaseFlags {
     // Enable moving the QSB on the 0th screen of the workspace
     public static boolean QSB_ON_FIRST_SCREEN = true;
 
+    // When enabled load partner overrides from package.
+    public static final boolean PARTNER_CUSTOMIZATION = false;
+
     private FeatureFlags() {
         // Prevent instantiation
     }
