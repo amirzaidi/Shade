@@ -59,8 +59,7 @@ public class  ShadeSettings extends SettingsActivity {
 
     @SuppressWarnings("unused")
     public static class ShadeSettingsFragment extends LauncherSettingsFragment {
-        private static final String CATEGORY_THEME = "category_theme";
-        private static final String CATEGORY_CUSTOMIZATION = "category_customization";
+        private static final String CATEGORY_STYLE = "category_style";
 
         private static final String KEY_ICON_PACK = "pref_icon_pack";
         private static final String KEY_APP_VERSION = "pref_app_version";
@@ -81,20 +80,18 @@ public class  ShadeSettings extends SettingsActivity {
                 return true;
             });
 
+            PreferenceCategory style = (PreferenceCategory) findPreference(CATEGORY_STYLE);
             Preference iconShapeOverride = findPreference(IconShapeOverride.KEY_ICON_SHAPE);
             if (iconShapeOverride != null) {
                 if (IconShapeOverride.isSupported(getActivity())) {
                     IconShapeOverride.handlePreferenceUi((ListPreference) iconShapeOverride);
                 } else {
-                    PreferenceCategory category =
-                            (PreferenceCategory) findPreference(CATEGORY_CUSTOMIZATION);
-                    category.removePreference(iconShapeOverride);
+                    style.removePreference(iconShapeOverride);
                 }
             }
 
             if (Utilities.ATLEAST_Q) {
-                PreferenceCategory category = (PreferenceCategory) findPreference(CATEGORY_THEME);
-                category.removePreference(category.findPreference(KEY_DEVICE_THEME));
+                style.removePreference(style.findPreference(KEY_DEVICE_THEME));
             }
 
             findPreference(KEY_THEME).setOnPreferenceChangeListener((pref, val) -> {

@@ -70,8 +70,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="category_theme"
-        android:title="@string/category_theme">
+    <PreferenceCategory android:key="category_style"
+        android:title="@string/category_style">
 
         <ListPreference
             android:key="pref_device_theme"
@@ -91,14 +91,9 @@
             android:defaultValue=""
             android:persistent="true" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory android:key="category_customization"
-        android:title="@string/category_customization">
-
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_icon_pack"
-            android:title="@string/app_info_icon_pack"
+            android:title="@string/icon_pack"
             android:summary="%s"
             android:defaultValue=""
             android:persistent="true" />
@@ -111,6 +106,18 @@
             android:entryValues="@array/icon_shape_override_paths_values"
             android:defaultValue=""
             android:persistent="false" />
+
+        <SwitchPreference
+            android:key="pref_override_font"
+            android:title="@string/override_font"
+            android:summary="@string/override_font_desc"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="category_customization"
+        android:title="@string/category_customization">
 
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_dock_search"
@@ -141,15 +148,6 @@
             android:summary="@string/fading_transition_desc"
             android:defaultValue="true"
             android:persistent="true" />
-
-        <SwitchPreference
-            android:key="pref_override_font"
-            android:title="@string/override_font"
-            android:summary="@string/override_font_desc"
-            android:defaultValue="true"
-            android:persistent="true">
-
-        </SwitchPreference>
 
     </PreferenceCategory>
 
