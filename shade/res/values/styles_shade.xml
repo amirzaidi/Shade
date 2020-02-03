@@ -9,7 +9,7 @@
 
     <!-- Shade overrides for a special touch. -->
     <style name="ShadeOverride.Shade" parent="ShadeOverride">
-        <item name="shadeColorDarkSearchBar">#232323</item>
+        <item name="shadeColorDarkSearchBar">#212224</item>
         <item name="shadeColorAccent">@color/colorAccent</item>
     </style>
 
@@ -36,6 +36,6 @@
 
     <style name="ShadeOverride.Twilight" parent="ShadeOverride.Shade">
         <item name="shadeColorAllAppsOverlay">#5E35B1</item>
-        <item name="shadeColorAccent">#7E57C2</item>
+        <item name="shadeColorAccent">#855CCC</item>
     </style>
 </resources>
