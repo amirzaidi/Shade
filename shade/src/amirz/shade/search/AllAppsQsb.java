@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
+import androidx.core.graphics.ColorUtils;
+
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Insettable;
@@ -33,6 +35,7 @@ import com.android.launcher3.anim.PropertySetter;
 import com.android.launcher3.qsb.QsbContainerView;
 import com.android.launcher3.qsb.QsbWidgetHostView;
 import com.android.launcher3.util.ComponentKey;
+import com.android.launcher3.util.Themes;
 
 import java.util.ArrayList;
 
@@ -171,15 +174,30 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mFallbackSearchView.setVisibility(View.INVISIBLE);
 
+        RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
+        GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
+
         if (Utilities.ATLEAST_Q) {
             // The corners should be 3x as curved as the dialog curve.
-            RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
-            GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
             gd.setCornerRadius(gd.getCornerRadius() * 3f);
         }
 
+        Context context = getContext();
+        int overlay = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
+        if (ColorUtils.setAlphaComponent(overlay, 0) != overlay) {
+            boolean isDark = Themes.getAttrBoolean(context, R.attr.isMainColorDark);
+
+            // Alpha is not zero, so update it to the right value.
+            overlay = ColorUtils.setAlphaComponent(overlay,
+                    context.getResources().getInteger(isDark
+                            ? R.integer.shade_all_apps_dark_alpha
+                            : R.integer.shade_all_apps_light_alpha));
+
+            gd.setColor(ColorUtils.compositeColors(overlay, gd.getColor().getDefaultColor()));
+        }
+
         mFallbackSearchView.setHint(
-                prefixTextWithIcon(getContext(),
+                prefixTextWithIcon(context,
                         R.drawable.ic_allapps_search,
                         mFallbackSearchView.getHint()));
     }
