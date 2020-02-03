@@ -183,6 +183,7 @@ public class AllAppsQsb extends QsbContainerView
         }
 
         Context context = getContext();
+        int bgColor = Themes.getAttrColor(context, R.attr.shadeColorSearchBar);
         int overlay = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
         if (ColorUtils.setAlphaComponent(overlay, 0) != overlay) {
             boolean isDark = Themes.getAttrBoolean(context, R.attr.isMainColorDark);
@@ -192,9 +193,9 @@ public class AllAppsQsb extends QsbContainerView
                     context.getResources().getInteger(isDark
                             ? R.integer.shade_all_apps_dark_alpha
                             : R.integer.shade_all_apps_light_alpha));
-
-            gd.setColor(ColorUtils.compositeColors(overlay, gd.getColor().getDefaultColor()));
+            bgColor = ColorUtils.compositeColors(overlay, bgColor);
         }
+        gd.setColor(bgColor);
 
         mFallbackSearchView.setHint(
                 prefixTextWithIcon(context,
