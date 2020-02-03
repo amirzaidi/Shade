@@ -20,7 +20,7 @@ import amirz.shade.animations.TransitionManager;
 import amirz.shade.hidden.HiddenAppsDrawerState;
 import amirz.shade.search.AllAppsQsb;
 
-import static amirz.shade.ShadeFont.KEY_OVERRIDE_FONT;
+import static amirz.shade.ShadeFont.KEY_FONT;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
@@ -40,7 +40,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
     private boolean mDeferCallbacks;
-    private boolean mFontOverrideEnabled;
+    private String mFont;
 
     private boolean mNoFloatingView;
 
@@ -55,7 +55,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         LauncherClientIntent.setPackage(getRecommendedFeedPackage());
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
         mOverlayCallbacks.setClient(mLauncherClient);
-        mFontOverrideEnabled = ShadeFont.isOverrideEnabled(mLauncher);
+        mFont = ShadeFont.getFont(mLauncher);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
     }
@@ -80,9 +80,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (KEY_ENABLE_MINUS_ONE.equals(key)) {
             mLauncherClient.setClientOptions(getClientOptions(prefs));
-        } else if (KEY_OVERRIDE_FONT.equals(key)) {
+        } else if (KEY_FONT.equals(key)) {
             // If the font toggle changed, restart the launcher.
-            if (ShadeFont.isOverrideEnabled(mLauncher) != mFontOverrideEnabled) {
+            if (!ShadeFont.getFont(mLauncher).equals(mFont)) {
                 mLauncher.kill();
             }
         } else if (KEY_FEED_PROVIDER.equals(key)) {

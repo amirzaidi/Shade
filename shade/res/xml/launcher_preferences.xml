@@ -107,11 +107,13 @@
             android:defaultValue=""
             android:persistent="false" />
 
-        <SwitchPreference
-            android:key="pref_override_font"
-            android:title="@string/override_font"
-            android:summary="@string/override_font_desc"
-            android:defaultValue="true"
+        <ListPreference
+            android:key="pref_font"
+            android:title="@string/font"
+            android:summary="%s"
+            android:entries="@array/font_entries"
+            android:entryValues="@array/font_entry_values"
+            android:defaultValue="google_sans"
             android:persistent="true" />
 
     </PreferenceCategory>

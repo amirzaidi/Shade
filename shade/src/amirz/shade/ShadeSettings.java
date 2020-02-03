@@ -29,6 +29,7 @@ import amirz.shade.settings.IconPackPrefSetter;
 import amirz.shade.settings.ReloadingListPreference;
 import amirz.shade.util.AppReloader;
 
+import static amirz.shade.ShadeFont.KEY_FONT;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
@@ -94,13 +95,16 @@ public class  ShadeSettings extends SettingsActivity {
                 style.removePreference(style.findPreference(KEY_DEVICE_THEME));
             }
 
-            findPreference(KEY_THEME).setOnPreferenceChangeListener((pref, val) -> {
+            Preference.OnPreferenceChangeListener restart = (pref, val) -> {
                 startActivity(getActivity().getIntent()
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP),
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP),
                         ActivityOptions.makeCustomAnimation(
                                 context, R.anim.fade_in, R.anim.fade_out).toBundle());
                 return true;
-            });
+            };
+
+            findPreference(KEY_THEME).setOnPreferenceChangeListener(restart);
+            findPreference(KEY_FONT).setOnPreferenceChangeListener(restart);
 
             ReloadingListPreference search =
                     (ReloadingListPreference) findPreference(KEY_DOCK_SEARCH);

@@ -51,8 +51,8 @@
     <string name="grid_division_big" translatable="false">Big (4 by 4)</string>
     <string name="fading_transition" translatable="false">Fading transition</string>
     <string name="fading_transition_desc" translatable="false">When opening apps</string>
-    <string name="override_font" translatable="false">Google Sans</string>
-    <string name="override_font_desc" translatable="false">Override device font</string>
+    <string name="font" translatable="false">Font</string>
+    <string name="font_google_sans" translatable="false">Google Sans</string>
     <string name="about_app_version" translatable="false">Version</string>
     <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
     <string name="about_contact" translatable="false">Contact</string>
