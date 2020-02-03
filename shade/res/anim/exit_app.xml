@@ -8,6 +8,6 @@
 
     <translate
         android:fromYDelta="0%"
-        android:toYDelta="3.5%"
+        android:toYDelta="4%"
         android:duration="@integer/config_appExitLauncherOpenAnimationDuration" />
 </set>
