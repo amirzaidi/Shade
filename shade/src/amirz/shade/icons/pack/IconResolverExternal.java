@@ -56,7 +56,7 @@ public class IconResolverExternal implements IconResolver {
                     Drawable drawable;
                     if (iconDpi > 0) {
                         // Try loading with the right density
-                        drawable = res.getDrawableForDensity(mDrawableId, iconDpi, null);
+                        drawable = res.getDrawableForDensity(drawableId, iconDpi, null);
                         if (drawable != null) {
                             return drawable;
                         }
