@@ -116,8 +116,7 @@ public class AllAppsQsb extends QsbContainerView
 
         @Override
         protected AppWidgetProviderInfo getSearchWidgetProvider() {
-            AppWidgetProviderInfo info = DockSearch.getWidgetInfo(getContext());
-            return info == null ? super.getSearchWidgetProvider() : info;
+            return DockSearch.getWidgetInfo(getContext());
         }
     }
 
