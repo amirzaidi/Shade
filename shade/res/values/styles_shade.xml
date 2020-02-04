@@ -3,13 +3,12 @@
     <!-- Base style that emulates pixel styling. -->
     <style name="ShadeOverride">
         <item name="shadeColorAllAppsOverlay">@android:color/transparent</item>
-        <item name="shadeColorDarkSearchBar">#3C4043</item> <!-- Gray 800 -->
+        <item name="shadeColorDarkSearchBar">#212224</item>
         <item name="shadeColorAccent">@color/colorPixel</item>
     </style>
 
     <!-- Shade overrides for a special touch. -->
     <style name="ShadeOverride.Shade" parent="ShadeOverride">
-        <item name="shadeColorDarkSearchBar">#212224</item>
         <item name="shadeColorAccent">@color/colorAccent</item>
     </style>
 
