@@ -19,38 +19,40 @@
              android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/btn_qsb_search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/all_apps_search_bar_field_height"
         android:layout_gravity="center_vertical"
+        android:elevation="2dp"
+        android:background="@drawable/bg_all_apps_searchbox"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/btn_qsb_search"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:paddingStart="16dp"
+            android:paddingStart="17dp"
+            android:paddingEnd="17dp"
             android:text="@string/abandoned_search"
             android:textColor="?android:attr/textColorSecondary"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:background="@drawable/bg_all_apps_searchbox"
-            android:elevation="2dp"
-            android:clickable="true" />
+            android:textSize="16sp" />
 
         <ImageView
-            android:layout_width="56dp"
+            android:layout_width="54dp"
             android:id="@+id/btn_qsb_setup"
             android:clickable="true"
+            android:focusable="true"
             android:visibility="gone"
             android:layout_height="match_parent"
             android:src="@drawable/ic_setting"
             android:tint="?android:attr/textColorSecondary"
             android:contentDescription="@string/gadget_setup_text"
-            android:layout_marginStart="-56dp"
             android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:elevation="4dp" />
+            android:paddingEnd="14dp" />
 
     </LinearLayout>
 </FrameLayout>
