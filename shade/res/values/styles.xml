@@ -36,6 +36,7 @@
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
         <item name="shadeColorSearchBar">?shadeColorDarkSearchBar</item>
+        <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
 
     <style name="AppTheme.Dark.DarkMainColor" parent="@style/LauncherTheme.Dark.DarkMainColor">
@@ -45,6 +46,7 @@
         <item name="preferenceTheme">@style/Shade.PreferenceTheme</item>
         <item name="smartspaceTextShadowColor">@color/smartspace_text_shadow_color</item>
         <item name="shadeColorSearchBar">?shadeColorDarkSearchBar</item>
+        <item name="workspaceStatusBarScrim">@drawable/workspace_bg_dark</item>
     </style>
 
     <style name="AppTheme.Dark.DarkText" parent="@style/LauncherTheme.Dark.DarkText">
