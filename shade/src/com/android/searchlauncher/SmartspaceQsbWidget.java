@@ -82,10 +82,10 @@ public class SmartspaceQsbWidget extends QsbContainerView {
                         .putExtra(EXTRA_APPWIDGET_ID, mQsbWidgetHost.allocateAppWidgetId())
                         .putExtra(EXTRA_APPWIDGET_PROVIDER, getSearchWidgetProvider().provider);
 
-                v.setOnClickListener((v2) -> startActivityForResult(intent, REQUEST_BIND_QSB));
+                v.setOnClickListener(v2 -> startActivityForResult(intent, REQUEST_BIND_QSB));
 
                 // Try binding immediately when creating the view.
-                startActivityForResult(intent, REQUEST_BIND_QSB);
+                v.callOnClick();
             } else {
                 v.setOnClickListener(this::openCalendar);
             }
