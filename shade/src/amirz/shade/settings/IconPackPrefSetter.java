@@ -9,9 +9,11 @@ import com.android.launcher3.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import amirz.shade.customization.IconDatabase;
 import amirz.shade.icons.pack.IconPackManager;
 
 public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListener {
@@ -34,6 +36,12 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
 
         if (mFilter != null) {
             // Filter for packs with icon for this app, or the global pack.
+            String globalPack = IconDatabase.getGlobal(mContext);
+            for (String pkg : new HashSet<>(packList.keySet())) {
+                if (!pkg.equals(globalPack) && !ipm.packContainsActivity(pkg, mFilter)) {
+                    packList.remove(pkg);
+                }
+            }
         }
 
         CharSequence[] keys = new String[packList.size() + 1];

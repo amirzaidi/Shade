@@ -1,6 +1,7 @@
 package amirz.shade.icons.pack;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -144,6 +145,16 @@ public class IconPackManager extends BroadcastReceiver {
             providerTitles.put(pack.getKey(), pack.getValue().getTitle());
         }
         return providerTitles;
+    }
+
+    public boolean packContainsActivity(String packPackage, ComponentName componentName) {
+        try {
+            IconPack pack = mProviders.get(packPackage);
+            IconPack.Data data = pack.getData(mContext.getPackageManager());
+            return data.drawables.containsKey(componentName);
+        } catch (PackageManager.NameNotFoundException | XmlPullParserException | IOException ignored) {
+            return false;
+        }
     }
 
     /**
