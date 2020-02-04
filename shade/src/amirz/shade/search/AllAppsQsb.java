@@ -355,10 +355,10 @@ public class AllAppsQsb extends QsbContainerView
 
             DeviceProfile dp = mLauncher.getWallpaperDeviceProfile();
             int searchPadding = getLayoutParams().height;
-            int hotseatPadding = (dp.hotseatBarSizePx - dp.hotseatCellHeightPx) - searchPadding;
+            int hotseatPadding = dp.hotseatBarBottomPaddingPx;
 
             return insets.bottom + topMargin + mFixedTranslationY
-                    + searchPadding + (int) ((float) (hotseatPadding - insets.bottom) * 0.45f);
+                    + (hotseatPadding + searchPadding) * 0.5f;
         }
     }
 
