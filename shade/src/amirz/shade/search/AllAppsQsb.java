@@ -70,66 +70,21 @@ public class AllAppsQsb extends QsbContainerView
     private boolean mSearchRequested;
     private final int[] currentPadding = new int[2];
 
-    public static class HotseatQsbFragment extends QsbFragment
-            implements SharedPreferences.OnSharedPreferenceChangeListener {
-        private boolean mReinflateRequired;
-
-        @Override
-        public void onInit(Bundle savedInstanceState) {
-            super.onInit(savedInstanceState);
-            Utilities.getPrefs(getActivity()).registerOnSharedPreferenceChangeListener(this);
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            mReinflateRequired = false;
-        }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (KEY_DOCK_SEARCH.equals(key)) {
-                mReinflateRequired = true;
-            }
-        }
-
-        @Override
-        public void onDestroy() {
-            Utilities.getPrefs(getActivity()).unregisterOnSharedPreferenceChangeListener(this);
-            super.onDestroy();
-        }
-
+    public static class HotseatQsbFragment extends QsbFragment {
         @Override
         public boolean isQsbEnabled() {
             return true;
         }
 
-        private boolean isReinflateRequired() {
-            return mReinflateRequired;
-        }
-
         @Override
         protected QsbWidgetHost createHost() {
             return new QsbWidgetHost(getContext(), QSB_WIDGET_HOST_ID,
-                    (c) -> new HotseatQsbWidgetHostView(c, this));
+                    (c) -> new QsbWidgetHostView(c));
         }
 
         @Override
         protected AppWidgetProviderInfo getSearchWidgetProvider() {
             return DockSearch.getWidgetInfo(getContext());
-        }
-    }
-
-    public static class HotseatQsbWidgetHostView extends QsbWidgetHostView {
-        private final HotseatQsbFragment mFragment;
-
-        public HotseatQsbWidgetHostView(Context context, HotseatQsbFragment fragment) {
-            super(context);
-            mFragment = fragment;
-        }
-
-        public boolean isReinflateRequired(int orientation) {
-            return super.isReinflateRequired(orientation) || mFragment.isReinflateRequired();
         }
     }
 

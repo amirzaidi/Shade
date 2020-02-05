@@ -22,6 +22,7 @@ import amirz.shade.hidden.HiddenAppsDrawerState;
 import amirz.shade.search.AllAppsQsb;
 
 import static amirz.shade.ShadeFont.KEY_FONT;
+import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
@@ -95,7 +96,8 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else if (KEY_FADING_TRANSITION.equals(key)) {
             TransitionManager transitions = (TransitionManager) mLauncher.getAppTransitionManager();
             transitions.applyWindowPreference(mLauncher);
-        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)) {
+        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)
+                || KEY_DOCK_SEARCH.equals(key)) {
             mLauncher.recreate();
         } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)) {
             mLauncher.kill();
