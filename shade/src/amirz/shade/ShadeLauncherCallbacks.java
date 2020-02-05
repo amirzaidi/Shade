@@ -86,7 +86,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else if (KEY_FONT.equals(key)) {
             // If the font toggle changed, restart the launcher.
             if (!ShadeFont.getFont(mLauncher).equals(mFont)) {
-                mLauncher.kill();
+                mLauncher.recreate();
             }
         } else if (KEY_FEED_PROVIDER.equals(key)) {
             // If the launcher should reconnect to a different package, restart it.
