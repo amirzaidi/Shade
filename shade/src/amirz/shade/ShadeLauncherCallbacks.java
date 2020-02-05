@@ -1,5 +1,6 @@
 package amirz.shade;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     private static final String KEY_IDP_GRID_NAME = "idp_grid_name";
 
     private final ShadeLauncher mLauncher;
+    private final Handler mHandler = new Handler();
 
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
@@ -210,8 +212,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
                 // Override base because we do not want to call onBackPressed twice.
                 return true;
             } else if (mLauncher.isInState(ALL_APPS)) {
-                AllAppsQsb search =
-                        (AllAppsQsb) mLauncher.getAppsView().getSearchUiManager();
+                AllAppsQsb search = (AllAppsQsb) mLauncher.getAppsView().getSearchUiManager();
                 return search.tryClearSearch();
             }
         }
@@ -235,6 +236,13 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
 
     @Override
     public boolean startSearch(String initialQuery, boolean selectInitialQuery, Bundle appSearchData) {
+        SearchManager sm = mLauncher.getSystemService(SearchManager.class);
+        if (sm == null || sm.getGlobalSearchActivity() == null) {
+            AllAppsQsb search = (AllAppsQsb) mLauncher.getAppsView().getSearchView();
+            search.requestSearch();
+            mHandler.post(() -> mLauncher.getStateManager().goToState(ALL_APPS, true));
+            return true;
+        }
         return false;
     }
 
