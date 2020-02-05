@@ -25,6 +25,7 @@ import android.content.pm.ShortcutInfo;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 
+import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState.ScaleAndTranslation;
@@ -35,6 +36,9 @@ import com.android.launcher3.uioverrides.touchcontrollers.StatusBarTouchControll
 import com.android.launcher3.util.TouchController;
 
 import java.io.PrintWriter;
+
+import static com.android.launcher3.AbstractFloatingView.TYPE_ALL;
+import static com.android.launcher3.AbstractFloatingView.TYPE_HIDE_BACK_BUTTON;
 
 public class UiFactory {
 
@@ -57,7 +61,19 @@ public class UiFactory {
 
     public static void resetOverview(Launcher launcher) { }
 
-    public static void onLauncherStateOrFocusChanged(Launcher launcher) { }
+    public static void onLauncherStateOrFocusChanged(Launcher launcher) {
+        boolean shouldBackButtonBeHidden = launcher != null
+                && launcher.getStateManager().getState().hideBackButton
+                && launcher.hasWindowFocus();
+        if (shouldBackButtonBeHidden) {
+            // Show the back button if there is a floating view visible.
+            shouldBackButtonBeHidden = AbstractFloatingView.getTopOpenViewWithType(launcher,
+                    TYPE_ALL & ~TYPE_HIDE_BACK_BUTTON) == null;
+        }
+        if (launcher != null && launcher.getDragLayer() != null) {
+            launcher.getRootView().setDisallowBackGesture(shouldBackButtonBeHidden);
+        }
+    }
 
     public static void onCreate(Launcher launcher) { }
 
