@@ -25,6 +25,7 @@
         android:layout_gravity="center_vertical"
         android:elevation="2dp"
         android:background="@drawable/bg_all_apps_searchbox"
+        android:alpha="0.8"
         android:clickable="true"
         android:focusable="true"
         android:orientation="horizontal">
