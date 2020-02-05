@@ -33,12 +33,12 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
     public void updateList(ListPreference pref) {
         IconPackManager ipm = IconPackManager.get(mContext);
         Map<String, CharSequence> packList = ipm.getProviderNames();
+        String globalPack = IconDatabase.getGlobal(mContext);
 
         if (mFilter != null) {
             // Filter for packs with icon for this app, or the global pack.
-            String globalPack = IconDatabase.getGlobal(mContext);
             for (String pkg : new HashSet<>(packList.keySet())) {
-                if (!pkg.equals(globalPack) && !ipm.packContainsActivity(pkg, mFilter)) {
+                if (!ipm.packContainsActivity(pkg, mFilter)) {
                     packList.remove(pkg);
                 }
             }
@@ -48,9 +48,9 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
         CharSequence[] values = new String[keys.length];
         int i = 0;
 
-        // First value, system default
+        // First value, system default, or the current icon pack if that has no icon yet.
         keys[i] = mContext.getResources().getString(R.string.pref_value_default);
-        values[i++] = "";
+        values[i++] = packList.containsKey(globalPack) ? "" : globalPack;
 
         // List of available icon packs
         List<Map.Entry<String, CharSequence>> packs = new ArrayList<>(packList.entrySet());
