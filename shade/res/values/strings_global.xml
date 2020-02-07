@@ -61,4 +61,5 @@
     <string name="about_donate_desc" translatable="false">Using Play balance</string>
     <string name="hidden_apps_biometric_title" translatable="false">Authentication</string>
     <string name="hidden_apps_biometric_subtitle" translatable="false">Unlock your hidden apps</string>
+    <string name="gesture_service_label" translatable="false">Home button overlay</string>
 </resources>

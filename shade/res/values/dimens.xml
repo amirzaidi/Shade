@@ -28,4 +28,8 @@
 
     <!-- Hidden apps -->
     <dimen name="hidden_apps_action_bar_height">64dp</dimen>
+
+    <!-- Navigation home button replacement -->
+    <dimen name="gesture_button_height">14dp</dimen>
+    <dimen name="gesture_button_width">96dp</dimen>
 </resources>
