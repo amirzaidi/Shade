@@ -151,7 +151,7 @@ public class IconPackManager extends BroadcastReceiver {
         try {
             IconPack pack = mProviders.get(packPackage);
             IconPack.Data data = pack.getData(mContext.getPackageManager());
-            return data.drawables.containsKey(componentName);
+            return data.hasMasking() || data.drawables.containsKey(componentName);
         } catch (PackageManager.NameNotFoundException | XmlPullParserException | IOException ignored) {
             return false;
         }
