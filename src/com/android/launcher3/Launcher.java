@@ -105,6 +105,7 @@ import com.android.launcher3.logging.UserEventDispatcher.UserEventDelegate;
 import com.android.launcher3.model.AppLaunchTracker;
 import com.android.launcher3.model.ModelWriter;
 import com.android.launcher3.notification.NotificationListener;
+import com.android.launcher3.notification.NotificationListenerProxy;
 import com.android.launcher3.popup.PopupContainerWithArrow;
 import com.android.launcher3.popup.PopupDataProvider;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
@@ -334,6 +335,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
         setupViews();
         mPopupDataProvider = new PopupDataProvider(this);
+        NotificationListenerProxy.INSTANCE.add(mPopupDataProvider);
 
         mAppTransitionManager = LauncherAppTransitionManager.newInstance(this);
 
@@ -915,7 +917,8 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
             mModel.refreshShortcutsIfRequired();
 
             // Set the notification listener and fetch updated notifications when we resume
-            NotificationListener.setNotificationsChangedListener(mPopupDataProvider);
+            NotificationListener.setNotificationsChangedListener(
+                    NotificationListenerProxy.INSTANCE);
 
             DiscoveryBounce.showForHomeIfNeeded(this);
 
