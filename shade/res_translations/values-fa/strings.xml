@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"مربع با گوشه‌های گرد"</string>
 	<string name="icon_shape_circle">"دایره"</string>
 	<string name="icon_shape_teardrop">"قطره اشک"</string>
+	<string name="icon_shape_rounded_square">"مربع گرد"</string>
+	<string name="icon_shape_cylinder">"سیلندر"</string>
 </resources>

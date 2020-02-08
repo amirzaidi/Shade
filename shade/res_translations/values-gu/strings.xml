@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"ચોરસ જેવું ગોળ"</string>
 	<string name="icon_shape_circle">"વર્તુળ"</string>
 	<string name="icon_shape_teardrop">"ટિઅરડ્રોપ"</string>
+	<string name="icon_shape_rounded_square">"ગોળાકાર ચોરસ"</string>
+	<string name="icon_shape_cylinder">"સિલિંડર"</string>
 </resources>

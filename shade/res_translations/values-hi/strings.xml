@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"गोल कोनों वाला वर्ग"</string>
 	<string name="icon_shape_circle">"मंडली"</string>
 	<string name="icon_shape_teardrop">"आंसू की बूंद"</string>
+	<string name="icon_shape_rounded_square">"गोल वर्ग"</string>
+	<string name="icon_shape_cylinder">"सिलेण्डर"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Kvadrāts ar noapaļotiem stūriem"</string>
 	<string name="icon_shape_circle">"Aplis"</string>
 	<string name="icon_shape_teardrop">"Lāse"</string>
+	<string name="icon_shape_rounded_square">"Noapaļots kvadrāts"</string>
+	<string name="icon_shape_cylinder">"Cilindrs"</string>
 </resources>

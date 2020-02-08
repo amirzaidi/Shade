@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Squircle"</string>
 	<string name="icon_shape_circle">"ክብ"</string>
 	<string name="icon_shape_teardrop">"የእንባ ጠብታ"</string>
+	<string name="icon_shape_rounded_square">"ክበባዊ ካሬ"</string>
+	<string name="icon_shape_cylinder">"ሲሊንደር"</string>
 </resources>

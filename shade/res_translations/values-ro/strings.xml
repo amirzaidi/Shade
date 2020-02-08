@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Pătrat cu colțuri rotunjite"</string>
 	<string name="icon_shape_circle">"Cerc"</string>
 	<string name="icon_shape_teardrop">"Lacrimă"</string>
+	<string name="icon_shape_rounded_square">"Pătrat rotunjit"</string>
+	<string name="icon_shape_cylinder">"Cilindru"</string>
 </resources>

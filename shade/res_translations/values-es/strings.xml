@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Cuadrado con esquinas redondeadas"</string>
 	<string name="icon_shape_circle">"Círculo"</string>
 	<string name="icon_shape_teardrop">"Lágrima"</string>
+	<string name="icon_shape_rounded_square">"Cuadrado redondeada"</string>
+	<string name="icon_shape_cylinder">"Cilindro"</string>
 </resources>

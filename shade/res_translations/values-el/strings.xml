@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Οβάλ τετράγωνο"</string>
 	<string name="icon_shape_circle">"Κύκλος"</string>
 	<string name="icon_shape_teardrop">"Δάκρυ"</string>
+	<string name="icon_shape_rounded_square">"Τετράγωνο με στρογγυλεμένες κορυφές"</string>
+	<string name="icon_shape_cylinder">"Κύλινδρος"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Superkreis"</string>
 	<string name="icon_shape_circle">"Kreis"</string>
 	<string name="icon_shape_teardrop">"Träne"</string>
+	<string name="icon_shape_rounded_square">"Gerundetes Quadrat"</string>
+	<string name="icon_shape_cylinder">"Zylinder"</string>
 </resources>

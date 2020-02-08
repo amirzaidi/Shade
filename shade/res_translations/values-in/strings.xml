@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Persegi bundar"</string>
 	<string name="icon_shape_circle">"Lingkaran"</string>
 	<string name="icon_shape_teardrop">"Butiran Air"</string>
+	<string name="icon_shape_rounded_square">"Persegi bulat"</string>
+	<string name="icon_shape_cylinder">"Silinder"</string>
 </resources>

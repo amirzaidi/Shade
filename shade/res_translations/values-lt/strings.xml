@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Kvadratais suapvalintais kampais"</string>
 	<string name="icon_shape_circle">"Apskritimas"</string>
 	<string name="icon_shape_teardrop">"Ašara"</string>
+	<string name="icon_shape_rounded_square">"Suapvalintas kvadratas"</string>
+	<string name="icon_shape_cylinder">"Cilindras"</string>
 </resources>

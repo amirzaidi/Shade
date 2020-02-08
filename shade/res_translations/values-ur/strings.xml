@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"اسکورکل"</string>
 	<string name="icon_shape_circle">"حلقہ"</string>
 	<string name="icon_shape_teardrop">"آنسو کا قطرہ"</string>
+	<string name="icon_shape_rounded_square">"گول مربع"</string>
+	<string name="icon_shape_cylinder">"بیلن"</string>
 </resources>

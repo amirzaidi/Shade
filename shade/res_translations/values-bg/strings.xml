@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Комбинация от кръг и квадрат"</string>
 	<string name="icon_shape_circle">"Кръг"</string>
 	<string name="icon_shape_teardrop">"Сълза"</string>
+	<string name="icon_shape_rounded_square">"Заоблен квадрат"</string>
+	<string name="icon_shape_cylinder">"Цилиндър"</string>
 </resources>

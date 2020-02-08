@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"চৌকো-গোলাকার"</string>
 	<string name="icon_shape_circle">"গোলাকার"</string>
 	<string name="icon_shape_teardrop">"চোখের জল"</string>
+	<string name="icon_shape_rounded_square">"গোলাকাকৃতির বর্গাকার"</string>
+	<string name="icon_shape_cylinder">"সিলিন্ডার"</string>
 </resources>

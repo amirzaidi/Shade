@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Квадрат с закругленными краями"</string>
 	<string name="icon_shape_circle">"Круг"</string>
 	<string name="icon_shape_teardrop">"Капля"</string>
+	<string name="icon_shape_rounded_square">"Скругленный квадрат"</string>
+	<string name="icon_shape_cylinder">"Цилиндр"</string>
 </resources>

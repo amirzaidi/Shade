@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"ສີ່ຫຼ່ຽມຂອບມົນ"</string>
 	<string name="icon_shape_circle">"ວົງມົນ"</string>
 	<string name="icon_shape_teardrop">"ນ້ຳຢອດ"</string>
+	<string name="icon_shape_rounded_square">"ຮູບສີ່ຫຼ່ຽມແຈມົນ"</string>
+	<string name="icon_shape_cylinder">"ກະບອກ"</string>
 </resources>

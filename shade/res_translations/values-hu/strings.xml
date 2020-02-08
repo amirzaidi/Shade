@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Squircle"</string>
 	<string name="icon_shape_circle">"Kör"</string>
 	<string name="icon_shape_teardrop">"Könnycsepp"</string>
+	<string name="icon_shape_rounded_square">"Lekerekített négyzet"</string>
+	<string name="icon_shape_cylinder">"Henger"</string>
 </resources>

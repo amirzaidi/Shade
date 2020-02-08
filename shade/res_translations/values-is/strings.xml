@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Ferhringur"</string>
 	<string name="icon_shape_circle">"Hringur"</string>
 	<string name="icon_shape_teardrop">"Dropi"</string>
+	<string name="icon_shape_rounded_square">"Rúnnaður ferningur"</string>
+	<string name="icon_shape_cylinder">"Sívalningur"</string>
 </resources>

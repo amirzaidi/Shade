@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"गोलाकार चौरस"</string>
 	<string name="icon_shape_circle">"वर्तुळ"</string>
 	<string name="icon_shape_teardrop">"अश्रू"</string>
+	<string name="icon_shape_rounded_square">"वर्तुळाकार कोपर्‍यांचा चौरस"</string>
+	<string name="icon_shape_cylinder">"सिलिंडर"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Hình vuông cạnh bo tròn"</string>
 	<string name="icon_shape_circle">"Hình tròn"</string>
 	<string name="icon_shape_teardrop">"Hình giọt nước"</string>
+	<string name="icon_shape_rounded_square">"Hình vuông góc bo tròn"</string>
+	<string name="icon_shape_cylinder">"Hình trụ"</string>
 </resources>

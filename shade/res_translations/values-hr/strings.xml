@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Zaobljeni kvadrat"</string>
 	<string name="icon_shape_circle">"Krug"</string>
 	<string name="icon_shape_teardrop">"Suza"</string>
+	<string name="icon_shape_rounded_square">"Kvadrat zaobljenih kutova"</string>
+	<string name="icon_shape_cylinder">"Valjak"</string>
 </resources>

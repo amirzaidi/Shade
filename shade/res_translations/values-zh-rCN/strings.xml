@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"方圆形"</string>
 	<string name="icon_shape_circle">"圆形"</string>
 	<string name="icon_shape_teardrop">"泪珠形"</string>
+	<string name="icon_shape_rounded_square">"圆角正方形"</string>
+	<string name="icon_shape_cylinder">"圆柱形"</string>
 </resources>

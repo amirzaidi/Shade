@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"ਵਰਗਾਕਾਰ-ਚੱਕਰ"</string>
 	<string name="icon_shape_circle">"ਚੱਕਰ"</string>
 	<string name="icon_shape_teardrop">"ਹੰਝੂ ਦੀ ਬੂੰਦ"</string>
+	<string name="icon_shape_rounded_square">"ਗੋਲਾਕਾਰ ਵਰਗ"</string>
+	<string name="icon_shape_cylinder">"ਸਲੰਡਰ"</string>
 </resources>

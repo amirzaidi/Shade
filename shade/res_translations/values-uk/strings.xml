@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Квадрат із заокругленими кутами"</string>
 	<string name="icon_shape_circle">"Круг"</string>
 	<string name="icon_shape_teardrop">"Сльоза"</string>
+	<string name="icon_shape_rounded_square">"Округлений квадрат"</string>
+	<string name="icon_shape_cylinder">"Циліндр"</string>
 </resources>

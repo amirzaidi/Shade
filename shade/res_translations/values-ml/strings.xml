@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"ചതുരവൃത്തം"</string>
 	<string name="icon_shape_circle">"വൃത്തം"</string>
 	<string name="icon_shape_teardrop">"കണ്ണുനീര്‍ തുള്ളി"</string>
+	<string name="icon_shape_rounded_square">"ഉരുണ്ട ചതുരം"</string>
+	<string name="icon_shape_cylinder">"സിലിണ്ടർ"</string>
 </resources>

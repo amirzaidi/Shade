@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Zaokrąglony kwadrat"</string>
 	<string name="icon_shape_circle">"Okrąg"</string>
 	<string name="icon_shape_teardrop">"Łza"</string>
+	<string name="icon_shape_rounded_square">"Zaokrąglony kwadrat"</string>
+	<string name="icon_shape_cylinder">"Cylinder"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Segi empat berbucu bulat"</string>
 	<string name="icon_shape_circle">"Bulatan"</string>
 	<string name="icon_shape_teardrop">"Titisan air mata"</string>
+	<string name="icon_shape_rounded_square">"Segi empat bucu bulat"</string>
+	<string name="icon_shape_cylinder">"Silinder"</string>
 </resources>

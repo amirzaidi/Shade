@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"رمز دائري مربّع"</string>
 	<string name="icon_shape_circle">"دائرة"</string>
 	<string name="icon_shape_teardrop">"رمز على شكل دمعة"</string>
+	<string name="icon_shape_rounded_square">"مربع مستدير"</string>
+	<string name="icon_shape_cylinder">"أسطوانة"</string>
 </resources>

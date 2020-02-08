@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Kvirkel"</string>
 	<string name="icon_shape_circle">"Cirkel"</string>
 	<string name="icon_shape_teardrop">"Droppe"</string>
+	<string name="icon_shape_rounded_square">"Kvadrat med rundade hörn"</string>
+	<string name="icon_shape_cylinder">"Cylinder"</string>
 </resources>

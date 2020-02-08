@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Squircle"</string>
 	<string name="icon_shape_circle">"Cirkel"</string>
 	<string name="icon_shape_teardrop">"Traan"</string>
+	<string name="icon_shape_rounded_square">"Afgerond vierkant"</string>
+	<string name="icon_shape_cylinder">"Cylinder"</string>
 </resources>

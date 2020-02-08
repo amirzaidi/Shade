@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Kare-daire"</string>
 	<string name="icon_shape_circle">"Daire"</string>
 	<string name="icon_shape_teardrop">"Gözyaşı damlası"</string>
+	<string name="icon_shape_rounded_square">"Yuvarlatılmış kare"</string>
+	<string name="icon_shape_cylinder">"Silindir"</string>
 </resources>

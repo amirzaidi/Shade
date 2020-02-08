@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"ಚೌಕವೃತ್ತ"</string>
 	<string name="icon_shape_circle">"ವೃತ್ತ"</string>
 	<string name="icon_shape_teardrop">"ಕಂಬನಿ"</string>
+	<string name="icon_shape_rounded_square">"ದುಂಡಾದ ಚೌಕ"</string>
+	<string name="icon_shape_cylinder">"ಸಿಲಿಂಡರ್"</string>
 </resources>

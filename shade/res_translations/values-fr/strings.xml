@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Squircle"</string>
 	<string name="icon_shape_circle">"Cercle"</string>
 	<string name="icon_shape_teardrop">"Goutte"</string>
+	<string name="icon_shape_rounded_square">"Rectangle arrondi"</string>
+	<string name="icon_shape_cylinder">"Cylindre"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Ümarate nurkadega ruut"</string>
 	<string name="icon_shape_circle">"Ring"</string>
 	<string name="icon_shape_teardrop">"Tilk"</string>
+	<string name="icon_shape_rounded_square">"Ümmarguste nurkadega nelinurk"</string>
+	<string name="icon_shape_cylinder">"Silinder"</string>
 </resources>

@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Superellipse"</string>
 	<string name="icon_shape_circle">"Sirkel"</string>
 	<string name="icon_shape_teardrop">"Dråpe"</string>
+	<string name="icon_shape_rounded_square">"Avrundet kvadrat"</string>
+	<string name="icon_shape_cylinder">"Sylinder"</string>
 </resources>

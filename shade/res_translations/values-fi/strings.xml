@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Ympyräneliö"</string>
 	<string name="icon_shape_circle">"Ympyrä"</string>
 	<string name="icon_shape_teardrop">"Pisara"</string>
+	<string name="icon_shape_rounded_square">"Pyöristetty neliö"</string>
+	<string name="icon_shape_cylinder">"Sylinteri"</string>
 </resources>

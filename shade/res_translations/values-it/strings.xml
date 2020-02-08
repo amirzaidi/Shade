@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"Supercerchio"</string>
 	<string name="icon_shape_circle">"Cerchio"</string>
 	<string name="icon_shape_teardrop">"Goccia"</string>
+	<string name="icon_shape_rounded_square">"Quadrato smussato"</string>
+	<string name="icon_shape_cylinder">"Cilindro"</string>
 </resources>

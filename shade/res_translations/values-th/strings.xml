@@ -43,4 +43,6 @@
 	<string name="icon_shape_squircle">"สี่เหลี่ยมขอบมน"</string>
 	<string name="icon_shape_circle">"วงกลม"</string>
 	<string name="icon_shape_teardrop">"หยดน้ำตา"</string>
+	<string name="icon_shape_rounded_square">"สี่เหลี่ยมจัตุรัสมุมมน"</string>
+	<string name="icon_shape_cylinder">"ทรงกระบอก"</string>
 </resources>
