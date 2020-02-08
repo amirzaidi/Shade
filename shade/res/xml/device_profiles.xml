@@ -143,4 +143,39 @@
 
     </grid-option>
 
+    <grid-option
+        launcher:defaultLayoutId="@xml/default_hotseat_3"
+        launcher:name="crazybig"
+        launcher:numColumns="3"
+        launcher:numFolderColumns="2"
+        launcher:numFolderRows="2"
+        launcher:numHotseatIcons="3"
+        launcher:numRows="3">
+
+        <display-option
+            launcher:iconImageSize="76"
+            launcher:iconTextSize="14"
+            launcher:landscapeIconSize="76"
+            launcher:minHeightDps="659"
+            launcher:minWidthDps="387"
+            launcher:name="Pixel" />
+
+        <display-option
+            launcher:iconImageSize="68"
+            launcher:iconTextSize="12"
+            launcher:landscapeIconSize="68"
+            launcher:minHeightDps="496"
+            launcher:minWidthDps="296"
+            launcher:name="Pixel (Display : Small)" />
+
+        <display-option
+            launcher:iconImageSize="88"
+            launcher:iconTextSize="16"
+            launcher:landscapeIconSize="88"
+            launcher:minHeightDps="754"
+            launcher:minWidthDps="449"
+            launcher:name="Pixel (Display : Largest)" />
+
+    </grid-option>
+
 </profiles>
