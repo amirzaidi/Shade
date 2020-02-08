@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.android.searchlauncher.SmartspaceQsbWidget xmlns:android="http://schemas.android.com/apk/res/android"
+<amirz.shade.views.SmartUnreadQsbWidget xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/search_container_workspace"
     android:layout_width="match_parent"
-    android:layout_height="0dp">
+    android:layout_height="match_parent">
 
     <fragment
+        android:id="@+id/smartspace_view"
         android:name="com.android.searchlauncher.SmartspaceQsbWidget$SmartSpaceFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="smart_space_view" />
-</com.android.searchlauncher.SmartspaceQsbWidget>
+
+    <LinearLayout
+        android:id="@+id/unread_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <amirz.shade.views.AutoShrinkTextView
+            android:id="@+id/shadespace_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            style="@style/TextShade.Title" />
+
+        <TextView
+            android:id="@+id/shadespace_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            style="@style/TextShade.SubTitle" />
+
+    </LinearLayout>
+
+</amirz.shade.views.SmartUnreadQsbWidget>

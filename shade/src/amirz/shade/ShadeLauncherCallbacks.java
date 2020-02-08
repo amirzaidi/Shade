@@ -20,6 +20,7 @@ import amirz.aidlbridge.LauncherClientIntent;
 import amirz.shade.animations.TransitionManager;
 import amirz.shade.hidden.HiddenAppsDrawerState;
 import amirz.shade.search.AllAppsQsb;
+import amirz.unread.UnreadSession;
 
 import static amirz.shade.ShadeFont.KEY_FONT;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
@@ -57,6 +58,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         mOverlayCallbacks = new ShadeLauncherOverlay(mLauncher);
         LauncherClientIntent.setPackage(getRecommendedFeedPackage());
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
+        UnreadSession.getInstance(mLauncher).onCreate();
         mOverlayCallbacks.setClient(mLauncherClient);
         mFont = ShadeFont.getFont(mLauncher);
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -158,6 +160,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     @Override
     public void onDestroy() {
         mLauncherClient.onDestroy();
+        UnreadSession.getInstance(mLauncher).onDestroy();
         Utilities.getPrefs(mLauncher).unregisterOnSharedPreferenceChangeListener(this);
     }
 
