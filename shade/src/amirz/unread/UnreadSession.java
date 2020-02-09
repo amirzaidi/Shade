@@ -36,7 +36,7 @@ public class UnreadSession {
 
     public static synchronized UnreadSession getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new UnreadSession(context);
+            sInstance = new UnreadSession(context.getApplicationContext());
         }
         return sInstance;
     }
@@ -139,7 +139,7 @@ public class UnreadSession {
                 textList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
 
-                mOnClick = v -> Launcher.getLauncher(mContext)
+                mOnClick = v -> Launcher.getLauncher(v.getContext())
                         .startActivitySafely(v, BATTERY_INTENT, null, null);
             }
         }
@@ -171,7 +171,7 @@ public class UnreadSession {
             if (parsed.pi != null) {
                 mLastClick = System.currentTimeMillis();
                 try {
-                    Launcher launcher = Launcher.getLauncher(mContext);
+                    Launcher launcher = Launcher.getLauncher(v.getContext());
                     Bundle b = launcher.getAppTransitionManager()
                             .getActivityLaunchOptions(launcher, v).toBundle();
                     parsed.pi.send(null, 0, null, null, null, null, b);
