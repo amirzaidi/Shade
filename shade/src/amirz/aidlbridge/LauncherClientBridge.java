@@ -22,15 +22,10 @@ public class LauncherClientBridge extends IBridgeCallback.Stub implements Servic
     public void onServiceConnected(ComponentName name, IBinder service) {
         try {
             if (INTERFACE_DESCRIPTOR.equals(service.getInterfaceDescriptor())) {
-                IBridge bridge = IBridge.Stub.asInterface(service);
-                try {
-                    bridge.bindService(this, mFlags);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                IBridge.Stub.asInterface(service).bindService(this, mFlags);
             } else {
-                mClientService.onServiceConnected(name, service);
                 mConnectionName = name;
+                mClientService.onServiceConnected(name, service);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
