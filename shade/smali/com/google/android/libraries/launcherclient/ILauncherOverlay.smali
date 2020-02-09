@@ -1,4 +1,4 @@
-.class public interface abstract Lcom/google/android/libraries/a/a;
+.class public interface abstract Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 .super Ljava/lang/Object;
 .source "ILauncherOverlay.java"
 
@@ -6,8 +6,16 @@
 .implements Landroid/os/IInterface;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/google/android/libraries/launcherclient/ILauncherOverlay$Stub;
+    }
+.end annotation
+
+
 # virtual methods
-.method public abstract a(F)V
+.method public abstract closeOverlay(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -15,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract a(I)V
+.method public abstract endScroll()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +31,7 @@
     .end annotation
 .end method
 
-.method public abstract a(Landroid/os/Bundle;Lcom/google/android/libraries/a/d;)V
+.method public abstract getVoiceSearchLanguage()Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +39,7 @@
     .end annotation
 .end method
 
-.method public abstract a(Landroid/view/WindowManager$LayoutParams;Lcom/google/android/libraries/a/d;I)V
+.method public abstract hasOverlayContent()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -39,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract a(Z)V
+.method public abstract isVoiceDetectionRunning()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,7 +55,7 @@
     .end annotation
 .end method
 
-.method public abstract a_()V
+.method public abstract onPause()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,7 +63,7 @@
     .end annotation
 .end method
 
-.method public abstract b()V
+.method public abstract onResume()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,7 +71,7 @@
     .end annotation
 .end method
 
-.method public abstract b(I)V
+.method public abstract onScroll(F)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +79,7 @@
     .end annotation
 .end method
 
-.method public abstract b(Z)V
+.method public abstract openOverlay(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -79,7 +87,7 @@
     .end annotation
 .end method
 
-.method public abstract c()V
+.method public abstract requestVoiceDetection(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +95,7 @@
     .end annotation
 .end method
 
-.method public abstract c(I)V
+.method public abstract setActivityState(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -95,7 +103,7 @@
     .end annotation
 .end method
 
-.method public abstract d()V
+.method public abstract startScroll()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,7 +111,7 @@
     .end annotation
 .end method
 
-.method public abstract e()Z
+.method public abstract startSearch([BLandroid/os/Bundle;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -111,7 +119,23 @@
     .end annotation
 .end method
 
-.method public abstract f()Z
+.method public abstract windowAttached(Landroid/view/WindowManager$LayoutParams;Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract windowAttached2(Landroid/os/Bundle;Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract windowDetached(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

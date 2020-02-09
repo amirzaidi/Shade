@@ -1,4 +1,4 @@
-.class public interface abstract Lcom/google/android/libraries/gsa/launcherclient/h;
+.class public interface abstract Lcom/google/android/libraries/gsa/launcherclient/PrivateCallbacks;
 .super Ljava/lang/Object;
 .source "PrivateCallbacks.java"
 
@@ -7,5 +7,5 @@
 
 
 # virtual methods
-.method public abstract a()V
+.method public abstract onExtraServiceStatus(I)V
 .end method

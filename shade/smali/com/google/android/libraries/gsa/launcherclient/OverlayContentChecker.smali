@@ -3,49 +3,66 @@
 .source "OverlayContentChecker.java"
 
 
+# annotations
+.annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+.end annotation
+
+
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .locals 0
+    .registers 2
+    .param p1, "context"    # Landroid/content/Context;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 1
+    .prologue
+    .line 32
     invoke-direct {p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker;-><init>(Landroid/content/Context;)V
 
+    .line 33
     return-void
 .end method
 
 
 # virtual methods
-.method protected final a(Landroid/os/IBinder;)Z
-    .locals 0
+.method public checkOverlayContent(Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;)V
+    .registers 3
+    .param p1, "statusCallback"    # Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
+
+    .prologue
+    .line 41
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/OverlayContentChecker;->context:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->getServiceIntent(Landroid/content/Context;)Landroid/content/Intent;
+
+    move-result-object v0
+
+    invoke-virtual {p0, p1, v0}, Lcom/google/android/libraries/gsa/launcherclient/OverlayContentChecker;->checkServiceStatus(Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;Landroid/content/Intent;)V
+
+    .line 42
+    return-void
+.end method
+
+.method protected getStatus(Landroid/os/IBinder;)Z
+    .registers 3
+    .param p1, "service"    # Landroid/os/IBinder;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .line 5
-    invoke-static {p1}, Lcom/google/android/libraries/a/b;->a(Landroid/os/IBinder;)Lcom/google/android/libraries/a/a;
-
-    move-result-object p0
-
-    invoke-interface {p0}, Lcom/google/android/libraries/a/a;->f()Z
-
-    move-result p0
-
-    return p0
-.end method
-
-.method public checkOverlayContent(Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;)V
-    .locals 1
-
-    .line 3
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/OverlayContentChecker;->a:Landroid/content/Context;
-
-    invoke-static {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Landroid/content/Context;)Landroid/content/Intent;
+    .prologue
+    .line 46
+    invoke-static {p1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
     move-result-object v0
 
-    invoke-virtual {p0, p1, v0}, Lcom/google/android/libraries/gsa/launcherclient/OverlayContentChecker;->a(Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker$StatusCallback;Landroid/content/Intent;)V
+    invoke-interface {v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->hasOverlayContent()Z
 
-    return-void
+    move-result v0
+
+    return v0
 .end method

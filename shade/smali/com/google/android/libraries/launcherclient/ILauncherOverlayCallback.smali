@@ -1,4 +1,4 @@
-.class public interface abstract Lcom/google/android/libraries/a/d;
+.class public interface abstract Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback;
 .super Ljava/lang/Object;
 .source "ILauncherOverlayCallback.java"
 
@@ -6,8 +6,16 @@
 .implements Landroid/os/IInterface;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback$Stub;
+    }
+.end annotation
+
+
 # virtual methods
-.method public abstract a(F)V
+.method public abstract overlayScrollChanged(F)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -15,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract a(I)V
+.method public abstract overlayStatusChanged(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

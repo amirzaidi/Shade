@@ -4,6 +4,9 @@
 
 
 # annotations
+.annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+.end annotation
+
 .annotation system Ldalvik/annotation/EnclosingClass;
     value = Lcom/google/android/libraries/gsa/launcherclient/AbsServiceStatusChecker;
 .end annotation
@@ -16,4 +19,6 @@
 
 # virtual methods
 .method public abstract isRunning(Z)V
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 .end method

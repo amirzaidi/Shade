@@ -4,371 +4,494 @@
 
 
 # annotations
+.annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+.end annotation
+
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;,
+        Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;,
         Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;
     }
 .end annotation
 
 
 # static fields
-.field private static a:I = -0x1
+.field private static final DEBUG:Z = false
+
+.field private static final EXTRA_SERVICE_VERSION:Ljava/lang/String; = "service.api.version"
+
+.field private static final HIDE_WINDOW_WHEN_OVERLAY_OPEN:Z = false
+
+.field private static final MIN_SERVICE_VERSION_FOR_ATTACH2:I = 0x3
+
+.field private static final TAG:Ljava/lang/String; = "DrawerOverlayClient"
+
+.field private static serviceVersion:I
 
 
 # instance fields
-.field private final b:Landroid/app/Activity;
+.field private final activity:Landroid/app/Activity;
 
-.field private final c:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+.field private final activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-.field private final d:Lcom/google/android/libraries/gsa/launcherclient/d;
+.field private activityState:I
 
-.field private final e:Lcom/google/android/libraries/gsa/launcherclient/d;
+.field private final appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-.field private final f:Lcom/google/android/libraries/gsa/launcherclient/i;
+.field private final clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-.field private final g:Lcom/google/android/libraries/gsa/launcherclient/c;
+.field private currentServiceConnectionOptions:I
 
-.field private final h:Landroid/content/BroadcastReceiver;
+.field private destroyed:Z
 
-.field private i:Lcom/google/android/libraries/a/a;
+.field private final launcherClientCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
 
-.field private j:I
+.field protected mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-.field private k:Z
+.field private overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
 
-.field private l:I
+.field private privateOptions:Landroid/os/Bundle;
 
-.field private m:I
+.field private final serviceEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-.field private n:Landroid/view/WindowManager$LayoutParams;
+.field private serviceStatus:I
 
-.field private o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+.field private final updateReceiver:Landroid/content/BroadcastReceiver;
+
+.field private windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 0
+    .registers 1
+
+    .prologue
+    .line 137
+    const/4 v0, -0x1
+
+    sput v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
     return-void
 .end method
 
 .method public constructor <init>(Landroid/app/Activity;)V
-    .locals 1
+    .registers 3
+    .param p1, "activity"    # Landroid/app/Activity;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 1
+    .prologue
+    .line 183
     new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacksAdapter;
 
     invoke-direct {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacksAdapter;-><init>()V
 
     invoke-direct {p0, p1, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;-><init>(Landroid/app/Activity;Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;)V
 
+    .line 184
     return-void
 .end method
 
 .method public constructor <init>(Landroid/app/Activity;Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;)V
-    .locals 2
+    .registers 5
+    .param p1, "activity"    # Landroid/app/Activity;
+    .param p2, "callbacks"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 3
-    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;
-
+    .prologue
     const/4 v1, 0x1
+
+    .line 196
+    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;
 
     invoke-direct {v0, v1, v1, v1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;-><init>(ZZZ)V
 
     invoke-direct {p0, p1, p2, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;-><init>(Landroid/app/Activity;Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)V
 
+    .line 197
     return-void
 .end method
 
 .method public constructor <init>(Landroid/app/Activity;Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)V
-    .locals 3
+    .registers 10
+    .param p1, "activity"    # Landroid/app/Activity;
+    .param p2, "callbacks"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+    .param p3, "clientOptions"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 5
+    .prologue
+    const/16 v5, 0x13
+
+    const/4 v4, 0x0
+
+    .line 209
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 6
-    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 144
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    const-string v1, "Client"
+    const-string v2, "Client"
 
-    const/16 v2, 0x14
+    const/16 v3, 0x14
 
-    invoke-direct {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/d;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v1, v2, v3}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;-><init>(Ljava/lang/String;I)V
 
-    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    .line 7
-    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 145
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    const-string v1, "Service"
+    const-string v2, "Service"
 
-    const/16 v2, 0xa
+    const/16 v3, 0xa
 
-    invoke-direct {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/d;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v1, v2, v3}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;-><init>(Ljava/lang/String;I)V
 
-    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->e:Lcom/google/android/libraries/gsa/launcherclient/d;
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    .line 8
-    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/f;
+    .line 150
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$1;
 
-    invoke-direct {v0, p0}, Lcom/google/android/libraries/gsa/launcherclient/f;-><init>(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
+    invoke-direct {v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$1;-><init>(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
 
-    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->h:Landroid/content/BroadcastReceiver;
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->updateReceiver:Landroid/content/BroadcastReceiver;
 
-    const/4 v0, 0x0
+    .line 170
+    iput v4, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 9
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 171
+    iput-boolean v4, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    .line 10
-    iput-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .line 173
+    iput v4, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceStatus:I
 
-    .line 11
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->l:I
+    .line 210
+    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 12
-    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    .line 211
+    iput-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->launcherClientCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
 
-    .line 13
-    iput-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->c:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+    .line 213
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    .line 14
-    new-instance p2, Lcom/google/android/libraries/gsa/launcherclient/i;
+    const/16 v2, 0x41
 
-    const/16 v1, 0x41
+    invoke-direct {v1, p1, v2}, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;-><init>(Landroid/content/Context;I)V
 
-    invoke-direct {p2, p1, v1}, Lcom/google/android/libraries/gsa/launcherclient/i;-><init>(Landroid/content/Context;I)V
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    iput-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
+    .line 215
+    # getter for: Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->options:I
+    invoke-static {p3}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->access$400(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
 
-    .line 15
-    invoke-static {p3}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
+    move-result v1
 
-    move-result p2
+    iput v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
-    iput p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    .line 217
+    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->get(Landroid/content/Context;)Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    .line 16
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/c;->a(Landroid/content/Context;)Lcom/google/android/libraries/gsa/launcherclient/c;
+    move-result-object v1
 
-    move-result-object p2
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    iput-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 218
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    .line 17
-    iget-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    invoke-virtual {v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->setClient(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-virtual {p2, p0}, Lcom/google/android/libraries/gsa/launcherclient/c;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/a/a;
+    move-result-object v1
 
-    move-result-object p2
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    iput-object p2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 221
+    new-instance v0, Landroid/content/IntentFilter;
 
-    .line 18
-    new-instance p2, Landroid/content/IntentFilter;
+    const-string v1, "android.intent.action.PACKAGE_ADDED"
 
-    const-string p3, "android.intent.action.PACKAGE_ADDED"
+    invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    invoke-direct {p2, p3}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+    .line 222
+    .local v0, "filter":Landroid/content/IntentFilter;
+    const-string v1, "package"
 
-    const-string p3, "package"
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addDataScheme(Ljava/lang/String;)V
 
-    .line 19
-    invoke-virtual {p2, p3}, Landroid/content/IntentFilter;->addDataScheme(Ljava/lang/String;)V
+    .line 223
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    .line 20
-    sget p3, Landroid/os/Build$VERSION;->SDK_INT:I
+    if-lt v1, v5, :cond_5f
 
-    const/16 v1, 0x13
+    .line 224
+    const-string v1, "com.google.android.googlequicksearchbox"
 
-    if-lt p3, v1, :cond_0
+    invoke-virtual {v0, v1, v4}, Landroid/content/IntentFilter;->addDataSchemeSpecificPart(Ljava/lang/String;I)V
 
-    const-string p3, "com.google.android.googlequicksearchbox"
+    .line 226
+    :cond_5f
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 21
-    invoke-virtual {p2, p3, v0}, Landroid/content/IntentFilter;->addDataSchemeSpecificPart(Ljava/lang/String;I)V
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->updateReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 22
-    :cond_0
-    iget-object p3, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    invoke-virtual {v1, v2, v0}, Landroid/app/Activity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->h:Landroid/content/BroadcastReceiver;
+    .line 227
+    sget v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
-    invoke-virtual {p3, v0, p2}, Landroid/app/Activity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    const/4 v2, 0x1
 
-    .line 23
-    sget p2, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    if-ge v1, v2, :cond_6e
 
-    if-gtz p2, :cond_1
+    .line 228
+    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reloadServiceVersion(Landroid/content/Context;)V
 
-    .line 24
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->c(Landroid/content/Context;)V
-
-    .line 25
-    :cond_1
+    .line 232
+    :cond_6e
     invoke-virtual {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reconnect()V
 
-    .line 26
-    sget p1, Landroid/os/Build$VERSION;->SDK_INT:I
+    .line 238
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    if-lt p1, v1, :cond_2
+    if-lt v1, v5, :cond_9c
 
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 27
-    invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+    .line 239
+    invoke-virtual {v1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    move-result-object p1
+    move-result-object v1
 
-    if-eqz p1, :cond_2
+    if-eqz v1, :cond_9c
 
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 28
-    invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+    .line 240
+    invoke-virtual {v1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Landroid/view/Window;->peekDecorView()Landroid/view/View;
+    invoke-virtual {v1}, Landroid/view/Window;->peekDecorView()Landroid/view/View;
 
-    move-result-object p1
+    move-result-object v1
 
-    if-eqz p1, :cond_2
+    if-eqz v1, :cond_9c
 
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 29
-    invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+    .line 241
+    invoke-virtual {v1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Landroid/view/Window;->peekDecorView()Landroid/view/View;
+    invoke-virtual {v1}, Landroid/view/Window;->peekDecorView()Landroid/view/View;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Landroid/view/View;->isAttachedToWindow()Z
+    invoke-virtual {v1}, Landroid/view/View;->isAttachedToWindow()Z
 
-    move-result p1
+    move-result v1
 
-    if-eqz p1, :cond_2
+    if-eqz v1, :cond_9c
 
-    .line 30
+    .line 242
     invoke-virtual {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->onAttachedToWindow()V
 
-    :cond_2
+    .line 244
+    :cond_9c
     return-void
 .end method
 
-.method private static a(I)I
-    .locals 1
+.method static synthetic access$000(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    if-lez p0, :cond_0
+    .prologue
+    .line 102
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    const/16 v0, 0x7ff
-
-    if-gt p0, v0, :cond_0
-
-    shl-int/lit8 p0, p0, 0x2
-
-    or-int/lit8 p0, p0, 0x1
-
-    return p0
-
-    .line 160
-    :cond_0
-    new-instance p0, Ljava/lang/IllegalArgumentException;
-
-    const-string v0, "Invalid duration"
-
-    invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw p0
+    return-object v0
 .end method
 
-.method static a(Landroid/content/Context;)Landroid/content/Intent;
-    .locals 0
+.method static synthetic access$100(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    invoke-static {p0}, Lamirz/aidlbridge/LauncherClientIntent;->getServiceIntent(Landroid/content/Context;)Landroid/content/Intent;
+    .prologue
+    .line 102
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    move-result-object p0
-
-    return-object p0
+    return-object v0
 .end method
 
-.method static synthetic a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/i;
-    .locals 0
+.method static synthetic access$200(Landroid/content/Context;)V
+    .registers 1
+    .param p0, "x0"    # Landroid/content/Context;
 
-    .line 239
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
+    .prologue
+    .line 102
+    invoke-static {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reloadServiceVersion(Landroid/content/Context;)V
 
-    return-object p0
+    return-void
 .end method
 
-.method private final a()V
-    .locals 4
+.method static synthetic access$300(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)I
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    .line 121
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .prologue
+    .line 102
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    if-eqz v0, :cond_4
+    return v0
+.end method
 
-    .line 122
-    :try_start_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+.method static synthetic access$500(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;I)V
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
+    .param p1, "x1"    # I
 
-    if-nez v0, :cond_0
+    .prologue
+    .line 102
+    invoke-direct {p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->notifyStatusChanged(I)V
 
-    .line 123
-    new-instance v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    return-void
+.end method
 
-    invoke-direct {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;-><init>()V
+.method static synthetic access$600(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Landroid/app/Activity;
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    .prologue
+    .line 102
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
-    .line 124
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    return-object v0
+.end method
 
-    invoke-virtual {v0, p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
+.method static synthetic access$700(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)I
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    .line 125
-    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    .prologue
+    .line 102
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceStatus:I
 
-    const/4 v1, 0x3
+    return v0
+.end method
 
-    if-ge v0, v1, :cond_1
+.method static synthetic access$800(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    .line 126
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .prologue
+    .line 102
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->launcherClientCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    return-object v0
+.end method
 
-    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+.method static synthetic access$900(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
+    .registers 2
+    .param p0, "x0"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;
 
-    iget v3, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    .prologue
+    .line 102
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    invoke-interface {v0, v1, v2, v3}, Lcom/google/android/libraries/a/a;->a(Landroid/view/WindowManager$LayoutParams;Lcom/google/android/libraries/a/d;I)V
+    return-object v0
+.end method
 
-    goto :goto_0
+.method private applyWindowToken()V
+    .registers 6
 
-    .line 127
-    :cond_1
+    .prologue
+    .line 470
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    if-eqz v1, :cond_34
+
+    .line 472
+    :try_start_4
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    if-nez v1, :cond_f
+
+    .line 473
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    invoke-direct {v1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;-><init>()V
+
+    iput-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    .line 475
+    :cond_f
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    invoke-virtual {v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;->setClient(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
+
+    .line 476
+    sget v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
+
+    const/4 v2, 0x3
+
+    if-ge v1, v2, :cond_35
+
+    .line 477
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    iget-object v3, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    iget v4, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
+
+    invoke-interface {v1, v2, v3, v4}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->windowAttached(Landroid/view/WindowManager$LayoutParams;Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback;I)V
+
+    .line 488
+    :goto_24
+    sget v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
+
+    const/4 v2, 0x4
+
+    if-ge v1, v2, :cond_70
+
+    .line 489
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
+
+    and-int/lit8 v1, v1, 0x2
+
+    if-eqz v1, :cond_6a
+
+    .line 490
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    invoke-interface {v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->onResume()V
+
+    .line 503
+    :cond_34
+    :goto_34
+    return-void
+
+    .line 479
+    :cond_35
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
+    .line 480
+    .local v0, "params":Landroid/os/Bundle;
     const-string v1, "layout_params"
 
-    .line 128
-    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
     invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
+    .line 481
     const-string v1, "configuration"
 
-    .line 129
-    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
     invoke-virtual {v2}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
@@ -380,420 +503,501 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
+    .line 482
     const-string v1, "client_options"
 
-    .line 130
-    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
     invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
-    .line 131
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 483
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->privateOptions:Landroid/os/Bundle;
 
-    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    if-eqz v1, :cond_60
 
-    invoke-interface {v1, v0, v2}, Lcom/google/android/libraries/a/a;->a(Landroid/os/Bundle;Lcom/google/android/libraries/a/d;)V
+    .line 484
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->privateOptions:Landroid/os/Bundle;
 
-    .line 132
-    :goto_0
-    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    invoke-virtual {v0, v1}, Landroid/os/Bundle;->putAll(Landroid/os/Bundle;)V
 
-    const/4 v1, 0x4
+    .line 486
+    :cond_60
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-ge v0, v1, :cond_3
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
 
-    .line 133
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    invoke-interface {v1, v0, v2}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->windowAttached2(Landroid/os/Bundle;Lcom/google/android/libraries/launcherclient/ILauncherOverlayCallback;)V
 
-    and-int/lit8 v0, v0, 0x2
+    goto :goto_24
 
-    if-eqz v0, :cond_2
+    .line 497
+    .end local v0    # "params":Landroid/os/Bundle;
+    :catch_68
+    move-exception v1
 
-    .line 134
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    goto :goto_34
 
-    invoke-interface {p0}, Lcom/google/android/libraries/a/a;->d()V
+    .line 492
+    :cond_6a
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    goto :goto_1
+    invoke-interface {v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->onPause()V
 
-    .line 135
-    :cond_2
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    goto :goto_34
 
-    invoke-interface {p0}, Lcom/google/android/libraries/a/a;->c()V
+    .line 495
+    :cond_70
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    goto :goto_1
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 136
-    :cond_3
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    invoke-interface {v1, v2}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->setActivityState(I)V
+    :try_end_77
+    .catch Landroid/os/RemoteException; {:try_start_4 .. :try_end_77} :catch_68
 
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
-
-    invoke-interface {v0, p0}, Lcom/google/android/libraries/a/a;->b(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    :catch_0
-    :cond_4
-    :goto_1
-    return-void
+    goto :goto_34
 .end method
 
-.method private final a(Landroid/view/WindowManager$LayoutParams;)V
-    .locals 1
+.method static getServiceIntent(Landroid/content/Context;)Landroid/content/Intent;
+    .registers 6
+    .param p0, "context"    # Landroid/content/Context;
 
-    .line 110
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    .prologue
+    .line 786
+    .line 787
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
-    if-ne v0, p1, :cond_0
+    move-result-object v1
 
-    return-void
+    invoke-static {}, Landroid/os/Process;->myUid()I
 
-    .line 112
-    :cond_0
-    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    move-result v2
 
-    .line 113
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
-    if-eqz p1, :cond_1
+    move-result-object v3
 
-    .line 114
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a()V
+    invoke-virtual {v3}, Ljava/lang/String;->length()I
 
-    return-void
+    move-result v3
 
-    .line 115
-    :cond_1
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    add-int/lit8 v3, v3, 0x12
 
-    if-eqz p1, :cond_2
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    .line 116
-    :try_start_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    invoke-direct {v4, v3}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    invoke-virtual {v0}, Landroid/app/Activity;->isChangingConfigurations()Z
+    const-string v3, "app://"
 
-    move-result v0
+    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-interface {p1, v0}, Lcom/google/android/libraries/a/a;->a(Z)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    move-result-object v3
 
-    :catch_0
-    const/4 p1, 0x0
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 119
-    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    move-result-object v1
 
-    :cond_2
-    return-void
-.end method
+    const-string v3, ":"
 
-.method static synthetic a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;I)V
-    .locals 0
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 243
-    invoke-direct {p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b(I)V
+    move-result-object v1
 
-    return-void
-.end method
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-.method private final a(Z)V
-    .locals 2
+    move-result-object v1
 
-    .line 96
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    if-nez v0, :cond_0
+    move-result-object v1
 
-    .line 97
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->h:Landroid/content/BroadcastReceiver;
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Landroid/app/Activity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+    .line 788
+    invoke-virtual {v1}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
 
-    :cond_0
-    const/4 v0, 0x1
+    move-result-object v1
 
-    .line 98
-    iput-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    const-string v2, "v"
 
-    .line 99
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
+    const/16 v3, 0x9
 
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/i;->a()V
+    .line 789
+    invoke-static {v3}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    .line 100
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    move-result-object v3
 
-    if-eqz v0, :cond_1
+    invoke-virtual {v1, v2, v3}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
 
-    .line 101
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;->a()V
+    move-result-object v1
 
-    const/4 v0, 0x0
+    const-string v2, "cv"
 
-    .line 102
-    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->o:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$a;
+    const/16 v3, 0xe
 
-    .line 103
-    :cond_1
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 790
+    invoke-static {v3}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
-    invoke-virtual {v0, p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/c;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;Z)V
+    move-result-object v3
 
-    return-void
-.end method
+    invoke-virtual {v1, v2, v3}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
 
-.method static synthetic b(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/c;
-    .locals 0
+    move-result-object v1
 
-    .line 240
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
-
-    return-object p0
-.end method
-
-.method private final b(I)V
-    .locals 3
-
-    .line 208
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->l:I
-
-    if-eq v0, p1, :cond_2
-
-    .line 209
-    iput p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->l:I
-
-    .line 210
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->c:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
-
-    and-int/lit8 v0, p1, 0x1
-
-    const/4 v1, 0x0
-
-    const/4 v2, 0x1
-
-    if-eqz v0, :cond_0
-
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    and-int/lit8 p1, p1, 0x2
-
-    if-eqz p1, :cond_1
-
-    move v1, v2
-
-    :cond_1
-    invoke-interface {p0, v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;->onServiceStateChanged(ZZ)V
-
-    :cond_2
-    return-void
-.end method
-
-.method static synthetic b(Landroid/content/Context;)V
-    .locals 0
-
-    .line 241
-    invoke-static {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->c(Landroid/content/Context;)V
-
-    return-void
-.end method
-
-.method private final b()Z
-    .locals 0
-
-    .line 140
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
-
-    if-eqz p0, :cond_0
-
-    const/4 p0, 0x1
-
-    return p0
-
-    :cond_0
-    const/4 p0, 0x0
-
-    return p0
-.end method
-
-.method static synthetic c(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)I
-    .locals 0
-
-    .line 242
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
-
-    return p0
-.end method
-
-.method private static c(Landroid/content/Context;)V
-    .locals 2
-
-    .line 233
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    .line 791
+    invoke-virtual {v1}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 234
-    invoke-static {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Landroid/content/Context;)Landroid/content/Intent;
+    .line 792
+    .local v0, "uri":Landroid/net/Uri;
+    new-instance v1, Landroid/content/Intent;
 
-    move-result-object p0
+    const-string v2, "com.android.launcher3.WINDOW_OVERLAY"
 
-    const/16 v1, 0x80
+    invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {v0, p0, v1}, Landroid/content/pm/PackageManager;->resolveService(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;
+    const-string v2, "com.google.android.googlequicksearchbox"
 
-    move-result-object p0
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    return-object v1
+.end method
+
+.method private isConnected()Z
+    .registers 2
+
+    .prologue
+    .line 506
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    if-eqz v0, :cond_6
 
     const/4 v0, 0x1
 
-    if-eqz p0, :cond_1
+    :goto_5
+    return v0
 
-    .line 235
-    iget-object v1, p0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
+    :cond_6
+    const/4 v0, 0x0
+
+    goto :goto_5
+.end method
+
+.method private notifyStatusChanged(I)V
+    .registers 7
+    .param p1, "status"    # I
+
+    .prologue
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    .line 751
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceStatus:I
+
+    if-eq v2, p1, :cond_16
+
+    .line 752
+    iput p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceStatus:I
+
+    .line 753
+    iget-object v3, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->launcherClientCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+
+    and-int/lit8 v2, p1, 0x1
+
+    if-eqz v2, :cond_17
+
+    move v2, v0
+
+    :goto_f
+    and-int/lit8 v4, p1, 0x2
+
+    if-eqz v4, :cond_19
+
+    :goto_13
+    invoke-interface {v3, v2, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;->onServiceStateChanged(ZZ)V
+
+    .line 757
+    :cond_16
+    return-void
+
+    :cond_17
+    move v2, v1
+
+    .line 753
+    goto :goto_f
+
+    :cond_19
+    move v0, v1
+
+    goto :goto_13
+.end method
+
+.method private reattachOverlayInternal()V
+    .registers 3
+
+    .prologue
+    .line 729
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    if-eqz v0, :cond_c
+
+    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
+
+    const/4 v1, 0x7
+
+    if-lt v0, v1, :cond_c
+
+    .line 730
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->applyWindowToken()V
+
+    .line 732
+    :cond_c
+    return-void
+.end method
+
+.method private static reloadServiceVersion(Landroid/content/Context;)V
+    .registers 6
+    .param p0, "context"    # Landroid/content/Context;
+
+    .prologue
+    const/4 v4, 0x1
+
+    .line 899
+    .line 901
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    .line 902
+    invoke-static {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->getServiceIntent(Landroid/content/Context;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    const/16 v3, 0x80
+
+    invoke-virtual {v1, v2, v3}, Landroid/content/pm/PackageManager;->resolveService(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;
+
+    move-result-object v0
+
+    .line 903
+    .local v0, "info":Landroid/content/pm/ResolveInfo;
+    if-eqz v0, :cond_17
+
+    iget-object v1, v0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
 
     iget-object v1, v1, Landroid/content/pm/ServiceInfo;->metaData:Landroid/os/Bundle;
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_1a
 
-    goto :goto_0
+    .line 904
+    :cond_17
+    sput v4, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
-    .line 237
-    :cond_0
-    iget-object p0, p0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
-
-    iget-object p0, p0, Landroid/content/pm/ServiceInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v1, "service.api.version"
-
-    invoke-virtual {p0, v1, v0}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
-
-    move-result p0
-
-    sput p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
-
+    .line 908
+    :goto_19
     return-void
 
-    .line 236
-    :cond_1
-    :goto_0
-    sput v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    .line 906
+    :cond_1a
+    iget-object v1, v0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
 
+    iget-object v1, v1, Landroid/content/pm/ServiceInfo;->metaData:Landroid/os/Bundle;
+
+    const-string v2, "service.api.version"
+
+    invoke-virtual {v1, v2, v4}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
+
+    move-result v1
+
+    sput v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
+
+    goto :goto_19
+.end method
+
+.method private removeClient(Z)V
+    .registers 4
+    .param p1, "unbindApp"    # Z
+
+    .prologue
+    .line 416
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
+
+    if-nez v0, :cond_b
+
+    .line 417
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
+
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->updateReceiver:Landroid/content/BroadcastReceiver;
+
+    invoke-virtual {v0, v1}, Landroid/app/Activity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+    .line 419
+    :cond_b
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
+
+    .line 420
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
+
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->unbindSelf()V
+
+    .line 421
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    if-eqz v0, :cond_1f
+
+    .line 422
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;->clear()V
+
+    .line 423
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->overlayCallbacks:Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$OverlayCallbacks;
+
+    .line 425
+    :cond_1f
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
+
+    invoke-virtual {v0, p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->clearClientIfSame(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;Z)V
+
+    .line 426
     return-void
 .end method
 
-.method static synthetic d(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Landroid/app/Activity;
-    .locals 0
+.method private setWindowAttrs(Landroid/view/WindowManager$LayoutParams;)V
+    .registers 4
+    .param p1, "windowAttrs"    # Landroid/view/WindowManager$LayoutParams;
 
-    .line 244
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    .prologue
+    .line 451
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    return-object p0
+    if-ne v0, p1, :cond_5
+
+    .line 467
+    :cond_4
+    :goto_4
+    return-void
+
+    .line 454
+    :cond_5
+    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    .line 455
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    if-eqz v0, :cond_f
+
+    .line 456
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->applyWindowToken()V
+
+    goto :goto_4
+
+    .line 457
+    :cond_f
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    if-eqz v0, :cond_4
+
+    .line 459
+    :try_start_13
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
+
+    invoke-virtual {v1}, Landroid/app/Activity;->isChangingConfigurations()Z
+
+    move-result v1
+
+    invoke-interface {v0, v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->windowDetached(Z)V
+    :try_end_1e
+    .catch Landroid/os/RemoteException; {:try_start_13 .. :try_end_1e} :catch_22
+
+    .line 465
+    :goto_1e
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    goto :goto_4
+
+    .line 460
+    :catch_22
+    move-exception v0
+
+    goto :goto_1e
 .end method
 
-.method static synthetic e(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)I
-    .locals 0
+.method private verifyAndGetAnimationFlags(I)I
+    .registers 4
+    .param p1, "duration"    # I
 
-    .line 245
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->l:I
+    .prologue
+    .line 572
+    if-lez p1, :cond_6
 
-    return p0
-.end method
+    const/16 v0, 0x7ff
 
-.method static synthetic f(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
-    .locals 0
+    if-le p1, v0, :cond_e
 
-    .line 246
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->c:Lcom/google/android/libraries/gsa/launcherclient/LauncherClientCallbacks;
+    .line 573
+    :cond_6
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    return-object p0
-.end method
+    const-string v1, "Invalid duration"
 
-.method static synthetic g(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)Lcom/google/android/libraries/gsa/launcherclient/d;
-    .locals 0
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 247
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->e:Lcom/google/android/libraries/gsa/launcherclient/d;
+    throw v0
 
-    return-object p0
+    .line 575
+    :cond_e
+    shl-int/lit8 v0, p1, 0x2
+
+    or-int/lit8 v0, v0, 0x1
+
+    return v0
 .end method
 
 
 # virtual methods
-.method final a(Lcom/google/android/libraries/a/a;)V
-    .locals 4
-
-    .line 201
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->e:Lcom/google/android/libraries/gsa/launcherclient/d;
-
-    const/4 v1, 0x0
-
-    if-eqz p1, :cond_0
-
-    const/4 v2, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    move v2, v1
-
-    :goto_0
-    const-string v3, "Connected"
-
-    invoke-virtual {v0, v3, v2}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Z)V
-
-    .line 202
-    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
-
-    .line 203
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
-
-    if-nez p1, :cond_1
-
-    .line 204
-    invoke-direct {p0, v1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b(I)V
-
-    return-void
-
-    .line 205
-    :cond_1
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
-
-    if-eqz p1, :cond_2
-
-    .line 206
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a()V
-
-    :cond_2
-    return-void
-.end method
-
 .method public disconnect()V
-    .locals 1
+    .registers 2
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
+    .prologue
+    .line 396
     const/4 v0, 0x1
 
-    .line 88
-    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Z)V
+    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->removeClient(Z)V
 
+    .line 397
     return-void
 .end method
 
 .method public dump(Ljava/lang/String;Ljava/io/PrintWriter;)V
-    .locals 3
+    .registers 6
+    .param p1, "prefix"    # Ljava/lang/String;
+    .param p2, "w"    # Ljava/io/PrintWriter;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 212
+    .prologue
+    .line 768
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -806,19 +1010,19 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 213
+    .line 769
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "  "
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p1
 
-    const-string v0, "  "
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p1
-
-    .line 214
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b()Z
+    .line 771
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->isConnected()Z
 
     move-result v0
 
@@ -838,22 +1042,28 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "isConnected: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "isConnected: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 215
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
+    .line 772
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/i;->b()Z
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->isBound()Z
 
     move-result v0
 
@@ -873,22 +1083,28 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "act.isBound: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "act.isBound: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 216
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 773
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/c;->b()Z
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->isBound()Z
 
     move-result v0
 
@@ -908,20 +1124,26 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "app.isBound: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "app.isBound: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 217
-    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    .line 774
+    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
@@ -939,19 +1161,25 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "serviceVersion: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "serviceVersion: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 218
+    .line 775
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -968,18 +1196,28 @@
 
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v0, "clientVersion: 14"
+    move-result-object v0
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, "clientVersion: "
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const/16 v1, 0xe
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 219
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 777
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
@@ -997,20 +1235,26 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "mActivityState: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "mActivityState: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 220
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->l:I
+    .line 778
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceStatus:I
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
@@ -1028,20 +1272,26 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "mServiceStatus: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "mServiceStatus: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 221
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    .line 779
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
@@ -1059,148 +1309,200 @@
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "mCurrentServiceConnectionOptions: "
+    move-result-object v1
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "mCurrentServiceConnectionOptions: "
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 222
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 780
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    invoke-virtual {v0, p1, p2}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Ljava/io/PrintWriter;)V
+    invoke-virtual {v0, p1, p2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->dump(Ljava/lang/String;Ljava/io/PrintWriter;)V
 
-    .line 223
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->e:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 781
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    invoke-virtual {p0, p1, p2}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Ljava/io/PrintWriter;)V
+    invoke-virtual {v0, p1, p2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->dump(Ljava/lang/String;Ljava/io/PrintWriter;)V
 
+    .line 782
     return-void
 .end method
 
 .method public endMove()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 147
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 536
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "endMove"
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
 
-    .line 148
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b()Z
+    .line 537
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->isConnected()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_12
 
-    .line 149
-    :try_start_0
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 539
+    :try_start_d
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-interface {p0}, Lcom/google/android/libraries/a/a;->b()V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-interface {v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->endScroll()V
+    :try_end_12
+    .catch Landroid/os/RemoteException; {:try_start_d .. :try_end_12} :catch_13
 
-    :catch_0
-    :cond_0
+    .line 546
+    :cond_12
+    :goto_12
     return-void
+
+    .line 540
+    :catch_13
+    move-exception v0
+
+    goto :goto_12
 .end method
 
 .method public hideOverlay(I)V
-    .locals 3
+    .registers 5
+    .param p1, "duration"    # I
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 170
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(I)I
+    .prologue
+    .line 606
+    invoke-direct {p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->verifyAndGetAnimationFlags(I)I
 
     move-result v0
 
-    .line 171
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 607
+    .local v0, "flags":I
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v2, "hideOverlay"
 
-    invoke-virtual {v1, v2, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    invoke-virtual {v1, v2, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
 
-    .line 172
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 608
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz p0, :cond_0
+    if-eqz v1, :cond_14
 
-    .line 173
-    :try_start_0
-    invoke-interface {p0, v0}, Lcom/google/android/libraries/a/a;->a(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .line 610
+    :try_start_f
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    :catch_0
-    :cond_0
+    invoke-interface {v1, v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->closeOverlay(I)V
+    :try_end_14
+    .catch Landroid/os/RemoteException; {:try_start_f .. :try_end_14} :catch_15
+
+    .line 617
+    :cond_14
+    :goto_14
     return-void
+
+    .line 611
+    :catch_15
+    move-exception v1
+
+    goto :goto_14
 .end method
 
 .method public hideOverlay(Z)V
-    .locals 2
+    .registers 4
+    .param p1, "animate"    # Z
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 162
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 585
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "hideOverlay"
 
-    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Z)V
+    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;Z)V
 
-    .line 163
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 586
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz p0, :cond_1
+    if-eqz v0, :cond_13
 
-    if-eqz p1, :cond_0
+    .line 588
+    :try_start_b
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    const/4 p1, 0x1
+    .line 589
+    if-eqz p1, :cond_14
 
-    goto :goto_0
+    const/4 v0, 0x1
 
-    :cond_0
-    const/4 p1, 0x0
+    .line 588
+    :goto_10
+    invoke-interface {v1, v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->closeOverlay(I)V
+    :try_end_13
+    .catch Landroid/os/RemoteException; {:try_start_b .. :try_end_13} :catch_16
 
-    .line 166
-    :goto_0
-    :try_start_0
-    invoke-interface {p0, p1}, Lcom/google/android/libraries/a/a;->a(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    :catch_0
-    :cond_1
+    .line 596
+    :cond_13
+    :goto_13
     return-void
+
+    .line 589
+    :cond_14
+    const/4 v0, 0x0
+
+    goto :goto_10
+
+    .line 590
+    :catch_16
+    move-exception v0
+
+    goto :goto_13
 .end method
 
 .method public final onAttachedToWindow()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 32
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 252
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 257
+    :goto_4
     return-void
 
-    .line 34
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 255
+    :cond_5
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "attachedToWindow"
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
 
-    .line 35
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    .line 256
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
     invoke-virtual {v0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
@@ -1210,560 +1512,882 @@
 
     move-result-object v0
 
-    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Landroid/view/WindowManager$LayoutParams;)V
+    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->setWindowAttrs(Landroid/view/WindowManager$LayoutParams;)V
 
-    return-void
+    goto :goto_4
 .end method
 
 .method public onDestroy()V
-    .locals 1
+    .registers 2
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 86
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    .prologue
+    .line 387
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
 
     invoke-virtual {v0}, Landroid/app/Activity;->isChangingConfigurations()Z
 
     move-result v0
 
-    xor-int/lit8 v0, v0, 0x1
+    if-nez v0, :cond_d
 
-    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Z)V
+    const/4 v0, 0x1
 
+    :goto_9
+    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->removeClient(Z)V
+
+    .line 388
     return-void
+
+    .line 387
+    :cond_d
+    const/4 v0, 0x0
+
+    goto :goto_9
 .end method
 
 .method public final onDetachedFromWindow()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 37
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 265
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 270
+    :goto_4
     return-void
 
-    .line 39
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 268
+    :cond_5
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "detachedFromWindow"
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
 
+    .line 269
     const/4 v0, 0x0
 
-    .line 40
-    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(Landroid/view/WindowManager$LayoutParams;)V
+    invoke-direct {p0, v0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->setWindowAttrs(Landroid/view/WindowManager$LayoutParams;)V
 
-    return-void
+    goto :goto_4
 .end method
 
 .method public onPause()V
-    .locals 3
+    .registers 4
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 53
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 305
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 324
+    :goto_4
     return-void
 
-    .line 55
-    :cond_0
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 309
+    :cond_5
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
     and-int/lit8 v0, v0, -0x3
 
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 56
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 310
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1d
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_1d
 
-    .line 57
-    :try_start_0
-    sget v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    .line 312
+    :try_start_13
+    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
-    const/4 v2, 0x4
+    const/4 v1, 0x4
 
-    if-ge v1, v2, :cond_1
+    if-ge v0, v1, :cond_27
 
-    .line 58
-    invoke-interface {v0}, Lcom/google/android/libraries/a/a;->c()V
+    .line 313
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    goto :goto_0
+    invoke-interface {v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->onPause()V
+    :try_end_1d
+    .catch Landroid/os/RemoteException; {:try_start_13 .. :try_end_1d} :catch_2f
 
-    .line 59
-    :cond_1
-    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
-
-    invoke-interface {v0, v1}, Lcom/google/android/libraries/a/a;->b(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 62
-    :catch_0
-    :cond_2
-    :goto_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
-
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 323
+    :cond_1d
+    :goto_1d
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "stateChanged "
 
-    invoke-virtual {v0, v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    return-void
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
+
+    goto :goto_4
+
+    .line 315
+    :cond_27
+    :try_start_27
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
+
+    invoke-interface {v0, v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->setActivityState(I)V
+    :try_end_2e
+    .catch Landroid/os/RemoteException; {:try_start_27 .. :try_end_2e} :catch_2f
+
+    goto :goto_1d
+
+    .line 317
+    :catch_2f
+    move-exception v0
+
+    goto :goto_1d
 .end method
 
 .method public onResume()V
-    .locals 3
+    .registers 4
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 42
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 278
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 297
+    :goto_4
     return-void
 
-    .line 44
-    :cond_0
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 282
+    :cond_5
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
     or-int/lit8 v0, v0, 0x2
 
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 45
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 283
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1d
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_1d
 
-    .line 46
-    :try_start_0
-    sget v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
+    .line 285
+    :try_start_13
+    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
-    const/4 v2, 0x4
+    const/4 v1, 0x4
 
-    if-ge v1, v2, :cond_1
+    if-ge v0, v1, :cond_27
 
-    .line 47
-    invoke-interface {v0}, Lcom/google/android/libraries/a/a;->d()V
+    .line 286
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    goto :goto_0
+    invoke-interface {v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->onResume()V
+    :try_end_1d
+    .catch Landroid/os/RemoteException; {:try_start_13 .. :try_end_1d} :catch_2f
 
-    .line 48
-    :cond_1
-    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
-
-    invoke-interface {v0, v1}, Lcom/google/android/libraries/a/a;->b(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 51
-    :catch_0
-    :cond_2
-    :goto_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
-
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 296
+    :cond_1d
+    :goto_1d
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "stateChanged "
 
-    invoke-virtual {v0, v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    return-void
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
+
+    goto :goto_4
+
+    .line 288
+    :cond_27
+    :try_start_27
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
+
+    invoke-interface {v0, v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->setActivityState(I)V
+    :try_end_2e
+    .catch Landroid/os/RemoteException; {:try_start_27 .. :try_end_2e} :catch_2f
+
+    goto :goto_1d
+
+    .line 290
+    :catch_2f
+    move-exception v0
+
+    goto :goto_1d
 .end method
 
 .method public onStart()V
-    .locals 2
+    .registers 4
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 64
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 332
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 350
+    :goto_4
     return-void
 
-    .line 66
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 336
+    :cond_5
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
     const/4 v1, 0x0
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/c;->a(Z)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->setAutoUnbind(Z)V
 
-    .line 67
+    .line 337
     invoke-virtual {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reconnect()V
 
-    .line 68
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 339
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
     or-int/lit8 v0, v0, 0x1
 
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 69
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 340
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_23
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_23
 
-    .line 70
-    :try_start_0
-    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 342
+    :try_start_1c
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-interface {v0, v1}, Lcom/google/android/libraries/a/a;->b(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 73
-    :catch_0
-    :cond_1
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    invoke-interface {v0, v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->setActivityState(I)V
+    :try_end_23
+    .catch Landroid/os/RemoteException; {:try_start_1c .. :try_end_23} :catch_2d
 
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 349
+    :cond_23
+    :goto_23
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "stateChanged "
 
-    invoke-virtual {v0, v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    return-void
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
+
+    goto :goto_4
+
+    .line 343
+    :catch_2d
+    move-exception v0
+
+    goto :goto_23
 .end method
 
 .method public onStop()V
-    .locals 2
+    .registers 4
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 75
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 358
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 378
+    :goto_4
     return-void
 
-    .line 77
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 363
+    :cond_5
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
     const/4 v1, 0x1
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/c;->a(Z)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->setAutoUnbind(Z)V
 
-    .line 78
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
+    .line 365
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/i;->a()V
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->unbindSelf()V
 
-    .line 79
-    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 367
+    iget v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
     and-int/lit8 v0, v0, -0x2
 
-    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 80
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 368
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_25
 
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_25
 
-    .line 81
-    :try_start_0
-    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 370
+    :try_start_1e
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-interface {v0, v1}, Lcom/google/android/libraries/a/a;->b(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
-    .line 84
-    :catch_0
-    :cond_1
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    invoke-interface {v0, v1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->setActivityState(I)V
+    :try_end_25
+    .catch Landroid/os/RemoteException; {:try_start_1e .. :try_end_25} :catch_2f
 
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->j:I
+    .line 377
+    :cond_25
+    :goto_25
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "stateChanged "
 
-    invoke-virtual {v0, v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityState:I
 
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
+
+    goto :goto_4
+
+    .line 371
+    :catch_2f
+    move-exception v0
+
+    goto :goto_25
+.end method
+
+.method overlayAvailabilityChanged(Lcom/google/android/libraries/launcherclient/ILauncherOverlay;)V
+    .registers 6
+    .param p1, "overlay"    # Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 736
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
+
+    const-string v3, "Connected"
+
+    if-eqz p1, :cond_15
+
+    const/4 v0, 0x1
+
+    :goto_8
+    invoke-virtual {v2, v3, v0}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;Z)V
+
+    .line 740
+    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    .line 741
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    if-nez v0, :cond_17
+
+    .line 742
+    invoke-direct {p0, v1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->notifyStatusChanged(I)V
+
+    .line 748
+    :cond_14
+    :goto_14
     return-void
+
+    :cond_15
+    move v0, v1
+
+    .line 736
+    goto :goto_8
+
+    .line 744
+    :cond_17
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    if-eqz v0, :cond_14
+
+    .line 745
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->applyWindowToken()V
+
+    goto :goto_14
 .end method
 
 .method public reattachOverlay()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 196
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 724
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "reattachOverlay"
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
 
-    .line 198
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    .line 725
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reattachOverlayInternal()V
 
-    if-eqz v0, :cond_0
-
-    sget v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a:I
-
-    const/4 v1, 0x7
-
-    if-lt v0, v1, :cond_0
-
-    .line 199
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a()V
-
-    :cond_0
+    .line 726
     return-void
 .end method
 
 .method public reconnect()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 105
-    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->k:Z
+    .prologue
+    .line 434
+    iget-boolean v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->destroyed:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_5
 
+    .line 448
+    :cond_4
+    :goto_4
     return-void
 
-    .line 107
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->g:Lcom/google/android/libraries/gsa/launcherclient/c;
+    .line 437
+    :cond_5
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->appConnection:Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;
 
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/c;->c()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->f:Lcom/google/android/libraries/gsa/launcherclient/i;
-
-    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/i;->c()Z
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/AppServiceConnection;->connectSafely()Z
 
     move-result v0
 
-    if-nez v0, :cond_2
+    if-eqz v0, :cond_15
 
-    .line 108
-    :cond_1
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b:Landroid/app/Activity;
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activityConnection:Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;
 
-    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/g;
+    invoke-virtual {v0}, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->connectSafely()Z
 
-    invoke-direct {v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/g;-><init>(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
+    move-result v0
+
+    if-nez v0, :cond_4
+
+    .line 440
+    :cond_15
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->activity:Landroid/app/Activity;
+
+    new-instance v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$2;
+
+    invoke-direct {v1, p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$2;-><init>(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;)V
 
     invoke-virtual {v0, v1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    :cond_2
-    return-void
+    goto :goto_4
 .end method
 
 .method public requestHotwordDetection(Z)V
-    .locals 2
+    .registers 4
+    .param p1, "start"    # Z
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 190
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 691
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "requestHotwordDetection"
 
-    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Z)V
+    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;Z)V
 
-    .line 191
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 692
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz p0, :cond_0
+    if-eqz v0, :cond_10
 
-    .line 192
-    :try_start_0
-    invoke-interface {p0, p1}, Lcom/google/android/libraries/a/a;->b(Z)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .line 694
+    :try_start_b
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    :catch_0
-    :cond_0
+    invoke-interface {v0, p1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->requestVoiceDetection(Z)V
+    :try_end_10
+    .catch Landroid/os/RemoteException; {:try_start_b .. :try_end_10} :catch_11
+
+    .line 701
+    :cond_10
+    :goto_10
     return-void
+
+    .line 695
+    :catch_11
+    move-exception v0
+
+    goto :goto_10
 .end method
 
 .method public setClientOptions(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)V
-    .locals 2
+    .registers 5
+    .param p1, "clientOptions"    # Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 90
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
+    .prologue
+    .line 406
+    # getter for: Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->options:I
+    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->access$400(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
 
     move-result v0
 
-    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    iget v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
-    if-eq v0, v1, :cond_1
+    if-eq v0, v1, :cond_1e
 
-    .line 91
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->a(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
+    .line 407
+    # getter for: Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->options:I
+    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;->access$400(Lcom/google/android/libraries/gsa/launcherclient/LauncherClient$ClientOptions;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    iput v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
-    .line 92
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->n:Landroid/view/WindowManager$LayoutParams;
+    .line 408
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->windowAttrs:Landroid/view/WindowManager$LayoutParams;
 
-    if-eqz p1, :cond_0
+    if-eqz v0, :cond_15
 
-    .line 93
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a()V
+    .line 409
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->applyWindowToken()V
 
-    .line 94
-    :cond_0
-    iget-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 411
+    :cond_15
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
-    iget p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->m:I
+    const-string v1, "setClientOptions "
 
-    const-string v0, "setClientOptions "
+    iget v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->currentServiceConnectionOptions:I
 
-    invoke-virtual {p1, v0, p0}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
 
-    :cond_1
+    .line 413
+    :cond_1e
     return-void
+.end method
+
+.method public setPrivateOptions(Landroid/os/Bundle;)V
+    .registers 6
+    .param p1, "options"    # Landroid/os/Bundle;
+
+    .prologue
+    .line 709
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
+
+    const-string v2, "setPrivateOptions : "
+
+    .line 711
+    if-nez p1, :cond_1f
+
+    const-string v0, "null"
+
+    :goto_8
+    invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v3
+
+    if-eqz v3, :cond_2a
+
+    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 709
+    :goto_16
+    invoke-virtual {v1, v0}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
+
+    .line 712
+    iput-object p1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->privateOptions:Landroid/os/Bundle;
+
+    .line 713
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->reattachOverlayInternal()V
+
+    .line 714
+    return-void
+
+    .line 711
+    :cond_1f
+    const-string v0, ","
+
+    invoke-virtual {p1}, Landroid/os/Bundle;->keySet()Ljava/util/Set;
+
+    move-result-object v3
+
+    invoke-static {v0, v3}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_8
+
+    :cond_2a
+    new-instance v0, Ljava/lang/String;
+
+    invoke-direct {v0, v2}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
+
+    goto :goto_16
 .end method
 
 .method public showOverlay(I)V
-    .locals 3
+    .registers 5
+    .param p1, "duration"    # I
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 183
-    invoke-static {p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->a(I)I
+    .prologue
+    .line 646
+    invoke-direct {p0, p1}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->verifyAndGetAnimationFlags(I)I
 
     move-result v0
 
-    .line 184
-    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .line 647
+    .local v0, "flags":I
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v2, "showOverlay"
 
-    invoke-virtual {v1, v2, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;I)V
+    invoke-virtual {v1, v2, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;I)V
 
-    .line 185
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 648
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz p0, :cond_0
+    if-eqz v1, :cond_14
 
-    .line 186
-    :try_start_0
-    invoke-interface {p0, v0}, Lcom/google/android/libraries/a/a;->c(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .line 650
+    :try_start_f
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    :catch_0
-    :cond_0
+    invoke-interface {v1, v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->openOverlay(I)V
+    :try_end_14
+    .catch Landroid/os/RemoteException; {:try_start_f .. :try_end_14} :catch_15
+
+    .line 657
+    :cond_14
+    :goto_14
     return-void
+
+    .line 651
+    :catch_15
+    move-exception v1
+
+    goto :goto_14
 .end method
 
 .method public showOverlay(Z)V
-    .locals 2
+    .registers 4
+    .param p1, "animate"    # Z
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 177
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 626
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "showOverlay"
 
-    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;Z)V
+    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;Z)V
 
-    .line 178
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 627
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    if-eqz p0, :cond_1
+    if-eqz v0, :cond_13
 
-    if-eqz p1, :cond_0
+    .line 629
+    :try_start_b
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    const/4 p1, 0x1
+    if-eqz p1, :cond_14
 
-    goto :goto_0
+    const/4 v0, 0x1
 
-    :cond_0
-    const/4 p1, 0x0
+    :goto_10
+    invoke-interface {v1, v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->openOverlay(I)V
+    :try_end_13
+    .catch Landroid/os/RemoteException; {:try_start_b .. :try_end_13} :catch_16
 
-    .line 179
-    :goto_0
-    :try_start_0
-    invoke-interface {p0, p1}, Lcom/google/android/libraries/a/a;->c(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    :catch_0
-    :cond_1
+    .line 636
+    :cond_13
+    :goto_13
     return-void
+
+    .line 629
+    :cond_14
+    const/4 v0, 0x0
+
+    goto :goto_10
+
+    .line 630
+    :catch_16
+    move-exception v0
+
+    goto :goto_13
 .end method
 
 .method public startMove()V
-    .locals 2
+    .registers 3
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 141
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 516
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "startMove"
 
-    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
 
-    .line 142
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b()Z
+    .line 517
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->isConnected()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_12
 
-    .line 143
-    :try_start_0
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 519
+    :try_start_d
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-interface {p0}, Lcom/google/android/libraries/a/a;->a_()V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-interface {v0}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->startScroll()V
+    :try_end_12
+    .catch Landroid/os/RemoteException; {:try_start_d .. :try_end_12} :catch_13
 
-    :catch_0
-    :cond_0
+    .line 526
+    :cond_12
+    :goto_12
     return-void
+
+    .line 520
+    :catch_13
+    move-exception v0
+
+    goto :goto_12
+.end method
+
+.method public startSearch([BLandroid/os/Bundle;)Z
+    .registers 7
+    .param p1, "config"    # [B
+    .param p2, "extras"    # Landroid/os/Bundle;
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 670
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
+
+    const-string v3, "startSearch"
+
+    invoke-virtual {v2, v3}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;)V
+
+    .line 671
+    sget v2, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
+
+    const/4 v3, 0x6
+
+    if-ge v2, v3, :cond_e
+
+    .line 681
+    :cond_d
+    :goto_d
+    return v1
+
+    .line 674
+    :cond_e
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    if-eqz v2, :cond_d
+
+    .line 676
+    :try_start_12
+    iget-object v2, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
+
+    invoke-interface {v2, p1, p2}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->startSearch([BLandroid/os/Bundle;)Z
+    :try_end_17
+    .catch Landroid/os/RemoteException; {:try_start_12 .. :try_end_17} :catch_19
+
+    move-result v1
+
+    goto :goto_d
+
+    .line 677
+    :catch_19
+    move-exception v0
+
+    .line 678
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string v2, "DrawerOverlayClient"
+
+    const-string v3, "Error starting session for search"
+
+    invoke-static {v2, v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_d
 .end method
 
 .method public updateMove(F)V
-    .locals 2
+    .registers 4
+    .param p1, "progressX"    # F
+    .annotation build Lcom/google/android/libraries/gsa/launcherclient/ThirdPartyApi;
+    .end annotation
 
-    .line 153
-    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->d:Lcom/google/android/libraries/gsa/launcherclient/d;
+    .prologue
+    .line 559
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->clientEventLogArray:Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;
 
     const-string v1, "updateMove"
 
-    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/d;->a(Ljava/lang/String;F)V
+    invoke-virtual {v0, v1, p1}, Lcom/google/android/libraries/gsa/launcherclient/EventLogArray;->addLog(Ljava/lang/String;F)V
 
-    .line 154
-    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->b()Z
+    .line 560
+    invoke-direct {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->isConnected()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_12
 
-    .line 155
-    :try_start_0
-    iget-object p0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->i:Lcom/google/android/libraries/a/a;
+    .line 562
+    :try_start_d
+    iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->mOverlay:Lcom/google/android/libraries/launcherclient/ILauncherOverlay;
 
-    invoke-interface {p0, p1}, Lcom/google/android/libraries/a/a;->a(F)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-interface {v0, p1}, Lcom/google/android/libraries/launcherclient/ILauncherOverlay;->onScroll(F)V
+    :try_end_12
+    .catch Landroid/os/RemoteException; {:try_start_d .. :try_end_12} :catch_13
 
-    :catch_0
-    :cond_0
+    .line 569
+    :cond_12
+    :goto_12
     return-void
+
+    .line 563
+    :catch_13
+    move-exception v0
+
+    goto :goto_12
 .end method
