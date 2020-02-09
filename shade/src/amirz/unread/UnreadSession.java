@@ -148,7 +148,7 @@ public class UnreadSession {
     }
 
     private String stripDot(String input) {
-        return input.endsWith(".") && !input.endsWith("..")
+        return input.length() > 1 && input.endsWith(".") && !input.endsWith("..")
                 ? input.substring(0, input.length() - 1)
                 : input;
     }
