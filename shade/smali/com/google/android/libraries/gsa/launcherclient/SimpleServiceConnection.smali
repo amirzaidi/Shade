@@ -13,10 +13,12 @@
 
 .field private final flags:I
 
+.field private final bridge:Landroid/content/ServiceConnection;
+
 
 # direct methods
 .method constructor <init>(Landroid/content/Context;I)V
-    .registers 3
+    .registers 4
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "flags"    # I
 
@@ -30,6 +32,12 @@
     .line 19
     iput p2, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->flags:I
 
+    new-instance v0, Lamirz/aidlbridge/LauncherClientBridge;
+
+    invoke-direct {v0, p0, p2}, Lamirz/aidlbridge/LauncherClientBridge;-><init>(Landroid/content/ServiceConnection;I)V
+
+    iput-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->bridge:Landroid/content/ServiceConnection;
+
     .line 20
     return-void
 .end method
@@ -37,7 +45,7 @@
 
 # virtual methods
 .method public final connectSafely()Z
-    .registers 5
+    .registers 6
 
     .prologue
     .line 43
@@ -56,9 +64,17 @@
 
     move-result-object v2
 
+    invoke-static {}, Lamirz/aidlbridge/LauncherClientIntent;->getPackage()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
     iget v3, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->flags:I
 
-    invoke-virtual {v1, v2, p0, v3}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    iget-object v4, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->bridge:Landroid/content/ServiceConnection;
+
+    invoke-virtual {v1, v2, v4, v3}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
 
     move-result v1
 
@@ -118,7 +134,7 @@
 .end method
 
 .method public unbindSelf()V
-    .registers 2
+    .registers 3
 
     .prologue
     .line 29
@@ -129,7 +145,9 @@
     .line 30
     iget-object v0, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->context:Landroid/content/Context;
 
-    invoke-virtual {v0, p0}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+    iget-object v1, p0, Lcom/google/android/libraries/gsa/launcherclient/SimpleServiceConnection;->bridge:Landroid/content/ServiceConnection;
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
 
     .line 31
     const/4 v0, 0x0

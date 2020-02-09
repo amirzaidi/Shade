@@ -95,7 +95,9 @@
 
     .prologue
     .line 44
-    const-string v2, "com.google.android.googlequicksearchbox"
+    invoke-static {}, Lamirz/aidlbridge/LauncherClientIntent;->getPackage()Ljava/lang/String;
+
+    move-result-object v2
 
     invoke-virtual {p2, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
