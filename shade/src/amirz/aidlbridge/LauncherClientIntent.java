@@ -6,10 +6,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Process;
 
 import com.android.launcher3.BuildConfig;
-import com.google.android.libraries.gsa.launcherclient.BuildInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,22 +73,5 @@ public class LauncherClientIntent {
             }
         }
         return aiList;
-    }
-
-    @SuppressWarnings("StringBufferReplaceableByString")
-    public static Intent getServiceIntent(Context context) {
-        String pkg = context.getPackageName();
-        return new Intent("com.android.launcher3.WINDOW_OVERLAY")
-                .setPackage(getPackage())
-                .setData(Uri.parse(new StringBuilder(pkg.length() + 18)
-                        .append("app://")
-                        .append(pkg)
-                        .append(":")
-                        .append(Process.myUid())
-                        .toString())
-                        .buildUpon()
-                        .appendQueryParameter("v", Integer.toString(BuildInfo.SERVER_VERSION_CODE))
-                        .appendQueryParameter("cv", Integer.toString(BuildInfo.CLIENT_VERSION_CODE))
-                        .build());
     }
 }
