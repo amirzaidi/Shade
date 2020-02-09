@@ -74,8 +74,8 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
             mUnreadTitle.setText(top);
             mUnreadSubtitle.setText(bottom);
         } else {
-            mSmartspaceView.setVisibility(View.VISIBLE);
             mUnreadView.setVisibility(View.GONE);
+            mSmartspaceView.setVisibility(View.VISIBLE);
         }
     }
 }
