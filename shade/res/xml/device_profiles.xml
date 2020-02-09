@@ -34,7 +34,7 @@
             launcher:name="Pixel" />
 
         <display-option
-            launcher:iconImageSize="52"
+            launcher:iconImageSize="50"
             launcher:iconTextSize="11"
             launcher:landscapeIconSize="46"
             launcher:minHeightDps="754"
