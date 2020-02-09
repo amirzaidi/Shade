@@ -42,7 +42,7 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
         mUnreadView = findViewById(R.id.unread_view);
         mUnreadTitle = mUnreadView.findViewById(R.id.shadespace_title);
         mUnreadSubtitle = mUnreadView.findViewById(R.id.shadespace_subtitle);
-        mUnreadView.setOnClickListener(v -> mUnread.onClick(v));
+        mUnreadView.setOnClickListener(mUnread::onClick);
     }
 
     @Override
