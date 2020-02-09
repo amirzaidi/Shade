@@ -28,6 +28,7 @@
             android:gravity="bottom"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
+            android:textSize="23sp"
             style="@style/TextShade.Title" />
 
         <TextView
