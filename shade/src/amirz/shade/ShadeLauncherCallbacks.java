@@ -1,16 +1,22 @@
 package amirz.shade;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import androidx.core.graphics.ColorUtils;
+
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.LauncherCallbacks;
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.uioverrides.WallpaperColorInfo;
+import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 
 import java.io.FileDescriptor;
@@ -33,13 +39,15 @@ import static com.android.searchlauncher.SmartspaceQsbWidget.KEY_SMARTSPACE;
 
 public class ShadeLauncherCallbacks implements LauncherCallbacks,
         SharedPreferences.OnSharedPreferenceChangeListener,
-        DeviceProfile.OnDeviceProfileChangeListener {
+        DeviceProfile.OnDeviceProfileChangeListener,
+        WallpaperColorInfo.OnChangeListener {
     public static final String KEY_ENABLE_MINUS_ONE = "pref_enable_minus_one";
     public static final String KEY_FEED_PROVIDER = "pref_feed_provider";
     private static final String KEY_IDP_GRID_NAME = "idp_grid_name";
 
     private final ShadeLauncher mLauncher;
     private final Handler mHandler = new Handler();
+    private final Bundle mPrivateOptions = new Bundle();
 
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
@@ -60,6 +68,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
         UnreadSession.getInstance(mLauncher).onCreate();
         mOverlayCallbacks.setClient(mLauncherClient);
+        WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
+        instance.addOnChangeListener(this);
+        onExtractedColorsChanged(instance);
         mFont = ShadeFont.getFont(mLauncher);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
@@ -159,6 +170,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
 
     @Override
     public void onDestroy() {
+        WallpaperColorInfo.getInstance(mLauncher).removeOnChangeListener(this);
         mLauncherClient.onDestroy();
         UnreadSession.getInstance(mLauncher).onDestroy();
         Utilities.getPrefs(mLauncher).unregisterOnSharedPreferenceChangeListener(this);
@@ -280,5 +292,56 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
                 true, /* enableHotword */
                 true /* enablePrewarming */
         );
+    }
+
+    @Override
+    public void onExtractedColorsChanged(WallpaperColorInfo wallpaperColorInfo) {
+        if (updatePrivateOptions(wallpaperColorInfo)) {
+            mLauncher.getWorkspace().runOnOverlayHidden(
+                    () -> mLauncherClient.setPrivateOptions(mPrivateOptions));
+        }
+    }
+
+    private boolean updatePrivateOptions(WallpaperColorInfo wallpaperColorInfo) {
+        boolean colorsChanged = false;
+        int alpha = mLauncher.getResources().getInteger(R.integer.extracted_color_gradient_alpha);
+
+        int primaryColor = primaryColor(wallpaperColorInfo, mLauncher, alpha);
+        if (mPrivateOptions.getInt("background_color_hint", 0) != primaryColor) {
+            mPrivateOptions.putInt("background_color_hint", primaryColor);
+            colorsChanged = true;
+        }
+
+        int secondaryColor = secondaryColor(wallpaperColorInfo, mLauncher, alpha);
+        if (mPrivateOptions.getInt("background_secondary_color_hint", 0) != secondaryColor) {
+            mPrivateOptions.putInt("background_secondary_color_hint", secondaryColor);
+            colorsChanged = true;
+        }
+
+        boolean isDark = Themes.getAttrBoolean(mLauncher, R.attr.isMainColorDark);
+        if (!mPrivateOptions.containsKey("is_background_dark")
+                || mPrivateOptions.getBoolean("is_background_dark") != isDark) {
+            mPrivateOptions.putBoolean("is_background_dark", isDark);
+            colorsChanged = true;
+        }
+
+        return colorsChanged;
+    }
+
+    private static int primaryColor(WallpaperColorInfo wallpaperColorInfo, Context context,
+                                    int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(
+                wallpaperColorInfo.getMainColor(), alpha), context);
+    }
+
+    private static int secondaryColor(WallpaperColorInfo wallpaperColorInfo, Context context,
+                                      int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(
+                wallpaperColorInfo.getSecondaryColor(), alpha), context);
+    }
+
+    private static int compositeAllApps(int color, Context context) {
+        return ColorUtils.compositeColors(
+                Themes.getAttrColor(context, R.attr.allAppsScrimColor), color);
     }
 }
