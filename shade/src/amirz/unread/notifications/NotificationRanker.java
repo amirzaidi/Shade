@@ -10,10 +10,11 @@ import com.android.launcher3.notification.NotificationListener;
 import java.util.List;
 
 import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT;
-import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_MIN;
+import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_HIGH;
 
 public class NotificationRanker {
     private static final int PRIORITY_AT_LEAST = IMPORTANCE_DEFAULT;
+    private static final int PRIORITY_IMPORTANT = IMPORTANCE_HIGH;
 
     private final List<StatusBarNotification> mSbn;
     private final NotificationListenerService.Ranking mTempRanking
@@ -29,7 +30,7 @@ public class NotificationRanker {
             return null;
         }
 
-        int bestPriority = IMPORTANCE_MIN;
+        int bestPriority = PRIORITY_AT_LEAST;
         long bestPostTime = 0;
         StatusBarNotification bestNotif = null;
         for (StatusBarNotification n : mSbn) {
@@ -59,7 +60,7 @@ public class NotificationRanker {
 
         return bestNotif == null
                 ? null
-                : new RankedNotification(bestNotif, bestPriority >= PRIORITY_AT_LEAST);
+                : new RankedNotification(bestNotif, bestPriority >= PRIORITY_IMPORTANT);
     }
 
     public static class RankedNotification {

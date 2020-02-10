@@ -53,6 +53,7 @@ public class UnreadSession {
     private final DateBroadcastReceiver mDateReceiver;
     private final BatteryBroadcastReceiver mBatteryReceiver;
 
+    private final List<String> mTextList = new ArrayList<>();
     private View.OnClickListener mOnClick;
 
     // Delay updates to keep the notification showing after pressing it.
@@ -100,43 +101,40 @@ public class UnreadSession {
     }
 
     public List<String> getText() {
-        // Reset onClick, might not be necessary anymore.
+        mTextList.clear();
         mOnClick = null;
-        List<String> textList = new ArrayList<>();
 
-        // 1. Playing media.
-        if (mMedia.isTracking()) {
-            textList.add(mMedia.getTitle().toString());
+        // 1. Important notifications.
+        NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
+        if (ranked != null && ranked.important) {
+            extractNotification(new ParsedNotification(mContext, ranked.sbn));
+        }
+        // 2. Playing media.
+        else if (mMedia.isTracking()) {
+            mTextList.add(mMedia.getTitle().toString());
             CharSequence artist = mMedia.getArtist();
             if (TextUtils.isEmpty(artist)) {
-                textList.add(getApp(mMedia.getPackage()).toString());
+                mTextList.add(getApp(mMedia.getPackage()).toString());
             } else {
-                textList.add(artist.toString());
+                mTextList.add(artist.toString());
                 CharSequence album = mMedia.getAlbum();
-                if (!TextUtils.isEmpty(album) && !textList.contains(album.toString())) {
-                    textList.add(album.toString());
+                if (!TextUtils.isEmpty(album) && !mTextList.contains(album.toString())) {
+                    mTextList.add(album.toString());
                 }
             }
             mOnClick = v -> mMedia.onClick();
-            return textList;
         }
-
-        NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
-
-        // 2. Important notifications.
-        if (ranked != null && ranked.important) {
-            addImportantNotification(textList, new ParsedNotification(mContext, ranked.sbn));
-            return textList;
+        // 3. Important notifications.
+        else if (ranked != null) {
+            extractNotification(new ParsedNotification(mContext, ranked.sbn));
         }
-
-        // 3. Battery charging text (less than 100%) with date below.
-        if (mBatteryReceiver.isCharging()) {
+        // 4. Battery charging text (less than 100%) with date below.
+        else if (mBatteryReceiver.isCharging()) {
             int lvl = mBatteryReceiver.getLevel();
             if (lvl < 100) {
-                textList.add(mContext.getString(
+                mTextList.add(mContext.getString(
                         R.string.shadespace_text_charging, mBatteryReceiver.getLevel()));
-
-                textList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
+                mTextList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
 
                 mOnClick = v -> Launcher.getLauncher(v.getContext())
@@ -144,7 +142,7 @@ public class UnreadSession {
             }
         }
 
-        return textList;
+        return mTextList;
     }
 
     private String stripDot(String input) {
@@ -153,18 +151,18 @@ public class UnreadSession {
                 : input;
     }
 
-    private void addImportantNotification(List<String> textList, ParsedNotification parsed) {
+    private void extractNotification(ParsedNotification parsed) {
         // Body on top if it is not empty.
         if (!TextUtils.isEmpty(parsed.body)) {
-            textList.add(stripDot(parsed.body));
+            mTextList.add(stripDot(parsed.body));
         }
         for (int i = parsed.splitTitle.length - 1; i >= 0; i--) {
-            textList.add(stripDot(parsed.splitTitle[i]));
+            mTextList.add(stripDot(parsed.splitTitle[i]));
         }
 
         String app = getApp(parsed.pkg).toString();
-        if (!textList.contains(app)) {
-            textList.add(app);
+        if (!mTextList.contains(app)) {
+            mTextList.add(app);
         }
 
         mOnClick = v -> {
