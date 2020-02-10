@@ -3,9 +3,12 @@ package amirz.shade.views;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
@@ -14,6 +17,9 @@ import com.android.launcher3.util.Themes;
 import com.android.searchlauncher.SmartspaceHostView;
 
 import amirz.shade.ShadeFont;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class ThemedSmartspaceHostView extends SmartspaceHostView {
     public ThemedSmartspaceHostView(Context context) {
@@ -37,7 +43,56 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
         float letterSpacing = outValue.getFloat();
         int dividerSize = context.getResources().getDimensionPixelSize(R.dimen.smartspaceDivider) + 1;
 
+        if (getChildCount() == 1) {
+            View topLevel = getChildAt(0);
+            if (topLevel instanceof RelativeLayout) {
+                RelativeLayout rl = (RelativeLayout) topLevel;
+                if (rl.getChildCount() == 1) {
+                    View internal = rl.getChildAt(0);
+                    if (internal instanceof LinearLayout) {
+                        LinearLayout internall = (LinearLayout) internal;
+                        if (internall.getChildCount() == 2
+                                && internall.getOrientation() == LinearLayout.VERTICAL) {
+                            overrideLayout(internall);
+                        }
+                    }
+                }
+            }
+        }
+
         overrideView(tf, this, textColor, shadowColor, letterSpacing, dividerSize);
+    }
+
+    private static void overrideLayout(LinearLayout l) {
+        ViewGroup.LayoutParams llp = l.getLayoutParams();
+        llp.height = MATCH_PARENT;
+        l.setLayoutParams(llp);
+
+        View topView = l.getChildAt(0);
+        View bottomView = l.getChildAt(1);
+        if (topView instanceof LinearLayout && bottomView instanceof LinearLayout) {
+            LinearLayout topl = (LinearLayout) topView;
+            LinearLayout bottoml = (LinearLayout) bottomView;
+
+            LinearLayout.LayoutParams lp =
+                    new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+            lp.gravity = Gravity.BOTTOM;
+            for (int i = 0; i < topl.getChildCount(); i++) {
+                topl.getChildAt(i).setLayoutParams(lp);
+            }
+
+            LinearLayout.LayoutParams toplp
+                    = (LinearLayout.LayoutParams) topl.getLayoutParams();
+            toplp.weight = 1f;
+            toplp.setMargins(0, 0, 0, 0);
+            topl.setLayoutParams(toplp);
+
+            LinearLayout.LayoutParams bottomlp
+                    = (LinearLayout.LayoutParams) bottoml.getLayoutParams();
+            bottomlp.weight = 1f;
+            bottomlp.setMargins(0, 0, 0, 0);
+            bottoml.setLayoutParams(bottomlp);
+        }
     }
 
     private static void overrideView(Typeface tf, View v, int textColor, int shadowColor,
