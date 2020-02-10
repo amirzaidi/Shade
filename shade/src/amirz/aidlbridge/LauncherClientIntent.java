@@ -14,6 +14,8 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class LauncherClientIntent {
+    private static final String KEY_VERSION = "service.api.version";
+
     private final static String PASSTHROUGH = "com.google.android.googlequicksearchbox";
     private final static String AIDL_BRIDGE = "amirz.shade.aidlbridge";
     private final static String PIXEL_BRIDGE = "com.google.android.apps.nexuslauncher";
@@ -73,5 +75,25 @@ public class LauncherClientIntent {
             }
         }
         return aiList;
+    }
+
+    public static int getServiceVersion(PackageManager pm, Intent intent) {
+        int version = 1;
+
+        // Get Google App's version.
+        version = overrideServiceVersion(pm, intent, version);
+        intent.setPackage(getPackage());
+
+        // Get overridden version from the selected package.
+        version = overrideServiceVersion(pm, intent, version);
+
+        return version;
+    }
+
+    private static int overrideServiceVersion(PackageManager pm, Intent intent, int version) {
+        ResolveInfo ri = pm.resolveService(intent, PackageManager.GET_META_DATA);
+        return ri != null && ri.serviceInfo.metaData != null
+                ? ri.serviceInfo.metaData.getInt(KEY_VERSION, version)
+                : version;
     }
 }

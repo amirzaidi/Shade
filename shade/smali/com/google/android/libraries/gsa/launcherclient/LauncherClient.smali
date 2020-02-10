@@ -766,62 +766,29 @@
 .end method
 
 .method private static reloadServiceVersion(Landroid/content/Context;)V
-    .registers 6
+    .registers 3
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    const/4 v4, 0x1
 
     .line 899
     .line 901
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v1
+    move-result-object v0
 
     .line 902
     invoke-static {p0}, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->getServiceIntent(Landroid/content/Context;)Landroid/content/Intent;
 
-    move-result-object v2
+    move-result-object v1
 
-    const/16 v3, 0x80
-
-    invoke-virtual {v1, v2, v3}, Landroid/content/pm/PackageManager;->resolveService(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;
+    invoke-static {v0, v1}, Lamirz/aidlbridge/LauncherClientIntent;->getServiceVersion(Landroid/content/pm/PackageManager;Landroid/content/Intent;)I
 
     move-result-object v0
 
-    .line 903
-    .local v0, "info":Landroid/content/pm/ResolveInfo;
-    if-eqz v0, :cond_17
+    sput v0, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
 
-    iget-object v1, v0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
-
-    iget-object v1, v1, Landroid/content/pm/ServiceInfo;->metaData:Landroid/os/Bundle;
-
-    if-nez v1, :cond_1a
-
-    .line 904
-    :cond_17
-    sput v4, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
-
-    .line 908
-    :goto_19
     return-void
-
-    .line 906
-    :cond_1a
-    iget-object v1, v0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
-
-    iget-object v1, v1, Landroid/content/pm/ServiceInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v2, "service.api.version"
-
-    invoke-virtual {v1, v2, v4}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
-
-    move-result v1
-
-    sput v1, Lcom/google/android/libraries/gsa/launcherclient/LauncherClient;->serviceVersion:I
-
-    goto :goto_19
 .end method
 
 .method private removeClient(Z)V
