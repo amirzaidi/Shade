@@ -18,7 +18,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@android:color/transparent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:clipChildren="false">
 
         <amirz.shade.views.AutoShrinkTextView
             android:id="@+id/shadespace_title"

@@ -67,6 +67,7 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
         ViewGroup.LayoutParams llp = l.getLayoutParams();
         llp.height = MATCH_PARENT;
         l.setLayoutParams(llp);
+        l.setClipChildren(false);
 
         View topView = l.getChildAt(0);
         View bottomView = l.getChildAt(1);
