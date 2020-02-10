@@ -63,7 +63,7 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
         overrideView(tf, this, textColor, shadowColor, letterSpacing, dividerSize);
     }
 
-    private static void overrideLayout(LinearLayout l) {
+    private void overrideLayout(LinearLayout l) {
         ViewGroup.LayoutParams llp = l.getLayoutParams();
         llp.height = MATCH_PARENT;
         l.setLayoutParams(llp);
@@ -79,6 +79,14 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
             lp.gravity = Gravity.BOTTOM;
             for (int i = 0; i < topl.getChildCount(); i++) {
                 topl.getChildAt(i).setLayoutParams(lp);
+            }
+
+            if (Themes.getAttrBoolean(getContext(), R.attr.isWorkspaceDarkText)
+                    && bottoml.getChildCount() > 0) {
+                View v = bottoml.getChildAt(0);
+                if (v instanceof ImageView) {
+                    v.setVisibility(View.GONE);
+                }
             }
 
             LinearLayout.LayoutParams toplp
