@@ -71,14 +71,14 @@ public class UnreadSession {
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
     }
 
-    public void onCreate() {
+    public void onResume() {
         NotificationListenerProxy.INSTANCE.add(mNotifications);
         mMedia.onResume();
         mDateReceiver.onResume();
         mBatteryReceiver.onResume();
     }
 
-    public void onDestroy() {
+    public void onPause() {
         NotificationListenerProxy.INSTANCE.remove(mNotifications);
         mMedia.onPause();
         mDateReceiver.onPause();

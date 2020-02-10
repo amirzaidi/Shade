@@ -66,7 +66,6 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         mOverlayCallbacks = new ShadeLauncherOverlay(mLauncher);
         LauncherClientIntent.setPackage(getRecommendedFeedPackage());
         mLauncherClient = new LauncherClient(mLauncher, mOverlayCallbacks, getClientOptions(prefs));
-        UnreadSession.getInstance(mLauncher).onCreate();
         mOverlayCallbacks.setClient(mLauncherClient);
         WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
         instance.addOnChangeListener(this);
@@ -138,6 +137,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             mLauncherClient.onResume();
         }
 
+        UnreadSession.getInstance(mLauncher).onResume();
         HiddenAppsDrawerState.getInstance(mLauncher).setRevealed(false);
     }
 
@@ -165,6 +165,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         if (!mDeferCallbacks) {
             mLauncherClient.onPause();
         }
+        UnreadSession.getInstance(mLauncher).onPause();
         mNoFloatingView = AbstractFloatingView.getTopOpenView(mLauncher) == null;
     }
 
@@ -172,7 +173,6 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onDestroy() {
         WallpaperColorInfo.getInstance(mLauncher).removeOnChangeListener(this);
         mLauncherClient.onDestroy();
-        UnreadSession.getInstance(mLauncher).onDestroy();
         Utilities.getPrefs(mLauncher).unregisterOnSharedPreferenceChangeListener(this);
     }
 
