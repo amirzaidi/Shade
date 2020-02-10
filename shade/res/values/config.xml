@@ -47,6 +47,16 @@
         <item>@string/theme_blossom</item> <!-- Pink -->
     </string-array>
 
+    <string-array translatable="false" name="theme_entry_values">
+        <item>""</item>
+        <item>"campfire"</item>
+        <item>"sunset"</item>
+        <item>"forest"</item>
+        <item>"ocean"</item>
+        <item>"twilight"</item>
+        <item>"blossom"</item>
+    </string-array>
+
     <string-array translatable="false" name="grid_division_names">
         <item>@string/grid_division_dense</item>
         <item>@string/grid_division_normal</item>
@@ -61,16 +71,6 @@
         <item>"reasonable"</item>
         <item>"big"</item>
         <item>"crazybig"</item>
-    </string-array>
-
-    <string-array translatable="false" name="theme_entry_values">
-        <item>""</item>
-        <item>"campfire"</item>
-        <item>"sunset"</item>
-        <item>"forest"</item>
-        <item>"ocean"</item>
-        <item>"twilight"</item>
-        <item>"blossom"</item>
     </string-array>
 
     <string-array name="device_theme_entries">
