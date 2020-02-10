@@ -32,7 +32,6 @@ public class DockSearch {
         AppWidgetManagerCompat widgetManager = AppWidgetManagerCompat.getInstance(context);
         for (AppWidgetProviderInfo widgetInfo : widgetManager.getAllProviders(null)) {
             if (widgetInfo.resizeMode == AppWidgetProviderInfo.RESIZE_HORIZONTAL
-                    && widgetInfo.configure == null
                     && Math.min(widgetInfo.minHeight, widgetInfo.minResizeHeight) <= highestMinHeight) {
                 widgets.add(widgetInfo);
             }
