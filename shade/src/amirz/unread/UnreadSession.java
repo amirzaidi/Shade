@@ -207,7 +207,6 @@ public class UnreadSession {
                 mSbn.addAll(listener.getNotificationsForKeys(mNotifications.getKeys()));
             }
         }
-        mMedia.onActiveSessionsChanged(null);
         reload();
     }
 }
