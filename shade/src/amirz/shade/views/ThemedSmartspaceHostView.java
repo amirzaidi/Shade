@@ -82,11 +82,14 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
                 topl.getChildAt(i).setLayoutParams(lp);
             }
 
-            if (Themes.getAttrBoolean(getContext(), R.attr.isWorkspaceDarkText)
+            Context context = getContext();
+            if (Themes.getAttrBoolean(context, R.attr.isWorkspaceDarkText)
                     && bottoml.getChildCount() > 0) {
                 View v = bottoml.getChildAt(0);
                 if (v instanceof ImageView) {
-                    v.setVisibility(View.GONE);
+                    int textColor = Themes.getAttrColor(context, R.attr.workspaceTextColor);
+                    ImageView iv = (ImageView) v;
+                    iv.setColorFilter(textColor);
                 }
             }
 
