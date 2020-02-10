@@ -38,6 +38,7 @@
     <string name="theme_forest" translatable="false">Forest</string>
     <string name="theme_ocean" translatable="false">Ocean</string>
     <string name="theme_twilight" translatable="false">Twilight</string>
+    <string name="theme_blossom" translatable="false">Blossom</string>
     <string name="icon_pack" translatable="false">Icons</string>
     <string name="icon_shape" translatable="false">Shape</string>
     <string name="dock_search" translatable="false">Search widget</string>

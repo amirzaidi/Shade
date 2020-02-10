@@ -44,6 +44,7 @@
         <item>@string/theme_forest</item> <!-- Green -->
         <item>@string/theme_ocean</item> <!-- Blue -->
         <item>@string/theme_twilight</item> <!-- Purple -->
+        <item>@string/theme_blossom</item> <!-- Pink -->
     </string-array>
 
     <string-array translatable="false" name="grid_division_names">
@@ -69,6 +70,7 @@
         <item>"forest"</item>
         <item>"ocean"</item>
         <item>"twilight"</item>
+        <item>"blossom"</item>
     </string-array>
 
     <string-array name="device_theme_entries">

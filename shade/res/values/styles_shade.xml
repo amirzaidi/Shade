@@ -37,4 +37,9 @@
         <item name="shadeColorAllAppsOverlay">#5E35B1</item>
         <item name="shadeColorAccent">#855CCC</item>
     </style>
+
+    <style name="ShadeOverride.Blossom" parent="ShadeOverride.Shade">
+        <item name="shadeColorAllAppsOverlay">#FF338F</item>
+        <item name="shadeColorAccent">#C51162</item>
+    </style>
 </resources>

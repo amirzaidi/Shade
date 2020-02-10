@@ -22,6 +22,7 @@ public class ShadeStyle {
         themes.put("forest", R.style.ShadeOverride_Forest);
         themes.put("ocean", R.style.ShadeOverride_Ocean);
         themes.put("twilight", R.style.ShadeOverride_Twilight);
+        themes.put("blossom", R.style.ShadeOverride_Blossom);
         sThemes = Collections.unmodifiableMap(themes);
     }
 
