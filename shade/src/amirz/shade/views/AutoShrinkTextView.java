@@ -50,7 +50,7 @@ public class AutoShrinkTextView extends AppCompatTextView {
         }
 
         int w = ((LinearLayout) getParent()).getWidth() - getTotalPaddingLeft() - getTotalPaddingRight();
-        float ratio = Math.min(1f, w / mPaintCopy.measureText(getText().toString()));
+        float ratio = Math.min(1f, w * 0.96f / mPaintCopy.measureText(getText().toString()));
         float newTextSize = mTextSize * Math.max(MIN_SHRINK, ratio);
 
         if (newTextSize != textSize) {
