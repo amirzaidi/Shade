@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Cadrado de bordos redondeados"</string>
 	<string name="icon_shape_circle">"Círculo"</string>
 	<string name="icon_shape_teardrop">"Bágoa"</string>
+	<string name="category_about">"Acerca de"</string>
 </resources>

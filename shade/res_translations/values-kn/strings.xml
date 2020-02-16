@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"ಸ್ವಯಂಚಾಲಿತ (ವಾಲ್‌ಪೇಪರ್‌ ಅನ್ನು ಆಧರಿಸಿ)"</string>
 	<string name="device_theme_light">"ಹಗುರ"</string>
 	<string name="device_theme_dark">"ಕತ್ತಲೆ"</string>
+	<string name="category_general">"ಸಾಮಾನ್ಯ"</string>
+	<string name="category_style">"ಥೀಮ್"</string>
+	<string name="category_customization">"ಗ್ರಾಹಕೀಯಗೊಳಿಸುವಿಕೆ"</string>
+	<string name="category_about">"ಕುರಿತು"</string>
 </resources>

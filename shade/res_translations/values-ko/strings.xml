@@ -47,4 +47,8 @@
 	<string name="device_theme_wallpaper">"자동(배경화면에 따라)"</string>
 	<string name="device_theme_light">"밝게"</string>
 	<string name="device_theme_dark">"어둡게"</string>
+	<string name="category_general">"기본설정"</string>
+	<string name="category_style">"테마"</string>
+	<string name="category_customization">"사용자 지정"</string>
+	<string name="category_about">"정보"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Αυτόματο (βάσει της ταπετσαρίας)"</string>
 	<string name="device_theme_light">"Φωτεινό"</string>
 	<string name="device_theme_dark">"Σκοτεινό"</string>
+	<string name="category_general">"Γενικά"</string>
+	<string name="category_style">"Θέμα"</string>
+	<string name="category_customization">"Παραμετροποίηση"</string>
+	<string name="category_about">"Σχετικά με"</string>
 </resources>

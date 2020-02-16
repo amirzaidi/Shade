@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatique (en fonction du fond d\'écran)"</string>
 	<string name="device_theme_light">"Clair"</string>
 	<string name="device_theme_dark">"Foncé"</string>
+	<string name="category_general">"Paramètres généraux"</string>
+	<string name="category_style">"Thème"</string>
+	<string name="category_customization">"Personnalisation"</string>
+	<string name="category_about">"À propos"</string>
 </resources>

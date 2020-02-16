@@ -47,4 +47,8 @@
 	<string name="device_theme_wallpaper">"Automàtic (segons el fons de pantalla)"</string>
 	<string name="device_theme_light">"Clar"</string>
 	<string name="device_theme_dark">"Fosc"</string>
+	<string name="category_general">"General"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Personalització"</string>
+	<string name="category_about">"Informació"</string>
 </resources>

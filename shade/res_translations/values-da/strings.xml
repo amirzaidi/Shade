@@ -48,4 +48,8 @@
 	<string name="device_theme_wallpaper">"Automatisk (baseret på baggrunden)"</string>
 	<string name="device_theme_light">"Lyst"</string>
 	<string name="device_theme_dark">"Mørkt"</string>
+	<string name="category_general">"Generelt"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Tilpasning"</string>
+	<string name="category_about">"Om"</string>
 </resources>

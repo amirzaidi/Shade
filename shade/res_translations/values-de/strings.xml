@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatisch (je nach Hintergrund)"</string>
 	<string name="device_theme_light">"Hell"</string>
 	<string name="device_theme_dark">"Dunkel"</string>
+	<string name="category_general">"Allgemein"</string>
+	<string name="category_style">"Thema"</string>
+	<string name="category_customization">"Anpassung"</string>
+	<string name="category_about">"Info"</string>
 </resources>

@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"தானியங்கு தீம் (வால்பேப்பர் அடிப்படையில்)"</string>
 	<string name="device_theme_light">"லைட்"</string>
 	<string name="device_theme_dark">"டார்க்"</string>
+	<string name="category_general">"பொதுவானவை"</string>
+	<string name="category_about">"அறிமுகம்"</string>
 </resources>

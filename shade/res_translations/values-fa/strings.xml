@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"خودکار (براساس کاغذدیواری)"</string>
 	<string name="device_theme_light">"روشن"</string>
 	<string name="device_theme_dark">"تیره"</string>
+	<string name="category_general">"کلی"</string>
+	<string name="category_style">"پوسته"</string>
+	<string name="category_customization">"شخصی سازی"</string>
+	<string name="category_about">"درباره"</string>
 </resources>

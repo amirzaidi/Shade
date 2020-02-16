@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"自動 (根據桌布)"</string>
 	<string name="device_theme_light">"淺色"</string>
 	<string name="device_theme_dark">"深色"</string>
+	<string name="category_general">"一般"</string>
+	<string name="category_style">"主題模式"</string>
+	<string name="category_customization">"客製化"</string>
+	<string name="category_about">"關於"</string>
 </resources>

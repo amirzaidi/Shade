@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatikus (a háttérkép alapján)"</string>
 	<string name="device_theme_light">"Világos"</string>
 	<string name="device_theme_dark">"Sötét"</string>
+	<string name="category_general">"Általános"</string>
+	<string name="category_style">"Téma"</string>
+	<string name="category_customization">"Testreszabás"</string>
+	<string name="category_about">"Névjegy"</string>
 </resources>

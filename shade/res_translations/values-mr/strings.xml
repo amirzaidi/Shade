@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"आपोआप (वॉलपेपरवर आधारित)"</string>
 	<string name="device_theme_light">"फिकी"</string>
 	<string name="device_theme_dark">"गडद"</string>
+	<string name="category_general">"सामान्य"</string>
+	<string name="category_about">"बद्दल"</string>
 </resources>

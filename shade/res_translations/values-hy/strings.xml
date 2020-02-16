@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Քառանկյուն"</string>
 	<string name="icon_shape_circle">"Օղակ"</string>
 	<string name="icon_shape_teardrop">"Արցունքաձև"</string>
+	<string name="category_about">"Տեղեկություն"</string>
 </resources>

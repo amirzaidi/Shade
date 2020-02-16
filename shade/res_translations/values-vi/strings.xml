@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Tự động (dựa trên hình nền)"</string>
 	<string name="device_theme_light">"Sáng"</string>
 	<string name="device_theme_dark">"Tối"</string>
+	<string name="category_general">"Chung"</string>
+	<string name="category_style">"Chủ đề"</string>
+	<string name="category_customization">"Tùy chỉnh"</string>
+	<string name="category_about">"Giới thiệu"</string>
 </resources>

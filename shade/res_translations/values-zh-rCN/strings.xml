@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"自动（根据壁纸）"</string>
 	<string name="device_theme_light">"浅色"</string>
 	<string name="device_theme_dark">"深色"</string>
+	<string name="category_general">"常规"</string>
+	<string name="category_style">"主题模式"</string>
+	<string name="category_customization">"个性化"</string>
+	<string name="category_about">"关于"</string>
 </resources>

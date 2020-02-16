@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"آنسو کا قطرہ"</string>
 	<string name="icon_shape_rounded_square">"گول مربع"</string>
 	<string name="icon_shape_cylinder">"بیلن"</string>
+	<string name="category_about">"بارے میں"</string>
 </resources>

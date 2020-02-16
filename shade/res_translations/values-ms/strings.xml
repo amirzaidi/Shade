@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"Automatik (berdasarkan kertas dinding)"</string>
 	<string name="device_theme_light">"Cerah"</string>
 	<string name="device_theme_dark">"Gelap"</string>
+	<string name="category_general">"Umum"</string>
+	<string name="category_about">"Perihal"</string>
 </resources>

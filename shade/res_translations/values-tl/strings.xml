@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Awtomatiko (batay sa wallpaper)"</string>
 	<string name="device_theme_light">"Maliwanag"</string>
 	<string name="device_theme_dark">"Madilim"</string>
+	<string name="category_general">"Pangkalahatan"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Kustomisasyon"</string>
+	<string name="category_about">"Tungkol Dito"</string>
 </resources>

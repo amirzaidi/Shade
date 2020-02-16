@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"Butiran Air"</string>
 	<string name="icon_shape_rounded_square">"Persegi bulat"</string>
 	<string name="icon_shape_cylinder">"Silinder"</string>
+	<string name="category_about">"Tentang"</string>
 </resources>

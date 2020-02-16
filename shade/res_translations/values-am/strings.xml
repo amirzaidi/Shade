@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"የእንባ ጠብታ"</string>
 	<string name="icon_shape_rounded_square">"ክበባዊ ካሬ"</string>
 	<string name="icon_shape_cylinder">"ሲሊንደር"</string>
+	<string name="category_about">"ስለ"</string>
 </resources>

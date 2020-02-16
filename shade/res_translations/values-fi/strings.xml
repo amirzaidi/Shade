@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automaattinen (perustuu taustakuvaan)"</string>
 	<string name="device_theme_light">"Vaalea"</string>
 	<string name="device_theme_dark">"Tumma"</string>
+	<string name="category_general">"Yleiset"</string>
+	<string name="category_style">"Teema"</string>
+	<string name="category_customization">"Mukauttaminen"</string>
+	<string name="category_about">"Tietoja"</string>
 </resources>

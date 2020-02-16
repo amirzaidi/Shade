@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automată (în funcție de imaginea de fundal)"</string>
 	<string name="device_theme_light">"Deschisă"</string>
 	<string name="device_theme_dark">"Întunecată"</string>
+	<string name="category_general">"Preferințe generale"</string>
+	<string name="category_style">"Temă"</string>
+	<string name="category_customization">"Personalizare"</string>
+	<string name="category_about">"Despre"</string>
 </resources>

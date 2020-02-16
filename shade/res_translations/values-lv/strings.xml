@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"Automātisks (pamatojoties uz fona tapeti)"</string>
 	<string name="device_theme_light">"Gaišs"</string>
 	<string name="device_theme_dark">"Tumšs"</string>
+	<string name="category_general">"Vispārīgi"</string>
+	<string name="category_about">"Par"</string>
 </resources>

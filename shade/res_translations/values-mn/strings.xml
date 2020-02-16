@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Мохоо өнцөгтэй дөрвөлжин"</string>
 	<string name="icon_shape_circle">"Дугуй"</string>
 	<string name="icon_shape_teardrop">"Дусал"</string>
+	<string name="category_about">"Тухай"</string>
 </resources>

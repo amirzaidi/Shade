@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"Automaatne (taustapildi põhjal)"</string>
 	<string name="device_theme_light">"Hele"</string>
 	<string name="device_theme_dark">"Tume"</string>
+	<string name="category_general">"Üldine"</string>
+	<string name="category_about">"Teave"</string>
 </resources>

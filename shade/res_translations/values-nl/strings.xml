@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatisch (op basis van achtergrond)"</string>
 	<string name="device_theme_light">"Licht"</string>
 	<string name="device_theme_dark">"Donker"</string>
+	<string name="category_general">"Algemeen"</string>
+	<string name="category_style">"Thema"</string>
+	<string name="category_customization">"Aanpassing"</string>
+	<string name="category_about">"Over"</string>
 </resources>

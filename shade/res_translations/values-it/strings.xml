@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatico (in base allo sfondo)"</string>
 	<string name="device_theme_light">"Chiaro"</string>
 	<string name="device_theme_dark">"Scuro"</string>
+	<string name="category_general">"Generali"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Personalizzazione"</string>
+	<string name="category_about">"Informazioni"</string>
 </resources>

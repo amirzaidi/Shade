@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"อัตโนมัติ (ขึ้นอยู่กับวอลล์เปเปอร์)"</string>
 	<string name="device_theme_light">"สว่าง"</string>
 	<string name="device_theme_dark">"มืด"</string>
+	<string name="category_general">"ทั่วไป"</string>
+	<string name="category_style">"ธีม"</string>
+	<string name="category_customization">"การกำหนดเอง"</string>
+	<string name="category_about">"เกี่ยวกับ"</string>
 </resources>

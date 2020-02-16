@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"આપમેળે (વૉલપેપરના આધારે)"</string>
 	<string name="device_theme_light">"આછું"</string>
 	<string name="device_theme_dark">"ઘેરી"</string>
+	<string name="category_general">"સામાન્ય"</string>
+	<string name="category_about">"વિશે"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"സ്വമേധയാ (വാൾപേപ്പറിനെ അടിസ്ഥാനമാക്കി)"</string>
 	<string name="device_theme_light">"ഇളം"</string>
 	<string name="device_theme_dark">"ഇരുണ്ട"</string>
+	<string name="category_general">"പൊതുവായ കാര്യങ്ങൾ"</string>
+	<string name="category_style">"തീം"</string>
+	<string name="category_customization">"ഇച്ഛാനുസൃതമാക്കല്‍"</string>
+	<string name="category_about">"ആമുഖം"</string>
 </resources>

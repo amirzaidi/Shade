@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Заоблен квадрат"</string>
 	<string name="icon_shape_circle">"Круг"</string>
 	<string name="icon_shape_teardrop">"Солза"</string>
+	<string name="category_about">"За"</string>
 </resources>

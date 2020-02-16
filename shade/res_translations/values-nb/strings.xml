@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatisk (basert på bakgrunn)"</string>
 	<string name="device_theme_light">"Lys"</string>
 	<string name="device_theme_dark">"Mørk"</string>
+	<string name="category_general">"Generelt"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Brukertilpasning"</string>
+	<string name="category_about">"Info"</string>
 </resources>

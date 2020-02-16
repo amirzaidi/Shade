@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"تلقائي (حسب لون الخلفية)"</string>
 	<string name="device_theme_light">"مظهر فاتح"</string>
 	<string name="device_theme_dark">"مظهر داكن"</string>
+	<string name="category_general">"عامة"</string>
+	<string name="category_style">"الموضوع"</string>
+	<string name="category_customization">"التخصيص"</string>
+	<string name="category_about">"لمحة"</string>
 </resources>

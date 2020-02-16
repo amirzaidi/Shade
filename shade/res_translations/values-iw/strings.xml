@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"אוטומטי (מבוסס על טפט)"</string>
 	<string name="device_theme_light">"בהיר"</string>
 	<string name="device_theme_dark">"כהה"</string>
+	<string name="category_general">"כללי"</string>
+	<string name="category_style">"ערכת נושא"</string>
+	<string name="category_customization">"התאמה אישית"</string>
+	<string name="category_about">"מידע כללי"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatski (na temelju pozadine)"</string>
 	<string name="device_theme_light">"Svijetlo"</string>
 	<string name="device_theme_dark">"Tamno"</string>
+	<string name="category_general">"Opće"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Prilagodba"</string>
+	<string name="category_about">"O aplikaciji"</string>
 </resources>

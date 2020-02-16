@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Заобљени квадрат"</string>
 	<string name="icon_shape_circle">"Круг"</string>
 	<string name="icon_shape_teardrop">"Суза"</string>
+	<string name="category_about">"Основни подаци"</string>
 </resources>

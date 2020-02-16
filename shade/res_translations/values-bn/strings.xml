@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"অটোমেটিক (ওয়ালপেপারের উপর ভিত্তি করে)"</string>
 	<string name="device_theme_light">"হালকা"</string>
 	<string name="device_theme_dark">"গাঢ়"</string>
+	<string name="category_general">"সাধারণ"</string>
+	<string name="category_about">"সম্পর্কে"</string>
 </resources>

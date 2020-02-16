@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Cuadrado con esquinas redondeadas"</string>
 	<string name="icon_shape_circle">"Círculo"</string>
 	<string name="icon_shape_teardrop">"Gota"</string>
+	<string name="category_about">"Acerca de"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Otomatik (duvar kağıdına göre)"</string>
 	<string name="device_theme_light">"Açık"</string>
 	<string name="device_theme_dark">"Koyu"</string>
+	<string name="category_general">"Genel"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Kişiselleştirme"</string>
+	<string name="category_about">"Hakkında"</string>
 </resources>

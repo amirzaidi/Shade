@@ -48,4 +48,6 @@
 	<string name="device_theme_wallpaper">"ਸਵੈਚਲਿਤ (ਵਾਲਪੇਪਰ \'ਤੇ ਆਧਾਰਿਤ)"</string>
 	<string name="device_theme_light">"ਬਲਬ"</string>
 	<string name="device_theme_dark">"ਗੂੜ੍ਹਾ"</string>
+	<string name="category_general">"ਸਧਾਰਨ"</string>
+	<string name="category_about">"ਇਸ ਬਾਰੇ"</string>
 </resources>

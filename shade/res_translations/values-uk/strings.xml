@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"автоматичний вибір (на основі фонового малюнка)"</string>
 	<string name="device_theme_light">"світла"</string>
 	<string name="device_theme_dark">"темна"</string>
+	<string name="category_general">"Загальні"</string>
+	<string name="category_style">"Тема"</string>
+	<string name="category_customization">"Персоналізація"</string>
+	<string name="category_about">"Про додаток"</string>
 </resources>

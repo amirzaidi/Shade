@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"ఆటోమేటిక్ (వాల్‌పేపర్ ఆధారంగా)"</string>
 	<string name="device_theme_light">"లేత రంగు"</string>
 	<string name="device_theme_dark">"ముదురు రంగు"</string>
+	<string name="category_general">"సాధారణం"</string>
+	<string name="category_style">"థీమ్"</string>
+	<string name="category_customization">"కస్టమైజేషన్"</string>
+	<string name="category_about">"పరిచయం"</string>
 </resources>

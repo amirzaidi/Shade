@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Automatický (podľa tapety)"</string>
 	<string name="device_theme_light">"Svetlý"</string>
 	<string name="device_theme_dark">"Tmavý"</string>
+	<string name="category_general">"Všeobecné"</string>
+	<string name="category_style">"Motív"</string>
+	<string name="category_customization">"Prispôsobenie"</string>
+	<string name="category_about">"Informácie"</string>
 </resources>

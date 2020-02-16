@@ -43,4 +43,5 @@
 	<string name="icon_shape_squircle">"Qirralari aylana kvadrat"</string>
 	<string name="icon_shape_circle">"Aylana"</string>
 	<string name="icon_shape_teardrop">"Tomchi"</string>
+	<string name="category_about">"Ilova haqida"</string>
 </resources>

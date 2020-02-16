@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"Samodejna (na podlagi ozadja)"</string>
 	<string name="device_theme_light">"Svetla"</string>
 	<string name="device_theme_dark">"Temna"</string>
+	<string name="category_general">"Splošno"</string>
+	<string name="category_style">"Tema"</string>
+	<string name="category_customization">"Prilagajanje"</string>
+	<string name="category_about">"Vizitka"</string>
 </resources>

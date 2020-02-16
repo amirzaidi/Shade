@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"Umbo la chozi"</string>
 	<string name="icon_shape_rounded_square">"Mraba mviringo"</string>
 	<string name="icon_shape_cylinder">"Silinda"</string>
+	<string name="category_about">"Kuhusu"</string>
 </resources>

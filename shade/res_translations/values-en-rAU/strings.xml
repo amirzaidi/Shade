@@ -46,4 +46,6 @@
 	<string name="device_theme_wallpaper">"Automatic (based on wallpaper)"</string>
 	<string name="device_theme_light">"Light"</string>
 	<string name="device_theme_dark">"Dark"</string>
+	<string name="category_general">"General"</string>
+	<string name="category_about">"About"</string>
 </resources>

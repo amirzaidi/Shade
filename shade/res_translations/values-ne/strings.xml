@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"आँसुको थोपा"</string>
 	<string name="icon_shape_rounded_square">"गोलो कुनायुक्त वर्गाकार"</string>
 	<string name="icon_shape_cylinder">"सिलिन्डर आकार"</string>
+	<string name="category_about">"बारेमा"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="device_theme_wallpaper">"अपने आप सेट होने वाली थीम (वॉलपेपर के हिसाब से)"</string>
 	<string name="device_theme_light">"हल्के रंग की थीम"</string>
 	<string name="device_theme_dark">"गहरे रंग की थीम"</string>
+	<string name="category_general">"सामान्य"</string>
+	<string name="category_style">"थीम"</string>
+	<string name="category_customization">"अनुकूलन"</string>
+	<string name="category_about">"परिचय"</string>
 </resources>

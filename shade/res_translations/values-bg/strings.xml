@@ -45,4 +45,5 @@
 	<string name="icon_shape_teardrop">"Сълза"</string>
 	<string name="icon_shape_rounded_square">"Заоблен квадрат"</string>
 	<string name="icon_shape_cylinder">"Цилиндър"</string>
+	<string name="category_about">"Информация"</string>
 </resources>
