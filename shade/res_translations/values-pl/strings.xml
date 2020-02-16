@@ -53,8 +53,8 @@
 	<string name="category_style">"Motyw"</string>
 	<string name="category_customization">"Dostosowywanie"</string>
 	<string name="category_about">"Informacje"</string>
-	<string name="pref_value_default">"Domyślne"</string>
-	<string name="pref_value_disabled">"Wyłączone"</string>
+	<string name="pref_value_default">"Domyślny"</string>
+	<string name="pref_value_disabled">"Wyłączony"</string>
 	<string name="show_drop_target_label">"Pokaż"</string>
 	<string name="hide_drop_target_label">"Ukryj"</string>
 	<string name="app_info_more">"Więcej"</string>
