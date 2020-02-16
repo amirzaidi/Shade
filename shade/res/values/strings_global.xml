@@ -23,10 +23,6 @@
     <string name="pref_value_default" translatable="false">Default</string>
     <string name="pref_value_automatic" translatable="false">Automatic</string>
     <string name="pref_value_disabled" translatable="false">Disabled</string>
-    <string name="category_general" translatable="false">General</string>
-    <string name="category_style" translatable="false">Style</string>
-    <string name="category_customization" translatable="false">Customization</string>
-    <string name="category_about" translatable="false">About</string>
     <string name="theme_title" translatable="false">Accent</string>
     <string name="theme_pixel" translatable="false">Pixel</string>
     <string name="theme_shade" translatable="false">@string/shade_app_name_short</string>
