@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Суза"</string>
 	<string name="category_about">"Основни подаци"</string>
 	<string name="pref_value_default">"Подразумевана"</string>
+	<string name="show_drop_target_label">"Прикажи"</string>
+	<string name="hide_drop_target_label">"Сакриј"</string>
 </resources>

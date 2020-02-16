@@ -55,4 +55,6 @@
 	<string name="category_about">"Vizitka"</string>
 	<string name="pref_value_default">"Privzeto"</string>
 	<string name="pref_value_disabled">"Onemogočeno"</string>
+	<string name="show_drop_target_label">"Prikaz"</string>
+	<string name="hide_drop_target_label">"Skrivanje"</string>
 </resources>

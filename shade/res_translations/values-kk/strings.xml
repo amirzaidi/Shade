@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Тамшы"</string>
 	<string name="category_about">"Мәлімет"</string>
 	<string name="pref_value_default">"Әдепкі"</string>
+	<string name="show_drop_target_label">"Көрсету"</string>
+	<string name="hide_drop_target_label">"Жасыру"</string>
 </resources>

@@ -55,4 +55,6 @@
 	<string name="category_about">"परिचय"</string>
 	<string name="pref_value_default">"डिफ़ॉल्ट"</string>
 	<string name="pref_value_disabled">"बंद किया गया"</string>
+	<string name="show_drop_target_label">"दिखाएं"</string>
+	<string name="hide_drop_target_label">"छिपाएं"</string>
 </resources>

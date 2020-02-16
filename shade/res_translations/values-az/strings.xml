@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Gözyaşı damlası"</string>
 	<string name="category_about">"Haqqında"</string>
 	<string name="pref_value_default">"Defolt"</string>
+	<string name="show_drop_target_label">"Göstərin"</string>
+	<string name="hide_drop_target_label">"Gizlədin"</string>
 </resources>

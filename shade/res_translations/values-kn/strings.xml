@@ -55,4 +55,6 @@
 	<string name="category_about">"ಕುರಿತು"</string>
 	<string name="pref_value_default">"ಡಿಫಾಲ್ಟ್"</string>
 	<string name="pref_value_disabled">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
+	<string name="show_drop_target_label">"ತೋರಿಸು"</string>
+	<string name="hide_drop_target_label">"ಮರೆಮಾಡು"</string>
 </resources>

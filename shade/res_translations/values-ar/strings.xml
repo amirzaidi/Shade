@@ -55,4 +55,6 @@
 	<string name="category_about">"لمحة"</string>
 	<string name="pref_value_default">"التطبيقات التلقائية"</string>
 	<string name="pref_value_disabled">"غير مفعّل"</string>
+	<string name="show_drop_target_label">"إظهار"</string>
+	<string name="hide_drop_target_label">"إخفاء"</string>
 </resources>

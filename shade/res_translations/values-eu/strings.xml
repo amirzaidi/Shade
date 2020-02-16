@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Malkoa"</string>
 	<string name="category_about">"Honi buruz"</string>
 	<string name="pref_value_default">"Lehenetsia"</string>
+	<string name="show_drop_target_label">"Erakutsi"</string>
+	<string name="hide_drop_target_label">"Ezkutatu"</string>
 </resources>

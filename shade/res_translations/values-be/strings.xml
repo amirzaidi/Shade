@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Сляза"</string>
 	<string name="category_about">"Інфармацыя"</string>
 	<string name="pref_value_default">"Стандартныя"</string>
+	<string name="show_drop_target_label">"Паказаць"</string>
+	<string name="hide_drop_target_label">"Схаваць"</string>
 </resources>

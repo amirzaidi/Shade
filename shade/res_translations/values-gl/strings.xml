@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Bágoa"</string>
 	<string name="category_about">"Acerca de"</string>
 	<string name="pref_value_default">"Predeterminado"</string>
+	<string name="show_drop_target_label">"Mostrar"</string>
+	<string name="hide_drop_target_label">"Ocultar"</string>
 </resources>

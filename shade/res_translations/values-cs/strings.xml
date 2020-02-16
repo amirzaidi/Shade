@@ -55,4 +55,6 @@
 	<string name="category_about">"Informace"</string>
 	<string name="pref_value_default">"Výchozí"</string>
 	<string name="pref_value_disabled">"Deaktivováno"</string>
+	<string name="show_drop_target_label">"Zobrazit"</string>
+	<string name="hide_drop_target_label">"Skrýt"</string>
 </resources>

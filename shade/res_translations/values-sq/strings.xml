@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Pikë loti"</string>
 	<string name="category_about">"Informacione"</string>
 	<string name="pref_value_default">"Të parazgjedhura"</string>
+	<string name="show_drop_target_label">"Shfaq"</string>
+	<string name="hide_drop_target_label">"Fshih"</string>
 </resources>

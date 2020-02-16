@@ -55,4 +55,6 @@
 	<string name="category_about">"Despre"</string>
 	<string name="pref_value_default">"Prestabilite"</string>
 	<string name="pref_value_disabled">"Dezactivată"</string>
+	<string name="show_drop_target_label">"Afișați"</string>
+	<string name="hide_drop_target_label">"Ascundeți"</string>
 </resources>

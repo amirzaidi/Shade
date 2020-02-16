@@ -55,4 +55,6 @@
 	<string name="category_about">"Tungkol Dito"</string>
 	<string name="pref_value_default">"Default"</string>
 	<string name="pref_value_disabled">"Naka-disable"</string>
+	<string name="show_drop_target_label">"Ipakita"</string>
+	<string name="hide_drop_target_label">"Itago"</string>
 </resources>

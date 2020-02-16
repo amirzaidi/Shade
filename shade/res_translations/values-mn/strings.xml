@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Дусал"</string>
 	<string name="category_about">"Тухай"</string>
 	<string name="pref_value_default">"Өгөгдмөл"</string>
+	<string name="show_drop_target_label">"Харуулах"</string>
+	<string name="hide_drop_target_label">"Нуух"</string>
 </resources>

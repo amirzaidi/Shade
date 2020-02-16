@@ -55,4 +55,6 @@
 	<string name="category_about">"درباره"</string>
 	<string name="pref_value_default">"پیش‌فرض"</string>
 	<string name="pref_value_disabled">"غیر فعال شد"</string>
+	<string name="show_drop_target_label">"نمایش"</string>
+	<string name="hide_drop_target_label">"پنهان کردن"</string>
 </resources>

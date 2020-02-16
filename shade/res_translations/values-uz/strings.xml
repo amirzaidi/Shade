@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Tomchi"</string>
 	<string name="category_about">"Ilova haqida"</string>
 	<string name="pref_value_default">"Birlamchi"</string>
+	<string name="show_drop_target_label">"Ko‘rsatish"</string>
+	<string name="hide_drop_target_label">"Berkitish"</string>
 </resources>

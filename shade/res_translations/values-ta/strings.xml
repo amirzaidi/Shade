@@ -52,4 +52,6 @@
 	<string name="category_about">"அறிமுகம்"</string>
 	<string name="pref_value_default">"இயல்பு"</string>
 	<string name="pref_value_disabled">"முடக்கப்பட்டது"</string>
+	<string name="show_drop_target_label">"காட்டு"</string>
+	<string name="hide_drop_target_label">"மறை"</string>
 </resources>

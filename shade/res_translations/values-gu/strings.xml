@@ -52,4 +52,6 @@
 	<string name="category_about">"વિશે"</string>
 	<string name="pref_value_default">"ડિફોલ્ટ"</string>
 	<string name="pref_value_disabled">"અક્ષમ કર્યો"</string>
+	<string name="show_drop_target_label">"બતાવો"</string>
+	<string name="hide_drop_target_label">"છુપાવો"</string>
 </resources>

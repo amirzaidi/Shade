@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"ស៊ីឡាំង"</string>
 	<string name="category_about">"អំពី"</string>
 	<string name="pref_value_default">"លំនាំដើម"</string>
+	<string name="show_drop_target_label">"បង្ហាញ"</string>
+	<string name="hide_drop_target_label">"លាក់"</string>
 </resources>

@@ -52,4 +52,6 @@
 	<string name="category_about">"ਇਸ ਬਾਰੇ"</string>
 	<string name="pref_value_default">"ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
 	<string name="pref_value_disabled">"ਅਯੋਗ ਬਣਾਇਆ"</string>
+	<string name="show_drop_target_label">" ਦਿਖਾਓ"</string>
+	<string name="hide_drop_target_label">"ਲੁਕਾਓ"</string>
 </resources>

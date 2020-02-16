@@ -53,4 +53,6 @@
 	<string name="category_about">"Informació"</string>
 	<string name="pref_value_default">"Predeterminada"</string>
 	<string name="pref_value_disabled">"Desactivat"</string>
+	<string name="show_drop_target_label">"Mostra"</string>
+	<string name="hide_drop_target_label">"Amaga"</string>
 </resources>

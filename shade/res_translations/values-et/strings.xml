@@ -52,4 +52,6 @@
 	<string name="category_about">"Teave"</string>
 	<string name="pref_value_default">"Vaikeseade"</string>
 	<string name="pref_value_disabled">"Keelatud"</string>
+	<string name="show_drop_target_label">"Kuva"</string>
+	<string name="hide_drop_target_label">"Peida"</string>
 </resources>

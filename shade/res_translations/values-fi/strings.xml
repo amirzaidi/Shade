@@ -55,4 +55,6 @@
 	<string name="category_about">"Tietoja"</string>
 	<string name="pref_value_default">"Oletus"</string>
 	<string name="pref_value_disabled">"Pois käytöstä"</string>
+	<string name="show_drop_target_label">"Näytä"</string>
+	<string name="hide_drop_target_label">"Piilota"</string>
 </resources>

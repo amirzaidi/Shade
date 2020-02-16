@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"ሲሊንደር"</string>
 	<string name="category_about">"ስለ"</string>
 	<string name="pref_value_default">"ነባሪ"</string>
+	<string name="show_drop_target_label">"አሳይ"</string>
+	<string name="hide_drop_target_label">"ደብቅ"</string>
 </resources>

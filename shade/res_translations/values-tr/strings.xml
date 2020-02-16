@@ -55,4 +55,6 @@
 	<string name="category_about">"Hakkında"</string>
 	<string name="pref_value_default">"Varsayılan"</string>
 	<string name="pref_value_disabled">"Devre dışı"</string>
+	<string name="show_drop_target_label">"Göster"</string>
+	<string name="hide_drop_target_label">"Gizle"</string>
 </resources>

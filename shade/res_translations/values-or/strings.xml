@@ -39,4 +39,6 @@
 	<string name="smartspace_preferences_in_settings_desc">"ଆପଣଙ୍କ ହୋମ୍ ସ୍କ୍ରୀନ୍‌ର ଶୀର୍ଷରେ"</string>
 	<string name="category_about">"ବିଷୟରେ"</string>
 	<string name="pref_value_default">"ଡିଫଲ୍ଟ"</string>
+	<string name="show_drop_target_label">"ଦେଖାନ୍ତୁ"</string>
+	<string name="hide_drop_target_label">"ଲୁଚାନ୍ତୁ"</string>
 </resources>

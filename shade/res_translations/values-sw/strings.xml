@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"Silinda"</string>
 	<string name="category_about">"Kuhusu"</string>
 	<string name="pref_value_default">"Chaguomsingi"</string>
+	<string name="show_drop_target_label">"Onyesha"</string>
+	<string name="hide_drop_target_label">"Ficha"</string>
 </resources>

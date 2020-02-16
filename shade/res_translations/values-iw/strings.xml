@@ -55,4 +55,6 @@
 	<string name="category_about">"מידע כללי"</string>
 	<string name="pref_value_default">"ברירת מחדל"</string>
 	<string name="pref_value_disabled">"מושבת"</string>
+	<string name="show_drop_target_label">"הצג"</string>
+	<string name="hide_drop_target_label">"הסתר"</string>
 </resources>

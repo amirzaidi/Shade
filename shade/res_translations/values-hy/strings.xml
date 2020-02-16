@@ -45,4 +45,6 @@
 	<string name="icon_shape_teardrop">"Արցունքաձև"</string>
 	<string name="category_about">"Տեղեկություն"</string>
 	<string name="pref_value_default">"Կանխադրված"</string>
+	<string name="show_drop_target_label">"Ցույց տալ"</string>
+	<string name="hide_drop_target_label">"Թաքցնել"</string>
 </resources>

@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"Цилиндър"</string>
 	<string name="category_about">"Информация"</string>
 	<string name="pref_value_default">"По подразбиране"</string>
+	<string name="show_drop_target_label">"Показване"</string>
+	<string name="hide_drop_target_label">"Скриване"</string>
 </resources>

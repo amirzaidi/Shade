@@ -55,4 +55,6 @@
 	<string name="category_about">"关于"</string>
 	<string name="pref_value_default">"默认应用"</string>
 	<string name="pref_value_disabled">"已停用"</string>
+	<string name="show_drop_target_label">"显示"</string>
+	<string name="hide_drop_target_label">"隐藏"</string>
 </resources>

@@ -39,4 +39,6 @@
 	<string name="smartspace_preferences_in_settings_desc">"আপোনাৰ হ\'ম স্ক্ৰীণৰ ওপৰত"</string>
 	<string name="category_about">"এপটোৰ বিষয়ে"</string>
 	<string name="pref_value_default">"ডিফ\'ল্ট"</string>
+	<string name="show_drop_target_label">"দেখুৱাওক"</string>
+	<string name="hide_drop_target_label">"লুকুৱাওক"</string>
 </resources>

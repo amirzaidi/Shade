@@ -52,4 +52,6 @@
 	<string name="category_about">"সম্পর্কে"</string>
 	<string name="pref_value_default">"ডিফল্ট"</string>
 	<string name="pref_value_disabled">"অক্ষম হয়েছে"</string>
+	<string name="show_drop_target_label">"দেখান"</string>
+	<string name="hide_drop_target_label">"লুকান"</string>
 </resources>

@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"Silinder"</string>
 	<string name="category_about">"Meer oor"</string>
 	<string name="pref_value_default">"Verstek"</string>
+	<string name="show_drop_target_label">"Wys"</string>
+	<string name="hide_drop_target_label">"Versteek"</string>
 </resources>

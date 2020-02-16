@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"بیلن"</string>
 	<string name="category_about">"بارے میں"</string>
 	<string name="pref_value_default">"ڈیفالٹ"</string>
+	<string name="show_drop_target_label">"دکھائیں"</string>
+	<string name="hide_drop_target_label">"چھپائیں"</string>
 </resources>

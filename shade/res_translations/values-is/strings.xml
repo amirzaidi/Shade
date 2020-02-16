@@ -47,4 +47,6 @@
 	<string name="icon_shape_cylinder">"Sívalningur"</string>
 	<string name="category_about">"Um forritið"</string>
 	<string name="pref_value_default">"Sjálfgefið"</string>
+	<string name="show_drop_target_label">"Sýna"</string>
+	<string name="hide_drop_target_label">"Fela"</string>
 </resources>

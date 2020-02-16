@@ -55,4 +55,6 @@
 	<string name="category_about">"Información"</string>
 	<string name="pref_value_default">"Predeterminadas"</string>
 	<string name="pref_value_disabled">"Inhabilitada"</string>
+	<string name="show_drop_target_label">"Mostrar"</string>
+	<string name="hide_drop_target_label">"Ocultar"</string>
 </resources>
