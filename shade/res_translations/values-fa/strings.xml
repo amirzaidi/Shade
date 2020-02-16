@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"قطره اشک"</string>
 	<string name="icon_shape_rounded_square">"مربع گرد"</string>
 	<string name="icon_shape_cylinder">"سیلندر"</string>
+	<string name="device_theme_tone">"تون"</string>
+	<string name="device_theme_wallpaper">"خودکار (براساس کاغذدیواری)"</string>
+	<string name="device_theme_light">"روشن"</string>
+	<string name="device_theme_dark">"تیره"</string>
 </resources>

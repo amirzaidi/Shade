@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"หยดน้ำตา"</string>
 	<string name="icon_shape_rounded_square">"สี่เหลี่ยมจัตุรัสมุมมน"</string>
 	<string name="icon_shape_cylinder">"ทรงกระบอก"</string>
+	<string name="device_theme_tone">"โทน"</string>
+	<string name="device_theme_wallpaper">"อัตโนมัติ (ขึ้นอยู่กับวอลล์เปเปอร์)"</string>
+	<string name="device_theme_light">"สว่าง"</string>
+	<string name="device_theme_dark">"มืด"</string>
 </resources>

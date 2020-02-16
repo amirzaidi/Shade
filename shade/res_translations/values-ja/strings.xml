@@ -43,4 +43,8 @@
 	<string name="icon_shape_squircle">"スクワークル"</string>
 	<string name="icon_shape_circle">"サークル"</string>
 	<string name="icon_shape_teardrop">"ティアドロップ"</string>
+	<string name="device_theme_tone">"トーン"</string>
+	<string name="device_theme_wallpaper">"自動（壁紙に基づく）"</string>
+	<string name="device_theme_light">"ライト"</string>
+	<string name="device_theme_dark">"ダーク"</string>
 </resources>

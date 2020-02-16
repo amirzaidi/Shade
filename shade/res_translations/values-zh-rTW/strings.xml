@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"淚珠形"</string>
 	<string name="icon_shape_rounded_square">"圓角正方形"</string>
 	<string name="icon_shape_cylinder">"圓柱形"</string>
+	<string name="device_theme_tone">"⾊調"</string>
+	<string name="device_theme_wallpaper">"自動 (根據桌布)"</string>
+	<string name="device_theme_light">"淺色"</string>
+	<string name="device_theme_dark">"深色"</string>
 </resources>

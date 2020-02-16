@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Traan"</string>
 	<string name="icon_shape_rounded_square">"Afgerond vierkant"</string>
 	<string name="icon_shape_cylinder">"Cylinder"</string>
+	<string name="device_theme_tone">"Toon"</string>
+	<string name="device_theme_wallpaper">"Automatisch (op basis van achtergrond)"</string>
+	<string name="device_theme_light">"Licht"</string>
+	<string name="device_theme_dark">"Donker"</string>
 </resources>

@@ -75,4 +75,8 @@
 	<string name="icon_shape_teardrop">"Teardrop"</string>
 	<string name="icon_shape_rounded_square">"Rounded square"</string>
 	<string name="icon_shape_cylinder">"Cylinder"</string>
+	<string name="device_theme_tone">"Tone"</string>
+	<string name="device_theme_wallpaper">"Automatic (based on wallpaper)"</string>
+	<string name="device_theme_light">"Light"</string>
+	<string name="device_theme_dark">"Dark"</string>
 </resources>

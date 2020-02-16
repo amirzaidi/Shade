@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Pisara"</string>
 	<string name="icon_shape_rounded_square">"Pyöristetty neliö"</string>
 	<string name="icon_shape_cylinder">"Sylinteri"</string>
+	<string name="device_theme_tone">"Värisävy"</string>
+	<string name="device_theme_wallpaper">"Automaattinen (perustuu taustakuvaan)"</string>
+	<string name="device_theme_light">"Vaalea"</string>
+	<string name="device_theme_dark">"Tumma"</string>
 </resources>

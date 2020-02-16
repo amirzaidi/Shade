@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Hình giọt nước"</string>
 	<string name="icon_shape_rounded_square">"Hình vuông góc bo tròn"</string>
 	<string name="icon_shape_cylinder">"Hình trụ"</string>
+	<string name="device_theme_tone">"Tông màu"</string>
+	<string name="device_theme_wallpaper">"Tự động (dựa trên hình nền)"</string>
+	<string name="device_theme_light">"Sáng"</string>
+	<string name="device_theme_dark">"Tối"</string>
 </resources>

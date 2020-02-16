@@ -43,4 +43,7 @@
 	<string name="icon_shape_squircle">"Carré aux coins ronds"</string>
 	<string name="icon_shape_circle">"Cercle"</string>
 	<string name="icon_shape_teardrop">"Goutte"</string>
+	<string name="device_theme_wallpaper">"Automatique (selon l\'image de fond d\'écran)"</string>
+	<string name="device_theme_light">"Clair"</string>
+	<string name="device_theme_dark">"Sombre"</string>
 </resources>

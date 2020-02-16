@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Lacrimă"</string>
 	<string name="icon_shape_rounded_square">"Pătrat rotunjit"</string>
 	<string name="icon_shape_cylinder">"Cilindru"</string>
+	<string name="device_theme_tone">"Ton"</string>
+	<string name="device_theme_wallpaper">"Automată (în funcție de imaginea de fundal)"</string>
+	<string name="device_theme_light">"Deschisă"</string>
+	<string name="device_theme_dark">"Întunecată"</string>
 </resources>

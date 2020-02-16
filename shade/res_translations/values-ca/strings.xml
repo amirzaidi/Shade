@@ -43,4 +43,8 @@
 	<string name="icon_shape_squircle">"Quadrat arrodonit"</string>
 	<string name="icon_shape_circle">"Cercle"</string>
 	<string name="icon_shape_teardrop">"Llàgrima"</string>
+	<string name="device_theme_tone">"To"</string>
+	<string name="device_theme_wallpaper">"Automàtic (segons el fons de pantalla)"</string>
+	<string name="device_theme_light">"Clar"</string>
+	<string name="device_theme_dark">"Fosc"</string>
 </resources>

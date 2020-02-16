@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"Ašara"</string>
 	<string name="icon_shape_rounded_square">"Suapvalintas kvadratas"</string>
 	<string name="icon_shape_cylinder">"Cilindras"</string>
+	<string name="device_theme_wallpaper">"Automatinė (pagal ekrano foną)"</string>
+	<string name="device_theme_light">"Šviesi"</string>
+	<string name="device_theme_dark">"Tamsi"</string>
 </resources>

@@ -44,4 +44,8 @@
 	<string name="icon_shape_circle">"Cirkel"</string>
 	<string name="icon_shape_teardrop">"Dråbeform"</string>
 	<string name="icon_shape_cylinder">"Cylinder"</string>
+	<string name="device_theme_tone">"Tone"</string>
+	<string name="device_theme_wallpaper">"Automatisk (baseret på baggrunden)"</string>
+	<string name="device_theme_light">"Lyst"</string>
+	<string name="device_theme_dark">"Mørkt"</string>
 </resources>

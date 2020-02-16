@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Teardrop"</string>
 	<string name="icon_shape_rounded_square">"Bilugang parisukat"</string>
 	<string name="icon_shape_cylinder">"Silindro"</string>
+	<string name="device_theme_tone">"Tono"</string>
+	<string name="device_theme_wallpaper">"Awtomatiko (batay sa wallpaper)"</string>
+	<string name="device_theme_light">"Maliwanag"</string>
+	<string name="device_theme_dark">"Madilim"</string>
 </resources>

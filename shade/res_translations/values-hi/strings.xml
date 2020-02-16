@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"आंसू की बूंद"</string>
 	<string name="icon_shape_rounded_square">"गोल वर्ग"</string>
 	<string name="icon_shape_cylinder">"सिलेण्डर"</string>
+	<string name="device_theme_tone">"टोन"</string>
+	<string name="device_theme_wallpaper">"अपने आप सेट होने वाली थीम (वॉलपेपर के हिसाब से)"</string>
+	<string name="device_theme_light">"हल्के रंग की थीम"</string>
+	<string name="device_theme_dark">"गहरे रंग की थीम"</string>
 </resources>

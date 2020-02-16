@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"Lāse"</string>
 	<string name="icon_shape_rounded_square">"Noapaļots kvadrāts"</string>
 	<string name="icon_shape_cylinder">"Cilindrs"</string>
+	<string name="device_theme_wallpaper">"Automātisks (pamatojoties uz fona tapeti)"</string>
+	<string name="device_theme_light">"Gaišs"</string>
+	<string name="device_theme_dark">"Tumšs"</string>
 </resources>

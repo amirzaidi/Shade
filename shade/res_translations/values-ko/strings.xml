@@ -43,4 +43,8 @@
 	<string name="icon_shape_squircle">"모서리가 둥근 정사각형"</string>
 	<string name="icon_shape_circle">"원"</string>
 	<string name="icon_shape_teardrop">"눈물방울"</string>
+	<string name="device_theme_tone">"톤"</string>
+	<string name="device_theme_wallpaper">"자동(배경화면에 따라)"</string>
+	<string name="device_theme_light">"밝게"</string>
+	<string name="device_theme_dark">"어둡게"</string>
 </resources>

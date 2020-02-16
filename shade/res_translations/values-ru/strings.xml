@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Капля"</string>
 	<string name="icon_shape_rounded_square">"Скругленный квадрат"</string>
 	<string name="icon_shape_cylinder">"Цилиндр"</string>
+	<string name="device_theme_tone">"Оттенок"</string>
+	<string name="device_theme_wallpaper">"Автоматический выбор (в зависимости от обоев)"</string>
+	<string name="device_theme_light">"Светлая"</string>
+	<string name="device_theme_dark">"Темная"</string>
 </resources>

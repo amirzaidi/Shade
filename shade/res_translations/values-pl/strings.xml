@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Łza"</string>
 	<string name="icon_shape_rounded_square">"Zaokrąglony kwadrat"</string>
 	<string name="icon_shape_cylinder">"Cylinder"</string>
+	<string name="device_theme_tone">"Ton"</string>
+	<string name="device_theme_wallpaper">"Automatyczny (na podstawie tapety)"</string>
+	<string name="device_theme_light">"Jasny"</string>
+	<string name="device_theme_dark">"Ciemny"</string>
 </resources>

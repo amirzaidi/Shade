@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"চোখের জল"</string>
 	<string name="icon_shape_rounded_square">"গোলাকাকৃতির বর্গাকার"</string>
 	<string name="icon_shape_cylinder">"সিলিন্ডার"</string>
+	<string name="device_theme_wallpaper">"অটোমেটিক (ওয়ালপেপারের উপর ভিত্তি করে)"</string>
+	<string name="device_theme_light">"হালকা"</string>
+	<string name="device_theme_dark">"গাঢ়"</string>
 </resources>

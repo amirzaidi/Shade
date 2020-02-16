@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"טיפה"</string>
 	<string name="icon_shape_rounded_square">"ריבוע מעוגל"</string>
 	<string name="icon_shape_cylinder">"גליל"</string>
+	<string name="device_theme_tone">"גוון"</string>
+	<string name="device_theme_wallpaper">"אוטומטי (מבוסס על טפט)"</string>
+	<string name="device_theme_light">"בהיר"</string>
+	<string name="device_theme_dark">"כהה"</string>
 </resources>

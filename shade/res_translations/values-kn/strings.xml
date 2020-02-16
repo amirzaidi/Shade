@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"ಕಂಬನಿ"</string>
 	<string name="icon_shape_rounded_square">"ದುಂಡಾದ ಚೌಕ"</string>
 	<string name="icon_shape_cylinder">"ಸಿಲಿಂಡರ್"</string>
+	<string name="device_theme_tone">"ಟೋನ್"</string>
+	<string name="device_theme_wallpaper">"ಸ್ವಯಂಚಾಲಿತ (ವಾಲ್‌ಪೇಪರ್‌ ಅನ್ನು ಆಧರಿಸಿ)"</string>
+	<string name="device_theme_light">"ಹಗುರ"</string>
+	<string name="device_theme_dark">"ಕತ್ತಲೆ"</string>
 </resources>

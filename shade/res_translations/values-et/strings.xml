@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"Tilk"</string>
 	<string name="icon_shape_rounded_square">"Ümmarguste nurkadega nelinurk"</string>
 	<string name="icon_shape_cylinder">"Silinder"</string>
+	<string name="device_theme_wallpaper">"Automaatne (taustapildi põhjal)"</string>
+	<string name="device_theme_light">"Hele"</string>
+	<string name="device_theme_dark">"Tume"</string>
 </resources>

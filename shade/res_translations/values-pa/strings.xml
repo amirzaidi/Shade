@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"ਹੰਝੂ ਦੀ ਬੂੰਦ"</string>
 	<string name="icon_shape_rounded_square">"ਗੋਲਾਕਾਰ ਵਰਗ"</string>
 	<string name="icon_shape_cylinder">"ਸਲੰਡਰ"</string>
+	<string name="device_theme_wallpaper">"ਸਵੈਚਲਿਤ (ਵਾਲਪੇਪਰ \'ਤੇ ਆਧਾਰਿਤ)"</string>
+	<string name="device_theme_light">"ਬਲਬ"</string>
+	<string name="device_theme_dark">"ਗੂੜ੍ਹਾ"</string>
 </resources>

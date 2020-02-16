@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"கண்ணீர்துளி"</string>
 	<string name="icon_shape_rounded_square">"வட்டமிட்ட சதுரம்"</string>
 	<string name="icon_shape_cylinder">"உருளை"</string>
+	<string name="device_theme_wallpaper">"தானியங்கு தீம் (வால்பேப்பர் அடிப்படையில்)"</string>
+	<string name="device_theme_light">"லைட்"</string>
+	<string name="device_theme_dark">"டார்க்"</string>
 </resources>

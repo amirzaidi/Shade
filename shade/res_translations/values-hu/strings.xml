@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Könnycsepp"</string>
 	<string name="icon_shape_rounded_square">"Lekerekített négyzet"</string>
 	<string name="icon_shape_cylinder">"Henger"</string>
+	<string name="device_theme_tone">"Tónus"</string>
+	<string name="device_theme_wallpaper">"Automatikus (a háttérkép alapján)"</string>
+	<string name="device_theme_light">"Világos"</string>
+	<string name="device_theme_dark">"Sötét"</string>
 </resources>

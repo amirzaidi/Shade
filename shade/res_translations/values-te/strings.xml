@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"కన్నీటి చుక్క"</string>
 	<string name="icon_shape_rounded_square">"వృత్తాకార చతురస్రం"</string>
 	<string name="icon_shape_cylinder">"సిలిండర్"</string>
+	<string name="device_theme_tone">"టోన్"</string>
+	<string name="device_theme_wallpaper">"ఆటోమేటిక్ (వాల్‌పేపర్ ఆధారంగా)"</string>
+	<string name="device_theme_light">"లేత రంగు"</string>
+	<string name="device_theme_dark">"ముదురు రంగు"</string>
 </resources>

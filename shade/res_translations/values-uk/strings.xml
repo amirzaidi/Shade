@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Сльоза"</string>
 	<string name="icon_shape_rounded_square">"Округлений квадрат"</string>
 	<string name="icon_shape_cylinder">"Циліндр"</string>
+	<string name="device_theme_tone">"Відтінок"</string>
+	<string name="device_theme_wallpaper">"автоматичний вибір (на основі фонового малюнка)"</string>
+	<string name="device_theme_light">"світла"</string>
+	<string name="device_theme_dark">"темна"</string>
 </resources>

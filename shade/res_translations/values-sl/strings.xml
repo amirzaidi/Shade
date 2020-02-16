@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Solza"</string>
 	<string name="icon_shape_rounded_square">"Zaokrožen kvadrat"</string>
 	<string name="icon_shape_cylinder">"Valj"</string>
+	<string name="device_theme_tone">"Ton"</string>
+	<string name="device_theme_wallpaper">"Samodejna (na podlagi ozadja)"</string>
+	<string name="device_theme_light">"Svetla"</string>
+	<string name="device_theme_dark">"Temna"</string>
 </resources>

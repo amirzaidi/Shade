@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"Titisan air mata"</string>
 	<string name="icon_shape_rounded_square">"Segi empat bucu bulat"</string>
 	<string name="icon_shape_cylinder">"Silinder"</string>
+	<string name="device_theme_wallpaper">"Automatik (berdasarkan kertas dinding)"</string>
+	<string name="device_theme_light">"Cerah"</string>
+	<string name="device_theme_dark">"Gelap"</string>
 </resources>

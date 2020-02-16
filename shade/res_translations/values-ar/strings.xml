@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"رمز على شكل دمعة"</string>
 	<string name="icon_shape_rounded_square">"مربع مستدير"</string>
 	<string name="icon_shape_cylinder">"أسطوانة"</string>
+	<string name="device_theme_tone">"الأسلوب"</string>
+	<string name="device_theme_wallpaper">"تلقائي (حسب لون الخلفية)"</string>
+	<string name="device_theme_light">"مظهر فاتح"</string>
+	<string name="device_theme_dark">"مظهر داكن"</string>
 </resources>

@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"കണ്ണുനീര്‍ തുള്ളി"</string>
 	<string name="icon_shape_rounded_square">"ഉരുണ്ട ചതുരം"</string>
 	<string name="icon_shape_cylinder">"സിലിണ്ടർ"</string>
+	<string name="device_theme_tone">"ടോൺ"</string>
+	<string name="device_theme_wallpaper">"സ്വമേധയാ (വാൾപേപ്പറിനെ അടിസ്ഥാനമാക്കി)"</string>
+	<string name="device_theme_light">"ഇളം"</string>
+	<string name="device_theme_dark">"ഇരുണ്ട"</string>
 </resources>

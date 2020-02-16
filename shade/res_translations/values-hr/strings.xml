@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Suza"</string>
 	<string name="icon_shape_rounded_square">"Kvadrat zaobljenih kutova"</string>
 	<string name="icon_shape_cylinder">"Valjak"</string>
+	<string name="device_theme_tone">"Ton"</string>
+	<string name="device_theme_wallpaper">"Automatski (na temelju pozadine)"</string>
+	<string name="device_theme_light">"Svijetlo"</string>
+	<string name="device_theme_dark">"Tamno"</string>
 </resources>

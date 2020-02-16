@@ -43,4 +43,7 @@
 	<string name="icon_shape_squircle">"Arredondado"</string>
 	<string name="icon_shape_circle">"Círculo"</string>
 	<string name="icon_shape_teardrop">"Lágrima"</string>
+	<string name="device_theme_wallpaper">"Automático (com base na imagem de fundo)"</string>
+	<string name="device_theme_light">"Claro"</string>
+	<string name="device_theme_dark">"Escuro"</string>
 </resources>

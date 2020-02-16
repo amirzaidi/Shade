@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"अश्रू"</string>
 	<string name="icon_shape_rounded_square">"वर्तुळाकार कोपर्‍यांचा चौरस"</string>
 	<string name="icon_shape_cylinder">"सिलिंडर"</string>
+	<string name="device_theme_wallpaper">"आपोआप (वॉलपेपरवर आधारित)"</string>
+	<string name="device_theme_light">"फिकी"</string>
+	<string name="device_theme_dark">"गडद"</string>
 </resources>

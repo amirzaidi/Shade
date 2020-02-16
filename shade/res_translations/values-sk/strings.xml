@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Slza"</string>
 	<string name="icon_shape_rounded_square">"Zaoblený štvorec"</string>
 	<string name="icon_shape_cylinder">"Valec"</string>
+	<string name="device_theme_tone">"Odtieň"</string>
+	<string name="device_theme_wallpaper">"Automatický (podľa tapety)"</string>
+	<string name="device_theme_light">"Svetlý"</string>
+	<string name="device_theme_dark">"Tmavý"</string>
 </resources>

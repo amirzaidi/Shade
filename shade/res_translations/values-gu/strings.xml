@@ -45,4 +45,7 @@
 	<string name="icon_shape_teardrop">"ટિઅરડ્રોપ"</string>
 	<string name="icon_shape_rounded_square">"ગોળાકાર ચોરસ"</string>
 	<string name="icon_shape_cylinder">"સિલિંડર"</string>
+	<string name="device_theme_wallpaper">"આપમેળે (વૉલપેપરના આધારે)"</string>
+	<string name="device_theme_light">"આછું"</string>
+	<string name="device_theme_dark">"ઘેરી"</string>
 </resources>

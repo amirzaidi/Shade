@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Droppe"</string>
 	<string name="icon_shape_rounded_square">"Kvadrat med rundade hörn"</string>
 	<string name="icon_shape_cylinder">"Cylinder"</string>
+	<string name="device_theme_tone">"Färgton"</string>
+	<string name="device_theme_wallpaper">"Automatiskt (utifrån bakgrunden)"</string>
+	<string name="device_theme_light">"Ljust"</string>
+	<string name="device_theme_dark">"Mörkt"</string>
 </resources>

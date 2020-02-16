@@ -45,4 +45,8 @@
 	<string name="icon_shape_teardrop">"Goutte"</string>
 	<string name="icon_shape_rounded_square">"Rectangle arrondi"</string>
 	<string name="icon_shape_cylinder">"Cylindre"</string>
+	<string name="device_theme_tone">"Tonalité"</string>
+	<string name="device_theme_wallpaper">"Automatique (en fonction du fond d\'écran)"</string>
+	<string name="device_theme_light">"Clair"</string>
+	<string name="device_theme_dark">"Foncé"</string>
 </resources>
