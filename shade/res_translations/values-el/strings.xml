@@ -46,7 +46,7 @@
 	<string name="icon_shape_rounded_square">"Τετράγωνο με στρογγυλεμένες κορυφές"</string>
 	<string name="icon_shape_cylinder">"Κύλινδρος"</string>
 	<string name="device_theme_tone">"Τόνος"</string>
-	<string name="device_theme_wallpaper">"Αυτόματο (βάσει της ταπετσαρίας)"</string>
+	<string name="device_theme_wallpaper">"Αυτόματο (βάση της ταπετσαρίας)"</string>
 	<string name="device_theme_light">"Φωτεινό"</string>
 	<string name="device_theme_dark">"Σκοτεινό"</string>
 	<string name="category_general">"Γενικά"</string>
