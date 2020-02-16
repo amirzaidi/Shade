@@ -90,6 +90,9 @@ public abstract class BaseFlags {
     // When enabled load partner overrides from package.
     public static final boolean PARTNER_CUSTOMIZATION = true;
 
+    // When enabled add space for a search widget in the dock.
+    public static final boolean HOTSEAT_WIDGET = false;
+
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
      */
