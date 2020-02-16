@@ -95,9 +95,6 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (KEY_ENABLE_MINUS_ONE.equals(key)) {
             mLauncherClient.setClientOptions(getClientOptions(prefs));
-        } else if (KEY_FONT.equals(key)) {
-            // If the font toggle changed, restart the launcher.
-            mLauncher.recreate();
         } else if (KEY_FEED_PROVIDER.equals(key)) {
             // If the launcher should reconnect to a different package, restart it.
             if (!LauncherClientIntent.getPackage().equals(getRecommendedFeedPackage())) {
@@ -106,7 +103,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else if (KEY_FADING_TRANSITION.equals(key)) {
             TransitionManager transitions = (TransitionManager) mLauncher.getAppTransitionManager();
             transitions.applyWindowPreference(mLauncher);
-        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)) {
+        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key) || KEY_FONT.equals(key)) {
             mLauncher.recreate();
         } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)
                 || KEY_DOCK_SEARCH.equals(key)) {
@@ -115,8 +112,12 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     }
 
     private void setDefaultValues(SharedPreferences prefs) {
-        prefs.edit().putString(KEY_FONT, prefs.getString(KEY_FONT, DEFAULT_FONT))
+        prefs.edit().putBoolean(KEY_SMARTSPACE, prefs.getBoolean(KEY_SMARTSPACE, true))
+                .putString(KEY_FONT, prefs.getString(KEY_FONT, DEFAULT_FONT))
                 .putString(KEY_DOCK_SEARCH, prefs.getString(KEY_DOCK_SEARCH, ""))
+                .putString(KEY_IDP_GRID_NAME, prefs.getString(KEY_IDP_GRID_NAME, null))
+                .putString(KEY_FEED_PROVIDER, prefs.getString(KEY_FEED_PROVIDER,
+                        getRecommendedFeedPackage()))
                 .apply();
     }
 
