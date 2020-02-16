@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Απαιτείται άδεια χρήσης</string>
+    <string name="msg_missing_usage_access">Για να εμφανιστούν οι Κουκκίδες Ειδοποίησης, ενεργοποιήστε την άδεια χρήσης για την εφαρμογή <xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Σύρετε προς τα κάτω για να κλείσετε τις πληροφορίες της εφαρμογής.</string>
+    <string name="app_info_source">Πηγή</string>
+    <string name="app_info_last_update">Τελευταία ενημέρωση</string>
+    <string name="item_hidden">Το στοιχείο είναι κρυφό</string>
+    <string name="theme_title">Απόχρωση</string>
+    <string name="theme_campfire">Φωτιά Κατασκήνωσης</string>
+    <string name="theme_sunset">Ηλιοβασίλεμα</string>
+    <string name="theme_forest">Δάσος</string>
+    <string name="theme_ocean">Ωκεανός</string>
+    <string name="theme_twilight">Λυκόφως</string>
+    <string name="theme_blossom">Άνθος</string>
+    <string name="dock_search">Γραφικό στοιχείο αναζήτησης</string>
+    <string name="feed_provider">Ροή ειδήσεων</string>
+    <string name="grid_division">Αναλογία πλέγματος</string>
+    <string name="grid_division_dense">Πυκνό (6×6)</string>
+    <string name="grid_division_normal">Νορμάλ (5×5)</string>
+    <string name="grid_division_reasonable">Αραιό (4×5)</string>
+    <string name="grid_division_big">Μεγάλο (4×4)</string>
+    <string name="grid_division_crazybig">Γιγάντιο (3×3)</string>
+    <string name="fading_transition">Εφέ σβησίματος</string>
+    <string name="fading_transition_desc">Κατά το άνοιγμα των εφαρμογών</string>
+    <string name="about_contact">Επικοινωνία</string>
+    <string name="about_donate">Δωρεά</string>
+    <string name="about_donate_desc">Μέσω του Google Play</string>
+    <string name="shadespace_text_charging">Φόρτιση στο %1$d%%</string>
+</resources>
