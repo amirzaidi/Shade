@@ -74,7 +74,7 @@
     </string-array>
 
     <string-array name="device_theme_entries">
-        <item>@string/pref_value_automatic</item>
+        <item>@string/device_theme_wallpaper</item>
         <item>@string/device_theme_light</item>
         <item>@string/device_theme_dark</item>
     </string-array>

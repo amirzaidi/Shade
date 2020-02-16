@@ -75,7 +75,7 @@
 
         <ListPreference
             android:key="pref_device_theme"
-            android:title="@string/device_theme_title"
+            android:title="@string/device_theme_tone"
             android:summary="%s"
             android:entries="@array/device_theme_entries"
             android:entryValues="@array/device_theme_entry_values"
