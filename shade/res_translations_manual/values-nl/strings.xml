@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Gebruikstoegang vereist</string>
+    <string name="msg_missing_usage_access">Als je app-suggesties wilt weergeven, schakel je gebruikstoegang in voor <xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Veeg omlaag om app-info te sluiten.</string>
+    <string name="app_info_source">Oorsprong</string>
+    <string name="app_info_last_update">Laatste update</string>
+    <string name="item_hidden">Item verborgen</string>
+    <string name="theme_title">Accent</string>
+    <string name="theme_campfire">Kampvuur</string>
+    <string name="theme_sunset">Zonsondergang</string>
+    <string name="theme_forest">Oerwoud</string>
+    <string name="theme_ocean">Oceaan</string>
+    <string name="theme_twilight">Schemering</string>
+    <string name="theme_blossom">Bloesem</string>
+    <string name="dock_search">Zoekbalk</string>
+    <string name="feed_provider">Nieuws bron</string>
+    <string name="grid_division">Raster indeling</string>
+    <string name="grid_division_dense">Compact (6 bij 6)</string>
+    <string name="grid_division_normal">Normaal (5 bij 5)</string>
+    <string name="grid_division_reasonable">Verspreid (4 bij 5)</string>
+    <string name="grid_division_big">Groot (4 bij 4)</string>
+    <string name="grid_division_crazybig">Gigantisch (3 bij 3)</string>
+    <string name="fading_transition">Vloeiende overgang</string>
+    <string name="fading_transition_desc">Wanneer je apps opent</string>
+    <string name="about_contact">Contact</string>
+    <string name="about_donate">Doneer</string>
+    <string name="about_donate_desc">Met Play tegoed</string>
+    <string name="shadespace_text_charging">Opgeladen tot %1$d%%</string>
+</resources>
