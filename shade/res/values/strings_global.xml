@@ -21,7 +21,6 @@
     <string name="theme_twilight" translatable="false">Twilight</string>
     <string name="theme_blossom" translatable="false">Blossom</string>
     <string name="icon_pack" translatable="false">Icons</string>
-    <string name="icon_shape" translatable="false">Shape</string>
     <string name="dock_search" translatable="false">Search widget</string>
     <string name="dock_search_value" translatable="false">%1$s %2$s</string>
     <string name="feed_provider" translatable="false">Feed provider</string>
@@ -34,7 +33,6 @@
     <string name="grid_division_crazybig" translatable="false">Gigantic (3 by 3)</string>
     <string name="fading_transition" translatable="false">Fading transition</string>
     <string name="fading_transition_desc" translatable="false">When opening apps</string>
-    <string name="font" translatable="false">Font</string>
     <string name="font_google_sans" translatable="false">Google Sans</string>
     <string name="about_app_version" translatable="false">@string/app_info_version</string>
     <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
