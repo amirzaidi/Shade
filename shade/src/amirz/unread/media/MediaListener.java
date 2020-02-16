@@ -110,7 +110,7 @@ public class MediaListener extends MediaController.Callback
             }
         }
 
-        Log.e(TAG, "onActiveSessionsChanged mTracking=" + (mTracking != null));
+        Log.d(TAG, "onActiveSessionsChanged mTracking=" + (mTracking != null));
         mOnChange.run();
     }
 
