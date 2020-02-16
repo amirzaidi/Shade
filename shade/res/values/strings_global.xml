@@ -10,13 +10,8 @@
     <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
     <string name="placeholder_string" translatable="false">Loading...</string> <!-- Used for preference height loading. -->
     <string name="item_hidden" translatable="false">Item hidden</string>
-    <string name="app_info_icon_pack" translatable="false">Icon pack</string>
-    <string name="app_info_icon_pack_none" translatable="false">None</string>
     <string name="app_info_source" translatable="false">Source</string>
-    <string name="app_info_source_unknown" translatable="false">Unknown</string>
     <string name="app_info_last_update" translatable="false">Last update</string>
-    <string name="app_info_version" translatable="false">Version</string>
-    <string name="app_info_more" translatable="false">More</string>
     <string name="theme_title" translatable="false">Accent</string>
     <string name="theme_pixel" translatable="false">Pixel</string>
     <string name="theme_campfire" translatable="false">Campfire</string>
@@ -41,7 +36,7 @@
     <string name="fading_transition_desc" translatable="false">When opening apps</string>
     <string name="font" translatable="false">Font</string>
     <string name="font_google_sans" translatable="false">Google Sans</string>
-    <string name="about_app_version" translatable="false">Version</string>
+    <string name="about_app_version" translatable="false">@string/app_info_version</string>
     <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
     <string name="about_contact" translatable="false">Contact</string>
     <string name="about_contact_desc" translatable="false">Amir Zaidi</string>
