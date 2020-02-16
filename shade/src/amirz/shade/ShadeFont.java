@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class ShadeFont {
     public static final String KEY_FONT = "pref_font";
+    public static final String DEFAULT_FONT = "google_sans";
 
     private static Map<String, Typeface> sDeviceMap;
 
@@ -60,6 +61,6 @@ public class ShadeFont {
     }
 
     public static String getFont(Context context) {
-        return Utilities.getPrefs(context).getString(KEY_FONT, "google_sans");
+        return Utilities.getPrefs(context).getString(KEY_FONT, DEFAULT_FONT);
     }
 }

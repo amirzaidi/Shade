@@ -28,6 +28,7 @@ import amirz.shade.hidden.HiddenAppsDrawerState;
 import amirz.shade.search.AllAppsQsb;
 import amirz.unread.UnreadSession;
 
+import static amirz.shade.ShadeFont.DEFAULT_FONT;
 import static amirz.shade.ShadeFont.KEY_FONT;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
@@ -52,7 +53,6 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
     private LauncherClient mLauncherClient;
     private ShadeLauncherOverlay mOverlayCallbacks;
     private boolean mDeferCallbacks;
-    private String mFont;
 
     private boolean mNoFloatingView;
 
@@ -70,7 +70,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         WallpaperColorInfo instance = WallpaperColorInfo.getInstance(mLauncher);
         instance.addOnChangeListener(this);
         onExtractedColorsChanged(instance);
-        mFont = ShadeFont.getFont(mLauncher);
+        setDefaultValues(prefs);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
     }
@@ -97,9 +97,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             mLauncherClient.setClientOptions(getClientOptions(prefs));
         } else if (KEY_FONT.equals(key)) {
             // If the font toggle changed, restart the launcher.
-            if (!ShadeFont.getFont(mLauncher).equals(mFont)) {
-                mLauncher.recreate();
-            }
+            mLauncher.recreate();
         } else if (KEY_FEED_PROVIDER.equals(key)) {
             // If the launcher should reconnect to a different package, restart it.
             if (!LauncherClientIntent.getPackage().equals(getRecommendedFeedPackage())) {
@@ -114,6 +112,11 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)) {
             mLauncher.kill();
         }
+    }
+
+    private void setDefaultValues(SharedPreferences prefs) {
+        prefs.edit().putString(KEY_FONT, prefs.getString(KEY_FONT, DEFAULT_FONT))
+                .apply();
     }
 
     @Override
