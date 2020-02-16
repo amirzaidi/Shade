@@ -33,7 +33,7 @@ public class DockSearchPrefSetter implements ReloadingListPreference.OnReloadLis
         int i = 0;
 
         // First value, system default
-        keys[i] = mContext.getResources().getString(R.string.pref_value_default);
+        keys[i] = mContext.getResources().getString(R.string.pref_value_disabled);
         values[i++] = "";
 
         Collections.sort(widgets,

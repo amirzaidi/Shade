@@ -121,10 +121,18 @@ public class AllAppsQsb extends QsbContainerView
         mLauncher.getAppsView().getAppsStore().removeUpdateListener(this);
     }
 
+    private boolean shouldHideDockSearch() {
+        return DockSearch.getWidgetInfo(mLauncher) == null;
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         mSearchWrapperView = findViewById(R.id.search_wrapper_view);
+        mSearchWrapperView.setVisibility(shouldHideDockSearch()
+                ? View.GONE
+                : View.VISIBLE);
+
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mFallbackSearchView.setVisibility(View.INVISIBLE);
 
@@ -301,7 +309,7 @@ public class AllAppsQsb extends QsbContainerView
 
     @Override
     public float getScrollRangeDelta(Rect insets) {
-        if (mLauncher.getDeviceProfile().isVerticalBarLayout()) {
+        if (mLauncher.getDeviceProfile().isVerticalBarLayout() || shouldHideDockSearch()) {
             return 0;
         } else {
             int topMargin = Math.round(Math.max(
@@ -320,7 +328,7 @@ public class AllAppsQsb extends QsbContainerView
     public void setContentVisibility(int visibleElements, PropertySetter setter,
                                      Interpolator interpolator) {
         boolean showAllApps = (visibleElements & ALL_APPS_CONTENT) != 0;
-        setter.setViewAlpha(mSearchWrapperView, showAllApps ? 0f : 1f, Interpolators.LINEAR);
+        setter.setViewAlpha(mSearchWrapperView, showAllApps ? 0f : (shouldHideDockSearch() ? 0f : 1f), Interpolators.LINEAR);
         setter.setViewAlpha(mFallbackSearchView, showAllApps ? 1f : 0f, Interpolators.LINEAR);
     }
 

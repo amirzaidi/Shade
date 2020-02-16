@@ -106,16 +106,17 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         } else if (KEY_FADING_TRANSITION.equals(key)) {
             TransitionManager transitions = (TransitionManager) mLauncher.getAppTransitionManager();
             transitions.applyWindowPreference(mLauncher);
-        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)
-                || KEY_DOCK_SEARCH.equals(key)) {
+        } else if (KEY_DEVICE_THEME.equals(key) || KEY_THEME.equals(key)) {
             mLauncher.recreate();
-        } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)) {
+        } else if (KEY_SMARTSPACE.equals(key) || KEY_IDP_GRID_NAME.equals(key)
+                || KEY_DOCK_SEARCH.equals(key)) {
             mLauncher.kill();
         }
     }
 
     private void setDefaultValues(SharedPreferences prefs) {
         prefs.edit().putString(KEY_FONT, prefs.getString(KEY_FONT, DEFAULT_FONT))
+                .putString(KEY_DOCK_SEARCH, prefs.getString(KEY_DOCK_SEARCH, ""))
                 .apply();
     }
 
