@@ -1,17 +1,24 @@
 package amirz.unread.media;
 
+import android.app.ExpandableListActivity;
+import android.app.Notification;
 import android.content.ComponentName;
 import android.content.Context;
+import android.media.AudioAttributes;
 import android.media.MediaMetadata;
 import android.media.session.MediaController;
+import android.media.session.MediaSession;
 import android.media.session.MediaSessionManager;
 import android.media.session.PlaybackState;
+import android.os.Bundle;
+import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 
 import com.android.launcher3.notification.NotificationListener;
 
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
@@ -149,18 +156,34 @@ public class MediaListener extends MediaController.Callback
     }
 
     private boolean isPlaying(MediaController mc) {
-        return hasTitle(mc)
-                && mc.getPlaybackState() != null
-                && mc.getPlaybackState().getState() == PlaybackState.STATE_PLAYING;
+        if (!hasNotification(mc) || !hasTitle(mc) || mc.getPlaybackState() == null) {
+            return false;
+        }
+        int state = mc.getPlaybackState().getState();
+        return state == PlaybackState.STATE_PLAYING;
     }
 
     private boolean isPausedOrPlaying(MediaController mc) {
-        if (!hasTitle(mc) || mc.getPlaybackState() == null) {
+        if (!hasNotification(mc) || !hasTitle(mc) || mc.getPlaybackState() == null) {
             return false;
         }
         int state = mc.getPlaybackState().getState();
         return state == PlaybackState.STATE_PAUSED
                 || state == PlaybackState.STATE_PLAYING;
+    }
+
+    private boolean hasNotification(MediaController mc) {
+        NotificationListener nls = NotificationListener.getInstanceIfConnected();
+        if (nls == null) {
+            return false;
+        }
+        for (StatusBarNotification sbn : nls.getActiveNotifications()) {
+            if (mc.getPackageName().equals(sbn.getPackageName())) {
+                return sbn.getNotification().extras
+                        .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null;
+            }
+        }
+        return false;
     }
 
     private boolean hasTitle(MediaController mc) {
