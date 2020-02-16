@@ -60,4 +60,6 @@
 	<string name="app_info_icon_pack">"Paquet d'icones"</string>
 	<string name="app_info_icon_pack_none">"Cap"</string>
 	<string name="app_info_source_unknown">"Desconegut"</string>
+	<string name="font">"Tipus de lletra"</string>
+	<string name="icon_shape">"Forma"</string>
 </resources>

@@ -60,4 +60,6 @@
 	<string name="app_info_icon_pack">"アイコンパック"</string>
 	<string name="app_info_icon_pack_none">"指定しない"</string>
 	<string name="app_info_source_unknown">"不明"</string>
+	<string name="font">"フォント"</string>
+	<string name="icon_shape">"シェイプ"</string>
 </resources>

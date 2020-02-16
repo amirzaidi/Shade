@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"بستۀ آیکون‌ها"</string>
 	<string name="app_info_icon_pack_none">"خالی"</string>
 	<string name="app_info_source_unknown">"ناشناس"</string>
+	<string name="font">"قلم"</string>
+	<string name="icon_shape">"شکل"</string>
 </resources>

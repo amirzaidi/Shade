@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"ഐക്കൺ പായ്ക്ക്"</string>
 	<string name="app_info_icon_pack_none">"ഒന്നുമില്ല"</string>
 	<string name="app_info_source_unknown">"അജ്ഞാതം"</string>
+	<string name="font">"ഫോണ്ട്"</string>
+	<string name="icon_shape">"ആകൃതി"</string>
 </resources>

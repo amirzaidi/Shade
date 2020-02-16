@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"圖示套件"</string>
 	<string name="app_info_icon_pack_none">"無"</string>
 	<string name="app_info_source_unknown">"未知"</string>
+	<string name="font">"字體"</string>
+	<string name="icon_shape">"形狀"</string>
 </resources>

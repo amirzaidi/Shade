@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"ชุดไอคอน"</string>
 	<string name="app_info_icon_pack_none">"ไม่มี"</string>
 	<string name="app_info_source_unknown">"ไม่ทราบ"</string>
+	<string name="font">"ฟอนต์"</string>
+	<string name="icon_shape">"รูปทรง"</string>
 </resources>

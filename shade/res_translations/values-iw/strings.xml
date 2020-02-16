@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"ערכת סמלים"</string>
 	<string name="app_info_icon_pack_none">"ללא"</string>
 	<string name="app_info_source_unknown">"לא ידוע"</string>
+	<string name="font">"גופן"</string>
+	<string name="icon_shape">"צורה"</string>
 </resources>

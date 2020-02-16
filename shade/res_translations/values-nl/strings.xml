@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Pictogrampakket"</string>
 	<string name="app_info_icon_pack_none">"Geen"</string>
 	<string name="app_info_source_unknown">"Onbekend"</string>
+	<string name="font">"Lettertype"</string>
+	<string name="icon_shape">"Vorm"</string>
 </resources>

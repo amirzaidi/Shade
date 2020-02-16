@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Ikoncsomag"</string>
 	<string name="app_info_icon_pack_none">"Nincs"</string>
 	<string name="app_info_source_unknown">"Ismeretlen"</string>
+	<string name="font">"Betűtípus"</string>
+	<string name="icon_shape">"Forma"</string>
 </resources>

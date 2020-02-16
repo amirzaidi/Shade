@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"ఐకాన్ ప్యాక్"</string>
 	<string name="app_info_icon_pack_none">"ఎప్పుడూ వద్దు"</string>
 	<string name="app_info_source_unknown">"తెలియదు"</string>
+	<string name="font">"ఫాంట్"</string>
+	<string name="icon_shape">"ఆకారం"</string>
 </resources>

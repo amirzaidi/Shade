@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Pacchetto icone"</string>
 	<string name="app_info_icon_pack_none">"Nessuno"</string>
 	<string name="app_info_source_unknown">"Sconosciuto"</string>
+	<string name="font">"Carattere"</string>
+	<string name="icon_shape">"Forma"</string>
 </resources>

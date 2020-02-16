@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Набір піктограм"</string>
 	<string name="app_info_icon_pack_none">"Ніколи"</string>
 	<string name="app_info_source_unknown">"Невідомо"</string>
+	<string name="font">"Шрифт"</string>
+	<string name="icon_shape">"Форма"</string>
 </resources>

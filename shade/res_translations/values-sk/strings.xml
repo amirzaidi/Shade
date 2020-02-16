@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Balíček ikon"</string>
 	<string name="app_info_icon_pack_none">"Žiadne"</string>
 	<string name="app_info_source_unknown">"Neznáme"</string>
+	<string name="font">"Písmo"</string>
+	<string name="icon_shape">"Tvar"</string>
 </resources>

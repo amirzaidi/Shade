@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Paket ikona"</string>
 	<string name="app_info_icon_pack_none">"Ništa"</string>
 	<string name="app_info_source_unknown">"Nepoznato"</string>
+	<string name="font">"Font"</string>
+	<string name="icon_shape">"Oblik"</string>
 </resources>

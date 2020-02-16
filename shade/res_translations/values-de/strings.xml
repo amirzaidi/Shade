@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Icon Pack"</string>
 	<string name="app_info_icon_pack_none">"Keine"</string>
 	<string name="app_info_source_unknown">"Unbekannt"</string>
+	<string name="font">"Schriftart"</string>
+	<string name="icon_shape">"Form"</string>
 </resources>

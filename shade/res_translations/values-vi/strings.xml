@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Gói biểu tượng"</string>
 	<string name="app_info_icon_pack_none">"Không có"</string>
 	<string name="app_info_source_unknown">"Không xác định"</string>
+	<string name="font">"Phông chữ"</string>
+	<string name="icon_shape">"Hình dạng"</string>
 </resources>

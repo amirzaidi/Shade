@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Paket z ikonami"</string>
 	<string name="app_info_icon_pack_none">"Brez"</string>
 	<string name="app_info_source_unknown">"Neznano"</string>
+	<string name="font">"Pisava"</string>
+	<string name="icon_shape">"Oblika"</string>
 </resources>

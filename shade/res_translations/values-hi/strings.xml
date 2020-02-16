@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"आइकन पैक"</string>
 	<string name="app_info_icon_pack_none">"कोई नहीं"</string>
 	<string name="app_info_source_unknown">"अनजान"</string>
+	<string name="font">"फ़ॉन्ट"</string>
+	<string name="icon_shape">"आकार"</string>
 </resources>

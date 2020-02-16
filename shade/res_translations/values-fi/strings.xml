@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Kuvakepaketti"</string>
 	<string name="app_info_icon_pack_none">"Ei mitään"</string>
 	<string name="app_info_source_unknown">"Tuntematon"</string>
+	<string name="font">"Fontti"</string>
+	<string name="icon_shape">"Muoto"</string>
 </resources>

@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Pack d'icônes"</string>
 	<string name="app_info_icon_pack_none">"Aucun"</string>
 	<string name="app_info_source_unknown">"Inconnu"</string>
+	<string name="font">"Police"</string>
+	<string name="icon_shape">"Forme"</string>
 </resources>

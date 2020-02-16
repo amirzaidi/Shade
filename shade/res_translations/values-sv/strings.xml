@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Ikonpaket"</string>
 	<string name="app_info_icon_pack_none">"Inga"</string>
 	<string name="app_info_source_unknown">"Okänd"</string>
+	<string name="font">"Teckensnitt"</string>
+	<string name="icon_shape">"Form"</string>
 </resources>

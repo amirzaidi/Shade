@@ -62,4 +62,6 @@
 	<string name="app_info_icon_pack">"Pakiet ikon"</string>
 	<string name="app_info_icon_pack_none">"Brak"</string>
 	<string name="app_info_source_unknown">"Nieznany"</string>
+	<string name="font">"Czcionka"</string>
+	<string name="icon_shape">"Kształt"</string>
 </resources>
