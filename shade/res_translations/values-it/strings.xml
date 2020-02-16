@@ -53,7 +53,7 @@
 	<string name="category_style">"Tema"</string>
 	<string name="category_customization">"Personalizzazione"</string>
 	<string name="category_about">"Informazioni"</string>
-	<string name="pref_value_default">"Predefinite"</string>
+	<string name="pref_value_default">"Predefinito"</string>
 	<string name="pref_value_disabled">"Disattivato"</string>
 	<string name="show_drop_target_label">"Mostra"</string>
 	<string name="hide_drop_target_label">"Nascondi"</string>
