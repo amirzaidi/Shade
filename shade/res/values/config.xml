@@ -38,7 +38,7 @@
     </string-array>
 
     <string-array name="theme_entries">
-        <item>@string/theme_pixel</item>
+        <item>@string/pref_value_default</item>
         <item>@string/theme_campfire</item> <!-- Red -->
         <item>@string/theme_sunset</item> <!-- Yellow -->
         <item>@string/theme_forest</item> <!-- Green -->
