@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Zugriff auf Nutzungsdaten benötigt</string>
+    <string name="msg_missing_usage_access">Um App-Vorschläge zu erhalten, aktivieren Sie bitte den Zugriff auf Nutzungsdaten<xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Nach unten wischen, um die App-Informationen zu schließen.</string>
+    <string name="app_info_source">Quelle</string>
+    <string name="app_info_last_update">Letztes Update</string>
+    <string name="item_hidden">Element versteckt</string>
+    <string name="theme_title">Akzent</string>
+    <string name="theme_campfire">Lagerfeuer</string>
+    <string name="theme_sunset">Sonnenuntergang</string>
+    <string name="theme_forest">Wald</string>
+    <string name="theme_ocean">Ozean</string>
+    <string name="theme_twilight">Mitternacht</string>
+    <string name="theme_blossom">Blühend</string>
+    <string name="dock_search">Such-Widget</string>
+    <string name="feed_provider">Nachrichtenfeed</string>
+    <string name="grid_division">Gitterabstand</string>
+    <string name="grid_division_dense">Dicht (6 mal 6)</string>
+    <string name="grid_division_normal">Normal (5 mal 5)</string>
+    <string name="grid_division_reasonable">Dünn (4 mal 5)</string>
+    <string name="grid_division_big">Groß (4 mal 4)</string>
+    <string name="grid_division_crazybig">Gigantisch (3 mal 3)</string>
+    <string name="fading_transition">Verblassender Übergang</string>
+    <string name="fading_transition_desc">Beim Öffnen von Apps</string>
+    <string name="about_contact">Kontakt</string>
+    <string name="about_donate">Spenden</string>
+    <string name="about_donate_desc">Verwendung von PayPal</string>
+    <string name="shadespace_text_charging">Geladen zu %1$d%%</string>
+</resources>

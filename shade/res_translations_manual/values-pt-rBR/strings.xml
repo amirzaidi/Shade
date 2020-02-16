@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Acesso ao uso necessário</string>
+    <string name="msg_missing_usage_access">Para exibir sugestões de apps, habilite o acesso ao uso para <xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Deslize para baixo para fechar as informações do app.</string>
+    <string name="app_info_source">Fonte</string>
+    <string name="app_info_last_update">Última atualização</string>
+    <string name="item_hidden">Item oculto</string>
+    <string name="theme_title">Cor de destaque</string>
+    <string name="theme_campfire">Fogueira</string>
+    <string name="theme_sunset">Pôr do sol</string>
+    <string name="theme_forest">Floresta</string>
+    <string name="theme_ocean">Oceano</string>
+    <string name="theme_twilight">Crepúsculo</string>
+    <string name="theme_blossom">Blossom</string>
+    <string name="dock_search">Widget de pesquisa</string>
+    <string name="feed_provider">Feed de notícias</string>
+    <string name="grid_division">Espaçamento da grade</string>
+    <string name="grid_division_dense">Denso (6 por 6)</string>
+    <string name="grid_division_normal">Normal (5 por 5)</string>
+    <string name="grid_division_reasonable">Esparso (4 por 5)</string>
+    <string name="grid_division_big">Grande (4 por 4)</string>
+    <string name="grid_division_crazybig">Gigantesco (3 por 3)</string>
+    <string name="fading_transition">Transição de desvanecimento</string>
+    <string name="fading_transition_desc">Ao abrir apps</string>
+    <string name="about_contact">Contato</string>
+    <string name="about_donate">Doar</string>
+    <string name="about_donate_desc">Usando o saldo da Google Play</string>
+    <string name="shadespace_text_charging">Carregado em %1$d%%</string>
+</resources>
