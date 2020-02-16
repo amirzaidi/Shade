@@ -6,7 +6,7 @@
     <string name="msg_missing_usage_access" translatable="false">To show App Suggestions, turn on usage access for <xliff:g id="name" example="My App">%1$s</xliff:g></string>
     <string name="app_info_subtext" translatable="false">Swipe down to close app info.</string>
     <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
-    <string name="placeholder_string" translatable="false">Loading...</string> <!-- Used for preference height loading. -->
+    <string name="placeholder_string" translatable="false">@string/loading</string> <!-- Used for preference height loading. -->
     <string name="item_hidden" translatable="false">Item hidden</string>
     <string name="app_info_source" translatable="false">Source</string>
     <string name="app_info_last_update" translatable="false">Last update</string>
