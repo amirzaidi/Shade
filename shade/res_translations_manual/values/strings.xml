@@ -13,9 +13,8 @@
     <string name="theme_ocean">Ocean</string>
     <string name="theme_twilight">Twilight</string>
     <string name="theme_blossom">Blossom</string>
-    <string name="icon_pack">Icons</string>
     <string name="dock_search">Search widget</string>
-    <string name="feed_provider">Feed provider</string>
+    <string name="feed_provider">News feed</string>
     <string name="grid_division">Grid spacing</string>
     <string name="grid_division_dense">Dense (6 by 6)</string>
     <string name="grid_division_normal">Normal (5 by 5)</string>
