@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Απενεργοποιημένο"</string>
 	<string name="show_drop_target_label">"Εμφάνιση"</string>
 	<string name="hide_drop_target_label">"Απόκρυψη"</string>
+	<string name="app_info_more">"Περισσότερα"</string>
+	<string name="app_info_version">"Έκδοση"</string>
+	<string name="app_info_icon_pack">"Πακέτο εικονιδίων"</string>
+	<string name="app_info_icon_pack_none">"Κανένα"</string>
+	<string name="app_info_source_unknown">"Άγνωστο"</string>
 </resources>

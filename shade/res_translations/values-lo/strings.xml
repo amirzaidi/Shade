@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"ຄ່າເລີ່ມຕົ້ນ"</string>
 	<string name="show_drop_target_label">"ສະແດງ"</string>
 	<string name="hide_drop_target_label">"ເຊື່ອງ"</string>
+	<string name="app_info_more">"ເພີ່ມເຕີມ"</string>
+	<string name="app_info_version">"ເວີຊັນ"</string>
+	<string name="app_info_icon_pack_none">"ບໍ່ມີ"</string>
+	<string name="app_info_source_unknown">"ບໍ່ຮູ້ຈັກ"</string>
 </resources>

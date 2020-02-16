@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Вимкнено"</string>
 	<string name="show_drop_target_label">"Показати"</string>
 	<string name="hide_drop_target_label">"Сховати"</string>
+	<string name="app_info_more">"Більше"</string>
+	<string name="app_info_version">"Версія"</string>
+	<string name="app_info_icon_pack">"Набір піктограм"</string>
+	<string name="app_info_icon_pack_none">"Ніколи"</string>
+	<string name="app_info_source_unknown">"Невідомо"</string>
 </resources>

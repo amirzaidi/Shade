@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Slått av"</string>
 	<string name="show_drop_target_label">"Vis"</string>
 	<string name="hide_drop_target_label">"Skjul"</string>
+	<string name="app_info_more">"Se mer"</string>
+	<string name="app_info_version">"Versjon"</string>
+	<string name="app_info_icon_pack">"Ikonpakke"</string>
+	<string name="app_info_icon_pack_none">"Ingen"</string>
+	<string name="app_info_source_unknown">"Ukjent"</string>
 </resources>

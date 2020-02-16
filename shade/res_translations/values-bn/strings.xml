@@ -54,4 +54,8 @@
 	<string name="pref_value_disabled">"অক্ষম হয়েছে"</string>
 	<string name="show_drop_target_label">"দেখান"</string>
 	<string name="hide_drop_target_label">"লুকান"</string>
+	<string name="app_info_more">"আরো"</string>
+	<string name="app_info_version">"ভার্সন"</string>
+	<string name="app_info_icon_pack_none">"কোনও কিছুই নয়"</string>
+	<string name="app_info_source_unknown">"অজানা"</string>
 </resources>

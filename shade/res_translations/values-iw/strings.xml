@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"מושבת"</string>
 	<string name="show_drop_target_label">"הצג"</string>
 	<string name="hide_drop_target_label">"הסתר"</string>
+	<string name="app_info_more">"עוד"</string>
+	<string name="app_info_version">"גרסה"</string>
+	<string name="app_info_icon_pack">"ערכת סמלים"</string>
+	<string name="app_info_icon_pack_none">"ללא"</string>
+	<string name="app_info_source_unknown">"לא ידוע"</string>
 </resources>

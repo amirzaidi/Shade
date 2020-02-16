@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"ნაგულისხმევი"</string>
 	<string name="show_drop_target_label">"ჩვენება"</string>
 	<string name="hide_drop_target_label">"დამალვა"</string>
+	<string name="app_info_more">"მეტი"</string>
+	<string name="app_info_version">"ვერსია"</string>
+	<string name="app_info_icon_pack_none">"არცერთი"</string>
+	<string name="app_info_source_unknown">"უცნობი"</string>
 </resources>

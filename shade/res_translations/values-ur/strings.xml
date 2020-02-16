@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"ڈیفالٹ"</string>
 	<string name="show_drop_target_label">"دکھائیں"</string>
 	<string name="hide_drop_target_label">"چھپائیں"</string>
+	<string name="app_info_more">"مزید"</string>
+	<string name="app_info_version">"ورژن"</string>
+	<string name="app_info_icon_pack_none">"کوئی نہیں"</string>
+	<string name="app_info_source_unknown">"نامعلوم"</string>
 </resources>

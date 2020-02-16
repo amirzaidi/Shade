@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"已停用"</string>
 	<string name="show_drop_target_label">"显示"</string>
 	<string name="hide_drop_target_label">"隐藏"</string>
+	<string name="app_info_more">"更多"</string>
+	<string name="app_info_version">"版本"</string>
+	<string name="app_info_icon_pack">"图标包"</string>
+	<string name="app_info_icon_pack_none">"无"</string>
+	<string name="app_info_source_unknown">"未知"</string>
 </resources>

@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Okuzenzakalelayo"</string>
 	<string name="show_drop_target_label">"Umbukiso"</string>
 	<string name="hide_drop_target_label">"Fihla"</string>
+	<string name="app_info_more">"Okunye"</string>
+	<string name="app_info_version">"Inhlobo"</string>
+	<string name="app_info_icon_pack_none">"Lutho"</string>
+	<string name="app_info_source_unknown">"Akwaziwa"</string>
 </resources>

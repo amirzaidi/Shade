@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Naka-disable"</string>
 	<string name="show_drop_target_label">"Ipakita"</string>
 	<string name="hide_drop_target_label">"Itago"</string>
+	<string name="app_info_more">"Higit pa"</string>
+	<string name="app_info_version">"Bersyon"</string>
+	<string name="app_info_icon_pack">"Icon pack"</string>
+	<string name="app_info_icon_pack_none">"Wala"</string>
+	<string name="app_info_source_unknown">"Hindi Kilala"</string>
 </resources>

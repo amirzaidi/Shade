@@ -54,4 +54,8 @@
 	<string name="pref_value_disabled">"અક્ષમ કર્યો"</string>
 	<string name="show_drop_target_label">"બતાવો"</string>
 	<string name="hide_drop_target_label">"છુપાવો"</string>
+	<string name="app_info_more">"વધુ"</string>
+	<string name="app_info_version">"સંસ્કરણ"</string>
+	<string name="app_info_icon_pack_none">"કોઈ નહીં"</string>
+	<string name="app_info_source_unknown">"અજાણ્યું"</string>
 </resources>

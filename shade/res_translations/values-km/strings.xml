@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"លំនាំដើម"</string>
 	<string name="show_drop_target_label">"បង្ហាញ"</string>
 	<string name="hide_drop_target_label">"លាក់"</string>
+	<string name="app_info_more">"ច្រើន​ទៀត"</string>
+	<string name="app_info_version">"កំណែ"</string>
+	<string name="app_info_icon_pack_none">"គ្មាន"</string>
+	<string name="device_info_default">"មិន​ស្គាល់"</string>
 </resources>

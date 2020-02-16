@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"පෙරනිමි"</string>
 	<string name="show_drop_target_label">"පෙන්වන්න"</string>
 	<string name="hide_drop_target_label">"සඟවන්න"</string>
+	<string name="app_info_more">"තව"</string>
+	<string name="app_info_version">"අනුවාදය"</string>
+	<string name="app_info_icon_pack_none">"කිසිවක් නැත"</string>
+	<string name="app_info_source_unknown">"නොදනී"</string>
 </resources>

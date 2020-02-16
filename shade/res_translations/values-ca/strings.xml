@@ -55,4 +55,9 @@
 	<string name="pref_value_disabled">"Desactivat"</string>
 	<string name="show_drop_target_label">"Mostra"</string>
 	<string name="hide_drop_target_label">"Amaga"</string>
+	<string name="app_info_more">"Més"</string>
+	<string name="app_info_version">"Versió"</string>
+	<string name="app_info_icon_pack">"Paquet d'icones"</string>
+	<string name="app_info_icon_pack_none">"Cap"</string>
+	<string name="app_info_source_unknown">"Desconegut"</string>
 </resources>

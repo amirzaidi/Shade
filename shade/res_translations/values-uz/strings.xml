@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Birlamchi"</string>
 	<string name="show_drop_target_label">"Ko‘rsatish"</string>
 	<string name="hide_drop_target_label">"Berkitish"</string>
+	<string name="app_info_more">"Yana"</string>
+	<string name="app_info_version">"Versiyasi"</string>
+	<string name="app_info_icon_pack_none">"–"</string>
+	<string name="app_info_source_unknown">"Noma’lum"</string>
 </resources>

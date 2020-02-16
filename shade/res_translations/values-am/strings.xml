@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"ነባሪ"</string>
 	<string name="show_drop_target_label">"አሳይ"</string>
 	<string name="hide_drop_target_label">"ደብቅ"</string>
+	<string name="app_info_more">"ተጨማሪ"</string>
+	<string name="app_info_version">"ሥሪት"</string>
+	<string name="app_info_icon_pack_none">"ምንም"</string>
+	<string name="app_info_source_unknown">"ያልታወቀ"</string>
 </resources>

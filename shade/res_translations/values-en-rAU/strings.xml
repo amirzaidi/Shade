@@ -52,4 +52,8 @@
 	<string name="pref_value_disabled">"Disabled"</string>
 	<string name="show_drop_target_label">"Show"</string>
 	<string name="hide_drop_target_label">"Hide"</string>
+	<string name="app_info_more">"More"</string>
+	<string name="app_info_version">"Version"</string>
+	<string name="app_info_icon_pack_none">"None"</string>
+	<string name="app_info_source_unknown">"Unknown"</string>
 </resources>

@@ -56,4 +56,9 @@
 	<string name="pref_value_disabled">"Deaktiveret"</string>
 	<string name="show_drop_target_label">"Vis"</string>
 	<string name="hide_drop_target_label">"Skjul"</string>
+	<string name="app_info_more">"Mere"</string>
+	<string name="app_info_version">"Version"</string>
+	<string name="app_info_icon_pack">"Ikonpakke"</string>
+	<string name="app_info_icon_pack_none">"Ingen"</string>
+	<string name="app_info_source_unknown">"Ukendt"</string>
 </resources>

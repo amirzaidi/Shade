@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Әдепкі"</string>
 	<string name="show_drop_target_label">"Көрсету"</string>
 	<string name="hide_drop_target_label">"Жасыру"</string>
+	<string name="app_info_more">"Басқа"</string>
+	<string name="app_info_version">"Нұсқа"</string>
+	<string name="app_info_icon_pack_none">"Ешқандай"</string>
+	<string name="app_info_source_unknown">"Белгісіз"</string>
 </resources>

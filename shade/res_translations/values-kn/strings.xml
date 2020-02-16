@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
 	<string name="show_drop_target_label">"ತೋರಿಸು"</string>
 	<string name="hide_drop_target_label">"ಮರೆಮಾಡು"</string>
+	<string name="app_info_more">"ಇನ್ನಷ್ಟು"</string>
+	<string name="app_info_version">"ಆವೃತ್ತಿ"</string>
+	<string name="app_info_icon_pack">"ಐಕಾನ್ ಪ್ಯಾಕ್"</string>
+	<string name="app_info_icon_pack_none">"ಯಾವುದೂ ಇಲ್ಲ"</string>
+	<string name="app_info_source_unknown">"ಅಪರಿಚಿತ"</string>
 </resources>

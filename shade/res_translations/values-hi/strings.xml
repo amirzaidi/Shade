@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"बंद किया गया"</string>
 	<string name="show_drop_target_label">"दिखाएं"</string>
 	<string name="hide_drop_target_label">"छिपाएं"</string>
+	<string name="app_info_more">"ज़्यादा"</string>
+	<string name="app_info_version">"वर्शन"</string>
+	<string name="app_info_icon_pack">"आइकन पैक"</string>
+	<string name="app_info_icon_pack_none">"कोई नहीं"</string>
+	<string name="app_info_source_unknown">"अनजान"</string>
 </resources>

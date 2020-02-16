@@ -41,4 +41,8 @@
 	<string name="pref_value_default">"ডিফ\'ল্ট"</string>
 	<string name="show_drop_target_label">"দেখুৱাওক"</string>
 	<string name="hide_drop_target_label">"লুকুৱাওক"</string>
+	<string name="app_info_more">"অধিক"</string>
+	<string name="app_info_version">"সংস্কৰণ"</string>
+	<string name="app_info_icon_pack_none">"নাই"</string>
+	<string name="app_info_source_unknown">"অজ্ঞাত"</string>
 </resources>

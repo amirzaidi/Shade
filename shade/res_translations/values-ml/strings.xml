@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"പ്രവർത്തനരഹിതമാക്കി"</string>
 	<string name="show_drop_target_label">"കാണിക്കുക"</string>
 	<string name="hide_drop_target_label">"മറയ്ക്കുക"</string>
+	<string name="app_info_more">"കൂടുതൽ"</string>
+	<string name="app_info_version">"പതിപ്പ്"</string>
+	<string name="app_info_icon_pack">"ഐക്കൺ പായ്ക്ക്"</string>
+	<string name="app_info_icon_pack_none">"ഒന്നുമില്ല"</string>
+	<string name="app_info_source_unknown">"അജ്ഞാതം"</string>
 </resources>

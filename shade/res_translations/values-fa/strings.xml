@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"غیر فعال شد"</string>
 	<string name="show_drop_target_label">"نمایش"</string>
 	<string name="hide_drop_target_label">"پنهان کردن"</string>
+	<string name="app_info_more">"بیشتر"</string>
+	<string name="app_info_version">"نسخه"</string>
+	<string name="app_info_icon_pack">"بستۀ آیکون‌ها"</string>
+	<string name="app_info_icon_pack_none">"خالی"</string>
+	<string name="app_info_source_unknown">"ناشناس"</string>
 </resources>

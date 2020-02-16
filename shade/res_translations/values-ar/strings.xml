@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"غير مفعّل"</string>
 	<string name="show_drop_target_label">"إظهار"</string>
 	<string name="hide_drop_target_label">"إخفاء"</string>
+	<string name="app_info_more">"المزيد"</string>
+	<string name="app_info_version">"الإصدار"</string>
+	<string name="app_info_icon_pack">"حزمة الرموز"</string>
+	<string name="app_info_icon_pack_none">"بدون"</string>
+	<string name="app_info_source_unknown">"غير معروف"</string>
 </resources>

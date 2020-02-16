@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Inaktiverad"</string>
 	<string name="show_drop_target_label">"Visa"</string>
 	<string name="hide_drop_target_label">"Dölj"</string>
+	<string name="app_info_more">"Mer"</string>
+	<string name="app_info_version">"Version"</string>
+	<string name="app_info_icon_pack">"Ikonpaket"</string>
+	<string name="app_info_icon_pack_none">"Inga"</string>
+	<string name="app_info_source_unknown">"Okänd"</string>
 </resources>

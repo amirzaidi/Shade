@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Të parazgjedhura"</string>
 	<string name="show_drop_target_label">"Shfaq"</string>
 	<string name="hide_drop_target_label">"Fshih"</string>
+	<string name="app_info_more">"Më shumë"</string>
+	<string name="app_info_version">"Versioni"</string>
+	<string name="app_info_icon_pack_none">"Asnjë"</string>
+	<string name="app_info_source_unknown">"I panjohur"</string>
 </resources>

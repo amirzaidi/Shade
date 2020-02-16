@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Predeterminado"</string>
 	<string name="show_drop_target_label">"Mostrar"</string>
 	<string name="hide_drop_target_label">"Ocultar"</string>
+	<string name="app_info_more">"Máis"</string>
+	<string name="app_info_version">"Versión"</string>
+	<string name="app_info_icon_pack_none">"Ningún"</string>
+	<string name="app_info_source_unknown">"Descoñecido"</string>
 </resources>

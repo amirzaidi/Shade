@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Lehenetsia"</string>
 	<string name="show_drop_target_label">"Erakutsi"</string>
 	<string name="hide_drop_target_label">"Ezkutatu"</string>
+	<string name="app_info_more">"Gehiago"</string>
+	<string name="app_info_version">"Bertsioa"</string>
+	<string name="app_info_icon_pack_none">"Bat ere ez"</string>
+	<string name="app_info_source_unknown">"Ezezaguna"</string>
 </resources>

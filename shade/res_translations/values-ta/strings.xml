@@ -54,4 +54,8 @@
 	<string name="pref_value_disabled">"முடக்கப்பட்டது"</string>
 	<string name="show_drop_target_label">"காட்டு"</string>
 	<string name="hide_drop_target_label">"மறை"</string>
+	<string name="app_info_more">"மேலும்"</string>
+	<string name="app_info_version">"பதிப்பு"</string>
+	<string name="app_info_icon_pack_none">"ஏதுமில்லை"</string>
+	<string name="app_info_source_unknown">"தெரியவில்லை"</string>
 </resources>

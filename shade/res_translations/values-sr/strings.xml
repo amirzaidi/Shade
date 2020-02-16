@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Подразумевана"</string>
 	<string name="show_drop_target_label">"Прикажи"</string>
 	<string name="hide_drop_target_label">"Сакриј"</string>
+	<string name="app_info_more">"Још"</string>
+	<string name="app_info_version">"Верзија"</string>
+	<string name="app_info_icon_pack_none">"Ниједан"</string>
+	<string name="app_info_source_unknown">"Непознато"</string>
 </resources>

@@ -57,4 +57,9 @@
 	<string name="pref_value_disabled">"Disattivato"</string>
 	<string name="show_drop_target_label">"Mostra"</string>
 	<string name="hide_drop_target_label">"Nascondi"</string>
+	<string name="app_info_more">"Altro"</string>
+	<string name="app_info_version">"Versione"</string>
+	<string name="app_info_icon_pack">"Pacchetto icone"</string>
+	<string name="app_info_icon_pack_none">"Nessuno"</string>
+	<string name="app_info_source_unknown">"Sconosciuto"</string>
 </resources>

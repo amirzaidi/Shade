@@ -47,4 +47,8 @@
 	<string name="pref_value_default">"Демейки"</string>
 	<string name="show_drop_target_label">"Көрсөтүү"</string>
 	<string name="hide_drop_target_label">"Жашыруу"</string>
+	<string name="app_info_more">"Дагы"</string>
+	<string name="app_info_version">"Версиясы"</string>
+	<string name="app_info_icon_pack_none">"Жок"</string>
+	<string name="app_info_source_unknown">"Белгисиз"</string>
 </resources>

@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"Chaguomsingi"</string>
 	<string name="show_drop_target_label">"Onyesha"</string>
 	<string name="hide_drop_target_label">"Ficha"</string>
+	<string name="app_info_more">"Zaidi"</string>
+	<string name="app_info_version">"Toleo"</string>
+	<string name="app_info_icon_pack_none">"Hamna"</string>
+	<string name="app_info_source_unknown">"Haijulikani"</string>
 </resources>

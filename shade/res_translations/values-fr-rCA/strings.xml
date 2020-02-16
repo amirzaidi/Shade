@@ -52,4 +52,8 @@
 	<string name="pref_value_disabled">"Désactivée"</string>
 	<string name="show_drop_target_label">"Afficher"</string>
 	<string name="hide_drop_target_label">"Masquer"</string>
+	<string name="app_info_more">"More"</string>
+	<string name="app_info_version">"Version"</string>
+	<string name="app_info_icon_pack_none">"Aucun"</string>
+	<string name="app_info_source_unknown">"Inconnu"</string>
 </resources>

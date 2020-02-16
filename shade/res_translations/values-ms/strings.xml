@@ -54,4 +54,8 @@
 	<string name="pref_value_disabled">"Dilumpuhkan"</string>
 	<string name="show_drop_target_label">"Tunjukkan"</string>
 	<string name="hide_drop_target_label">"Sembunyikan"</string>
+	<string name="app_info_more">"Lagi"</string>
+	<string name="app_info_version">"Versi"</string>
+	<string name="app_info_icon_pack_none">"Tiada"</string>
+	<string name="app_info_source_unknown">"Tidak diketahui"</string>
 </resources>

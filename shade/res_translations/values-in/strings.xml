@@ -49,4 +49,8 @@
 	<string name="pref_value_default">"Default"</string>
 	<string name="show_drop_target_label">"Lihat"</string>
 	<string name="hide_drop_target_label">"Sembunyikan"</string>
+	<string name="app_info_more">"Lainnya"</string>
+	<string name="app_info_version">"Versi"</string>
+	<string name="app_info_icon_pack_none">"Tidak ada"</string>
+	<string name="app_info_source_unknown">"Tidak diketahui"</string>
 </resources>
