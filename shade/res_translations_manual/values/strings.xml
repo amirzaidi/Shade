@@ -3,9 +3,9 @@
     <string name="needs_usage_access">Usage access needed</string>
     <string name="msg_missing_usage_access">To show App Suggestions, turn on usage access for <xliff:g id="name" example="My App">%1$s</xliff:g></string>
     <string name="app_info_subtext">Swipe down to close app info.</string>
-    <string name="item_hidden">Item hidden</string>
     <string name="app_info_source">Source</string>
     <string name="app_info_last_update">Last update</string>
+    <string name="item_hidden">Item hidden</string>
     <string name="theme_title">Accent</string>
     <string name="theme_campfire">Campfire</string>
     <string name="theme_sunset">Sunset</string>
