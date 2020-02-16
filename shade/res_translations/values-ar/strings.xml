@@ -53,4 +53,6 @@
 	<string name="category_style">"الموضوع"</string>
 	<string name="category_customization">"التخصيص"</string>
 	<string name="category_about">"لمحة"</string>
+	<string name="pref_value_default">"التطبيقات التلقائية"</string>
+	<string name="pref_value_disabled">"غير مفعّل"</string>
 </resources>

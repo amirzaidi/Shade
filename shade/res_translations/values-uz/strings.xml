@@ -44,4 +44,5 @@
 	<string name="icon_shape_circle">"Aylana"</string>
 	<string name="icon_shape_teardrop">"Tomchi"</string>
 	<string name="category_about">"Ilova haqida"</string>
+	<string name="pref_value_default">"Birlamchi"</string>
 </resources>

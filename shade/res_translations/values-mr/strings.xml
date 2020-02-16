@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"गडद"</string>
 	<string name="category_general">"सामान्य"</string>
 	<string name="category_about">"बद्दल"</string>
+	<string name="pref_value_default">"डीफॉल्ट"</string>
+	<string name="pref_value_disabled">"अक्षम"</string>
 </resources>

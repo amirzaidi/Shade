@@ -46,4 +46,5 @@
 	<string name="icon_shape_rounded_square">"ຮູບສີ່ຫຼ່ຽມແຈມົນ"</string>
 	<string name="icon_shape_cylinder">"ກະບອກ"</string>
 	<string name="category_about">"ກ່ຽວກັບ"</string>
+	<string name="pref_value_default">"ຄ່າເລີ່ມຕົ້ນ"</string>
 </resources>

@@ -53,4 +53,6 @@
 	<string name="category_style">"主题模式"</string>
 	<string name="category_customization">"个性化"</string>
 	<string name="category_about">"关于"</string>
+	<string name="pref_value_default">"默认应用"</string>
+	<string name="pref_value_disabled">"已停用"</string>
 </resources>

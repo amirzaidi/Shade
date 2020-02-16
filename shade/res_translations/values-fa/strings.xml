@@ -53,4 +53,6 @@
 	<string name="category_style">"پوسته"</string>
 	<string name="category_customization">"شخصی سازی"</string>
 	<string name="category_about">"درباره"</string>
+	<string name="pref_value_default">"پیش‌فرض"</string>
+	<string name="pref_value_disabled">"غیر فعال شد"</string>
 </resources>

@@ -53,4 +53,6 @@
 	<string name="category_style">"Тема"</string>
 	<string name="category_customization">"Индивидуальная настройка"</string>
 	<string name="category_about">"О приложении"</string>
+	<string name="pref_value_default">"По умолчанию"</string>
+	<string name="pref_value_disabled">"Отключено"</string>
 </resources>

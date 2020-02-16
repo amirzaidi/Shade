@@ -53,4 +53,6 @@
 	<string name="category_style">"థీమ్"</string>
 	<string name="category_customization">"కస్టమైజేషన్"</string>
 	<string name="category_about">"పరిచయం"</string>
+	<string name="pref_value_default">"డిఫాల్ట్"</string>
+	<string name="pref_value_disabled">"నిలిపివేయబడింది"</string>
 </resources>

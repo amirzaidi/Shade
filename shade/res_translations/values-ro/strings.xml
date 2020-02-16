@@ -53,4 +53,6 @@
 	<string name="category_style">"Temă"</string>
 	<string name="category_customization">"Personalizare"</string>
 	<string name="category_about">"Despre"</string>
+	<string name="pref_value_default">"Prestabilite"</string>
+	<string name="pref_value_disabled">"Dezactivată"</string>
 </resources>

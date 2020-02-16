@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"Tumšs"</string>
 	<string name="category_general">"Vispārīgi"</string>
 	<string name="category_about">"Par"</string>
+	<string name="pref_value_default">"Noklusējuma"</string>
+	<string name="pref_value_disabled">"Atspējots"</string>
 </resources>

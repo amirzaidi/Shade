@@ -46,4 +46,5 @@
 	<string name="icon_shape_rounded_square">"Rúnnaður ferningur"</string>
 	<string name="icon_shape_cylinder">"Sívalningur"</string>
 	<string name="category_about">"Um forritið"</string>
+	<string name="pref_value_default">"Sjálfgefið"</string>
 </resources>

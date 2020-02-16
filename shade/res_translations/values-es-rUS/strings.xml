@@ -44,4 +44,5 @@
 	<string name="icon_shape_circle">"Círculo"</string>
 	<string name="icon_shape_teardrop">"Gota"</string>
 	<string name="category_about">"Acerca de"</string>
+	<string name="pref_value_default">"Predeterminada"</string>
 </resources>

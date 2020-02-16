@@ -44,4 +44,5 @@
 	<string name="icon_shape_circle">"Шеңбер"</string>
 	<string name="icon_shape_teardrop">"Тамшы"</string>
 	<string name="category_about">"Мәлімет"</string>
+	<string name="pref_value_default">"Әдепкі"</string>
 </resources>

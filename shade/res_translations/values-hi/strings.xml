@@ -53,4 +53,6 @@
 	<string name="category_style">"थीम"</string>
 	<string name="category_customization">"अनुकूलन"</string>
 	<string name="category_about">"परिचय"</string>
+	<string name="pref_value_default">"डिफ़ॉल्ट"</string>
+	<string name="pref_value_disabled">"बंद किया गया"</string>
 </resources>

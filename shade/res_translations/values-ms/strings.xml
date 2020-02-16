@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"Gelap"</string>
 	<string name="category_general">"Umum"</string>
 	<string name="category_about">"Perihal"</string>
+	<string name="pref_value_default">"Lalai"</string>
+	<string name="pref_value_disabled">"Dilumpuhkan"</string>
 </resources>

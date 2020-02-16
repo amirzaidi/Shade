@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"டார்க்"</string>
 	<string name="category_general">"பொதுவானவை"</string>
 	<string name="category_about">"அறிமுகம்"</string>
+	<string name="pref_value_default">"இயல்பு"</string>
+	<string name="pref_value_disabled">"முடக்கப்பட்டது"</string>
 </resources>

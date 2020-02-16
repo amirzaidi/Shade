@@ -53,4 +53,6 @@
 	<string name="category_style">"Tema"</string>
 	<string name="category_customization">"Prilagajanje"</string>
 	<string name="category_about">"Vizitka"</string>
+	<string name="pref_value_default">"Privzeto"</string>
+	<string name="pref_value_disabled">"Onemogočeno"</string>
 </resources>

@@ -53,4 +53,6 @@
 	<string name="category_style">"തീം"</string>
 	<string name="category_customization">"ഇച്ഛാനുസൃതമാക്കല്‍"</string>
 	<string name="category_about">"ആമുഖം"</string>
+	<string name="pref_value_default">"ഡിഫോൾട്ട്"</string>
+	<string name="pref_value_disabled">"പ്രവർത്തനരഹിതമാക്കി"</string>
 </resources>

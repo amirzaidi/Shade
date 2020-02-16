@@ -44,4 +44,5 @@
 	<string name="icon_shape_circle">"Zirkulua"</string>
 	<string name="icon_shape_teardrop">"Malkoa"</string>
 	<string name="category_about">"Honi buruz"</string>
+	<string name="pref_value_default">"Lehenetsia"</string>
 </resources>

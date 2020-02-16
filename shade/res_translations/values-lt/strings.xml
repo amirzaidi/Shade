@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"Tamsi"</string>
 	<string name="category_general">"Bendra"</string>
 	<string name="category_about">"Apie"</string>
+	<string name="pref_value_default">"Numatytieji"</string>
+	<string name="pref_value_disabled">"Neleidžiama"</string>
 </resources>

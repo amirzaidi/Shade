@@ -52,4 +52,6 @@
 	<string name="category_style">"Tema"</string>
 	<string name="category_customization">"Tilpasning"</string>
 	<string name="category_about">"Om"</string>
+	<string name="pref_value_default">"Standard"</string>
+	<string name="pref_value_disabled">"Deaktiveret"</string>
 </resources>

@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"Tume"</string>
 	<string name="category_general">"Üldine"</string>
 	<string name="category_about">"Teave"</string>
+	<string name="pref_value_default">"Vaikeseade"</string>
+	<string name="pref_value_disabled">"Keelatud"</string>
 </resources>

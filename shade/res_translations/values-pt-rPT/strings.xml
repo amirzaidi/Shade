@@ -48,4 +48,6 @@
 	<string name="device_theme_dark">"Escuro"</string>
 	<string name="category_general">"Geral"</string>
 	<string name="category_about">"Acerca de"</string>
+	<string name="pref_value_default">"Predefinição"</string>
+	<string name="pref_value_disabled">"Desativada"</string>
 </resources>

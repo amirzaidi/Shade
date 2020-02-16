@@ -50,4 +50,6 @@
 	<string name="device_theme_dark">"ਗੂੜ੍ਹਾ"</string>
 	<string name="category_general">"ਸਧਾਰਨ"</string>
 	<string name="category_about">"ਇਸ ਬਾਰੇ"</string>
+	<string name="pref_value_default">"ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
+	<string name="pref_value_disabled">"ਅਯੋਗ ਬਣਾਇਆ"</string>
 </resources>

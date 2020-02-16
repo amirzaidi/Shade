@@ -46,4 +46,5 @@
 	<string name="icon_shape_rounded_square">"රවුම් කළ කොටුව"</string>
 	<string name="icon_shape_cylinder">"සිලින්ඩරය"</string>
 	<string name="category_about">"පිළිබඳ"</string>
+	<string name="pref_value_default">"පෙරනිමි"</string>
 </resources>

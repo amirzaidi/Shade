@@ -46,4 +46,5 @@
 	<string name="icon_shape_rounded_square">"Mraba mviringo"</string>
 	<string name="icon_shape_cylinder">"Silinda"</string>
 	<string name="category_about">"Kuhusu"</string>
+	<string name="pref_value_default">"Chaguomsingi"</string>
 </resources>

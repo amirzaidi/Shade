@@ -53,4 +53,6 @@
 	<string name="category_style">"Tema"</string>
 	<string name="category_customization">"Personalização"</string>
 	<string name="category_about">"Sobre"</string>
+	<string name="pref_value_default">"Padrão"</string>
+	<string name="pref_value_disabled">"Desativado"</string>
 </resources>

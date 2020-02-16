@@ -51,4 +51,6 @@
 	<string name="category_style">"テーマ"</string>
 	<string name="category_customization">"カスタマイズ"</string>
 	<string name="category_about">"概要"</string>
+	<string name="pref_value_default">"デフォルト"</string>
+	<string name="pref_value_disabled">"無効"</string>
 </resources>
