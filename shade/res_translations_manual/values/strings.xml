@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Usage access needed</string>
+    <string name="msg_missing_usage_access">To show App Suggestions, turn on usage access for <xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Swipe down to close app info.</string>
+    <string name="item_hidden">Item hidden</string>
+    <string name="app_info_source">Source</string>
+    <string name="app_info_last_update">Last update</string>
+    <string name="theme_title">Accent</string>
+    <string name="theme_pixel">Pixel</string>
+    <string name="theme_campfire">Campfire</string>
+    <string name="theme_sunset">Sunset</string>
+    <string name="theme_forest">Forest</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="theme_twilight">Twilight</string>
+    <string name="theme_blossom">Blossom</string>
+    <string name="icon_pack">Icons</string>
+    <string name="dock_search">Search widget</string>
+    <string name="feed_provider">Feed provider</string>
+    <string name="grid_division">Grid spacing</string>
+    <string name="grid_division_dense">Dense (6 by 6)</string>
+    <string name="grid_division_normal">Normal (5 by 5)</string>
+    <string name="grid_division_reasonable">Sparse (4 by 5)</string>
+    <string name="grid_division_big">Big (4 by 4)</string>
+    <string name="grid_division_crazybig">Gigantic (3 by 3)</string>
+    <string name="fading_transition">Fading transition</string>
+    <string name="fading_transition_desc">When opening apps</string>
+    <string name="about_contact">Contact</string>
+    <string name="about_contact_desc">Amir Zaidi</string>
+    <string name="about_donate">Donate</string>
+    <string name="about_donate_desc">Using Play balance</string>
+    <string name="gesture_service_label">Home button overlay</string>
+    <string name="shadespace_text_charging">Charged to %1$d%%</string>
+</resources>

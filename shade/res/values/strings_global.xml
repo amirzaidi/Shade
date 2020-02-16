@@ -2,43 +2,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="shade_app_name" translatable="false">Shade Launcher</string>
     <string name="shade_app_name_short" translatable="false">Shade</string>
-    <string name="needs_usage_access" translatable="false">Usage access needed</string>
-    <string name="msg_missing_usage_access" translatable="false">To show App Suggestions, turn on usage access for <xliff:g id="name" example="My App">%1$s</xliff:g></string>
-    <string name="app_info_subtext" translatable="false">Swipe down to close app info.</string>
     <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
     <string name="placeholder_string" translatable="false">@string/loading</string> <!-- Used for preference height loading. -->
-    <string name="item_hidden" translatable="false">Item hidden</string>
-    <string name="app_info_source" translatable="false">Source</string>
-    <string name="app_info_last_update" translatable="false">Last update</string>
-    <string name="theme_title" translatable="false">Accent</string>
-    <string name="theme_pixel" translatable="false">Pixel</string>
-    <string name="theme_campfire" translatable="false">Campfire</string>
-    <string name="theme_sunset" translatable="false">Sunset</string>
-    <string name="theme_forest" translatable="false">Forest</string>
-    <string name="theme_ocean" translatable="false">Ocean</string>
-    <string name="theme_twilight" translatable="false">Twilight</string>
-    <string name="theme_blossom" translatable="false">Blossom</string>
-    <string name="icon_pack" translatable="false">Icons</string>
-    <string name="dock_search" translatable="false">Search widget</string>
     <string name="dock_search_value" translatable="false">%1$s %2$s</string>
-    <string name="feed_provider" translatable="false">Feed provider</string>
     <string name="feed_provider_value" translatable="false">%1$s %2$s</string>
-    <string name="grid_division" translatable="false">Grid spacing</string>
-    <string name="grid_division_dense" translatable="false">Dense (6 by 6)</string>
-    <string name="grid_division_normal" translatable="false">Normal (5 by 5)</string>
-    <string name="grid_division_reasonable" translatable="false">Sparse (4 by 5)</string>
-    <string name="grid_division_big" translatable="false">Big (4 by 4)</string>
-    <string name="grid_division_crazybig" translatable="false">Gigantic (3 by 3)</string>
-    <string name="fading_transition" translatable="false">Fading transition</string>
-    <string name="fading_transition_desc" translatable="false">When opening apps</string>
     <string name="font_google_sans" translatable="false">Google Sans</string>
     <string name="about_app_version" translatable="false">@string/app_info_version</string>
     <string name="about_app_version_value" translatable="false">%1$s %2$s</string>
-    <string name="about_contact" translatable="false">Contact</string>
-    <string name="about_contact_desc" translatable="false">Amir Zaidi</string>
-    <string name="about_donate" translatable="false">Donate</string>
-    <string name="about_donate_desc" translatable="false">Using Play balance</string>
-    <string name="gesture_service_label" translatable="false">Home button overlay</string>
     <string name="shadespace_subtext_double" translatable="false">%1$s – %2$s</string>
-    <string name="shadespace_text_charging" translatable="false">Charged to %1$d%%</string>
 </resources>
