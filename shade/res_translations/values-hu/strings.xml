@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Ismeretlen"</string>
 	<string name="font">"Betűtípus"</string>
 	<string name="icon_shape">"Forma"</string>
+	<string name="loading">"Betöltés..."</string>
 </resources>

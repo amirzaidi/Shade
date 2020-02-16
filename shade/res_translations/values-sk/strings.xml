@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Neznáme"</string>
 	<string name="font">"Písmo"</string>
 	<string name="icon_shape">"Tvar"</string>
+	<string name="loading">"Prebieha načítavanie..."</string>
 </resources>

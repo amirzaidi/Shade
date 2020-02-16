@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Unbekannt"</string>
 	<string name="font">"Schriftart"</string>
 	<string name="icon_shape">"Form"</string>
+	<string name="loading">"Laden..."</string>
 </resources>

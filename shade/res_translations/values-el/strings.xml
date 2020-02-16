@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Άγνωστο"</string>
 	<string name="font">"Γραμματοσειρά"</string>
 	<string name="icon_shape">"Σχήμα"</string>
+	<string name="loading">"Φόρτωση..."</string>
 </resources>

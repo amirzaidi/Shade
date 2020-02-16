@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"ناشناس"</string>
 	<string name="font">"قلم"</string>
 	<string name="icon_shape">"شکل"</string>
+	<string name="loading">"در حال بارگذاری..."</string>
 </resources>

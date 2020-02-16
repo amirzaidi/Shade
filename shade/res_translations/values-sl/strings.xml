@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Neznano"</string>
 	<string name="font">"Pisava"</string>
 	<string name="icon_shape">"Oblika"</string>
+	<string name="loading">"Nalaganje..."</string>
 </resources>

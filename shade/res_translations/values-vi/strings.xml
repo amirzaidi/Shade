@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Không xác định"</string>
 	<string name="font">"Phông chữ"</string>
 	<string name="icon_shape">"Hình dạng"</string>
+	<string name="loading">"Đang tải..."</string>
 </resources>

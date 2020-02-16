@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Sconosciuto"</string>
 	<string name="font">"Carattere"</string>
 	<string name="icon_shape">"Forma"</string>
+	<string name="loading">"Caricamento..."</string>
 </resources>

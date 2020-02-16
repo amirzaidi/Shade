@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"غير معروف"</string>
 	<string name="font">"الخط"</string>
 	<string name="icon_shape">"الشكل"</string>
+	<string name="loading">"تحميل..."</string>
 </resources>

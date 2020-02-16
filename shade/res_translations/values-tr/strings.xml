@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Bilinmiyor"</string>
 	<string name="font">"Yazı Tipi"</string>
 	<string name="icon_shape">"Şekil"</string>
+	<string name="loading">"Yükleniyor..."</string>
 </resources>

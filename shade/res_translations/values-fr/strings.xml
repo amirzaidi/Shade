@@ -64,4 +64,5 @@
 	<string name="app_info_source_unknown">"Inconnu"</string>
 	<string name="font">"Police"</string>
 	<string name="icon_shape">"Forme"</string>
+	<string name="loading">"Chargement..."</string>
 </resources>
