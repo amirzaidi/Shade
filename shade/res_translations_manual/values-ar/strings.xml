@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">مطلوب إذن الوصول الى الإستخدام</string>
+    <string name="msg_missing_usage_access">لإظهار إقتراحات التطبيقات، قم بتشغيل وصول الاستخدام لـ<xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">إسحب للأسفل لإغلاق معلومات التطبيق.</string>
+    <string name="app_info_source">المصدر</string>
+    <string name="app_info_last_update">آخر تحديث</string>
+    <string name="item_hidden">عنصر مخفي</string>
+    <string name="theme_title">اللون الثانوي</string>
+    <string name="theme_campfire">المخيم</string>
+    <string name="theme_sunset">غروب الشمس</string>
+    <string name="theme_forest">غابة</string>
+    <string name="theme_ocean">محيط</string>
+    <string name="theme_twilight">الشفق</string>
+    <string name="theme_blossom">مزهر</string>
+    <string name="dock_search">تطبيق مصغر للبحث</string>
+    <string name="feed_provider">موجز الأخبار</string>
+    <string name="grid_division">أبعاد الشبكة</string>
+    <string name="grid_division_dense">كثافة الأيقونات (٦x٦)</string>
+    <string name="grid_division_normal">عادي (٥x٥)</string>
+    <string name="grid_division_reasonable">متناثر (٥x٤)</string>
+    <string name="grid_division_big">كبير (٤x٤)</string>
+    <string name="grid_division_crazybig">ضخم (٣x٣)</string>
+    <string name="fading_transition">إنتقال متلاشي</string>
+    <string name="fading_transition_desc">عند فتح التطبيقات</string>
+    <string name="about_contact">إِتصل</string>
+    <string name="about_donate_desc">إستخدام موازن اللعب</string>
+    <string name="shadespace_text_charging">مشحون ل%1$d%%</string>
+</resources>

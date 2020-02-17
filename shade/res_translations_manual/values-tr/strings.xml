@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Kullanım erişimi gerekli</string>
+    <string name="msg_missing_usage_access">Uygulama Önerilerini göstermek için <xliff:g id="name" example="My App">%1$s</xliff:g> kullanım erişimini açın</string>
+    <string name="app_info_subtext">Uygulama bilgilerini kapatmak için aşağı kaydırın.</string>
+    <string name="app_info_source">Kaynak</string>
+    <string name="app_info_last_update">Son güncelleme</string>
+    <string name="item_hidden">Öğe gizlendi</string>
+    <string name="theme_title">Vurgu rengi</string>
+    <string name="theme_campfire">Kamp ateşi</string>
+    <string name="theme_sunset">Gün batımı</string>
+    <string name="theme_forest">Orman</string>
+    <string name="theme_ocean">Okyanus</string>
+    <string name="theme_twilight">Alacakaranlık</string>
+    <string name="theme_blossom">Çiçek</string>
+    <string name="dock_search">Arama çubuğu</string>
+    <string name="feed_provider">Haber akışı</string>
+    <string name="grid_division">Kılavuz aralığı</string>
+    <string name="grid_division_dense">Sıkışık (6\'ya 6)</string>
+    <string name="grid_division_normal">Normal (5\'e 5)</string>
+    <string name="grid_division_reasonable">Seyrek (4\'e 5)</string>
+    <string name="grid_division_big">Büyük (4\'e 4)</string>
+    <string name="grid_division_crazybig">Devasa (3\'e 3)</string>
+    <string name="fading_transition">Solarak geçiş</string>
+    <string name="fading_transition_desc">Uygulamaları açarken</string>
+    <string name="about_contact">İletişim</string>
+    <string name="about_donate_desc">Play Store ödemesi ile</string>
+    <string name="shadespace_text_charging">%%%1$d Şarj oldu</string>
+</resources>
