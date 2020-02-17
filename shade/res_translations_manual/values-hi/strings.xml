@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">उपयोग की आवश्यकता है</string>
+    <string name="msg_missing_usage_access">एप्लिकेशन सुझाव दिखाने के लिए, उपयोग पहुंच चालू करें <xliff:g id="नाम" example="मेरा ऐप">%1$s</xliff:g></string>
+    <string name="app_info_subtext">एप्लिकेशन जानकारी बंद करने के लिए नीचे स्वाइप करें.</string>
+    <string name="app_info_source">स्रोत</string>
+    <string name="app_info_last_update">आखिरी अपडेट</string>
+    <string name="item_hidden">आइटम छिपा हुआ</string>
+    <string name="theme_title">उच्चारण</string>
+    <string name="theme_campfire">कैम्प फ़ायर</string>
+    <string name="theme_sunset">सूर्यास्त</string>
+    <string name="theme_forest">जंगल</string>
+    <string name="theme_ocean">सागर</string>
+    <string name="theme_twilight">सांझ</string>
+    <string name="theme_blossom">पुष्पणकाल</string>
+    <string name="dock_search">खोज विजेट</string>
+    <string name="feed_provider">समाचार फ़ीड</string>
+    <string name="grid_division">ग्रिड रिक्ति</string>
+    <string name="grid_division_dense">घना (6 बाय 6)</string>
+    <string name="grid_division_normal">सामान्य (5 बाय 5)</string>
+    <string name="grid_division_reasonable">विरल (4 बाय 5)</string>
+    <string name="grid_division_big">बड़ा (4 बाय 4)</string>
+    <string name="grid_division_crazybig">विशाल (3 बाय 3)</string>
+    <string name="fading_transition">लुप्त होती संक्रमण</string>
+    <string name="fading_transition_desc">एप खोलते समय</string>
+    <string name="about_contact">संपर्क</string>
+    <string name="about_donate_desc">प्ले बैलेंस का उपयोग करना</string>
+    <string name="shadespace_text_charging">%1$d%% पर चार्ज किया गया</string>
+</resources>

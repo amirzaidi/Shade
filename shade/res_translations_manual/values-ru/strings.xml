@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Требуется доступ к использованию</string>
+    <string name="msg_missing_usage_access">Чтобы показать предлагаемые приложения, включите доступ к использованию для <xliff:g id="name" example="My App">%1$s</xliff:g></string>
+    <string name="app_info_subtext">Смахните вниз, чтобы закрыть информацию о приложении.</string>
+    <string name="app_info_source">Исходный код</string>
+    <string name="app_info_last_update">Последнее обновление</string>
+    <string name="item_hidden">Скрытый объект</string>
+    <string name="theme_title">Акцент</string>
+    <string name="theme_campfire">Костер</string>
+    <string name="theme_sunset">Закат</string>
+    <string name="theme_forest">Лес</string>
+    <string name="theme_ocean">Океан</string>
+    <string name="theme_twilight">Сумерки</string>
+    <string name="theme_blossom">Цветение</string>
+    <string name="dock_search">Виджет поиска</string>
+    <string name="feed_provider">Лента новостей</string>
+    <string name="grid_division">Размер сетки</string>
+    <string name="grid_division_dense">Компактный (6 на 6)</string>
+    <string name="grid_division_normal">Нормальный (5 к 5)</string>
+    <string name="grid_division_reasonable">Средний (4 на 50)</string>
+    <string name="grid_division_big">Большой (4 на 4)</string>
+    <string name="grid_division_crazybig">Гигантский (3 на 3)</string>
+    <string name="fading_transition">Затухающий переход</string>
+    <string name="fading_transition_desc">При открытии приложений</string>
+    <string name="about_contact">Контактные данные</string>
+    <string name="about_donate_desc">С помощью Play баланса</string>
+    <string name="shadespace_text_charging">Заряжено на %1$d%%</string>
+</resources>
