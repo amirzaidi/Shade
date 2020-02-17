@@ -24,7 +24,6 @@
     <string name="fading_transition">Fading transition</string>
     <string name="fading_transition_desc">When opening apps</string>
     <string name="about_contact">Contact</string>
-    <string name="about_donate">Donate</string>
     <string name="about_donate_desc">Using Play balance</string>
     <string name="shadespace_text_charging">Charged to %1$d%%</string>
 </resources>

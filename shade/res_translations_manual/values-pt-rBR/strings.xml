@@ -24,7 +24,6 @@
     <string name="fading_transition">Transição de desvanecimento</string>
     <string name="fading_transition_desc">Ao abrir apps</string>
     <string name="about_contact">Contato</string>
-    <string name="about_donate">Doar</string>
     <string name="about_donate_desc">Usando o saldo da Google Play</string>
     <string name="shadespace_text_charging">Carregado em %1$d%%</string>
 </resources>

@@ -24,7 +24,6 @@
     <string name="fading_transition">Εφέ σβησίματος</string>
     <string name="fading_transition_desc">Κατά το άνοιγμα των εφαρμογών</string>
     <string name="about_contact">Επικοινωνία</string>
-    <string name="about_donate">Δωρεά</string>
     <string name="about_donate_desc">Μέσω του Google Play</string>
     <string name="shadespace_text_charging">Φόρτιση στο %1$d%%</string>
 </resources>

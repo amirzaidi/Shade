@@ -24,7 +24,6 @@
     <string name="fading_transition">Animacja przenikania</string>
     <string name="fading_transition_desc">W trakcie otwierania aplikacji</string>
     <string name="about_contact">Kontakt</string>
-    <string name="about_donate">Wspomóż</string>
     <string name="about_donate_desc">Używając środków Google Play</string>
     <string name="shadespace_text_charging">Naładowano do %1$d%%</string>
 </resources>
