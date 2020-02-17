@@ -65,4 +65,5 @@
 	<string name="font">"Font"</string>
 	<string name="icon_shape">"Oblik"</string>
 	<string name="loading">"Učitavanje..."</string>
+	<string name="about_donate">"Darovati"</string>
 </resources>

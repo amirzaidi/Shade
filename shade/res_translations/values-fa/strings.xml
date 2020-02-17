@@ -65,4 +65,5 @@
 	<string name="font">"قلم"</string>
 	<string name="icon_shape">"شکل"</string>
 	<string name="loading">"در حال بارگذاری..."</string>
+	<string name="about_donate">"اهدا کنید"</string>
 </resources>

@@ -65,4 +65,5 @@
 	<string name="font">"Font"</string>
 	<string name="icon_shape">"Formă"</string>
 	<string name="loading">"Se încarcă..."</string>
+	<string name="about_donate">"Dona"</string>
 </resources>

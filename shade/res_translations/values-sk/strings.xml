@@ -65,4 +65,5 @@
 	<string name="font">"Písmo"</string>
 	<string name="icon_shape">"Tvar"</string>
 	<string name="loading">"Prebieha načítavanie..."</string>
+	<string name="about_donate">"Darovať"</string>
 </resources>

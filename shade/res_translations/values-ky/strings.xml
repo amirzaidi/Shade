@@ -51,4 +51,5 @@
 	<string name="app_info_version">"Версиясы"</string>
 	<string name="app_info_icon_pack_none">"Жок"</string>
 	<string name="app_info_source_unknown">"Белгисиз"</string>
+	<string name="about_donate">"Белек тартуу кылуу"</string>
 </resources>

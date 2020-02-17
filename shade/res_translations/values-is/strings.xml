@@ -53,4 +53,5 @@
 	<string name="app_info_version">"Útgáfa"</string>
 	<string name="app_info_icon_pack_none">"Ekkert"</string>
 	<string name="app_info_source_unknown">"Óþekkt"</string>
+	<string name="about_donate">"Donate"</string>
 </resources>

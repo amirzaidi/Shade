@@ -65,4 +65,5 @@
 	<string name="font">"Font"</string>
 	<string name="icon_shape">"Form"</string>
 	<string name="loading">"Laster inn..."</string>
+	<string name="about_donate">"Donere"</string>
 </resources>

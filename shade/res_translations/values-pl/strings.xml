@@ -65,4 +65,5 @@
 	<string name="font">"Czcionka"</string>
 	<string name="icon_shape">"Kształt"</string>
 	<string name="loading">"Ładowanie..."</string>
+	<string name="about_donate">"Wspomóż"</string>
 </resources>

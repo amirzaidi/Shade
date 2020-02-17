@@ -51,4 +51,5 @@
 	<string name="app_info_version">"ဗားရှင်း"</string>
 	<string name="app_info_icon_pack_none">"မရှိ"</string>
 	<string name="app_info_source_unknown">"မသိ"</string>
+	<string name="about_donate">"ပေးကမ်း"</string>
 </resources>

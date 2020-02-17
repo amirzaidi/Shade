@@ -65,4 +65,5 @@
 	<string name="font">"Schriftart"</string>
 	<string name="icon_shape">"Form"</string>
 	<string name="loading">"Laden..."</string>
+	<string name="about_donate">"Spenden"</string>
 </resources>

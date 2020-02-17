@@ -65,4 +65,5 @@
 	<string name="font">"Font"</string>
 	<string name="icon_shape">"Hugis"</string>
 	<string name="loading">"Nag-loload..."</string>
+	<string name="about_donate">"Mag-donate"</string>
 </resources>

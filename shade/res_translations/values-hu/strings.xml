@@ -65,4 +65,5 @@
 	<string name="font">"Betűtípus"</string>
 	<string name="icon_shape">"Forma"</string>
 	<string name="loading">"Betöltés..."</string>
+	<string name="about_donate">"Adományoz"</string>
 </resources>

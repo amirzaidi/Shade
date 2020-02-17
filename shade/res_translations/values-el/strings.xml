@@ -65,4 +65,5 @@
 	<string name="font">"Γραμματοσειρά"</string>
 	<string name="icon_shape">"Σχήμα"</string>
 	<string name="loading">"Φόρτωση..."</string>
+	<string name="about_donate">"Δωρεά"</string>
 </resources>

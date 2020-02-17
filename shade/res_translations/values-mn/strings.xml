@@ -51,4 +51,5 @@
 	<string name="app_info_version">"Хувилбар"</string>
 	<string name="app_info_icon_pack_none">"Байхгүй"</string>
 	<string name="app_info_source_unknown">"Тодорхойгүй"</string>
+	<string name="about_donate">"Хандив"</string>
 </resources>

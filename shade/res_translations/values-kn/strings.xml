@@ -65,4 +65,5 @@
 	<string name="font">"ಫಾಂಟ್"</string>
 	<string name="icon_shape">"ಆಕಾರ"</string>
 	<string name="loading">"ಲೋಡ್ ಆಗುತ್ತಿದೆ..."</string>
+	<string name="about_donate">"ದಾನ"</string>
 </resources>

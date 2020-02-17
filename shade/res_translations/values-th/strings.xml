@@ -65,4 +65,5 @@
 	<string name="font">"ฟอนต์"</string>
 	<string name="icon_shape">"รูปทรง"</string>
 	<string name="loading">"กำลังโหลด..."</string>
+	<string name="about_donate">"บริจาค"</string>
 </resources>
