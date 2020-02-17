@@ -32,7 +32,7 @@
     <style name="LauncherTheme" parent="@style/BaseLauncherTheme">
         <item name="allAppsScrimColor">#EAFFFFFF</item>
         <item name="allAppsInterimScrimAlpha">46</item>
-        <item name="allAppsNavBarScrimColor">#66FFFFFF</item>
+        <item name="allAppsNavBarScrimColor">@color/navbar_scrim_color_light</item>
         <item name="popupColorPrimary">#FFF</item>
         <item name="popupColorSecondary">#F5F5F5</item> <!-- Gray 100 -->
         <item name="popupColorTertiary">#E0E0E0</item> <!-- Gray 300 -->
@@ -85,7 +85,7 @@
         <item name="android:colorPrimary">#FF212121</item>
         <item name="allAppsScrimColor">#EA212121</item>
         <item name="allAppsInterimScrimAlpha">102</item>
-        <item name="allAppsNavBarScrimColor">#80000000</item>
+        <item name="allAppsNavBarScrimColor">@color/navbar_scrim_color_dark</item>
         <item name="popupColorPrimary">#3C4043</item> <!-- Gray 800 -->
         <item name="popupColorSecondary">#5F6368</item> <!-- Gray 700 -->
         <item name="popupColorTertiary">#757575</item> <!-- Gray 600 -->
