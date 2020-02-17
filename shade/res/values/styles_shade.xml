@@ -19,7 +19,7 @@
     </style>
 
     <style name="ShadeOverride.Sunset" parent="ShadeOverride.Shade">
-        <item name="shadeColorAllAppsOverlay">#600538</item>
+        <item name="shadeColorAllAppsOverlay">#82B1FF</item>
         <item name="shadeColorAccent">#FF8B27</item>
     </style>
 
