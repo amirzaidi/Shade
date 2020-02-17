@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="needs_usage_access">Zugriff auf Nutzungsdaten benötigt</string>
-    <string name="msg_missing_usage_access">Um App-Vorschläge zu erhalten, erlauben Sie <xliff:g id="name" example="My App">%1$s</xliff:g> bitte den Zugriff auf App-Nutzungsdaten</string>
+    <string name="msg_missing_usage_access">Um App-Vorschläge zu erhalten, erlaube <xliff:g id="name" example="My App">%1$s</xliff:g> bitte den Zugriff auf App-Nutzungsdaten</string>
     <string name="app_info_subtext">Nach unten wischen, um die App-Informationen zu schließen.</string>
     <string name="app_info_source">Quelle</string>
     <string name="app_info_last_update">Letztes Update</string>
