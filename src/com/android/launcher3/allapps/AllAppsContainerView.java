@@ -343,7 +343,7 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
         if (Utilities.ATLEAST_Q) {
             mNavBarScrimHeight = insets.getTappableElementInsets().bottom;
         } else {
-            mNavBarScrimHeight = insets.getStableInsetBottom();
+            mNavBarScrimHeight = insets.getSystemWindowInsetBottom();
         }
         return super.dispatchApplyWindowInsets(insets);
     }
