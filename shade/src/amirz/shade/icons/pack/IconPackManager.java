@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.android.launcher3.LauncherModel;
+import com.android.launcher3.R;
 import com.android.launcher3.util.ComponentKey;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -119,15 +120,23 @@ public class IconPackManager extends BroadcastReceiver {
             }
         }
 
+        String defaultIconPack = mContext.getString(R.string.icon_pack_default);
+        boolean foundDefaultIconPack = false;
+
         // Add new packs
         for (ResolveInfo ri : info) {
             String packageName = ri.activityInfo.packageName;
+            if (packageName.equals(defaultIconPack)) {
+                foundDefaultIconPack = true;
+            }
             if (!mProviders.containsKey(packageName)) {
                 ApplicationInfo ai = ri.activityInfo.applicationInfo;
                 CharSequence label = ri.loadLabel(pm);
                 mProviders.put(packageName, new IconPack(ai, label));
             }
         }
+
+        IconDatabase.setDefaultPack(foundDefaultIconPack ? defaultIconPack : "");
 
         String global = IconDatabase.getGlobal(mContext);
         if (!global.isEmpty() && !mProviders.containsKey(global)) {

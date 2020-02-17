@@ -24,6 +24,7 @@ import com.android.launcher3.settings.SettingsActivity;
 import amirz.shade.customization.IconDatabase;
 import amirz.shade.customization.IconShapeOverride;
 import amirz.shade.customization.ShadeStyle;
+import amirz.shade.icons.pack.IconPackManager;
 import amirz.shade.settings.DockSearchPrefSetter;
 import amirz.shade.settings.FeedProviderPrefSetter;
 import amirz.shade.settings.IconPackPrefSetter;
@@ -71,6 +72,9 @@ public class  ShadeSettings extends SettingsActivity {
             super.onCreatePreferences(savedInstanceState, rootKey);
 
             final Context context = getActivity();
+
+            // Load the icon pack once to set the correct default icon pack.
+            IconPackManager.get(context);
 
             // Customization
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);

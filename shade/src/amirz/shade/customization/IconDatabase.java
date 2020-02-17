@@ -9,10 +9,15 @@ import com.android.launcher3.util.ComponentKey;
 public class IconDatabase {
     private static final String PREF_FILE_NAME = BuildConfig.APPLICATION_ID + ".ICON_DATABASE";
     private static final String KEY_GLOBAL = "global";
-    private static final String VALUE_DEFAULT = "";
+
+    private static String sDefaultPack = "";
+
+    public static void setDefaultPack(String defaultPack) {
+        sDefaultPack = defaultPack;
+    }
 
     public static String getGlobal(Context context) {
-        return getIconPackPrefs(context).getString(KEY_GLOBAL, VALUE_DEFAULT);
+        return getIconPackPrefs(context).getString(KEY_GLOBAL, sDefaultPack);
     }
 
     public static void setGlobal(Context context, String value) {
