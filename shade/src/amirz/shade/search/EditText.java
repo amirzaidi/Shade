@@ -1,6 +1,7 @@
 package amirz.shade.search;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,6 +11,8 @@ import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.util.UiThreadHelper;
 
 public class EditText extends ExtendedEditText {
+    private CharSequence mHint;
+
     public EditText(Context context) {
         // ctor chaining breaks the touch handling
         super(context);
@@ -22,6 +25,21 @@ public class EditText extends ExtendedEditText {
 
     public EditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public void setSpannedHint(CharSequence hint) {
+        mHint = hint;
+        setHint(hint);
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        if (gainFocus) {
+            setHint(null);
+        } else {
+            setHint(mHint);
+        }
     }
 
     @Override

@@ -65,7 +65,7 @@ public class AllAppsQsb extends QsbContainerView
 
     // Delegate views.
     private View mSearchWrapperView;
-    private ExtendedEditText mFallbackSearchView;
+    private EditText mFallbackSearchView;
 
     private boolean mSearchRequested;
     private final int[] currentPadding = new int[2];
@@ -159,7 +159,7 @@ public class AllAppsQsb extends QsbContainerView
         }
         gd.setColor(bgColor);
 
-        mFallbackSearchView.setHint(
+        mFallbackSearchView.setSpannedHint(
                 prefixTextWithIcon(context,
                         R.drawable.ic_allapps_search,
                         mFallbackSearchView.getHint()));

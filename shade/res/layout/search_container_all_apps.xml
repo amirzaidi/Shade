@@ -49,6 +49,7 @@
         android:singleLine="true"
         android:textColor="?android:attr/textColorSecondary"
         android:textColorHint="@drawable/all_apps_search_hint"
+        android:textCursorDrawable="@drawable/text_cursor_material"
         android:textSize="16sp" />
 
 </amirz.shade.search.AllAppsQsb>
