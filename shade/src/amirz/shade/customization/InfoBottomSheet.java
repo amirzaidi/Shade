@@ -128,9 +128,9 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
             MetadataExtractor extractor = new MetadataExtractor(mContext, mComponent);
 
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
+            icons.setValue(IconDatabase.getByComponent(mContext, mKey));
             icons.setOnReloadListener(new IconPackPrefSetter(mContext, mComponent));
             icons.setOnPreferenceChangeListener(this);
-            icons.setValue(IconDatabase.getByComponent(mContext, mKey));
 
             findPreference(KEY_SOURCE).setSummary(extractor.getSource());
             findPreference(KEY_LAST_UPDATE).setSummary(extractor.getLastUpdate());
