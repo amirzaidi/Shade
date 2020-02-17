@@ -2,11 +2,9 @@ package amirz.shade.search;
 
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
-import android.os.Bundle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
 import android.text.method.TextKeyListener;
@@ -19,7 +17,6 @@ import android.view.animation.Interpolator;
 import androidx.core.graphics.ColorUtils;
 
 import com.android.launcher3.DeviceProfile;
-import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
@@ -41,7 +38,6 @@ import java.util.ArrayList;
 
 import amirz.shade.customization.DockSearch;
 
-import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
