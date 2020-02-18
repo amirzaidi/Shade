@@ -222,25 +222,6 @@ public class ShadeScrimView extends ScrimView {
         drawDragHandle(canvas);
     }
 
-    @Override
-    public void setInsets(Rect insets) {
-        super.setInsets(insets);
-        hideDragHandle();
-    }
-
-    @Override
-    public void onAccessibilityStateChanged(boolean enabled) {
-        super.onAccessibilityStateChanged(enabled);
-        hideDragHandle();
-    }
-
-    private void hideDragHandle() {
-        if (!mLauncher.getDeviceProfile().isVerticalBarLayout()
-                && !FeatureFlags.DRAG_HANDLE.get()) {
-            mDragHandle = null;
-        }
-    }
-
     private void drawBackground(Canvas canvas) {
         if (mDrawingFlatColor) {
             if (mCurrentFlatColor != 0) {
