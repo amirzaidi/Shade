@@ -21,7 +21,8 @@ import com.android.launcher3.Utilities;
 
 import amirz.shade.ShadeSettings;
 
-public class PredictionPreference extends SwitchPreference implements ShadeSettings.OnResumePreferenceCallback {
+public class PredictionPreference extends SwitchPreference
+        implements ShadeSettings.OnResumePreferenceCallback {
     private static final String KEY = "pref_predictions";
 
     public PredictionPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -45,7 +46,10 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
     }
 
     private void load() {
-        setOnPreferenceChangeListener((preference, newValue) -> isAccessGranted());
+        setOnPreferenceChangeListener((preference, newValue) -> {
+            setEnabled(getContext(), (boolean) newValue);
+            return reload();
+        });
         reload();
     }
 
@@ -54,14 +58,26 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
         reload();
     }
 
-    private void reload() {
+    private boolean reload() {
         final Context context = getContext();
         boolean accessGranted = isAccessGranted();
         if (!accessGranted) {
             setEnabled(context, false);
         }
-        setChecked(isEnabled(context));
-        setFragment(accessGranted ? null : UsageAccessConfirmation.class.getName());
+
+        boolean isEnabled = isEnabled(context);
+        setChecked(isEnabled);
+        setSummary(accessGranted
+                ? (isEnabled
+                    ? R.string.notification_dots_desc_on
+                    : R.string.notification_dots_desc_off)
+                : R.string.needs_usage_access);
+
+        setFragment(accessGranted
+                ? null
+                : UsageAccessConfirmation.class.getName());
+
+        return accessGranted;
     }
 
     private boolean isAccessGranted() {
@@ -92,7 +108,7 @@ public class PredictionPreference extends SwitchPreference implements ShadeSetti
             String msg = context.getString(R.string.msg_missing_usage_access,
                     context.getString(R.string.derived_app_name));
             return new AlertDialog.Builder(context)
-                    .setTitle(R.string.title_app_suggestions)
+                    .setTitle(R.string.needs_usage_access)
                     .setMessage(msg)
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(R.string.title_change_settings, this)

@@ -43,8 +43,6 @@
         <amirz.shade.settings.PredictionPreference
             android:key="pref_predictions"
             android:title="@string/title_app_suggestions"
-            android:summaryOn="@string/notification_dots_desc_on"
-            android:summaryOff="@string/notification_dots_desc_off"
             android:defaultValue="true"
             android:persistent="true" />
 
