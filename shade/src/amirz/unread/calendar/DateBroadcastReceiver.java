@@ -20,6 +20,7 @@ public class DateBroadcastReceiver extends AutoRegisterReceiver {
         filter.addAction(Intent.ACTION_TIME_TICK);
         filter.addAction(Intent.ACTION_TIME_CHANGED);
         filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+        filter.addAction(Intent.ACTION_DATE_CHANGED);
         return filter;
     }
 
