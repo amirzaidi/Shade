@@ -37,7 +37,7 @@ public class StatusBarTouchController implements TouchController {
      */
     private static final int FLAG_SLIPPERY = 0x20000000;
 
-    private static final int SET_SLIPPERY_DELAY = 10;
+    private static final int SET_SLIPPERY_DELAY = 20;
 
     private final Handler mHandler = new Handler();
     private final Runnable mSetSlippery = () -> setWindowSlippery(true);
