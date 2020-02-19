@@ -2,6 +2,7 @@ package com.android.launcher3.uioverrides.touchcontrollers;
 
 import android.annotation.SuppressLint;
 import android.graphics.PointF;
+import android.os.Handler;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
@@ -36,6 +37,11 @@ public class StatusBarTouchController implements TouchController {
      */
     private static final int FLAG_SLIPPERY = 0x20000000;
 
+    private static final int SET_SLIPPERY_DELAY = 10;
+
+    private final Handler mHandler = new Handler();
+    private final Runnable mSetSlippery = () -> setWindowSlippery(true);
+
     private final Launcher mLauncher;
 
     private final float mTouchSlop;
@@ -44,6 +50,7 @@ public class StatusBarTouchController implements TouchController {
     /* If {@code false}, this controller should not handle the input {@link MotionEvent}.*/
     private boolean mCanIntercept;
 
+    private boolean mExpandInvoked;
     private Method mExpand;
     private Object mSbm;
 
@@ -75,6 +82,7 @@ public class StatusBarTouchController implements TouchController {
         int idx = ev.getActionIndex();
         int pid = ev.getPointerId(idx);
         if (action == ACTION_DOWN) {
+            mExpandInvoked = false;
             mCanIntercept = canInterceptTouch(ev);
             if (!mCanIntercept) {
                 return false;
@@ -94,12 +102,15 @@ public class StatusBarTouchController implements TouchController {
             // one touch pointer. Hence, even if slope passed, only set the slippery flag
             // when there is single touch event. (context: InputDispatcher.cpp line 1445)
             if (dy > mTouchSlop && dy > Math.abs(dx) && ev.getPointerCount() == 1) {
-                try {
-                    mExpand.invoke(mSbm);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
+                if (!mExpandInvoked) {
+                    mExpandInvoked = true;
+                    try {
+                        mExpand.invoke(mSbm);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                    mHandler.postDelayed(mSetSlippery, SET_SLIPPERY_DELAY);
                 }
-                setWindowSlippery(true);
                 return true;
             }
             if (Math.abs(dx) > mTouchSlop) {
@@ -119,6 +130,7 @@ public class StatusBarTouchController implements TouchController {
                     LauncherLogProto.Action.Direction.DOWN,
                     LauncherLogProto.ContainerType.WORKSPACE,
                     mLauncher.getWorkspace().getCurrentPage());
+            mHandler.removeCallbacks(mSetSlippery);
             setWindowSlippery(false);
             return true;
         }
