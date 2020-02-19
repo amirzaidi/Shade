@@ -1,13 +1,10 @@
 package amirz.unread.notifications;
 
 import android.app.Notification;
-import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 
-import com.android.launcher3.notification.NotificationListener;
-
-import java.util.List;
+import java.util.Map;
 
 import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT;
 import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_HIGH;
@@ -16,51 +13,53 @@ public class NotificationRanker {
     private static final int PRIORITY_AT_LEAST = IMPORTANCE_DEFAULT;
     private static final int PRIORITY_IMPORTANT = IMPORTANCE_HIGH;
 
-    private final List<StatusBarNotification> mSbn;
-    private final NotificationListenerService.Ranking mTempRanking
-            = new NotificationListenerService.Ranking();
+    private final Map<NotificationList.Notif, Integer> mNotifs;
 
-    public NotificationRanker(List<StatusBarNotification> sbn) {
-        mSbn = sbn;
+    public NotificationRanker(Map<NotificationList.Notif, Integer> notifs) {
+        mNotifs = notifs;
     }
 
     public RankedNotification getBestNotification() {
-        NotificationListenerService nls = NotificationListener.getInstanceIfConnected();
-        if (nls == null) {
-            return null;
-        }
-
         int bestPriority = PRIORITY_AT_LEAST;
         long bestPostTime = 0;
         StatusBarNotification bestNotif = null;
-        for (StatusBarNotification n : mSbn) {
-            if (n.isOngoing()) {
+        for (Map.Entry<NotificationList.Notif, Integer> kvp : mNotifs.entrySet()) {
+            StatusBarNotification sbn = kvp.getKey().getSbn();
+            if (shouldBeFilteredOut(sbn)) {
                 continue;
             }
 
-            Notification data = n.getNotification();
-            if (TextUtils.isEmpty(data.extras.getCharSequence(Notification.EXTRA_TITLE))
-                    || TextUtils.isEmpty(data.extras.getCharSequence(Notification.EXTRA_TEXT))) {
+            Notification n = sbn.getNotification();
+            if (TextUtils.isEmpty(n.extras.getCharSequence(Notification.EXTRA_TITLE))
+                    || TextUtils.isEmpty(n.extras.getCharSequence(Notification.EXTRA_TEXT))) {
                 continue;
             }
 
-            NotificationListenerService.RankingMap map = nls.getCurrentRanking();
-            if (!map.getRanking(n.getKey(), mTempRanking)) {
-                continue;
-            }
-            int priority = mTempRanking.getImportance();
-
+            int priority = kvp.getValue();
             if (priority > bestPriority
-                    || (priority == bestPriority && n.getPostTime() > bestPostTime)) {
+                    || (priority == bestPriority && sbn.getPostTime() > bestPostTime)) {
                 bestPriority = priority;
-                bestPostTime = n.getPostTime();
-                bestNotif = n;
+                bestPostTime = sbn.getPostTime();
+                bestNotif = sbn;
             }
         }
 
         return bestNotif == null
                 ? null
                 : new RankedNotification(bestNotif, bestPriority >= PRIORITY_IMPORTANT);
+    }
+
+    private boolean shouldBeFilteredOut(StatusBarNotification sbn) {
+        if (!sbn.isClearable()) {
+            return true;
+        }
+
+        Notification notification = sbn.getNotification();
+        CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
+        CharSequence text = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
+        boolean missingTitleAndText = TextUtils.isEmpty(title) && TextUtils.isEmpty(text);
+        boolean isGroupHeader = (notification.flags & Notification.FLAG_GROUP_SUMMARY) != 0;
+        return (isGroupHeader || missingTitleAndText);
     }
 
     public static class RankedNotification {

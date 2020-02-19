@@ -1,16 +1,12 @@
 package amirz.unread.media;
 
-import android.app.ExpandableListActivity;
 import android.app.Notification;
 import android.content.ComponentName;
 import android.content.Context;
-import android.media.AudioAttributes;
 import android.media.MediaMetadata;
 import android.media.session.MediaController;
-import android.media.session.MediaSession;
 import android.media.session.MediaSessionManager;
 import android.media.session.PlaybackState;
-import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,9 +14,11 @@ import android.view.KeyEvent;
 
 import com.android.launcher3.notification.NotificationListener;
 
-import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+
+import amirz.unread.notifications.NotificationList;
 
 public class MediaListener extends MediaController.Callback
         implements MediaSessionManager.OnActiveSessionsChangedListener {
@@ -31,16 +29,18 @@ public class MediaListener extends MediaController.Callback
     private final ComponentName mComponent;
     private final MediaSessionManager mManager;
     private final Runnable mOnChange;
+    private final MultiClickListener mTaps;
+    private final Set<NotificationList.Notif> mNotifs;
     private List<MediaController> mControllers = Collections.emptyList();
     private MediaController mTracking;
-    private final MultiClickListener mTaps;
 
-    public MediaListener(Context context, Runnable onChange) {
+    public MediaListener(Context context, Runnable onChange, Set<NotificationList.Notif> notifs) {
         mComponent = new ComponentName(context, NotificationListener.class);
         mManager = context.getSystemService(MediaSessionManager.class);
         mOnChange = onChange;
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
         mTaps.setListeners(this::toggle, this::next, this::previous);
+        mNotifs = notifs;
     }
 
     public void onResume() {
@@ -59,6 +59,10 @@ public class MediaListener extends MediaController.Callback
 
     public boolean isTracking() {
         return mTracking != null;
+    }
+
+    public boolean isPausedOrPlaying() {
+        return isTracking() && isPausedOrPlaying(mTracking);
     }
 
     public CharSequence getTitle() {
@@ -173,16 +177,14 @@ public class MediaListener extends MediaController.Callback
     }
 
     private boolean hasNotification(MediaController mc) {
-        NotificationListener nls = NotificationListener.getInstanceIfConnected();
-        if (nls == null) {
-            return false;
-        }
-        for (StatusBarNotification sbn : nls.getActiveNotifications()) {
+        for (NotificationList.Notif notif : mNotifs) {
+            StatusBarNotification sbn = notif.getSbn();
             if (mc.getPackageName().equals(sbn.getPackageName())) {
                 return sbn.getNotification().extras
                         .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null;
             }
         }
+        Log.d(TAG, "MediaController has no notification");
         return false;
     }
 
