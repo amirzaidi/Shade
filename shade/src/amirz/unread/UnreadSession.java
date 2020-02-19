@@ -13,6 +13,7 @@ import android.view.View;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.notification.NotificationListener;
+import com.android.launcher3.notification.NotificationListenerProxy;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -66,6 +67,8 @@ public class UnreadSession {
         mMedia = new MediaListener(context, this::reload, mNotifications.getSbn());
         mDateReceiver = new DateBroadcastReceiver(context, this::reload);
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
+
+        NotificationListenerProxy.INSTANCE.add(mNotifications);
     }
 
     public void onResume() {

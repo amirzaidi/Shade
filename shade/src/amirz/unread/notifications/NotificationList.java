@@ -4,7 +4,9 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
 import com.android.launcher3.Utilities;
+import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.notification.NotificationListener;
+import com.android.launcher3.util.PackageUserKey;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class NotificationList implements NotificationListener.StatusBarNotificationsChangedListener {
+public class NotificationList
+        implements NotificationListener.StatusBarNotificationsChangedListener,
+        NotificationListener.NotificationsChangedListener {
     public static class Notif {
         private final StatusBarNotification mSbn;
 
@@ -73,6 +77,28 @@ public class NotificationList implements NotificationListener.StatusBarNotificat
     public void onNotificationRemoved(StatusBarNotification sbn) {
         if (mSbn.remove(new Notif(sbn)) != null) {
             mOnNotificationsChanged.run();
+        }
+    }
+
+    @Override
+    public void onNotificationPosted(PackageUserKey postedPackageUserKey,
+                                     NotificationKeyData notificationKey,
+                                     boolean shouldBeFilteredOut) {
+        // No-op
+    }
+
+    @Override
+    public void onNotificationRemoved(PackageUserKey removedPackageUserKey,
+                                      NotificationKeyData notificationKey) {
+        // No-op
+    }
+
+    @Override
+    public void onNotificationFullRefresh(List<StatusBarNotification> activeNotifications) {
+        // Ignore filtered notifications, and instead load all notifications.
+        // This is called whenever the service is bound.
+        if (mSbn.isEmpty()) {
+            reloadNotifications();
         }
     }
 
