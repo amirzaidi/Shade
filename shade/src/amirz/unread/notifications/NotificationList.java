@@ -3,6 +3,7 @@ package amirz.unread.notifications;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
+import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationListener;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class NotificationList implements NotificationListener.StatusBarNotificat
         if (nls != null) {
             NotificationListenerService.RankingMap map = nls.getCurrentRanking();
             if (map.getRanking(sbn.getKey(), mTempRanking)) {
-                mSbn.put(new Notif(sbn), mTempRanking.getImportance());
+                mSbn.put(new Notif(sbn), getRankedImportance());
                 mOnNotificationsChanged.run();
             }
         }
@@ -92,9 +93,15 @@ public class NotificationList implements NotificationListener.StatusBarNotificat
             NotificationListenerService.RankingMap map = nls.getCurrentRanking();
             for (Notif n : notifList) {
                 if (!mSbn.containsKey(n) && map.getRanking(n.getSbn().getKey(), mTempRanking)) {
-                    mSbn.put(n, mTempRanking.getImportance());
+                    mSbn.put(n, getRankedImportance());
                 }
             }
         }
+    }
+
+    private int getRankedImportance() {
+        return Utilities.ATLEAST_OREO
+                ? mTempRanking.getChannel().getImportance()
+                : mTempRanking.getImportance();
     }
 }
