@@ -97,14 +97,18 @@ public class NotificationList
     public void onNotificationFullRefresh(List<StatusBarNotification> activeNotifications) {
         // Ignore filtered notifications, and instead load all notifications.
         // This is called whenever the service is bound.
-        if (mSbn.isEmpty()) {
-            reloadNotifications();
+        if (reloadNotifications()) {
+            mOnNotificationsChanged.run();
         }
     }
 
-    public void reloadNotifications() {
+    public boolean reloadNotifications() {
         NotificationListener nls = NotificationListener.getInstanceIfConnected();
-        if (nls != null) {
+        boolean sbnChanged = false;
+        if (nls == null) {
+            sbnChanged = !mSbn.isEmpty();
+            mSbn.clear();
+        } else {
             List<Notif> notifList = new ArrayList<>();
             for (StatusBarNotification sbn : nls.getActiveNotifications()) {
                 notifList.add(new Notif(sbn));
@@ -112,6 +116,7 @@ public class NotificationList
 
             for (Notif n : new HashSet<>(mSbn.keySet())) {
                 if (!notifList.contains(n)) {
+                    sbnChanged = true;
                     mSbn.remove(n);
                 }
             }
@@ -119,10 +124,12 @@ public class NotificationList
             NotificationListenerService.RankingMap map = nls.getCurrentRanking();
             for (Notif n : notifList) {
                 if (!mSbn.containsKey(n) && map.getRanking(n.getSbn().getKey(), mTempRanking)) {
+                    sbnChanged = true;
                     mSbn.put(n, getRankedImportance());
                 }
             }
         }
+        return sbnChanged;
     }
 
     private int getRankedImportance() {
