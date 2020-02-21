@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.view.View;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.notification.NotificationListener;
-import com.android.launcher3.notification.NotificationListenerProxy;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -45,9 +43,8 @@ public class UnreadSession {
     private final Handler mHandler = new Handler();
 
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
-    private final List<StatusBarNotification> mSbn = new ArrayList<>();
-    private final NotificationRanker mRanker = new NotificationRanker(mSbn);
-    private final NotificationList mNotifications = new NotificationList(this::onNotificationsChanged);
+    private final NotificationList mNotifications = new NotificationList(this::reload);
+    private final NotificationRanker mRanker = new NotificationRanker(mNotifications.getMap());
 
     private final MediaListener mMedia;
     private final DateBroadcastReceiver mDateReceiver;
@@ -66,20 +63,28 @@ public class UnreadSession {
     private UnreadSession(Context context) {
         mContext = context;
 
-        mMedia = new MediaListener(context, this::reload);
+        mMedia = new MediaListener(context, this::reload, mNotifications.getSbn());
         mDateReceiver = new DateBroadcastReceiver(context, this::reload);
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
     }
 
     public void onResume() {
-        NotificationListenerProxy.INSTANCE.add(mNotifications);
+        NotificationListener.setStatusBarNotificationsChangedListener(mNotifications);
+
+        // Reload notifications first, for the media tracker.
+        mNotifications.reloadNotifications();
+
         mMedia.onResume();
         mDateReceiver.onResume();
         mBatteryReceiver.onResume();
+
+        // Always reload on resume, to ensure date changes.
+        reload();
     }
 
     public void onPause() {
-        NotificationListenerProxy.INSTANCE.remove(mNotifications);
+        NotificationListener.removeStatusBarNotificationsChangedListener();
+
         mMedia.onPause();
         mDateReceiver.onPause();
         mBatteryReceiver.onPause();
@@ -110,7 +115,7 @@ public class UnreadSession {
             extractNotification(new ParsedNotification(mContext, ranked.sbn));
         }
         // 2. Playing media.
-        else if (mMedia.isTracking()) {
+        else if (mMedia.isPausedOrPlaying()) {
             mTextList.add(mMedia.getTitle().toString());
             CharSequence artist = mMedia.getArtist();
             if (TextUtils.isEmpty(artist)) {
@@ -197,16 +202,5 @@ public class UnreadSession {
         } catch (PackageManager.NameNotFoundException ignored) {
         }
         return name;
-    }
-
-    private void onNotificationsChanged() {
-        mSbn.clear();
-        if (mNotifications.hasNotifications()) {
-            NotificationListener listener = NotificationListener.getInstanceIfConnected();
-            if (listener != null) {
-                mSbn.addAll(listener.getNotificationsForKeys(mNotifications.getKeys()));
-            }
-        }
-        reload();
     }
 }
