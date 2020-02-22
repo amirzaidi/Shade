@@ -3,10 +3,13 @@ package amirz.shortcut;
 import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,8 +22,15 @@ public class CreateShortcut extends LauncherActivity {
     @Override
     public List<ListItem> makeListItems() {
         List<ListItem> items = super.makeListItems();
-        Collections.sort(items, (o1, o2) -> pkgLabel(o1).compareTo(pkgLabel(o2)));
-        return items;
+        List<ListItem> exportedItems = new ArrayList<>(items.size());
+        for (ListItem item : items) {
+            ActivityInfo ai = item.resolveInfo.activityInfo;
+            if (ai.exported) {
+                exportedItems.add(item);
+            }
+        }
+        Collections.sort(exportedItems, (o1, o2) -> pkgLabel(o1).compareTo(pkgLabel(o2)));
+        return exportedItems;
     }
 
     private String pkgLabel(ListItem item) {
