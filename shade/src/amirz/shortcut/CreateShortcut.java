@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.ListView;
 
@@ -46,9 +46,12 @@ public class CreateShortcut extends LauncherActivity {
         Intent.ShortcutIconResource iconResource = null;
         try {
             Context pkgContext = createPackageContext(item.packageName, 0);
-            iconResource = Intent.ShortcutIconResource.fromContext(
-                    pkgContext, item.resolveInfo.getIconResource());
-        } catch (PackageManager.NameNotFoundException e) {
+            int resId = item.resolveInfo.getIconResource();
+            if (resId != 0) {
+                iconResource = Intent.ShortcutIconResource.fromContext(
+                        pkgContext, resId);
+            }
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
             e.printStackTrace();
         }
 
