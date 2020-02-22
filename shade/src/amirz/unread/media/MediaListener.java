@@ -16,7 +16,6 @@ import com.android.launcher3.notification.NotificationListener;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import amirz.unread.notifications.NotificationList;
 
@@ -30,11 +29,11 @@ public class MediaListener extends MediaController.Callback
     private final MediaSessionManager mManager;
     private final Runnable mOnChange;
     private final MultiClickListener mTaps;
-    private final Set<NotificationList.Notif> mNotifs;
+    private final NotificationList mNotifs;
     private List<MediaController> mControllers = Collections.emptyList();
     private MediaController mTracking;
 
-    public MediaListener(Context context, Runnable onChange, Set<NotificationList.Notif> notifs) {
+    public MediaListener(Context context, Runnable onChange, NotificationList notifs) {
         mComponent = new ComponentName(context, NotificationListener.class);
         mManager = context.getSystemService(MediaSessionManager.class);
         mOnChange = onChange;
@@ -62,7 +61,22 @@ public class MediaListener extends MediaController.Callback
     }
 
     public boolean isPausedOrPlaying() {
-        return isTracking() && isPausedOrPlaying(mTracking);
+        if (!isTracking()) {
+            return false;
+        }
+
+        return isPausedOrPlaying(mTracking) && hasNotification(mTracking);
+    }
+
+    private boolean hasNotification(MediaController mc) {
+        for (StatusBarNotification sbn : mNotifs.getMap().keySet()) {
+            if (mc.getPackageName().equals(sbn.getPackageName())) {
+                return sbn.getNotification().extras
+                        .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null;
+            }
+        }
+        Log.d(TAG, "MediaController has no notification");
+        return false;
     }
 
     public CharSequence getTitle() {
@@ -160,7 +174,7 @@ public class MediaListener extends MediaController.Callback
     }
 
     private boolean isPlaying(MediaController mc) {
-        if (!hasNotification(mc) || !hasTitle(mc) || mc.getPlaybackState() == null) {
+        if (!hasTitle(mc) || mc.getPlaybackState() == null) {
             return false;
         }
         int state = mc.getPlaybackState().getState();
@@ -168,24 +182,12 @@ public class MediaListener extends MediaController.Callback
     }
 
     private boolean isPausedOrPlaying(MediaController mc) {
-        if (!hasNotification(mc) || !hasTitle(mc) || mc.getPlaybackState() == null) {
+        if (!hasTitle(mc) || mc.getPlaybackState() == null) {
             return false;
         }
         int state = mc.getPlaybackState().getState();
         return state == PlaybackState.STATE_PAUSED
                 || state == PlaybackState.STATE_PLAYING;
-    }
-
-    private boolean hasNotification(MediaController mc) {
-        for (NotificationList.Notif notif : mNotifs) {
-            StatusBarNotification sbn = notif.getSbn();
-            if (mc.getPackageName().equals(sbn.getPackageName())) {
-                return sbn.getNotification().extras
-                        .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null;
-            }
-        }
-        Log.d(TAG, "MediaController has no notification");
-        return false;
     }
 
     private boolean hasTitle(MediaController mc) {

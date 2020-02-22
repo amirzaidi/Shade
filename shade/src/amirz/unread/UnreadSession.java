@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
-import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.notification.NotificationListenerProxy;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class UnreadSession {
 
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
     private final NotificationList mNotifications = new NotificationList(this::reload);
-    private final NotificationRanker mRanker = new NotificationRanker(mNotifications.getMap());
+    private final NotificationRanker mRanker = new NotificationRanker(mNotifications);
 
     private final MediaListener mMedia;
     private final DateBroadcastReceiver mDateReceiver;
@@ -64,7 +63,7 @@ public class UnreadSession {
     private UnreadSession(Context context) {
         mContext = context;
 
-        mMedia = new MediaListener(context, this::reload, mNotifications.getSbn());
+        mMedia = new MediaListener(context, this::reload, mNotifications);
         mDateReceiver = new DateBroadcastReceiver(context, this::reload);
         mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
 
@@ -72,22 +71,15 @@ public class UnreadSession {
     }
 
     public void onResume() {
-        NotificationListener.setStatusBarNotificationsChangedListener(mNotifications);
-
-        // Reload notifications first, for the media tracker.
-        mNotifications.reloadNotifications();
-
         mMedia.onResume();
         mDateReceiver.onResume();
         mBatteryReceiver.onResume();
 
-        // Always reload on resume, to ensure date changes.
+        // Always reload on resume.
         reload();
     }
 
     public void onPause() {
-        NotificationListener.removeStatusBarNotificationsChangedListener();
-
         mMedia.onPause();
         mDateReceiver.onPause();
         mBatteryReceiver.onPause();

@@ -13,9 +13,9 @@ public class NotificationRanker {
     private static final int PRIORITY_AT_LEAST = IMPORTANCE_DEFAULT;
     private static final int PRIORITY_IMPORTANT = IMPORTANCE_HIGH;
 
-    private final Map<NotificationList.Notif, Integer> mNotifs;
+    private final NotificationList mNotifs;
 
-    public NotificationRanker(Map<NotificationList.Notif, Integer> notifs) {
+    public NotificationRanker(NotificationList notifs) {
         mNotifs = notifs;
     }
 
@@ -23,15 +23,10 @@ public class NotificationRanker {
         int bestPriority = PRIORITY_AT_LEAST;
         long bestPostTime = 0;
         StatusBarNotification bestNotif = null;
-        for (Map.Entry<NotificationList.Notif, Integer> kvp : mNotifs.entrySet()) {
-            StatusBarNotification sbn = kvp.getKey().getSbn();
+        for (Map.Entry<StatusBarNotification, Integer> kvp
+                : mNotifs.getMap(PRIORITY_AT_LEAST).entrySet()) {
+            StatusBarNotification sbn = kvp.getKey();
             if (shouldBeFilteredOut(sbn)) {
-                continue;
-            }
-
-            Notification n = sbn.getNotification();
-            if (TextUtils.isEmpty(n.extras.getCharSequence(Notification.EXTRA_TITLE))
-                    || TextUtils.isEmpty(n.extras.getCharSequence(Notification.EXTRA_TEXT))) {
                 continue;
             }
 
