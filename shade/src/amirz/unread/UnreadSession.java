@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -107,7 +108,7 @@ public class UnreadSession {
         // 1. Important notifications.
         NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
         if (ranked != null && ranked.important) {
-            extractNotification(new ParsedNotification(mContext, ranked.sbn));
+            extractNotification(ranked.sbn);
         }
         // 2. Playing media.
         else if (mMedia.isPausedOrPlaying()) {
@@ -126,7 +127,7 @@ public class UnreadSession {
         }
         // 3. Important notifications.
         else if (ranked != null) {
-            extractNotification(new ParsedNotification(mContext, ranked.sbn));
+            extractNotification(ranked.sbn);
         }
         // 4. Battery charging text (less than 100%) with date below.
         else if (mBatteryReceiver.isCharging()) {
@@ -151,7 +152,9 @@ public class UnreadSession {
                 : input;
     }
 
-    private void extractNotification(ParsedNotification parsed) {
+    private void extractNotification(StatusBarNotification sbn) {
+        ParsedNotification parsed = new ParsedNotification(mContext, sbn);
+
         // Body on top if it is not empty.
         if (!TextUtils.isEmpty(parsed.body)) {
             mTextList.add(stripDot(parsed.body));
