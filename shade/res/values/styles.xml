@@ -150,4 +150,6 @@
         <item name="android:textSize">16sp</item>
         <item name="android:shadowRadius">9</item>
     </style>
+
+    <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.Light" />
 </resources>
