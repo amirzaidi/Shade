@@ -137,6 +137,7 @@
 
         <!-- Widget shortcut to any activity -->
         <activity android:name="amirz.shortcut.CreateShortcut"
+            android:icon="@drawable/ic_launcher_shortcut"
             android:label="@string/any_activity_shortcut"
             android:theme="@style/ShortcutTheme">
             <intent-filter>
