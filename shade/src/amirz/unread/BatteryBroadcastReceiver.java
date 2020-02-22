@@ -16,6 +16,8 @@ public class BatteryBroadcastReceiver extends AutoRegisterReceiver {
     @Override
     public IntentFilter getFilter() {
         IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         return filter;
     }
