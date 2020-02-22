@@ -65,17 +65,15 @@ public class NotificationList
     public void onNotificationPosted(PackageUserKey postedPackageUserKey,
                                      NotificationKeyData notificationKey,
                                      boolean shouldBeFilteredOut) {
-        if (mSbn.add(notificationKey)) {
-            mOnNotificationsChanged.run();
-        }
+        mSbn.add(notificationKey);
+        mOnNotificationsChanged.run();
     }
 
     @Override
     public void onNotificationRemoved(PackageUserKey removedPackageUserKey,
                                       NotificationKeyData notificationKey) {
-        if (mSbn.remove(notificationKey)) {
-            mOnNotificationsChanged.run();
-        }
+        mSbn.remove(notificationKey);
+        mOnNotificationsChanged.run();
     }
 
     @Override
