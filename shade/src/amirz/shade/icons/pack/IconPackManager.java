@@ -36,7 +36,8 @@ public class IconPackManager extends BroadcastReceiver {
             "com.teslacoilsw.launcher.THEME",
             "com.gau.go.launcherex.theme",
             "org.adw.launcher.THEMES",
-            "org.adw.launcher.icons.ACTION_PICK_ICON"
+            "org.adw.launcher.icons.ACTION_PICK_ICON",
+            "net.oneplus.launcher.icons.ACTION_PICK_ICON",
     };
 
     private static final Intent[] ICON_INTENTS = new Intent[ICON_INTENT_ACTIONS.length];
