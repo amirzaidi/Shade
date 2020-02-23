@@ -479,7 +479,7 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
                             .value(iconResource.packageName);
                 }
                 return json.endObject().toString();
-            } catch (JSONException e) {
+            } catch (JSONException | NullPointerException e) {
                 Log.d(TAG, "Exception when adding shortcut: " + e);
                 return null;
             }
