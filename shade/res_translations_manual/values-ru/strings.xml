@@ -26,4 +26,5 @@
     <string name="about_contact">Контактные данные</string>
     <string name="about_donate_desc">С помощью Play баланса</string>
     <string name="shadespace_text_charging">Заряжено на %1$d%%</string>
+    <string name="search_hidden">Скрытые</string>
 </resources>

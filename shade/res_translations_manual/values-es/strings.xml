@@ -26,4 +26,5 @@
     <string name="about_contact">Contacto</string>
     <string name="about_donate_desc">Usando balance de Google Play</string>
     <string name="shadespace_text_charging">Cargado al %1$d%%</string>
+    <string name="search_hidden">Ocultas</string>
 </resources>

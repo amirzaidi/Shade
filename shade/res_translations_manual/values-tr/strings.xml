@@ -26,4 +26,5 @@
     <string name="about_contact">İletişim</string>
     <string name="about_donate_desc">Play Store ödemesi ile</string>
     <string name="shadespace_text_charging">%%%1$d Şarj oldu</string>
+    <string name="search_hidden">Gizli</string>
 </resources>

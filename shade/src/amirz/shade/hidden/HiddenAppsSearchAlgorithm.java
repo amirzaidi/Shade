@@ -14,20 +14,24 @@ import java.util.List;
 public class HiddenAppsSearchAlgorithm extends DefaultAppSearchAlgorithm {
     private final Context mContext;
     private final List<AppInfo> mApps;
-    private final String mKeyword;
+    private final String mKeyGlobal;
+    private final String mKeyTranslated;
 
     public HiddenAppsSearchAlgorithm(Context context, List<AppInfo> apps) {
         super(apps);
         mContext = context;
         mApps = apps;
-        mKeyword = context.getString(R.string.search_hidden).toLowerCase();
+        mKeyGlobal = context.getString(R.string.search_hidden_global).toLowerCase();
+        mKeyTranslated = context.getString(R.string.search_hidden).toLowerCase();
     }
 
     @Override
     public void doSearch(final String query,
                          final AllAppsSearchBarController.Callbacks callback) {
         String trimmed = query.trim();
-        boolean showHidden = trimmed.toLowerCase().equals(mKeyword);
+        String trimmedLowerCase = trimmed.toLowerCase();
+        boolean showHidden = trimmedLowerCase.equals(mKeyGlobal)
+                || trimmedLowerCase.equals(mKeyTranslated);
         if (showHidden) {
             HiddenAppsDrawerState.getInstance(mContext).setRevealed(true);
         }

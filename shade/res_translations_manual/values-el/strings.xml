@@ -26,4 +26,5 @@
     <string name="about_contact">Επικοινωνία</string>
     <string name="about_donate_desc">Μέσω του Google Play</string>
     <string name="shadespace_text_charging">Φόρτιση στο %1$d%%</string>
+    <string name="search_hidden">Κρυφά</string>
 </resources>

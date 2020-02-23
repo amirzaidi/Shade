@@ -26,4 +26,5 @@
     <string name="about_contact">संपर्क</string>
     <string name="about_donate_desc">प्ले बैलेंस का उपयोग करना</string>
     <string name="shadespace_text_charging">%1$d%% पर चार्ज किया गया</string>
+    <string name="search_hidden">छुपा</string>
 </resources>

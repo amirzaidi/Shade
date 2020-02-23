@@ -26,4 +26,5 @@
     <string name="about_contact">تواصل معي</string>
     <string name="about_donate_desc">بإستخدام رصيد متجر بلي</string>
     <string name="shadespace_text_charging">مشحون ل%1$d%%</string>
+    <string name="search_hidden">مخفي</string>
 </resources>
