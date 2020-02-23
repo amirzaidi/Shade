@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Formă"</string>
 	<string name="loading">"Se încarcă..."</string>
 	<string name="about_donate">"Dona"</string>
+	<string name="any_activity_shortcut">"Alegeți activitatea"</string>
 </resources>

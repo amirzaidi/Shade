@@ -64,4 +64,5 @@
 	<string name="icon_shape">"シェイプ"</string>
 	<string name="loading">"読み込み中..."</string>
 	<string name="about_donate">"寄付する"</string>
+	<string name="any_activity_shortcut">"操作の選択"</string>
 </resources>

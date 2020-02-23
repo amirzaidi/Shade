@@ -66,4 +66,5 @@
 	<string name="icon_shape">"形狀"</string>
 	<string name="loading">"正在開啟..."</string>
 	<string name="about_donate">"捐"</string>
+	<string name="any_activity_shortcut">"選擇活動"</string>
 </resources>

@@ -66,4 +66,5 @@
 	<string name="icon_shape">"شکل"</string>
 	<string name="loading">"در حال بارگذاری..."</string>
 	<string name="about_donate">"اهدا کنید"</string>
+	<string name="any_activity_shortcut">"انتخاب فعالیت"</string>
 </resources>

@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Σχήμα"</string>
 	<string name="loading">"Φόρτωση..."</string>
 	<string name="about_donate">"Δωρεά"</string>
+	<string name="any_activity_shortcut">"Επιλογή δραστηριότητας"</string>
 </resources>

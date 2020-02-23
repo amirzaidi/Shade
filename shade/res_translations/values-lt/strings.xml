@@ -59,4 +59,5 @@
 	<string name="app_info_icon_pack_none">"Nėra"</string>
 	<string name="app_info_source_unknown">"Nežinomas"</string>
 	<string name="about_donate">"Donate"</string>
+	<string name="any_activity_shortcut">"Pasirinkti veiklą"</string>
 </resources>

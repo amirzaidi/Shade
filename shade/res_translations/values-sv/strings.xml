@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Form"</string>
 	<string name="loading">"Läser in..."</string>
 	<string name="about_donate">"Donera"</string>
+	<string name="any_activity_shortcut">"Välj aktivitet"</string>
 </resources>

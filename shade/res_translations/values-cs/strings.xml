@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Tvar"</string>
 	<string name="loading">"Načítání..."</string>
 	<string name="about_donate">"Darovat"</string>
+	<string name="any_activity_shortcut">"Vybrat aktivitu"</string>
 </resources>

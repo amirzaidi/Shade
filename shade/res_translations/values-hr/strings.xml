@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Oblik"</string>
 	<string name="loading">"Učitavanje..."</string>
 	<string name="about_donate">"Darovati"</string>
+	<string name="any_activity_shortcut">"Odabir aktivnosti"</string>
 </resources>

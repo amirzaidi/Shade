@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Muoto"</string>
 	<string name="loading">"Ladataan..."</string>
 	<string name="about_donate">"Lahjoittaa"</string>
+	<string name="any_activity_shortcut">"Valitse toiminto"</string>
 </resources>

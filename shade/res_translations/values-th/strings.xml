@@ -66,4 +66,5 @@
 	<string name="icon_shape">"รูปทรง"</string>
 	<string name="loading">"กำลังโหลด..."</string>
 	<string name="about_donate">"บริจาค"</string>
+	<string name="any_activity_shortcut">"เลือกกิจกรรม"</string>
 </resources>

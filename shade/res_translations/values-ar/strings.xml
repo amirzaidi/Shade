@@ -66,4 +66,5 @@
 	<string name="icon_shape">"الشكل"</string>
 	<string name="loading">"تحميل..."</string>
 	<string name="about_donate">"تبرع"</string>
+	<string name="any_activity_shortcut">"اختيار نشاط"</string>
 </resources>

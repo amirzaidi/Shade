@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Hình dạng"</string>
 	<string name="loading">"Đang tải..."</string>
 	<string name="about_donate">"Đóng góp"</string>
+	<string name="any_activity_shortcut">"Chọn hoạt động"</string>
 </resources>

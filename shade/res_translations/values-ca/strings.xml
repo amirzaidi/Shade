@@ -64,4 +64,5 @@
 	<string name="icon_shape">"Forma"</string>
 	<string name="loading">"Carregant..."</string>
 	<string name="about_donate">"Donar"</string>
+	<string name="any_activity_shortcut">"Selecció de l'activitat"</string>
 </resources>

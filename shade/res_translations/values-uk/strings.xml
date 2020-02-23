@@ -66,4 +66,5 @@
 	<string name="icon_shape">"Форма"</string>
 	<string name="loading">"Завантаження..."</string>
 	<string name="about_donate">"Пожертвувати"</string>
+	<string name="any_activity_shortcut">"Вибрати дію"</string>
 </resources>
