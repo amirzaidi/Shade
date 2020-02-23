@@ -37,6 +37,7 @@ import com.android.launcher3.util.Themes;
 import java.util.ArrayList;
 
 import amirz.shade.customization.DockSearch;
+import amirz.shade.hidden.HiddenAppsSearchAlgorithm;
 
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
@@ -229,13 +230,8 @@ public class AllAppsQsb extends QsbContainerView
         mAppsView = appsView;
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mSearchBarController.initialize(
-                new DefaultAppSearchAlgorithm(mApps.getApps()) {
-                    @Override
-                    public void doSearch(final String query,
-                                         final AllAppsSearchBarController.Callbacks callback) {
-                        super.doSearch(query.trim(), callback);
-                    }
-                }, mFallbackSearchView, mLauncher, this);
+                new HiddenAppsSearchAlgorithm(mLauncher, mApps.getApps()),
+                mFallbackSearchView, mLauncher, this);
 
         appsView.setRecyclerViewVerticalFadingEdgeEnabled(true);
     }
