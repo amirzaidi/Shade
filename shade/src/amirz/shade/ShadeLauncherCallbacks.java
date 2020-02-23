@@ -166,7 +166,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         }
 
         UnreadSession.getInstance(mLauncher).onResume();
-        HiddenAppsDrawerState.getInstance(mLauncher).setRevealed(false);
+        if (!mLauncher.getAppsView().getApps().hasFilter()) {
+            HiddenAppsDrawerState.getInstance(mLauncher).setRevealed(false);
+        }
     }
 
     @Override
