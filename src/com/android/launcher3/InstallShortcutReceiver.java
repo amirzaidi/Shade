@@ -108,6 +108,9 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
                 case MSG_ADD_TO_QUEUE: {
                     Pair<Context, PendingInstallShortcutInfo> pair =
                             (Pair<Context, PendingInstallShortcutInfo>) msg.obj;
+                    if (pair.second == null) {
+                        return;
+                    }
                     String encoded = pair.second.encodeToString();
                     SharedPreferences prefs = Utilities.getPrefs(pair.first);
                     Set<String> strings = prefs.getStringSet(APPS_PENDING_INSTALL, null);
