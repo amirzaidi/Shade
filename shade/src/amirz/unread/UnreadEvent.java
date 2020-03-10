@@ -6,16 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnreadEvent {
-    private List<String> mText;
+    private final List<String> mText = new ArrayList<>();
     private View.OnClickListener mOnClick;
 
+    // Prevent instantiation outside package.
     UnreadEvent() {
-        mText = new ArrayList<>();
-    }
-
-    UnreadEvent(UnreadEvent event) {
-        mText = event.mText;
-        mOnClick = event.mOnClick;
     }
 
     public List<String> getText() {

@@ -1,17 +1,14 @@
 package amirz.unread;
 
 import android.annotation.SuppressLint;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.view.View;
 
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherModel;
@@ -52,7 +49,7 @@ public class UnreadSession {
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mLoadText = () -> {
-        // Load the new mText on the current thread.
+        // Load the new mEvent on the current thread.
         loadEvent();
 
         // Then update the UI on the UI thread.
@@ -78,7 +75,7 @@ public class UnreadSession {
     private final DateBroadcastReceiver mDateReceiver;
     private final BatteryBroadcastReceiver mBatteryReceiver;
 
-    private final UnreadEvent mEvent = new UnreadEvent();
+    private UnreadEvent mEvent = new UnreadEvent();
 
     public interface OnUpdateListener {
         void onUpdateAvailable();
@@ -125,19 +122,18 @@ public class UnreadSession {
     }
 
     public UnreadEvent getEvent() {
-        return new UnreadEvent(mEvent);
+        return mEvent;
     }
 
     private void loadEvent() {
-        List<String> textList = mEvent.getText();
+        UnreadEvent event = new UnreadEvent();
+        List<String> textList = event.getText();
         textList.clear();
-
-        mEvent.setOnClickListener(null);
 
         // 1. Important notifications.
         NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
         if (ranked != null && ranked.important) {
-            extractNotification(ranked.sbn);
+            extractNotification(ranked.sbn, event);
         }
         // 2. Playing media.
         else if (mMedia.isPausedOrPlaying()) {
@@ -152,11 +148,11 @@ public class UnreadSession {
                     textList.add(album.toString());
                 }
             }
-            mEvent.setOnClickListener(mMedia);
+            event.setOnClickListener(mMedia);
         }
         // 3. Important notifications.
         else if (ranked != null) {
-            extractNotification(ranked.sbn);
+            extractNotification(ranked.sbn, event);
         }
         // 4. Battery charging mText (less than 100%) with date below.
         else if (mBatteryReceiver.isCharging()) {
@@ -167,10 +163,13 @@ public class UnreadSession {
                 textList.add(DateUtils.formatDateTime(mAppContext, System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
 
-                mEvent.setOnClickListener(v -> Launcher.getLauncher(v.getContext())
+                event.setOnClickListener(v -> Launcher.getLauncher(v.getContext())
                         .startActivitySafely(v, BATTERY_INTENT, null, null));
             }
         }
+
+        // Commit to new event.
+        mEvent = event;
     }
 
     private String stripDot(String input) {
@@ -179,8 +178,8 @@ public class UnreadSession {
                 : input;
     }
 
-    private void extractNotification(StatusBarNotification sbn) {
-        List<String> textList = mEvent.getText();
+    private void extractNotification(StatusBarNotification sbn, UnreadEvent event) {
+        List<String> textList = event.getText();
         ParsedNotification parsed = new ParsedNotification(mAppContext, sbn);
 
         // Body on top if it is not empty.
@@ -196,7 +195,7 @@ public class UnreadSession {
             textList.add(app);
         }
 
-        mEvent.setOnClickListener(mSender.onClickNotification(parsed.pi));
+        event.setOnClickListener(mSender.onClickNotification(parsed.pi));
     }
 
     private CharSequence getApp(String name) {
