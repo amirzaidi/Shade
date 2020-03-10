@@ -26,7 +26,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+import com.android.launcher3.AppInfo;
 import com.android.launcher3.ExtendedEditText;
+import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
@@ -115,13 +117,21 @@ public class AllAppsSearchBarController
         }
 
         AlphabeticalAppsList list = mLauncher.getAppsView().getApps();
-        Intent intent = list.hasNoFilteredResults()
-                ? PackageManagerHelper.getMarketSearchIntent(mLauncher, query)
-                : list.getFilteredApps().get(0).getIntent();
+
+        AppInfo itemInfo;
+        Intent intent;
+        if (list.hasNoFilteredResults()) {
+            itemInfo = null;
+            intent = PackageManagerHelper.getMarketSearchIntent(mLauncher, query);
+        } else {
+            itemInfo = list.getFilteredApps().get(0);
+            intent = itemInfo.getIntent();
+        }
 
         return mLauncher.startActivitySafely(v,
-                intent, null,
+                intent, itemInfo,
                 AppLaunchTracker.CONTAINER_SEARCH);
+
     }
 
     @Override
