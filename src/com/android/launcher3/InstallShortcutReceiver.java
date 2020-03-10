@@ -112,6 +112,9 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
                         return;
                     }
                     String encoded = pair.second.encodeToString();
+                    if (encoded == null) {
+                        return;
+                    }
                     SharedPreferences prefs = Utilities.getPrefs(pair.first);
                     Set<String> strings = prefs.getStringSet(APPS_PENDING_INSTALL, null);
                     strings = (strings != null) ? new HashSet<>(strings) : new HashSet<String>(1);
@@ -137,6 +140,10 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
 
                     LauncherAppsCompat launcherApps = LauncherAppsCompat.getInstance(context);
                     for (String encoded : strings) {
+                        if (encoded == null) {
+                            continue;
+                        }
+
                         PendingInstallShortcutInfo info = decode(encoded, context);
                         if (info == null) {
                             continue;
@@ -482,7 +489,7 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
                             .value(iconResource.packageName);
                 }
                 return json.endObject().toString();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 Log.d(TAG, "Exception when adding shortcut: " + e);
                 return null;
             }
