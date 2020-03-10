@@ -159,7 +159,10 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
                         }
 
                         // Generate a shortcut info to add into the model
-                        installQueue.add(info.getItemInfo());
+                        Pair<ItemInfo, Object> itemInfo = info.getItemInfo();
+                        if (itemInfo.first != null) {
+                            installQueue.add(itemInfo);
+                        }
                     }
                     prefs.edit().remove(APPS_PENDING_INSTALL).apply();
                     if (!installQueue.isEmpty()) {
@@ -499,8 +502,10 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
             if (isActivity) {
                 WorkspaceItemInfo si = createWorkspaceItemInfo(data,
                         LauncherAppState.getInstance(mContext));
-                si.itemType = LauncherSettings.Favorites.ITEM_TYPE_APPLICATION;
-                si.status |= WorkspaceItemInfo.FLAG_AUTOINSTALL_ICON;
+                if (si != null) {
+                    si.itemType = LauncherSettings.Favorites.ITEM_TYPE_APPLICATION;
+                    si.status |= WorkspaceItemInfo.FLAG_AUTOINSTALL_ICON;
+                }
                 return Pair.create(si, null);
             } else if (shortcutInfo != null) {
                 WorkspaceItemInfo itemInfo = new WorkspaceItemInfo(shortcutInfo, mContext);
