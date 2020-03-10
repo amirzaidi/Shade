@@ -1,6 +1,7 @@
 package amirz.unread;
 
 import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.view.View;
 
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherModel;
@@ -25,6 +27,7 @@ import amirz.unread.media.MediaListener;
 import amirz.unread.notifications.NotificationList;
 import amirz.unread.notifications.NotificationRanker;
 import amirz.unread.notifications.ParsedNotification;
+import amirz.unread.notifications.PendingIntentSender;
 
 public class UnreadSession {
     private static final int NOTIF_UPDATE_DELAY = 750;
@@ -43,19 +46,18 @@ public class UnreadSession {
     private final Context mAppContext;
 
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
+    private final PendingIntentSender mSender = new PendingIntentSender();
 
     private final Handler mWorkerHandler = new Handler(LauncherModel.getWorkerLooper());
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
-
-    // Delay updates to keep the notification showing after pressing it.
-    private long mLastClick;
 
     private final Runnable mLoadText = () -> {
         // Load the new mText on the current thread.
         loadEvent();
 
         // Then update the UI on the UI thread.
-        long delay = Math.max(0, NOTIF_UPDATE_DELAY + mLastClick - System.currentTimeMillis());
+        long timeSinceClick = System.currentTimeMillis() - mSender.getLastClick();
+        long delay = Math.max(0, NOTIF_UPDATE_DELAY - timeSinceClick);
         mUiHandler.postDelayed(() -> {
             for (OnUpdateListener listener : mUpdateListeners) {
                 listener.onUpdateAvailable();
@@ -85,7 +87,7 @@ public class UnreadSession {
     private UnreadSession(Context appContext) {
         mAppContext = appContext;
 
-        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, mNotifications);
+        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, mNotifications, mSender);
         mDateReceiver = new DateBroadcastReceiver(mReload);
         mBatteryReceiver = new BatteryBroadcastReceiver(appContext, mReload);
 
@@ -150,7 +152,7 @@ public class UnreadSession {
                     textList.add(album.toString());
                 }
             }
-            mEvent.setOnClickListener(v -> mMedia.onClick());
+            mEvent.setOnClickListener(mMedia);
         }
         // 3. Important notifications.
         else if (ranked != null) {
@@ -194,19 +196,7 @@ public class UnreadSession {
             textList.add(app);
         }
 
-        mEvent.setOnClickListener(v -> {
-            if (parsed.pi != null) {
-                mLastClick = System.currentTimeMillis();
-                try {
-                    Launcher launcher = Launcher.getLauncher(v.getContext());
-                    Bundle b = launcher.getAppTransitionManager()
-                            .getActivityLaunchOptions(launcher, v).toBundle();
-                    parsed.pi.send(null, 0, null, null, null, null, b);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        mEvent.setOnClickListener(mSender.onClickNotification(parsed.pi));
     }
 
     private CharSequence getApp(String name) {

@@ -1,6 +1,7 @@
 package amirz.unread.media;
 
 import android.os.Handler;
+import android.view.View;
 
 class MultiClickListener implements Runnable {
     private final Handler mHandler = new Handler();
@@ -8,6 +9,7 @@ class MultiClickListener implements Runnable {
     private OnClickListener[] mListeners = new OnClickListener[0];
     private OnClickListener[] mNewListeners = mListeners;
     private int mUnprocessedTaps;
+    private View mView;
 
     MultiClickListener(int delay) {
         mDelay = delay;
@@ -22,10 +24,12 @@ class MultiClickListener implements Runnable {
         }
     }
 
-    void onClick() {
+    void onClick(View v) {
         if (mListeners.length > 0) {
+            mView = v;
+
             // Intermediate click callback.
-            mListeners[mUnprocessedTaps++].onClick(false);
+            mListeners[mUnprocessedTaps++].onClick(v, false);
 
             // Final click callback.
             mHandler.removeCallbacks(this);
@@ -40,7 +44,7 @@ class MultiClickListener implements Runnable {
     @Override
     public void run() {
         // Unprocessed tap count cannot become higher than the listeners count.
-        mListeners[mUnprocessedTaps - 1].onClick(true);
+        mListeners[mUnprocessedTaps - 1].onClick(mView, true);
         mUnprocessedTaps = 0;
 
         // Update the listeners after the taps have been processed.
@@ -48,6 +52,6 @@ class MultiClickListener implements Runnable {
     }
 
     interface OnClickListener {
-        void onClick(boolean finalClick);
+        void onClick(View v, boolean finalClick);
     }
 }

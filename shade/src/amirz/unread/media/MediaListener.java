@@ -1,6 +1,7 @@
 package amirz.unread.media;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.media.MediaMetadata;
@@ -12,6 +13,7 @@ import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 
 import com.android.launcher3.notification.NotificationListener;
 
@@ -19,12 +21,13 @@ import java.util.Collections;
 import java.util.List;
 
 import amirz.unread.notifications.NotificationList;
+import amirz.unread.notifications.PendingIntentSender;
 
 public class MediaListener extends MediaController.Callback
-        implements MediaSessionManager.OnActiveSessionsChangedListener {
+        implements MediaSessionManager.OnActiveSessionsChangedListener, View.OnClickListener {
     private static final String TAG = "MediaListener";
 
-    private static final int MULTI_CLICK_DELAY = 300;
+    private static final int MULTI_CLICK_DELAY = 200;
 
     private final ComponentName mComponent;
     private final MediaSessionManager mManager;
@@ -32,18 +35,21 @@ public class MediaListener extends MediaController.Callback
     private final Runnable mOnChange;
     private final MultiClickListener mTaps;
     private final NotificationList mNotifs;
+    private final PendingIntentSender mSender;
+
     private List<MediaController> mControllers = Collections.emptyList();
     private MediaController mTracking;
 
     public MediaListener(Context context, Handler workerHandler, Runnable onChange,
-                         NotificationList notifs) {
+                         NotificationList notifs, PendingIntentSender sender) {
         mComponent = new ComponentName(context, NotificationListener.class);
         mManager = context.getSystemService(MediaSessionManager.class);
         mWorkerHandler = workerHandler;
         mOnChange = onChange;
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
-        mTaps.setListeners(this::toggle, this::next, this::previous);
+        mTaps.setListeners(this::open, this::next, this::previous);
         mNotifs = notifs;
+        mSender = sender;
     }
 
     public void onCreate() {
@@ -73,14 +79,20 @@ public class MediaListener extends MediaController.Callback
     }
 
     private boolean hasNotification(MediaController mc) {
+        return getNotification(mc) != null;
+    }
+
+    private StatusBarNotification getNotification(MediaController mc) {
         for (StatusBarNotification sbn : mNotifs.getMap().keySet()) {
             if (mc.getPackageName().equals(sbn.getPackageName())) {
-                return sbn.getNotification().extras
-                        .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null;
+                if (sbn.getNotification().extras
+                        .getParcelable(Notification.EXTRA_MEDIA_SESSION) != null) {
+                    return sbn;
+                }
             }
         }
         Log.d(TAG, "MediaController has no notification");
-        return false;
+        return null;
     }
 
     public CharSequence getTitle() {
@@ -150,18 +162,32 @@ public class MediaListener extends MediaController.Callback
         }
     }
 
-    public void onClick() {
-        mTaps.onClick();
+    @Override
+    public void onClick(View v) {
+        mTaps.onClick(v);
     }
 
-    private void toggle(boolean finalClick) {
-        if (!finalClick) {
+    private void open(View v, boolean finalClick) {
+        if (finalClick) {
             Log.d(TAG, "Toggle");
+
+            if (mTracking != null) {
+                StatusBarNotification sbn = getNotification(mTracking);
+                if (sbn != null) {
+                    PendingIntent pi = sbn.getNotification().contentIntent;
+                    if (pi != null) {
+                        mSender.onClickNotification(pi).onClick(v);
+                        return;
+                    }
+                }
+            }
+
+            // Fall back to pressing the button if we cannot open the notification.
             pressButton(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
         }
     }
 
-    private void next(boolean finalClick) {
+    private void next(View v, boolean finalClick) {
         if (finalClick) {
             Log.d(TAG, "Next");
             pressButton(KeyEvent.KEYCODE_MEDIA_NEXT);
@@ -169,7 +195,7 @@ public class MediaListener extends MediaController.Callback
         }
     }
 
-    private void previous(boolean finalClick) {
+    private void previous(View v, boolean finalClick) {
         if (finalClick) {
             Log.d(TAG, "Previous");
             pressButton(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
