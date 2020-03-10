@@ -7,6 +7,7 @@ import android.media.MediaMetadata;
 import android.media.session.MediaController;
 import android.media.session.MediaSessionManager;
 import android.media.session.PlaybackState;
+import android.os.Handler;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,31 +28,34 @@ public class MediaListener extends MediaController.Callback
 
     private final ComponentName mComponent;
     private final MediaSessionManager mManager;
+    private final Handler mWorkerHandler;
     private final Runnable mOnChange;
     private final MultiClickListener mTaps;
     private final NotificationList mNotifs;
     private List<MediaController> mControllers = Collections.emptyList();
     private MediaController mTracking;
 
-    public MediaListener(Context context, Runnable onChange, NotificationList notifs) {
+    public MediaListener(Context context, Handler workerHandler, Runnable onChange,
+                         NotificationList notifs) {
         mComponent = new ComponentName(context, NotificationListener.class);
         mManager = context.getSystemService(MediaSessionManager.class);
+        mWorkerHandler = workerHandler;
         mOnChange = onChange;
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
         mTaps.setListeners(this::toggle, this::next, this::previous);
         mNotifs = notifs;
     }
 
-    public void onResume() {
+    public void onCreate() {
         try {
-            mManager.addOnActiveSessionsChangedListener(this, mComponent);
+            mManager.addOnActiveSessionsChangedListener(this, mComponent, mWorkerHandler);
         } catch (SecurityException e) {
             e.printStackTrace();
         }
         onActiveSessionsChanged(null); // Bind all current controllers.
     }
 
-    public void onPause() {
+    public void onDestroy() {
         mManager.removeOnActiveSessionsChangedListener(this);
         onActiveSessionsChanged(Collections.emptyList()); // Unbind all previous controllers.
     }

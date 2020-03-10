@@ -3,7 +3,6 @@ package amirz.shade.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.launcher3.R;
@@ -11,6 +10,7 @@ import com.android.searchlauncher.SmartspaceQsbWidget;
 
 import java.util.List;
 
+import amirz.unread.UnreadEvent;
 import amirz.unread.UnreadSession;
 
 public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
@@ -42,7 +42,6 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
         mUnreadView = findViewById(R.id.unread_view);
         mUnreadTitle = mUnreadView.findViewById(R.id.shadespace_title);
         mUnreadSubtitle = mUnreadView.findViewById(R.id.shadespace_subtitle);
-        mUnreadView.setOnClickListener(mUnread::onClick);
     }
 
     @Override
@@ -59,7 +58,9 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
 
     @Override
     public void onUpdateAvailable() {
-        List<String> text = mUnread.getText();
+        UnreadEvent event = mUnread.getEvent();
+        mUnreadView.setOnClickListener(event.getOnClickListener());
+        List<String> text = event.getText();
         if (text != null && text.size() > 1) {
             mSmartspaceView.setVisibility(View.GONE);
             mUnreadView.setVisibility(View.VISIBLE);

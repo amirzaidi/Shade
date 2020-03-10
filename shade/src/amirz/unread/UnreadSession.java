@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.view.View;
 
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherModel;
 import com.android.launcher3.R;
 import com.android.launcher3.notification.NotificationListenerProxy;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,50 +40,77 @@ public class UnreadSession {
         return sInstance;
     }
 
-    private final Context mContext;
-    private final Handler mHandler = new Handler();
+    private final Context mAppContext;
 
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
-    private final NotificationList mNotifications = new NotificationList(this::reload);
+
+    private final Handler mWorkerHandler = new Handler(LauncherModel.getWorkerLooper());
+    private final Handler mUiHandler = new Handler(Looper.getMainLooper());
+
+    // Delay updates to keep the notification showing after pressing it.
+    private long mLastClick;
+
+    private final Runnable mLoadText = () -> {
+        // Load the new mText on the current thread.
+        loadEvent();
+
+        // Then update the UI on the UI thread.
+        long delay = Math.max(0, NOTIF_UPDATE_DELAY + mLastClick - System.currentTimeMillis());
+        mUiHandler.postDelayed(() -> {
+            for (OnUpdateListener listener : mUpdateListeners) {
+                listener.onUpdateAvailable();
+            }
+        }, delay);
+    };
+
+    private final Runnable mReload = () -> {
+        // Collect all callbacks so we do not do excessive work but are always up to date.
+        mWorkerHandler.removeCallbacks(mLoadText);
+        mWorkerHandler.post(mLoadText);
+    };
+
+    private final NotificationList mNotifications = new NotificationList(mWorkerHandler, mReload);
     private final NotificationRanker mRanker = new NotificationRanker(mNotifications);
 
     private final MediaListener mMedia;
     private final DateBroadcastReceiver mDateReceiver;
     private final BatteryBroadcastReceiver mBatteryReceiver;
 
-    private final List<String> mTextList = new ArrayList<>();
-    private View.OnClickListener mOnClick;
-
-    // Delay updates to keep the notification showing after pressing it.
-    private long mLastClick;
+    private final UnreadEvent mEvent = new UnreadEvent();
 
     public interface OnUpdateListener {
         void onUpdateAvailable();
     }
 
-    private UnreadSession(Context context) {
-        mContext = context;
+    private UnreadSession(Context appContext) {
+        mAppContext = appContext;
 
-        mMedia = new MediaListener(context, this::reload, mNotifications);
-        mDateReceiver = new DateBroadcastReceiver(context, this::reload);
-        mBatteryReceiver = new BatteryBroadcastReceiver(context, this::reload);
+        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, mNotifications);
+        mDateReceiver = new DateBroadcastReceiver(mReload);
+        mBatteryReceiver = new BatteryBroadcastReceiver(appContext, mReload);
 
         NotificationListenerProxy.INSTANCE.add(mNotifications);
     }
 
-    public void onResume() {
-        mMedia.onResume();
-        mDateReceiver.onResume();
-        mBatteryReceiver.onResume();
-
-        // Always reload on resume.
-        reload();
+    public void onCreate() {
+        mWorkerHandler.post(mMedia::onCreate);
     }
 
-    public void onPause() {
-        mMedia.onPause();
-        mDateReceiver.onPause();
-        mBatteryReceiver.onPause();
+    public void onResume(Context context) {
+        mDateReceiver.onResume(context);
+        mBatteryReceiver.onResume(context);
+
+        // Always reload on resume.
+        mReload.run();
+    }
+
+    public void onPause(Context context) {
+        mDateReceiver.onPause(context);
+        mBatteryReceiver.onPause(context);
+    }
+
+    public void onDestroy() {
+        mWorkerHandler.post(mMedia::onDestroy);
     }
 
     public void addUpdateListener(OnUpdateListener listener) {
@@ -95,15 +122,15 @@ public class UnreadSession {
         mUpdateListeners.remove(listener);
     }
 
-    public void onClick(View v) {
-        if (mOnClick != null) {
-            mOnClick.onClick(v);
-        }
+    public UnreadEvent getEvent() {
+        return new UnreadEvent(mEvent);
     }
 
-    public List<String> getText() {
-        mTextList.clear();
-        mOnClick = null;
+    private void loadEvent() {
+        List<String> textList = mEvent.getText();
+        textList.clear();
+
+        mEvent.setOnClickListener(null);
 
         // 1. Important notifications.
         NotificationRanker.RankedNotification ranked = mRanker.getBestNotification();
@@ -112,38 +139,36 @@ public class UnreadSession {
         }
         // 2. Playing media.
         else if (mMedia.isPausedOrPlaying()) {
-            mTextList.add(mMedia.getTitle().toString());
+            textList.add(mMedia.getTitle().toString());
             CharSequence artist = mMedia.getArtist();
             if (TextUtils.isEmpty(artist)) {
-                mTextList.add(getApp(mMedia.getPackage()).toString());
+                textList.add(getApp(mMedia.getPackage()).toString());
             } else {
-                mTextList.add(artist.toString());
+                textList.add(artist.toString());
                 CharSequence album = mMedia.getAlbum();
-                if (!TextUtils.isEmpty(album) && !mTextList.contains(album.toString())) {
-                    mTextList.add(album.toString());
+                if (!TextUtils.isEmpty(album) && !textList.contains(album.toString())) {
+                    textList.add(album.toString());
                 }
             }
-            mOnClick = v -> mMedia.onClick();
+            mEvent.setOnClickListener(v -> mMedia.onClick());
         }
         // 3. Important notifications.
         else if (ranked != null) {
             extractNotification(ranked.sbn);
         }
-        // 4. Battery charging text (less than 100%) with date below.
+        // 4. Battery charging mText (less than 100%) with date below.
         else if (mBatteryReceiver.isCharging()) {
             int lvl = mBatteryReceiver.getLevel();
             if (lvl < 100) {
-                mTextList.add(mContext.getString(
+                textList.add(mAppContext.getString(
                         R.string.shadespace_text_charging, mBatteryReceiver.getLevel()));
-                mTextList.add(DateUtils.formatDateTime(mContext, System.currentTimeMillis(),
+                textList.add(DateUtils.formatDateTime(mAppContext, System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE));
 
-                mOnClick = v -> Launcher.getLauncher(v.getContext())
-                        .startActivitySafely(v, BATTERY_INTENT, null, null);
+                mEvent.setOnClickListener(v -> Launcher.getLauncher(v.getContext())
+                        .startActivitySafely(v, BATTERY_INTENT, null, null));
             }
         }
-
-        return mTextList;
     }
 
     private String stripDot(String input) {
@@ -153,22 +178,23 @@ public class UnreadSession {
     }
 
     private void extractNotification(StatusBarNotification sbn) {
-        ParsedNotification parsed = new ParsedNotification(mContext, sbn);
+        List<String> textList = mEvent.getText();
+        ParsedNotification parsed = new ParsedNotification(mAppContext, sbn);
 
         // Body on top if it is not empty.
         if (!TextUtils.isEmpty(parsed.body)) {
-            mTextList.add(stripDot(parsed.body));
+            textList.add(stripDot(parsed.body));
         }
         for (int i = parsed.splitTitle.length - 1; i >= 0; i--) {
-            mTextList.add(stripDot(parsed.splitTitle[i]));
+            textList.add(stripDot(parsed.splitTitle[i]));
         }
 
         String app = getApp(parsed.pkg).toString();
-        if (!mTextList.contains(app)) {
-            mTextList.add(app);
+        if (!textList.contains(app)) {
+            textList.add(app);
         }
 
-        mOnClick = v -> {
+        mEvent.setOnClickListener(v -> {
             if (parsed.pi != null) {
                 mLastClick = System.currentTimeMillis();
                 try {
@@ -180,20 +206,11 @@ public class UnreadSession {
                     e.printStackTrace();
                 }
             }
-        };
-    }
-
-    public void reload() {
-        long delayTime = Math.max(0, NOTIF_UPDATE_DELAY + mLastClick - System.currentTimeMillis());
-        mHandler.postDelayed(() -> {
-            for (OnUpdateListener listener : mUpdateListeners) {
-                listener.onUpdateAvailable();
-            }
-        }, delayTime);
+        });
     }
 
     private CharSequence getApp(String name) {
-        PackageManager pm = mContext.getPackageManager();
+        PackageManager pm = mAppContext.getPackageManager();
         try {
             return pm.getApplicationLabel(
                     pm.getApplicationInfo(name, PackageManager.GET_META_DATA));

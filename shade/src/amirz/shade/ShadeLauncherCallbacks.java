@@ -15,7 +15,6 @@ import androidx.core.graphics.ColorUtils;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
-import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherCallbacks;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
@@ -80,6 +79,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         setDefaultValues(prefs);
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
+        UnreadSession.getInstance(mLauncher).onCreate();
     }
 
     private String getRecommendedFeedPackage() {
@@ -165,7 +165,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
             mLauncherClient.onResume();
         }
 
-        UnreadSession.getInstance(mLauncher).onResume();
+        UnreadSession.getInstance(mLauncher).onResume(mLauncher);
         if (!mLauncher.getAppsView().getApps().hasFilter()) {
             HiddenAppsDrawerState.getInstance(mLauncher).setRevealed(false);
         }
@@ -195,7 +195,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         if (!mDeferCallbacks) {
             mLauncherClient.onPause();
         }
-        UnreadSession.getInstance(mLauncher).onPause();
+        UnreadSession.getInstance(mLauncher).onPause(mLauncher);
         mNoFloatingView = AbstractFloatingView.getTopOpenView(mLauncher) == null;
     }
 
@@ -204,6 +204,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         WallpaperColorInfo.getInstance(mLauncher).removeOnChangeListener(this);
         mLauncherClient.onDestroy();
         Utilities.getPrefs(mLauncher).unregisterOnSharedPreferenceChangeListener(this);
+        UnreadSession.getInstance(mLauncher).onDestroy();
     }
 
     @Override

@@ -6,10 +6,12 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 
 public class BatteryBroadcastReceiver extends AutoRegisterReceiver {
+    private final Context mContext;
     private final BatteryManager mManager;
 
     public BatteryBroadcastReceiver(Context context, Runnable onReceive) {
-        super(context, onReceive);
+        super(onReceive);
+        mContext = context;
         mManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 

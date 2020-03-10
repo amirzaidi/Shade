@@ -1,14 +1,13 @@
 package amirz.unread.calendar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
 import amirz.unread.AutoRegisterReceiver;
 
 public class DateBroadcastReceiver extends AutoRegisterReceiver {
-    public DateBroadcastReceiver(Context context, Runnable onReceive) {
-        super(context, onReceive);
+    public DateBroadcastReceiver(Runnable onReceive) {
+        super(onReceive);
     }
 
     @Override

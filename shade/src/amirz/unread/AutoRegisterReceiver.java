@@ -6,22 +6,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 public abstract class AutoRegisterReceiver extends BroadcastReceiver {
-    protected final Context mContext;
     private final Runnable mOnReceive;
     private final IntentFilter mFilter;
 
-    public AutoRegisterReceiver(Context context, Runnable onReceive) {
-        mContext = context;
+    public AutoRegisterReceiver(Runnable onReceive) {
         mOnReceive = onReceive;
         mFilter = getFilter();
     }
 
-    public final void onResume() {
-        mContext.registerReceiver(this, mFilter);
+    public final void onResume(Context context) {
+        context.registerReceiver(this, mFilter);
     }
 
-    public final void onPause() {
-        mContext.unregisterReceiver(this);
+    public final void onPause(Context context) {
+        context.unregisterReceiver(this);
     }
 
     @Override

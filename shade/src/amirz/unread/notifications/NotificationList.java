@@ -1,5 +1,6 @@
 package amirz.unread.notifications;
 
+import android.os.Handler;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
@@ -18,12 +19,15 @@ import java.util.Set;
 
 public class NotificationList
         implements NotificationListener.NotificationsChangedListener {
+    private final Handler mWorkerHandler;
+    private final Runnable mOnNotificationsChanged;
+
     private final Set<NotificationKeyData> mSbn = new HashSet<>();
     private final NotificationListenerService.Ranking mTempRanking
             = new NotificationListenerService.Ranking();
-    private final Runnable mOnNotificationsChanged;
 
-    public NotificationList(Runnable onChange) {
+    public NotificationList(Handler workerHandler, Runnable onChange) {
+        mWorkerHandler = workerHandler;
         mOnNotificationsChanged = onChange;
     }
 
@@ -31,6 +35,7 @@ public class NotificationList
         return getMap(Integer.MIN_VALUE);
     }
 
+    // Warning: Call getMap only from the worker thread, to prevent modification to mSbn.
     Map<StatusBarNotification, Integer> getMap(int minPriority) {
         NotificationListener nls = NotificationListener.getInstanceIfConnected();
         if (nls == null) {
@@ -65,29 +70,37 @@ public class NotificationList
     public void onNotificationPosted(PackageUserKey postedPackageUserKey,
                                      NotificationKeyData notificationKey,
                                      boolean shouldBeFilteredOut) {
-        mSbn.add(notificationKey);
-        mOnNotificationsChanged.run();
+        mWorkerHandler.post(() -> {
+            mSbn.add(notificationKey);
+            mOnNotificationsChanged.run();
+        });
     }
 
     @Override
     public void onNotificationRemoved(PackageUserKey removedPackageUserKey,
                                       NotificationKeyData notificationKey) {
-        mSbn.remove(notificationKey);
-        mOnNotificationsChanged.run();
+        mWorkerHandler.post(() -> {
+            mSbn.remove(notificationKey);
+            mOnNotificationsChanged.run();
+        });
     }
 
     @Override
     public void onNotificationFullRefresh(List<StatusBarNotification> activeNotifications) {
         // Ignore filtered notifications, and instead load all notifications.
         // This is called whenever the service is bound.
-        mSbn.clear();
-        NotificationListener nls = NotificationListener.getInstanceIfConnected();
-        if (nls != null) {
-            for (StatusBarNotification sbn : nls.getActiveNotifications()) {
-                mSbn.add(NotificationKeyData.fromNotification(sbn));
+        mWorkerHandler.post(() -> {
+            List<NotificationKeyData> newSbn = new ArrayList<>();
+            NotificationListener nls = NotificationListener.getInstanceIfConnected();
+            if (nls != null) {
+                for (StatusBarNotification sbn : nls.getActiveNotifications()) {
+                    newSbn.add(NotificationKeyData.fromNotification(sbn));
+                }
             }
-        }
-        mOnNotificationsChanged.run();
+            mSbn.clear();
+            mSbn.addAll(newSbn);
+            mOnNotificationsChanged.run();
+        });
     }
 
     private int getRankedImportance() {
