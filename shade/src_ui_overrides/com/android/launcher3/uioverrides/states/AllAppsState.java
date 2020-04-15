@@ -76,7 +76,7 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public ScaleAndTranslation getWorkspaceScaleAndTranslation(Launcher launcher) {
-        return new ScaleAndTranslation(1f, 0,
+        return new ScaleAndTranslation(0.9f, 0,
                 -launcher.getAllAppsController().getShiftRange() * PARALLAX_COEFFICIENT);
     }
 
