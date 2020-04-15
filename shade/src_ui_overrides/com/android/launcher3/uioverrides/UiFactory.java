@@ -62,6 +62,20 @@ public class UiFactory {
     public static void resetOverview(Launcher launcher) { }
 
     public static void onLauncherStateOrFocusChanged(Launcher launcher) {
+        updateDisallowBackGesture(launcher);
+    }
+
+    public static void onCreate(Launcher launcher) { }
+
+    public static void onStart(Launcher launcher) { }
+
+    public static void onEnterAnimationComplete(Context context) {}
+
+    public static void onLauncherStateOrResumeChanged(Launcher launcher) {
+        updateDisallowBackGesture(launcher);
+    }
+
+    private static void updateDisallowBackGesture(Launcher launcher) {
         boolean shouldBackButtonBeHidden = launcher != null
                 && launcher.getStateManager().getState().hideBackButton
                 && launcher.hasWindowFocus();
@@ -74,14 +88,6 @@ public class UiFactory {
             launcher.getRootView().setDisallowBackGesture(shouldBackButtonBeHidden);
         }
     }
-
-    public static void onCreate(Launcher launcher) { }
-
-    public static void onStart(Launcher launcher) { }
-
-    public static void onEnterAnimationComplete(Context context) {}
-
-    public static void onLauncherStateOrResumeChanged(Launcher launcher) { }
 
     public static void onTrimMemory(Launcher launcher, int level) { }
 
