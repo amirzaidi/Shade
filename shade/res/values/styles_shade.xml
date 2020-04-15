@@ -34,7 +34,7 @@
     </style>
 
     <style name="ShadeOverride.Twilight" parent="ShadeOverride.Shade">
-        <item name="shadeColorAllAppsOverlay">#5E35B1</item>
+        <item name="shadeColorAllAppsOverlay">#5628B0</item>
         <item name="shadeColorAccent">#855CCC</item>
     </style>
 
