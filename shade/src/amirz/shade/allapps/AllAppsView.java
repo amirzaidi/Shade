@@ -2,15 +2,18 @@ package amirz.shade.allapps;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.EdgeEffect;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.launcher3.R;
 import com.android.launcher3.allapps.AllAppsContainerView;
 
-import amirz.shade.hidden.HiddenAppsDrawerState;
+import amirz.shade.search.EditText;
 
 public class AllAppsView extends AllAppsContainerView {
     private static final float OPEN_HIDDEN_APPS_THRES = 0.5f;
@@ -20,8 +23,15 @@ public class AllAppsView extends AllAppsContainerView {
 
     private final Handler mHandler = new Handler();
     private boolean mQueuedOpenHiddenApps;
-    private final Runnable mOpenHiddenApps =
-            () -> HiddenAppsDrawerState.getInstance(getContext()).toggleRevealed();
+    private final Runnable mOpenHiddenApps = () -> {
+        dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),
+                SystemClock.uptimeMillis(),
+                MotionEvent.ACTION_UP,
+                0, 0, 0));
+
+        EditText v = findViewById(R.id.fallback_search_view);
+        v.setText(R.string.search_hidden);
+    };
 
     public AllAppsView(Context context) {
         this(context, null);
