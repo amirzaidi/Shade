@@ -21,6 +21,7 @@ import java.util.Set;
 
 import amirz.unread.calendar.DateBroadcastReceiver;
 import amirz.unread.media.MediaListener;
+import amirz.unread.notifications.HideTracker;
 import amirz.unread.notifications.NotificationList;
 import amirz.unread.notifications.NotificationRanker;
 import amirz.unread.notifications.ParsedNotification;
@@ -68,8 +69,7 @@ public class UnreadSession {
         mWorkerHandler.post(mLoadText);
     };
 
-    private final NotificationList mNotifications = new NotificationList(mWorkerHandler, mReload);
-    private final NotificationRanker mRanker = new NotificationRanker(mNotifications);
+    private final NotificationRanker mRanker;
 
     private final MediaListener mMedia;
     private final DateBroadcastReceiver mDateReceiver;
@@ -84,11 +84,15 @@ public class UnreadSession {
     private UnreadSession(Context appContext) {
         mAppContext = appContext;
 
-        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, mNotifications, mSender);
+        NotificationList notificationList
+                = new NotificationList(new HideTracker(appContext), mWorkerHandler, mReload);
+
+        mRanker = new NotificationRanker(notificationList);
+        NotificationListenerProxy.INSTANCE.add(notificationList);
+
+        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, notificationList, mSender);
         mDateReceiver = new DateBroadcastReceiver(mReload);
         mBatteryReceiver = new BatteryBroadcastReceiver(appContext, mReload);
-
-        NotificationListenerProxy.INSTANCE.add(mNotifications);
     }
 
     public void onCreate() {
@@ -119,6 +123,10 @@ public class UnreadSession {
 
     public void removeUpdateListener(OnUpdateListener listener) {
         mUpdateListeners.remove(listener);
+    }
+
+    public void forceUpdate() {
+        mReload.run();
     }
 
     public UnreadEvent getEvent() {

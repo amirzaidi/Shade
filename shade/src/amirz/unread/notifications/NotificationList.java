@@ -1,8 +1,10 @@
 package amirz.unread.notifications;
 
+import android.app.Notification;
 import android.os.Handler;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
+import android.text.TextUtils;
 
 import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationKeyData;
@@ -19,6 +21,7 @@ import java.util.Set;
 
 public class NotificationList
         implements NotificationListener.NotificationsChangedListener {
+    private final HideTracker mHideTracker;
     private final Handler mWorkerHandler;
     private final Runnable mOnNotificationsChanged;
 
@@ -26,7 +29,8 @@ public class NotificationList
     private final NotificationListenerService.Ranking mTempRanking
             = new NotificationListenerService.Ranking();
 
-    public NotificationList(Handler workerHandler, Runnable onChange) {
+    public NotificationList(HideTracker hideTracker, Handler workerHandler, Runnable onChange) {
+        mHideTracker = hideTracker;
         mWorkerHandler = workerHandler;
         mOnNotificationsChanged = onChange;
     }
@@ -59,11 +63,25 @@ public class NotificationList
                 = nls.getNotificationsForKeys(new ArrayList<>(rankedKeys.keySet()));
 
         for (StatusBarNotification sbn : sbnList) {
-            if (map.getRanking(sbn.getKey(), mTempRanking)) {
+            if (map.getRanking(sbn.getKey(), mTempRanking) && !shouldBeFilteredOut(sbn)) {
                 rankedSbn.put(sbn, getRankedImportance());
             }
         }
         return rankedSbn;
+    }
+
+    private boolean shouldBeFilteredOut(StatusBarNotification sbn) {
+        if (!sbn.isClearable()) {
+            return true;
+        }
+
+        Notification notification = sbn.getNotification();
+        CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
+        CharSequence text = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
+        boolean missingTitleAndText = TextUtils.isEmpty(title) && TextUtils.isEmpty(text);
+        boolean isGroupHeader = (notification.flags & Notification.FLAG_GROUP_SUMMARY) != 0;
+        return isGroupHeader || missingTitleAndText
+                || mHideTracker.allActivitiesHidden(sbn.getPackageName());
     }
 
     @Override
