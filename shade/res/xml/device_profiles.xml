@@ -78,6 +78,7 @@
             launcher:minHeightDps="750"
             launcher:minWidthDps="387"
             launcher:name="Pixel 2 XL" />
+
     </grid-option>
 
     <grid-option
@@ -92,14 +93,22 @@
         <display-option
             launcher:iconImageSize="56"
             launcher:iconTextSize="12"
-            launcher:landscapeIconSize="54"
+            launcher:landscapeIconSize="56"
             launcher:minHeightDps="659"
             launcher:minWidthDps="387"
             launcher:name="Pixel" />
 
         <display-option
-            launcher:iconImageSize="58"
-            launcher:iconTextSize="13"
+            launcher:iconImageSize="44"
+            launcher:iconTextSize="11"
+            launcher:landscapeIconSize="44"
+            launcher:minHeightDps="496"
+            launcher:minWidthDps="296"
+            launcher:name="Pixel (Display : Small)" />
+
+        <display-option
+            launcher:iconImageSize="60"
+            launcher:iconTextSize="14"
             launcher:landscapeIconSize="56"
             launcher:minHeightDps="754"
             launcher:minWidthDps="449"
