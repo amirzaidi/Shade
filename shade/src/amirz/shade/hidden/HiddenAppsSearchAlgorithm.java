@@ -1,15 +1,15 @@
 package amirz.shade.hidden;
 
 import android.content.Context;
-import android.os.Process;
 
 import com.android.launcher3.AppInfo;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
 import com.android.launcher3.allapps.AppInfoComparator;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
 import com.android.launcher3.util.ComponentKey;
-import com.android.launcher3.util.ItemInfoMatcher;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,15 +33,22 @@ public class HiddenAppsSearchAlgorithm extends DefaultAppSearchAlgorithm {
     }
 
     @Override
+    public void cancel(boolean interruptActiveRequests) {
+        super.cancel(interruptActiveRequests);
+        if (interruptActiveRequests && Launcher.getLauncher(mContext)
+                .getStateManager().getState() == LauncherState.ALL_APPS) {
+            HiddenAppsDrawerState.getInstance(mContext).setRevealed(false);
+        }
+    }
+
+    @Override
     public void doSearch(final String query,
                          final AllAppsSearchBarController.Callbacks callback) {
         String trimmed = query.trim();
         String trimmedLowerCase = trimmed.toLowerCase();
         boolean showHidden = trimmedLowerCase.equals(mKeyGlobal)
                 || trimmedLowerCase.equals(mKeyTranslated);
-        if (showHidden) {
-            HiddenAppsDrawerState.getInstance(mContext).setRevealed(true);
-        }
+        HiddenAppsDrawerState.getInstance(mContext).setRevealed(showHidden);
         final ArrayList<ComponentKey> result = getTitleMatchResult(query, showHidden);
         mResultHandler.post(() -> callback.onSearchResult(query, result));
     }

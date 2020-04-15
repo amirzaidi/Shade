@@ -28,6 +28,7 @@ import android.os.CancellationSignal;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherState.ScaleAndTranslation;
 import com.android.launcher3.LauncherStateManager.StateHandler;
 import com.android.launcher3.Utilities;
@@ -36,6 +37,8 @@ import com.android.launcher3.uioverrides.touchcontrollers.StatusBarTouchControll
 import com.android.launcher3.util.TouchController;
 
 import java.io.PrintWriter;
+
+import amirz.shade.hidden.HiddenAppsDrawerState;
 
 import static com.android.launcher3.AbstractFloatingView.TYPE_ALL;
 import static com.android.launcher3.AbstractFloatingView.TYPE_HIDE_BACK_BUTTON;
@@ -72,6 +75,9 @@ public class UiFactory {
     public static void onEnterAnimationComplete(Context context) {}
 
     public static void onLauncherStateOrResumeChanged(Launcher launcher) {
+        if (launcher.getStateManager().getState() == LauncherState.NORMAL) {
+            HiddenAppsDrawerState.getInstance(launcher).setRevealed(false);
+        }
         updateDisallowBackGesture(launcher);
     }
 
