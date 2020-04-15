@@ -59,6 +59,7 @@ public class AllAppsQsb extends QsbContainerView
     // This value was used to position the QSB. We store it here for translationY animations.
     private final float mFixedTranslationY;
     private final float mMarginTopAdjusting;
+    private final int mMinTopInset;
 
     // Delegate views.
     private View mSearchWrapperView;
@@ -104,6 +105,7 @@ public class AllAppsQsb extends QsbContainerView
 
         mFixedTranslationY = getTranslationY();
         mMarginTopAdjusting = mFixedTranslationY - getPaddingTop();
+        mMinTopInset = context.getResources().getDimensionPixelSize(R.dimen.all_apps_min_top_inset);
     }
 
     @Override
@@ -295,7 +297,9 @@ public class AllAppsQsb extends QsbContainerView
     @Override
     public void setInsets(Rect insets) {
         MarginLayoutParams mlp = (MarginLayoutParams) getLayoutParams();
-        mlp.topMargin = Math.round(Math.max(-mFixedTranslationY, insets.top - mMarginTopAdjusting));
+        int topInset = Math.max(mMinTopInset, insets.top);
+        mlp.topMargin = Math.round(Math.max(
+                -mFixedTranslationY, topInset - mMarginTopAdjusting));
         requestLayout();
     }
 
@@ -304,8 +308,9 @@ public class AllAppsQsb extends QsbContainerView
         if (mLauncher.getDeviceProfile().isVerticalBarLayout() || shouldHideDockSearch()) {
             return 0;
         } else {
+            int topInset = Math.max(mMinTopInset, insets.top);
             int topMargin = Math.round(Math.max(
-                    -mFixedTranslationY, insets.top - mMarginTopAdjusting));
+                    -mFixedTranslationY, topInset - mMarginTopAdjusting));
 
             DeviceProfile dp = mLauncher.getWallpaperDeviceProfile();
             int searchPadding = getLayoutParams().height;
