@@ -24,11 +24,12 @@
         <item name="android:colorAccent">?shadeColorAccent</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Light</item>
     </style>
+
+    <!-- Dark version is the same on all APIs. -->
     <style name="WidgetContainerTheme.Dark" parent="AppTheme.Dark">
         <item name="android:colorEdgeEffect">?android:attr/textColorSecondary</item>
         <item name="android:colorPrimaryDark">#616161</item> <!-- Gray 700 -->
         <item name="android:colorAccent">?shadeColorAccent</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
     </style>
-
 </resources>
