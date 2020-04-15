@@ -111,6 +111,7 @@ public class HideDropTarget extends ButtonDropTarget {
             if (!isHidden) {
                 Runnable onUndoClicked = () -> {
                     HiddenAppsDatabase.setHidden(mLauncher, item, false);
+                    UnreadSession.getInstance(mLauncher).forceUpdate();
                     AppReloader.get(mLauncher).reload(item);
                 };
                 Snackbar.show(mLauncher, R.string.item_hidden, R.string.undo, null, onUndoClicked);
