@@ -19,7 +19,9 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.launcher3.BaseRecyclerView;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
@@ -37,7 +39,7 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
 
     // ToDo: Set during runtime.
     private int mColor;
-    private int mShadowAlpha = 0x80;
+    private int mShadowAlpha;
 
     public AllAppsSearchBackground(@NonNull Context context) {
         this(context, null);
@@ -170,6 +172,24 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
             mRadius = radius;
             mShadowBitmap = null;
             mBaseBitmap = null;
+            invalidate();
+        }
+    }
+
+    public RecyclerView.OnScrollListener getAlphaUpdater() {
+        setAlpha(0);
+        return new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                setAlpha(((BaseRecyclerView) recyclerView).getCurrentScrollY());
+            }
+        };
+    }
+
+    private void setAlpha(int newAlpha) {
+        int normalizedAlpha = Utilities.boundToRange(newAlpha, 0, 255);
+        if (mShadowAlpha != normalizedAlpha) {
+            mShadowAlpha = normalizedAlpha;
             invalidate();
         }
     }
