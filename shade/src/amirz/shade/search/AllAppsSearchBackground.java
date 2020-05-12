@@ -1,5 +1,6 @@
 package amirz.shade.search;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -24,18 +26,18 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.icons.ShadowGenerator;
 
 public class AllAppsSearchBackground extends FrameLayout implements View.OnClickListener {
-    // ToDo: Set during runtime.
-    private int mColor = 0xFFFFFFFF;
-    private int mAlpha = 0xFF;
-    private float mRadius = Float.NaN;
-
-    private Bitmap mBitmap;
     private Bitmap mShadowBitmap;
+    private Bitmap mBaseBitmap;
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF mDestRect = new RectF();
     private final Rect mSrcRect = new Rect();
 
     private EditText mEditText;
+    private float mRadius = Float.NaN;
+
+    // ToDo: Set during runtime.
+    private int mColor;
+    private int mShadowAlpha = 0x80;
 
     public AllAppsSearchBackground(@NonNull Context context) {
         this(context, null);
@@ -52,7 +54,7 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
     }
 
     public void onClick(View v) {
-        // Could use a vibration.
+        performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
         return true;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         super.onTouchEvent(ev);
@@ -74,24 +77,24 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
 
     @Override
     public void draw(Canvas canvas) {
-        if (mAlpha > 0) {
-            if (mBitmap == null) {
+        if (mShadowAlpha > 0) {
+            if (mShadowBitmap == null) {
                 Resources res = getResources();
-                mBitmap = createBitmap(
+                mShadowBitmap = createBitmap(
                         res.getDimension(R.dimen.hotseat_qsb_scroll_shadow_blur_radius),
                         res.getDimension(R.dimen.hotseat_qsb_scroll_key_shadow_offset), 0);
             }
-            mPaint.setAlpha(mAlpha);
-            drawOnCanvas(mBitmap, canvas);
+            mPaint.setAlpha(mShadowAlpha);
+            drawOnCanvas(mShadowBitmap, canvas);
             mPaint.setAlpha(255);
         }
 
-        if (mShadowBitmap == null) {
+        if (mBaseBitmap == null) {
             int iconBitmapSize = LauncherAppState.getIDP(getContext()).iconBitmapSize;
-            mShadowBitmap = createBitmap(iconBitmapSize / 96f, iconBitmapSize / 48f, mColor);
+            mBaseBitmap = createBitmap(iconBitmapSize / 96f, iconBitmapSize / 48f, mColor);
         }
 
-        drawOnCanvas(mShadowBitmap, canvas);
+        drawOnCanvas(mBaseBitmap, canvas);
         super.draw(canvas);
     }
 
@@ -157,7 +160,7 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
     public void setColor(int color) {
         if (mColor != color) {
             mColor = color;
-            mShadowBitmap = null;
+            mBaseBitmap = null;
             invalidate();
         }
     }
@@ -165,8 +168,8 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
     public void setRadius(float radius) {
         if (mRadius != radius) {
             mRadius = radius;
-            mBitmap = null;
             mShadowBitmap = null;
+            mBaseBitmap = null;
             invalidate();
         }
     }
