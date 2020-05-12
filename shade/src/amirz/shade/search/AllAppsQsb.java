@@ -2,6 +2,7 @@ package amirz.shade.search;
 
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
@@ -138,6 +139,9 @@ public class AllAppsQsb extends QsbContainerView
 
         mFallbackSearchView.setVisibility(View.INVISIBLE);
 
+        Context context = getContext();
+
+        /*
         RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
         GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
 
@@ -146,7 +150,6 @@ public class AllAppsQsb extends QsbContainerView
             gd.setCornerRadius(gd.getCornerRadius() * 3f);
         }
 
-        Context context = getContext();
         int bgColor = Themes.getAttrColor(context, R.attr.shadeColorSearchBar);
         int overlay = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
         if (ColorUtils.setAlphaComponent(overlay, 0) != overlay) {
@@ -160,6 +163,8 @@ public class AllAppsQsb extends QsbContainerView
             bgColor = ColorUtils.compositeColors(overlay, bgColor);
         }
         gd.setColor(bgColor);
+
+         */
 
         mFallbackSearchViewText.setSpannedHint(
                 prefixTextWithIcon(context,
@@ -186,10 +191,11 @@ public class AllAppsQsb extends QsbContainerView
 
         int myWidth = rowWidth - iconPadding + getPaddingLeft() + getPaddingRight();
 
-        int widgetPad = getResources().getDimensionPixelSize(R.dimen.qsb_widget_padding);
+        Resources res = getResources();
+        int widgetPad = res.getDimensionPixelSize(R.dimen.qsb_widget_padding);
 
-        mFallbackSearchView.measure(makeMeasureSpec(myWidth, EXACTLY),
-                makeMeasureSpec(myRequestedHeight - widgetPad, EXACTLY));
+        mFallbackSearchView.measure(makeMeasureSpec(myWidth + 2 * widgetPad, EXACTLY),
+                makeMeasureSpec(myRequestedHeight + widgetPad, EXACTLY));
 
         currentPadding[0] = 0;
         currentPadding[1] = 0;
