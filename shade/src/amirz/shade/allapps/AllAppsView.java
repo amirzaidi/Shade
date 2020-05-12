@@ -29,7 +29,7 @@ public class AllAppsView extends AllAppsContainerView {
                 MotionEvent.ACTION_UP,
                 0, 0, 0));
 
-        EditText v = findViewById(R.id.fallback_search_view);
+        EditText v = findViewById(R.id.fallback_search_view_text);
         v.setText(R.string.search_hidden);
     };
 

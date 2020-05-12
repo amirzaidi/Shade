@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -26,7 +27,6 @@ import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AlphabeticalAppsList;
 import com.android.launcher3.allapps.SearchUiManager;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
-import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.anim.PropertySetter;
 import com.android.launcher3.qsb.QsbContainerView;
@@ -63,7 +63,8 @@ public class AllAppsQsb extends QsbContainerView
 
     // Delegate views.
     private View mSearchWrapperView;
-    private EditText mFallbackSearchView;
+    private FrameLayout mFallbackSearchView;
+    private EditText mFallbackSearchViewText;
 
     private boolean mSearchRequested;
     private final int[] currentPadding = new int[2];
@@ -133,6 +134,8 @@ public class AllAppsQsb extends QsbContainerView
                 : View.VISIBLE);
 
         mFallbackSearchView = findViewById(R.id.fallback_search_view);
+        mFallbackSearchViewText = findViewById(R.id.fallback_search_view_text);
+
         mFallbackSearchView.setVisibility(View.INVISIBLE);
 
         RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
@@ -158,10 +161,10 @@ public class AllAppsQsb extends QsbContainerView
         }
         gd.setColor(bgColor);
 
-        mFallbackSearchView.setSpannedHint(
+        mFallbackSearchViewText.setSpannedHint(
                 prefixTextWithIcon(context,
                         R.drawable.ic_allapps_search,
-                        mFallbackSearchView.getHint()));
+                        mFallbackSearchViewText.getHint()));
     }
 
     @Override
@@ -230,10 +233,9 @@ public class AllAppsQsb extends QsbContainerView
     public void initialize(AllAppsContainerView appsView) {
         mApps = appsView.getApps();
         mAppsView = appsView;
-        mFallbackSearchView = findViewById(R.id.fallback_search_view);
         mSearchBarController.initialize(
                 new HiddenAppsSearchAlgorithm(mLauncher, appsView.getAppsStore().getApps()),
-                mFallbackSearchView, mLauncher, this);
+                mFallbackSearchViewText, mLauncher, this);
 
         appsView.setRecyclerViewVerticalFadingEdgeEnabled(true);
     }
@@ -325,8 +327,10 @@ public class AllAppsQsb extends QsbContainerView
     public void setContentVisibility(int visibleElements, PropertySetter setter,
                                      Interpolator interpolator) {
         boolean showAllApps = (visibleElements & ALL_APPS_CONTENT) != 0;
-        setter.setViewAlpha(mSearchWrapperView, showAllApps ? 0f : (shouldHideDockSearch() ? 0f : 1f), Interpolators.LINEAR);
-        setter.setViewAlpha(mFallbackSearchView, showAllApps ? 1f : 0f, Interpolators.LINEAR);
+        setter.setViewAlpha(mSearchWrapperView,
+                showAllApps || shouldHideDockSearch() ? 0f : 1f, Interpolators.LINEAR);
+        setter.setViewAlpha(mFallbackSearchView,
+                showAllApps ? 1f : 0f, Interpolators.LINEAR);
     }
 
     public void requestSearch() {
@@ -336,12 +340,12 @@ public class AllAppsQsb extends QsbContainerView
     public void showKeyboardOnSearchRequest() {
         if (mSearchRequested) {
             mSearchRequested = false;
-            mFallbackSearchView.showKeyboard();
+            mFallbackSearchViewText.showKeyboard();
         }
     }
 
     public boolean tryClearSearch() {
-        if (mFallbackSearchView.length() > 0) {
+        if (mFallbackSearchViewText.length() > 0) {
             mAppsView.reset(true);
             mAppsView.requestFocus();
             return true;

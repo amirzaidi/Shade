@@ -29,27 +29,35 @@
         android:layout_gravity="center"
         android:tag="qsb_view" />
 
-    <amirz.shade.search.EditText
+    <amirz.shade.search.AllAppsSearchBackground
         android:id="@+id/fallback_search_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/all_apps_search_bar_field_height"
         android:layout_gravity="center"
-        android:fontFamily="sans-serif"
         android:background="@drawable/bg_all_apps_searchbox"
-        android:elevation="2dp"
-        android:focusableInTouchMode="true"
-        android:gravity="center"
-        android:hint="@string/all_apps_search_bar_hint"
-        android:imeOptions="actionSearch|flagNoExtractUi"
-        android:inputType="text|textNoSuggestions|textCapWords"
-        android:maxLines="1"
-        android:padding="8dp"
-        android:saveEnabled="false"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorSecondary"
-        android:textColorHint="@drawable/all_apps_search_hint"
-        android:textCursorDrawable="@drawable/text_cursor_material"
-        android:textSize="16sp" />
+        android:elevation="2dp">
+
+        <amirz.shade.search.EditText
+            android:id="@+id/fallback_search_view_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:background="@null"
+            android:hint="@string/all_apps_search_bar_hint"
+            android:imeOptions="actionSearch|flagNoExtractUi"
+            android:inputType="text|textNoSuggestions|textCapWords"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:saveEnabled="false"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textColorHint="@drawable/all_apps_search_hint"
+            android:textCursorDrawable="@drawable/text_cursor_material"
+            android:textSize="16sp" />
+
+    </amirz.shade.search.AllAppsSearchBackground>
 
 </amirz.shade.search.AllAppsQsb>
