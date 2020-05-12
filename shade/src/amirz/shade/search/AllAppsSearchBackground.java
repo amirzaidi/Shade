@@ -11,6 +11,8 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -21,16 +23,19 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.icons.ShadowGenerator;
 
-public class AllAppsSearchBackground extends FrameLayout {
+public class AllAppsSearchBackground extends FrameLayout implements View.OnClickListener {
     // ToDo: Set during runtime.
     private int mColor = 0xFFFFFFFF;
     private int mAlpha = 0xFF;
+    private float mRadius = Float.NaN;
 
     private Bitmap mBitmap;
     private Bitmap mShadowBitmap;
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF mDestRect = new RectF();
     private final Rect mSrcRect = new Rect();
+
+    private EditText mEditText;
 
     public AllAppsSearchBackground(@NonNull Context context) {
         this(context, null);
@@ -43,6 +48,28 @@ public class AllAppsSearchBackground extends FrameLayout {
     public AllAppsSearchBackground(@NonNull Context context, @Nullable AttributeSet attrs,
                                    int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setOnClickListener(this);
+    }
+
+    public void onClick(View v) {
+        // Could use a vibration.
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        super.onTouchEvent(ev);
+        return mEditText.onTouchEvent(ev);
+    }
+
+    @Override
+    public void onFinishInflate() {
+        super.onFinishInflate();
+        mEditText = findViewById(R.id.fallback_search_view_text);
     }
 
     @Override
@@ -102,14 +129,15 @@ public class AllAppsSearchBackground extends FrameLayout {
         canvas.drawBitmap(bitmap, mSrcRect, mDestRect, mPaint);
     }
 
-    protected Bitmap createBitmap(float shadowBlur, float keyShadowDistance, int color) {
+    private Bitmap createBitmap(float shadowBlur, float keyShadowDistance, int color) {
         int height = getHeight() - getPaddingTop() - getPaddingBottom();
         int width = height + 20;
         ShadowGenerator.Builder builder = new ShadowGenerator.Builder(color);
         builder.shadowBlur = shadowBlur;
         builder.keyShadowDistance = keyShadowDistance;
         builder.keyShadowAlpha = builder.ambientShadowAlpha;
-        Bitmap pill = builder.createPill(width, height);
+        Bitmap pill = builder.createPill(width, height,
+                Float.isNaN(mRadius) ? height / 2f : mRadius);
         if (Color.alpha(color) < 0xFF) {
             Canvas canvas = new Canvas(pill);
             Paint paint = new Paint();
@@ -129,6 +157,15 @@ public class AllAppsSearchBackground extends FrameLayout {
     public void setColor(int color) {
         if (mColor != color) {
             mColor = color;
+            mShadowBitmap = null;
+            invalidate();
+        }
+    }
+
+    public void setRadius(float radius) {
+        if (mRadius != radius) {
+            mRadius = radius;
+            mBitmap = null;
             mShadowBitmap = null;
             invalidate();
         }

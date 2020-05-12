@@ -64,7 +64,7 @@ public class AllAppsQsb extends QsbContainerView
 
     // Delegate views.
     private View mSearchWrapperView;
-    private FrameLayout mFallbackSearchView;
+    private AllAppsSearchBackground mFallbackSearchView;
     private EditText mFallbackSearchViewText;
 
     private boolean mSearchRequested;
@@ -141,17 +141,9 @@ public class AllAppsQsb extends QsbContainerView
 
         Context context = getContext();
 
-        /*
-        RippleDrawable bg = (RippleDrawable) mFallbackSearchView.getBackground();
-        GradientDrawable gd = (GradientDrawable) bg.findDrawableByLayerId(R.id.search_basic);
-
-        if (Utilities.ATLEAST_Q) {
-            // The corners should be 3x as curved as the dialog curve.
-            gd.setCornerRadius(gd.getCornerRadius() * 3f);
-        }
-
         int bgColor = Themes.getAttrColor(context, R.attr.shadeColorSearchBar);
         int overlay = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
+
         if (ColorUtils.setAlphaComponent(overlay, 0) != overlay) {
             boolean isDark = Themes.getAttrBoolean(context, R.attr.isMainColorDark);
 
@@ -160,11 +152,16 @@ public class AllAppsQsb extends QsbContainerView
                     context.getResources().getInteger(isDark
                             ? R.integer.shade_all_apps_dark_alpha
                             : R.integer.shade_all_apps_light_alpha));
+
             bgColor = ColorUtils.compositeColors(overlay, bgColor);
         }
-        gd.setColor(bgColor);
 
-         */
+        mFallbackSearchView.setColor(bgColor);
+
+        if (Utilities.ATLEAST_Q) {
+            // The corners should be 3x as curved as the dialog curve.
+            mFallbackSearchView.setRadius(Themes.getDialogCornerRadius(context) * 3f);
+        }
 
         mFallbackSearchViewText.setSpannedHint(
                 prefixTextWithIcon(context,
