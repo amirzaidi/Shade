@@ -15,6 +15,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 
 import amirz.shade.search.EditText;
+import amirz.shade.util.AppReloader;
 
 public class AllAppsView extends AllAppsContainerView {
     private static final float OPEN_HIDDEN_APPS_THRES = 0.5f;
@@ -25,13 +26,15 @@ public class AllAppsView extends AllAppsContainerView {
     private final Handler mHandler = new Handler();
     private boolean mQueuedOpenHiddenApps;
     private final Runnable mOpenHiddenApps = () -> {
-        dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),
-                SystemClock.uptimeMillis(),
-                MotionEvent.ACTION_UP,
-                0, 0, 0));
+        if (!AppReloader.get(getContext()).hiddenApps().isEmpty()) {
+            dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),
+                    SystemClock.uptimeMillis(),
+                    MotionEvent.ACTION_UP,
+                    0, 0, 0));
 
-        EditText v = findViewById(R.id.fallback_search_view_text);
-        v.setText(R.string.search_hidden);
+            EditText v = findViewById(R.id.fallback_search_view_text);
+            v.setText(R.string.search_hidden);
+        }
     };
 
     public AllAppsView(Context context) {
