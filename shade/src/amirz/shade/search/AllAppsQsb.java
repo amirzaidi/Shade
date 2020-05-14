@@ -200,7 +200,7 @@ public class AllAppsQsb extends QsbContainerView
             calcPadding(child);
             ViewGroup.LayoutParams lp = child.getLayoutParams();
             int size = res.getDimensionPixelSize(R.dimen.qsb_wrapper_height) - widgetPad;
-            if (size > lp.height) {
+            if (lp.height > 0 && size > lp.height) {
                 lp.height = size;
             }
         }
