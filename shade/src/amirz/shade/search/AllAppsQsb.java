@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -60,12 +61,12 @@ public class AllAppsQsb extends QsbContainerView
     private final int mMinTopInset;
 
     // Delegate views.
-    private View mSearchWrapperView;
+    private FrameLayout mSearchWrapperView;
     private AllAppsSearchBackground mFallbackSearchView;
     private EditText mFallbackSearchViewText;
 
     private boolean mSearchRequested;
-    private final int[] currentPadding = new int[2];
+    private final int[] mCurrentWidgetPadding = new int[2];
 
     public static class HotseatQsbFragment extends QsbFragment {
         @Override
@@ -191,29 +192,46 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView.measure(makeMeasureSpec(myWidth + 2 * widgetPad, EXACTLY),
                 makeMeasureSpec(myRequestedHeight + widgetPad, EXACTLY));
 
-        currentPadding[0] = 0;
-        currentPadding[1] = 0;
-        calcPaddingRecursive(mSearchWrapperView, 2);
+        mCurrentWidgetPadding[0] = 0;
+        mCurrentWidgetPadding[1] = 0;
 
-        mSearchWrapperView.setPadding(
-                mSearchWrapperView.getPaddingLeft() + widgetPad - currentPadding[0],
-                mSearchWrapperView.getPaddingTop(),
-                mSearchWrapperView.getPaddingRight() + widgetPad - currentPadding[1],
-                mSearchWrapperView.getPaddingBottom());
+        View child = getWidgetChild();
+        if (child != null) {
+            calcPadding(child);
+            ViewGroup.LayoutParams lp = child.getLayoutParams();
+            int size = res.getDimensionPixelSize(R.dimen.qsb_wrapper_height) - widgetPad;
+            if (size > lp.height) {
+                lp.height = size;
+            }
+        }
+
+        mSearchWrapperView.setPadding(Math.max(0, widgetPad - mCurrentWidgetPadding[0]), 0,
+                Math.max(0, widgetPad - mCurrentWidgetPadding[1]), 0);
 
         mSearchWrapperView.measure(makeMeasureSpec(myWidth + 2 * widgetPad, EXACTLY),
                 makeMeasureSpec(myRequestedHeight, EXACTLY));
     }
 
-    private void calcPaddingRecursive(View view, int lvl) {
-        currentPadding[0] += view.getPaddingLeft();
-        currentPadding[1] += view.getPaddingRight();
-        if (view instanceof ViewGroup && lvl > 0) {
-            ViewGroup group = (ViewGroup) view;
-            if (group.getChildCount() == 1) {
-                calcPaddingRecursive(group.getChildAt(0), lvl - 1);
+    private View getWidgetChild() {
+        if (mSearchWrapperView != null && mSearchWrapperView.getChildCount() == 1) {
+            QsbWidgetHostView hostView = (QsbWidgetHostView) mSearchWrapperView.getChildAt(0);
+            if (hostView != null && hostView.getChildCount() == 1) {
+                return hostView.getChildAt(0);
             }
         }
+        return null;
+    }
+
+    private void calcPadding(View view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params instanceof MarginLayoutParams) {
+            MarginLayoutParams mlp = (MarginLayoutParams) params;
+            mCurrentWidgetPadding[0] += mlp.leftMargin;
+            mCurrentWidgetPadding[1] += mlp.rightMargin;
+        }
+
+        mCurrentWidgetPadding[0] += view.getPaddingLeft();
+        mCurrentWidgetPadding[1] += view.getPaddingRight();
     }
 
     @Override
