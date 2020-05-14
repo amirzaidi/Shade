@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 
 import amirz.shade.search.EditText;
@@ -49,12 +50,16 @@ public class AllAppsView extends AllAppsContainerView {
     @Override
     public void setDampedScrollShift(float shift) {
         checkShouldOpenHiddenApps(shift);
-        float maxShift = getSearchView().getHeight() / 2f;
+        float maxShift = getSearchView().getHeight() * 0.5f;
+        float oldShift = Utilities.boundToRange(shift, -maxShift, maxShift);
+
         if (shift < 0f) {
             maxShift *= -1f;
         }
         float fact = shift / maxShift;
-        super.setDampedScrollShift(fact / (fact + 1f) * maxShift);
+        float newShift = fact / (fact + 1f) * maxShift;
+
+        super.setDampedScrollShift(0.3f * oldShift + 0.7f * newShift);
     }
 
     private void checkShouldOpenHiddenApps(float shift) {

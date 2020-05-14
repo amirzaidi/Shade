@@ -15,8 +15,8 @@ class AllAppsSpring {
     private static final float STIFFNESS = (STIFFNESS_MEDIUM + STIFFNESS_LOW) / 2;
     private static final float DAMPING_RATIO = DAMPING_RATIO_MEDIUM_BOUNCY;
 
-    private static final float ABSORB_SCALE = 0.4f;
-    private static final float DRAG_SCALE = 0.12f;
+    private static final float ABSORB_SCALE = 0.33f;
+    private static final float DRAG_SCALE = 0.11f;
 
     private static final FloatPropertyCompat<AllAppsSpring> DAMPED_SCROLL =
             new FloatPropertyCompat<AllAppsSpring>("value") {
