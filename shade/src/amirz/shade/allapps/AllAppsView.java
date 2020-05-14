@@ -3,6 +3,7 @@ package amirz.shade.allapps;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.EdgeEffect;
@@ -26,13 +27,13 @@ public class AllAppsView extends AllAppsContainerView {
     private final Handler mHandler = new Handler();
     private boolean mQueuedOpenHiddenApps;
     private final Runnable mOpenHiddenApps = () -> {
-        if (!AppReloader.get(getContext()).hiddenApps().isEmpty()) {
+        EditText v = findViewById(R.id.fallback_search_view_text);
+        if (TextUtils.isEmpty(v.getText())
+                && !AppReloader.get(getContext()).hiddenApps().isEmpty()) {
             dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),
                     SystemClock.uptimeMillis(),
                     MotionEvent.ACTION_UP,
                     0, 0, 0));
-
-            EditText v = findViewById(R.id.fallback_search_view_text);
             v.setText(R.string.search_hidden);
         }
     };
