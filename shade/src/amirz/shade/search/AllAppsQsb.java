@@ -214,9 +214,12 @@ public class AllAppsQsb extends QsbContainerView
 
     private View getWidgetChild() {
         if (mSearchWrapperView != null && mSearchWrapperView.getChildCount() == 1) {
-            QsbWidgetHostView hostView = (QsbWidgetHostView) mSearchWrapperView.getChildAt(0);
-            if (hostView != null && hostView.getChildCount() == 1) {
-                return hostView.getChildAt(0);
+            View fragmentView = mSearchWrapperView.getChildAt(0);
+            if (fragmentView instanceof QsbWidgetHostView) {
+                QsbWidgetHostView hostView = (QsbWidgetHostView) fragmentView;
+                if (hostView.getChildCount() == 1) {
+                    return hostView.getChildAt(0);
+                }
             }
         }
         return null;
