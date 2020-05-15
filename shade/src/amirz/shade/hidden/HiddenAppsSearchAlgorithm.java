@@ -6,24 +6,24 @@ import com.android.launcher3.AppInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
+import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.AppInfoComparator;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm;
 import com.android.launcher3.util.ComponentKey;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class HiddenAppsSearchAlgorithm extends DefaultAppSearchAlgorithm {
     private final Context mContext;
     private final AppInfoComparator mAppNameComparator;
-    private final Collection<AppInfo> mApps;
+    private final AllAppsStore mApps;
     private final String mKeyGlobal;
     private final String mKeyTranslated;
 
-    public HiddenAppsSearchAlgorithm(Context context, Collection<AppInfo> apps) {
+    public HiddenAppsSearchAlgorithm(Context context, AllAppsStore apps) {
         super(Collections.emptyList());
         mContext = context;
         mAppNameComparator = new AppInfoComparator(context);
@@ -59,7 +59,7 @@ public class HiddenAppsSearchAlgorithm extends DefaultAppSearchAlgorithm {
         final String queryTextLower = query.toLowerCase();
         final List<AppInfo> result = new ArrayList<>();
         StringMatcher matcher = StringMatcher.getInstance();
-        for (AppInfo info : mApps) {
+        for (AppInfo info : mApps.getApps()) {
             if (matches(info, queryTextLower, matcher) || (showHidden
                     && HiddenAppsDatabase.isHidden(mContext, info.componentName, info.user))) {
                 result.add(info);

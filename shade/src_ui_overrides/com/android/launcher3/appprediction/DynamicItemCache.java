@@ -35,6 +35,7 @@ import com.android.launcher3.icons.IconCache;
 import com.android.launcher3.icons.LauncherIcons;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.shortcuts.ShortcutKey;
+import com.android.launcher3.util.Executors;
 import com.android.launcher3.util.InstantAppResolver;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class DynamicItemCache {
 
     public DynamicItemCache(Context context, Runnable onUpdateCallback) {
         mContext = context;
-        mWorker = new Handler(LauncherModel.getWorkerLooper(), this::handleWorkerMessage);
+        mWorker = new Handler(Executors.MODEL_EXECUTOR.getLooper(), this::handleWorkerMessage);
         mUiHandler = new Handler(Looper.getMainLooper(), this::handleUiMessage);
         mInstantAppResolver = InstantAppResolver.newInstance(context);
         mOnUpdateCallback = onUpdateCallback;

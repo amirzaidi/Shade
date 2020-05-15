@@ -19,10 +19,9 @@ import android.os.Process;
 
 import com.android.launcher3.ItemInfoWithIcon;
 import com.android.launcher3.LauncherAppState;
-import com.android.launcher3.LauncherModel;
-import com.android.launcher3.MainThreadExecutor;
-import com.android.launcher3.Utilities;
 import com.android.launcher3.icons.LauncherIcons;
+import com.android.launcher3.util.Executors;
+import com.android.launcher3.util.LooperExecutor;
 import com.android.launcher3.util.Preconditions;
 
 import java.util.Collections;
@@ -44,7 +43,7 @@ public class DynamicClock extends BroadcastReceiver {
         mUpdaters = Collections.newSetFromMap(new WeakHashMap<>());
         mLayers = new ClockLayers();
         mContext = context;
-        final Handler handler = new Handler(LauncherModel.getWorkerLooper());
+        final Handler handler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper());
 
         IntentFilter filter = new IntentFilter();
         filter.addDataScheme("package");
@@ -136,7 +135,8 @@ public class DynamicClock extends BroadcastReceiver {
     }
 
     private void updateMainThread() {
-        new MainThreadExecutor().execute(() -> updateWrapper(getClockLayers(mContext,
+        new LooperExecutor(Looper.getMainLooper()).execute(
+                () -> updateWrapper(getClockLayers(mContext,
                 LauncherAppState.getIDP(mContext).fillResIconDpi,
                 true)));
     }

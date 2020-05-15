@@ -37,7 +37,7 @@ import androidx.annotation.Nullable;
 import com.android.launcher3.InvariantDeviceProfile;
 import com.android.launcher3.appprediction.PredictionUiStateManager.Client;
 import com.android.launcher3.model.AppLaunchTracker;
-import com.android.launcher3.util.UiThreadHelper;
+import com.android.launcher3.util.Executors;
 
 import androidx.annotation.UiThread;
 import androidx.annotation.WorkerThread;
@@ -65,7 +65,7 @@ public class PredictionAppTracker extends AppLaunchTracker {
 
     public PredictionAppTracker(Context context) {
         mContext = context;
-        mMessageHandler = new Handler(UiThreadHelper.getBackgroundLooper(), this::handleMessage);
+        mMessageHandler = new Handler(Executors.MODEL_EXECUTOR.getLooper(), this::handleMessage);
         InvariantDeviceProfile.INSTANCE.get(mContext).addOnChangeListener(this::onIdpChanged);
 
         mMessageHandler.sendEmptyMessage(MSG_INIT);

@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.util.ComponentKey;
+import com.android.launcher3.util.Executors;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class DateChangeReceiver extends BroadcastReceiver {
         filter.addAction(Intent.ACTION_TIME_CHANGED);
         filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
 
-        Handler handler = new Handler(LauncherModel.getWorkerLooper());
+        Handler handler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper());
         context.registerReceiver(this, filter, null, handler);
     }
 
