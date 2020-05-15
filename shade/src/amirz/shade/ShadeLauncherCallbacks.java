@@ -41,6 +41,7 @@ import static amirz.shade.animations.TransitionManager.KEY_FADING_TRANSITION;
 import static com.android.launcher3.LauncherState.ALL_APPS;
 import static com.android.launcher3.LauncherState.NORMAL;
 import static com.android.launcher3.allapps.PersonalWorkSlidingTabStrip.KEY_SHOWED_PEEK_WORK_TAB;
+import static com.android.launcher3.settings.SettingsActivity.GRID_OPTIONS_PREFERENCE_KEY;
 import static com.android.launcher3.util.Themes.KEY_DEVICE_THEME;
 import static com.android.searchlauncher.SmartspaceQsbWidget.KEY_SMARTSPACE;
 
@@ -125,6 +126,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
                 .putString(KEY_IDP_GRID_NAME, prefs.getString(KEY_IDP_GRID_NAME, null))
                 .putString(KEY_FEED_PROVIDER, prefs.getString(KEY_FEED_PROVIDER,
                         getRecommendedFeedPackage()))
+                .putBoolean(GRID_OPTIONS_PREFERENCE_KEY, true)
                 .apply();
 
         // Removes the permanent bounce when there is a work profile but no work apps.
