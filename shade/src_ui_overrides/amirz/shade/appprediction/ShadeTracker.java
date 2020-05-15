@@ -71,7 +71,7 @@ public class ShadeTracker extends AppLaunchTracker {
 
     public ShadeTracker(Context context) {
         mContext = context;
-        mMessageHandler = new Handler(Executors.MODEL_EXECUTOR.getLooper(), this::handleMessage);
+        mMessageHandler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper(), this::handleMessage);
         InvariantDeviceProfile.INSTANCE.get(mContext).addOnChangeListener(this::onIdpChanged);
 
         mMessageHandler.sendEmptyMessage(MSG_INIT);

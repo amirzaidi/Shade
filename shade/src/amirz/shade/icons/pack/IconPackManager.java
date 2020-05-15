@@ -59,7 +59,7 @@ public class IconPackManager extends BroadcastReceiver {
 
     private final Context mContext;
     private final Map<String, IconPack> mProviders = new HashMap<>();
-    private final Handler mHandler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper());
+    private final Handler mHandler = new Handler(Executors.MODEL_EXECUTOR.getLooper());
 
     private IconPackManager(Context context) {
         mContext = context;

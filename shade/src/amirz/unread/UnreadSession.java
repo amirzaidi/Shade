@@ -47,7 +47,7 @@ public class UnreadSession {
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
     private final PendingIntentSender mSender = new PendingIntentSender();
 
-    private final Handler mWorkerHandler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper());
+    private final Handler mWorkerHandler = new Handler(Executors.MODEL_EXECUTOR.getLooper());
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mLoadText = () -> {

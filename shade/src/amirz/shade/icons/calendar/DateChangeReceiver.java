@@ -29,7 +29,7 @@ public class DateChangeReceiver extends BroadcastReceiver {
         filter.addAction(Intent.ACTION_TIME_CHANGED);
         filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
 
-        Handler handler = new Handler(Executors.UI_HELPER_EXECUTOR.getLooper());
+        Handler handler = new Handler(Executors.MODEL_EXECUTOR.getLooper());
         context.registerReceiver(this, filter, null, handler);
     }
 
