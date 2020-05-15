@@ -75,7 +75,8 @@ public class UiFactory {
     public static void onEnterAnimationComplete(Context context) {}
 
     public static void onLauncherStateOrResumeChanged(Launcher launcher) {
-        if (launcher.getStateManager().getState() == LauncherState.NORMAL) {
+        if (launcher.getStateManager().getState() == LauncherState.NORMAL
+                && launcher.getAllAppsController().getProgress() == 1f) {
             HiddenAppsDrawerState.getInstance(launcher).setRevealed(false);
         }
         updateDisallowBackGesture(launcher);
