@@ -79,7 +79,7 @@
     </style>
 
     <!-- Theme for the settings activity. -->
-    <style name="Shade.SettingsTheme" parent="android:Theme.DeviceDefault.Settings">
+    <style name="Shade.SettingsTheme" parent="@style/HomeSettingsTheme">
         <item name="android:colorAccent">?shadeColorAccent</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert.Auto</item>
         <item name="android:textViewStyle">@style/Shade.SettingsTheme.TextView</item>
