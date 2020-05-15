@@ -41,6 +41,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
+import com.android.launcher3.uioverrides.states.OverviewState;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ScrimView;
 
@@ -157,9 +158,10 @@ public class ShadeScrimView extends ScrimView {
                 mMidProgress =  OVERVIEW.getVerticalProgress(mLauncher);
                 Rect hotseatPadding = dp.getHotseatLayoutPadding();
                 int hotseatSize = dp.hotseatBarSizePx + dp.getInsets().bottom
-                        - hotseatPadding.bottom - hotseatPadding.top;
-                float dragHandleTop = hotseatSize;
-                mDragHandleProgress =  1 - (dragHandleTop / mShiftRange);
+                        + hotseatPadding.bottom + hotseatPadding.top;
+                float dragHandleTop = Math.min(hotseatSize,
+                        dp.allAppsCellHeightPx - dp.allAppsIconTextSizePx);
+                mDragHandleProgress = 1 - (dragHandleTop / mShiftRange);
             }
             mTopOffset = dp.getInsets().top - mShelfOffset;
             mShelfTopAtThreshold = mShiftRange * SCRIM_CATCHUP_THRESHOLD + mTopOffset;

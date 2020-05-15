@@ -43,6 +43,7 @@ import com.android.launcher3.ItemInfo;
 import com.android.launcher3.ItemInfoWithIcon;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
+import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.R;
 import com.android.launcher3.WorkspaceItemInfo;
 import com.android.launcher3.allapps.AllAppsStore;
@@ -92,7 +93,7 @@ public class PredictionRowView extends LinearLayout implements
 
     private final Launcher mLauncher;
     private final PredictionUiStateManager mPredictionUiStateManager;
-    private final int mNumPredictedAppsPerRow;
+    private int mNumPredictedAppsPerRow;
 
     // The set of predicted app component names
     private final List<ComponentKeyMapper> mPredictedAppComponents = new ArrayList<>();
@@ -128,7 +129,7 @@ public class PredictionRowView extends LinearLayout implements
 
         mFocusHelper = new SimpleFocusIndicatorHelper(this);
 
-        mNumPredictedAppsPerRow = LauncherAppState.getIDP(context).numColumns;
+        mNumPredictedAppsPerRow = LauncherAppState.getIDP(context).numAllAppsColumns;
         mLauncher = Launcher.getLauncher(context);
         mLauncher.addOnDeviceProfileChangeListener(this);
 
@@ -186,7 +187,7 @@ public class PredictionRowView extends LinearLayout implements
     public int getExpectedHeight() {
         return getVisibility() == GONE ? 0 :
                 Launcher.getLauncher(getContext()).getDeviceProfile().allAppsCellHeightPx
-                + getPaddingTop() + getPaddingBottom();
+                        + getPaddingTop() + getPaddingBottom();
     }
 
     @Override
@@ -226,6 +227,7 @@ public class PredictionRowView extends LinearLayout implements
 
     @Override
     public void onDeviceProfileChanged(DeviceProfile dp) {
+        mNumPredictedAppsPerRow = dp.inv.numAllAppsColumns;
         removeAllViews();
         applyPredictionApps();
     }
@@ -274,7 +276,7 @@ public class PredictionRowView extends LinearLayout implements
         boolean predictionsEnabled = predictionCount > 0;
         if (predictionsEnabled != mPredictionsEnabled) {
             mPredictionsEnabled = predictionsEnabled;
-            mLauncher.reapplyUi();
+            mLauncher.reapplyUi(false /* cancelCurrentAnimation */);
             updateVisibility();
         }
         mParent.onHeightUpdated();
@@ -290,7 +292,9 @@ public class PredictionRowView extends LinearLayout implements
         for (ComponentKeyMapper mapper : components) {
             ItemInfoWithIcon info = mapper.getApp(getAppsStore());
             if (info != null) {
-                predictedApps.add(info);
+                ItemInfoWithIcon predictedApp = info.clone();
+                predictedApp.container = LauncherSettings.Favorites.CONTAINER_PREDICTION;
+                predictedApps.add(predictedApp);
             } else {
                 if (FeatureFlags.IS_DOGFOOD_BUILD) {
                     Log.e(TAG, "Predicted app not found: " + mapper);
@@ -306,7 +310,7 @@ public class PredictionRowView extends LinearLayout implements
 
     @Override
     public void fillInLogContainerData(View v, ItemInfo info, LauncherLogProto.Target target,
-            LauncherLogProto.Target targetParent) {
+                                       LauncherLogProto.Target targetParent) {
         for (int i = 0; i < mPredictedApps.size(); i++) {
             ItemInfoWithIcon appInfo = mPredictedApps.get(i);
             if (appInfo == info) {
@@ -367,7 +371,7 @@ public class PredictionRowView extends LinearLayout implements
 
     @Override
     public void setContentVisibility(boolean hasHeaderExtra, boolean hasAllAppsContent,
-            PropertySetter setter, Interpolator headerFade, Interpolator allAppsFade) {
+                                     PropertySetter setter, Interpolator headerFade, Interpolator allAppsFade) {
         // Text follows all apps visibility
         int textAlpha = hasHeaderExtra && hasAllAppsContent ? mIconFullTextAlpha : 0;
         setter.setInt(this, TEXT_ALPHA, textAlpha, allAppsFade);
