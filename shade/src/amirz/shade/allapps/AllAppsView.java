@@ -35,6 +35,7 @@ public class AllAppsView extends AllAppsContainerView {
                     MotionEvent.ACTION_UP,
                     0, 0, 0));
             v.setText(R.string.search_hidden);
+            requestFocus();
         }
     };
 
