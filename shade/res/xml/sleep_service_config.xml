@@ -4,6 +4,6 @@
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagRetrieveInteractiveWindows"
     android:canRequestTouchExplorationMode="false"
-    android:canRetrieveWindowContent="true"
-    android:description="@string/gesture_service_label"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/dt2s_service_label"
     android:notificationTimeout="500" />

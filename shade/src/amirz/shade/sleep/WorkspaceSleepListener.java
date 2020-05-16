@@ -9,8 +9,8 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.touch.WorkspaceTouchListener;
 
-import static amirz.gesture.GestureService.SLEEP;
-import static amirz.gesture.GestureService.SLEEP_PERM;
+import static amirz.shade.sleep.SleepService.SLEEP;
+import static amirz.shade.sleep.SleepService.SLEEP_PERM;
 
 @SuppressLint("ClickableViewAccessibility")
 public class WorkspaceSleepListener extends WorkspaceTouchListener {

@@ -142,6 +142,20 @@
                 android:resource="@xml/gesture_service_config" />
         </service>
 
+        <!-- The service for double tap to sleep -->
+        <service
+            android:name="amirz.shade.sleep.SleepService"
+            android:enabled="@bool/atleast_p"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/sleep_service_config" />
+        </service>
+
         <!-- Widget shortcut to any activity -->
         <activity android:name="amirz.shortcut.CreateShortcut"
             android:icon="@drawable/ic_launcher_shortcut"
