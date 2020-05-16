@@ -242,7 +242,7 @@ public class DeviceProfile {
             updateAvailableDimensions(dm, res);
         }
 
-        if (originalIDP != null) {
+        if (originalIDP != null && FeatureFlags.MAINTAIN_DRAWER_GRID) {
             // Grid size change should not affect All Apps UI, so we use the original profile
             // measurements here.
             DeviceProfile originalProfile = isLandscape

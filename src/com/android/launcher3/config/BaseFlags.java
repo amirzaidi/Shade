@@ -90,6 +90,9 @@ public abstract class BaseFlags {
     // When enabled add space for a search widget in the dock.
     public static final boolean HOTSEAT_WIDGET = false;
 
+    // When enabled maintain the app drawer grid separately from the workspace.
+    public static final boolean MAINTAIN_DRAWER_GRID = true;
+
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
      */
