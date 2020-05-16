@@ -128,6 +128,8 @@ public class AllAppsQsb extends QsbContainerView
 
         mFixedTranslationY = getTranslationY();
         mMarginTopAdjusting = mFixedTranslationY - getPaddingTop();
+        setPadding(0, 0, 0, 0);
+
         mMinTopInset = context.getResources().getDimensionPixelSize(R.dimen.all_apps_min_top_inset);
     }
 
