@@ -274,7 +274,7 @@ public class QsbContainerView extends FrameLayout {
             super.onDestroy();
         }
 
-        private void rebindFragment() {
+        protected void rebindFragment() {
             // Exit if the embedded qsb is disabled
             if (!isQsbEnabled()) {
                 return;
