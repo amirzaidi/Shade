@@ -34,6 +34,9 @@ public final class FeatureFlags extends BaseFlags {
     // When enabled load partner overrides from package.
     public static final boolean PARTNER_CUSTOMIZATION = false;
 
+    // When enabled maintain the app drawer grid separately from the workspace.
+    public static final boolean MAINTAIN_DRAWER_GRID = false;
+
     private FeatureFlags() {
         // Prevent instantiation
     }
