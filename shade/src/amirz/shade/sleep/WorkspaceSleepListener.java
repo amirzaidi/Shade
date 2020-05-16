@@ -2,6 +2,7 @@ package amirz.shade.sleep;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -22,16 +23,28 @@ public class WorkspaceSleepListener extends WorkspaceTouchListener {
     }
 
     private final Launcher mLauncher;
+    private final Handler mHandler;
 
     private WorkspaceSleepListener(Launcher launcher, Workspace workspace) {
         super(launcher, workspace);
         mLauncher = launcher;
+        mHandler = new Handler();
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-        Log.d(TAG, "Sending double tap to sleep intent to accessibility service.");
-        mLauncher.sendBroadcast(new Intent(SLEEP), SLEEP_PERM);
-        return true;
+        if (SleepService.isRunning()) {
+            Log.d(TAG, "Sending double tap to sleep intent to accessibility service.");
+            mLauncher.sendBroadcast(new Intent(SLEEP), SLEEP_PERM);
+
+            MotionEvent ev = MotionEvent.obtain(e);
+            mHandler.post(() -> {
+                ev.setAction(MotionEvent.ACTION_UP);
+                onTouch(mLauncher.getWorkspace(), ev);
+                ev.recycle();
+            });
+            return true;
+        }
+        return false;
     }
 }
