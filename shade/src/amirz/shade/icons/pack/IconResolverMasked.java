@@ -15,12 +15,9 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.android.launcher3.icons.BaseIconFactory;
 import com.android.launcher3.icons.LauncherIcons;
 
 import amirz.shade.icons.clock.CustomClock;
-
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_WRAP;
 
 public class IconResolverMasked implements IconResolver {
     private final Context mContext;
@@ -63,8 +60,13 @@ public class IconResolverMasked implements IconResolver {
         try {
             Resources res = pm.getResourcesForApplication(mPackInfo);
 
-            // Scale the bitmap using the icon pack scale.
+            // Re-render without scaling after creating the bitmap in the right dimensions.
             Bitmap iconBm = li.createScaledBitmapWithoutShadow(icon, 0);
+            mCanvas.setBitmap(iconBm);
+            icon.setBounds(0, 0, iconBm.getWidth(), iconBm.getHeight());
+            icon.draw(mCanvas);
+
+            // Scale the bitmap using the icon pack scale.
             scaleBitmap(iconBm, mData.scale);
 
             // Cut parts off using the mask image.
@@ -136,8 +138,12 @@ public class IconResolverMasked implements IconResolver {
     @SuppressLint("WrongConstant")
     private void backBitmap(Bitmap bitmap, Drawable back, LauncherIcons li) {
         if (back != null) {
-            back.setChangingConfigurations(back.getChangingConfigurations() | CONFIG_HINT_NO_WRAP);
-            Bitmap backBm = li.createScaledBitmapWithoutShadow(back, 0);
+            Bitmap backBm = Bitmap.createBitmap(
+                    bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+            mCanvas.setBitmap(backBm);
+            back.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
+            back.draw(mCanvas);
 
             mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
             mCanvas.setBitmap(bitmap);
