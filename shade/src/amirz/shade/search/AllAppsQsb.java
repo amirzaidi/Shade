@@ -2,8 +2,10 @@ package amirz.shade.search;
 
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
 import android.text.method.TextKeyListener;
@@ -38,6 +40,7 @@ import java.util.ArrayList;
 import amirz.shade.customization.DockSearch;
 import amirz.shade.hidden.HiddenAppsSearchAlgorithm;
 
+import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
@@ -68,7 +71,20 @@ public class AllAppsQsb extends QsbContainerView
     private boolean mSearchRequested;
     private final int[] mCurrentWidgetPadding = new int[2];
 
-    public static class HotseatQsbFragment extends QsbFragment {
+    public static class HotseatQsbFragment extends QsbFragment
+            implements SharedPreferences.OnSharedPreferenceChangeListener {
+        @Override
+        public void onInit(Bundle savedInstanceState) {
+            Utilities.getPrefs(getContext()).registerOnSharedPreferenceChangeListener(this);
+            super.onInit(savedInstanceState);
+        }
+
+        @Override
+        public void onDestroy() {
+            Utilities.getPrefs(getContext()).unregisterOnSharedPreferenceChangeListener(this);
+            super.onDestroy();
+        }
+
         @Override
         public boolean isQsbEnabled() {
             return true;
@@ -83,6 +99,13 @@ public class AllAppsQsb extends QsbContainerView
         @Override
         protected AppWidgetProviderInfo getSearchWidgetProvider() {
             return DockSearch.getWidgetInfo(getContext());
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (KEY_DOCK_SEARCH.equals(key)) {
+                rebindFragment();
+            }
         }
     }
 
