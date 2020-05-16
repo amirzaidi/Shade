@@ -31,6 +31,7 @@ import amirz.aidlbridge.LauncherClientIntent;
 import amirz.shade.animations.TransitionManager;
 import amirz.shade.hidden.HiddenAppsDrawerState;
 import amirz.shade.search.AllAppsQsb;
+import amirz.shade.sleep.WorkspaceSleepListener;
 import amirz.unread.UnreadSession;
 
 import static amirz.shade.ShadeFont.DEFAULT_FONT;
@@ -81,6 +82,7 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
         prefs.registerOnSharedPreferenceChangeListener(this);
         mLauncher.addOnDeviceProfileChangeListener(this);
         UnreadSession.getInstance(mLauncher).onCreate();
+        WorkspaceSleepListener.override(mLauncher);
     }
 
     private String getRecommendedFeedPackage() {

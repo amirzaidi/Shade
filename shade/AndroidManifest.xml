@@ -39,6 +39,13 @@
     <!-- Home button overlay -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+    <!-- Double tap to sleep -->
+    <permission
+        android:name="${packageName}.permission.DT2S"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="${packageName}.permission.DT2S" />
+
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
         android:fullBackupOnly="true"
