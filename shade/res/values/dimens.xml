@@ -17,6 +17,9 @@
 
     <dimen name="all_apps_min_top_inset">16dp</dimen>
 
+    <!-- Bottom sheet -->
+    <dimen name="bottom_sheet_title_padding">16dp</dimen>
+
     <!-- Dock search bar -->
     <dimen name="qsb_wrapper_height">56dp</dimen>
     <dimen name="qsb_widget_padding">8dp</dimen>
