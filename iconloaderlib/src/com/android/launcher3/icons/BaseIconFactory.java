@@ -216,6 +216,9 @@ public class BaseIconFactory implements AutoCloseable {
         if (icon == null) {
             return null;
         }
+        if (ATLEAST_OREO && icon instanceof AdaptiveIconDrawable) {
+            icon = AdaptiveIconCompat.wrap((AdaptiveIconDrawable) icon);
+        }
         float scale = 1f;
 
         if (shrinkNonAdaptiveIcons && ATLEAST_OREO) {
@@ -223,7 +226,7 @@ public class BaseIconFactory implements AutoCloseable {
                 mWrapperIcon = mContext.getDrawable(R.drawable.adaptive_icon_drawable_wrapper)
                         .mutate();
             }
-            AdaptiveIconDrawable dr = (AdaptiveIconDrawable) mWrapperIcon;
+            AdaptiveIconDrawable dr = AdaptiveIconCompat.wrap((AdaptiveIconDrawable) mWrapperIcon);
             dr.setBounds(0, 0, 1, 1);
             boolean[] outShape = new boolean[1];
             scale = getNormalizer().getScale(icon, outIconBounds, dr.getIconMask(), outShape);
@@ -285,6 +288,7 @@ public class BaseIconFactory implements AutoCloseable {
         mOldBounds.set(icon.getBounds());
 
         if (ATLEAST_OREO && icon instanceof AdaptiveIconDrawable) {
+            icon = AdaptiveIconCompat.wrap((AdaptiveIconDrawable) icon);
             int offset = Math.max((int) Math.ceil(BLUR_FACTOR * size),
                     Math.round(size * (1 - scale) / 2 ));
             icon.setBounds(offset, offset, size - offset, size - offset);
