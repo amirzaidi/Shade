@@ -105,7 +105,7 @@ public class ShadeTracker extends AppLaunchTracker {
             case MSG_INIT: {
                 Log.d(TAG, "Init");
                 destroy();
-                int count = InvariantDeviceProfile.INSTANCE.get(mContext).numColumns;
+                int count = InvariantDeviceProfile.INSTANCE.get(mContext).numAllAppsColumns;
                 mUsageTracker = new FilteredPredictor(mContext, count);
                 return true;
             }
