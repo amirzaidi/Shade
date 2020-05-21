@@ -46,6 +46,7 @@ import android.view.ViewOutlineProvider;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.RoundedRectRevealOutlineProvider;
+import com.android.launcher3.icons.AdaptiveIconCompat;
 import com.android.launcher3.icons.GraphicsUtils;
 import com.android.launcher3.icons.IconNormalizer;
 import com.android.launcher3.util.IntArray;
@@ -442,8 +443,8 @@ public abstract class IconShape {
 
         Region full = new Region(0, 0, size, size);
         Region iconR = new Region();
-        AdaptiveIconDrawable drawable = new AdaptiveIconDrawable(
-                new ColorDrawable(Color.BLACK), new ColorDrawable(Color.BLACK));
+        AdaptiveIconDrawable drawable = AdaptiveIconCompat.wrap(new AdaptiveIconDrawable(
+                new ColorDrawable(Color.BLACK), new ColorDrawable(Color.BLACK)));
         drawable.setBounds(0, 0, size, size);
         iconR.setPath(drawable.getIconMask(), full);
 
