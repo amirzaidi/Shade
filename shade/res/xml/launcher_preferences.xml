@@ -102,8 +102,8 @@
             android:summary="%s"
             android:entries="@array/icon_shape_override_paths_names"
             android:entryValues="@array/icon_shape_override_paths_values"
-            android:defaultValue=""
-            android:persistent="false" />
+            android:defaultValue="@string/icon_shape_override_path_circle"
+            android:persistent="true" />
 
         <ListPreference
             android:key="pref_font"

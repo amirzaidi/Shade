@@ -15,37 +15,33 @@
  */
 package amirz.shade.customization;
 
-import static com.android.launcher3.Utilities.getDevicePrefs;
-
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
+import androidx.core.graphics.PathParser;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import com.android.launcher3.LauncherAppState;
-import com.android.launcher3.LauncherModel;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
-import com.android.launcher3.util.Executors;
-import com.android.launcher3.util.LooperExecutor;
+import com.android.launcher3.icons.AdaptiveIconCompat;
 
-import java.lang.reflect.Field;
+import java.util.Objects;
+
+import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 /**
  * Utility class to override shape of {@link android.graphics.drawable.AdaptiveIconDrawable}.
  */
-@TargetApi(Build.VERSION_CODES.O)
 public class IconShapeOverride {
 
     private static final String TAG = "IconShapeOverride";
@@ -58,93 +54,33 @@ public class IconShapeOverride {
 
     private static final int RESTART_REQUEST_CODE = 42; // the answer to everything
 
-    public static boolean isSupported(Context context) {
-        if (!Utilities.ATLEAST_OREO || Utilities.ATLEAST_Q) {
-            return false;
-        }
+    private static SharedPreferences sPrefs;
+    private static String sMaskString;
 
-        try {
-            if (getSystemResField().get(null) != Resources.getSystem()) {
-                // Our assumption that mSystem is the system resource is not true.
-                return false;
-            }
-        } catch (Exception e) {
-            // Ignore, not supported
-            return false;
-        }
-
-        return getConfigResId() != 0;
-    }
-
+    @SuppressLint("RestrictedApi")
     public static void apply(Context context) {
-        if (!Utilities.ATLEAST_OREO || Utilities.ATLEAST_Q) {
-            return;
+        if (Utilities.ATLEAST_OREO) {
+            cancelRestart(context);
+            if (sPrefs == null) {
+                sPrefs = Utilities.getPrefs(context);
+            }
+            String maskString = sPrefs.getString(KEY_ICON_SHAPE,
+                    context.getString(R.string.icon_shape_override_path_circle));
+            if (!Objects.equals(sMaskString, maskString)) {
+                sMaskString = maskString;
+                AdaptiveIconCompat.setMask(TextUtils.isEmpty(maskString)
+                        ? null
+                        : PathParser.createPathFromPathData(maskString));
+            }
         }
-        cancelRestart(context);
-        String path = getAppliedValue(context);
-        if (TextUtils.isEmpty(path)) {
-            return;
-        }
-        if (!isSupported(context)) {
-            return;
-        }
-
-        // magic
-        try {
-            Resources override =
-                    new ResourcesOverride(Resources.getSystem(), getConfigResId(), path);
-            getSystemResField().set(null, override);
-        } catch (Exception e) {
-            Log.e(TAG, "Unable to override icon shape", e);
-            // revert value.
-            getDevicePrefs(context).edit().remove(KEY_ICON_SHAPE).apply();
-        }
-    }
-
-    private static Field getSystemResField() throws Exception {
-        Field staticField = Resources.class.getDeclaredField("mSystem");
-        staticField.setAccessible(true);
-        return staticField;
-    }
-
-    private static int getConfigResId() {
-        return Resources.getSystem().getIdentifier("config_icon_mask", "string", "android");
-    }
-
-    private static String getAppliedValue(Context context) {
-        return getDevicePrefs(context).getString(KEY_ICON_SHAPE, "");
     }
 
     public static void handlePreferenceUi(ListPreference preference) {
-        Context context = preference.getContext();
-        preference.setValue(getAppliedValue(context));
-        preference.setOnPreferenceChangeListener(new PreferenceChangeHandler(context));
-    }
-
-    private static class ResourcesOverride extends Resources {
-
-        private final int mOverrideId;
-        private final String mOverrideValue;
-
-        @SuppressWarnings("deprecation")
-        public ResourcesOverride(Resources parent, int overrideId, String overrideValue) {
-            super(parent.getAssets(), parent.getDisplayMetrics(), parent.getConfiguration());
-            mOverrideId = overrideId;
-            mOverrideValue = overrideValue;
-        }
-
-        @NonNull
-        @Override
-        public String getString(int id) throws NotFoundException {
-            if (id == mOverrideId) {
-                return mOverrideValue;
-            }
-            return super.getString(id);
-        }
+        preference.setOnPreferenceChangeListener(
+                new PreferenceChangeHandler(preference.getContext()));
     }
 
     private static class PreferenceChangeHandler implements Preference.OnPreferenceChangeListener {
-
         private final Context mContext;
 
         private PreferenceChangeHandler(Context context) {
@@ -153,35 +89,27 @@ public class IconShapeOverride {
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object o) {
-            String newValue = (String) o;
-            if (!getAppliedValue(mContext).equals(newValue)) {
-                // Value has changed
-                ProgressDialog.show(mContext,
-                        null /* title */,
-                        mContext.getString(R.string.icon_shape_override_progress),
-                        true /* indeterminate */,
-                        false /* cancelable */);
-                Executors.THREAD_POOL_EXECUTOR.execute(
-                        new OverrideApplyHandler(mContext, newValue));
-            }
-            return false;
+            // Value has changed
+            ProgressDialog.show(mContext,
+                    null /* title */,
+                    mContext.getString(R.string.icon_shape_override_progress),
+                    true /* indeterminate */,
+                    false /* cancelable */);
+            MODEL_EXECUTOR.execute(new OverrideApplyHandler(mContext));
+            return true;
         }
     }
 
     private static class OverrideApplyHandler implements Runnable {
 
         private final Context mContext;
-        private final String mValue;
 
-        private OverrideApplyHandler(Context context, String value) {
+        private OverrideApplyHandler(Context context) {
             mContext = context;
-            mValue = value;
         }
 
         @Override
         public void run() {
-            // Synchronously write the preference.
-            getDevicePrefs(mContext).edit().putString(KEY_ICON_SHAPE, mValue).commit();
             // Clear the icon cache.
             LauncherAppState.getInstance(mContext).getIconCache().clear();
 

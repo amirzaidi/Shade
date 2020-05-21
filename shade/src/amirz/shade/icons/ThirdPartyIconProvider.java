@@ -3,8 +3,11 @@ package amirz.shade.icons;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.LauncherActivityInfo;
+import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.android.launcher3.Utilities;
+import com.android.launcher3.icons.AdaptiveIconCompat;
 import com.android.launcher3.util.ComponentKey;
 
 import amirz.shade.hidden.HiddenAppsDatabase;
@@ -23,7 +26,6 @@ public class ThirdPartyIconProvider extends RoundIconProvider {
         super(context);
         mContext = context;
     }
-
 
     @SuppressLint("WrongConstant")
     @Override
@@ -45,6 +47,8 @@ public class ThirdPartyIconProvider extends RoundIconProvider {
             icon.setChangingConfigurations(
                     icon.getChangingConfigurations() | CONFIG_HINT_NO_DRAG);
         }
-        return icon;
+        return Utilities.ATLEAST_OREO && icon instanceof AdaptiveIconDrawable
+                    ? AdaptiveIconCompat.wrap((AdaptiveIconDrawable) icon)
+                    : icon;
     }
 }

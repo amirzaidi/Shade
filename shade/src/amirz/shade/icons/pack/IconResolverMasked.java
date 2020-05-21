@@ -12,9 +12,12 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.android.launcher3.Utilities;
+import com.android.launcher3.icons.AdaptiveIconCompat;
 import com.android.launcher3.icons.LauncherIcons;
 
 import amirz.shade.icons.clock.CustomClock;
@@ -59,6 +62,9 @@ public class IconResolverMasked implements IconResolver {
         PackageManager pm = mContext.getPackageManager();
         try {
             Resources res = pm.getResourcesForApplication(mPackInfo);
+            if (Utilities.ATLEAST_OREO && icon instanceof AdaptiveIconDrawable) {
+                icon = AdaptiveIconCompat.wrap((AdaptiveIconDrawable) icon);
+            }
 
             // Re-render without scaling after creating the bitmap in the right dimensions.
             Bitmap iconBm = li.createScaledBitmapWithoutShadow(icon, 0);

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,8 +21,8 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsActivity;
 
 import amirz.shade.customization.IconDatabase;
-import amirz.shade.customization.IconShapeOverride;
 import amirz.shade.customization.ShadeStyle;
+import amirz.shade.customization.IconShapeOverride;
 import amirz.shade.icons.pack.IconPackManager;
 import amirz.shade.settings.DockSearchPrefSetter;
 import amirz.shade.settings.FeedProviderPrefSetter;
@@ -36,9 +35,10 @@ import static amirz.shade.ShadeLauncherCallbacks.KEY_ENABLE_MINUS_ONE;
 import static amirz.shade.ShadeLauncherCallbacks.KEY_FEED_PROVIDER;
 import static amirz.shade.customization.ShadeStyle.KEY_THEME;
 import static amirz.shade.customization.DockSearch.KEY_DOCK_SEARCH;
+import static amirz.shade.customization.IconShapeOverride.KEY_ICON_SHAPE;
 import static com.android.launcher3.util.Themes.KEY_DEVICE_THEME;
 
-public class  ShadeSettings extends SettingsActivity {
+public class ShadeSettings extends SettingsActivity {
     public interface OnResumePreferenceCallback {
         void onResume();
     }
@@ -61,7 +61,7 @@ public class  ShadeSettings extends SettingsActivity {
     }
 
     @SuppressWarnings("unused")
-    public static class ShadeSettingsFragment extends LauncherSettingsFragment {
+    public static class ShadeSettingsFragment extends SettingsActivity.LauncherSettingsFragment {
         private static final String CATEGORY_STYLE = "category_style";
 
         private static final String KEY_ICON_PACK = "pref_icon_pack";
@@ -88,9 +88,9 @@ public class  ShadeSettings extends SettingsActivity {
             });
 
             PreferenceCategory style = (PreferenceCategory) findPreference(CATEGORY_STYLE);
-            Preference iconShapeOverride = findPreference(IconShapeOverride.KEY_ICON_SHAPE);
+            Preference iconShapeOverride = findPreference(KEY_ICON_SHAPE);
             if (iconShapeOverride != null) {
-                if (IconShapeOverride.isSupported(getActivity())) {
+                if (Utilities.ATLEAST_OREO) {
                     IconShapeOverride.handlePreferenceUi((ListPreference) iconShapeOverride);
                 } else {
                     style.removePreference(iconShapeOverride);

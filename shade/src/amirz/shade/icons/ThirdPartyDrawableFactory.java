@@ -19,6 +19,7 @@ import amirz.shade.icons.pack.IconResolver;
 
 import static com.android.launcher3.LauncherSettings.Favorites.ITEM_TYPE_APPLICATION;
 
+@SuppressWarnings("unused")
 public class ThirdPartyDrawableFactory extends DrawableFactory {
     private final IconPackManager mManager;
     private final DynamicClock mDynamicClockDrawer;
