@@ -204,7 +204,7 @@ public class LauncherModel extends BroadcastReceiver
 
     public void onPackagesRemoved(UserHandle user, String... packages) {
         int op = PackageUpdatedTask.OP_REMOVE;
-        FileLog.d(TAG, "package removed received " + String.join("," + packages));
+        FileLog.d(TAG, "package removed received " + TextUtils.join(",", packages));
         enqueueModelUpdateTask(new PackageUpdatedTask(op, user, packages));
     }
 
