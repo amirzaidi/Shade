@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="needs_usage_access">Accès spécifiques requis</string>
+    <string name="msg_missing_usage_access">Pour faire apparaître les suggestions d\'applications, activez l\'accès spécifique pour</string>
+    <string name="app_info_subtext">Glissez vers le bas pour fermer la page d\'information de l\'application.</string>
+    <string name="app_info_source">Source</string>
+    <string name="app_info_last_update">Dernière mise à jour</string>
+    <string name="item_hidden">Objet caché</string>
+    <string name="theme_title">Accent</string>
+    <string name="theme_campfire">Feu de camp</string>
+    <string name="theme_sunset">Coucher de soleil</string>
+    <string name="theme_forest">Forêt</string>
+    <string name="theme_ocean">Océan</string>
+    <string name="theme_twilight">Crépuscule</string>
+    <string name="theme_blossom">Floraison</string>
+    <string name="dock_search">Recherche de widget</string>
+    <string name="feed_provider">Fil d\'actualité</string>
+    <string name="grid_division">Espacement de la grille</string>
+    <string name="grid_division_dense">Dense (6 par 6)</string>
+    <string name="grid_division_normal">Normal (5 par 5)</string>
+    <string name="grid_division_reasonable">Peu espacé (4 par 5)</string>
+    <string name="grid_division_big">Large (4 par 4)</string>
+    <string name="grid_division_crazybig">Très large (3 par 3)</string>
+    <string name="fading_transition">Transition de fondu</string>
+    <string name="fading_transition_desc">Lors de l\'ouverture des applications</string>
+    <string name="about_contact">Contact</string>
+    <string name="about_donate_desc">Utilisez le solde Play</string>
+    <string name="shadespace_text_charging">Chargé à %1$d%%</string>
+    <string name="search_hidden">Masquée</string>
+</resources>
