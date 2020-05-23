@@ -119,7 +119,7 @@ public class MediaListener extends MediaController.Callback
             mc.unregisterCallback(this);
         }
         for (MediaController mc : controllers) {
-            mc.registerCallback(this);
+            mc.registerCallback(this, mWorkerHandler);
         }
         mControllers = controllers;
     }
