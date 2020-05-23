@@ -36,11 +36,15 @@ public class NotificationList
     }
 
     public Map<StatusBarNotification, Integer> getMap() {
-        return getMap(Integer.MIN_VALUE);
+        return getMap(Integer.MIN_VALUE, true);
+    }
+
+    public Map<StatusBarNotification, Integer> getMap(int minPriority) {
+        return getMap(minPriority, false);
     }
 
     // Warning: Call getMap only from the worker thread, to prevent modification to mSbn.
-    Map<StatusBarNotification, Integer> getMap(int minPriority) {
+    private Map<StatusBarNotification, Integer> getMap(int minPriority, boolean all) {
         NotificationListener nls = NotificationListener.getInstanceIfConnected();
         if (nls == null) {
             return Collections.emptyMap();
@@ -63,7 +67,7 @@ public class NotificationList
                 = nls.getNotificationsForKeys(new ArrayList<>(rankedKeys.keySet()));
 
         for (StatusBarNotification sbn : sbnList) {
-            if (map.getRanking(sbn.getKey(), mTempRanking) && !shouldBeFilteredOut(sbn)) {
+            if (map.getRanking(sbn.getKey(), mTempRanking) && (all || !shouldBeFilteredOut(sbn))) {
                 rankedSbn.put(sbn, getRankedImportance());
             }
         }
