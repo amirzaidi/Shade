@@ -217,7 +217,10 @@ public class NotificationListener extends NotificationListenerService {
     public void onListenerDisconnected() {
         super.onListenerDisconnected();
         sIsConnected = false;
-        mNotificationDotsObserver.unregister();
+        // This method sometimes gets called without ever being connected.
+        if (mNotificationDotsObserver != null) {
+            mNotificationDotsObserver.unregister();
+        }
     }
 
     @Override
