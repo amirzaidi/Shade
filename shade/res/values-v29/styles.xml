@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.DayNight" />
+
+    <style name="CircularUI">
+        <item name="android:dialogCornerRadius">@dimen/default_dialog_corner_radius</item>
+    </style>
 </resources>

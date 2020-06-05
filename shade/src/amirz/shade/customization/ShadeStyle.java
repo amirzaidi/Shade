@@ -31,5 +31,9 @@ public class ShadeStyle {
         //noinspection ConstantConditions
         int override = sThemes.getOrDefault(theme, R.style.ShadeOverride);
         activity.getTheme().applyStyle(override, true);
+
+        if (Utilities.ATLEAST_P && IconShapeOverride.forceCircularUI(activity)) {
+            activity.getTheme().applyStyle(R.style.CircularUI, true);
+        }
     }
 }

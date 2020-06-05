@@ -75,6 +75,10 @@ public class IconShapeOverride {
         }
     }
 
+    public static boolean forceCircularUI(Context context) {
+        return context.getString(R.string.icon_shape_override_path_circle).equals(sMaskString);
+    }
+
     public static void handlePreferenceUi(ListPreference preference) {
         preference.setOnPreferenceChangeListener(
                 new PreferenceChangeHandler(preference.getContext()));
