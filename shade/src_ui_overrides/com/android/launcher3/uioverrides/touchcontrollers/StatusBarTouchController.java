@@ -37,7 +37,7 @@ public class StatusBarTouchController implements TouchController {
      */
     private static final int FLAG_SLIPPERY = 0x20000000;
 
-    private static final int SET_SLIPPERY_DELAY = 30;
+    private static final int SET_SLIPPERY_DELAY = 33;
 
     private final Handler mHandler = new Handler();
     private final Runnable mSetSlippery = () -> setWindowSlippery(true);
@@ -132,7 +132,6 @@ public class StatusBarTouchController implements TouchController {
                     mLauncher.getWorkspace().getCurrentPage());
             mHandler.removeCallbacks(mSetSlippery);
             setWindowSlippery(false);
-            return true;
         }
         return true;
     }
