@@ -19,6 +19,7 @@
 
     <!-- Bottom sheet -->
     <dimen name="bottom_sheet_title_padding">16dp</dimen>
+    <dimen name="default_dialog_corner_radius">12dp</dimen>
 
     <!-- Dock search bar -->
     <dimen name="qsb_wrapper_height">56dp</dimen>
