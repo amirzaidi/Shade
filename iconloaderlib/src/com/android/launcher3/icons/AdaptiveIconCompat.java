@@ -70,7 +70,10 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
         mMaskMatrix = new Matrix();
         mCanvas = new Canvas();
         mTransparentRegion = new Region();
+        mPaint.setAlpha(drawable.getAlpha());
         setBounds(drawable.getBounds());
+        setChangingConfigurations(drawable.getChangingConfigurations());
+        setColorFilter(drawable.getColorFilter());
     }
 
     @Override
