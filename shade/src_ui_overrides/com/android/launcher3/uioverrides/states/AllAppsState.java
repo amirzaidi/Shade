@@ -15,14 +15,20 @@
  */
 package com.android.launcher3.uioverrides.states;
 
+import android.content.Context;
+import android.view.View;
+
 import static com.android.launcher3.LauncherAnimUtils.ALL_APPS_TRANSITION_MS;
 import static com.android.launcher3.allapps.DiscoveryBounce.HOME_BOUNCE_SEEN;
 import static com.android.launcher3.anim.Interpolators.DEACCEL_2;
 
 import com.android.launcher3.AbstractFloatingView;
+import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.R;
+import com.android.launcher3.Workspace;
+import com.android.launcher3.anim.AnimatorSetBuilder;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 
 import amirz.shade.search.AllAppsQsb;
@@ -76,8 +82,12 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public ScaleAndTranslation getWorkspaceScaleAndTranslation(Launcher launcher) {
-        return new ScaleAndTranslation(0.9f, 0,
-                -launcher.getAllAppsController().getShiftRange() * PARALLAX_COEFFICIENT);
+        DeviceProfile dp = launcher.getDeviceProfile();
+        float defaultSwipeHeight =
+                dp.allAppsCellHeightPx - dp.allAppsIconTextSizePx - dp.getInsets().bottom;
+
+        float parallaxFactor = 0.5f;
+        return new ScaleAndTranslation(0.9f, 0,-defaultSwipeHeight * parallaxFactor);
     }
 
     @Override
