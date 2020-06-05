@@ -108,7 +108,7 @@ public class DeviceProfile {
     public int hotseatCellHeightPx;
     // In portrait: size = height, in landscape: size = width
     public int hotseatBarSizePx;
-    public final int hotseatBarTopPaddingPx;
+    public int hotseatBarTopPaddingPx;
     public int hotseatBarBottomPaddingPx;
     // Start is the side next to the nav bar, end is the side next to the workspace
     public final int hotseatBarSidePaddingStartPx;
@@ -236,6 +236,14 @@ public class DeviceProfile {
             int extraSpace = getCellSize().y - iconSizePx - iconDrawablePaddingPx * 2
                     - verticalDragHandleSizePx;
             hotseatBarSizePx += extraSpace;
+            if (!FeatureFlags.HOTSEAT_WIDGET) {
+                // Set an upper bound on bottom padding for very tall devices.
+                int maxExtraSpace = Math.round((hotseatBarSizePx - extraSpace) * 0.67f);
+                if (extraSpace > maxExtraSpace) {
+                    hotseatBarTopPaddingPx += extraSpace - maxExtraSpace;
+                    extraSpace = maxExtraSpace;
+                }
+            }
             hotseatBarBottomPaddingPx += extraSpace;
 
             // Recalculate the available dimensions using the new hotseat size.
