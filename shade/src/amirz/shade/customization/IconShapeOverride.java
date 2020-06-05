@@ -79,15 +79,15 @@ public class IconShapeOverride {
 
     static int curveTheme(Context ctx) {
         Map<String, Integer> map = new HashMap<>();
-        map(ctx, map, R.string.icon_shape_override_path_square, R.style.CurveSquare);
-        map(ctx, map, R.string.icon_shape_override_path_rounded_square, R.style.CurveRoundedSquare);
-        map(ctx, map, R.string.icon_shape_override_path_squircle, R.style.CurveSquircle);
-        map(ctx, map, R.string.icon_shape_override_path_circle, R.style.CurveCircle);
-        map(ctx, map, R.string.icon_shape_override_path_teardrop, R.style.CurveCircle);
-        map(ctx, map, R.string.icon_shape_override_path_cylinder, R.style.CurveCircle);
+        map(ctx, map, R.string.icon_shape_override_path_square, R.style.Curvature_Square);
+        map(ctx, map, R.string.icon_shape_override_path_rounded_square, R.style.Curvature_RoundedSquare);
+        map(ctx, map, R.string.icon_shape_override_path_squircle, R.style.Curvature_Squircle);
+        map(ctx, map, R.string.icon_shape_override_path_circle, R.style.Curvature_Circle);
+        map(ctx, map, R.string.icon_shape_override_path_teardrop, R.style.Curvature_Circle);
+        map(ctx, map, R.string.icon_shape_override_path_cylinder, R.style.Curvature_Circle);
 
         //noinspection ConstantConditions
-        return map.getOrDefault(sMaskString, 0);
+        return map.getOrDefault(sMaskString, R.style.Curvature);
     }
 
     private static void map(Context context, Map<String, Integer> map, int shape, int theme) {

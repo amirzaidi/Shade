@@ -2,19 +2,27 @@
 <resources>
     <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.DayNight" />
 
-    <style name="CurveSquare">
+    <style name="Curvature">
+        <item name="shadeDialogCornerRadius">?android:dialogCornerRadius</item>
+    </style>
+
+    <style name="Curvature.Square" parent="Curvature">
         <item name="android:dialogCornerRadius">0dp</item>
+        <item name="shadeDialogCornerRadius">0dp</item>
     </style>
 
-    <style name="CurveRoundedSquare">
+    <style name="Curvature.RoundedSquare" parent="Curvature">
         <item name="android:dialogCornerRadius">5dp</item>
+        <item name="shadeDialogCornerRadius">5dp</item>
     </style>
 
-    <style name="CurveSquircle">
+    <style name="Curvature.Squircle" parent="Curvature">
         <item name="android:dialogCornerRadius">8dp</item>
+        <item name="shadeDialogCornerRadius">8dp</item>
     </style>
 
-    <style name="CurveCircle">
+    <style name="Curvature.Circle" parent="Curvature">
         <item name="android:dialogCornerRadius">@dimen/default_dialog_corner_radius</item>
+        <item name="shadeDialogCornerRadius">@dimen/default_dialog_corner_radius</item>
     </style>
 </resources>

@@ -29,9 +29,7 @@ public class ShadeStyle {
 
         if (Utilities.ATLEAST_Q) {
             int curveTheme = IconShapeOverride.curveTheme(activity);
-            if (curveTheme != 0) {
-                activity.getTheme().applyStyle(curveTheme, true);
-            }
+            activity.getTheme().applyStyle(curveTheme, true);
         }
     }
 }

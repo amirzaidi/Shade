@@ -5,4 +5,8 @@
     <attr name="shadeColorDarkSearchBar" format="color" />
     <attr name="shadeColorAccent" format="color" />
     <attr name="smartspaceTextShadowColor" format="color" />
+
+    <!-- Corner radius of dialogs. -->
+    <!-- Propagated to widget sheet. -->
+    <attr name="shadeDialogCornerRadius" format="dimension" />
 </resources>
