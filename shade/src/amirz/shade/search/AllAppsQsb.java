@@ -183,7 +183,7 @@ public class AllAppsQsb extends QsbContainerView
 
         if (Utilities.ATLEAST_Q) {
             // The corners should be 3x as curved as the dialog curve.
-            mFallbackSearchView.setRadius(Themes.getDialogCornerRadius(context) * 3f);
+            mFallbackSearchView.setRadius(Themes.getDialogCornerRadius(context) * 2f);
         }
 
         mFallbackSearchViewText.setSpannedHint(
