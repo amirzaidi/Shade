@@ -2,7 +2,11 @@ package amirz.shade.hidden;
 
 import android.content.Context;
 
+import com.android.launcher3.util.Executors;
+
 import amirz.shade.util.AppReloader;
+
+import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 public class HiddenAppsDrawerState {
     private static HiddenAppsDrawerState sInstance;
@@ -28,8 +32,10 @@ public class HiddenAppsDrawerState {
     public void setRevealed(boolean revealed) {
         if (mRevealed != revealed) {
             mRevealed = revealed;
-            AppReloader reloader = AppReloader.get(mContext);
-            reloader.reload(reloader.hiddenApps());
+            MODEL_EXECUTOR.execute(() -> {
+                AppReloader reloader = AppReloader.get(mContext);
+                reloader.reload(reloader.hiddenApps());
+            });
         }
     }
 
