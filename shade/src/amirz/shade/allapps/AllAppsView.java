@@ -15,6 +15,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 
+import amirz.shade.search.AllAppsSearchBackground;
 import amirz.shade.search.EditText;
 import amirz.shade.util.AppReloader;
 
@@ -102,5 +103,9 @@ public class AllAppsView extends AllAppsContainerView {
     public void setupHeader() {
         super.setupHeader();
         getFloatingHeaderView().reset(false);
+
+        AllAppsSearchBackground bg = findViewById(R.id.fallback_search_view);
+        bg.setShadowAlpha(0);
+        addElevationController(bg.getElevationController());
     }
 }

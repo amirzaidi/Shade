@@ -288,9 +288,6 @@ public class AllAppsQsb extends QsbContainerView
         mSearchBarController.initialize(
                 new HiddenAppsSearchAlgorithm(mLauncher, appsView.getAppsStore()),
                 mFallbackSearchViewText, mLauncher, this);
-
-        appsView.setRecyclerViewVerticalFadingEdgeEnabled(true);
-        appsView.addElevationController(mFallbackSearchView.getAlphaUpdater());
     }
 
     @Override

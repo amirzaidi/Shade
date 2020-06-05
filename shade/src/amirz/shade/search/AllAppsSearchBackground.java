@@ -41,6 +41,13 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
     private int mColor;
     private int mShadowAlpha;
 
+    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            setShadowAlpha(((BaseRecyclerView) recyclerView).getCurrentScrollY());
+        }
+    };
+
     public AllAppsSearchBackground(@NonNull Context context) {
         this(context, null);
     }
@@ -176,17 +183,11 @@ public class AllAppsSearchBackground extends FrameLayout implements View.OnClick
         }
     }
 
-    public RecyclerView.OnScrollListener getAlphaUpdater() {
-        setAlpha(0);
-        return new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                setAlpha(((BaseRecyclerView) recyclerView).getCurrentScrollY());
-            }
-        };
+    public RecyclerView.OnScrollListener getElevationController() {
+        return mOnScrollListener;
     }
 
-    private void setAlpha(int newAlpha) {
+    public void setShadowAlpha(int newAlpha) {
         int normalizedAlpha = Utilities.boundToRange(newAlpha, 0, 255);
         if (mShadowAlpha != normalizedAlpha) {
             mShadowAlpha = normalizedAlpha;
