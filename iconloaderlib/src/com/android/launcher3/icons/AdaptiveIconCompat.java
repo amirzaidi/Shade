@@ -48,8 +48,8 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
     private final Path mInitMask;
     private final Path mMask;
     private final Path mMaskScaleOnly;
-    private final Matrix mMaskMatrix;
-    private final Region mTransparentRegion;
+    private final Matrix mMaskMatrix = new Matrix();
+    private final Region mTransparentRegion = new Region();
 
     private Shader mLayersShader;
     private Bitmap mLayersBitmap;
@@ -58,7 +58,7 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
 
     private boolean mSuspendChildInvalidation;
     private boolean mChildRequestedInvalidation;
-    private final Canvas mCanvas;
+    private final Canvas mCanvas = new Canvas();
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG |
             Paint.FILTER_BITMAP_FLAG);
 
@@ -67,9 +67,6 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
         mInitMask = sMask;
         mMask = new Path(sMask);
         mMaskScaleOnly = new Path(mMask);
-        mMaskMatrix = new Matrix();
-        mCanvas = new Canvas();
-        mTransparentRegion = new Region();
         mPaint.setAlpha(drawable.getAlpha());
         setBounds(drawable.getBounds());
         setChangingConfigurations(drawable.getChangingConfigurations());
