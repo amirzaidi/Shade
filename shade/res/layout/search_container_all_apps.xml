@@ -19,8 +19,8 @@
     android:layout_height="@dimen/qsb_wrapper_height"
     android:layout_centerHorizontal="true"
     android:layout_gravity="top|center_horizontal"
-    android:paddingTop="2dp"
-    android:translationY="26dp">
+    android:paddingTop="3dp"
+    android:translationY="29dp">
 
     <fragment
         android:id="@+id/search_wrapper_view"
