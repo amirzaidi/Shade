@@ -8,7 +8,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.RippleDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
@@ -172,13 +171,9 @@ public class AllAppsQsb extends QsbContainerView
         int overlay = Themes.getAttrColor(context, R.attr.shadeColorAllAppsOverlay);
 
         if (ColorUtils.setAlphaComponent(overlay, 0) != overlay) {
-            boolean isDark = Themes.getAttrBoolean(context, R.attr.isMainColorDark);
-
             // Alpha is not zero, so update it to the right value.
             overlay = ColorUtils.setAlphaComponent(overlay,
-                    context.getResources().getInteger(isDark
-                            ? R.integer.shade_all_apps_dark_alpha
-                            : R.integer.shade_all_apps_light_alpha));
+                    context.getResources().getInteger(R.integer.shade_qsb_color_alpha));
 
             bgColor = ColorUtils.compositeColors(overlay, bgColor);
         }
