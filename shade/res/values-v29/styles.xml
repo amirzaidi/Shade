@@ -2,7 +2,19 @@
 <resources>
     <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.DayNight" />
 
-    <style name="CircularUI">
+    <style name="CurveSquare">
+        <item name="android:dialogCornerRadius">0dp</item>
+    </style>
+
+    <style name="CurveRoundedSquare">
+        <item name="android:dialogCornerRadius">5dp</item>
+    </style>
+
+    <style name="CurveSquircle">
+        <item name="android:dialogCornerRadius">8dp</item>
+    </style>
+
+    <style name="CurveCircle">
         <item name="android:dialogCornerRadius">@dimen/default_dialog_corner_radius</item>
     </style>
 </resources>

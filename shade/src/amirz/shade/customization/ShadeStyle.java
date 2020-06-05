@@ -32,8 +32,11 @@ public class ShadeStyle {
         int override = sThemes.getOrDefault(theme, R.style.ShadeOverride);
         activity.getTheme().applyStyle(override, true);
 
-        if (Utilities.ATLEAST_P && IconShapeOverride.forceCircularUI(activity)) {
-            activity.getTheme().applyStyle(R.style.CircularUI, true);
+        if (Utilities.ATLEAST_P) {
+            int curveTheme = IconShapeOverride.curveTheme(activity);
+            if (curveTheme != 0) {
+                activity.getTheme().applyStyle(curveTheme, true);
+            }
         }
     }
 }

@@ -5,6 +5,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
@@ -182,8 +186,15 @@ public class AllAppsQsb extends QsbContainerView
         mFallbackSearchView.setColor(bgColor);
 
         if (Utilities.ATLEAST_Q) {
-            // The corners should be 3x as curved as the dialog curve.
-            mFallbackSearchView.setRadius(Themes.getDialogCornerRadius(context) * 2f);
+            // The corners should be 2x as curved as the dialog curve.
+            float radius = Themes.getDialogCornerRadius(context) * 2f;
+            mFallbackSearchView.setRadius(radius);
+
+            InsetDrawable inset = (InsetDrawable) mFallbackSearchView.getBackground();
+            RippleDrawable ripple = (RippleDrawable) inset.getDrawable();
+            GradientDrawable shape =
+                    (GradientDrawable) ripple.findDrawableByLayerId(android.R.id.mask);
+            shape.setCornerRadius(radius);
         }
 
         mFallbackSearchViewText.setSpannedHint(

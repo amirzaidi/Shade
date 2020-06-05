@@ -35,6 +35,8 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.icons.AdaptiveIconCompat;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
@@ -75,8 +77,21 @@ public class IconShapeOverride {
         }
     }
 
-    public static boolean forceCircularUI(Context context) {
-        return context.getString(R.string.icon_shape_override_path_circle).equals(sMaskString);
+    static int curveTheme(Context ctx) {
+        Map<String, Integer> map = new HashMap<>();
+        map(ctx, map, R.string.icon_shape_override_path_square, R.style.CurveSquare);
+        map(ctx, map, R.string.icon_shape_override_path_rounded_square, R.style.CurveRoundedSquare);
+        map(ctx, map, R.string.icon_shape_override_path_squircle, R.style.CurveSquircle);
+        map(ctx, map, R.string.icon_shape_override_path_circle, R.style.CurveCircle);
+        map(ctx, map, R.string.icon_shape_override_path_teardrop, R.style.CurveCircle);
+        map(ctx, map, R.string.icon_shape_override_path_cylinder, R.style.CurveCircle);
+
+        //noinspection ConstantConditions
+        return map.getOrDefault(sMaskString, 0);
+    }
+
+    private static void map(Context context, Map<String, Integer> map, int shape, int theme) {
+        map.put(context.getString(shape), theme);
     }
 
     public static void handlePreferenceUi(ListPreference preference) {
