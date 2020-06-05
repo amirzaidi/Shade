@@ -32,4 +32,9 @@
         <item name="android:colorAccent">?shadeColorAccent</item>
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
     </style>
+
+    <!-- Fix navigation bar before Oreo. -->
+    <style name="HomeSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
 </resources>

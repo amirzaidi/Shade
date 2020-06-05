@@ -78,6 +78,9 @@
         <item name="android:alertDialogTheme">@style/Shade.SettingsTheme.DialogAlert</item>
     </style>
 
+    <!-- Fix navigation bar before Oreo. -->
+    <style name="HomeSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings" />
+
     <!-- Theme for the settings activity. -->
     <style name="Shade.SettingsTheme" parent="@style/HomeSettingsTheme">
         <item name="android:colorAccent">?shadeColorAccent</item>
