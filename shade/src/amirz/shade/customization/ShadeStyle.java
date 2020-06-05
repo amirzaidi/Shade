@@ -5,16 +5,15 @@ import android.app.Activity;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ShadeStyle {
     public static final String KEY_THEME = "pref_theme";
 
-    private static final Map<String, Integer> sThemes;
+    public static void override(Activity activity) {
+        String theme = Utilities.getPrefs(activity).getString(KEY_THEME, "");
 
-    static {
         Map<String, Integer> themes = new HashMap<>();
         themes.put("shade", R.style.ShadeOverride_Shade);
         themes.put("campfire", R.style.ShadeOverride_Campfire);
@@ -23,13 +22,9 @@ public class ShadeStyle {
         themes.put("ocean", R.style.ShadeOverride_Ocean);
         themes.put("twilight", R.style.ShadeOverride_Twilight);
         themes.put("blossom", R.style.ShadeOverride_Blossom);
-        sThemes = Collections.unmodifiableMap(themes);
-    }
 
-    public static void override(Activity activity) {
-        String theme = Utilities.getPrefs(activity).getString(KEY_THEME, "");
         //noinspection ConstantConditions
-        int override = sThemes.getOrDefault(theme, R.style.ShadeOverride);
+        int override = themes.getOrDefault(theme, R.style.ShadeOverride);
         activity.getTheme().applyStyle(override, true);
 
         if (Utilities.ATLEAST_Q) {
