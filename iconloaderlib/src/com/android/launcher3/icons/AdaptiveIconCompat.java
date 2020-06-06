@@ -67,10 +67,16 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
         mInitMask = sMask;
         mMask = new Path(sMask);
         mMaskScaleOnly = new Path(mMask);
-        mPaint.setAlpha(drawable.getAlpha());
+        setAlpha(drawable.getAlpha());
         setBounds(drawable.getBounds());
         setChangingConfigurations(drawable.getChangingConfigurations());
         setColorFilter(drawable.getColorFilter());
+    }
+
+    @Override
+    public void setAlpha(int alpha) {
+        super.setAlpha(alpha);
+        mPaint.setAlpha(alpha);
     }
 
     @Override
