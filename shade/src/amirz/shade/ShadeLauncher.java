@@ -33,6 +33,12 @@ public class ShadeLauncher extends Launcher {
     }
 
     @Override
+    public void setTheme(int resid) {
+        super.setTheme(resid);
+        ShadeStyle.overrideShape(this);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (mState == State.KILL_DEFERRED) {

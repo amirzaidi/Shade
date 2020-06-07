@@ -26,7 +26,9 @@ public class ShadeStyle {
         //noinspection ConstantConditions
         int override = themes.getOrDefault(theme, R.style.ShadeOverride);
         activity.getTheme().applyStyle(override, true);
+    }
 
+    public static void overrideShape(Activity activity) {
         if (Utilities.ATLEAST_Q) {
             int curveTheme = IconShapeOverride.curveTheme(activity);
             activity.getTheme().applyStyle(curveTheme, true);
