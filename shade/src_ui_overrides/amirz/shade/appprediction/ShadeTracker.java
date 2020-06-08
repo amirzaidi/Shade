@@ -130,7 +130,7 @@ public class ShadeTracker extends AppLaunchTracker {
                 // Do prediction
                 List<AppTarget> targetList = new ArrayList<>();
                 UserHandle user = Process.myUserHandle();
-                for (ComponentName cn: mUsageTracker.getFilteredComponents()) {
+                for (ComponentName cn : mUsageTracker.getFilteredComponents()) {
                     AppTarget target = new AppTarget
                             .Builder(new AppTargetId("app:" + cn), cn.getPackageName(), user)
                             .setClassName(cn.getClassName())

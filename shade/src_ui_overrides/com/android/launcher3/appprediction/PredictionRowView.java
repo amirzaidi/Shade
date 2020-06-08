@@ -46,6 +46,7 @@ import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.R;
 import com.android.launcher3.WorkspaceItemInfo;
+import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.allapps.AllAppsStore;
 import com.android.launcher3.allapps.FloatingHeaderRow;
 import com.android.launcher3.allapps.FloatingHeaderView;
@@ -280,6 +281,9 @@ public class PredictionRowView extends LinearLayout implements
             updateVisibility();
         }
         mParent.onHeightUpdated();
+
+        // This fixes the problem where the header is invisible when using tabs.
+        ((AllAppsContainerView) mParent.getParent()).setupHeader();
     }
 
     private List<ItemInfoWithIcon> processPredictedAppComponents(List<ComponentKeyMapper> components) {
