@@ -56,7 +56,9 @@ public class MediaListener extends MediaController.Callback
         try {
             mManager.addOnActiveSessionsChangedListener(this, mComponent, mWorkerHandler);
         } catch (SecurityException e) {
-            e.printStackTrace();
+            if (e.getMessage() != null) {
+                Log.d(TAG, e.getMessage());
+            }
         }
         onActiveSessionsChanged(null); // Bind all current controllers.
     }
@@ -131,7 +133,9 @@ public class MediaListener extends MediaController.Callback
                 controllers = mManager.getActiveSessions(mComponent);
             } catch (SecurityException e) {
                 controllers = Collections.emptyList();
-                e.printStackTrace();
+                if (e.getMessage() != null) {
+                    Log.d(TAG, e.getMessage());
+                }
             }
         }
         updateControllers(controllers);
