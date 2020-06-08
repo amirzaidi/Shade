@@ -14,12 +14,9 @@ import amirz.shade.hidden.HiddenAppsDatabase;
 import amirz.shade.icons.pack.IconResolver;
 
 import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_WRAP;
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_DRAG;
 
 @SuppressWarnings("unused")
 public class ThirdPartyIconProvider extends RoundIconProvider {
-    private static final int HIDDEN_ALPHA = 0x30;
-
     private final Context mContext;
 
     public ThirdPartyIconProvider(Context context) {
@@ -41,11 +38,6 @@ public class ThirdPartyIconProvider extends RoundIconProvider {
         } else {
             icon.setChangingConfigurations(
                     icon.getChangingConfigurations() | CONFIG_HINT_NO_WRAP);
-        }
-        if (HiddenAppsDatabase.isHidden(mContext, key.componentName, key.user)) {
-            icon.setAlpha(HIDDEN_ALPHA);
-            icon.setChangingConfigurations(
-                    icon.getChangingConfigurations() | CONFIG_HINT_NO_DRAG);
         }
         return Utilities.ATLEAST_OREO && icon instanceof AdaptiveIconDrawable
                     ? AdaptiveIconCompat.wrap((AdaptiveIconDrawable) icon)
