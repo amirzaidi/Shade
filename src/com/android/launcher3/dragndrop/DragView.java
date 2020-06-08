@@ -17,7 +17,6 @@
 package com.android.launcher3.dragndrop;
 
 import static com.android.launcher3.Utilities.getBadge;
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_DRAG;
 import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 import android.animation.Animator;
@@ -222,10 +221,6 @@ public class DragView extends View implements LauncherStateManager.StateListener
 
                 if (dr instanceof AdaptiveIconDrawable) {
                     AdaptiveIconDrawable adaptiveIcon = (AdaptiveIconDrawable) dr;
-                    if ((adaptiveIcon.getChangingConfigurations() & CONFIG_HINT_NO_DRAG) != 0) {
-                        return;
-                    }
-
                     int blurMargin = (int) mLauncher.getResources()
                             .getDimension(R.dimen.blur_size_medium_outline) / 2;
 
