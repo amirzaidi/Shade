@@ -5,8 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.content.pm.LauncherActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Process;
+import android.os.UserHandle;
+
+import com.android.launcher3.allapps.AllAppsStore;
+import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.util.ComponentKey;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,11 +39,13 @@ class FilteredPredictor extends UsageTracker {
     }
 
     private final Context mContext;
+    private final LauncherAppsCompat mLauncherApps;
     private final int mCount;
 
     FilteredPredictor(Context context, int count) {
         super(context);
         mContext = context;
+        mLauncherApps = LauncherAppsCompat.getInstance(context);
         mCount = count;
     }
 
@@ -52,7 +60,7 @@ class FilteredPredictor extends UsageTracker {
             }
         }
         // Remove the first few entries, as these are easy to reach from recents.
-        // Only a maximum of mCount is left.
+        // Only a maximum of count is left.
         if (components.size() > mCount) {
             int removeEntries = Math.min(components.size() - mCount, MAX_REMOVE_TOP);
             components = components.subList(removeEntries, mCount + removeEntries);
@@ -66,8 +74,15 @@ class FilteredPredictor extends UsageTracker {
      * @return true if this should be filtered from suggestions, false otherwise.
      */
     private boolean shouldFilterComponent(ComponentName cn) {
-        // Remove hidden apps.
-        if (HiddenAppsDatabase.isHidden(mContext, cn, Process.myUserHandle())) {
+        UserHandle user = Process.myUserHandle();
+
+        // Remove components that do not have a launcher icon on this profile.
+        if (!mLauncherApps.isActivityEnabledForProfile(cn, user)) {
+            return true;
+        }
+
+        // Remove hidden app components.
+        if (HiddenAppsDatabase.isHidden(mContext, cn, user)) {
             return true;
         }
 

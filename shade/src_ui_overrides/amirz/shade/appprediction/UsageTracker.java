@@ -17,7 +17,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 class UsageTracker {
-    private static final int MAX_ENTRIES = 20;
+    private static final int MAX_ENTRIES = 30;
 
     private final PackageManager mPm;
     private final UsageStatsManager mManager;
