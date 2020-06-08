@@ -19,6 +19,7 @@ import com.android.launcher3.BuildConfig;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsActivity;
+import com.android.launcher3.util.SystemUiController;
 
 import amirz.shade.customization.IconDatabase;
 import amirz.shade.customization.ShadeStyle;
@@ -49,6 +50,11 @@ public class ShadeSettings extends SettingsActivity {
         ShadeStyle.override(this);
         super.onCreate(savedInstanceState);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (Utilities.ATLEAST_OREO && !Utilities.ATLEAST_P) {
+            new SystemUiController(getWindow())
+                    .updateUiState(SystemUiController.UI_STATE_BASE_WINDOW, true);
+        }
     }
 
     @Override
