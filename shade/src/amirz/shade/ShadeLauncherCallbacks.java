@@ -1,6 +1,7 @@
 package amirz.shade;
 
 import android.app.SearchManager;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,6 +31,7 @@ import java.io.PrintWriter;
 import amirz.aidlbridge.LauncherClientIntent;
 import amirz.shade.animations.TransitionManager;
 import amirz.shade.hidden.HiddenAppsDrawerState;
+import amirz.shade.icons.pack.IconPackManager;
 import amirz.shade.search.AllAppsQsb;
 import amirz.shade.sleep.WorkspaceSleepListener;
 import amirz.unread.UnreadSession;
@@ -273,7 +275,9 @@ public class ShadeLauncherCallbacks implements LauncherCallbacks,
 
     @Override
     public void onTrimMemory(int level) {
-
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            IconPackManager.get(mLauncher).trimMemory();
+        }
     }
 
     @Override

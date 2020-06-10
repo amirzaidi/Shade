@@ -42,10 +42,17 @@ class IconPack {
 
     Data getData(PackageManager pm)
             throws PackageManager.NameNotFoundException, XmlPullParserException, IOException {
-        if (mData == null) {
-            mData = IconPackParser.parsePackage(pm, getResources(pm), getPackage());
+        Data data = mData;
+        if (data == null) {
+            // Duplicate the field as a variable for thread safety.
+            data = IconPackParser.parsePackage(pm, getResources(pm), getPackage());
+            mData = data;
         }
-        return mData;
+        return data;
+    }
+
+    void releaseData() {
+        mData = null;
     }
 
     int getDrawableId(PackageManager pm, ComponentName name)

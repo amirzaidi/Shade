@@ -169,6 +169,16 @@ public class IconPackManager extends BroadcastReceiver {
     }
 
     /**
+     * Releases memory by removing all referenced data from loaded icon packs.
+     * This will only reduce memory usage after garbage collection.
+     */
+    public void trimMemory() {
+        for (IconPack pack : mProviders.values()) {
+            pack.releaseData();
+        }
+    }
+
+    /**
      * Creates a resolver that can load the icon once.
      * This resolver should not be stored, as the resolution strategy could change when
      * the selected icon pack in use is uninstalled or updated.
