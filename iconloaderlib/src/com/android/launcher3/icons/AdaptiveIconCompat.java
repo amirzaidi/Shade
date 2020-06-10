@@ -45,7 +45,6 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
     /**
      * Scaled mask based on the view bounds.
      */
-    private final Path mInitMask;
     private final Path mMask;
     private final Path mMaskScaleOnly;
     private final Matrix mMaskMatrix = new Matrix();
@@ -64,19 +63,27 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
 
     private AdaptiveIconCompat(AdaptiveIconDrawable drawable) {
         super(drawable.getBackground(), drawable.getForeground());
-        mInitMask = sMask;
         mMask = new Path(sMask);
         mMaskScaleOnly = new Path(mMask);
         setAlpha(drawable.getAlpha());
         setBounds(drawable.getBounds());
         setChangingConfigurations(drawable.getChangingConfigurations());
-        setColorFilter(drawable.getColorFilter());
     }
 
     @Override
     public void setAlpha(int alpha) {
-        super.setAlpha(alpha);
+        super.setAlpha(255);
         mPaint.setAlpha(alpha);
+    }
+
+    @Override
+    public int getAlpha() {
+        return mPaint.getAlpha();
+    }
+
+    @Override
+    public int getOpacity() {
+        return PixelFormat.TRANSLUCENT;
     }
 
     @Override
@@ -130,10 +137,10 @@ public class AdaptiveIconCompat extends AdaptiveIconDrawable {
     private void updateMaskBoundsInternal(Rect b) {
         // reset everything that depends on the view bounds
         mMaskMatrix.setScale(b.width() / MASK_SIZE, b.height() / MASK_SIZE);
-        mInitMask.transform(mMaskMatrix, mMaskScaleOnly);
+        sMask.transform(mMaskMatrix, mMaskScaleOnly);
 
         mMaskMatrix.postTranslate(b.left, b.top);
-        mInitMask.transform(mMaskMatrix, mMask);
+        sMask.transform(mMaskMatrix, mMask);
 
         if (mLayersBitmap == null || mLayersBitmap.getWidth() != b.width()
                 || mLayersBitmap.getHeight() != b.height()) {
