@@ -26,11 +26,13 @@ import amirz.unread.notifications.NotificationRanker;
 import amirz.unread.notifications.ParsedNotification;
 import amirz.unread.notifications.PendingIntentSender;
 
-import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
+import static com.android.launcher3.util.Executors.createAndStartNewLooper;
 
 public class UnreadSession {
     private static final int NOTIF_UPDATE_DELAY = 750;
     private static final Intent BATTERY_INTENT = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY);
+
+    private static final Looper UNREAD_LOOPER = createAndStartNewLooper("unread");
 
     @SuppressLint("StaticFieldLeak")
     private static UnreadSession sInstance;
@@ -47,7 +49,7 @@ public class UnreadSession {
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
     private final PendingIntentSender mSender = new PendingIntentSender();
 
-    private final Handler mWorkerHandler = new Handler(MODEL_EXECUTOR.getLooper());
+    private final Handler mWorkerHandler = new Handler(UNREAD_LOOPER);
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mLoadText = () -> {
