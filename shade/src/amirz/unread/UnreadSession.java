@@ -31,7 +31,6 @@ import static com.android.launcher3.util.Executors.createAndStartNewLooper;
 public class UnreadSession {
     private static final int NOTIF_UPDATE_DELAY = 750;
     private static final Intent BATTERY_INTENT = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY);
-
     private static final Looper UNREAD_LOOPER = createAndStartNewLooper("unread");
 
     @SuppressLint("StaticFieldLeak")
