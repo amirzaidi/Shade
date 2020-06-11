@@ -121,7 +121,6 @@ public class UnreadSession {
 
     public void addUpdateListener(OnUpdateListener listener) {
         mUpdateListeners.add(listener);
-        listener.onUpdateAvailable();
     }
 
     public void removeUpdateListener(OnUpdateListener listener) {

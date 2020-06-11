@@ -48,6 +48,7 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         mUnread.addUpdateListener(this);
+        onUpdateAvailable();
     }
 
     @Override
