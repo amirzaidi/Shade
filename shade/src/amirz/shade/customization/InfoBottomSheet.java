@@ -21,7 +21,6 @@ import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.util.ComponentKey;
-import com.android.launcher3.util.Executors;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
 import amirz.shade.settings.IconPackPrefSetter;
@@ -29,7 +28,7 @@ import amirz.shade.settings.ReloadingListPreference;
 import amirz.shade.util.AppReloader;
 
 import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
-import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
+import static com.android.launcher3.util.Executors.THREAD_POOL_EXECUTOR;
 
 public class InfoBottomSheet extends WidgetsBottomSheet {
     private static final String CLIP_LABEL = "ComponentName";
@@ -134,7 +133,7 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
             icons.setOnReloadListener(ctx -> new IconPackPrefSetter(ctx, mComponent));
             icons.setOnPreferenceChangeListener(this);
 
-            MODEL_EXECUTOR.execute(() -> {
+            THREAD_POOL_EXECUTOR.execute(() -> {
                 MetadataExtractor extractor = new MetadataExtractor(mContext, mComponent);
 
                 CharSequence source = extractor.getSource();

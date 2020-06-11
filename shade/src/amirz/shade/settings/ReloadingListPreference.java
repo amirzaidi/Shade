@@ -8,12 +8,11 @@ import androidx.preference.ListPreference;
 import com.android.launcher3.R;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import amirz.shade.ShadeSettings;
 
 import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
-import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
+import static com.android.launcher3.util.Executors.THREAD_POOL_EXECUTOR;
 
 @SuppressWarnings("unused")
 public class ReloadingListPreference extends ListPreference
@@ -66,7 +65,7 @@ public class ReloadingListPreference extends ListPreference
                 if (getEntryValues() == null) {
                     setSummary(R.string.loading);
                 }
-                MODEL_EXECUTOR.execute(() -> {
+                THREAD_POOL_EXECUTOR.execute(() -> {
                         Runnable uiRunnable = mOnReloadListener.listUpdater(this);
                         MAIN_EXECUTOR.execute(() -> {
                             uiRunnable.run();
