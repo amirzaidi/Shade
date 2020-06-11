@@ -41,7 +41,7 @@
     <amirz.shade.settings.ReloadingListPreference
         android:key="pref_app_info_icon_pack"
         android:title="@string/app_info_icon_pack"
-        android:summary="%s"
+        android:summary="@string/loading"
         android:icon="@drawable/ic_app_info_icon_pack"
         android:persistent="false" />
 

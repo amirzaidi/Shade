@@ -92,7 +92,7 @@
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_icon_pack"
             android:title="@string/icon_pack"
-            android:summary="%s"
+            android:summary="@string/loading"
             android:defaultValue=""
             android:persistent="true" />
 
@@ -122,14 +122,14 @@
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_dock_search"
             android:title="@string/dock_search"
-            android:summary="%s"
+            android:summary="@string/loading"
             android:defaultValue=""
             android:persistent="true" />
 
         <amirz.shade.settings.ReloadingListPreference
             android:key="pref_feed_provider"
             android:title="@string/feed_provider"
-            android:summary="%s"
+            android:summary="@string/loading"
             android:defaultValue=""
             android:persistent="true" />
 

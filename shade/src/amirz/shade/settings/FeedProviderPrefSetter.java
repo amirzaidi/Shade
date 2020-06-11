@@ -25,7 +25,7 @@ public class FeedProviderPrefSetter implements ReloadingListPreference.OnReloadL
     }
 
     @Override
-    public Runnable listUpdater(ListPreference pref) {
+    public Runnable listUpdater(ReloadingListPreference pref) {
         List<ApplicationInfo> aiList = LauncherClientIntent.query(mContext);
 
         CharSequence[] keys = new String[aiList.size() + 1];
@@ -51,9 +51,7 @@ public class FeedProviderPrefSetter implements ReloadingListPreference.OnReloadL
         }
 
         return () -> {
-            pref.setEntries(keys);
-            pref.setEntryValues(values);
-
+            pref.setEntriesWithValues(keys, values);
             pref.setDefaultValue(defaultValue);
             String v = pref.getValue();
             if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {

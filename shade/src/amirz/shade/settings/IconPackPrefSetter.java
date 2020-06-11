@@ -30,7 +30,7 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
     }
 
     @Override
-    public Runnable listUpdater(ListPreference pref) {
+    public Runnable listUpdater(ReloadingListPreference pref) {
         IconPackManager ipm = IconPackManager.get(mContext);
         Map<String, CharSequence> packList = ipm.getProviderNames();
         String globalPack = IconDatabase.getGlobal(mContext);
@@ -61,10 +61,7 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
             values[i++] = entry.getKey();
         }
 
-        return () -> {
-            pref.setEntries(keys);
-            pref.setEntryValues(values);
-        };
+        return () -> pref.setEntriesWithValues(keys, values);
     }
 
     private String normalizeTitle(CharSequence title) {

@@ -25,7 +25,7 @@ public class DockSearchPrefSetter implements ReloadingListPreference.OnReloadLis
     }
 
     @Override
-    public Runnable listUpdater(ListPreference pref) {
+    public Runnable listUpdater(ReloadingListPreference pref) {
         List<AppWidgetProviderInfo> widgets = DockSearch.validWidgets(mContext);
 
         CharSequence[] keys = new String[widgets.size() + 1];
@@ -54,9 +54,7 @@ public class DockSearchPrefSetter implements ReloadingListPreference.OnReloadLis
         }
 
         return () -> {
-            pref.setEntries(keys);
-            pref.setEntryValues(values);
-
+            pref.setEntriesWithValues(keys, values);
             String v = pref.getValue();
             if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {
                 pref.setValue("");
