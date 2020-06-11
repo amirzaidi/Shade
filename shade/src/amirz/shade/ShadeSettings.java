@@ -85,7 +85,7 @@ public class ShadeSettings extends SettingsActivity {
             // Customization
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
             icons.setValue(IconDatabase.getGlobal(context));
-            icons.setOnReloadListener(new IconPackPrefSetter(context));
+            icons.setOnReloadListener(IconPackPrefSetter::new);
             icons.setOnPreferenceChangeListener((pref, val) -> {
                 IconDatabase.clearAll(context);
                 IconDatabase.setGlobal(context, (String) val);
@@ -120,11 +120,11 @@ public class ShadeSettings extends SettingsActivity {
 
             ReloadingListPreference search =
                     (ReloadingListPreference) findPreference(KEY_DOCK_SEARCH);
-            search.setOnReloadListener(new DockSearchPrefSetter(context));
+            search.setOnReloadListener(DockSearchPrefSetter::new);
 
             ReloadingListPreference feed =
                     (ReloadingListPreference) findPreference(KEY_FEED_PROVIDER);
-            feed.setOnReloadListener(new FeedProviderPrefSetter(context));
+            feed.setOnReloadListener(FeedProviderPrefSetter::new);
             feed.setOnPreferenceChangeListener((pref, val) -> {
                 Utilities.getPrefs(context).edit()
                         .putBoolean(KEY_ENABLE_MINUS_ONE, !TextUtils.isEmpty((String) val))

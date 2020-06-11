@@ -25,38 +25,42 @@ public class FeedProviderPrefSetter implements ReloadingListPreference.OnReloadL
     }
 
     @Override
-    public void updateList(ListPreference pref) {
-        List<ApplicationInfo> aiList = LauncherClientIntent.query(mContext);
+    public ReloadingListPreference.ThreadSwitchingRunnable listUpdater(ListPreference pref) {
+        return () -> {
+            List<ApplicationInfo> aiList = LauncherClientIntent.query(mContext);
 
-        CharSequence[] keys = new String[aiList.size() + 1];
-        CharSequence[] values = new String[keys.length];
-        String defaultValue = LauncherClientIntent.getRecommendedPackage(mContext);
-        int i = 0;
+            CharSequence[] keys = new String[aiList.size() + 1];
+            CharSequence[] values = new String[keys.length];
+            String defaultValue = LauncherClientIntent.getRecommendedPackage(mContext);
+            int i = 0;
 
-        // First value, disabled
-        keys[i] = mContext.getString(R.string.pref_value_disabled);
-        values[i++] = "";
+            // First value, disabled
+            keys[i] = mContext.getString(R.string.pref_value_disabled);
+            values[i++] = "";
 
-        // List of available feeds
-        for (ApplicationInfo ai : aiList) {
-            keys[i] = ai.loadLabel(mPm);
-            values[i] = ai.packageName;
+            // List of available feeds
+            for (ApplicationInfo ai : aiList) {
+                keys[i] = ai.loadLabel(mPm);
+                values[i] = ai.packageName;
 
-            try {
-                PackageInfo pi = mPm.getPackageInfo(ai.packageName, 0);
-                keys[i] = mContext.getString(R.string.feed_provider_value, keys[i], pi.versionName);
-            } catch (PackageManager.NameNotFoundException ignored) {
+                try {
+                    PackageInfo pi = mPm.getPackageInfo(ai.packageName, 0);
+                    keys[i] = mContext.getString(R.string.feed_provider_value, keys[i], pi.versionName);
+                } catch (PackageManager.NameNotFoundException ignored) {
+                }
+                i++;
             }
-            i++;
-        }
 
-        pref.setEntries(keys);
-        pref.setEntryValues(values);
+            return () -> {
+                pref.setEntries(keys);
+                pref.setEntryValues(values);
 
-        pref.setDefaultValue(defaultValue);
-        String v = pref.getValue();
-        if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {
-            pref.setValue(defaultValue);
-        }
+                pref.setDefaultValue(defaultValue);
+                String v = pref.getValue();
+                if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {
+                    pref.setValue(defaultValue);
+                }
+            };
+        };
     }
 }

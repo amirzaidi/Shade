@@ -2,7 +2,6 @@ package amirz.shade.settings;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 
@@ -16,9 +15,6 @@ import java.util.Map;
 
 import amirz.shade.customization.IconDatabase;
 import amirz.shade.icons.pack.IconPackManager;
-
-import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
-import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListener {
     private final Context mContext;
@@ -34,11 +30,8 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
     }
 
     @Override
-    public void updateList(ListPreference pref) {
-        if (pref.getEntryValues() == null) {
-            pref.setSummary(R.string.loading);
-        }
-        MODEL_EXECUTOR.execute(() -> {
+    public ReloadingListPreference.ThreadSwitchingRunnable listUpdater(ListPreference pref) {
+        return () -> {
             IconPackManager ipm = IconPackManager.get(mContext);
             Map<String, CharSequence> packList = ipm.getProviderNames();
             String globalPack = IconDatabase.getGlobal(mContext);
@@ -69,12 +62,11 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
                 values[i++] = entry.getKey();
             }
 
-            MAIN_EXECUTOR.execute(() -> {
+            return () -> {
                 pref.setEntries(keys);
                 pref.setEntryValues(values);
-                pref.setSummary("%s");
-            });
-        });
+            };
+        };
     }
 
     private String normalizeTitle(CharSequence title) {

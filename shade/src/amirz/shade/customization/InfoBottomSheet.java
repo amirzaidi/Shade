@@ -131,7 +131,7 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
 
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
             icons.setValue(IconDatabase.getByComponent(mContext, mKey));
-            icons.setOnReloadListener(new IconPackPrefSetter(mContext, mComponent));
+            icons.setOnReloadListener(ctx -> new IconPackPrefSetter(ctx, mComponent));
             icons.setOnPreferenceChangeListener(this);
 
             MODEL_EXECUTOR.execute(() -> {
