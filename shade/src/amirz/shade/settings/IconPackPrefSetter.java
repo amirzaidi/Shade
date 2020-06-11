@@ -30,42 +30,40 @@ public class IconPackPrefSetter implements ReloadingListPreference.OnReloadListe
     }
 
     @Override
-    public ReloadingListPreference.ThreadSwitchingRunnable listUpdater(ListPreference pref) {
-        return () -> {
-            IconPackManager ipm = IconPackManager.get(mContext);
-            Map<String, CharSequence> packList = ipm.getProviderNames();
-            String globalPack = IconDatabase.getGlobal(mContext);
+    public Runnable listUpdater(ListPreference pref) {
+        IconPackManager ipm = IconPackManager.get(mContext);
+        Map<String, CharSequence> packList = ipm.getProviderNames();
+        String globalPack = IconDatabase.getGlobal(mContext);
 
-            if (mFilter != null) {
-                // Filter for packs with icon for this app, or the global pack.
-                for (String pkg : new HashSet<>(packList.keySet())) {
-                    if (!ipm.packContainsActivity(pkg, mFilter)) {
-                        packList.remove(pkg);
-                    }
+        if (mFilter != null) {
+            // Filter for packs with icon for this app, or the global pack.
+            for (String pkg : new HashSet<>(packList.keySet())) {
+                if (!ipm.packContainsActivity(pkg, mFilter)) {
+                    packList.remove(pkg);
                 }
             }
+        }
 
-            CharSequence[] keys = new String[packList.size() + 1];
-            CharSequence[] values = new String[keys.length];
-            int i = 0;
+        CharSequence[] keys = new String[packList.size() + 1];
+        CharSequence[] values = new String[keys.length];
+        int i = 0;
 
-            // First value, system default, or the current icon pack if that has no icon yet.
-            keys[i] = mContext.getResources().getString(R.string.pref_value_default);
-            values[i++] = packList.containsKey(globalPack) ? "" : globalPack;
+        // First value, system default, or the current icon pack if that has no icon yet.
+        keys[i] = mContext.getResources().getString(R.string.pref_value_default);
+        values[i++] = packList.containsKey(globalPack) ? "" : globalPack;
 
-            // List of available icon packs
-            List<Map.Entry<String, CharSequence>> packs = new ArrayList<>(packList.entrySet());
-            Collections.sort(packs, (o1, o2) ->
-                    normalizeTitle(o1.getValue()).compareTo(normalizeTitle(o2.getValue())));
-            for (Map.Entry<String, CharSequence> entry : packs) {
-                keys[i] = entry.getValue();
-                values[i++] = entry.getKey();
-            }
+        // List of available icon packs
+        List<Map.Entry<String, CharSequence>> packs = new ArrayList<>(packList.entrySet());
+        Collections.sort(packs, (o1, o2) ->
+                normalizeTitle(o1.getValue()).compareTo(normalizeTitle(o2.getValue())));
+        for (Map.Entry<String, CharSequence> entry : packs) {
+            keys[i] = entry.getValue();
+            values[i++] = entry.getKey();
+        }
 
-            return () -> {
-                pref.setEntries(keys);
-                pref.setEntryValues(values);
-            };
+        return () -> {
+            pref.setEntries(keys);
+            pref.setEntryValues(values);
         };
     }
 

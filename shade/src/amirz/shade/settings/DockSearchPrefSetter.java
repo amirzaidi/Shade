@@ -25,44 +25,42 @@ public class DockSearchPrefSetter implements ReloadingListPreference.OnReloadLis
     }
 
     @Override
-    public ReloadingListPreference.ThreadSwitchingRunnable listUpdater(ListPreference pref) {
-        return () -> {
-            List<AppWidgetProviderInfo> widgets = DockSearch.validWidgets(mContext);
+    public Runnable listUpdater(ListPreference pref) {
+        List<AppWidgetProviderInfo> widgets = DockSearch.validWidgets(mContext);
 
-            CharSequence[] keys = new String[widgets.size() + 1];
-            CharSequence[] values = new String[keys.length];
-            int i = 0;
+        CharSequence[] keys = new String[widgets.size() + 1];
+        CharSequence[] values = new String[keys.length];
+        int i = 0;
 
-            // First value, system default
-            keys[i] = mContext.getResources().getString(R.string.pref_value_disabled);
-            values[i++] = "";
+        // First value, system default
+        keys[i] = mContext.getResources().getString(R.string.pref_value_disabled);
+        values[i++] = "";
 
-            Collections.sort(widgets, (o1, o2) ->
-                    normalize(o1.loadLabel(mPm)).compareTo(normalize(o2.loadLabel(mPm))));
+        Collections.sort(widgets, (o1, o2) ->
+                normalize(o1.loadLabel(mPm)).compareTo(normalize(o2.loadLabel(mPm))));
 
-            for (AppWidgetProviderInfo widget : widgets) {
-                keys[i] = widget.loadLabel(mPm);
-                String pkg = widget.provider.getPackageName();
-                try {
-                    CharSequence app = mPm.getApplicationInfo(pkg, 0).loadLabel(mPm);
-                    if (!keys[i].toString().startsWith(app.toString())) {
-                        keys[i] = mContext.getString(R.string.dock_search_value, app, keys[i]);
-                    }
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
+        for (AppWidgetProviderInfo widget : widgets) {
+            keys[i] = widget.loadLabel(mPm);
+            String pkg = widget.provider.getPackageName();
+            try {
+                CharSequence app = mPm.getApplicationInfo(pkg, 0).loadLabel(mPm);
+                if (!keys[i].toString().startsWith(app.toString())) {
+                    keys[i] = mContext.getString(R.string.dock_search_value, app, keys[i]);
                 }
-                values[i++] = widget.provider.flattenToShortString();
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
             }
+            values[i++] = widget.provider.flattenToShortString();
+        }
 
-            return () -> {
-                pref.setEntries(keys);
-                pref.setEntryValues(values);
+        return () -> {
+            pref.setEntries(keys);
+            pref.setEntryValues(values);
 
-                String v = pref.getValue();
-                if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {
-                    pref.setValue("");
-                }
-            };
+            String v = pref.getValue();
+            if (!TextUtils.isEmpty(v) && !Arrays.asList(values).contains(v)) {
+                pref.setValue("");
+            }
         };
     }
 
