@@ -11,10 +11,8 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 
 import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherModel;
 import com.android.launcher3.R;
 import com.android.launcher3.notification.NotificationListenerProxy;
-import com.android.launcher3.util.Executors;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,6 +25,8 @@ import amirz.unread.notifications.NotificationList;
 import amirz.unread.notifications.NotificationRanker;
 import amirz.unread.notifications.ParsedNotification;
 import amirz.unread.notifications.PendingIntentSender;
+
+import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 public class UnreadSession {
     private static final int NOTIF_UPDATE_DELAY = 750;
@@ -47,7 +47,7 @@ public class UnreadSession {
     private final Set<OnUpdateListener> mUpdateListeners = new HashSet<>();
     private final PendingIntentSender mSender = new PendingIntentSender();
 
-    private final Handler mWorkerHandler = new Handler(Executors.MODEL_EXECUTOR.getLooper());
+    private final Handler mWorkerHandler = new Handler(MODEL_EXECUTOR.getLooper());
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mLoadText = () -> {
