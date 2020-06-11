@@ -27,7 +27,6 @@ public class SleepService extends AccessibilityService {
         public void onReceive(Context context, Intent intent) {
             // Not supported before Pie.
             if (Utilities.ATLEAST_P) {
-                performGlobalAction(GLOBAL_ACTION_HOME);
                 performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN);
             }
         }
