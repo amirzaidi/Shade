@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
@@ -142,14 +143,37 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
                         R.string.app_info_version_value,
                         extractor.getVersionName(),
                         extractor.getVersionCode());
+                Intent marketIntent = extractor.getMarketIntent();
 
                 MAIN_EXECUTOR.execute(() -> {
-                    findPreference(KEY_SOURCE).setSummary(source);
-                    findPreference(KEY_LAST_UPDATE).setSummary(lastUpdate);
-                    findPreference(KEY_VERSION).setSummary(version);
-                    findPreference(KEY_MORE).setOnPreferenceClickListener(this);
+                    Preference sourcePref = findPreference(KEY_SOURCE);
+                    Preference lastUpdatePref = findPreference(KEY_LAST_UPDATE);
+                    Preference versionPref = findPreference(KEY_VERSION);
+                    Preference morePref = findPreference(KEY_MORE);
+
+                    sourcePref.setSummary(source);
+                    lastUpdatePref.setSummary(lastUpdate);
+                    versionPref.setSummary(version);
+                    morePref.setOnPreferenceClickListener(this);
+
+                    if (marketIntent != null) {
+                        sourcePref.setOnPreferenceClickListener(
+                                pref -> tryStartActivity(marketIntent));
+                    }
                 });
             });
+        }
+
+        private boolean tryStartActivity(Intent intent) {
+            Launcher launcher = Launcher.getLauncher(mContext);
+            Bundle opts = launcher.getAppTransitionManager()
+                    .getActivityLaunchOptions(launcher, getView())
+                    .toBundle();
+            try {
+                launcher.startActivity(intent, opts);
+            } catch (Exception ignored) {
+            }
+            return false;
         }
 
         @Override

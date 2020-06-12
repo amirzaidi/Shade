@@ -2,9 +2,11 @@ package amirz.shade.customization;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 
@@ -20,6 +22,8 @@ class MetadataExtractor {
     private final PackageManager mPm;
 
     private String mSourcePkg = "";
+    private Intent mMarketIntent;
+
     private long mLastUpdate = 0;
     private String mVersionName;
     private long mVersionCode = 0;
@@ -31,6 +35,11 @@ class MetadataExtractor {
 
         try {
             mSourcePkg = mPm.getInstallerPackageName(pkg);
+            if (!TextUtils.isEmpty(mSourcePkg)) {
+                mMarketIntent = new Intent(Intent.ACTION_VIEW)
+                        .setData(Uri.parse("market://details?id=" + pkg))
+                        .setPackage(mSourcePkg);
+            }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
@@ -71,5 +80,9 @@ class MetadataExtractor {
 
     long getVersionCode() {
         return mVersionCode;
+    }
+
+    Intent getMarketIntent() {
+        return mMarketIntent;
     }
 }
