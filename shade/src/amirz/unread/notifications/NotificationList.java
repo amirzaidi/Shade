@@ -115,8 +115,12 @@ public class NotificationList
             List<NotificationKeyData> newSbn = new ArrayList<>();
             NotificationListener nls = NotificationListener.getInstanceIfConnected();
             if (nls != null) {
-                for (StatusBarNotification sbn : nls.getActiveNotifications()) {
-                    newSbn.add(NotificationKeyData.fromNotification(sbn));
+                try {
+                    for (StatusBarNotification sbn : nls.getActiveNotifications()) {
+                        newSbn.add(NotificationKeyData.fromNotification(sbn));
+                    }
+                } catch (SecurityException ignored) {
+                    // Can throw an exception when loading another user profile.
                 }
             }
             mSbn.clear();
