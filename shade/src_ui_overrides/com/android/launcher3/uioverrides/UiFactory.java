@@ -33,8 +33,6 @@ import com.android.launcher3.LauncherState.ScaleAndTranslation;
 import com.android.launcher3.LauncherStateManager.StateHandler;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.RotationMode;
-import com.android.launcher3.uioverrides.touchcontrollers.StatusBarTouchController;
-import com.android.launcher3.util.TouchController;
 
 import java.io.PrintWriter;
 
@@ -42,17 +40,10 @@ import amirz.shade.hidden.HiddenAppsDrawerState;
 
 import static com.android.launcher3.AbstractFloatingView.TYPE_ALL;
 import static com.android.launcher3.AbstractFloatingView.TYPE_HIDE_BACK_BUTTON;
+import static com.android.launcher3.allapps.DiscoveryBounce.HOME_BOUNCE_SEEN;
+import static com.android.launcher3.allapps.DiscoveryBounce.SHELF_BOUNCE_SEEN;
 
-public class UiFactory {
-
-    public static TouchController[] createTouchControllers(Launcher launcher) {
-        return new TouchController[] {
-                launcher.getDragController(),
-                new AllAppsSwipeController(launcher),
-                new StatusBarTouchController(launcher)
-        };
-    }
-
+public class UiFactory extends RecentsUiFactory {
     public static Runnable enableLiveUIChanges(Launcher l) {
         return null;
     }
@@ -68,7 +59,12 @@ public class UiFactory {
         updateDisallowBackGesture(launcher);
     }
 
-    public static void onCreate(Launcher launcher) { }
+    public static void onCreate(Launcher launcher) {
+        launcher.getSharedPrefs().edit()
+                .putBoolean(HOME_BOUNCE_SEEN, true)
+                .putBoolean(SHELF_BOUNCE_SEEN, true)
+                .apply();
+    }
 
     public static void onStart(Launcher launcher) { }
 
@@ -106,7 +102,6 @@ public class UiFactory {
     }
 
     public static void setBackButtonAlpha(Launcher launcher, float alpha, boolean animate) { }
-
 
     public static ScaleAndTranslation getOverviewScaleAndTranslationForNormalState(Launcher l) {
         return new ScaleAndTranslation(1.1f, 0f, 0f);

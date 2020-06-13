@@ -15,30 +15,19 @@
  */
 package com.android.launcher3.uioverrides.states;
 
-import android.content.Context;
-import android.view.View;
-
-import static com.android.launcher3.LauncherAnimUtils.ALL_APPS_TRANSITION_MS;
-import static com.android.launcher3.allapps.DiscoveryBounce.HOME_BOUNCE_SEEN;
-import static com.android.launcher3.anim.Interpolators.DEACCEL_2;
-
 import com.android.launcher3.AbstractFloatingView;
-import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
-import com.android.launcher3.R;
-import com.android.launcher3.Workspace;
-import com.android.launcher3.anim.AnimatorSetBuilder;
+import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 
-import amirz.shade.search.AllAppsQsb;
+import static com.android.launcher3.LauncherAnimUtils.ALL_APPS_TRANSITION_MS;
+import static com.android.launcher3.anim.Interpolators.DEACCEL_2;
 
 /**
  * Definition for AllApps state
  */
 public class AllAppsState extends LauncherState {
-
-    private static final float PARALLAX_COEFFICIENT = .125f;
 
     private static final int STATE_FLAGS = FLAG_DISABLE_ACCESSIBILITY;
 
@@ -55,39 +44,29 @@ public class AllAppsState extends LauncherState {
 
     @Override
     public void onStateEnabled(Launcher launcher) {
-        if (!launcher.getSharedPrefs().getBoolean(HOME_BOUNCE_SEEN, false)) {
-            launcher.getSharedPrefs().edit().putBoolean(HOME_BOUNCE_SEEN, true).apply();
-        }
-
         AbstractFloatingView.closeAllOpenViews(launcher);
         dispatchWindowStateChanged(launcher);
-
-        AllAppsQsb search =
-                (AllAppsQsb) launcher.getAppsView().getSearchView();
-        search.showKeyboardOnSearchRequest();
     }
 
     @Override
     public String getDescription(Launcher launcher) {
-        return launcher.getString(R.string.all_apps_button_label);
+        AllAppsContainerView appsView = launcher.getAppsView();
+        return appsView.getDescription();
     }
 
     @Override
-    public int getVisibleElements(Launcher launcher) {
-        boolean hasAllAppsHeaderExtra = launcher.getAppsView() != null
-                && launcher.getAppsView().getFloatingHeaderView().hasVisibleContent();
-        return ALL_APPS_HEADER | ALL_APPS_CONTENT |
-                (hasAllAppsHeaderExtra ? ALL_APPS_HEADER_EXTRA : 0);
+    public float getVerticalProgress(Launcher launcher) {
+        return 0f;
     }
 
     @Override
     public ScaleAndTranslation getWorkspaceScaleAndTranslation(Launcher launcher) {
-        DeviceProfile dp = launcher.getDeviceProfile();
-        float defaultSwipeHeight =
-                dp.allAppsCellHeightPx - dp.allAppsIconTextSizePx - dp.getInsets().bottom;
-
-        float parallaxFactor = 0.5f;
-        return new ScaleAndTranslation(0.9f, 0,-defaultSwipeHeight * parallaxFactor);
+        ScaleAndTranslation scaleAndTranslation = LauncherState.OVERVIEW
+                .getWorkspaceScaleAndTranslation(launcher);
+        float normalScale = 1;
+        // Scale down halfway to where we'd be in overview, to prepare for a potential pause.
+        scaleAndTranslation.scale = (scaleAndTranslation.scale + normalScale) / 2;
+        return scaleAndTranslation;
     }
 
     @Override
@@ -96,7 +75,18 @@ public class AllAppsState extends LauncherState {
     }
 
     @Override
-    public float getVerticalProgress(Launcher launcher) {
-        return 0f;
+    public int getVisibleElements(Launcher launcher) {
+        return ALL_APPS_HEADER | ALL_APPS_HEADER_EXTRA | ALL_APPS_CONTENT;
+    }
+
+    @Override
+    public ScaleAndTranslation getOverviewScaleAndTranslation(Launcher launcher) {
+        float slightParallax = -launcher.getDeviceProfile().allAppsCellHeightPx * 0.3f;
+        return new ScaleAndTranslation(0.9f, 0f, slightParallax);
+    }
+
+    @Override
+    public LauncherState getHistoryForState(LauncherState previousState) {
+        return previousState == OVERVIEW ? OVERVIEW : NORMAL;
     }
 }

@@ -10,8 +10,10 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.touch.WorkspaceTouchListener;
 
-import static amirz.shade.sleep.SleepService.SLEEP;
-import static amirz.shade.sleep.SleepService.SLEEP_PERM;
+import amirz.shade.services.GlobalActionService;
+
+import static amirz.shade.services.GlobalActionService.SLEEP;
+import static amirz.shade.services.Services.PERM;
 
 @SuppressLint("ClickableViewAccessibility")
 public class WorkspaceSleepListener extends WorkspaceTouchListener {
@@ -33,9 +35,9 @@ public class WorkspaceSleepListener extends WorkspaceTouchListener {
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-        if (SleepService.isRunning()) {
+        if (GlobalActionService.isRunning()) {
             Log.d(TAG, "Sending double tap to sleep intent to accessibility service.");
-            mLauncher.sendBroadcast(new Intent(SLEEP), SLEEP_PERM);
+            mLauncher.sendBroadcast(new Intent(SLEEP), PERM);
 
             MotionEvent ev = MotionEvent.obtain(e);
             mHandler.post(() -> {

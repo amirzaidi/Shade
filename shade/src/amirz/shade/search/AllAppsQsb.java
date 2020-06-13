@@ -1,5 +1,6 @@
 package amirz.shade.search;
 
+import android.animation.TimeInterpolator;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -48,6 +49,7 @@ import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.getSize;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
 import static com.android.launcher3.LauncherState.ALL_APPS_CONTENT;
+import static com.android.launcher3.LauncherState.HOTSEAT_SEARCH_BOX;
 import static com.android.launcher3.Utilities.prefixTextWithIcon;
 import static com.android.launcher3.icons.IconNormalizer.ICON_VISIBLE_AREA_FACTOR;
 
@@ -376,11 +378,12 @@ public class AllAppsQsb extends QsbContainerView
     @Override
     public void setContentVisibility(int visibleElements, PropertySetter setter,
                                      Interpolator interpolator) {
+        boolean showDock = (visibleElements & HOTSEAT_SEARCH_BOX) != 0;
         boolean showAllApps = (visibleElements & ALL_APPS_CONTENT) != 0;
         setter.setViewAlpha(mSearchWrapperView,
-                showAllApps || shouldHideDockSearch() ? 0f : 1f, Interpolators.LINEAR);
+                showDock && !shouldHideDockSearch() ? 1f : 0f, interpolator);
         setter.setViewAlpha(mFallbackSearchView,
-                showAllApps ? 1f : 0f, Interpolators.LINEAR);
+                showAllApps ? 1f : 0f, interpolator);
     }
 
     public void requestSearch() {

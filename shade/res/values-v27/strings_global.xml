@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dt2s_service_label" translatable="false">
+        This service enables opening recent apps on the home screen by dragging up,
+        and double tapping the background to turn off the screen.
+    </string>
+</resources>

@@ -1,4 +1,4 @@
-package amirz.shade.sleep;
+package amirz.shade.services;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.BroadcastReceiver;
@@ -11,9 +11,13 @@ import android.view.accessibility.AccessibilityEvent;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.Utilities;
 
-public class SleepService extends AccessibilityService {
+import java.util.Objects;
+
+import static amirz.shade.services.Services.PERM;
+
+public class GlobalActionService extends AccessibilityService {
     public static final String SLEEP = BuildConfig.APPLICATION_ID + ".DT2S";
-    public static final String SLEEP_PERM = BuildConfig.APPLICATION_ID + ".permission.DT2S";
+    public static final String RECENTS = BuildConfig.APPLICATION_ID + ".RECENTS";
 
     private static boolean sRunning;
 
@@ -25,22 +29,30 @@ public class SleepService extends AccessibilityService {
     private final BroadcastReceiver mSleepReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            // Not supported before Pie.
-            if (Utilities.ATLEAST_P) {
-                performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN);
+            switch (Objects.requireNonNull(intent.getAction())) {
+                case SLEEP:
+                    // Not supported before Pie.
+                    if (Utilities.ATLEAST_P) {
+                        performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN);
+                    }
+                    break;
+                case RECENTS:
+                    performGlobalAction(GLOBAL_ACTION_RECENTS);
+                    break;
             }
         }
     };
 
-    public SleepService() {
+    public GlobalActionService() {
         super();
         mSleepFilter.addAction(SLEEP);
+        mSleepFilter.addAction(RECENTS);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        registerReceiver(mSleepReceiver, mSleepFilter, SLEEP_PERM, new Handler());
+        registerReceiver(mSleepReceiver, mSleepFilter, PERM, new Handler());
         sRunning = true;
     }
 

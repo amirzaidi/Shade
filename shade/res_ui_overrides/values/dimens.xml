@@ -6,6 +6,24 @@
     <dimen name="all_apps_label_text_size">14sp</dimen>
     <dimen name="all_apps_tip_bottom_margin">8dp</dimen>
 
+    <!-- Task dimens -->
+    <dimen name="task_thumbnail_top_margin">24dp</dimen>
+    <dimen name="task_card_vert_space">40dp</dimen>
+    <dimen name="portrait_task_card_horz_space">136dp</dimen>
+    <dimen name="landscape_task_card_horz_space">200dp</dimen>
+
+    <!-- These speeds are in dp / ms -->
+    <dimen name="motion_pause_detector_speed_very_slow">0.0285dp</dimen>
+    <dimen name="motion_pause_detector_speed_slow">0.15dp</dimen>
+    <dimen name="motion_pause_detector_speed_somewhat_fast">0.285dp</dimen>
+    <dimen name="motion_pause_detector_speed_fast">1.4dp</dimen>
+    <dimen name="motion_pause_detector_min_displacement_from_app">36dp</dimen>
+
+    <dimen name="multi_window_task_card_horz_space">100dp</dimen>
+    <!-- Copied from framework resource:
+       docked_stack_divider_thickness - 2 * docked_stack_divider_insets -->
+    <dimen name="multi_window_task_divider_size">10dp</dimen>
+
     <!-- The size of corner radius of the arrow in the arrow toast. -->
     <dimen name="arrow_toast_corner_radius">2dp</dimen>
 

@@ -41,10 +41,10 @@
 
     <!-- Double tap to sleep -->
     <permission
-        android:name="${packageName}.permission.DT2S"
+        android:name="${packageName}.permission.ACCESSIBILITY"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="${packageName}.permission.DT2S" />
+    <uses-permission android:name="${packageName}.permission.ACCESSIBILITY" />
 
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
@@ -142,10 +142,9 @@
                 android:resource="@xml/gesture_service_config" />
         </service>
 
-        <!-- The service for double tap to sleep -->
+        <!-- The service for double tap to sleep and opening recents. -->
         <service
-            android:name="amirz.shade.sleep.SleepService"
-            android:enabled="@bool/atleast_p"
+            android:name="amirz.shade.services.GlobalActionService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
