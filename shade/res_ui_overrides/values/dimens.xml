@@ -17,7 +17,6 @@
     <dimen name="motion_pause_detector_speed_slow">0.15dp</dimen>
     <dimen name="motion_pause_detector_speed_somewhat_fast">0.285dp</dimen>
     <dimen name="motion_pause_detector_speed_fast">1.4dp</dimen>
-    <dimen name="motion_pause_detector_min_displacement_from_app">36dp</dimen>
 
     <dimen name="multi_window_task_card_horz_space">100dp</dimen>
     <!-- Copied from framework resource:
