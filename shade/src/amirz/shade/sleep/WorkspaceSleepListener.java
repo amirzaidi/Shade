@@ -9,11 +9,13 @@ import android.view.MotionEvent;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.touch.WorkspaceTouchListener;
+import com.android.launcher3.util.VibratorWrapper;
 
 import amirz.shade.services.GlobalActionService;
 
 import static amirz.shade.services.GlobalActionService.SLEEP;
 import static amirz.shade.services.Services.PERM;
+import static com.android.launcher3.util.VibratorWrapper.OVERVIEW_HAPTIC;
 
 @SuppressLint("ClickableViewAccessibility")
 public class WorkspaceSleepListener extends WorkspaceTouchListener {
@@ -36,7 +38,8 @@ public class WorkspaceSleepListener extends WorkspaceTouchListener {
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         if (GlobalActionService.isRunning()) {
-            Log.d(TAG, "Sending double tap to sleep intent to accessibility service.");
+            Log.d(TAG, "Activating double tap to sleep");
+            VibratorWrapper.INSTANCE.get(mLauncher).vibrate(OVERVIEW_HAPTIC);
             mLauncher.sendBroadcast(new Intent(SLEEP), PERM);
 
             MotionEvent ev = MotionEvent.obtain(e);
