@@ -29,10 +29,10 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherStateManager;
 import com.android.launcher3.anim.AnimatorSetBuilder;
-import com.android.launcher3.util.VibratorWrapper;
 import com.android.quickstep.util.MotionPauseDetector;
 
 import amirz.shade.services.GlobalActionService;
+import amirz.shade.util.HapticFeedback;
 
 import static amirz.shade.services.Services.PERM;
 import static amirz.shade.services.GlobalActionService.RECENTS;
@@ -40,7 +40,6 @@ import static com.android.launcher3.LauncherState.*;
 import static com.android.launcher3.LauncherStateManager.ANIM_ALL;
 import static com.android.launcher3.anim.AnimatorSetBuilder.*;
 import static com.android.launcher3.anim.Interpolators.*;
-import static com.android.launcher3.util.VibratorWrapper.OVERVIEW_HAPTIC;
 
 /**
  * Touch controller which handles swipe and hold to go to Overview
@@ -126,7 +125,7 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
                 }
             });
             overviewAnim.start();
-            VibratorWrapper.INSTANCE.get(mLauncher).vibrate(OVERVIEW_HAPTIC);
+            HapticFeedback.vibrate(mLauncher);
             new Handler().postDelayed(() -> mLauncher.sendBroadcast(new Intent(RECENTS), PERM),
                     ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS);
         } else {
