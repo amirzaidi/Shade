@@ -49,9 +49,9 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
     private static final String TAG = "FlingAndHoldTouchController";
 
     private static final long ATOMIC_DURATION_FROM_PAUSED_TO_OVERVIEW = 295;
-    private static final long ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS = 125;
+    private static final long ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS = 120;
 
-    private static final float MAX_DISPLACEMENT_PERCENT = 0.2f;
+    private static final float MAX_DISPLACEMENT_PERCENT = 0.25f;
 
     private final MotionPauseDetector mMotionPauseDetector;
     private final float mMotionPauseMinDisplacement;

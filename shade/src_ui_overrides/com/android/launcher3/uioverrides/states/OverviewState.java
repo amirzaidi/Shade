@@ -132,7 +132,7 @@ public class OverviewState extends LauncherState {
         return getDefaultVerticalProgress(launcher);
          */
 
-        return Math.max(0f, launcher.getAllAppsController().getProgress() - 0.01f);
+        return Math.min(1f, launcher.getAllAppsController().getProgress() + 0.02f);
     }
 
     public static float getDefaultVerticalProgress(Launcher launcher) {
