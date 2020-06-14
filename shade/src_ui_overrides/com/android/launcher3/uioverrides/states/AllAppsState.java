@@ -21,6 +21,8 @@ import com.android.launcher3.LauncherState;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 
+import amirz.shade.search.AllAppsQsb;
+
 import static com.android.launcher3.LauncherAnimUtils.ALL_APPS_TRANSITION_MS;
 import static com.android.launcher3.anim.Interpolators.DEACCEL_2;
 
@@ -46,6 +48,9 @@ public class AllAppsState extends LauncherState {
     public void onStateEnabled(Launcher launcher) {
         AbstractFloatingView.closeAllOpenViews(launcher);
         dispatchWindowStateChanged(launcher);
+
+        AllAppsQsb search = (AllAppsQsb) launcher.getAppsView().getSearchView();
+        search.showKeyboardOnSearchRequest();
     }
 
     @Override
