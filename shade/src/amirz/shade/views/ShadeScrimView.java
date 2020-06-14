@@ -16,11 +16,19 @@
 package amirz.shade.views;
 
 import static androidx.core.graphics.ColorUtils.compositeColors;
+import static com.android.launcher3.LauncherState.ALL_APPS_CONTENT;
 import static com.android.launcher3.LauncherState.ALL_APPS_HEADER_EXTRA;
 import static com.android.launcher3.LauncherState.BACKGROUND_APP;
 import static com.android.launcher3.LauncherState.OVERVIEW;
+import static com.android.launcher3.LauncherState.VERTICAL_SWIPE_INDICATOR;
+import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_ALL_APPS_FADE;
+import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_ALL_APPS_HEADER_FADE;
+import static com.android.launcher3.anim.AnimatorSetBuilder.ANIM_OVERVIEW_SCALE;
 import static com.android.launcher3.anim.Interpolators.ACCEL;
+import static com.android.launcher3.anim.Interpolators.DEACCEL_3;
+import static com.android.launcher3.anim.Interpolators.FAST_OUT_SLOW_IN;
 import static com.android.launcher3.anim.Interpolators.LINEAR;
+import static com.android.launcher3.anim.PropertySetter.NO_ANIM_PROPERTY_SETTER;
 import static com.android.launcher3.icons.GraphicsUtils.setColorAlphaBound;
 
 import android.content.Context;
@@ -37,8 +45,12 @@ import android.view.animation.Interpolator;
 import androidx.core.graphics.ColorUtils;
 
 import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.LauncherState;
+import com.android.launcher3.LauncherStateManager;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.anim.AnimatorSetBuilder;
+import com.android.launcher3.anim.PropertySetter;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.uioverrides.states.OverviewState;
@@ -52,7 +64,7 @@ import com.android.launcher3.views.ScrimView;
  *    From normal state to overview state, the shelf just fades in and does not move
  *    From overview state to all-apps state the shelf moves up and fades in to cover the screen
  */
-public class ShadeScrimView extends ScrimView {
+public class ShadeScrimView extends ScrimView implements LauncherStateManager.StateHandler {
 
     // If the progress is more than this, shelf follows the finger, otherwise it moves faster to
     // cover the whole screen
@@ -149,13 +161,13 @@ public class ShadeScrimView extends ScrimView {
             mShiftRange = mLauncher.getAllAppsController().getShiftRange();
 
             if ((OVERVIEW.getVisibleElements(mLauncher) & ALL_APPS_HEADER_EXTRA) == 0) {
-                mMidProgress = 1;
+                mMidProgress = 1f;
                 mDragHandleProgress = 1;
                 mMidAlpha = 0;
             } else {
                 Context context = getContext();
                 mMidAlpha = Themes.getAttrInteger(context, R.attr.allAppsInterimScrimAlpha);
-                mMidProgress =  OVERVIEW.getVerticalProgress(mLauncher);
+                mMidProgress = OVERVIEW.getVerticalProgress(mLauncher);
                 Rect hotseatPadding = dp.getHotseatLayoutPadding();
                 int hotseatSize = dp.hotseatBarSizePx + dp.getInsets().bottom
                         + hotseatPadding.bottom + hotseatPadding.top;
@@ -264,5 +276,23 @@ public class ShadeScrimView extends ScrimView {
 
         mPaint.setColor(mShelfColor);
         canvas.drawRoundRect(0, mShelfTop, width, height + mRadius, mRadius, mRadius, mPaint);
+    }
+
+    @Override
+    public void setState(LauncherState state) {
+        setAlphas(state, null, new AnimatorSetBuilder());
+    }
+
+    @Override
+    public void setStateWithAnimation(LauncherState toState, AnimatorSetBuilder builder,
+                                      LauncherStateManager.AnimationConfig config) {
+        setAlphas(toState, config, builder);
+    }
+
+    public void setAlphas(LauncherState state, LauncherStateManager.AnimationConfig config,
+                          AnimatorSetBuilder builder) {
+        PropertySetter setter = config == null ? NO_ANIM_PROPERTY_SETTER
+                : config.getPropertySetter(builder);
+        setter.setViewAlpha(this, state == OVERVIEW ? 0 : 1, DEACCEL_3);
     }
 }

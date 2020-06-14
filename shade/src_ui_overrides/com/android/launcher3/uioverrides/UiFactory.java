@@ -31,6 +31,7 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherState.ScaleAndTranslation;
 import com.android.launcher3.LauncherStateManager.StateHandler;
+import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.RotationMode;
 
@@ -50,7 +51,10 @@ public class UiFactory extends RecentsUiFactory {
 
     public static StateHandler[] getStateHandler(Launcher launcher) {
         return new StateHandler[] {
-                launcher.getAllAppsController(), launcher.getWorkspace() };
+                launcher.getAllAppsController(),
+                launcher.getWorkspace(),
+                launcher.findViewById(R.id.scrim_view)
+        };
     }
 
     public static void resetOverview(Launcher launcher) { }
