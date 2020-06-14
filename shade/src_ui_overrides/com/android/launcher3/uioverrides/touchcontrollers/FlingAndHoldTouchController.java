@@ -146,9 +146,8 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
             overviewAnim.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    LauncherStateManager stateManager = mLauncher.getStateManager();
-                    stateManager.goToState(NORMAL, stateManager.shouldAnimateStateChange(),
-                            () -> setBlockTouch(false));
+                    mLauncher.getStateManager().goToState(NORMAL);
+                    setBlockTouch(false);
                 }
             });
             overviewAnim.start();
