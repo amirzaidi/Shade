@@ -36,6 +36,7 @@ import amirz.shade.util.HapticFeedback;
 
 import static amirz.shade.services.Services.PERM;
 import static amirz.shade.services.GlobalActionService.RECENTS;
+import static android.os.SystemClock.uptimeMillis;
 import static com.android.launcher3.LauncherState.*;
 import static com.android.launcher3.LauncherStateManager.ANIM_ALL;
 import static com.android.launcher3.anim.AnimatorSetBuilder.*;
@@ -48,13 +49,15 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
     private static final String TAG = "FlingAndHoldTouchController";
 
     private static final long ATOMIC_DURATION_FROM_PAUSED_TO_OVERVIEW = 295;
-    private static final long ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS = 115;
+    private static final long ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS = 125;
 
-    private static final float MAX_DISPLACEMENT_PERCENT = 0.25f;
+    private static final float MAX_DISPLACEMENT_PERCENT = 0.2f;
 
     private final MotionPauseDetector mMotionPauseDetector;
     private final float mMotionPauseMinDisplacement;
     private final float mMotionPauseMaxDisplacement;
+    private boolean mAnimateToRecents;
+    private boolean mTrackPause;
 
     public FlingAndHoldTouchController(Launcher l) {
         super(l, false /* allowDragToOverview */);
@@ -70,8 +73,28 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
 
     @Override
     public void onDragStart(boolean start) {
+        mTrackPause = true;
         mMotionPauseDetector.clear();
         super.onDragStart(start);
+
+        mAnimateToRecents = false;
+        if (handlingOverviewAnim()) {
+            mMotionPauseDetector.setOnMotionPauseListener(isPaused -> {
+                if (isPaused) {
+                    Log.d(TAG, "Pause detected, opening recents");
+                    mAnimateToRecents = true;
+                    setBlockTouch(true);
+                    simulateLiftFinger();
+                }
+            });
+        }
+    }
+
+    private void simulateLiftFinger() {
+        MotionEvent ev = MotionEvent.obtain(uptimeMillis(), uptimeMillis(),
+                MotionEvent.ACTION_UP, mDetector.getDownX(), mDetector.getDownY(), 0);
+        mDetector.onTouchEvent(ev);
+        ev.recycle();
     }
 
     /**
@@ -99,15 +122,19 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
     @Override
     public boolean onDrag(float displacement, MotionEvent event) {
         float upDisplacement = -displacement;
-        mMotionPauseDetector.setDisallowPause(upDisplacement < mMotionPauseMinDisplacement
-                || upDisplacement > mMotionPauseMaxDisplacement);
-        mMotionPauseDetector.addPosition(displacement, event.getEventTime());
+        if (upDisplacement > mMotionPauseMaxDisplacement) {
+            mTrackPause = false;
+            mMotionPauseDetector.clear();
+        } else if (mTrackPause) {
+            mMotionPauseDetector.setDisallowPause(upDisplacement < mMotionPauseMinDisplacement);
+            mMotionPauseDetector.addPosition(displacement, event.getEventTime());
+        }
         return super.onDrag(displacement, event);
     }
 
     @Override
     public void onDragEnd(float velocity) {
-        if (mMotionPauseDetector.isPaused() && handlingOverviewAnim()) {
+        if (mAnimateToRecents) {
             Log.d(TAG, "Starting recents launch animation");
             AnimatorSetBuilder builder = new AnimatorSetBuilder();
             builder.setInterpolator(ANIM_VERTICAL_PROGRESS, DEACCEL_3);
@@ -116,12 +143,12 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
             AnimatorSet overviewAnim = stateManager.createAtomicAnimation(
                     stateManager.getCurrentStableState(), OVERVIEW, builder,
                     ANIM_ALL, ATOMIC_DURATION_FROM_PAUSED_TO_OVERVIEW);
-            setBlockTouch(true);
             overviewAnim.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    setBlockTouch(false);
-                    mLauncher.getStateManager().goToState(NORMAL);
+                    LauncherStateManager stateManager = mLauncher.getStateManager();
+                    stateManager.goToState(NORMAL, stateManager.shouldAnimateStateChange(),
+                            () -> setBlockTouch(false));
                 }
             });
             overviewAnim.start();
