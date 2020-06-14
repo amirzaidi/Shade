@@ -28,7 +28,6 @@ import android.view.ViewConfiguration;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherStateManager;
-import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.AnimatorSetBuilder;
 import com.android.launcher3.util.VibratorWrapper;
 import com.android.quickstep.util.MotionPauseDetector;
@@ -37,7 +36,6 @@ import amirz.shade.services.GlobalActionService;
 
 import static amirz.shade.services.Services.PERM;
 import static amirz.shade.services.GlobalActionService.RECENTS;
-import static android.view.HapticFeedbackConstants.VIRTUAL_KEY;
 import static com.android.launcher3.LauncherState.*;
 import static com.android.launcher3.LauncherStateManager.ANIM_ALL;
 import static com.android.launcher3.anim.AnimatorSetBuilder.*;
@@ -128,11 +126,7 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
                 }
             });
             overviewAnim.start();
-            if (Utilities.ATLEAST_OREO) {
-                VibratorWrapper.INSTANCE.get(mLauncher).vibrate(OVERVIEW_HAPTIC);
-            } else {
-                mLauncher.getAppsView().performHapticFeedback(VIRTUAL_KEY);
-            }
+            VibratorWrapper.INSTANCE.get(mLauncher).vibrate(OVERVIEW_HAPTIC);
             new Handler().postDelayed(() -> mLauncher.sendBroadcast(new Intent(RECENTS), PERM),
                     ATOMIC_DURATION_FROM_PAUSED_TO_RECENTS);
         } else {

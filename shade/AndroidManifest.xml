@@ -146,7 +146,8 @@
         <!-- The service for double tap to sleep and opening recents. -->
         <service
             android:name="amirz.shade.services.GlobalActionService"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:enabled="@bool/atleast_p">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
