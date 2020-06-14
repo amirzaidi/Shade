@@ -39,12 +39,13 @@
     <!-- Home button overlay -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!-- Double tap to sleep -->
+    <!-- Double tap to sleep and recents -->
     <permission
         android:name="${packageName}.permission.ACCESSIBILITY"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="${packageName}.permission.ACCESSIBILITY" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
