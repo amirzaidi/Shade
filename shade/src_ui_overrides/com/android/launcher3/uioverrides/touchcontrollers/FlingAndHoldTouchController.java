@@ -78,7 +78,7 @@ public class FlingAndHoldTouchController extends PortraitStatesTouchController {
         super.onDragStart(start);
 
         mAnimateToRecents = false;
-        if (handlingOverviewAnim()) {
+        if (start && handlingOverviewAnim()) {
             mMotionPauseDetector.setOnMotionPauseListener(isPaused -> {
                 if (isPaused) {
                     Log.d(TAG, "Pause detected, opening recents");
