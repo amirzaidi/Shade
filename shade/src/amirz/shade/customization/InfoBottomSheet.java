@@ -69,7 +69,10 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         });
 
         // Use a proxy so we can update the reference at runtime.
-        View.OnClickListener l = v -> mOnAppInfoClick.onClick(v);
+        View.OnClickListener l = v -> {
+            handleClose(true);
+            mOnAppInfoClick.onClick(v);
+        };
 
         PrefsFragment fragment =
                 (PrefsFragment) mFragmentManager.findFragmentById(R.id.sheet_prefs);
