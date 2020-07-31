@@ -51,21 +51,8 @@ public class UnreadSession {
     private final Handler mWorkerHandler = new Handler(UNREAD_LOOPER);
     private final Handler mUiHandler = new Handler(Looper.getMainLooper());
 
-    private final Runnable mLoadText = () -> {
-        // Load the new mEvent on the current thread.
-        loadEvent();
-
-        // Then update the UI on the UI thread.
-        long timeSinceClick = System.currentTimeMillis() - mSender.getLastClick();
-        long delay = Math.max(0, NOTIF_UPDATE_DELAY - timeSinceClick);
-        mUiHandler.postDelayed(() -> {
-            for (OnUpdateListener listener : mUpdateListeners) {
-                listener.onUpdateAvailable();
-            }
-        }, delay);
-    };
-
-    private final Runnable mReload = () -> {
+    private final Runnable mLoadText = this::loadEvent;
+    private final Runnable mLoadTextOnWorker = () -> {
         // Collect all callbacks so we do not do excessive work but are always up to date.
         mWorkerHandler.removeCallbacks(mLoadText);
         mWorkerHandler.post(mLoadText);
@@ -86,15 +73,15 @@ public class UnreadSession {
     private UnreadSession(Context appContext) {
         mAppContext = appContext;
 
-        NotificationList notificationList
-                = new NotificationList(new HideTracker(appContext), mWorkerHandler, mReload);
+        NotificationList notificationList = new NotificationList(
+                new HideTracker(appContext), mWorkerHandler, mLoadTextOnWorker);
 
         mRanker = new NotificationRanker(notificationList);
         NotificationListenerProxy.INSTANCE.add(notificationList);
 
-        mMedia = new MediaListener(appContext, mWorkerHandler, mReload, notificationList, mSender);
-        mDateReceiver = new DateBroadcastReceiver(mReload);
-        mBatteryReceiver = new BatteryBroadcastReceiver(appContext, mReload);
+        mMedia = new MediaListener(appContext, mWorkerHandler, mLoadTextOnWorker, notificationList, mSender);
+        mDateReceiver = new DateBroadcastReceiver(mLoadTextOnWorker);
+        mBatteryReceiver = new BatteryBroadcastReceiver(appContext, mLoadTextOnWorker);
     }
 
     public void onCreate() {
@@ -106,7 +93,7 @@ public class UnreadSession {
         mBatteryReceiver.onResume(context);
 
         // Always reload on resume.
-        mReload.run();
+        mLoadTextOnWorker.run();
     }
 
     public void onPause(Context context) {
@@ -127,13 +114,17 @@ public class UnreadSession {
     }
 
     public void forceUpdate() {
-        mReload.run();
+        mLoadTextOnWorker.run();
     }
 
     public UnreadEvent getEvent() {
         return mEvent;
     }
 
+    /**
+     * Load the latest mEvent on the current thread and then updates the main thread.
+     * Should only be called from a background thread.
+     */
     private void loadEvent() {
         UnreadEvent event = new UnreadEvent();
         List<String> textList = event.getText();
@@ -159,11 +150,11 @@ public class UnreadSession {
             }
             event.setOnClickListener(mMedia);
         }
-        // 3. Important notifications.
+        // 3. Less important notifications.
         else if (ranked != null) {
             extractNotification(ranked.sbn, event);
         }
-        // 4. Battery charging mText (less than 100%) with date below.
+        // 4. Battery charging (less than 100%) with date below.
         else if (mBatteryReceiver.isCharging()) {
             int lvl = mBatteryReceiver.getLevel();
             if (lvl < 100) {
@@ -179,6 +170,15 @@ public class UnreadSession {
 
         // Commit to new event.
         mEvent = event;
+
+        // Then update the UI on the UI thread.
+        long timeSinceClick = System.currentTimeMillis() - mSender.getLastClick();
+        long delay = Math.max(0, NOTIF_UPDATE_DELAY - timeSinceClick);
+        mUiHandler.postDelayed(() -> {
+            for (OnUpdateListener listener : mUpdateListeners) {
+                listener.onUpdateAvailable();
+            }
+        }, delay);
     }
 
     private String stripDot(String input) {
@@ -195,10 +195,15 @@ public class UnreadSession {
         if (!TextUtils.isEmpty(parsed.body)) {
             textList.add(stripDot(parsed.body));
         }
+
+        // Then the title split into segments.
         for (int i = parsed.splitTitle.length - 1; i >= 0; i--) {
-            textList.add(stripDot(parsed.splitTitle[i]));
+            if (!TextUtils.isEmpty(parsed.splitTitle[i])) {
+                textList.add(stripDot(parsed.splitTitle[i]));
+            }
         }
 
+        // Finally, the app's title.
         String app = getApp(parsed.pkg).toString();
         if (!textList.contains(app)) {
             textList.add(app);
@@ -207,13 +212,13 @@ public class UnreadSession {
         event.setOnClickListener(mSender.onClickNotification(parsed.pi));
     }
 
-    private CharSequence getApp(String name) {
+    private CharSequence getApp(String packageName) {
         PackageManager pm = mAppContext.getPackageManager();
         try {
             return pm.getApplicationLabel(
-                    pm.getApplicationInfo(name, PackageManager.GET_META_DATA));
+                    pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA));
         } catch (PackageManager.NameNotFoundException ignored) {
         }
-        return name;
+        return packageName;
     }
 }
