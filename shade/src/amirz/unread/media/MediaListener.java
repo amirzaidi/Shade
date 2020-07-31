@@ -224,8 +224,9 @@ public class MediaListener extends MediaController.Callback
                 || state == PlaybackState.STATE_PLAYING;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean hasTitle(MediaController mc) {
-        return mc.getMetadata() != null
+        return mc != null && mc.getMetadata() != null
                 && !TextUtils.isEmpty(mc.getMetadata().getText(MediaMetadata.METADATA_KEY_TITLE));
     }
 
