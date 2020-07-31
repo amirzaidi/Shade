@@ -69,9 +69,11 @@ public class ShadeSettings extends SettingsActivity {
     @SuppressWarnings("unused")
     public static class ShadeSettingsFragment extends SettingsActivity.LauncherSettingsFragment {
         private static final String CATEGORY_STYLE = "category_style";
+        private static final String CATEGORY_ABOUT = "category_about";
 
         private static final String KEY_ICON_PACK = "pref_icon_pack";
         private static final String KEY_APP_VERSION = "pref_app_version";
+        private static final String KEY_DONATE = "pref_donate";
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -134,8 +136,8 @@ public class ShadeSettings extends SettingsActivity {
 
             // About
             String versionName = BuildConfig.VERSION_NAME;
+            PackageManager pm = context.getPackageManager();
             try {
-                PackageManager pm = context.getPackageManager();
                 PackageInfo pi = pm.getPackageInfo(BuildConfig.APPLICATION_ID, 0);
                 versionName = pi.versionName;
             } catch (PackageManager.NameNotFoundException e) {
@@ -147,6 +149,12 @@ public class ShadeSettings extends SettingsActivity {
                     versionName, BuildConfig.BUILD_TYPE));
             Uri intentData = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
             version.setIntent(version.getIntent().setData(intentData));
+
+            Preference donate = findPreference(KEY_DONATE);
+            if (pm.queryIntentActivities(donate.getIntent(), 0).isEmpty()) {
+                PreferenceCategory about = (PreferenceCategory) findPreference(CATEGORY_ABOUT);
+                about.removePreference(donate);
+            }
         }
 
         @Override
