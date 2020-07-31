@@ -102,7 +102,7 @@
         <item>"google_sans"</item>
     </string-array>
 
-    <string name="about_donate_url" translatable="false">https://play.google.com/store/apps/details?id=amirz.donation</string>
+    <string name="about_donate_url" translatable="false">market://details?id=amirz.donation</string>
     <string name="about_contact_url" translatable="false">https://t.me/mirai</string>
 
     <string name="icon_pack_default" translatable="false">amirz.googleicons</string>
