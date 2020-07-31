@@ -293,6 +293,7 @@ public class NotificationListener extends NotificationListenerService {
     @Override
     public void onNotificationRankingUpdate(RankingMap rankingMap) {
         super.onNotificationRankingUpdate(rankingMap);
+        if (rankingMap == null) return;
         String[] keys = rankingMap.getOrderedKeys();
         for (StatusBarNotification sbn : getActiveNotifications(keys)) {
             updateGroupKeyIfNecessary(sbn);
