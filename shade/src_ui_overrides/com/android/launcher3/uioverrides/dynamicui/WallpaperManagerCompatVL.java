@@ -142,7 +142,11 @@ public class WallpaperManagerCompatVL extends WallpaperManagerCompat {
     }
 
     private static final int getWallpaperId(Context context) {
-        return context.getSystemService(WallpaperManager.class).getWallpaperId(FLAG_SYSTEM);
+        try {
+            return context.getSystemService(WallpaperManager.class).getWallpaperId(FLAG_SYSTEM);
+        } catch (RuntimeException ignored) {
+            return -1;
+        }
     }
 
     /**
