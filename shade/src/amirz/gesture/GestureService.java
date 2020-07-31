@@ -7,17 +7,10 @@ public class GestureService extends AccessibilityService {
     private BarView mView;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        mView = new BarView(this);
-    }
-
-    @Override
-    public void onDestroy() {
-    }
-
-    @Override
     protected void onServiceConnected() {
+        if (mView == null) {
+            mView = new BarView(this);
+        }
         mView.addToWm();
     }
 
