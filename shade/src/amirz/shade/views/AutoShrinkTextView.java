@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
-public class AutoShrinkTextView extends AppCompatTextView {
+public class AutoShrinkTextView extends DoubleShadowTextView {
     private static final float MIN_SHRINK = 0.8f;
 
     private final TextPaint mPaintCopy = new TextPaint();

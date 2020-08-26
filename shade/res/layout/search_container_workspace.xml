@@ -31,7 +31,7 @@
             android:paddingRight="8dp"
             style="@style/TextShade.Title" />
 
-        <TextView
+        <amirz.shade.views.DoubleShadowTextView
             android:id="@+id/shadespace_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
