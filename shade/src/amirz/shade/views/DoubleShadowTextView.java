@@ -1,23 +1,24 @@
 package amirz.shade.views;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
+import com.android.launcher3.R;
 import com.android.launcher3.views.DoubleShadowBubbleTextView;
 
 import java.util.Objects;
 
-@SuppressLint("AppCompatCustomView")
-public class DoubleShadowTextView extends TextView {
+public class DoubleShadowTextView extends AppCompatTextView {
     private static final float NO_OFFSET = 0f;
 
-    public final DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
-
     public final Paint mPaint;
+    public DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
     public CharSequence mText;
 
     public DoubleShadowTextView(Context context) {
@@ -46,7 +47,7 @@ public class DoubleShadowTextView extends TextView {
     }
 
     public void onDraw(Canvas canvas) {
-        if (mShadowInfo.skipDoubleShadow(this) && false) {
+        if (mShadowInfo.skipDoubleShadow(this)) {
             super.onDraw(canvas);
             return;
         }
@@ -58,5 +59,23 @@ public class DoubleShadowTextView extends TextView {
         getPaint().setShadowLayer(mShadowInfo.keyShadowBlur,
                 NO_OFFSET, mShadowInfo.keyShadowOffset, mShadowInfo.keyShadowColor);
         super.onDraw(canvas);
+    }
+
+    public DoubleShadowTextView cloneTextView(TextView tv) {
+        DoubleShadowTextView dstv = new DoubleShadowTextView(getContext());
+        dstv.mShadowInfo = mShadowInfo;
+        dstv.updateText(tv.getText());
+        dstv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize());
+        int minPadding = getContext().getResources()
+                .getDimensionPixelSize(R.dimen.text_vertical_padding);
+        dstv.setPadding(tv.getPaddingLeft(), Math.max(tv.getPaddingTop(), minPadding),
+                tv.getPaddingRight(), Math.max(tv.getPaddingBottom(), minPadding));
+        dstv.setLetterSpacing(getLetterSpacing());
+        dstv.setTextColor(getTextColors());
+        dstv.setMaxLines(getMaxLines());
+        dstv.setEllipsize(getEllipsize());
+        dstv.setHorizontallyScrolling(isHorizontallyScrollable());
+        dstv.setTypeface(getTypeface());
+        return dstv;
     }
 }

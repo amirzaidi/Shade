@@ -146,28 +146,20 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
+
+        <item name="ambientShadowBlur">@dimen/smartspaceAmbientShadowBlur</item>
+        <item name="ambientShadowColor">?attr/workspaceAmbientShadowColor</item>
+        <item name="keyShadowBlur">@dimen/smartspaceKeyShadowBlur</item>
+        <item name="keyShadowColor">?attr/workspaceKeyShadowColor</item>
+        <item name="keyShadowOffset">@dimen/smartspaceKeyShadowOffset</item>
     </style>
 
     <style name="TextShade.Title" parent="TextShade">
         <item name="android:textSize">24sp</item>
-        <item name="android:shadowRadius">10</item>
-
-        <item name="ambientShadowBlur">@dimen/smartspaceAmbientShadowBlur</item>
-        <item name="ambientShadowColor">?attr/workspaceAmbientShadowColor</item>
-        <item name="keyShadowBlur">@dimen/smartspaceKeyShadowBlur</item>
-        <item name="keyShadowColor">?attr/workspaceKeyShadowColor</item>
-        <item name="keyShadowOffset">@dimen/smartspaceKeyShadowOffset</item>
     </style>
 
     <style name="TextShade.SubTitle" parent="TextShade">
         <item name="android:textSize">16sp</item>
-        <item name="android:shadowRadius">9</item>
-
-        <item name="ambientShadowBlur">@dimen/smartspaceAmbientShadowBlur</item>
-        <item name="ambientShadowColor">?attr/workspaceAmbientShadowColor</item>
-        <item name="keyShadowBlur">@dimen/smartspaceKeyShadowBlur</item>
-        <item name="keyShadowColor">?attr/workspaceKeyShadowColor</item>
-        <item name="keyShadowOffset">@dimen/smartspaceKeyShadowOffset</item>
     </style>
 
     <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.Light" />

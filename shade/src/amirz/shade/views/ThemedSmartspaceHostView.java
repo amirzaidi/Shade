@@ -1,8 +1,6 @@
 package amirz.shade.views;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +14,19 @@ import com.android.launcher3.R;
 import com.android.launcher3.util.Themes;
 import com.android.searchlauncher.SmartspaceHostView;
 
-import amirz.shade.ShadeFont;
-
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class ThemedSmartspaceHostView extends SmartspaceHostView {
+    private DoubleShadowTextView[] mDstvs;
+
     public ThemedSmartspaceHostView(Context context) {
         super(context);
+    }
+
+    public void setTextViews(DoubleShadowTextView... dstvs) {
+        mDstvs = dstvs;
+        overrideView();
     }
 
     @Override
@@ -34,13 +37,8 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
 
     private void overrideView() {
         Context context = getContext();
-        Typeface tf = ShadeFont.getTypeface(context);
 
         int textColor = Themes.getAttrColor(context, R.attr.workspaceTextColor);
-        int shadowColor = Themes.getAttrColor(context, R.attr.smartspaceTextShadowColor);
-        TypedValue outValue = new TypedValue();
-        getResources().getValue(R.dimen.smartspaceLetterSpacing, outValue, true);
-        float letterSpacing = outValue.getFloat();
         int dividerSize = context.getResources().getDimensionPixelSize(R.dimen.smartspaceDivider) + 1;
 
         if (getChildCount() == 1) {
@@ -60,7 +58,7 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
             }
         }
 
-        overrideView(tf, this, textColor, shadowColor, letterSpacing, dividerSize);
+        overrideView(this, textColor, dividerSize);
     }
 
     private void overrideLayout(LinearLayout l) {
@@ -107,26 +105,38 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
         }
     }
 
-    private static void overrideView(Typeface tf, View v, int textColor, int shadowColor,
-                                     float letterSpacing, int maxDividerSize) {
-        if (v instanceof TextView) {
-            TextView tv = (TextView) v;
-            if (tf != null) {
-                tv.setTypeface(tf);
-            }
-            tv.setTextColor(textColor);
-            tv.setShadowLayer(tv.getShadowRadius(), tv.getShadowDx(), tv.getShadowDy(), shadowColor);
-            tv.setLetterSpacing(letterSpacing);
-        } else if (v instanceof ImageView) {
+    private TextView replaceTextView(TextView tv) {
+        if (mDstvs != null && mDstvs.length == 2) {
+            // We use this one for now as the top one resizes itself.
+            float smallTextSize = mDstvs[1].getTextSize();
+            float tvTextSize = tv.getTextSize();
+            float textSizeScale = Math.max(tvTextSize / smallTextSize, smallTextSize / tvTextSize);
+
+            // Take the bottom one if it is close enough.
+            return mDstvs[textSizeScale < 1.1f ? 1 : 0].cloneTextView(tv);
+        }
+        return tv;
+    }
+
+    private void overrideView(View v, int textColor, int maxDividerSize) {
+        if (v instanceof ImageView) {
             ImageView iv = (ImageView) v;
             ViewGroup.LayoutParams lp = iv.getLayoutParams();
             if (lp.height <= maxDividerSize || lp.width <= maxDividerSize) {
                 iv.setBackgroundColor(textColor);
             }
         } else if (v instanceof ViewGroup) {
+            ((ViewGroup) v).setClipChildren(false);
             ViewGroup vg = (ViewGroup) v;
             for (int i = 0; i < vg.getChildCount(); i++) {
-                overrideView(tf, vg.getChildAt(i), textColor, shadowColor, letterSpacing, maxDividerSize);
+                View vc = vg.getChildAt(i);
+                if (vc instanceof TextView) {
+                    ViewGroup.LayoutParams lp = vc.getLayoutParams();
+                    vg.removeViewAt(i);
+                    vg.addView(replaceTextView((TextView) vc), i, lp);
+                } else {
+                    overrideView(vc, textColor, maxDividerSize);
+                }
             }
         }
     }

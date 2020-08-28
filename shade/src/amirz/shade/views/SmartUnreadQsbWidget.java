@@ -3,6 +3,8 @@ package amirz.shade.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.android.launcher3.R;
@@ -17,10 +19,10 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
         implements UnreadSession.OnUpdateListener {
     private final UnreadSession mUnread;
 
-    private View mSmartspaceView;
+    private FrameLayout mSmartspaceView;
     private View mUnreadView;
-    private TextView mUnreadTitle;
-    private TextView mUnreadSubtitle;
+    private DoubleShadowTextView mUnreadTitle;
+    private DoubleShadowTextView mUnreadSubtitle;
 
     public SmartUnreadQsbWidget(Context context) {
         this(context,  null);
@@ -38,10 +40,13 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
     @Override
     public void onFinishInflate() {
         super.onFinishInflate();
-        mSmartspaceView = findViewById(R.id.smartspace_view);
+        mSmartspaceView = (FrameLayout) findViewById(R.id.smartspace_view);
         mUnreadView = findViewById(R.id.unread_view);
         mUnreadTitle = mUnreadView.findViewById(R.id.shadespace_title);
         mUnreadSubtitle = mUnreadView.findViewById(R.id.shadespace_subtitle);
+
+        ThemedSmartspaceHostView hv = (ThemedSmartspaceHostView) mSmartspaceView.getChildAt(0);
+        hv.setTextViews(mUnreadTitle, mUnreadSubtitle);
     }
 
     @Override

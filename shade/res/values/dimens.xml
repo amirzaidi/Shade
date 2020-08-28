@@ -40,6 +40,7 @@
     <dimen name="smartspaceKeyShadowOffset">0.5dp</dimen>
     <dimen name="smartspaceDivider">1dp</dimen>
     <dimen name="text_horizontal_padding">4dp</dimen>
+    <dimen name="text_vertical_padding">2.5dp</dimen>
 
     <!-- Hidden apps -->
     <dimen name="hidden_apps_action_bar_height">64dp</dimen>
