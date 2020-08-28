@@ -74,8 +74,8 @@ public class DoubleShadowTextView extends AppCompatTextView {
         dstv.setTextColor(getTextColors());
         dstv.setMaxLines(getMaxLines());
         dstv.setEllipsize(getEllipsize());
-        dstv.setHorizontallyScrolling(isHorizontallyScrollable());
         dstv.setTypeface(getTypeface());
+        dstv.setHorizontallyScrolling(true);
         return dstv;
     }
 }
