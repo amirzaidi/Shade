@@ -3,9 +3,7 @@ package amirz.shade.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.android.launcher3.R;
 import com.android.searchlauncher.SmartspaceQsbWidget;
@@ -46,7 +44,7 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
         mUnreadSubtitle = mUnreadView.findViewById(R.id.shadespace_subtitle);
 
         ThemedSmartspaceHostView hv = (ThemedSmartspaceHostView) mSmartspaceView.getChildAt(0);
-        hv.setTextViews(mUnreadTitle, mUnreadSubtitle);
+        hv.setSampleDoubleShadowTextView(mUnreadSubtitle);
     }
 
     @Override

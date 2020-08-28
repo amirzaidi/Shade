@@ -18,14 +18,14 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class ThemedSmartspaceHostView extends SmartspaceHostView {
-    private DoubleShadowTextView[] mDstvs;
+    private DoubleShadowTextView mDstv;
 
     public ThemedSmartspaceHostView(Context context) {
         super(context);
     }
 
-    public void setTextViews(DoubleShadowTextView... dstvs) {
-        mDstvs = dstvs;
+    public void setSampleDoubleShadowTextView(DoubleShadowTextView dstv) {
+        mDstv = dstv;
         overrideView();
     }
 
@@ -106,16 +106,9 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
     }
 
     private TextView replaceTextView(TextView tv) {
-        if (mDstvs != null && mDstvs.length == 2) {
-            // We use this one for now as the top one resizes itself.
-            float smallTextSize = mDstvs[1].getTextSize();
-            float tvTextSize = tv.getTextSize();
-            float textSizeScale = Math.max(tvTextSize / smallTextSize, smallTextSize / tvTextSize);
-
-            // Take the bottom one if it is close enough.
-            return mDstvs[textSizeScale < 1.1f ? 1 : 0].cloneTextView(tv);
-        }
-        return tv;
+        return mDstv == null
+                ? tv
+                : mDstv.cloneTextView(tv);
     }
 
     private void overrideView(View v, int textColor, int maxDividerSize) {
