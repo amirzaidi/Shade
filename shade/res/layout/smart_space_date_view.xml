@@ -7,18 +7,20 @@
     android:animateLayoutChanges="true"
     android:background="@android:color/transparent">
 
-    <TextClock
+    <amirz.shade.views.DoubleShadowTextView
         android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif"
-        android:format12Hour="EEEE, MMM d"
-        android:format24Hour="EEEE, MMM d"
+        android:gravity="center_vertical"
         android:includeFontPadding="false"
         android:maxLines="1"
         android:paddingLeft="@dimen/text_horizontal_padding"
         android:paddingRight="@dimen/text_horizontal_padding"
+        android:paddingTop="@dimen/text_vertical_padding"
+        android:paddingBottom="@dimen/text_vertical_padding"
+        android:contentDescription="@string/date_content_description"
         style="@style/TextShade.Title" />
 
 </FrameLayout>

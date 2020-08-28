@@ -156,10 +156,12 @@
 
     <style name="TextShade.Title" parent="TextShade">
         <item name="android:textSize">24sp</item>
+        <item name="android:shadowRadius">12</item>
     </style>
 
     <style name="TextShade.SubTitle" parent="TextShade">
         <item name="android:textSize">16sp</item>
+        <item name="android:shadowRadius">9</item>
     </style>
 
     <style name="ShortcutTheme" parent="android:Theme.DeviceDefault.Light" />

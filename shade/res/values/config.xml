@@ -114,4 +114,6 @@
     <integer name="config_settingsFadeAnimationDuration">250</integer>
     <integer name="config_appOpenLauncherExitAnimationDuration">205</integer>
     <integer name="config_appExitLauncherOpenAnimationDuration">365</integer>
+
+    <string name="date_content_description" translatable="false">DATE_VIEW</string>
 </resources>

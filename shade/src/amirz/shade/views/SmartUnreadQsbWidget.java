@@ -43,8 +43,12 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
         mUnreadTitle = mUnreadView.findViewById(R.id.shadespace_title);
         mUnreadSubtitle = mUnreadView.findViewById(R.id.shadespace_subtitle);
 
-        ThemedSmartspaceHostView hv = (ThemedSmartspaceHostView) mSmartspaceView.getChildAt(0);
-        hv.setSampleDoubleShadowTextView(mUnreadSubtitle);
+        View vc = mSmartspaceView.getChildAt(0);
+        if (vc instanceof ThemedSmartspaceHostView) {
+            ThemedSmartspaceHostView hv =
+                    (ThemedSmartspaceHostView) mSmartspaceView.getChildAt(0);
+            hv.setSampleDoubleShadowTextView(mUnreadSubtitle);
+        }
     }
 
     @Override

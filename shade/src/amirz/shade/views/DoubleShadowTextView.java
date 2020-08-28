@@ -1,10 +1,15 @@
 package amirz.shade.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -18,6 +23,7 @@ public class DoubleShadowTextView extends AppCompatTextView {
     private static final float NO_OFFSET = 0f;
 
     public final Paint mPaint;
+    private AutoUpdateTextClock mDate;
     public DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
     public CharSequence mText;
 
@@ -37,12 +43,36 @@ public class DoubleShadowTextView extends AppCompatTextView {
 
         setShadowLayer(Math.max(mShadowInfo.keyShadowBlur + mShadowInfo.keyShadowOffset,
                 mShadowInfo.ambientShadowBlur), NO_OFFSET, NO_OFFSET, mShadowInfo.keyShadowColor);
+
+        // Might replace this with an attribute later.
+        if (getContentDescription() != null && context.getString(R.string.date_content_description)
+                    .equals(getContentDescription().toString())) {
+            mDate = new AutoUpdateTextClock(this);
+        }
     }
 
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (mDate != null) {
+            mDate.registerReceiver();
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mDate != null) {
+            mDate.unregisterReceiver();
+        }
+    }
+
+    // Used by AutoUpdateTextClock.
     public void updateText(CharSequence text) {
         if (!Objects.equals(text, mText)) {
             mText = text;
             setText(text);
+            setContentDescription(text);
         }
     }
 
@@ -63,8 +93,12 @@ public class DoubleShadowTextView extends AppCompatTextView {
 
     public DoubleShadowTextView cloneTextView(TextView tv) {
         DoubleShadowTextView dstv = new DoubleShadowTextView(getContext());
+        if (tv instanceof TextClock) {
+            dstv.mDate = new AutoUpdateTextClock(dstv);
+        } else {
+            dstv.setText(tv.getText());
+        }
         dstv.mShadowInfo = mShadowInfo;
-        dstv.updateText(tv.getText());
         dstv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize());
         int minPadding = getContext().getResources()
                 .getDimensionPixelSize(R.dimen.text_vertical_padding);
