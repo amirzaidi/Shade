@@ -6,6 +6,7 @@ import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,16 @@ import com.android.launcher3.icons.LauncherIcons;
 import com.android.launcher3.util.Themes;
 import com.android.searchlauncher.SmartspaceHostView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class ThemedSmartspaceHostView extends SmartspaceHostView {
+    private static final String TAG = "ThemedSmartspaceHostView";
+
+    private final Map<ViewGroup.LayoutParams, int[]> mDefaultSize = new HashMap<>();
     private DoubleShadowTextView mDstv;
 
     public ThemedSmartspaceHostView(Context context) {
@@ -39,6 +46,7 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
     @Override
     public void updateAppWidget(RemoteViews remoteViews) {
         super.updateAppWidget(remoteViews);
+        Log.d(TAG, "updateAppWidget");
         if (mDstv != null) {
             overrideView();
         }
@@ -136,6 +144,17 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
             } else if (vc instanceof ImageView) {
                 ImageView iv = (ImageView) vc;
                 ViewGroup.LayoutParams lp = iv.getLayoutParams();
+                if (mDefaultSize.containsKey(lp)) {
+                    int[] size = mDefaultSize.get(lp);
+                    //noinspection ConstantConditions
+                    lp.width = size[0];
+                    lp.height = size[1];
+                } else {
+                    mDefaultSize.put(lp, new int[] {
+                            lp.width, lp.height
+                    });
+                }
+
                 if (lp.height <= maxDividerSize || lp.width <= maxDividerSize) {
                     iv.setBackgroundColor(textColor);
                 } else {
@@ -154,6 +173,7 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
 
                         Bitmap result = Bitmap.createBitmap(bm.getWidth() + 2 * shadowSize,
                                 bm.getHeight() + 2 * shadowSize, Bitmap.Config.ARGB_8888);
+                        result.setDensity(bm.getDensity());
 
                         Canvas canvas = new Canvas();
                         canvas.setBitmap(result);
@@ -169,10 +189,8 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
                         li.recycle();
 
                         iv.setImageBitmap(result);
-                        iv.getLayoutParams().height = (int) ((float) iv.getLayoutParams().height
-                                * result.getHeight() / bm.getHeight());
-                        iv.getLayoutParams().width = (int) ((float) iv.getLayoutParams().width
-                                * result.getWidth() / bm.getWidth());
+                        lp.height = (int) ((float) lp.height * result.getHeight() / bm.getHeight());
+                        lp.width = (int) ((float) lp.width * result.getWidth() / bm.getWidth());
                     }
                 }
             } else {
