@@ -1,10 +1,12 @@
 package amirz.shade.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class DoubleShadowTextView extends AppCompatTextView {
     private AutoUpdateTextClock mDate;
     public DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
     public CharSequence mText;
+    private TextView mForwardEvents;
 
     public DoubleShadowTextView(Context context) {
         this(context, null);
@@ -87,6 +90,18 @@ public class DoubleShadowTextView extends AppCompatTextView {
         super.onDraw(canvas);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mForwardEvents != null) {
+            boolean onTouchConsumed = mForwardEvents.onTouchEvent(event);
+            if (!onTouchConsumed) {
+                return false;
+            }
+        }
+        return super.onTouchEvent(event);
+    }
+
     public DoubleShadowTextView cloneTextView(TextView tv) {
         DoubleShadowTextView dstv = new DoubleShadowTextView(getContext());
         if (tv instanceof TextClock) {
@@ -96,6 +111,8 @@ public class DoubleShadowTextView extends AppCompatTextView {
         }
         dstv.mShadowInfo = mShadowInfo;
         dstv.initDefaultShadowLayer();
+        dstv.mForwardEvents = tv;
+        dstv.setOnClickListener(v -> tv.performClick());
         dstv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize());
         int minPadding = getContext().getResources()
                 .getDimensionPixelSize(R.dimen.text_vertical_padding);
