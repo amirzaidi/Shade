@@ -68,6 +68,7 @@ public class SmartUnreadQsbWidget extends SmartspaceQsbWidget
     public void onUpdateAvailable() {
         UnreadEvent event = mUnread.getEvent();
         mUnreadView.setOnClickListener(event.getOnClickListener());
+        mUnreadView.setOnLongClickListener(event.getOnLongClickListener());
         List<String> text = event.getText();
         if (text != null && text.size() > 1) {
             mSmartspaceView.setVisibility(View.GONE);
