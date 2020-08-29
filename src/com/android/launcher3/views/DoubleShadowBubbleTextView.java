@@ -105,11 +105,11 @@ public class DoubleShadowBubbleTextView extends BubbleTextView {
             if (textAlpha == 0 || (keyShadowAlpha == 0 && ambientShadowAlpha == 0)) {
                 textView.getPaint().clearShadowLayer();
                 return true;
-            } else if (keyShadowAlpha == 0) {
+            } else if (ambientShadowAlpha > 0) {
                 textView.getPaint().setShadowLayer(ambientShadowBlur, 0, 0,
                         setColorAlphaBound(ambientShadowColor, textAlpha));
                 return true;
-            } else if (ambientShadowAlpha == 0) {
+            } else if (keyShadowAlpha > 0) {
                 textView.getPaint().setShadowLayer(keyShadowBlur, 0.0f, keyShadowOffset,
                         setColorAlphaBound(keyShadowColor, textAlpha));
                 return true;
