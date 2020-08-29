@@ -1,12 +1,8 @@
 package amirz.shade.views;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextClock;
@@ -20,8 +16,6 @@ import com.android.launcher3.views.DoubleShadowBubbleTextView;
 import java.util.Objects;
 
 public class DoubleShadowTextView extends AppCompatTextView {
-    private static final float NO_OFFSET = 0f;
-
     public final Paint mPaint;
     private AutoUpdateTextClock mDate;
     public DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
@@ -40,15 +34,18 @@ public class DoubleShadowTextView extends AppCompatTextView {
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         mShadowInfo = new DoubleShadowBubbleTextView.ShadowInfo(context, attrs, defStyleAttr);
-
-        setShadowLayer(Math.max(mShadowInfo.keyShadowBlur + mShadowInfo.keyShadowOffset,
-                mShadowInfo.ambientShadowBlur), NO_OFFSET, NO_OFFSET, mShadowInfo.keyShadowColor);
+        initDefaultShadowLayer();
 
         // Might replace this with an attribute later.
         if (getContentDescription() != null && context.getString(R.string.date_content_description)
                     .equals(getContentDescription().toString())) {
             mDate = new AutoUpdateTextClock(this);
         }
+    }
+
+    private void initDefaultShadowLayer() {
+        setShadowLayer(Math.max(mShadowInfo.keyShadowBlur + mShadowInfo.keyShadowOffset,
+                mShadowInfo.ambientShadowBlur), 0f, 0f, mShadowInfo.keyShadowColor);
     }
 
     @Override
@@ -81,13 +78,12 @@ public class DoubleShadowTextView extends AppCompatTextView {
             super.onDraw(canvas);
             return;
         }
-
-        getPaint().setShadowLayer(mShadowInfo.ambientShadowBlur,
-                NO_OFFSET, NO_OFFSET, mShadowInfo.ambientShadowColor);
+        getPaint().setShadowLayer(mShadowInfo.ambientShadowBlur, 0f, 0f,
+                mShadowInfo.ambientShadowColor);
         super.onDraw(canvas);
 
-        getPaint().setShadowLayer(mShadowInfo.keyShadowBlur,
-                NO_OFFSET, mShadowInfo.keyShadowOffset, mShadowInfo.keyShadowColor);
+        getPaint().setShadowLayer(mShadowInfo.keyShadowBlur, 0f, mShadowInfo.keyShadowOffset,
+                mShadowInfo.keyShadowColor);
         super.onDraw(canvas);
     }
 
@@ -99,6 +95,7 @@ public class DoubleShadowTextView extends AppCompatTextView {
             dstv.setText(tv.getText());
         }
         dstv.mShadowInfo = mShadowInfo;
+        dstv.initDefaultShadowLayer();
         dstv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize());
         int minPadding = getContext().getResources()
                 .getDimensionPixelSize(R.dimen.text_vertical_padding);
