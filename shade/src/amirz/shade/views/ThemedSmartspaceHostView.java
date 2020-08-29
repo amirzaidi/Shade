@@ -145,7 +145,11 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
                         Bitmap bm = bd.getBitmap();
 
                         Context context = getContext();
-                        int shadowSize = ResourceUtils.pxFromDp(2f,
+
+                        boolean shadowActive = !Themes.getAttrBoolean(
+                                context, R.attr.isWorkspaceDarkText);
+
+                        int shadowSize = ResourceUtils.pxFromDp(shadowActive ? 2f : 1f,
                                 context.getResources().getDisplayMetrics());
 
                         Bitmap result = Bitmap.createBitmap(bm.getWidth() + 2 * shadowSize,
@@ -155,14 +159,12 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
                         canvas.setBitmap(result);
                         canvas.translate(shadowSize, shadowSize);
 
-                        boolean shadowActive = !Themes.getAttrBoolean(
-                                context, R.attr.isWorkspaceDarkText);
                         LauncherIcons li = LauncherIcons.obtain(context);
                         li.getShadowGenerator().recreateIcon(
                                 bm,
                                 new BlurMaskFilter(shadowSize, BlurMaskFilter.Blur.NORMAL),
-                                shadowActive ? 0x64 : 0x10,
-                                shadowActive ? 0x7C : 0,
+                                0x64,
+                                0x7C,
                                 canvas);
                         li.recycle();
 
