@@ -48,7 +48,7 @@
     <Preference
         android:key="pref_app_info_more"
         android:title="@string/app_info_more"
-        android:icon="@drawable/ic_info_no_shadow"
+        android:icon="@drawable/ic_app_info_more"
         android:persistent="false" />
 
 </androidx.preference.PreferenceScreen>
