@@ -149,6 +149,7 @@ public class UnreadSession {
                 }
             }
             event.setOnClickListener(mMedia);
+            event.setOnLongClickListener(mMedia::open);
         }
         // 3. Less important notifications.
         else if (ranked != null) {

@@ -47,7 +47,7 @@ public class MediaListener extends MediaController.Callback
         mWorkerHandler = workerHandler;
         mOnChange = onChange;
         mTaps = new MultiClickListener(MULTI_CLICK_DELAY);
-        mTaps.setListeners(this::open, this::next, this::previous);
+        mTaps.setListeners(this::toggle, this::next, this::previous);
         mNotifs = notifs;
         mSender = sender;
     }
@@ -171,22 +171,24 @@ public class MediaListener extends MediaController.Callback
         mTaps.onClick(v);
     }
 
-    private void open(View v, boolean finalClick) {
-        if (finalClick) {
-            Log.d(TAG, "Toggle");
-
-            if (mTracking != null) {
-                StatusBarNotification sbn = getNotification(mTracking);
-                if (sbn != null) {
-                    PendingIntent pi = sbn.getNotification().contentIntent;
-                    if (pi != null) {
-                        mSender.onClickNotification(pi).onClick(v);
-                        return;
-                    }
+    public boolean open(View v) {
+        if (mTracking != null) {
+            Log.d(TAG, "Open");
+            StatusBarNotification sbn = getNotification(mTracking);
+            if (sbn != null) {
+                PendingIntent pi = sbn.getNotification().contentIntent;
+                if (pi != null) {
+                    mSender.onClickNotification(pi).onClick(v);
+                    return true;
                 }
             }
+        }
+        return false;
+    }
 
-            // Fall back to pressing the button if we cannot open the notification.
+    private void toggle(View v, boolean finalClick) {
+        if (finalClick) {
+            Log.d(TAG, "Toggle");
             pressButton(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
         }
     }
