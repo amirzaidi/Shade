@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
+import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
@@ -69,14 +70,11 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         });
 
         // Use a proxy so we can update the reference at runtime.
-        View.OnClickListener l = v -> {
-            handleClose(true);
-            mOnAppInfoClick.onClick(v);
-        };
+        View.OnClickListener l = v -> mOnAppInfoClick.onClick(v);
 
         PrefsFragment fragment =
                 (PrefsFragment) mFragmentManager.findFragmentById(R.id.sheet_prefs);
-        fragment.loadForApp(itemInfo, l);
+        fragment.loadForApp(itemInfo, l, () -> handleClose(true));
     }
 
     @Override
@@ -107,6 +105,7 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         private ComponentName mComponent;
         private ComponentKey mKey;
         private View.OnClickListener mOnMoreClick;
+        private Runnable mAnimatedClose;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -127,10 +126,31 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
             return view;
         }
 
-        public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onMoreClick) {
+        @Override
+        public void onResume() {
+            super.onResume();
+            if (mAnimatedClose != null && !isEnabled()) {
+                mAnimatedClose.run();
+            }
+        }
+
+        private boolean isEnabled() {
+            if (mKey != null) {
+                try {
+                    return LauncherAppsCompat.getInstance(Launcher.getLauncher(mContext))
+                            .isActivityEnabledForProfile(mKey.componentName, mKey.user);
+                } catch (Exception ignored) {
+                }
+            }
+            return false;
+        }
+
+        public void loadForApp(ItemInfo itemInfo, final View.OnClickListener onMoreClick,
+                               final Runnable animatedClose) {
             mComponent = itemInfo.getTargetComponent();
             mKey = new ComponentKey(mComponent, itemInfo.user);
             mOnMoreClick = onMoreClick;
+            mAnimatedClose = animatedClose;
 
             ReloadingListPreference icons = (ReloadingListPreference) findPreference(KEY_ICON_PACK);
             icons.setValue(IconDatabase.getByComponent(mContext, mKey));
