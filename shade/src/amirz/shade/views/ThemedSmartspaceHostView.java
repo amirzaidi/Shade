@@ -1,6 +1,11 @@
 package amirz.shade.views;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +16,8 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.android.launcher3.R;
+import com.android.launcher3.ResourceUtils;
+import com.android.launcher3.icons.LauncherIcons;
 import com.android.launcher3.util.Themes;
 import com.android.searchlauncher.SmartspaceHostView;
 
@@ -32,7 +39,9 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
     @Override
     public void updateAppWidget(RemoteViews remoteViews) {
         super.updateAppWidget(remoteViews);
-        overrideView();
+        if (mDstv != null) {
+            overrideView();
+        }
     }
 
     private void overrideView() {
@@ -112,24 +121,60 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
     }
 
     private void overrideView(View v, int textColor, int maxDividerSize) {
-        if (v instanceof ImageView) {
-            ImageView iv = (ImageView) v;
-            ViewGroup.LayoutParams lp = iv.getLayoutParams();
-            if (lp.height <= maxDividerSize || lp.width <= maxDividerSize) {
-                iv.setBackgroundColor(textColor);
-            }
-        } else if (v instanceof ViewGroup) {
-            ((ViewGroup) v).setClipChildren(false);
-            ViewGroup vg = (ViewGroup) v;
-            for (int i = 0; i < vg.getChildCount(); i++) {
-                View vc = vg.getChildAt(i);
-                if (vc instanceof TextView) {
-                    ViewGroup.LayoutParams lp = vc.getLayoutParams();
-                    vg.removeViewAt(i);
-                    vg.addView(replaceTextView((TextView) vc), i, lp);
+        if (!(v instanceof ViewGroup)) {
+            return;
+        }
+
+        ViewGroup vg = (ViewGroup) v;
+        vg.setClipChildren(false);
+        for (int i = 0; i < vg.getChildCount(); i++) {
+            View vc = vg.getChildAt(i);
+            if (vc instanceof TextView) {
+                ViewGroup.LayoutParams lp = vc.getLayoutParams();
+                vg.removeViewAt(i);
+                vg.addView(replaceTextView((TextView) vc), i, lp);
+            } else if (vc instanceof ImageView) {
+                ImageView iv = (ImageView) vc;
+                ViewGroup.LayoutParams lp = iv.getLayoutParams();
+                if (lp.height <= maxDividerSize || lp.width <= maxDividerSize) {
+                    iv.setBackgroundColor(textColor);
                 } else {
-                    overrideView(vc, textColor, maxDividerSize);
+                    Drawable d = iv.getDrawable();
+                    if (d instanceof BitmapDrawable) {
+                        BitmapDrawable bd = (BitmapDrawable) d;
+                        Bitmap bm = bd.getBitmap();
+
+                        Context context = getContext();
+                        int shadowSize = ResourceUtils.pxFromDp(2f,
+                                context.getResources().getDisplayMetrics());
+
+                        Bitmap result = Bitmap.createBitmap(bm.getWidth() + 2 * shadowSize,
+                                bm.getHeight() + 2 * shadowSize, Bitmap.Config.ARGB_8888);
+
+                        Canvas canvas = new Canvas();
+                        canvas.setBitmap(result);
+                        canvas.translate(shadowSize, shadowSize);
+
+                        boolean shadowActive = !Themes.getAttrBoolean(
+                                context, R.attr.isWorkspaceDarkText);
+                        LauncherIcons li = LauncherIcons.obtain(context);
+                        li.getShadowGenerator().recreateIcon(
+                                bm,
+                                new BlurMaskFilter(shadowSize, BlurMaskFilter.Blur.NORMAL),
+                                shadowActive ? 0x64 : 0x10,
+                                shadowActive ? 0x7C : 0,
+                                canvas);
+                        li.recycle();
+
+                        iv.setImageBitmap(result);
+                        iv.getLayoutParams().height = (int) ((float) iv.getLayoutParams().height
+                                * result.getHeight() / bm.getHeight());
+                        iv.getLayoutParams().width = (int) ((float) iv.getLayoutParams().width
+                                * result.getWidth() / bm.getWidth());
+                    }
                 }
+            } else {
+                overrideView(vc, textColor, maxDividerSize);
             }
         }
     }
