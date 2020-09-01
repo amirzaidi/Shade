@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -27,6 +28,7 @@ import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static com.android.launcher3.icons.GraphicsUtils.setColorAlphaBound;
 
 public class ThemedSmartspaceHostView extends SmartspaceHostView {
     private static final String TAG = "ThemedSmartspaceHostView";
@@ -123,9 +125,33 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
     }
 
     private TextView replaceTextView(TextView tv) {
-        return mDstv == null
-                ? tv
-                : mDstv.cloneTextView(tv);
+        if (mDstv != null) {
+            int textAlpha = Color.alpha(tv.getCurrentTextColor());
+            if (Themes.getAttrBoolean(getContext(), R.attr.isWorkspaceDarkText)) {
+                tv.getPaint().clearShadowLayer();
+            } else {
+                tv.getPaint().setShadowLayer(mDstv.mShadowInfo.ambientShadowBlur, 0, 0,
+                        setColorAlphaBound(mDstv.mShadowInfo.ambientShadowColor, textAlpha));
+            }
+            tv.setLetterSpacing(mDstv.getLetterSpacing());
+            tv.setTextColor(mDstv.getTextColors());
+            tv.setMaxLines(mDstv.getMaxLines());
+            tv.setEllipsize(mDstv.getEllipsize());
+            tv.setTypeface(mDstv.getTypeface());
+        }
+
+        int minPadding = getContext().getResources()
+                .getDimensionPixelSize(R.dimen.text_vertical_padding);
+        tv.setPadding(tv.getPaddingLeft(), Math.max(tv.getPaddingTop(), minPadding),
+                tv.getPaddingRight(), Math.max(tv.getPaddingBottom(), minPadding));
+        tv.setHorizontallyScrolling(true);
+
+        return tv;
+
+        // We do not have to clone the textView, since we are not using the double shadow.
+        //return mDstv == null
+        //        ? tv
+        //        : mDstv.cloneTextView(tv);
     }
 
     private void overrideView(View v, int textColor, int maxDividerSize) {
@@ -138,9 +164,10 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
         for (int i = 0; i < vg.getChildCount(); i++) {
             View vc = vg.getChildAt(i);
             if (vc instanceof TextView) {
-                ViewGroup.LayoutParams lp = vc.getLayoutParams();
-                vg.removeViewAt(i);
-                vg.addView(replaceTextView((TextView) vc), i, lp);
+                replaceTextView((TextView) vc);
+                //ViewGroup.LayoutParams lp = vc.getLayoutParams();
+                //vg.removeViewAt(i);
+                //vg.addView(replaceTextView((TextView) vc), i, lp);
             } else if (vc instanceof ImageView) {
                 ImageView iv = (ImageView) vc;
                 ViewGroup.LayoutParams lp = iv.getLayoutParams();
