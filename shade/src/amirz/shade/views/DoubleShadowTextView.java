@@ -42,7 +42,7 @@ public class DoubleShadowTextView extends AppCompatTextView {
         // Might replace this with an attribute later.
         if (getContentDescription() != null && context.getString(R.string.date_content_description)
                     .equals(getContentDescription().toString())) {
-            mDate = new AutoUpdateTextClock(this);
+            mDate = new AutoUpdateTextClock(this, null);
         }
     }
 
@@ -105,7 +105,8 @@ public class DoubleShadowTextView extends AppCompatTextView {
     public DoubleShadowTextView cloneTextView(TextView tv) {
         DoubleShadowTextView dstv = new DoubleShadowTextView(getContext());
         if (tv instanceof TextClock) {
-            dstv.mDate = new AutoUpdateTextClock(dstv);
+            TextClock tc = (TextClock) tv;
+            dstv.mDate = new AutoUpdateTextClock(dstv, tc.getFormat24Hour());
         } else {
             dstv.setText(tv.getText());
         }

@@ -1,17 +1,19 @@
 package amirz.shade.views;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 
 import java.util.Calendar;
 
-public class AutoUpdateTextClock {
-    private static final String FORMAT = "EEEE, MMM d";
+import static android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
+import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
+import static android.text.format.DateUtils.FORMAT_SHOW_WEEKDAY;
 
+public class AutoUpdateTextClock {
     private Calendar mTime;
     private boolean mRegistered;
 
@@ -26,9 +28,11 @@ public class AutoUpdateTextClock {
     };
 
     private final DoubleShadowTextView mTarget;
+    private final CharSequence mFormat;
 
-    public AutoUpdateTextClock(DoubleShadowTextView target) {
+    public AutoUpdateTextClock(DoubleShadowTextView target, CharSequence format) {
         mTarget = target;
+        mFormat = format;
     }
 
     private void loadCalendarTimeZone() {
@@ -36,8 +40,14 @@ public class AutoUpdateTextClock {
     }
 
     private void onTimeChanged() {
-        mTime.setTimeInMillis(System.currentTimeMillis());
-        mTarget.updateText(DateFormat.format(FORMAT, mTime));
+        if (mFormat == null) {
+            mTarget.updateText(DateUtils.formatDateTime(
+                    mTarget.getContext(), System.currentTimeMillis(),
+                    FORMAT_SHOW_WEEKDAY | FORMAT_SHOW_DATE | FORMAT_ABBREV_MONTH));
+        } else {
+            mTime.setTimeInMillis(System.currentTimeMillis());
+            mTarget.updateText(DateFormat.format(mFormat, mTime));
+        }
     }
 
     public void registerReceiver() {
