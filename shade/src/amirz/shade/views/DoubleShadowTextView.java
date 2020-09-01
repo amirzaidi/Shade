@@ -15,13 +15,10 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.android.launcher3.R;
 import com.android.launcher3.views.DoubleShadowBubbleTextView;
 
-import java.util.Objects;
-
 public class DoubleShadowTextView extends AppCompatTextView {
     public final Paint mPaint;
     private AutoUpdateTextClock mDate;
     public DoubleShadowBubbleTextView.ShadowInfo mShadowInfo;
-    public CharSequence mText;
     private TextView mForwardEvents;
 
     public DoubleShadowTextView(Context context) {
@@ -69,11 +66,8 @@ public class DoubleShadowTextView extends AppCompatTextView {
 
     // Used by AutoUpdateTextClock.
     public void updateText(CharSequence text) {
-        if (!Objects.equals(text, mText)) {
-            mText = text;
-            setText(text);
-            setContentDescription(text);
-        }
+        setText(text);
+        setContentDescription(text);
     }
 
     public void onDraw(Canvas canvas) {
@@ -81,6 +75,7 @@ public class DoubleShadowTextView extends AppCompatTextView {
             super.onDraw(canvas);
             return;
         }
+
         getPaint().setShadowLayer(mShadowInfo.ambientShadowBlur, 0f, 0f,
                 mShadowInfo.ambientShadowColor);
         super.onDraw(canvas);
