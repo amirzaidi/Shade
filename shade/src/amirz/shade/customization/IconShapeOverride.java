@@ -155,7 +155,7 @@ public class IconShapeOverride {
                 .setPackage(context.getPackageName())
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return PendingIntent.getActivity(context, RESTART_REQUEST_CODE,
-                homeIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+                homeIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     private static void cancelRestart(Context context) {

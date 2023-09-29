@@ -21,6 +21,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.launcher3">
 
+    <permission-group android:name="${packageName}.permission-group.SYSTEM_TOOLS" />
+
     <!--
     The manifest defines the common entries that should be present in any derivative of Launcher3.
     The components should generally not require any changes.
@@ -31,7 +33,7 @@
     -->
     <permission
         android:name="com.android.launcher.permission.INSTALL_SHORTCUT"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+        android:permissionGroup="${packageName}.permission-group.SYSTEM_TOOLS"
         android:protectionLevel="dangerous"
         android:label="@string/permlab_install_shortcut"
         android:description="@string/permdesc_install_shortcut" />
@@ -53,13 +55,13 @@
     -->
     <permission
         android:name="${packageName}.permission.READ_SETTINGS"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+        android:permissionGroup="${packageName}.permission-group.SYSTEM_TOOLS"
         android:protectionLevel="signatureOrSystem"
         android:label="@string/permlab_read_settings"
         android:description="@string/permdesc_read_settings"/>
     <permission
         android:name="${packageName}.permission.WRITE_SETTINGS"
-        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+        android:permissionGroup="${packageName}.permission-group.SYSTEM_TOOLS"
         android:protectionLevel="signatureOrSystem"
         android:label="@string/permlab_write_settings"
         android:description="@string/permdesc_write_settings"/>
@@ -81,6 +83,7 @@
         <!-- Intent received used to install shortcuts from other applications -->
         <receiver
             android:name="com.android.launcher3.InstallShortcutReceiver"
+            android:exported="true"
             android:permission="com.android.launcher.permission.INSTALL_SHORTCUT"
             android:enabled="@bool/enable_install_shortcut_api" >
             <intent-filter>
@@ -90,14 +93,16 @@
 
         <!-- Intent received when a session is committed -->
         <receiver
-            android:name="com.android.launcher3.SessionCommitReceiver" >
+            android:name="com.android.launcher3.SessionCommitReceiver"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.content.pm.action.SESSION_COMMITTED" />
             </intent-filter>
         </receiver>
 
         <!-- Intent received used to initialize a restored widget -->
-        <receiver android:name="com.android.launcher3.AppWidgetsRestoredReceiver" >
+        <receiver android:name="com.android.launcher3.AppWidgetsRestoredReceiver"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_HOST_RESTORED"/>
             </intent-filter>
@@ -111,6 +116,7 @@
 
         <service
             android:name="com.android.launcher3.notification.NotificationListener"
+            android:exported="true"
             android:label="@string/notification_dots_service_title"
             android:enabled="@bool/notification_dots_enabled"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
@@ -123,6 +129,7 @@
                        android:value="true" />
 
         <activity android:name="com.android.launcher3.dragndrop.AddItemActivity"
+            android:exported="true"
             android:theme="@style/AppItemActivityTheme"
             android:excludeFromRecents="true"
             android:autoRemoveFromRecents="true"
@@ -168,6 +175,7 @@
         -->
         <activity
             android:name="com.android.launcher3.settings.SettingsActivity"
+            android:exported="true"
             android:label="@string/settings_button_text"
             android:theme="@style/HomeSettingsTheme"
             android:autoRemoveFromRecents="true">
