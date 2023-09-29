@@ -42,16 +42,16 @@ public class ThemedSmartspaceHostView extends SmartspaceHostView {
 
     public void setSampleDoubleShadowTextView(DoubleShadowTextView dstv) {
         mDstv = dstv;
-        overrideView();
+        //overrideView();
     }
 
     @Override
     public void updateAppWidget(RemoteViews remoteViews) {
         super.updateAppWidget(remoteViews);
-        Log.d(TAG, "updateAppWidget");
-        if (mDstv != null) {
-            overrideView();
-        }
+        //Log.d(TAG, "updateAppWidget");
+        //if (mDstv != null) {
+        //    overrideView();
+        //}
     }
 
     private void overrideView() {
