@@ -41,6 +41,8 @@ import java.util.Objects;
 
 import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
+import amirz.shade.ShadeRestarter;
+
 /**
  * Utility class to override shape of {@link android.graphics.drawable.AdaptiveIconDrawable}.
  */
@@ -62,7 +64,7 @@ public class IconShapeOverride {
     @SuppressLint("RestrictedApi")
     public static void apply(Context context) {
         if (Utilities.ATLEAST_OREO) {
-            cancelRestart(context);
+            ShadeRestarter.cancelRestart(context);
             if (sPrefs == null) {
                 sPrefs = Utilities.getPrefs(context);
             }
@@ -140,25 +142,7 @@ public class IconShapeOverride {
             }
 
             // Schedule an alarm before we kill ourself.
-            PendingIntent pi = getRestartIntent(mContext);
-            mContext.getSystemService(AlarmManager.class).setExact(
-                    AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 50, pi);
-
-            // Kill process
-            android.os.Process.killProcess(android.os.Process.myPid());
+            ShadeRestarter.initiateRestart(mContext);
         }
-    }
-
-    private static PendingIntent getRestartIntent(Context context) {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN)
-                .addCategory(Intent.CATEGORY_HOME)
-                .setPackage(context.getPackageName())
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        return PendingIntent.getActivity(context, RESTART_REQUEST_CODE,
-                homeIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
-    }
-
-    private static void cancelRestart(Context context) {
-        context.getSystemService(AlarmManager.class).cancel(getRestartIntent(context));
     }
 }

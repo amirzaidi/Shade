@@ -7,18 +7,18 @@ import android.content.Intent;
 import android.os.Process;
 import android.os.SystemClock;
 
-class ShadeRestarter {
+public class ShadeRestarter {
     private static final int RESTART_REQUEST_CODE = 100;
 
-    static void initiateRestart(Context context) {
+    public static void initiateRestart(Context context) {
         PendingIntent pi = getRestartIntent(context);
-        getAlarmManager(context).setExact(
+        getAlarmManager(context).set(
                 AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 50, pi);
 
         Process.killProcess(Process.myPid());
     }
 
-    static void cancelRestart(Context context) {
+    public static void cancelRestart(Context context) {
         getAlarmManager(context).cancel(getRestartIntent(context));
     }
 
