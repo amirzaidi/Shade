@@ -145,7 +145,7 @@ public class FirstScreenBroadcast {
                 .putStringArrayListExtra(HOTSEAT_ITEM_EXTRA, new ArrayList<>(hotseatItems))
                 .putStringArrayListExtra(WIDGET_ITEM_EXTRA, new ArrayList<>(widgetItems))
                 .putExtra(VERIFICATION_TOKEN_EXTRA, PendingIntent.getActivity(context, 0,
-                        new Intent(), PendingIntent.FLAG_ONE_SHOT)));
+                        new Intent(), PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE)));
     }
 
     private static String getPackageName(ItemInfo info) {
