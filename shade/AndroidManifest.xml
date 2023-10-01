@@ -47,11 +47,16 @@
     <uses-permission android:name="${packageName}.permission.ACCESSIBILITY" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Hopefully this gets approved for the store. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
     <!-- Hacky fix to update API from 29 to 30. -->
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="com.android.launcher3.WINDOW_OVERLAY" />
         </intent>
     </queries>
 
